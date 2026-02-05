@@ -1,0 +1,78 @@
+/* ============================================
+   COMPONENT: BREADCRUMBS
+   DGA Design System - Breadcrumb Components
+   ============================================ */
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+}
+
+.breadcrumb-link {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.breadcrumb-link:hover {
+    color: var(--color-primary);
+}
+
+.breadcrumb-separator {
+    color: var(--color-border-primary);
+    user-select: none;
+}
+
+.breadcrumb-current {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+}
+
+/* ============================================
+   Breadcrumb Variants
+   ============================================ */
+
+/* With icons */
+.breadcrumb--with-icons .breadcrumb-link {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.breadcrumb__icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* Collapsed breadcrumb */
+.breadcrumb-collapsed {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-gray-100);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+}
+
+.breadcrumb-collapsed:hover {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+}
+
+/* ============================================
+   RTL Support
+   ============================================ */
+
+[dir="rtl"] .breadcrumb {
+    direction: rtl;
+}
+
+[dir="rtl"] .breadcrumb-separator {
+    transform: scaleX(-1);
+}

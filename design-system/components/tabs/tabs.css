@@ -1,0 +1,97 @@
+/* ============================================
+   COMPONENT: TABS
+   DGA Design System - Tab Components
+   ============================================ */
+
+.tabs {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    border-bottom: 2px solid var(--color-border-primary);
+}
+
+.tab-item {
+    padding: var(--spacing-lg) var(--spacing-xl);
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    position: relative;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    background: transparent;
+    border: none;
+}
+
+.tab-item:hover:not(.active) {
+    color: var(--color-primary);
+    background-color: var(--color-primary-light);
+}
+
+.tab-item.active {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
+.tab-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+}
+
+/* ============================================
+   Tab Variants
+   ============================================ */
+
+/* Pills style */
+.tabs--pills {
+    border-bottom: none;
+    gap: var(--spacing-md);
+}
+
+.tabs--pills .tab-item {
+    border-radius: var(--radius-md);
+    background-color: var(--color-gray-100);
+}
+
+.tabs--pills .tab-item.active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.tabs--pills .tab-item.active::after {
+    display: none;
+}
+
+/* Underline style */
+.tabs--underline {
+    border-bottom: 1px solid var(--color-border-secondary);
+}
+
+/* ============================================
+   Tab Sizes
+   ============================================ */
+
+.tabs--sm .tab-item {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-xs);
+}
+
+.tabs--lg .tab-item {
+    padding: var(--spacing-xl) var(--spacing-2xl);
+    font-size: var(--font-size-md);
+}
+
+/* ============================================
+   RTL Support
+   ============================================ */
+
+[dir="rtl"] .tabs {
+    direction: rtl;
+}

@@ -1,0 +1,651 @@
+/* ============================================
+   COMPONENT: BUTTONS
+   DGA Design System - Button Components
+   Based on Figma: 407:510376
+
+   Variants: Neutral, Primary, Secondary-Solid,
+             Secondary-Outline, Subtle, Transparent
+   Sizes: Small (24px), Medium (32px), Large (40px)
+   States: Default, Hover, Pressed, Focused, Disabled
+   Modifiers: Destructive, Icon-only, On-color, RTL
+   ============================================ */
+
+/* ============================================
+   Base Button Styles
+   ============================================ */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-family: "IBMPlexSansArabicMedium", "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 500;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 150ms ease;
+    text-decoration: none;
+    white-space: nowrap;
+    user-select: none;
+    overflow: hidden;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ============================================
+   Button Sizes
+   ============================================ */
+
+/* Large (Default) - 40px height */
+.btn,
+.btn-large {
+    height: 40px;
+    min-height: 40px;
+    max-height: 40px;
+    padding: 0 16px;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+/* Medium - 32px height */
+.btn-medium {
+    height: 32px;
+    min-height: 32px;
+    max-height: 32px;
+    padding: 0 12px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+/* Small - 24px height */
+.btn-small {
+    height: 24px;
+    min-height: 24px;
+    max-height: 24px;
+    padding: 0 8px;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+/* ============================================
+   Button Variants - Light Theme
+   ============================================ */
+
+/* Neutral Button - Dark/Black */
+.btn-neutral {
+    background-color: #0d121c;
+    color: #ffffff;
+}
+
+.btn-neutral:hover {
+    background-color: #384250;
+}
+
+.btn-neutral:active,
+.btn-neutral.pressed {
+    background-color: #4d5761;
+}
+
+.btn-neutral:focus {
+    outline: 2px solid #0d121c;
+    outline-offset: 2px;
+}
+
+.btn-neutral:disabled {
+    background-color: #e5e7eb;
+    color: #9da4ae;
+}
+
+/* Primary Button - Saudi Green */
+.btn-primary {
+    background-color: #1b8354;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #166a45;
+}
+
+.btn-primary:active,
+.btn-primary.pressed {
+    background-color: #14573a;
+}
+
+.btn-primary:focus {
+    outline: 2px solid #0d121c;
+    outline-offset: 2px;
+}
+
+.btn-primary:disabled {
+    background-color: #e5e7eb;
+    color: #9da4ae;
+}
+
+/* Secondary Solid Button - Gray Fill */
+.btn-secondary-solid {
+    background-color: #f3f4f6;
+    color: #161616;
+}
+
+.btn-secondary-solid:hover {
+    background-color: #e5e7eb;
+}
+
+.btn-secondary-solid:active,
+.btn-secondary-solid.pressed {
+    background-color: #d2d6db;
+}
+
+.btn-secondary-solid:focus {
+    outline: 2px solid #0d121c;
+    outline-offset: 2px;
+}
+
+.btn-secondary-solid:disabled {
+    background-color: #e5e7eb;
+    color: #9da4ae;
+}
+
+/* Secondary Outline Button - Border Only */
+.btn-secondary-outline {
+    background-color: transparent;
+    border: 1px solid #d2d6db;
+    color: #161616;
+}
+
+.btn-secondary-outline:hover {
+    background-color: #f3f4f6;
+}
+
+.btn-secondary-outline:active,
+.btn-secondary-outline.pressed {
+    background-color: #e5e7eb;
+}
+
+.btn-secondary-outline:focus {
+    border-color: #0d121c;
+    outline: none;
+}
+
+.btn-secondary-outline:disabled {
+    background-color: transparent;
+    border-color: #e5e7eb;
+    color: #9da4ae;
+}
+
+/* Subtle Button - Transparent with hover fill */
+.btn-subtle {
+    background-color: transparent;
+    color: #161616;
+}
+
+.btn-subtle:hover {
+    background-color: #f3f4f6;
+}
+
+.btn-subtle:active,
+.btn-subtle.pressed {
+    background-color: #e5e7eb;
+}
+
+.btn-subtle:focus {
+    outline: 2px solid #0d121c;
+    outline-offset: 2px;
+}
+
+.btn-subtle:disabled {
+    background-color: transparent;
+    color: #9da4ae;
+}
+
+/* Transparent Button - Text Only */
+.btn-transparent {
+    background-color: transparent;
+    color: #161616;
+}
+
+.btn-transparent:hover {
+    color: #166a45;
+}
+
+.btn-transparent:active,
+.btn-transparent.pressed {
+    color: #14573a;
+}
+
+.btn-transparent:focus {
+    outline: 2px solid #0d121c;
+    outline-offset: 2px;
+}
+
+.btn-transparent:disabled {
+    background-color: transparent;
+    color: #9da4ae;
+}
+
+/* ============================================
+   Destructive Variants
+   ============================================ */
+
+/* Primary Destructive */
+.btn-primary.destructive {
+    background-color: #d92d20;
+    color: #ffffff;
+}
+
+.btn-primary.destructive:hover {
+    background-color: #b42318;
+}
+
+.btn-primary.destructive:active,
+.btn-primary.destructive.pressed {
+    background-color: #912018;
+}
+
+.btn-primary.destructive:disabled {
+    background-color: #e5e7eb;
+    color: #9da4ae;
+}
+
+/* Secondary Solid Destructive */
+.btn-secondary-solid.destructive {
+    background-color: #fef3f2;
+    color: #b42318;
+}
+
+.btn-secondary-solid.destructive:hover {
+    background-color: #fee4e2;
+}
+
+.btn-secondary-solid.destructive:active,
+.btn-secondary-solid.destructive.pressed {
+    background-color: #fecdca;
+}
+
+.btn-secondary-solid.destructive:disabled {
+    background-color: #e5e7eb;
+    color: #9da4ae;
+}
+
+/* Secondary Outline Destructive */
+.btn-secondary-outline.destructive {
+    background-color: transparent;
+    border-color: #fecdca;
+    color: #b42318;
+}
+
+.btn-secondary-outline.destructive:hover {
+    background-color: #fee4e2;
+}
+
+.btn-secondary-outline.destructive:active,
+.btn-secondary-outline.destructive.pressed {
+    background-color: #fecdca;
+}
+
+.btn-secondary-outline.destructive:disabled {
+    background-color: transparent;
+    border-color: #e5e7eb;
+    color: #9da4ae;
+}
+
+/* Subtle Destructive */
+.btn-subtle.destructive {
+    background-color: transparent;
+    color: #b42318;
+}
+
+.btn-subtle.destructive:hover {
+    background-color: #fee4e2;
+}
+
+.btn-subtle.destructive:active,
+.btn-subtle.destructive.pressed {
+    background-color: #fecdca;
+}
+
+.btn-subtle.destructive:disabled {
+    background-color: transparent;
+    color: #9da4ae;
+}
+
+/* Transparent Destructive */
+.btn-transparent.destructive {
+    background-color: transparent;
+    color: #d92d20;
+}
+
+.btn-transparent.destructive:hover {
+    color: #b42318;
+}
+
+.btn-transparent.destructive:active,
+.btn-transparent.destructive.pressed {
+    color: #912018;
+}
+
+.btn-transparent.destructive:disabled {
+    background-color: transparent;
+    color: #9da4ae;
+}
+
+/* ============================================
+   On-Color Variants (Dark Backgrounds)
+   ============================================ */
+
+.btn-on-color.btn-neutral,
+.btn-on-color.btn-primary {
+    background-color: #ffffff;
+    color: #0d121c;
+}
+
+.btn-on-color.btn-neutral:hover,
+.btn-on-color.btn-primary:hover {
+    background-color: #cddbd6;
+}
+
+.btn-on-color.btn-neutral:active,
+.btn-on-color.btn-primary:active,
+.btn-on-color.btn-neutral.pressed,
+.btn-on-color.btn-primary.pressed {
+    background-color: #9cb8ad;
+}
+
+.btn-on-color.btn-neutral:disabled,
+.btn-on-color.btn-primary:disabled {
+    background-color: #39715a;
+    color: #9cb8ad;
+}
+
+.btn-on-color.btn-secondary-solid {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.btn-on-color.btn-secondary-solid:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-on-color.btn-secondary-solid:active,
+.btn-on-color.btn-secondary-solid.pressed {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-on-color.btn-secondary-solid:disabled {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-on-color.btn-secondary-outline {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: #ffffff;
+}
+
+.btn-on-color.btn-secondary-outline:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-on-color.btn-secondary-outline:active,
+.btn-on-color.btn-secondary-outline.pressed {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-on-color.btn-secondary-outline:disabled {
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-on-color.btn-subtle {
+    background-color: transparent;
+    color: #ffffff;
+}
+
+.btn-on-color.btn-subtle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-on-color.btn-subtle:active,
+.btn-on-color.btn-subtle.pressed {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-on-color.btn-subtle:disabled {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-on-color.btn-transparent {
+    background-color: transparent;
+    color: #ffffff;
+}
+
+.btn-on-color.btn-transparent:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-on-color.btn-transparent:active,
+.btn-on-color.btn-transparent.pressed {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.btn-on-color.btn-transparent:disabled {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* ============================================
+   Icon Styles
+   ============================================ */
+
+.btn .icon,
+.btn__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Large icons - 24px */
+.btn .icon,
+.btn-large .icon,
+.btn__icon,
+.btn-large .btn__icon {
+    width: 24px;
+    height: 24px;
+}
+
+.btn .icon svg,
+.btn-large .icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Medium icons - 20px */
+.btn-medium .icon,
+.btn-medium .btn__icon {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-medium .icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Small icons - 16px */
+.btn-small .icon,
+.btn-small .btn__icon {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-small .icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ============================================
+   Icon-Only Button
+   ============================================ */
+
+.btn-icon-only {
+    padding: 0;
+    justify-content: center;
+    gap: 0;
+}
+
+/* Large icon-only - 40x40 */
+.btn-icon-only,
+.btn-icon-only.btn-large {
+    width: 40px;
+    min-width: 40px;
+    max-width: 40px;
+}
+
+/* Medium icon-only - 32x32 */
+.btn-icon-only.btn-medium {
+    width: 32px;
+    min-width: 32px;
+    max-width: 32px;
+}
+
+/* Small icon-only - 24x24 */
+.btn-icon-only.btn-small {
+    width: 24px;
+    min-width: 24px;
+    max-width: 24px;
+}
+
+/* ============================================
+   Loading State
+   ============================================ */
+
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+    pointer-events: none;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: btn-spin 0.6s linear infinite;
+}
+
+.btn-loading.btn-primary::after,
+.btn-loading.btn-neutral::after,
+.btn-loading.btn-primary.destructive::after {
+    border-color: #ffffff;
+    border-right-color: transparent;
+}
+
+.btn-loading.btn-secondary-solid::after,
+.btn-loading.btn-secondary-outline::after,
+.btn-loading.btn-subtle::after,
+.btn-loading.btn-transparent::after {
+    border-color: #4d5761;
+    border-right-color: transparent;
+}
+
+.btn-loading.btn-small::after {
+    width: 12px;
+    height: 12px;
+}
+
+.btn-loading.btn-medium::after {
+    width: 14px;
+    height: 14px;
+}
+
+@keyframes btn-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================
+   Button Group
+   ============================================ */
+
+.btn-group {
+    display: inline-flex;
+}
+
+.btn-group .btn {
+    border-radius: 0;
+}
+
+.btn-group .btn:first-child {
+    border-start-start-radius: 4px;
+    border-end-start-radius: 4px;
+}
+
+.btn-group .btn:last-child {
+    border-start-end-radius: 4px;
+    border-end-end-radius: 4px;
+}
+
+.btn-group .btn:not(:last-child) {
+    border-inline-end: none;
+}
+
+.btn-group .btn-secondary-outline:not(:last-child) {
+    border-inline-end: 1px solid #d2d6db;
+}
+
+/* ============================================
+   Full Width Button
+   ============================================ */
+
+.btn-full-width {
+    width: 100%;
+}
+
+/* ============================================
+   RTL Support
+   ============================================ */
+
+[dir="rtl"] .btn {
+    direction: rtl;
+}
+
+[dir="rtl"] .btn-group .btn:first-child {
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+    border-start-end-radius: 4px;
+    border-end-end-radius: 4px;
+}
+
+[dir="rtl"] .btn-group .btn:last-child {
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+    border-start-start-radius: 4px;
+    border-end-start-radius: 4px;
+}
+
+/* ============================================
+   Focus Visible (Accessibility)
+   ============================================ */
+
+.btn:focus-visible {
+    outline: 2px solid #1b8354;
+    outline-offset: 2px;
+}
+
+.btn-on-color:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}

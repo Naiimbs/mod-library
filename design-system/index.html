@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Navigation Design System - DGA Saudi Arabia Guidelines">
+    <title>Navigation Design System - DGA Components</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Design System CSS -->
+    <!-- Core Styles -->
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="components/navigation.css">
+    <link rel="stylesheet" href="components/buttons/buttons.css">
+    <link rel="stylesheet" href="components/cards/cards.css">
+    <link rel="stylesheet" href="components/tags/tags.css">
+    <link rel="stylesheet" href="components/pagination/pagination.css">
+    <link rel="stylesheet" href="components/tabs/tabs.css">
+    <link rel="stylesheet" href="components/breadcrumbs/breadcrumbs.css">
+    <link rel="stylesheet" href="components/menus/menus.css">
+    <link rel="stylesheet" href="components/sidebar/sidebar.css">
+    <link rel="stylesheet" href="components/inputs/inputs.css">
+    <link rel="stylesheet" href="components/tables/tables.css">
+    <link rel="stylesheet" href="components/modal/modal.css">
+    <link rel="stylesheet" href="components/tooltip/tooltip.css">
+    <link rel="stylesheet" href="components/links/links.css">
+    <link rel="stylesheet" href="components/screens/screens.css">
+    <link rel="stylesheet" href="components/status-tag/status-tag.css">
+</head>
+
+<body>
+    <div class="layout">
+        <!-- Top Header Navigation -->
+        <header class="header" role="banner">
+            <div class="header-content">
+                <div class="header-left">
+                    <!-- Logo -->
+                    <a href="#" class="app-logo">
+                        <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="6" fill="#1B8354" />
+                            <path d="M10 16L14 20L22 12" stroke="white" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+
+                    <!-- Main Navigation -->
+                    <nav class="main-nav" role="navigation">
+                        <a href="#nav-header" class="main-nav-link">Home</a>
+                        <a href="#" class="main-nav-link">Styles</a>
+                        <a href="#" class="main-nav-link">Classes</a>
+                        <a href="#cards" class="main-nav-link active">Components</a>
+                        <a href="#screens" class="main-nav-link">Screen Templates</a>
+                        <a href="#" class="main-nav-link">Icons</a>
+                    </nav>
+                </div>
+
+                <div class="header-right">
+                    <a href="#" class="header-action">
+                        <span>👤</span>
+                        <span>About Team</span>
+                    </a>
+                    <div class="header-action">
+                        <span>🔍</span>
+                        <span>Search</span>
+                    </div>
+                    <a href="#" class="header-action lang-toggle">
+                        <span>🌐</span>
+                        <span>عربي</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <a href="#" class="sidebar-link" data-component="buttons">Buttons</a>
+                    <a href="#" class="sidebar-link" data-component="inputs">Inputs</a>
+                    <a href="#" class="sidebar-link" data-component="tags">Tags</a>
+                    <a href="#" class="sidebar-link" data-component="status-tag">Status Tag</a>
+                    <a href="#" class="sidebar-link" data-component="pagination">Pagination</a>
+                    <a href="#" class="sidebar-link" data-component="tabs">Tabs</a>
+                    <a href="#" class="sidebar-link" data-component="tables">Tables</a>
+                    <a href="#" class="sidebar-link" data-component="screens">Screens</a>
+                    <a href="#" class="sidebar-link" data-component="breadcrumbs">Breadcrumbs</a>
+                    <a href="#" class="sidebar-link" data-component="links">Links</a>
+                    <a href="#" class="sidebar-link" data-component="cards">Cards</a>
+                    <a href="#" class="sidebar-link" data-component="menus">Menus</a>
+                    <a href="#" class="sidebar-link active" data-component="nav-header">Nav Header</a>
+                    <a href="#" class="sidebar-link" data-component="nav-drawer">Nav Drawer</a>
+                    <a href="#" class="sidebar-link" data-component="sidebar">Sidebar</a>
+                    <a href="#" class="sidebar-link" data-component="tooltip">Tooltip</a>
+                    <a href="#" class="sidebar-link" data-component="modal">Modal</a>
+                </nav>
+            </aside>
+
+            <!-- Content Area -->
+            <main class="content" role="main">
+
+                <!-- NAV HEADER Component -->
+                <section id="nav-header" class="component-section active">
+                    <div class="content-header">
+                        <h1 class="content-title">Nav Header</h1>
+                        <p class="content-description">Top navigation header component following DGA guidelines.</p>
+                    </div>
+                    <div class="component-preview">
+                        <div class="component-preview-title">Default (LTR) - Figma 30150:148752</div>
+
+                        <!-- Navigation Header (72px height) -->
+                        <header class="navigation-header">
+
+                            <!-- Left Section -->
+                            <div class="navigation-header__left">
+
+                                <!-- Logo Placeholder (48x48) -->
+                                <div class="logo-placeholder">
+                                    <svg class="logo-placeholder__icon" width="48" height="48" viewBox="0 0 48 48"
+                                        fill="none">
+                                        <rect width="48" height="48" rx="4" fill="#F5F5F5" />
+                                        <path
+                                            d="M24 8C22.9 8 22 9.12 22 10.5V18L18 17.3C17.3 17.2 16.6 17.7 16.5 18.4C16.4 19.1 16.9 19.7 17.6 19.8L22 20.5V23L17 25.5C16.4 25.8 16.2 26.5 16.5 27.1C16.8 27.7 17.5 27.9 18.1 27.6L22 25.6V29L17 34C16.6 34.4 16.6 35 17 35.4C17.4 35.8 18 35.8 18.4 35.4L22 31.8V38C22 39.1 22.9 40 24 40C25.1 40 26 39.1 26 38V31.8L29.6 35.4C30 35.8 30.6 35.8 31 35.4C31.4 35 31.4 34.4 31 34L26 29V25.6L29.9 27.6C30.5 27.9 31.2 27.7 31.5 27.1C31.8 26.5 31.6 25.8 31 25.5L26 23V20.5L30.4 19.8C31.1 19.7 31.6 19.1 31.5 18.4C31.4 17.7 30.7 17.2 30 17.3L26 18V10.5C26 9.12 25.1 8 24 8Z"
+                                            fill="#9DA4AE" />
+                                    </svg>
+                                    <span class="logo-placeholder__text">Platform Logo</span>
+                                </div>
+
+                                <!-- Navigation Menu -->
+                                <nav class="navigation-menu" role="menubar">
+                                    <a href="#" class="header-menu-item" role="menuitem">
+                                        <span class="header-menu-item__text">Home</span>
+                                        <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M6 9L12 15L18 9" />
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="header-menu-item" role="menuitem">
+                                        <span class="header-menu-item__text">Services</span>
+                                        <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M6 9L12 15L18 9" />
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="header-menu-item" role="menuitem">
+                                        <span class="header-menu-item__text">Screens</span>
+                                        <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M6 9L12 15L18 9" />
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="header-menu-item" role="menuitem">
+                                        <span class="header-menu-item__text">Reports</span>
+                                        <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M6 9L12 15L18 9" />
+                                        </svg>
+                                    </a>
+
+
+                                    <a href="#" class="header-menu-item" role="menuitem">
+                                        <span class="header-menu-item__text">Settings</span>
+                                        <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M6 9L12 15L18 9" />
+                                        </svg>
+                                    </a>
+                                </nav>
+                            </div>
+
+                            <!-- Right Section -->
+                            <div class="navigation-header__right">
+                                <a href="#" class="header-action header-action--outline">
+                                    <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                                        <path d="M9 12H15" />
+                                        <path d="M12 9L15 12L12 15" />
+                                    </svg>
+                                    <span>Action</span>
+                                </a>
+                                <a href="#" class="header-action header-action--outline">
+                                    <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                                        <path d="M9 12H15" />
+                                        <path d="M12 9L15 12L12 15" />
+                                    </svg>
+                                    <span>Action</span>
+                                </a>
+                                <a href="#" class="header-action header-action--primary">
+                                    <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                                        <path d="M9 12H15" />
+                                        <path d="M12 9L15 12L12 15" />
+                                    </svg>
+                                    <span>Action</span>
+                                </a>
+                            </div>
+
+                        </header>
+
+                        <!-- Interactive behavior handled by js/main.js -->
+                    </div>
+                    <!-- Arabic (RTL) Version -->
+                    <div class="component-preview">
+                        <div class="component-preview-title">Arabic (RTL) - Figma 30150:148752</div>
+
+                        <!-- Navigation Header (72px height) - RTL -->
+                        <header class="navigation-header" dir="rtl">
+
+                            <!-- Left Section (visually right in RTL) -->
+                            <div class="navigation-header__left">
+
+                                <!-- Logo Placeholder (48x48) -->
+                                <div class="logo-placeholder">
+                                    <svg class="logo-placeholder__icon" width="48" height="48" viewBox="0 0 48 48"
+                                        fill="none">
+                                        <rect width="48" height="48" rx="4" fill="#F5F5F5" />
+                                        <path
+                                            d="M24 8C22.9 8 22 9.12 22 10.5V18L18 17.3C17.3 17.2 16.6 17.7 16.5 18.4C16.4 19.1 16.9 19.7 17.6 19.8L22 20.5V23L17 25.5C16.4 25.8 16.2 26.5 16.5 27.1C16.8 27.7 17.5 27.9 18.1 27.6L22 25.6V29L17 34C16.6 34.4 16.6 35 17 35.4C17.4 35.8 18 35.8 18.4 35.4L22 31.8V38C22 39.1 22.9 40 24 40C25.1 40 26 39.1 26 38V31.8L29.6 35.4C30 35.8 30.6 35.8 31 35.4C31.4 35 31.4 34.4 31 34L26 29V25.6L29.9 27.6C30.5 27.9 31.2 27.7 31.5 27.1C31.8 26.5 31.6 25.8 31 25.5L26 23V20.5L30.4 19.8C31.1 19.7 31.6 19.1 31.5 18.4C31.4 17.7 30.7 17.2 30 17.3L26 18V10.5C26 9.12 25.1 8 24 8Z"
+                                            fill="#9DA4AE" />
+                                    </svg>
+                                    <span class="logo-placeholder__text">شعار المنصة</span>
+                                </div>
+
+                                <!-- Navigation Menu -->
+                                <nav class="navigation-menu" role="menubar">
+                                    <a href="#" class="header-menu-item" role="menuitem">
+                                        <span class="header-menu-item__text">الرئيسية</span>
+                                        <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M6 9L12 15L18 9" />
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="header-menu-item" role="menuitem">
+                                        <span class="header-menu-item__text">الخدمات</span>
+                                        <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M6 9L12 15L18 9" />
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="header-menu-item" role="menuitem">
+                                        <span class="header-menu-item__text">التدريب</span>
+                                        <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M6 9L12 15L18 9" />
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="header-menu-item" role="menuitem">
+                                        <span class="header-menu-item__text">المقالات</span>
+                                        <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M6 9L12 15L18 9" />
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="header-menu-item" role="menuitem">
+                                        <span class="header-menu-item__text">المعلومات</span>
+                                        <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M6 9L12 15L18 9" />
+                                        </svg>
+                                    </a>
+                                </nav>
+                            </div>
+
+                            <!-- Right Section (visually left in RTL) -->
+                            <div class="navigation-header__right">
+                                <a href="#" class="header-action header-action--outline">
+                                    <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                                        <path d="M9 12H15" />
+                                        <path d="M12 9L15 12L12 15" />
+                                    </svg>
+                                    <span>إجراء</span>
+                                </a>
+                                <a href="#" class="header-action header-action--outline">
+                                    <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                                        <path d="M9 12H15" />
+                                        <path d="M12 9L15 12L12 15" />
+                                    </svg>
+                                    <span>إجراء</span>
+                                </a>
+                                <a href="#" class="header-action header-action--primary">
+                                    <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                                        <path d="M9 12H15" />
+                                        <path d="M12 9L15 12L12 15" />
+                                    </svg>
+                                    <span>إجراء</span>
+                                </a>
+                            </div>
+
+                        </header>
+                    </div>
+        </section>
+
+
+
+        <!-- BREADCRUMBS Component -->
+        <section id="breadcrumbs" class="component-section">
+            <div class="content-header">
+                <h1 class="content-title">Breadcrumbs</h1>
+                <p class="content-description">Navigation breadcrumb component for hierarchical page structure.
+                </p>
+            </div>
+
+            <div class="component-preview">
+                <div class="component-preview-title">Default</div>
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="#" class="breadcrumb-link">Home</a>
+                    <span class="breadcrumb-separator">›</span>
+                    <a href="#" class="breadcrumb-link">Services</a>
+                    <span class="breadcrumb-separator">›</span>
+                    <a href="#" class="breadcrumb-link">Category</a>
+                    <span class="breadcrumb-separator">›</span>
+                    <span class="breadcrumb-current">Current Page</span>
+                </nav>
+            </div>
+
+            <div class="component-preview">
+                <div class="component-preview-title">Arabic (RTL)</div>
+                <nav class="breadcrumb" aria-label="Breadcrumb" dir="rtl">
+                    <a href="#" class="breadcrumb-link">الرئيسية</a>
+                    <span class="breadcrumb-separator">‹</span>
+                    <a href="#" class="breadcrumb-link">الخدمات</a>
+                    <span class="breadcrumb-separator">‹</span>
+                    <span class="breadcrumb-current">تفاصيل الخدمة</span>
+                </nav>
+            </div>
+        </section>
+
+        <!-- PAGINATION Component -->
+        <section id="pagination" class="component-section">
+            <div class="content-header">
+                <h1 class="content-title">Pagination</h1>
+                <p class="content-description">Pagination component for navigating through pages of content.</p>
+            </div>
+
+            <div class="component-preview">
+                <div class="component-preview-title">Default</div>
+                <nav class="pagination" aria-label="Pagination">
+                    <a href="#" class="pagination-item" aria-label="Previous">
+                        <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="m15 18-6-6 6-6" />
+                        </svg>
+                    </a>
+                    <a href="#" class="pagination-item">1</a>
+                    <a href="#" class="pagination-item active">2</a>
+                    <a href="#" class="pagination-item">3</a>
+                    <a href="#" class="pagination-item">4</a>
+                    <span class="pagination-item disabled">...</span>
+                    <a href="#" class="pagination-item">10</a>
+                    <a href="#" class="pagination-item" aria-label="Next">
+                        <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="m9 18 6-6-6-6" />
+                        </svg>
+                    </a>
+                </nav>
+            </div>
+        </section>
+
+        <!-- TABS Component -->
+        <section id="tabs" class="component-section">
+            <div class="content-header">
+                <h1 class="content-title">Tabs</h1>
+                <p class="content-description">Tab navigation for organizing content into sections.</p>
+            </div>
+
+            <div class="component-preview">
+                <div class="component-preview-title">Horizontal Tabs</div>
+                <nav class="tabs" role="tablist">
+                    <a href="#" class="tab-item active" role="tab">Overview</a>
+                    <a href="#" class="tab-item" role="tab">Details</a>
+                    <a href="#" class="tab-item" role="tab">Reviews</a>
+                    <a href="#" class="tab-item" role="tab">FAQ</a>
+                </nav>
+            </div>
+
+            <div class="component-preview">
+                <div class="component-preview-title">Arabic Tabs (RTL)</div>
+                <nav class="tabs" role="tablist" dir="rtl">
+                    <a href="#" class="tab-item active" role="tab">نظرة عامة</a>
+                    <a href="#" class="tab-item" role="tab">التفاصيل</a>
+                    <a href="#" class="tab-item" role="tab">المراجعات</a>
+                    <a href="#" class="tab-item" role="tab">الأسئلة الشائعة</a>
+                </nav>
+            </div>
+        </section>
+
+        <!-- BUTTONS Component -->
+        <section id="buttons" class="component-section">
+            <div class="content-header">
+                <h1 class="content-title">Buttons</h1>
+                <p class="content-description">Button components following DGA design guidelines. Includes 6 variants, 3 sizes, multiple states, and modifiers for destructive actions and dark backgrounds.</p>
+            </div>
+
+            <!-- Button Variants -->
+            <div class="component-preview">
+                <div class="component-preview-title">Button Variants</div>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 16px;">
+                    <button class="btn btn-neutral">Neutral</button>
+                    <button class="btn btn-primary">Primary</button>
+                    <button class="btn btn-secondary-solid">Secondary Solid</button>
+                    <button class="btn btn-secondary-outline">Secondary Outline</button>
+                    <button class="btn btn-subtle">Subtle</button>
+                    <button class="btn btn-transparent">Transparent</button>
+                </div>
+            </div>
+
+            <!-- Button Sizes -->
+            <div class="component-preview">
+                <div class="component-preview-title">Button Sizes</div>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+                    <button class="btn btn-primary btn-large">Large (40px)</button>
+                    <button class="btn btn-primary btn-medium">Medium (32px)</button>
+                    <button class="btn btn-primary btn-small">Small (24px)</button>
+                </div>
+            </div>
+
+            <!-- Button States -->
+            <div class="component-preview">
+                <div class="component-preview-title">Button States</div>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+                    <button class="btn btn-primary">Default</button>
+                    <button class="btn btn-primary" style="background-color: var(--sa-700); border-color: var(--sa-700);">Hovered</button>
+                    <button class="btn btn-primary pressed">Pressed</button>
+                    <button class="btn btn-primary selected">Selected</button>
+                    <button class="btn btn-primary" disabled>Disabled</button>
+                </div>
+            </div>
+
+            <!-- Destructive Variants -->
+            <div class="component-preview">
+                <div class="component-preview-title">Destructive Variants</div>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+                    <button class="btn btn-primary destructive">Primary</button>
+                    <button class="btn btn-secondary-solid destructive">Secondary Solid</button>
+                    <button class="btn btn-secondary-outline destructive">Secondary Outline</button>
+                    <button class="btn btn-subtle destructive">Subtle</button>
+                    <button class="btn btn-transparent destructive">Transparent</button>
+                </div>
+            </div>
+
+            <!-- Buttons with Icons -->
+            <div class="component-preview">
+                <div class="component-preview-title">Buttons with Icons</div>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 16px;">
+                    <button class="btn btn-primary">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                        Add Item
+                    </button>
+                    <button class="btn btn-secondary-outline">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                            </svg>
+                        </span>
+                        Edit
+                    </button>
+                    <button class="btn btn-subtle">
+                        Settings
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+                    <span style="color: var(--gray-500); font-size: var(--text-sm);">Icon Only:</span>
+                    <button class="btn btn-primary btn-icon-only btn-large">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="btn btn-primary btn-icon-only btn-medium">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
+                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="btn btn-primary btn-icon-only btn-small">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="btn btn-secondary-outline btn-icon-only">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="btn btn-subtle btn-icon-only">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="btn btn-transparent btn-icon-only destructive">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- On-Color Variants -->
+            <div class="component-preview">
+                <div class="component-preview-title">On-Color Variants (Dark Background)</div>
+                <div style="background-color: var(--sa-600); padding: 24px; border-radius: var(--radius-md); display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+                    <button class="btn btn-on-color btn-neutral">Neutral</button>
+                    <button class="btn btn-on-color btn-primary">Primary</button>
+                    <button class="btn btn-on-color btn-secondary-solid">Secondary Solid</button>
+                    <button class="btn btn-on-color btn-secondary-outline">Secondary Outline</button>
+                    <button class="btn btn-on-color btn-subtle">Subtle</button>
+                    <button class="btn btn-on-color btn-transparent">Transparent</button>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div class="component-preview">
+                <div class="component-preview-title">Loading State</div>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+                    <button class="btn btn-primary btn-loading">Loading</button>
+                    <button class="btn btn-neutral btn-loading">Loading</button>
+                    <button class="btn btn-secondary-solid btn-loading">Loading</button>
+                    <button class="btn btn-secondary-outline btn-loading">Loading</button>
+                </div>
+            </div>
+
+            <!-- Button Group -->
+            <div class="component-preview">
+                <div class="component-preview-title">Button Group</div>
+                <div style="display: flex; gap: 24px; flex-wrap: wrap; align-items: center;">
+                    <div class="btn-group">
+                        <button class="btn btn-secondary-outline">Left</button>
+                        <button class="btn btn-secondary-outline">Center</button>
+                        <button class="btn btn-secondary-outline">Right</button>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary-outline btn-icon-only">
+                            <span class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                        </button>
+                        <button class="btn btn-secondary-outline btn-icon-only">
+                            <span class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RTL Support -->
+            <div class="component-preview">
+                <div class="component-preview-title">RTL Support</div>
+                <div dir="rtl" style="background: var(--gray-100); padding: 24px; border-radius: var(--radius-md); display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+                    <button class="btn btn-primary">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                        زر RTL
+                    </button>
+                    <button class="btn btn-secondary-outline">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                            </svg>
+                        </span>
+                        تعديل
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAGS Component -->
+        <section id="tags" class="component-section">
+            <div class="content-header">
+                <h1 class="content-title">Tags</h1>
+                <p class="content-description">Tags visually convey important information or actions related to components. They use brief text, color, and icons to offer quick insights or alerts to users.</p>
+            </div>
+
+            <!-- Sizes -->
+            <div class="component-preview">
+                <div class="component-preview-title">Tag Sizes</div>
+                <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                    <span class="tag tag--md">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                        </span>
+                        Medium
+                    </span>
+                    <span class="tag tag--sm">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                        </span>
+                        Small
+                    </span>
+                    <span class="tag tag--xs">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                        </span>
+                        X-Small
+                    </span>
+                </div>
+            </div>
+
+            <!-- Neutral Style -->
+            <div class="component-preview">
+                <div class="component-preview-title">Neutral Tags</div>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+                    <span class="tag tag--neutral">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                        </span>
+                        Label
+                    </span>
+                    <span class="tag tag--neutral tag--outline">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                        </span>
+                        Label
+                    </span>
+                    <span class="tag tag--neutral tag--rounded">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                        </span>
+                        Label
+                    </span>
+                    <span class="tag tag--neutral tag--icon-only">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Success Style -->
+            <div class="component-preview">
+                <div class="component-preview-title">Success Tags</div>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+                    <span class="tag tag--success">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </span>
+                        Success
+                    </span>
+                    <span class="tag tag--success tag--outline">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </span>
+                        Success
+                    </span>
+                    <span class="tag tag--success tag--rounded">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </span>
+                        Success
+                    </span>
+                    <span class="tag tag--success tag--icon-only">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Error Style -->
+            <div class="component-preview">
+                <div class="component-preview-title">Error Tags</div>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+                    <span class="tag tag--error">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="15" y1="9" x2="9" y2="15"/>
+                                <line x1="9" y1="9" x2="15" y2="15"/>
+                            </svg>
+                        </span>
+                        Error
+                    </span>
+                    <span class="tag tag--error tag--outline">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="15" y1="9" x2="9" y2="15"/>
+                                <line x1="9" y1="9" x2="15" y2="15"/>
+                            </svg>
+                        </span>
+                        Error
+                    </span>
+                    <span class="tag tag--error tag--rounded">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="15" y1="9" x2="9" y2="15"/>
+                                <line x1="9" y1="9" x2="15" y2="15"/>
+                            </svg>
+                        </span>
+                        Error
+                    </span>
+                    <span class="tag tag--error tag--icon-only">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="15" y1="9" x2="9" y2="15"/>
+                                <line x1="9" y1="9" x2="15" y2="15"/>
+                            </svg>
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Warning Style -->
+            <div class="component-preview">
+                <div class="component-preview-title">Warning Tags</div>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+                    <span class="tag tag--warning">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                                <line x1="12" y1="9" x2="12" y2="13"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                        </span>
+                        Warning
+                    </span>
+                    <span class="tag tag--warning tag--outline">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                                <line x1="12" y1="9" x2="12" y2="13"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                        </span>
+                        Warning
+                    </span>
+                    <span class="tag tag--warning tag--rounded">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                                <line x1="12" y1="9" x2="12" y2="13"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                        </span>
+                        Warning
+                    </span>
+                    <span class="tag tag--warning tag--icon-only">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                                <line x1="12" y1="9" x2="12" y2="13"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Info Style -->
+            <div class="component-preview">
+                <div class="component-preview-title">Info Tags</div>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+                    <span class="tag tag--info">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="16" x2="12" y2="12"/>
+                                <line x1="12" y1="8" x2="12.01" y2="8"/>
+                            </svg>
+                        </span>
+                        Info
+                    </span>
+                    <span class="tag tag--info tag--outline">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="16" x2="12" y2="12"/>
+                                <line x1="12" y1="8" x2="12.01" y2="8"/>
+                            </svg>
+                        </span>
+                        Info
+                    </span>
+                    <span class="tag tag--info tag--rounded">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="16" x2="12" y2="12"/>
+                                <line x1="12" y1="8" x2="12.01" y2="8"/>
+                            </svg>
+                        </span>
+                        Info
+                    </span>
+                    <span class="tag tag--info tag--icon-only">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="16" x2="12" y2="12"/>
+                                <line x1="12" y1="8" x2="12.01" y2="8"/>
+                            </svg>
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Primary Style -->
+            <div class="component-preview">
+                <div class="component-preview-title">Primary Tags</div>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+                    <span class="tag tag--primary">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </span>
+                        Active
+                    </span>
+                    <span class="tag tag--primary tag--outline">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </span>
+                        Active
+                    </span>
+                    <span class="tag tag--primary tag--rounded">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </span>
+                        Active
+                    </span>
+                    <span class="tag tag--primary tag--icon-only">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Arabic RTL -->
+            <div class="component-preview">
+                <div class="component-preview-title">Arabic Tags (RTL)</div>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;" dir="rtl">
+                    <span class="tag tag--neutral">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                        </span>
+                        وسم
+                    </span>
+                    <span class="tag tag--success">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </span>
+                        نجاح
+                    </span>
+                    <span class="tag tag--error">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="15" y1="9" x2="9" y2="15"/>
+                                <line x1="9" y1="9" x2="15" y2="15"/>
+                            </svg>
+                        </span>
+                        خطأ
+                    </span>
+                    <span class="tag tag--warning">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                                <line x1="12" y1="9" x2="12" y2="13"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                        </span>
+                        تحذير
+                    </span>
+                    <span class="tag tag--info">
+                        <span class="tag__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="16" x2="12" y2="12"/>
+                                <line x1="12" y1="8" x2="12.01" y2="8"/>
+                            </svg>
+                        </span>
+                        معلومات
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATUS TAG Component -->
+        <section id="status-tag" class="component-section">
+            <div class="content-header">
+                <h1 class="content-title">Status Tag</h1>
+                <p class="content-description">Status tags display the current state or condition of an item using a colored dot indicator and label. Figma Node: 5698-52957</p>
+            </div>
+
+            <!-- Sizes -->
+            <div class="component-preview">
+                <div class="component-preview-title">Status Tag Sizes</div>
+                <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+                    <span class="status-tag status-tag--md status-tag--subtle status-tag--neutral">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Medium</span>
+                    </span>
+                    <span class="status-tag status-tag--sm status-tag--subtle status-tag--neutral">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Small</span>
+                    </span>
+                    <span class="status-tag status-tag--xs status-tag--subtle status-tag--neutral">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">X-Small</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Subtle Style (Light Background) -->
+            <div class="component-preview">
+                <div class="component-preview-title">Subtle Style (Light Background)</div>
+                <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                    <span class="status-tag status-tag--md status-tag--subtle status-tag--neutral">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Status</span>
+                    </span>
+                    <span class="status-tag status-tag--md status-tag--subtle status-tag--info">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Status</span>
+                    </span>
+                    <span class="status-tag status-tag--md status-tag--subtle status-tag--success">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Status</span>
+                    </span>
+                    <span class="status-tag status-tag--md status-tag--subtle status-tag--warning">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Status</span>
+                    </span>
+                    <span class="status-tag status-tag--md status-tag--subtle status-tag--error">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Status</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Inverted Style (Solid Background) -->
+            <div class="component-preview">
+                <div class="component-preview-title">Inverted Style (Solid Background)</div>
+                <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                    <span class="status-tag status-tag--md status-tag--inverted status-tag--neutral">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Status</span>
+                    </span>
+                    <span class="status-tag status-tag--md status-tag--inverted status-tag--info">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Status</span>
+                    </span>
+                    <span class="status-tag status-tag--md status-tag--inverted status-tag--success">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Status</span>
+                    </span>
+                    <span class="status-tag status-tag--md status-tag--inverted status-tag--warning">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Status</span>
+                    </span>
+                    <span class="status-tag status-tag--md status-tag--inverted status-tag--error">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Status</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Ghost Style (No Background) -->
+            <div class="component-preview">
+                <div class="component-preview-title">Ghost Style (No Background)</div>
+                <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+                    <span class="status-tag status-tag--md status-tag--ghost status-tag--neutral">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Status</span>
+                    </span>
+                    <span class="status-tag status-tag--md status-tag--ghost status-tag--info">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Status</span>
+                    </span>
+                    <span class="status-tag status-tag--md status-tag--ghost status-tag--success">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Status</span>
+                    </span>
+                    <span class="status-tag status-tag--md status-tag--ghost status-tag--warning">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Status</span>
+                    </span>
+                    <span class="status-tag status-tag--md status-tag--ghost status-tag--error">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Status</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- All Sizes - Subtle -->
+            <div class="component-preview">
+                <div class="component-preview-title">All Sizes - Subtle Style</div>
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <!-- Medium Row -->
+                    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                        <span style="width: 80px; font-size: 12px; color: #6C737F;">Medium:</span>
+                        <span class="status-tag status-tag--md status-tag--subtle status-tag--neutral">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--subtle status-tag--info">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--subtle status-tag--success">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--subtle status-tag--warning">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--subtle status-tag--error">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                    </div>
+                    <!-- Small Row -->
+                    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                        <span style="width: 80px; font-size: 12px; color: #6C737F;">Small:</span>
+                        <span class="status-tag status-tag--sm status-tag--subtle status-tag--neutral">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--sm status-tag--subtle status-tag--info">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--sm status-tag--subtle status-tag--success">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--sm status-tag--subtle status-tag--warning">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--sm status-tag--subtle status-tag--error">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                    </div>
+                    <!-- X-Small Row -->
+                    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                        <span style="width: 80px; font-size: 12px; color: #6C737F;">X-Small:</span>
+                        <span class="status-tag status-tag--xs status-tag--subtle status-tag--neutral">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--xs status-tag--subtle status-tag--info">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--xs status-tag--subtle status-tag--success">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--xs status-tag--subtle status-tag--warning">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--xs status-tag--subtle status-tag--error">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- All Sizes - Inverted -->
+            <div class="component-preview">
+                <div class="component-preview-title">All Sizes - Inverted Style</div>
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <!-- Medium Row -->
+                    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                        <span style="width: 80px; font-size: 12px; color: #6C737F;">Medium:</span>
+                        <span class="status-tag status-tag--md status-tag--inverted status-tag--neutral">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--inverted status-tag--info">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--inverted status-tag--success">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--inverted status-tag--warning">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--inverted status-tag--error">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                    </div>
+                    <!-- Small Row -->
+                    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                        <span style="width: 80px; font-size: 12px; color: #6C737F;">Small:</span>
+                        <span class="status-tag status-tag--sm status-tag--inverted status-tag--neutral">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--sm status-tag--inverted status-tag--info">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--sm status-tag--inverted status-tag--success">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--sm status-tag--inverted status-tag--warning">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--sm status-tag--inverted status-tag--error">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                    </div>
+                    <!-- X-Small Row -->
+                    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                        <span style="width: 80px; font-size: 12px; color: #6C737F;">X-Small:</span>
+                        <span class="status-tag status-tag--xs status-tag--inverted status-tag--neutral">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--xs status-tag--inverted status-tag--info">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--xs status-tag--inverted status-tag--success">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--xs status-tag--inverted status-tag--warning">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                        <span class="status-tag status-tag--xs status-tag--inverted status-tag--error">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">Status</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arabic RTL -->
+            <div class="component-preview">
+                <div class="component-preview-title">Arabic Status Tags (RTL)</div>
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <!-- Subtle Row -->
+                    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;" dir="rtl">
+                        <span class="status-tag status-tag--md status-tag--subtle status-tag--neutral">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">حالة</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--subtle status-tag--info">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">حالة</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--subtle status-tag--success">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">حالة</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--subtle status-tag--warning">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">حالة</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--subtle status-tag--error">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">حالة</span>
+                        </span>
+                    </div>
+                    <!-- Inverted Row -->
+                    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;" dir="rtl">
+                        <span class="status-tag status-tag--md status-tag--inverted status-tag--neutral">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">حالة</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--inverted status-tag--info">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">حالة</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--inverted status-tag--success">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">حالة</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--inverted status-tag--warning">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">حالة</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--inverted status-tag--error">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">حالة</span>
+                        </span>
+                    </div>
+                    <!-- Ghost Row -->
+                    <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;" dir="rtl">
+                        <span class="status-tag status-tag--md status-tag--ghost status-tag--neutral">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">حالة</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--ghost status-tag--info">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">حالة</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--ghost status-tag--success">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">حالة</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--ghost status-tag--warning">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">حالة</span>
+                        </span>
+                        <span class="status-tag status-tag--md status-tag--ghost status-tag--error">
+                            <span class="status-tag__dot"></span>
+                            <span class="status-tag__label">حالة</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MENUS Component -->
+        <section id="menus" class="component-section">
+            <div class="content-header">
+                <h1 class="content-title">Menus</h1>
+                <p class="content-description">Dropdown and context menu components.</p>
+            </div>
+
+            <div class="component-preview">
+                <div class="component-preview-title">Dropdown Menu</div>
+                <div class="dropdown-demo">
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">
+                            <span>📄</span>
+                            <span>View Details</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <span>✏️</span>
+                            <span>Edit</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <span>📋</span>
+                            <span>Duplicate</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" style="color: #DC2626;">
+                            <span>🗑️</span>
+                            <span>Delete</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIDEBAR Component -->
+        <section id="sidebar" class="component-section">
+            <div class="content-header">
+                <h1 class="content-title">Sidebar Navigation</h1>
+                <p class="content-description">Vertical sidebar navigation component.</p>
+            </div>
+
+            <div class="component-preview">
+                <div class="component-preview-title">Default Sidebar</div>
+                <nav class="sidebar-nav-demo">
+                    <a href="#" class="sidebar-nav-item active">
+                        <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        </svg>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" class="sidebar-nav-item">
+                        <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="8.5" cy="7" r="4" />
+                        </svg>
+                        <span>Users</span>
+                    </a>
+                    <a href="#" class="sidebar-nav-item">
+                        <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 20V10" />
+                            <path d="M18 20V4" />
+                            <path d="M6 20v-4" />
+                        </svg>
+                        <span>Analytics</span>
+                    </a>
+                    <a href="#" class="sidebar-nav-item">
+                        <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="3" />
+                            <path
+                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                        </svg>
+                        <span>Settings</span>
+                    </a>
+                </nav>
+            </div>
+        </section>
+
+        <!-- NAV DRAWER Component -->
+        <section id="nav-drawer" class="component-section">
+            <div class="content-header">
+                <h1 class="content-title">Nav Drawer</h1>
+                <p class="content-description">Mobile navigation drawer component.</p>
+            </div>
+
+            <div class="component-preview">
+                <div class="component-preview-title">Mobile Drawer</div>
+                <div
+                    style="max-width: 280px; background: #fff; border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px;">
+                    <div
+                        style="display: flex; align-items: center; gap: 12px; padding: 16px 0; border-bottom: 1px solid #E5E7EB; margin-bottom: 16px;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="6" fill="#1B8354" />
+                            <path d="M10 16L14 20L22 12" stroke="white" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <span style="font-weight: 500;">Platform Name</span>
+                    </div>
+                    <nav class="sidebar-nav-demo" style="width: 100%; border: none;">
+                        <a href="#" class="sidebar-nav-item active">Home</a>
+                        <a href="#" class="sidebar-nav-item">Services</a>
+                        <a href="#" class="sidebar-nav-item">About</a>
+                        <a href="#" class="sidebar-nav-item">Contact</a>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <!-- INPUTS Component -->
+        <section id="inputs" class="component-section">
+            <div class="content-header">
+                <h1 class="content-title">Inputs</h1>
+                <p class="content-description">Form input components.</p>
+            </div>
+
+            <div class="component-preview">
+                <div class="component-preview-title">Text Input</div>
+                <div style="max-width: 320px;">
+                    <label style="display: block; font-size: 14px; font-weight: 500; margin-bottom: 6px;">Label</label>
+                    <input type="text" placeholder="Placeholder"
+                        style="width: 100%; padding: 10px 14px; border: 1px solid #E5E7EB; border-radius: 8px; font-size: 14px;">
+                </div>
+            </div>
+        </section>
+
+        <!-- LINKS Component -->
+        <section id="links" class="component-section">
+            <div class="content-header">
+                <h1 class="content-title">Links</h1>
+                <p class="content-description">Link components for navigation.</p>
+            </div>
+
+            <div class="component-preview">
+                <div class="component-preview-title">Link Styles</div>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <a href="#" style="color: #1B8354;">Primary Link</a>
+                    <a href="#" style="color: #1B8354; text-decoration: underline;">Underlined Link</a>
+                    <a href="#" style="color: #6C737F;">Secondary Link</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CARDS Component -->
+        <section id="cards" class="component-section">
+            <div class="content-header">
+                <h1 class="content-title">Cards</h1>
+                <p class="content-description">Card components for content containers.</p>
+            </div>
+
+            <!-- Anatomy -->
+            <div class="component-preview">
+                <div class="component-preview-title">Card Anatomy</div>
+                <article class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Card Title</h3>
+                        <p class="card-body">Card content placeholder text goes here</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-secondary-outline">Action</button>
+                        <button class="btn btn-primary">Action</button>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Default cards: effects -->
+            <div class="component-preview">
+                <div class="component-preview-title">Default Card (LTR) - With Shadow</div>
+                <article class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Card Title</h3>
+                        <p class="card-body">Card content placeholder text goes here</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-secondary-outline">Action</button>
+                        <button class="btn btn-primary">Action</button>
+                    </div>
+                </article>
+            </div>
+
+            <div class="component-preview">
+                <div class="component-preview-title">Default Card (LTR) - No Shadow</div>
+                <article class="card card--no-shadow">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Card Title</h3>
+                        <p class="card-body">Card content placeholder text goes here</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-secondary-outline">Action</button>
+                        <button class="btn btn-primary">Action</button>
+                    </div>
+                </article>
+            </div>
+
+            <div class="component-preview">
+                <div class="component-preview-title">Default Card (LTR) - Stroke</div>
+                <article class="card card--stroke">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Card Title</h3>
+                        <p class="card-body">Card content placeholder text goes here</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-secondary-outline">Action</button>
+                        <button class="btn btn-primary">Action</button>
+                    </div>
+                </article>
+            </div>
+
+            <div class="component-preview">
+                <div class="component-preview-title">Card (Arabic RTL) - With Shadow</div>
+                <article class="card" dir="rtl">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">عنوان البطاقة</h3>
+                        <p class="card-body">نص محتوى البطاقة يظهر هنا</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-secondary-outline">إجراء</button>
+                        <button class="btn btn-primary">إجراء</button>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Expandable cards -->
+            <div class="component-preview">
+                <div class="component-preview-title">Expandable Card - Collapsed / Expanded</div>
+                <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                    <article class="card card--expandable card--collapsed" data-card-expandable>
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                            </div>
+                            <div class="card-content" style="flex: 1;">
+                                <h3 class="card-title">Expandable Card</h3>
+                                <p class="card-body">Collapsed state</p>
+                            </div>
+                            <button type="button" class="card-toggle" aria-label="Expand card">+</button>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-body">Collapsed state hides this content and footer.</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-secondary-outline">Action</button>
+                            <button class="btn btn-primary">Action</button>
+                        </div>
+                    </article>
+
+                    <article class="card card--expandable" data-card-expandable>
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                            </div>
+                            <div class="card-content" style="flex: 1;">
+                                <h3 class="card-title">Expandable Card</h3>
+                                <p class="card-body">Expanded state</p>
+                            </div>
+                            <button type="button" class="card-toggle" aria-label="Collapse card">−</button>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-body">Expanded state shows additional details and actions.</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-secondary-outline">Action</button>
+                            <button class="btn btn-primary">Action</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Selectable cards -->
+            <div class="component-preview">
+                <div class="component-preview-title">Selectable Card - Default / Selected</div>
+                <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                    <article class="card card--selectable" data-card-selectable>
+                        <div class="card-select-indicator" aria-hidden="true"></div>
+                        <div class="card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Selectable Card</h3>
+                            <p class="card-body">Click to toggle selected state</p>
+                        </div>
+                    </article>
+
+                    <article class="card card--selectable card--selected" data-card-selectable>
+                        <div class="card-select-indicator" aria-hidden="true"></div>
+                        <div class="card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Selectable Card</h3>
+                            <p class="card-body">Selected state with indicator</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOOLTIP Component -->
+        <section id="tooltip" class="component-section">
+            <div class="content-header">
+                <h1 class="content-title">Tooltip</h1>
+                <p class="content-description">Tooltip component for additional information.</p>
+            </div>
+
+            <div class="component-preview">
+                <div class="component-preview-title">Tooltip Positions</div>
+                <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                    <div style="position: relative; display: inline-block;">
+                        <button class="btn btn-secondary">Hover me</button>
+                        <div
+                            style="position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 8px; padding: 8px 12px; background: #111927; color: #fff; font-size: 12px; border-radius: 6px; white-space: nowrap;">
+                            Tooltip text
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODAL Component -->
+        <section id="modal" class="component-section">
+            <div class="content-header">
+                <h1 class="content-title">Modal</h1>
+                <p class="content-description">Modal dialog component.</p>
+            </div>
+
+            <div class="component-preview">
+                <div class="component-preview-title">Modal Preview</div>
+                <div
+                    style="max-width: 400px; background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 24px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);">
+                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">Modal Title</h3>
+                    <p style="font-size: 14px; color: #6C737F; margin-bottom: 24px;">This is the modal content.
+                        You can add any content here.</p>
+                    <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                        <button class="btn btn-secondary">Cancel</button>
+                        <button class="btn btn-primary">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TABLES Component -->
+        <section id="tables" class="component-section">
+            <div class="content-header">
+                <h1 class="content-title">Tables</h1>
+                <p class="content-description">Table component for displaying data rows.</p>
+            </div>
+
+            <div class="component-preview">
+                <div class="component-preview-title">Table Preview</div>
+                <div style="overflow-x: auto; border: 1px solid #E5E7EB; border-radius: 12px;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px;">
+                        <thead style="background-color: #F9FAFB; border-bottom: 1px solid #E5E7EB;">
+                            <tr>
+                                <th style="padding: 12px 24px; font-weight: 600; color: #6C737F;">Name</th>
+                                <th style="padding: 12px 24px; font-weight: 600; color: #6C737F;">Role</th>
+                                <th style="padding: 12px 24px; font-weight: 600; color: #6C737F;">Status</th>
+                                <th style="padding: 12px 24px; font-weight: 600; color: #6C737F;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody style="background-color: #FFFFFF;">
+                            <tr style="border-bottom: 1px solid #E5E7EB;">
+                                <td style="padding: 16px 24px; color: #111927;">John Doe</td>
+                                <td style="padding: 16px 24px; color: #6C737F;">Admin</td>
+                                <td style="padding: 16px 24px;"><span
+                                        style="background: #ECFDF5; color: #027A48; padding: 2px 8px; border-radius: 9999px; font-size: 12px; font-weight: 500;">Active</span>
+                                </td>
+                                <td style="padding: 16px 24px; color: #1B8354; font-weight: 500; cursor: pointer;">Edit
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #E5E7EB;">
+                                <td style="padding: 16px 24px; color: #111927;">Jane Smith</td>
+                                <td style="padding: 16px 24px; color: #6C737F;">User</td>
+                                <td style="padding: 16px 24px;"><span
+                                        style="background: #FFFBEB; color: #B45309; padding: 2px 8px; border-radius: 9999px; font-size: 12px; font-weight: 500;">Pending</span>
+                                </td>
+                                <td style="padding: 16px 24px; color: #1B8354; font-weight: 500; cursor: pointer;">Edit
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 16px 24px; color: #111927;">Robert Fox</td>
+                                <td style="padding: 16px 24px; color: #6C737F;">User</td>
+                                <td style="padding: 16px 24px;"><span
+                                        style="background: #F9FAFB; color: #374151; padding: 2px 8px; border-radius: 9999px; font-size: 12px; font-weight: 500;">Inactive</span>
+                                </td>
+                                <td style="padding: 16px 24px; color: #1B8354; font-weight: 500; cursor: pointer;">Edit
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREENS Component -->
+        <section id="screens" class="component-section">
+            <div class="content-header">
+                <h1 class="content-title">Screens</h1>
+                <p class="content-description">Full page screen templates and layouts.</p>
+            </div>
+
+            <div class="component-preview">
+                <div class="component-preview-title">Dashboard Screen</div>
+                <div
+                    style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; height: 300px; display: flex; flex-direction: column;">
+                    <!-- Fake Nav -->
+                    <div
+                        style="background: white; border-bottom: 1px solid #E5E7EB; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between;">
+                        <div style="width: 100px; height: 12px; background: #E5E7EB; border-radius: 4px;"></div>
+                        <div style="display: flex; gap: 12px;">
+                            <div style="width: 32px; height: 32px; background: #E5E7EB; border-radius: 50%;"></div>
+                        </div>
+                    </div>
+                    <!-- Fake Content -->
+                    <div style="padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                        <div style="background: white; border: 1px solid #E5E7EB; border-radius: 8px; height: 100px;">
+                        </div>
+                        <div style="background: white; border: 1px solid #E5E7EB; border-radius: 8px; height: 100px;">
+                        </div>
+                        <div
+                            style="background: white; border: 1px solid #E5E7EB; border-radius: 8px; height: 200px; grid-column: span 2;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        </main>
+    </div>
+    </div>
+
+    <!-- Design System JavaScript -->
+    <script src="js/router.js"></script>
+    <script src="js/components/cards.js"></script>
+    <script src="js/components/tabs.js"></script>
+    <script src="js/components/pagination.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

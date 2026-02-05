@@ -1,0 +1,286 @@
+/**
+ * Accessibility Utilities - DGA Saudi Guidelines
+ * Navigation Design System v1.0
+ * 
+ * Focus management, screen reader support, and accessibility helpers
+ * Uses official DGA Theme tokens
+ */
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ============================================
+   HIGH CONTRAST MODE SUPPORT
+   ============================================ */
+
+@media (prefers-contrast: high) {
+    :root {
+        --sa-600: var(--sa-800);
+        --gray-100: #E8E8E8;
+        --gray-200: #CCCCCC;
+    }
+
+    .nav-header__link--active,
+    .nav-sidebar__link--active,
+    .pagination__item--active {
+        outline: 2px solid currentColor;
+    }
+}
+
+/* ============================================
+   FORCED COLORS MODE (Windows High Contrast)
+   ============================================ */
+
+@media (forced-colors: active) {
+
+    .nav-header__link--active,
+    .nav-sidebar__link--active,
+    .pagination__item--active {
+        forced-color-adjust: none;
+        background-color: Highlight;
+        color: HighlightText;
+    }
+
+    .skip-link:focus {
+        background-color: Highlight;
+        color: HighlightText;
+    }
+
+    .nav-header__toggle:focus-visible,
+    .nav-header__link:focus-visible,
+    .nav-header__action:focus-visible {
+        outline: 3px solid CanvasText;
+    }
+}
+
+/* ============================================
+   FOCUS TRAP UTILITY
+   ============================================ */
+
+.focus-trap {
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ============================================
+   SCREEN READER ANNOUNCEMENTS
+   ============================================ */
+
+.live-region {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ============================================
+   FOCUS VISIBLE POLYFILL SUPPORT
+   ============================================ */
+
+.js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+}
+
+/* ============================================
+   KEYBOARD FOCUS INDICATOR ENHANCEMENT
+   ============================================ */
+
+/* More prominent focus for keyboard users */
+[data-focus-visible-added] {
+    outline: 3px solid var(--sa-600) !important;
+    outline-offset: 3px !important;
+}
+
+/* ============================================
+   TOUCH TARGET SIZE (44x44 minimum)
+   ============================================ */
+
+.touch-target {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================================
+   COLOR BLIND SAFE INDICATORS
+   ============================================ */
+
+/* Add patterns/icons for color-dependent states */
+.color-safe-indicator--error::before {
+    content: "⚠ ";
+}
+
+.color-safe-indicator--success::before {
+    content: "✓ ";
+}
+
+.color-safe-indicator--warning::before {
+    content: "! ";
+}
+
+/* ============================================
+   TEXT RESIZE SUPPORT
+   ============================================ */
+
+/* Ensure layout doesn't break at 200% zoom */
+@media (min-resolution: 2dppx) {
+    .nav-header {
+        height: auto;
+        min-height: var(--header-size, 60px);
+    }
+
+    .nav-header__container {
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+        padding: var(--spacing-lg) var(--spacing-xl);
+    }
+}
+
+/* ============================================
+   LANGUAGE DIRECTION HELPERS
+   ============================================ */
+
+/* Logical properties for RTL support */
+.margin-inline-start {
+    margin-inline-start: var(--spacing-xl);
+}
+
+.margin-inline-end {
+    margin-inline-end: var(--spacing-xl);
+}
+
+.padding-inline-start {
+    padding-inline-start: var(--spacing-xl);
+}
+
+.padding-inline-end {
+    padding-inline-end: var(--spacing-xl);
+}
+
+/* RTL specific overrides */
+.is-rtl .nav-header__dropdown {
+    left: auto;
+    right: 0;
+}
+
+.is-rtl .nav-sidebar {
+    border-right: none;
+    border-left: 1px solid var(--gray-200);
+}
+
+.is-rtl .nav-sidebar__link {
+    border-left: none;
+    border-right: 6px solid transparent;
+}
+
+.is-rtl .nav-sidebar__link:hover,
+.is-rtl .nav-sidebar__link--active {
+    border-right-color: var(--sa-600);
+}
+
+.is-rtl .breadcrumb__separator {
+    transform: rotate(180deg);
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+
+    .nav-header__toggle,
+    .nav-header__mobile-menu,
+    .nav-header__backdrop,
+    .skip-link {
+        display: none !important;
+    }
+
+    .nav-header {
+        position: static;
+        box-shadow: none;
+        border-bottom: 1px solid #000;
+    }
+
+    .nav-header__nav {
+        display: flex !important;
+    }
+
+    .nav-header__link--active {
+        background-color: transparent;
+        color: #000;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+}
+
+/* ============================================
+   FOCUS RING CUSTOMIZATION
+   ============================================ */
+
+/* Custom focus ring using DGA primary color */
+.focus-ring {
+    --focus-ring-color: var(--sa-600);
+    --focus-ring-offset: 2px;
+    --focus-ring-width: 2px;
+}
+
+.focus-ring:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}
+
+/* ============================================
+   SKIP TO CONTENT VARIATIONS
+   ============================================ */
+
+/* Skip link that appears on focus */
+.skip-to-content {
+    position: fixed;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    padding: var(--spacing-lg) var(--spacing-3xl);
+    background-color: var(--sa-600);
+    color: var(--alpha-white);
+    font-family: "IBMPlexSansArabicSemiBold", sans-serif;
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    box-shadow: var(--dga-modal-shadow);
+    transition: top 150ms ease;
+}
+
+.skip-to-content:focus {
+    top: var(--spacing-xl);
+    outline: 2px solid var(--alpha-white);
+    outline-offset: 2px;
+}
+
+[dir="rtl"] .skip-to-content {
+    left: auto;
+    right: 50%;
+    transform: translateX(50%);
+}

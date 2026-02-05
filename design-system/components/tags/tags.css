@@ -1,0 +1,216 @@
+/* ============================================
+   COMPONENT: TAGS
+   DGA Design System - Tag Components
+   Frame: Tag 421:110968
+   ============================================ */
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-xs);
+    text-align: center;
+    border: 1px solid;
+    box-sizing: border-box;
+}
+
+/* ============================================
+   Tag Sizes
+   ============================================ */
+
+.tag--md {
+    height: 32px;
+    padding: 0 var(--spacing-lg);
+}
+
+.tag--sm {
+    height: 24px;
+    padding: 0 var(--spacing-md);
+}
+
+.tag--xs {
+    height: 20px;
+    padding: 0 var(--spacing-sm);
+    font-size: 11px;
+}
+
+/* Default size is small */
+.tag:not(.tag--md):not(.tag--xs) {
+    height: 24px;
+    padding: 0 var(--spacing-md);
+}
+
+/* ============================================
+   Tag Shapes
+   ============================================ */
+
+.tag--square,
+.tag:not(.tag--rounded) {
+    border-radius: var(--radius-sm);
+}
+
+.tag--rounded {
+    border-radius: var(--radius-full);
+}
+
+/* ============================================
+   Tag Styles - Neutral (Default)
+   ============================================ */
+
+.tag--neutral,
+.tag:not(.tag--success):not(.tag--error):not(.tag--warning):not(.tag--info):not(.tag--primary) {
+    background-color: var(--color-gray-50);
+    border-color: var(--color-border-secondary);
+    color: var(--color-gray-800);
+}
+
+.tag--neutral.tag--outline,
+.tag:not(.tag--success):not(.tag--error):not(.tag--warning):not(.tag--info):not(.tag--primary).tag--outline {
+    background-color: transparent;
+    border-color: var(--color-border-secondary);
+    color: var(--color-gray-800);
+}
+
+/* ============================================
+   Tag Styles - Success
+   ============================================ */
+
+.tag--success {
+    background-color: var(--color-success-50);
+    border-color: var(--color-success-200);
+    color: var(--color-success-800);
+}
+
+.tag--success.tag--outline {
+    background-color: transparent;
+    border-color: var(--color-success-200);
+    color: var(--color-success-800);
+}
+
+/* ============================================
+   Tag Styles - Error
+   ============================================ */
+
+.tag--error {
+    background-color: var(--color-error-50);
+    border-color: var(--color-error-200);
+    color: var(--color-error-800);
+}
+
+.tag--error.tag--outline {
+    background-color: transparent;
+    border-color: var(--color-error-200);
+    color: var(--color-error-800);
+}
+
+/* ============================================
+   Tag Styles - Warning
+   ============================================ */
+
+.tag--warning {
+    background-color: var(--color-warning-50);
+    border-color: var(--color-warning-200);
+    color: var(--color-warning-800);
+}
+
+.tag--warning.tag--outline {
+    background-color: transparent;
+    border-color: var(--color-warning-200);
+    color: var(--color-warning-800);
+}
+
+/* ============================================
+   Tag Styles - Info
+   ============================================ */
+
+.tag--info {
+    background-color: var(--color-info-50);
+    border-color: var(--color-info-200);
+    color: var(--color-info-800);
+}
+
+.tag--info.tag--outline {
+    background-color: transparent;
+    border-color: var(--color-info-200);
+    color: var(--color-info-800);
+}
+
+/* ============================================
+   Tag Styles - Primary (Brand)
+   ============================================ */
+
+.tag--primary {
+    background-color: var(--color-primary-light);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.tag--primary.tag--outline {
+    background-color: transparent;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* ============================================
+   Tag Icon
+   ============================================ */
+
+.tag__icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tag--md .tag__icon {
+    width: 20px;
+    height: 20px;
+}
+
+.tag--xs .tag__icon {
+    width: 14px;
+    height: 14px;
+}
+
+.tag__icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* ============================================
+   Icon-only Tags
+   ============================================ */
+
+.tag--icon-only {
+    padding: 0;
+}
+
+.tag--icon-only.tag--md {
+    width: 32px;
+    height: 32px;
+}
+
+.tag--icon-only.tag--sm,
+.tag--icon-only:not(.tag--md):not(.tag--xs) {
+    width: 24px;
+    height: 24px;
+}
+
+.tag--icon-only.tag--xs {
+    width: 20px;
+    height: 20px;
+}
+
+/* ============================================
+   RTL Support
+   ============================================ */
+
+[dir="rtl"] .tag {
+    direction: rtl;
+}

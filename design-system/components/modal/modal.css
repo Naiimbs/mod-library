@@ -1,0 +1,168 @@
+/* ============================================
+   COMPONENT: MODAL
+   DGA Design System - Modal Dialog Components
+   ============================================ */
+
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: var(--z-modal-backdrop);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+}
+
+.modal {
+    width: 100%;
+    max-width: 400px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-secondary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-2xl);
+    z-index: var(--z-modal);
+}
+
+/* ============================================
+   Modal Header
+   ============================================ */
+
+.modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: var(--spacing-3xl);
+    border-bottom: 1px solid var(--color-border-secondary);
+}
+
+.modal-title {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-gray-900);
+    margin: 0;
+}
+
+.modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.modal-close:hover {
+    background-color: var(--color-gray-100);
+    color: var(--color-text-primary);
+}
+
+/* ============================================
+   Modal Body
+   ============================================ */
+
+.modal-body {
+    padding: var(--spacing-3xl);
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-md);
+}
+
+/* ============================================
+   Modal Footer
+   ============================================ */
+
+.modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl) var(--spacing-3xl);
+    border-top: 1px solid var(--color-border-secondary);
+}
+
+[dir="rtl"] .modal-footer {
+    justify-content: flex-start;
+}
+
+/* ============================================
+   Modal Sizes
+   ============================================ */
+
+.modal--sm {
+    max-width: 320px;
+}
+
+.modal--lg {
+    max-width: 560px;
+}
+
+.modal--xl {
+    max-width: 720px;
+}
+
+.modal--fullscreen {
+    max-width: none;
+    width: calc(100% - var(--spacing-4xl));
+    height: calc(100% - var(--spacing-4xl));
+    border-radius: var(--radius-md);
+}
+
+/* ============================================
+   Modal with Icon
+   ============================================ */
+
+.modal-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--spacing-xl);
+}
+
+.modal-icon--success {
+    background-color: var(--color-success-50);
+    color: var(--color-success-600);
+}
+
+.modal-icon--error {
+    background-color: var(--color-error-50);
+    color: var(--color-error-600);
+}
+
+.modal-icon--warning {
+    background-color: var(--color-warning-50);
+    color: var(--color-warning-600);
+}
+
+.modal-icon--info {
+    background-color: var(--color-info-50);
+    color: var(--color-info-600);
+}
+
+/* ============================================
+   Centered Modal Content
+   ============================================ */
+
+.modal--centered .modal-body {
+    text-align: center;
+}
+
+.modal--centered .modal-footer {
+    justify-content: center;
+}
+
+/* ============================================
+   RTL Support
+   ============================================ */
+
+[dir="rtl"] .modal {
+    direction: rtl;
+}

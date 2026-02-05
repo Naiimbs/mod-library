@@ -1,0 +1,278 @@
+/* ============================================
+   COMPONENT: STATUS TAG
+   DGA Design System - Status Tag Components
+   Figma Node: 5698-52957
+   ============================================ */
+
+/* ============================================
+   STATUS TAG BASE STYLES
+   ============================================ */
+
+.status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-full);
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+/* ============================================
+   STATUS TAG SIZES
+   ============================================ */
+
+/* Medium - 32px height, 16px horizontal padding */
+.status-tag--md {
+    height: 32px;
+    padding: 0 var(--spacing-xl);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
+}
+
+/* Small - 24px height, 8px horizontal padding */
+.status-tag--sm {
+    height: 24px;
+    padding: 0 var(--spacing-md);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+}
+
+/* Extra Small - 20px height, 8px horizontal padding */
+.status-tag--xs {
+    height: 20px;
+    padding: 0 var(--spacing-md);
+    font-size: 11px;
+    line-height: 16px;
+}
+
+/* Default size is medium */
+.status-tag:not(.status-tag--sm):not(.status-tag--xs) {
+    height: 32px;
+    padding: 0 var(--spacing-xl);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
+}
+
+/* ============================================
+   STATUS DOT INDICATOR
+   ============================================ */
+
+.status-tag__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+}
+
+/* Smaller dot for xs size */
+.status-tag--xs .status-tag__dot {
+    width: 6px;
+    height: 6px;
+}
+
+/* ============================================
+   STATUS TAG LABEL
+   ============================================ */
+
+.status-tag__label {
+    color: inherit;
+}
+
+/* ============================================
+   STYLE: SUBTLE (Light Background)
+   Default style with light colored backgrounds
+   ============================================ */
+
+/* Neutral - Subtle */
+.status-tag--neutral.status-tag--subtle,
+.status-tag--subtle:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) {
+    background-color: var(--status-tag-neutral-bg-light, #F9FAFB);
+    color: var(--status-tag-neutral-text, #4D5761);
+}
+
+.status-tag--neutral.status-tag--subtle .status-tag__dot,
+.status-tag--subtle:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) .status-tag__dot {
+    background-color: var(--status-tag-neutral-dot, #4D5761);
+}
+
+/* Success - Subtle */
+.status-tag--success.status-tag--subtle {
+    background-color: var(--status-tag-success-bg-light, #ECFDF3);
+    color: var(--status-tag-success-text, #067647);
+}
+
+.status-tag--success.status-tag--subtle .status-tag__dot {
+    background-color: var(--status-tag-success-dot, #067647);
+}
+
+/* Error - Subtle */
+.status-tag--error.status-tag--subtle {
+    background-color: var(--status-tag-error-bg-light, #FEF3F2);
+    color: var(--status-tag-error-text, #D92D20);
+}
+
+.status-tag--error.status-tag--subtle .status-tag__dot {
+    background-color: var(--status-tag-error-dot, #D92D20);
+}
+
+/* Warning - Subtle */
+.status-tag--warning.status-tag--subtle {
+    background-color: var(--status-tag-warning-bg-light, #FFFAEB);
+    color: var(--status-tag-warning-text, #B54708);
+}
+
+.status-tag--warning.status-tag--subtle .status-tag__dot {
+    background-color: var(--status-tag-warning-dot, #B54708);
+}
+
+/* Info - Subtle */
+.status-tag--info.status-tag--subtle {
+    background-color: var(--status-tag-info-bg-light, #EFF8FF);
+    color: var(--status-tag-info-text, #1570EF);
+}
+
+.status-tag--info.status-tag--subtle .status-tag__dot {
+    background-color: var(--status-tag-info-dot, #1570EF);
+}
+
+/* ============================================
+   STYLE: INVERTED (Solid Background)
+   Dark/solid colored backgrounds with white text
+   ============================================ */
+
+/* Neutral - Inverted */
+.status-tag--neutral.status-tag--inverted,
+.status-tag--inverted:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) {
+    background-color: var(--status-tag-neutral-bg, #4D5761);
+    color: var(--color-text-on-color, #FFFFFF);
+}
+
+.status-tag--neutral.status-tag--inverted .status-tag__dot,
+.status-tag--inverted:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) .status-tag__dot {
+    background-color: var(--color-white, #FFFFFF);
+}
+
+/* Success - Inverted */
+.status-tag--success.status-tag--inverted {
+    background-color: var(--status-tag-success-bg, #067647);
+    color: var(--color-text-on-color, #FFFFFF);
+}
+
+.status-tag--success.status-tag--inverted .status-tag__dot {
+    background-color: var(--color-white, #FFFFFF);
+}
+
+/* Error - Inverted */
+.status-tag--error.status-tag--inverted {
+    background-color: var(--status-tag-error-bg, #D92D20);
+    color: var(--color-text-on-color, #FFFFFF);
+}
+
+.status-tag--error.status-tag--inverted .status-tag__dot {
+    background-color: var(--color-white, #FFFFFF);
+}
+
+/* Warning - Inverted */
+.status-tag--warning.status-tag--inverted {
+    background-color: var(--status-tag-warning-bg, #B54708);
+    color: var(--color-text-on-color, #FFFFFF);
+}
+
+.status-tag--warning.status-tag--inverted .status-tag__dot {
+    background-color: var(--color-white, #FFFFFF);
+}
+
+/* Info - Inverted */
+.status-tag--info.status-tag--inverted {
+    background-color: var(--status-tag-info-bg, #1570EF);
+    color: var(--color-text-on-color, #FFFFFF);
+}
+
+.status-tag--info.status-tag--inverted .status-tag__dot {
+    background-color: var(--color-white, #FFFFFF);
+}
+
+/* ============================================
+   STYLE: GHOST (No Background)
+   Transparent background, just dot and text
+   ============================================ */
+
+.status-tag--ghost {
+    background-color: transparent;
+    padding: 0;
+}
+
+/* Neutral - Ghost */
+.status-tag--neutral.status-tag--ghost,
+.status-tag--ghost:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) {
+    color: var(--status-tag-neutral-text, #4D5761);
+}
+
+.status-tag--neutral.status-tag--ghost .status-tag__dot,
+.status-tag--ghost:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) .status-tag__dot {
+    background-color: var(--status-tag-neutral-dot, #4D5761);
+}
+
+/* Success - Ghost */
+.status-tag--success.status-tag--ghost {
+    color: var(--status-tag-success-text, #067647);
+}
+
+.status-tag--success.status-tag--ghost .status-tag__dot {
+    background-color: var(--status-tag-success-dot, #067647);
+}
+
+/* Error - Ghost */
+.status-tag--error.status-tag--ghost {
+    color: var(--status-tag-error-text, #D92D20);
+}
+
+.status-tag--error.status-tag--ghost .status-tag__dot {
+    background-color: var(--status-tag-error-dot, #D92D20);
+}
+
+/* Warning - Ghost */
+.status-tag--warning.status-tag--ghost {
+    color: var(--status-tag-warning-text, #B54708);
+}
+
+.status-tag--warning.status-tag--ghost .status-tag__dot {
+    background-color: var(--status-tag-warning-dot, #B54708);
+}
+
+/* Info - Ghost */
+.status-tag--info.status-tag--ghost {
+    color: var(--status-tag-info-text, #1570EF);
+}
+
+.status-tag--info.status-tag--ghost .status-tag__dot {
+    background-color: var(--status-tag-info-dot, #1570EF);
+}
+
+/* ============================================
+   RTL SUPPORT
+   ============================================ */
+
+[dir="rtl"] .status-tag {
+    direction: rtl;
+    flex-direction: row-reverse;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Screen reader only text for status */
+.status-tag__sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

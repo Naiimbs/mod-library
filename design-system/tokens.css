@@ -1,0 +1,200 @@
+/**
+ * Design System Tokens - DGA Saudi Guidelines
+ * Navigation Design System v1.0
+ * 
+ * This file imports the official DGA Theme and provides
+ * navigation-specific token mappings for consistency.
+ * 
+ * Based on Digital Government Authority (DGA) Saudi Arabia
+ * Platforms Code unified design system standards
+ */
+
+/* Import the official DGA Theme */
+@import url('./utilities/DGATheme.css');
+
+:root {
+    /* ============================================
+     NAVIGATION-SPECIFIC TOKEN MAPPINGS
+     These map DGA tokens to navigation component needs
+     ============================================ */
+
+    /* Navigation Colors - Using DGA Primary (Saudi Green) */
+    --nav-color-primary: var(--sa-600);
+    --nav-color-primary-hover: var(--sa-700);
+    --nav-color-primary-active: var(--sa-800);
+    --nav-color-primary-light: var(--sa-50);
+    --nav-color-primary-subtle: var(--sa-100);
+
+    /* Navigation Text Colors */
+    --nav-text-primary: var(--text-default);
+    --nav-text-secondary: var(--gray-600);
+    --nav-text-muted: var(--gray-500);
+    --nav-text-inverse: var(--alpha-white);
+
+    /* Navigation Background Colors */
+    --nav-bg-default: var(--alpha-white);
+    --nav-bg-subtle: var(--gray-50);
+    --nav-bg-hover: var(--gray-100);
+    --nav-bg-active: var(--sa-600);
+
+    /* Navigation Border Colors */
+    --nav-border-default: var(--gray-200);
+    --nav-border-subtle: var(--gray-100);
+    --nav-border-active: var(--sa-600);
+
+    /* Navigation Semantic Colors */
+    --nav-color-error: var(--error-600);
+    --nav-color-warning: var(--warning-600);
+    --nav-color-success: var(--success-600);
+    --nav-color-info: var(--info-600);
+
+    /* ============================================
+     NAVIGATION SPACING (Using DGA Spacing)
+     ============================================ */
+
+    --nav-spacing-xxs: var(--spacing-xxs);
+    /* 2px */
+    --nav-spacing-xs: var(--spacing-xs);
+    /* 4px */
+    --nav-spacing-sm: var(--spacing-sm);
+    /* 6px */
+    --nav-spacing-md: var(--spacing-md);
+    /* 8px */
+    --nav-spacing-lg: var(--spacing-lg);
+    /* 12px */
+    --nav-spacing-xl: var(--spacing-xl);
+    /* 16px */
+    --nav-spacing-2xl: var(--spacing-2xl);
+    /* 20px */
+    --nav-spacing-3xl: var(--spacing-3xl);
+    /* 24px */
+    --nav-spacing-4xl: var(--spacing-4xl);
+    /* 32px */
+
+    /* ============================================
+     NAVIGATION RADIUS (Using DGA Radius)
+     ============================================ */
+
+    --nav-radius-none: var(--radius-none);
+    /* 0px */
+    --nav-radius-xs: var(--radius-xs);
+    /* 2px */
+    --nav-radius-sm: var(--radius-sm);
+    /* 4px */
+    --nav-radius-md: var(--radius-md);
+    /* 8px */
+    --nav-radius-lg: var(--radius-lg);
+    /* 16px */
+    --nav-radius-full: var(--radius-full);
+    /* 9999px */
+
+    /* ============================================
+     NAVIGATION TYPOGRAPHY
+     ============================================ */
+
+    /* Font families - using DGA IBM Plex Sans Arabic */
+    --nav-font-family: "IBM Plex Sans Arabic", sans-serif;
+    --nav-font-family-medium: "IBM Plex Sans ArabicMedium", sans-serif;
+    --nav-font-family-semibold: "IBM Plex Sans ArabicSemiBold", sans-serif;
+    --nav-font-family-bold: "IBM Plex Sans ArabicBold", sans-serif;
+
+    /* Font sizes - using DGA text sizes */
+    --nav-font-size-xs: var(--text-xs);
+    /* 12px */
+    --nav-font-size-sm: var(--text-sm);
+    /* 14px */
+    --nav-font-size-md: var(--text-md);
+    /* 16px */
+    --nav-font-size-lg: var(--text-lg);
+    /* 18px */
+    --nav-font-size-xl: var(--text-xl);
+    /* 20px */
+
+    /* Font weights - using DGA weights */
+    --nav-font-weight-regular: var(--font-weight-regular);
+    /* 400 */
+    --nav-font-weight-medium: var(--font-weight-medium);
+    /* 500 */
+    --nav-font-weight-semibold: var(--font-weight-semibold);
+    /* 600 */
+    --nav-font-weight-bold: var(--font-weight-bold);
+    /* 700 */
+
+    /* ============================================
+     NAVIGATION SHADOWS (Using DGA Shadows)
+     ============================================ */
+
+    --nav-shadow-xs: var(--shadow-xs-x) var(--shadow-xs-y) var(--shadow-xs-blur) var(--shadow-xs-spread) var(--shadow-xs-color);
+    --nav-shadow-sm: var(--shadow-sm-x) var(--shadow-sm-y) var(--shadow-sm-blur) var(--shadow-sm-spread) var(--shadow-sm-color);
+    --nav-shadow-md: var(--shadow-md-x) var(--shadow-md-y) var(--shadow-md-blur) var(--shadow-md-spread) var(--shadow-md-color);
+    --nav-shadow-lg: var(--shadow-lg-x) var(--shadow-lg-y) var(--shadow-lg-blur) var(--shadow-lg-spread) var(--shadow-lg-color);
+
+    /* ============================================
+     NAVIGATION COMPONENT SPECIFIC TOKENS
+     ============================================ */
+
+    /* Header */
+    --nav-header-height: var(--header-size, 60px);
+    --nav-header-height-mobile: 56px;
+    --nav-header-bg: var(--alpha-white);
+    --nav-header-border: var(--gray-200);
+
+    /* Logo */
+    --nav-logo-max-width: 120px;
+
+    /* Links */
+    --nav-link-padding-x: var(--spacing-xl);
+    /* 16px */
+    --nav-link-padding-y: var(--spacing-md);
+    /* 8px */
+    --nav-link-color: var(--text-default);
+    --nav-link-color-hover: var(--sa-600);
+    --nav-link-color-active: var(--alpha-white);
+    --nav-link-bg-hover: var(--sa-50);
+    --nav-link-bg-active: var(--sa-700);
+
+    /* Actions */
+    --nav-action-gap: var(--spacing-3xl);
+    /* 24px */
+    --nav-action-icon-size: 18px;
+
+    /* Mobile Menu */
+    --nav-mobile-menu-width: 280px;
+    --nav-mobile-backdrop: rgba(0, 0, 0, 0.5);
+
+    /* Dropdown */
+    --nav-dropdown-min-width: 200px;
+    --nav-dropdown-shadow: var(--dga-modal-shadow);
+
+    /* Transitions */
+    --nav-transition-fast: 150ms ease;
+    --nav-transition-base: 200ms ease;
+    --nav-transition-slow: 300ms ease;
+
+    /* ============================================
+     Z-INDEX TOKENS
+     ============================================ */
+
+    --nav-z-dropdown: 100;
+    --nav-z-sticky: 200;
+    --nav-z-fixed: 300;
+    --nav-z-modal-backdrop: 400;
+    --nav-z-modal: 500;
+    --nav-z-tooltip: 700;
+
+    /* ============================================
+     CONTAINER TOKENS (Using DGA Container)
+     ============================================ */
+
+    --nav-container-padding-mobile: var(--container-padding-mobile);
+    /* 16px */
+    --nav-container-padding-desktop: var(--container-padding-desktop);
+    /* 32px */
+    --nav-container-max-width: var(--container-max-width-desktop);
+    /* 1280px */
+}
+
+/* RTL Support - Already handled by DGA Theme */
+[dir="rtl"] {
+    --nav-font-family: "IBM Plex Sans Arabic", sans-serif;
+}
