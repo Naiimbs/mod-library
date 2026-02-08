@@ -1,0 +1,467 @@
+/* ============================================
+   COMPONENT: DIGITAL STAMP
+   DGA Design System - Digital Stamp Component
+
+   The Digital Stamp Component is an interface element
+   that ensures users are interacting with a verified
+   and secure source, confirming the integrity and
+   authenticity of government sites.
+
+   Variants:
+   - Device: Desktop / Mobile
+   - State: Collapsed / Opened
+   - RTL: Yes / No
+   - Extension: .gov.sa, .edu.sa, .med.sa, .org.sa, .sch.sa, .sa
+   ============================================ */
+
+/* ============================================
+   Base Digital Stamp (Collapsed State)
+   ============================================ */
+
+.digital-stamp {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 var(--spacing-4xl);
+    background-color: var(--gray-100);
+    font-family: var(--font-family-primary);
+    min-height: 32px;
+}
+
+.digital-stamp__content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+/* Flag */
+.digital-stamp__flag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 14px;
+    flex-shrink: 0;
+    overflow: hidden;
+    background-color: var(--alpha-white);
+}
+
+.digital-stamp__flag svg,
+.digital-stamp__flag img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Text */
+.digital-stamp__text {
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-sm);
+    color: var(--text-default);
+    margin: 0;
+}
+
+/* Link/Toggle */
+.digital-stamp__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-family-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-sm);
+    color: var(--sa-600);
+    transition: color var(--transition-fast);
+}
+
+.digital-stamp__toggle:hover {
+    color: var(--sa-700);
+}
+
+.digital-stamp__toggle:focus {
+    outline: 2px solid var(--sa-600);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.digital-stamp__toggle-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    transition: transform var(--transition-fast);
+}
+
+.digital-stamp__toggle-icon svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+}
+
+/* ============================================
+   Opened State
+   ============================================ */
+
+.digital-stamp--opened {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-5xl);
+    padding: var(--spacing-sm) var(--spacing-4xl) var(--spacing-4xl);
+}
+
+.digital-stamp--opened .digital-stamp__content {
+    width: 100%;
+}
+
+.digital-stamp--opened .digital-stamp__toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* ============================================
+   Extension Section (Opened State Content)
+   ============================================ */
+
+/* Hide extension and registration sections in collapsed state */
+.digital-stamp__extension,
+.digital-stamp__registration {
+    display: none;
+}
+
+/* Show sections only when opened */
+.digital-stamp--opened .digital-stamp__extension {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xl);
+    width: 100%;
+}
+
+.digital-stamp--opened .digital-stamp__registration {
+    display: flex;
+}
+
+/* Domain Verification & Security Confirmation Cards */
+.digital-stamp__verification-card {
+    display: flex;
+    flex: 1 0 0;
+    gap: var(--spacing-3xl);
+    align-items: flex-start;
+    min-width: 280px;
+}
+
+.digital-stamp__verification-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--success-700);
+    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+}
+
+.digital-stamp__verification-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--success-700);
+    stroke-width: 2;
+    fill: none;
+}
+
+.digital-stamp__verification-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--spacing-lg);
+}
+
+.digital-stamp__verification-title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-lg);
+    color: var(--text-default);
+    margin: 0;
+}
+
+.digital-stamp__verification-title .highlight {
+    color: var(--sa-600);
+}
+
+.digital-stamp__verification-description {
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-md);
+    color: var(--gray-700);
+    margin: 0;
+}
+
+/* ============================================
+   DGA Registration Section
+   ============================================ */
+
+.digital-stamp--opened .digital-stamp__registration {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-3xl);
+    background-color: white;
+    border-radius: var(--radius-md);
+}
+
+.digital-stamp__registration-content {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: var(--spacing-3xl);
+}
+
+.digital-stamp__dga-logo {
+    width: 21px;
+    height: 31px;
+    flex-shrink: 0;
+}
+
+.digital-stamp__dga-logo svg,
+.digital-stamp__dga-logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.digital-stamp__registration-text {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-lg);
+    flex: 1;
+}
+
+.digital-stamp__registration-label {
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-md);
+    color: var(--text-default);
+    margin: 0;
+}
+
+.digital-stamp__registration-link {
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-md);
+    color: var(--sa-600);
+    text-decoration: underline;
+    transition: color var(--transition-fast);
+}
+
+.digital-stamp__registration-link:hover {
+    color: var(--sa-700);
+}
+
+/* ============================================
+   Mobile Styles
+   ============================================ */
+
+.digital-stamp--mobile {
+    padding: var(--spacing-sm) var(--spacing-xl);
+}
+
+.digital-stamp--mobile .digital-stamp__content {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.digital-stamp--mobile .digital-stamp__content > .digital-stamp__content {
+    flex-direction: row;
+    width: 100%;
+}
+
+.digital-stamp--mobile .digital-stamp__text {
+    flex: 1;
+}
+
+/* Mobile Opened State */
+.digital-stamp--mobile.digital-stamp--opened {
+    padding: var(--spacing-sm) var(--spacing-xl) var(--spacing-xl);
+}
+
+.digital-stamp--mobile .digital-stamp__extension {
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.digital-stamp--mobile .digital-stamp__verification-card {
+    gap: var(--spacing-lg);
+    min-width: unset;
+}
+
+.digital-stamp--mobile .digital-stamp__verification-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.digital-stamp--mobile .digital-stamp__verification-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.digital-stamp--mobile .digital-stamp__registration {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.digital-stamp--mobile .digital-stamp__registration-content {
+    flex-direction: row;
+}
+
+.digital-stamp--mobile .digital-stamp__registration-text {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* ============================================
+   Extension Type Variants
+   Based on domain: .gov.sa, .edu.sa, .med.sa, .org.sa, .sch.sa, .sa
+   ============================================ */
+
+/* Default is .gov.sa - no additional styling needed */
+
+/* .edu.sa - Educational institutions */
+.digital-stamp--edu .digital-stamp__verification-title .highlight {
+    color: var(--sa-600);
+}
+
+/* .med.sa - Medical institutions */
+.digital-stamp--med .digital-stamp__verification-title .highlight {
+    color: var(--sa-600);
+}
+
+/* .org.sa - Organizations */
+.digital-stamp--org .digital-stamp__verification-title .highlight {
+    color: var(--sa-600);
+}
+
+/* .sch.sa - Schools */
+.digital-stamp--sch .digital-stamp__verification-title .highlight {
+    color: var(--sa-600);
+}
+
+/* .sa - General Saudi domains */
+.digital-stamp--sa .digital-stamp__verification-title .highlight {
+    color: var(--sa-600);
+}
+
+/* ============================================
+   RTL Support
+   ============================================ */
+
+[dir="rtl"] .digital-stamp,
+.digital-stamp--rtl {
+    direction: rtl;
+}
+
+[dir="rtl"] .digital-stamp__content,
+.digital-stamp--rtl .digital-stamp__content {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .digital-stamp__toggle,
+.digital-stamp--rtl .digital-stamp__toggle {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .digital-stamp__verification-card,
+.digital-stamp--rtl .digital-stamp__verification-card {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+[dir="rtl"] .digital-stamp__verification-text,
+.digital-stamp--rtl .digital-stamp__verification-text {
+    align-items: flex-end;
+}
+
+[dir="rtl"] .digital-stamp__registration-content,
+.digital-stamp--rtl .digital-stamp__registration-content {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .digital-stamp__registration-text,
+.digital-stamp--rtl .digital-stamp__registration-text {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+/* RTL Mobile */
+[dir="rtl"] .digital-stamp--mobile .digital-stamp__content,
+.digital-stamp--rtl.digital-stamp--mobile .digital-stamp__content {
+    align-items: flex-end;
+}
+
+[dir="rtl"] .digital-stamp--mobile .digital-stamp__content > .digital-stamp__content,
+.digital-stamp--rtl.digital-stamp--mobile .digital-stamp__content > .digital-stamp__content {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .digital-stamp--mobile .digital-stamp__registration-text,
+.digital-stamp--rtl.digital-stamp--mobile .digital-stamp__registration-text {
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+.digital-stamp__toggle:focus-visible {
+    outline: 2px solid var(--sa-600);
+    outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .digital-stamp__toggle-icon,
+    .digital-stamp__toggle,
+    .digital-stamp__registration-link {
+        transition: none;
+    }
+}
+
+/* ============================================
+   Responsive Breakpoints
+   ============================================ */
+
+@media (max-width: 768px) {
+    .digital-stamp:not(.digital-stamp--mobile) {
+        padding: var(--spacing-sm) var(--spacing-xl);
+    }
+
+    .digital-stamp:not(.digital-stamp--mobile) .digital-stamp__content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+    }
+
+    .digital-stamp:not(.digital-stamp--mobile) .digital-stamp__extension {
+        flex-direction: column;
+    }
+
+    .digital-stamp:not(.digital-stamp--mobile) .digital-stamp__verification-card {
+        gap: var(--spacing-lg);
+        min-width: unset;
+    }
+
+    .digital-stamp:not(.digital-stamp--mobile) .digital-stamp__verification-icon {
+        width: 32px;
+        height: 32px;
+    }
+}

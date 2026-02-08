@@ -60,6 +60,16 @@ class DGADesignSystem {
             this.register('pagination', new PaginationManager());
         }
 
+        // Initialize Filter Manager
+        if (typeof FilterManager !== 'undefined') {
+            this.register('filters', new FilterManager());
+        }
+
+        // Initialize Text Input Manager
+        if (typeof TextInputManager !== 'undefined') {
+            this.register('textInput', new TextInputManager());
+        }
+
         // Initialize demo interactions
         this.initDemoInteractions();
 

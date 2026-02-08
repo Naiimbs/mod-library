@@ -1,0 +1,333 @@
+/* ============================================
+   COMPONENT: TEXT INPUT
+   DGA Design System - Text Input Component
+   An input allows people to enter short,
+   free form text data.
+   ============================================ */
+
+/* ============================================
+   Input Field Container
+   ============================================ */
+
+.text-input {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    width: 100%;
+}
+
+/* ============================================
+   Label
+   ============================================ */
+
+.text-input__label {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-sm);
+    color: var(--color-text-primary);
+}
+
+.text-input__label--required::after {
+    content: ' *';
+    color: var(--color-error-500);
+}
+
+.text-input__label--optional::after {
+    content: ' (Optional)';
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-secondary);
+}
+
+[dir="rtl"] .text-input__label--optional::after {
+    content: ' (اختياري)';
+}
+
+/* ============================================
+   Input Field
+   ============================================ */
+
+.text-input__field {
+    width: 100%;
+    height: 44px;
+    padding: 10px 14px;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
+    color: var(--color-text-primary);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-secondary);
+    border-radius: var(--radius-md);
+    outline: none;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    box-sizing: border-box;
+}
+
+.text-input__field::placeholder {
+    color: var(--color-gray-400);
+    font-family: var(--font-family-primary);
+}
+
+/* ============================================
+   States
+   ============================================ */
+
+/* Hover */
+.text-input__field:hover:not(:disabled):not(:focus):not(.text-input__field--error):not(.text-input__field--success) {
+    border-color: var(--color-border-primary);
+}
+
+/* Focus */
+.text-input__field:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(27, 131, 84, 0.12);
+}
+
+/* Disabled */
+.text-input__field:disabled {
+    background-color: var(--color-gray-100);
+    border-color: var(--color-border-secondary);
+    color: var(--color-gray-400);
+    cursor: not-allowed;
+}
+
+.text-input__field:disabled::placeholder {
+    color: var(--color-gray-300);
+}
+
+/* Read-only */
+.text-input__field:read-only:not(:disabled) {
+    background-color: var(--color-gray-50);
+    cursor: default;
+}
+
+.text-input__field:read-only:not(:disabled):focus {
+    border-color: var(--color-border-secondary);
+    box-shadow: none;
+}
+
+/* Error */
+.text-input__field--error {
+    border-color: var(--color-error-500);
+}
+
+.text-input__field--error:hover:not(:disabled):not(:focus) {
+    border-color: var(--color-error-600);
+}
+
+.text-input__field--error:focus {
+    border-color: var(--color-error-500);
+    box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
+}
+
+/* Success */
+.text-input__field--success {
+    border-color: var(--color-success-500);
+}
+
+.text-input__field--success:hover:not(:disabled):not(:focus) {
+    border-color: var(--color-success-600);
+}
+
+.text-input__field--success:focus {
+    border-color: var(--color-success-500);
+    box-shadow: 0 0 0 3px rgba(23, 178, 106, 0.12);
+}
+
+/* ============================================
+   Helper / Hint Text
+   ============================================ */
+
+.text-input__helper {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.text-input__helper--error {
+    color: var(--color-error-600);
+}
+
+.text-input__helper--success {
+    color: var(--color-success-600);
+}
+
+.text-input__helper-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   Input with Icon (Leading / Trailing)
+   ============================================ */
+
+.text-input__field-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Leading icon */
+.text-input__field-wrapper--leading .text-input__field {
+    padding-left: 40px;
+}
+
+[dir="rtl"] .text-input__field-wrapper--leading .text-input__field {
+    padding-left: 14px;
+    padding-right: 40px;
+}
+
+.text-input__icon--leading {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: var(--color-gray-400);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+[dir="rtl"] .text-input__icon--leading {
+    left: auto;
+    right: 14px;
+}
+
+/* Trailing icon */
+.text-input__field-wrapper--trailing .text-input__field {
+    padding-right: 40px;
+}
+
+[dir="rtl"] .text-input__field-wrapper--trailing .text-input__field {
+    padding-right: 14px;
+    padding-left: 40px;
+}
+
+.text-input__icon--trailing {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: var(--color-gray-400);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+[dir="rtl"] .text-input__icon--trailing {
+    right: auto;
+    left: 14px;
+}
+
+/* Both leading and trailing */
+.text-input__field-wrapper--leading.text-input__field-wrapper--trailing .text-input__field {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+[dir="rtl"] .text-input__field-wrapper--leading.text-input__field-wrapper--trailing .text-input__field {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+/* ============================================
+   Sizes
+   ============================================ */
+
+/* Small */
+.text-input__field--sm {
+    height: 36px;
+    padding: 8px 12px;
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+}
+
+.text-input__field-wrapper--leading .text-input__field--sm {
+    padding-left: 34px;
+}
+
+[dir="rtl"] .text-input__field-wrapper--leading .text-input__field--sm {
+    padding-left: 12px;
+    padding-right: 34px;
+}
+
+.text-input__field-wrapper--trailing .text-input__field--sm {
+    padding-right: 34px;
+}
+
+[dir="rtl"] .text-input__field-wrapper--trailing .text-input__field--sm {
+    padding-right: 12px;
+    padding-left: 34px;
+}
+
+/* Large */
+.text-input__field--lg {
+    height: 52px;
+    padding: 14px 16px;
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-md);
+}
+
+.text-input__field-wrapper--leading .text-input__field--lg {
+    padding-left: 44px;
+}
+
+[dir="rtl"] .text-input__field-wrapper--leading .text-input__field--lg {
+    padding-left: 16px;
+    padding-right: 44px;
+}
+
+.text-input__field-wrapper--trailing .text-input__field--lg {
+    padding-right: 44px;
+}
+
+[dir="rtl"] .text-input__field-wrapper--trailing .text-input__field--lg {
+    padding-right: 16px;
+    padding-left: 44px;
+}
+
+/* ============================================
+   Character Count
+   ============================================ */
+
+.text-input__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-input__char-count {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    color: var(--color-text-secondary);
+    margin-left: auto;
+}
+
+[dir="rtl"] .text-input__char-count {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.text-input__char-count--error {
+    color: var(--color-error-600);
+}
+
+/* ============================================
+   Disabled Label
+   ============================================ */
+
+.text-input--disabled .text-input__label {
+    color: var(--color-gray-400);
+}
