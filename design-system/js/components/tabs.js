@@ -9,7 +9,7 @@
  */
 class TabManager {
     constructor(config = {}) {
-        this.tabsSelector = config.tabsSelector || '.tabs';
+        this.tabsSelector = config.tabsSelector || '.tab-list';
         this.tabItemSelector = config.tabItemSelector || '.tab-item';
         this.activeClass = config.activeClass || 'active';
 
@@ -91,16 +91,25 @@ class TabManager {
      * @param {number} currentIndex - Current tab index
      */
     handleKeydown(e, container, tabs, currentIndex) {
+        const isRtl = container.closest('[dir="rtl"]') !== null;
         let newIndex = currentIndex;
 
         switch (e.key) {
             case 'ArrowLeft':
                 e.preventDefault();
-                newIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1;
+                if (isRtl) {
+                    newIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
+                } else {
+                    newIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1;
+                }
                 break;
             case 'ArrowRight':
                 e.preventDefault();
-                newIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
+                if (isRtl) {
+                    newIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1;
+                } else {
+                    newIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
+                }
                 break;
             case 'Home':
                 e.preventDefault();
@@ -112,6 +121,18 @@ class TabManager {
                 break;
             default:
                 return;
+        }
+
+        // Skip disabled tabs
+        const tabsArray = Array.from(tabs);
+        let attempts = 0;
+        while (attempts < tabsArray.length && (tabsArray[newIndex].disabled || tabsArray[newIndex].classList.contains('disabled'))) {
+            if (e.key === 'ArrowRight' || (e.key === 'ArrowLeft' && isRtl)) {
+                newIndex = newIndex < tabsArray.length - 1 ? newIndex + 1 : 0;
+            } else {
+                newIndex = newIndex > 0 ? newIndex - 1 : tabsArray.length - 1;
+            }
+            attempts++;
         }
 
         this.activateTab(container, tabs[newIndex]);

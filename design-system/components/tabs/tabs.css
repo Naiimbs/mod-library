@@ -1,97 +1,370 @@
 /* ============================================
    COMPONENT: TABS
    DGA Design System - Tab Components
+   Based on Figma: 30150:125017 (Horizontal Tab)
+                    30150:125364 (Horizontal Tab List)
+
+   Sizes: Small, Medium (default), Large
+   States: Default, Hover, Pressed, Focused, Disabled
+   Modifiers: Selected, Icon, Flush, RTL
    ============================================ */
 
-.tabs {
+/* ============================================
+   Horizontal Tab List (Container)
+   ============================================ */
+
+.tab-list {
     display: flex;
     align-items: center;
-    gap: var(--spacing-xs);
-    border-bottom: 2px solid var(--color-border-primary);
-}
-
-.tab-item {
-    padding: var(--spacing-lg) var(--spacing-xl);
-    font-family: var(--font-family-primary);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-medium);
-    color: var(--color-text-primary);
     position: relative;
-    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    text-decoration: none;
-    background: transparent;
-    border: none;
+    isolation: isolate;
 }
 
-.tab-item:hover:not(.active) {
-    color: var(--color-primary);
-    background-color: var(--color-primary-light);
-}
-
-.tab-item.active {
-    color: var(--color-primary);
-    font-weight: var(--font-weight-semibold);
-}
-
-.tab-item.active::after {
-    content: '';
+/* Divider - full-width bottom line */
+.tab-list__divider {
     position: absolute;
-    bottom: -2px;
+    bottom: 0;
     left: 0;
     right: 0;
-    height: 2px;
-    background-color: var(--color-primary);
+    height: 3px;
+    background-color: #d2d6db;
+    border-radius: 9999px;
+    z-index: 0;
+}
+
+/* Tabs wrapper */
+.tab-list__tabs {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-shrink: 0;
+    z-index: 1;
 }
 
 /* ============================================
-   Tab Variants
+   Horizontal Tab Item (Individual Tab)
    ============================================ */
 
-/* Pills style */
-.tabs--pills {
-    border-bottom: none;
-    gap: var(--spacing-md);
-}
-
-.tabs--pills .tab-item {
-    border-radius: var(--radius-md);
-    background-color: var(--color-gray-100);
-}
-
-.tabs--pills .tab-item.active {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-}
-
-.tabs--pills .tab-item.active::after {
-    display: none;
-}
-
-/* Underline style */
-.tabs--underline {
-    border-bottom: 1px solid var(--color-border-secondary);
+.tab-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    position: relative;
+    border-radius: 4px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    transition: background-color 150ms ease, color 150ms ease;
+    text-decoration: none;
+    flex-shrink: 0;
+    padding: 0;
+    outline: none;
 }
 
 /* ============================================
    Tab Sizes
    ============================================ */
 
-.tabs--sm .tab-item {
-    padding: var(--spacing-md) var(--spacing-lg);
-    font-size: var(--font-size-xs);
+/* Medium (Default) - 12px vertical, 16px horizontal */
+.tab-item,
+.tab-item--md {
+    padding: 12px 16px;
 }
 
-.tabs--lg .tab-item {
-    padding: var(--spacing-xl) var(--spacing-2xl);
-    font-size: var(--font-size-md);
+/* Large - 16px all sides */
+.tab-item--lg {
+    padding: 16px;
+}
+
+/* Small - 8px vertical, 12px horizontal */
+.tab-item--sm {
+    padding: 8px 12px;
+}
+
+/* ============================================
+   Tab Title Text
+   ============================================ */
+
+.tab-item__title {
+    font-family: "IBMPlexSansArabicMedium", "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #384250;
+    white-space: nowrap;
+}
+
+/* Selected tab text - bold and dark */
+.tab-item.active .tab-item__title {
+    font-family: "IBMPlexSansArabicBold", "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 700;
+    color: #161616;
+}
+
+/* ============================================
+   Tab Icon
+   ============================================ */
+
+.tab-item__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+}
+
+.tab-item__icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* ============================================
+   Selection Indicator (Bottom Bar)
+   ============================================ */
+
+/* Indicator: z-index: 2 ensures green bar layers ABOVE the gray divider (z-index: 0) */
+.tab-item__indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    z-index: 2;
+}
+
+.tab-item__indicator-bar {
+    width: 100%;
+    height: 3px;
+    background-color: #1b8354;
+    border-radius: 9999px;
+}
+
+.tab-item.active .tab-item__indicator {
+    display: flex;
+}
+
+/* ============================================
+   Tab States - Default
+   ============================================ */
+
+/* Unselected default - transparent bg, medium text #384250 */
+.tab-item {
+    background-color: transparent;
+}
+
+/* ============================================
+   Tab States - Hover
+   ============================================ */
+
+/* Unselected hover - gray background, text darkens to #161616, black indicator */
+.tab-item:hover:not(.active):not(:disabled):not(.disabled) {
+    background-color: #f3f4f6;
+}
+
+.tab-item:hover:not(.active):not(:disabled):not(.disabled) .tab-item__title {
+    color: #161616;
+}
+
+.tab-item:hover:not(.active):not(:disabled):not(.disabled) .tab-item__indicator {
+    display: flex;
+}
+
+.tab-item:hover:not(.active):not(:disabled):not(.disabled) .tab-item__indicator-bar {
+    background-color: #161616;
+}
+
+/* Selected hover - no background change (stays transparent) */
+.tab-item.active:hover {
+    background-color: transparent;
+}
+
+/* ============================================
+   Tab States - Pressed / Active
+   ============================================ */
+
+/* Unselected pressed - darker gray background, black indicator */
+.tab-item:active:not(.active):not(:disabled):not(.disabled) {
+    background-color: #e5e7eb;
+}
+
+.tab-item:active:not(.active):not(:disabled):not(.disabled) .tab-item__title {
+    color: #161616;
+}
+
+.tab-item:active:not(.active):not(:disabled):not(.disabled) .tab-item__indicator {
+    display: flex;
+}
+
+.tab-item:active:not(.active):not(:disabled):not(.disabled) .tab-item__indicator-bar {
+    background-color: #161616;
+}
+
+/* Selected pressed - no background change */
+.tab-item.active:active {
+    background-color: transparent;
+}
+
+/* ============================================
+   Tab States - Focused
+   ============================================ */
+
+.tab-item:focus-visible {
+    border: 3px solid #161616;
+    border-radius: 2px;
+    outline: none;
+    box-shadow: inset 0 0 0 1px #ffffff;
+}
+
+.tab-item:focus-visible .tab-item__title {
+    color: #161616;
+}
+
+/* ============================================
+   Tab States - Disabled
+   ============================================ */
+
+.tab-item:disabled,
+.tab-item.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: transparent;
+}
+
+.tab-item:disabled .tab-item__title,
+.tab-item.disabled .tab-item__title {
+    color: #9da4ae;
+}
+
+/* Disabled + selected: indicator turns gray */
+.tab-item:disabled.active .tab-item__indicator-bar,
+.tab-item.disabled.active .tab-item__indicator-bar {
+    background-color: #9da4ae;
+}
+
+/* Disabled icon opacity */
+.tab-item:disabled .tab-item__icon,
+.tab-item.disabled .tab-item__icon {
+    opacity: 0.4;
+}
+
+/* ============================================
+   Overflow / More Button
+   ============================================ */
+
+.tab-list__more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 12px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    transition: background-color 150ms ease;
+}
+
+.tab-list__more:hover {
+    background-color: #f3f4f6;
+}
+
+.tab-list__more:active {
+    background-color: #e5e7eb;
+}
+
+.tab-list__more-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+}
+
+.tab-list__more-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* ============================================
+   Flush Variant (No container padding)
+   ============================================ */
+
+.tab-list--flush .tab-list__tabs {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -16px;
+}
+
+/* ============================================
+   Size Modifiers on Tab List
+   ============================================ */
+
+/* When tab-list has a size class, all child tab-items inherit */
+.tab-list--sm .tab-item {
+    padding: 8px 12px;
+}
+
+.tab-list--lg .tab-item {
+    padding: 16px;
 }
 
 /* ============================================
    RTL Support
    ============================================ */
 
-[dir="rtl"] .tabs {
+[dir="rtl"] .tab-list {
     direction: rtl;
+}
+
+[dir="rtl"] .tab-list__tabs {
+    justify-content: flex-start;
+}
+
+[dir="rtl"] .tab-list--flush .tab-list__tabs {
+    left: auto;
+    right: -16px;
+}
+
+[dir="rtl"] .tab-item {
+    direction: ltr;
+}
+
+[dir="rtl"] .tab-item__icon {
+    order: 1;
+}
+
+[dir="rtl"] .tab-item__title {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .tab-item__indicator {
+    order: 2;
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+.tab-item[role="tab"] {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.tab-item[aria-selected="true"] .tab-item__title {
+    font-family: "IBMPlexSansArabicBold", "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 700;
+    color: #161616;
+}
+
+.tab-item[aria-selected="true"] .tab-item__indicator {
+    display: flex;
 }

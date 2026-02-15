@@ -388,27 +388,139 @@
         <section id="tabs" class="component-section">
             <div class="content-header">
                 <h1 class="content-title">Tabs</h1>
-                <p class="content-description">Tab navigation for organizing content into sections.</p>
+                <p class="content-description">A tablist is a group of headers, or tabs, that lets people navigate between different views of related information without going to different pages. Tablists help reduce scrolling by chunking related information into categories.</p>
             </div>
 
+            <!-- Medium with Icons (LTR) -->
             <div class="component-preview">
-                <div class="component-preview-title">Horizontal Tabs</div>
-                <nav class="tabs" role="tablist">
-                    <a href="#" class="tab-item active" role="tab">Overview</a>
-                    <a href="#" class="tab-item" role="tab">Details</a>
-                    <a href="#" class="tab-item" role="tab">Reviews</a>
-                    <a href="#" class="tab-item" role="tab">FAQ</a>
-                </nav>
+                <div class="component-preview-title">Horizontal Tab List - Medium with Icons</div>
+                <div class="tab-list" role="tablist">
+                    <div class="tab-list__divider"></div>
+                    <div class="tab-list__tabs">
+                        <button class="tab-item active" role="tab" aria-selected="true" tabindex="0">
+                            <span class="tab-item__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                            <span class="tab-item__title">First Tab</span>
+                            <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                        </button>
+                        <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                            <span class="tab-item__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                            <span class="tab-item__title">Second Tab</span>
+                            <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                        </button>
+                        <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                            <span class="tab-item__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                            <span class="tab-item__title">Third Tab</span>
+                            <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                        </button>
+                        <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                            <span class="tab-item__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                            <span class="tab-item__title">Forth Tab</span>
+                            <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                        </button>
+                        <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                            <span class="tab-item__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                            <span class="tab-item__title">Fifth Tab</span>
+                            <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                        </button>
+                        <button class="tab-list__more" aria-label="More tabs">
+                            <span class="tab-list__more-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
             </div>
 
+            <!-- Small without Icons (LTR) -->
             <div class="component-preview">
-                <div class="component-preview-title">Arabic Tabs (RTL)</div>
-                <nav class="tabs" role="tablist" dir="rtl">
-                    <a href="#" class="tab-item active" role="tab">نظرة عامة</a>
-                    <a href="#" class="tab-item" role="tab">التفاصيل</a>
-                    <a href="#" class="tab-item" role="tab">المراجعات</a>
-                    <a href="#" class="tab-item" role="tab">الأسئلة الشائعة</a>
-                </nav>
+                <div class="component-preview-title">Horizontal Tab List - Small without Icons</div>
+                <div class="tab-list tab-list--sm" role="tablist">
+                    <div class="tab-list__divider"></div>
+                    <div class="tab-list__tabs">
+                        <button class="tab-item tab-item--sm active" role="tab" aria-selected="true" tabindex="0">
+                            <span class="tab-item__title">First Tab</span>
+                            <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                        </button>
+                        <button class="tab-item tab-item--sm" role="tab" aria-selected="false" tabindex="-1">
+                            <span class="tab-item__title">Second Tab</span>
+                            <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                        </button>
+                        <button class="tab-item tab-item--sm" role="tab" aria-selected="false" tabindex="-1">
+                            <span class="tab-item__title">Third Tab</span>
+                            <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                        </button>
+                        <button class="tab-item tab-item--sm" role="tab" aria-selected="false" tabindex="-1">
+                            <span class="tab-item__title">Forth Tab</span>
+                            <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                        </button>
+                        <button class="tab-item tab-item--sm" role="tab" aria-selected="false" tabindex="-1">
+                            <span class="tab-item__title">Fifth Tab</span>
+                            <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                        </button>
+                        <button class="tab-list__more" aria-label="More tabs">
+                            <span class="tab-list__more-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arabic Tabs (RTL) -->
+            <div class="component-preview">
+                <div class="component-preview-title">Arabic Tabs (RTL) - Medium with Icons</div>
+                <div dir="rtl">
+                    <div class="tab-list" role="tablist">
+                        <div class="tab-list__divider"></div>
+                        <div class="tab-list__tabs">
+                            <button class="tab-item active" role="tab" aria-selected="true" tabindex="0">
+                                <span class="tab-item__title">تبويب أول</span>
+                                <span class="tab-item__icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                                <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                            </button>
+                            <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                                <span class="tab-item__title">تبويب ثاني</span>
+                                <span class="tab-item__icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                                <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                            </button>
+                            <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                                <span class="tab-item__title">تبويب ثالث</span>
+                                <span class="tab-item__icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                                <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                            </button>
+                            <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                                <span class="tab-item__title">تبويب رابع</span>
+                                <span class="tab-item__icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                                <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                            </button>
+                            <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                                <span class="tab-item__title">تبويب خامس</span>
+                                <span class="tab-item__icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                                <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1530,6 +1642,104 @@
                 </div>
             </div>
 
+            <!-- Filled Darker Style -->
+            <div class="component-preview">
+                <div class="component-preview-title">Filled Darker Style</div>
+                <div style="display: flex; gap: 32px; flex-wrap: wrap;">
+                    <!-- Filled Darker Default -->
+                    <div class="text-input" style="max-width: 280px;">
+                        <label class="text-input__label">Default</label>
+                        <input type="text" class="text-input__field text-input__field--filled-darker" placeholder="Placeholder">
+                    </div>
+                    <!-- Filled Darker with value -->
+                    <div class="text-input" style="max-width: 280px;">
+                        <label class="text-input__label">Filled</label>
+                        <input type="text" class="text-input__field text-input__field--filled-darker" value="Entered text">
+                    </div>
+                    <!-- Filled Darker Disabled -->
+                    <div class="text-input text-input--disabled" style="max-width: 280px;">
+                        <label class="text-input__label">Disabled</label>
+                        <input type="text" class="text-input__field text-input__field--filled-darker" placeholder="Placeholder" disabled>
+                    </div>
+                    <!-- Filled Darker Error -->
+                    <div class="text-input" style="max-width: 280px;">
+                        <label class="text-input__label">Error</label>
+                        <input type="text" class="text-input__field text-input__field--filled-darker text-input__field--error" value="Invalid value">
+                        <span class="text-input__helper text-input__helper--error">
+                            <svg class="text-input__helper-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 5.333V8m0 2.667h.007M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            This field has an error.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filled Lighter Style -->
+            <div class="component-preview">
+                <div class="component-preview-title">Filled Lighter Style</div>
+                <div style="display: flex; gap: 32px; flex-wrap: wrap;">
+                    <!-- Filled Lighter Default -->
+                    <div class="text-input" style="max-width: 280px;">
+                        <label class="text-input__label">Default</label>
+                        <input type="text" class="text-input__field text-input__field--filled-lighter" placeholder="Placeholder">
+                    </div>
+                    <!-- Filled Lighter with value -->
+                    <div class="text-input" style="max-width: 280px;">
+                        <label class="text-input__label">Filled</label>
+                        <input type="text" class="text-input__field text-input__field--filled-lighter" value="Entered text">
+                    </div>
+                    <!-- Filled Lighter Disabled -->
+                    <div class="text-input text-input--disabled" style="max-width: 280px;">
+                        <label class="text-input__label">Disabled</label>
+                        <input type="text" class="text-input__field text-input__field--filled-lighter" placeholder="Placeholder" disabled>
+                    </div>
+                    <!-- Filled Lighter Error -->
+                    <div class="text-input" style="max-width: 280px;">
+                        <label class="text-input__label">Error</label>
+                        <input type="text" class="text-input__field text-input__field--filled-lighter text-input__field--error" value="Invalid value">
+                        <span class="text-input__helper text-input__helper--error">
+                            <svg class="text-input__helper-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 5.333V8m0 2.667h.007M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            This field has an error.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prefix / Suffix -->
+            <div class="component-preview">
+                <div class="component-preview-title">Prefix &amp; Suffix</div>
+                <div style="display: flex; gap: 32px; flex-wrap: wrap;">
+                    <!-- With Prefix -->
+                    <div class="text-input" style="max-width: 320px;">
+                        <label class="text-input__label">Website</label>
+                        <div class="text-input__field-wrapper text-input__field-wrapper--prefix">
+                            <span class="text-input__prefix">https://</span>
+                            <input type="text" class="text-input__field" placeholder="www.example.com">
+                        </div>
+                    </div>
+                    <!-- With Suffix -->
+                    <div class="text-input" style="max-width: 320px;">
+                        <label class="text-input__label">Email</label>
+                        <div class="text-input__field-wrapper text-input__field-wrapper--suffix">
+                            <input type="text" class="text-input__field" placeholder="username">
+                            <span class="text-input__suffix">@domain.com</span>
+                        </div>
+                    </div>
+                    <!-- With Both -->
+                    <div class="text-input" style="max-width: 320px;">
+                        <label class="text-input__label">Price</label>
+                        <div class="text-input__field-wrapper text-input__field-wrapper--prefix text-input__field-wrapper--suffix">
+                            <span class="text-input__prefix">SAR</span>
+                            <input type="number" class="text-input__field" placeholder="0.00" style="border-radius: 0;">
+                            <span class="text-input__suffix">.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Input with Icons -->
             <div class="component-preview">
                 <div class="component-preview-title">With Icons</div>
@@ -1582,20 +1792,15 @@
             <div class="component-preview">
                 <div class="component-preview-title">Sizes</div>
                 <div style="display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start;">
-                    <!-- Small -->
+                    <!-- Medium -->
                     <div class="text-input" style="max-width: 280px;">
-                        <label class="text-input__label">Small (36px)</label>
-                        <input type="text" class="text-input__field text-input__field--sm" placeholder="Small input">
+                        <label class="text-input__label">Medium (32px)</label>
+                        <input type="text" class="text-input__field text-input__field--md" placeholder="Medium input">
                     </div>
-                    <!-- Default -->
+                    <!-- Large (Default) -->
                     <div class="text-input" style="max-width: 280px;">
-                        <label class="text-input__label">Default (44px)</label>
-                        <input type="text" class="text-input__field" placeholder="Default input">
-                    </div>
-                    <!-- Large -->
-                    <div class="text-input" style="max-width: 280px;">
-                        <label class="text-input__label">Large (52px)</label>
-                        <input type="text" class="text-input__field text-input__field--lg" placeholder="Large input">
+                        <label class="text-input__label">Large (40px) — Default</label>
+                        <input type="text" class="text-input__field" placeholder="Large input">
                     </div>
                 </div>
             </div>
@@ -1604,21 +1809,21 @@
             <div class="component-preview">
                 <div class="component-preview-title">Sizes with Icons</div>
                 <div style="display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start;">
-                    <!-- Small with icon -->
+                    <!-- Medium with icon -->
                     <div class="text-input" style="max-width: 280px;">
-                        <label class="text-input__label">Small</label>
+                        <label class="text-input__label">Medium</label>
                         <div class="text-input__field-wrapper text-input__field-wrapper--leading">
                             <span class="text-input__icon--leading">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M17.5 17.5L13.875 13.875M15.833 9.167a6.667 6.667 0 1 1-13.333 0 6.667 6.667 0 0 1 13.333 0Z" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </span>
-                            <input type="text" class="text-input__field text-input__field--sm" placeholder="Search...">
+                            <input type="text" class="text-input__field text-input__field--md" placeholder="Search...">
                         </div>
                     </div>
-                    <!-- Default with icon -->
+                    <!-- Large (Default) with icon -->
                     <div class="text-input" style="max-width: 280px;">
-                        <label class="text-input__label">Default</label>
+                        <label class="text-input__label">Large (Default)</label>
                         <div class="text-input__field-wrapper text-input__field-wrapper--leading">
                             <span class="text-input__icon--leading">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1626,18 +1831,6 @@
                                 </svg>
                             </span>
                             <input type="text" class="text-input__field" placeholder="Search...">
-                        </div>
-                    </div>
-                    <!-- Large with icon -->
-                    <div class="text-input" style="max-width: 280px;">
-                        <label class="text-input__label">Large</label>
-                        <div class="text-input__field-wrapper text-input__field-wrapper--leading">
-                            <span class="text-input__icon--leading">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17.5 17.5L13.875 13.875M15.833 9.167a6.667 6.667 0 1 1-13.333 0 6.667 6.667 0 0 1 13.333 0Z" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </span>
-                            <input type="text" class="text-input__field text-input__field--lg" placeholder="Search...">
                         </div>
                     </div>
                 </div>

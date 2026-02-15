@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DGA Design System - Tabs</title>
+    <link rel="stylesheet" href="../../utilities/DGATheme.css">
+    <link rel="stylesheet" href="../../tokens.css">
+    <link rel="stylesheet" href="tabs.css">
+    <style>
+        body {
+            font-family: "IBMPlexSansArabic", sans-serif;
+            padding: 32px;
+            background-color: var(--gray-50);
+        }
+        .section {
+            margin-bottom: 48px;
+        }
+        .section-title {
+            font-size: var(--text-xl);
+            font-weight: var(--font-weight-semibold);
+            color: var(--gray-900);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .subsection-title {
+            font-size: var(--text-md);
+            font-weight: var(--font-weight-medium);
+            color: var(--gray-700);
+            margin-bottom: 12px;
+            margin-top: 24px;
+        }
+        .demo-row {
+            margin-bottom: 24px;
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--gray-200);
+        }
+        .demo-label {
+            font-size: var(--text-sm);
+            color: var(--gray-600);
+            margin-bottom: 12px;
+        }
+        .state-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, auto));
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .state-label {
+            font-size: 11px;
+            color: var(--gray-500);
+            text-align: center;
+            margin-bottom: 4px;
+        }
+        .state-cell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="section-title">Tabs Component</h1>
+    <p style="color: var(--gray-600); margin-bottom: 32px; max-width: 640px;">
+        A tablist is a group of headers, or tabs, that lets people navigate between different views of related information without going to different pages. Tablists help reduce scrolling by chunking related information into categories.
+    </p>
+
+    <!-- ============================================
+         SECTION: Horizontal Tab List - Medium with Icons (LTR)
+         ============================================ -->
+    <div class="section">
+        <h2 class="subsection-title">Horizontal Tab List - Medium with Icons (LTR)</h2>
+        <div class="demo-row">
+            <div class="tab-list" role="tablist">
+                <div class="tab-list__divider"></div>
+                <div class="tab-list__tabs">
+                    <button class="tab-item active" role="tab" aria-selected="true" tabindex="0">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">First Tab</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">Second Tab</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">Third Tab</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">Forth Tab</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">Fifth Tab</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-list__more" aria-label="More tabs">
+                        <span class="tab-list__more-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SECTION: Tab List - Large with Icons (LTR)
+         ============================================ -->
+    <div class="section">
+        <h2 class="subsection-title">Horizontal Tab List - Large with Icons (LTR)</h2>
+        <div class="demo-row">
+            <div class="tab-list tab-list--lg" role="tablist">
+                <div class="tab-list__divider"></div>
+                <div class="tab-list__tabs">
+                    <button class="tab-item tab-item--lg active" role="tab" aria-selected="true" tabindex="0">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">First Tab</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item tab-item--lg" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">Second Tab</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item tab-item--lg" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">Third Tab</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item tab-item--lg" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">Forth Tab</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item tab-item--lg" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">Fifth Tab</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item tab-item--lg" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">Text</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SECTION: Tab List - Small without Icons (LTR)
+         ============================================ -->
+    <div class="section">
+        <h2 class="subsection-title">Horizontal Tab List - Small without Icons (LTR)</h2>
+        <div class="demo-row">
+            <div class="tab-list tab-list--sm" role="tablist">
+                <div class="tab-list__divider"></div>
+                <div class="tab-list__tabs">
+                    <button class="tab-item tab-item--sm active" role="tab" aria-selected="true" tabindex="0">
+                        <span class="tab-item__title">First Tab</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item tab-item--sm" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__title">Second Tab</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item tab-item--sm" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__title">Third Tab</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item tab-item--sm" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__title">Forth Tab</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item tab-item--sm" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__title">Fifth Tab</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-list__more" aria-label="More tabs">
+                        <span class="tab-list__more-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SECTION: Individual Tab States
+         ============================================ -->
+    <div class="section">
+        <h2 class="subsection-title">Individual Tab Item - States</h2>
+        <div class="demo-row">
+            <div class="demo-label">Selected States (hover over to see interaction)</div>
+            <div class="state-grid">
+                <div class="state-cell">
+                    <div class="state-label">Default Selected</div>
+                    <button class="tab-item active" style="position: relative;">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">Text</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                </div>
+                <div class="state-cell">
+                    <div class="state-label">Disabled Selected</div>
+                    <button class="tab-item active disabled" disabled style="position: relative;">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">Text</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="demo-label">Unselected States (hover and press to see interaction)</div>
+            <div class="state-grid">
+                <div class="state-cell">
+                    <div class="state-label">Default</div>
+                    <button class="tab-item" style="position: relative;">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">Text</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                </div>
+                <div class="state-cell">
+                    <div class="state-label">Hovered (simulated)</div>
+                    <button class="tab-item" style="position: relative; background-color: #f3f4f6;">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title" style="color: #161616;">Text</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                </div>
+                <div class="state-cell">
+                    <div class="state-label">Pressed (simulated)</div>
+                    <button class="tab-item" style="position: relative; background-color: #e5e7eb;">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title" style="color: #161616;">Text</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                </div>
+                <div class="state-cell">
+                    <div class="state-label">Focused (simulated)</div>
+                    <button class="tab-item" style="position: relative; border: 3px solid #161616; border-radius: 2px;">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">Text</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                </div>
+                <div class="state-cell">
+                    <div class="state-label">Disabled</div>
+                    <button class="tab-item disabled" disabled style="position: relative;">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">Text</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SECTION: RTL Tab List
+         ============================================ -->
+    <div class="section">
+        <h2 class="subsection-title">Horizontal Tab List - Medium with Icons (RTL)</h2>
+        <div class="demo-row" dir="rtl">
+            <div class="tab-list" role="tablist">
+                <div class="tab-list__divider"></div>
+                <div class="tab-list__tabs">
+                    <button class="tab-item active" role="tab" aria-selected="true" tabindex="0">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">تبويب أول</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">تبويب ثاني</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">تبويب ثالث</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">تبويب رابع</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">تبويب خامس</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="tab-item__title">تبويب</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SECTION: RTL Tab List - Small without Icons
+         ============================================ -->
+    <div class="section">
+        <h2 class="subsection-title">Horizontal Tab List - Small without Icons (RTL)</h2>
+        <div class="demo-row" dir="rtl">
+            <div class="tab-list tab-list--sm" role="tablist">
+                <div class="tab-list__divider"></div>
+                <div class="tab-list__tabs">
+                    <button class="tab-item tab-item--sm active" role="tab" aria-selected="true" tabindex="0">
+                        <span class="tab-item__title">تبويب أول</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item tab-item--sm" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__title">تبويب ثاني</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item tab-item--sm" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__title">تبويب ثالث</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item tab-item--sm" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__title">تبويب رابع</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-item tab-item--sm" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="tab-item__title">تبويب خامس</span>
+                        <span class="tab-item__indicator">
+                            <span class="tab-item__indicator-bar"></span>
+                        </span>
+                    </button>
+                    <button class="tab-list__more" aria-label="المزيد من التبويبات">
+                        <span class="tab-list__more-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/components/tabs.js"></script>
+    <script>
+        // Initialize tab interactions
+        new TabManager({
+            tabsSelector: '.tab-list',
+            tabItemSelector: '.tab-item:not(.tab-list__more)'
+        });
+    </script>
+</body>
+</html>
