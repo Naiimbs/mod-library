@@ -45,51 +45,68 @@ class DGADesignSystem {
             }));
         }
 
-        // Initialize Card Manager
-        if (typeof CardManager !== 'undefined') {
-            this.register('cards', new CardManager());
-        }
+        // Listen for dynamically loaded components to reinitialize JS
+        document.addEventListener('component:loaded', (e) => {
+            this.initComponentModules(e.detail.componentId);
+        });
 
-        // Initialize Tab Manager
-        if (typeof TabManager !== 'undefined') {
-            this.register('tabs', new TabManager());
-        }
-
-        // Initialize Pagination Manager
-        if (typeof PaginationManager !== 'undefined') {
-            this.register('pagination', new PaginationManager());
-        }
-
-        // Initialize Filter Manager
-        if (typeof FilterManager !== 'undefined') {
-            this.register('filters', new FilterManager());
-        }
-
-        // Initialize Text Input Manager
-        if (typeof TextInputManager !== 'undefined') {
-            this.register('textInput', new TextInputManager());
-        }
-
-        // Initialize demo interactions
-        this.initDemoInteractions();
+        // Initialize demo interactions for the shell (main app header)
+        this.initNavigationHeaderDemo();
 
         this.initialized = true;
         console.log('DGA Design System initialized');
     }
 
     /**
-     * Initialize demo-specific interactions
+     * Initialize JS modules relevant to the loaded component
+     * Called each time a component's HTML is injected into the DOM
+     * @param {string} componentId - The component that was loaded
      */
-    initDemoInteractions() {
-        // Sidebar nav demo interactions
-        this.initSidebarNavDemo();
+    initComponentModules(componentId) {
+        // Cards
+        if (componentId === 'cards' && typeof CardManager !== 'undefined') {
+            this.register('cards', new CardManager());
+        }
 
-        // Navigation header demo
-        this.initNavigationHeaderDemo();
+        // Tabs
+        if (componentId === 'tabs' && typeof TabManager !== 'undefined') {
+            this.register('tabs', new TabManager());
+        }
+
+        // Pagination
+        if (componentId === 'pagination' && typeof PaginationManager !== 'undefined') {
+            this.register('pagination', new PaginationManager());
+        }
+
+        // Filters
+        if (componentId === 'filters' && typeof FilterManager !== 'undefined') {
+            this.register('filters', new FilterManager());
+        }
+
+        // Text Input
+        if (componentId === 'text-input' && typeof TextInputManager !== 'undefined') {
+            this.register('textInput', new TextInputManager());
+        }
+
+        // Digital Stamp (uses its own init function)
+        if (componentId === 'digital-stamp' && typeof initDigitalStamps !== 'undefined') {
+            initDigitalStamps();
+        }
+
+        // Sidebar nav demo (for the sidebar component preview)
+        if (componentId === 'sidebar') {
+            this.initSidebarNavDemo();
+        }
+
+        // Nav header demo (for the nav-header component preview)
+        if (componentId === 'nav-header') {
+            this.initNavHeaderPreviewDemo();
+        }
     }
 
     /**
      * Initialize sidebar navigation demo interactions
+     * (for the sidebar component preview, not the main app sidebar)
      */
     initSidebarNavDemo() {
         document.querySelectorAll('.sidebar-nav-demo .sidebar-nav-item').forEach(item => {
@@ -107,11 +124,53 @@ class DGADesignSystem {
     }
 
     /**
-     * Initialize navigation header demo interactions
+     * Initialize navigation header preview demo interactions
+     * (for the nav-header component preview inside content area)
+     */
+    initNavHeaderPreviewDemo() {
+        const previewContainer = document.getElementById('component-content');
+        if (!previewContainer) return;
+
+        const menuItems = previewContainer.querySelectorAll('.navigation-header .header-menu-item');
+        const actionButtons = previewContainer.querySelectorAll('.navigation-header .header-action--outline');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const parent = this.closest('.navigation-header');
+                if (parent) {
+                    parent.querySelectorAll('.header-menu-item').forEach(i =>
+                        i.classList.remove('header-menu-item--selected')
+                    );
+                }
+                this.classList.add('header-menu-item--selected');
+            });
+        });
+
+        actionButtons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const parent = this.closest('.navigation-header');
+                if (parent) {
+                    parent.querySelectorAll('.header-action--outline').forEach(b =>
+                        b.classList.remove('header-action--selected')
+                    );
+                }
+                this.classList.add('header-action--selected');
+            });
+        });
+    }
+
+    /**
+     * Initialize main navigation header demo interactions
+     * (the actual app header — always present in the shell)
      */
     initNavigationHeaderDemo() {
-        const menuItems = document.querySelectorAll('.navigation-header .header-menu-item');
-        const actionButtons = document.querySelectorAll('.navigation-header .header-action--outline');
+        const header = document.querySelector('.layout > .navigation-header');
+        if (!header) return;
+
+        const menuItems = header.querySelectorAll('.header-menu-item');
+        const actionButtons = header.querySelectorAll('.header-action--outline');
 
         menuItems.forEach(item => {
             item.addEventListener('click', function(e) {

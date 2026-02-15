@@ -1,0 +1,192 @@
+<div class="content-header">
+    <h1 class="content-title">Cards</h1>
+    <p class="content-description">Card components for content containers.</p>
+</div>
+
+<!-- Anatomy -->
+<div class="component-preview">
+    <div class="component-preview-title">Card Anatomy</div>
+    <article class="card">
+        <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+        </div>
+        <div class="card-content">
+            <h3 class="card-title">Card Title</h3>
+            <p class="card-body">Card content placeholder text goes here</p>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-secondary-outline">Action</button>
+            <button class="btn btn-primary">Action</button>
+        </div>
+    </article>
+</div>
+
+<!-- Default cards: effects -->
+<div class="component-preview">
+    <div class="component-preview-title">Default Card (LTR) - With Shadow</div>
+    <article class="card">
+        <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+        </div>
+        <div class="card-content">
+            <h3 class="card-title">Card Title</h3>
+            <p class="card-body">Card content placeholder text goes here</p>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-secondary-outline">Action</button>
+            <button class="btn btn-primary">Action</button>
+        </div>
+    </article>
+</div>
+
+<div class="component-preview">
+    <div class="component-preview-title">Default Card (LTR) - No Shadow</div>
+    <article class="card card--no-shadow">
+        <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+        </div>
+        <div class="card-content">
+            <h3 class="card-title">Card Title</h3>
+            <p class="card-body">Card content placeholder text goes here</p>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-secondary-outline">Action</button>
+            <button class="btn btn-primary">Action</button>
+        </div>
+    </article>
+</div>
+
+<div class="component-preview">
+    <div class="component-preview-title">Default Card (LTR) - Stroke</div>
+    <article class="card card--stroke">
+        <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+        </div>
+        <div class="card-content">
+            <h3 class="card-title">Card Title</h3>
+            <p class="card-body">Card content placeholder text goes here</p>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-secondary-outline">Action</button>
+            <button class="btn btn-primary">Action</button>
+        </div>
+    </article>
+</div>
+
+<div class="component-preview">
+    <div class="component-preview-title">Card (Arabic RTL) - With Shadow</div>
+    <article class="card" dir="rtl">
+        <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+        </div>
+        <div class="card-content">
+            <h3 class="card-title">عنوان البطاقة</h3>
+            <p class="card-body">نص محتوى البطاقة يظهر هنا</p>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-secondary-outline">إجراء</button>
+            <button class="btn btn-primary">إجراء</button>
+        </div>
+    </article>
+</div>
+
+<!-- Expandable cards -->
+<div class="component-preview">
+    <div class="component-preview-title">Expandable Card - Collapsed / Expanded</div>
+    <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+        <article class="card card--expandable card--collapsed" data-card-expandable>
+            <div class="card-header">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                </div>
+                <div class="card-content" style="flex: 1;">
+                    <h3 class="card-title">Expandable Card</h3>
+                    <p class="card-body">Collapsed state</p>
+                </div>
+                <button type="button" class="card-toggle" aria-label="Expand card">+</button>
+            </div>
+            <div class="card-content">
+                <p class="card-body">Collapsed state hides this content and footer.</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-secondary-outline">Action</button>
+                <button class="btn btn-primary">Action</button>
+            </div>
+        </article>
+
+        <article class="card card--expandable" data-card-expandable>
+            <div class="card-header">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                </div>
+                <div class="card-content" style="flex: 1;">
+                    <h3 class="card-title">Expandable Card</h3>
+                    <p class="card-body">Expanded state</p>
+                </div>
+                <button type="button" class="card-toggle" aria-label="Collapse card">−</button>
+            </div>
+            <div class="card-content">
+                <p class="card-body">Expanded state shows additional details and actions.</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-secondary-outline">Action</button>
+                <button class="btn btn-primary">Action</button>
+            </div>
+        </article>
+    </div>
+</div>
+
+<!-- Selectable cards -->
+<div class="component-preview">
+    <div class="component-preview-title">Selectable Card - Default / Selected</div>
+    <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+        <article class="card card--selectable" data-card-selectable>
+            <div class="card-select-indicator" aria-hidden="true"></div>
+            <div class="card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Selectable Card</h3>
+                <p class="card-body">Click to toggle selected state</p>
+            </div>
+        </article>
+
+        <article class="card card--selectable card--selected" data-card-selectable>
+            <div class="card-select-indicator" aria-hidden="true"></div>
+            <div class="card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Selectable Card</h3>
+                <p class="card-body">Selected state with indicator</p>
+            </div>
+        </article>
+    </div>
+</div>

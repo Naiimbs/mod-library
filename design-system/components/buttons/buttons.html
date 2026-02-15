@@ -1,380 +1,202 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DGA Design System - Buttons</title>
-    <link rel="stylesheet" href="../../utilities/DGATheme.css">
-    <link rel="stylesheet" href="../../tokens.css">
-    <link rel="stylesheet" href="buttons.css">
-    <style>
-        body {
-            font-family: "IBMPlexSansArabic", sans-serif;
-            padding: 32px;
-            background-color: var(--gray-50);
-        }
-        .section {
-            margin-bottom: 48px;
-        }
-        .section-title {
-            font-size: var(--text-xl);
-            font-weight: var(--font-weight-semibold);
-            color: var(--gray-900);
-            margin-bottom: 16px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--gray-200);
-        }
-        .subsection-title {
-            font-size: var(--text-md);
-            font-weight: var(--font-weight-medium);
-            color: var(--gray-700);
-            margin-bottom: 12px;
-            margin-top: 24px;
-        }
-        .button-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-        .button-label {
-            font-size: var(--text-sm);
-            color: var(--gray-600);
-            min-width: 100px;
-        }
-        .dark-section {
-            background-color: var(--sa-600);
-            padding: 24px;
-            border-radius: var(--radius-md);
-            margin-top: 16px;
-        }
-        .dark-section .subsection-title {
-            color: var(--alpha-white);
-        }
-        .state-demo {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        .state-demo-item {
-            text-align: center;
-        }
-        .state-demo-item .label {
-            font-size: var(--text-xs);
-            color: var(--gray-500);
-            margin-top: 8px;
-        }
-        .icon-placeholder {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .icon-placeholder svg {
-            width: 100%;
-            height: 100%;
-        }
-    </style>
-</head>
-<body>
-    <h1 style="font-size: var(--display-sm); margin-bottom: 32px; color: var(--gray-900);">Button Components</h1>
+<div class="content-header">
+    <h1 class="content-title">Buttons</h1>
+    <p class="content-description">Button components following DGA design guidelines. Includes 6 variants, 3 sizes, multiple states, and modifiers for destructive actions and dark backgrounds.</p>
+</div>
 
-    <!-- Button Variants -->
-    <div class="section">
-        <h2 class="section-title">Button Variants</h2>
-
-        <div class="subsection-title">Neutral</div>
-        <div class="button-row">
-            <button class="btn btn-neutral">Button</button>
-            <button class="btn btn-neutral" disabled>Disabled</button>
-        </div>
-
-        <div class="subsection-title">Primary</div>
-        <div class="button-row">
-            <button class="btn btn-primary">Button</button>
-            <button class="btn btn-primary" disabled>Disabled</button>
-        </div>
-
-        <div class="subsection-title">Secondary Solid</div>
-        <div class="button-row">
-            <button class="btn btn-secondary-solid">Button</button>
-            <button class="btn btn-secondary-solid" disabled>Disabled</button>
-        </div>
-
-        <div class="subsection-title">Secondary Outline</div>
-        <div class="button-row">
-            <button class="btn btn-secondary-outline">Button</button>
-            <button class="btn btn-secondary-outline" disabled>Disabled</button>
-        </div>
-
-        <div class="subsection-title">Subtle</div>
-        <div class="button-row">
-            <button class="btn btn-subtle">Button</button>
-            <button class="btn btn-subtle" disabled>Disabled</button>
-        </div>
-
-        <div class="subsection-title">Transparent</div>
-        <div class="button-row">
-            <button class="btn btn-transparent">Button</button>
-            <button class="btn btn-transparent" disabled>Disabled</button>
-        </div>
+<!-- Button Variants -->
+<div class="component-preview">
+    <div class="component-preview-title">Button Variants</div>
+    <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 16px;">
+        <button class="btn btn-neutral">Neutral</button>
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-secondary-solid">Secondary Solid</button>
+        <button class="btn btn-secondary-outline">Secondary Outline</button>
+        <button class="btn btn-subtle">Subtle</button>
+        <button class="btn btn-transparent">Transparent</button>
     </div>
+</div>
 
-    <!-- Button Sizes -->
-    <div class="section">
-        <h2 class="section-title">Button Sizes</h2>
-
-        <div class="button-row">
-            <span class="button-label">Large (40px)</span>
-            <button class="btn btn-primary btn-large">Large Button</button>
-        </div>
-        <div class="button-row">
-            <span class="button-label">Medium (32px)</span>
-            <button class="btn btn-primary btn-medium">Medium Button</button>
-        </div>
-        <div class="button-row">
-            <span class="button-label">Small (24px)</span>
-            <button class="btn btn-primary btn-small">Small Button</button>
-        </div>
+<!-- Button Sizes -->
+<div class="component-preview">
+    <div class="component-preview-title">Button Sizes</div>
+    <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <button class="btn btn-primary btn-large">Large (40px)</button>
+        <button class="btn btn-primary btn-medium">Medium (32px)</button>
+        <button class="btn btn-primary btn-small">Small (24px)</button>
     </div>
+</div>
 
-    <!-- Button States -->
-    <div class="section">
-        <h2 class="section-title">Button States</h2>
-
-        <div class="state-demo">
-            <div class="state-demo-item">
-                <button class="btn btn-primary">Default</button>
-                <div class="label">Default</div>
-            </div>
-            <div class="state-demo-item">
-                <button class="btn btn-primary" style="background-color: var(--sa-700); border-color: var(--sa-700);">Hover</button>
-                <div class="label">Hovered</div>
-            </div>
-            <div class="state-demo-item">
-                <button class="btn btn-primary pressed">Pressed</button>
-                <div class="label">Pressed</div>
-            </div>
-            <div class="state-demo-item">
-                <button class="btn btn-primary" style="border-color: var(--alpha-white); outline: solid 2px var(--gray-950);">Focus</button>
-                <div class="label">Focused</div>
-            </div>
-            <div class="state-demo-item">
-                <button class="btn btn-primary" disabled>Disabled</button>
-                <div class="label">Disabled</div>
-            </div>
-            <div class="state-demo-item">
-                <button class="btn btn-primary selected">Selected</button>
-                <div class="label">Selected</div>
-            </div>
-        </div>
+<!-- Button States -->
+<div class="component-preview">
+    <div class="component-preview-title">Button States</div>
+    <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <button class="btn btn-primary">Default</button>
+        <button class="btn btn-primary" style="background-color: var(--sa-700); border-color: var(--sa-700);">Hovered</button>
+        <button class="btn btn-primary pressed">Pressed</button>
+        <button class="btn btn-primary selected">Selected</button>
+        <button class="btn btn-primary" disabled>Disabled</button>
     </div>
+</div>
 
-    <!-- Destructive Variants -->
-    <div class="section">
-        <h2 class="section-title">Destructive Variants</h2>
-
-        <div class="button-row">
-            <button class="btn btn-primary destructive">Primary</button>
-            <button class="btn btn-secondary-solid destructive">Secondary Solid</button>
-            <button class="btn btn-secondary-outline destructive">Secondary Outline</button>
-            <button class="btn btn-subtle destructive">Subtle</button>
-            <button class="btn btn-transparent destructive">Transparent</button>
-        </div>
+<!-- Destructive Variants -->
+<div class="component-preview">
+    <div class="component-preview-title">Destructive Variants</div>
+    <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <button class="btn btn-primary destructive">Primary</button>
+        <button class="btn btn-secondary-solid destructive">Secondary Solid</button>
+        <button class="btn btn-secondary-outline destructive">Secondary Outline</button>
+        <button class="btn btn-subtle destructive">Subtle</button>
+        <button class="btn btn-transparent destructive">Transparent</button>
     </div>
+</div>
 
-    <!-- Buttons with Icons -->
-    <div class="section">
-        <h2 class="section-title">Buttons with Icons</h2>
+<!-- Buttons with Icons -->
+<div class="component-preview">
+    <div class="component-preview-title">Buttons with Icons</div>
+    <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 16px;">
+        <button class="btn btn-primary">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                    <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                </svg>
+            </span>
+            Add Item
+        </button>
+        <button class="btn btn-secondary-outline">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                </svg>
+            </span>
+            Edit
+        </button>
+        <button class="btn btn-subtle">
+            Settings
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                </svg>
+            </span>
+        </button>
+    </div>
+    <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <span style="color: var(--gray-500); font-size: var(--text-sm);">Icon Only:</span>
+        <button class="btn btn-primary btn-icon-only btn-large">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                    <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                </svg>
+            </span>
+        </button>
+        <button class="btn btn-primary btn-icon-only btn-medium">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
+                    <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                </svg>
+            </span>
+        </button>
+        <button class="btn btn-primary btn-icon-only btn-small">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                    <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                </svg>
+            </span>
+        </button>
+        <button class="btn btn-secondary-outline btn-icon-only">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                </svg>
+            </span>
+        </button>
+        <button class="btn btn-subtle btn-icon-only">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                    <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                </svg>
+            </span>
+        </button>
+        <button class="btn btn-transparent btn-icon-only destructive">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </span>
+        </button>
+    </div>
+</div>
 
-        <div class="subsection-title">Icon + Text</div>
-        <div class="button-row">
-            <button class="btn btn-primary">
-                <span class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-                    </svg>
-                </span>
-                Add Item
-            </button>
-            <button class="btn btn-secondary-outline">
-                <span class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                    </svg>
-                </span>
-                Edit
-            </button>
-            <button class="btn btn-subtle">
-                Settings
-                <span class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
-                    </svg>
-                </span>
-            </button>
+<!-- On-Color Variants -->
+<div class="component-preview">
+    <div class="component-preview-title">On-Color Variants (Dark Background)</div>
+    <div style="background-color: var(--sa-600); padding: 24px; border-radius: var(--radius-md); display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <button class="btn btn-on-color btn-neutral">Neutral</button>
+        <button class="btn btn-on-color btn-primary">Primary</button>
+        <button class="btn btn-on-color btn-secondary-solid">Secondary Solid</button>
+        <button class="btn btn-on-color btn-secondary-outline">Secondary Outline</button>
+        <button class="btn btn-on-color btn-subtle">Subtle</button>
+        <button class="btn btn-on-color btn-transparent">Transparent</button>
+    </div>
+</div>
+
+<!-- Loading State -->
+<div class="component-preview">
+    <div class="component-preview-title">Loading State</div>
+    <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <button class="btn btn-primary btn-loading">Loading</button>
+        <button class="btn btn-neutral btn-loading">Loading</button>
+        <button class="btn btn-secondary-solid btn-loading">Loading</button>
+        <button class="btn btn-secondary-outline btn-loading">Loading</button>
+    </div>
+</div>
+
+<!-- Button Group -->
+<div class="component-preview">
+    <div class="component-preview-title">Button Group</div>
+    <div style="display: flex; gap: 24px; flex-wrap: wrap; align-items: center;">
+        <div class="btn-group">
+            <button class="btn btn-secondary-outline">Left</button>
+            <button class="btn btn-secondary-outline">Center</button>
+            <button class="btn btn-secondary-outline">Right</button>
         </div>
-
-        <div class="subsection-title">Icon Only</div>
-        <div class="button-row">
-            <button class="btn btn-primary btn-icon-only btn-large">
-                <span class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-                    </svg>
-                </span>
-            </button>
-            <button class="btn btn-primary btn-icon-only btn-medium">
-                <span class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-                    </svg>
-                </span>
-            </button>
-            <button class="btn btn-primary btn-icon-only btn-small">
-                <span class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-                    </svg>
-                </span>
-            </button>
-        </div>
-
-        <div class="button-row">
+        <div class="btn-group">
             <button class="btn btn-secondary-outline btn-icon-only">
                 <span class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
                     </svg>
                 </span>
             </button>
-            <button class="btn btn-subtle btn-icon-only">
+            <button class="btn btn-secondary-outline btn-icon-only">
                 <span class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-                    </svg>
-                </span>
-            </button>
-            <button class="btn btn-transparent btn-icon-only destructive">
-                <span class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                     </svg>
                 </span>
             </button>
         </div>
     </div>
+</div>
 
-    <!-- On-Color Variants (Dark Background) -->
-    <div class="section">
-        <h2 class="section-title">On-Color Variants (Dark Background)</h2>
-
-        <div class="dark-section">
-            <div class="subsection-title">Standard Variants on Dark Background</div>
-            <div class="button-row">
-                <button class="btn btn-on-color btn-neutral">Neutral</button>
-                <button class="btn btn-on-color btn-primary">Primary</button>
-                <button class="btn btn-on-color btn-secondary-solid">Secondary Solid</button>
-                <button class="btn btn-on-color btn-secondary-outline">Secondary Outline</button>
-                <button class="btn btn-on-color btn-subtle">Subtle</button>
-                <button class="btn btn-on-color btn-transparent">Transparent</button>
-            </div>
-
-            <div class="subsection-title">Disabled State</div>
-            <div class="button-row">
-                <button class="btn btn-on-color btn-neutral" disabled>Neutral</button>
-                <button class="btn btn-on-color btn-primary" disabled>Primary</button>
-                <button class="btn btn-on-color btn-secondary-solid" disabled>Secondary Solid</button>
-                <button class="btn btn-on-color btn-secondary-outline" disabled>Secondary Outline</button>
-            </div>
-        </div>
+<!-- RTL Support -->
+<div class="component-preview">
+    <div class="component-preview-title">RTL Support</div>
+    <div dir="rtl" style="background: var(--gray-100); padding: 24px; border-radius: var(--radius-md); display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <button class="btn btn-primary">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                    <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                </svg>
+            </span>
+            زر RTL
+        </button>
+        <button class="btn btn-secondary-outline">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                </svg>
+            </span>
+            تعديل
+        </button>
     </div>
-
-    <!-- Loading State -->
-    <div class="section">
-        <h2 class="section-title">Loading State</h2>
-
-        <div class="button-row">
-            <button class="btn btn-primary btn-loading">Loading</button>
-            <button class="btn btn-neutral btn-loading">Loading</button>
-            <button class="btn btn-secondary-solid btn-loading">Loading</button>
-            <button class="btn btn-secondary-outline btn-loading">Loading</button>
-        </div>
-
-        <div class="button-row">
-            <button class="btn btn-primary btn-loading btn-small">Loading</button>
-            <button class="btn btn-primary btn-loading btn-medium">Loading</button>
-            <button class="btn btn-primary btn-loading btn-large">Loading</button>
-        </div>
-    </div>
-
-    <!-- Button Groups -->
-    <div class="section">
-        <h2 class="section-title">Button Groups</h2>
-
-        <div class="button-row">
-            <div class="btn-group">
-                <button class="btn btn-secondary-outline">Left</button>
-                <button class="btn btn-secondary-outline">Center</button>
-                <button class="btn btn-secondary-outline">Right</button>
-            </div>
-        </div>
-
-        <div class="button-row">
-            <div class="btn-group">
-                <button class="btn btn-secondary-outline btn-icon-only">
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-                        </svg>
-                    </span>
-                </button>
-                <button class="btn btn-secondary-outline btn-icon-only">
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                        </svg>
-                    </span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Full Width -->
-    <div class="section">
-        <h2 class="section-title">Full Width Button</h2>
-
-        <div style="max-width: 400px;">
-            <button class="btn btn-primary btn-full-width">Full Width Button</button>
-        </div>
-    </div>
-
-    <!-- RTL Demo -->
-    <div class="section">
-        <h2 class="section-title">RTL Support</h2>
-
-        <div dir="rtl" style="background: var(--gray-100); padding: 24px; border-radius: var(--radius-md);">
-            <div class="button-row">
-                <button class="btn btn-primary">
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-                        </svg>
-                    </span>
-                    RTL Button
-                </button>
-                <button class="btn btn-secondary-outline">
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                        </svg>
-                    </span>
-                    RTL Outline
-                </button>
-            </div>
-        </div>
-    </div>
-
-</body>
-</html>
+</div>

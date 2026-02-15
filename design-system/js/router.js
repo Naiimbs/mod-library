@@ -2,19 +2,24 @@
    ROUTER MODULE
    DGA Design System - Sidebar Navigation Router
    Handles routing between component sections
+   with dynamic HTML loading
    ============================================ */
 
 /**
  * Router class for handling component navigation
- * Single Responsibility: Only handles routing logic
+ * Dynamically loads component HTML partials via fetch()
  */
 class Router {
     constructor(config = {}) {
         this.sidebarSelector = config.sidebarSelector || '.sidebar-link';
-        this.sectionSelector = config.sectionSelector || '.component-section';
+        this.contentContainerId = config.contentContainerId || 'component-content';
         this.mainNavSelector = config.mainNavSelector || '.main-nav-link';
         this.defaultRoute = config.defaultRoute || 'nav-header';
         this.activeClass = config.activeClass || 'active';
+        this.componentsBasePath = config.componentsBasePath || 'components';
+
+        // Cache for loaded component HTML
+        this.cache = new Map();
 
         this.init();
     }
@@ -23,6 +28,7 @@ class Router {
      * Initialize the router
      */
     init() {
+        this.contentContainer = document.getElementById(this.contentContainerId);
         this.bindEvents();
         this.handleRouting();
     }
@@ -59,8 +65,8 @@ class Router {
         const hash = window.location.hash.slice(1) || this.defaultRoute;
 
         this.updateSidebarLinks(hash);
-        this.updateSections(hash);
         this.updateMainNav(hash);
+        this.loadComponent(hash);
     }
 
     /**
@@ -75,18 +81,63 @@ class Router {
     }
 
     /**
-     * Update visible content section
-     * @param {string} activeHash - Current active hash
+     * Load component HTML dynamically
+     * @param {string} componentId - Component ID to load
      */
-    updateSections(activeHash) {
-        document.querySelectorAll(this.sectionSelector).forEach(section => {
-            const isActive = section.id === activeHash;
-            section.classList.toggle(this.activeClass, isActive);
+    async loadComponent(componentId) {
+        if (!this.contentContainer) return;
 
-            if (isActive) {
-                window.scrollTo(0, 0);
+        // Check cache first
+        if (this.cache.has(componentId)) {
+            this.contentContainer.innerHTML = this.cache.get(componentId);
+            this.onComponentLoaded(componentId);
+            return;
+        }
+
+        // Build the path: components/{id}/{id}.html
+        const url = `${this.componentsBasePath}/${componentId}/${componentId}.html`;
+
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                this.contentContainer.innerHTML = `
+                    <div class="content-header">
+                        <h1 class="content-title">${componentId}</h1>
+                        <p class="content-description">Component not found.</p>
+                    </div>`;
+                return;
             }
-        });
+
+            const html = await response.text();
+
+            // Cache the result
+            this.cache.set(componentId, html);
+
+            // Inject into container
+            this.contentContainer.innerHTML = html;
+            this.onComponentLoaded(componentId);
+        } catch (error) {
+            console.error(`Failed to load component: ${componentId}`, error);
+            this.contentContainer.innerHTML = `
+                <div class="content-header">
+                    <h1 class="content-title">${componentId}</h1>
+                    <p class="content-description">Failed to load component.</p>
+                </div>`;
+        }
+    }
+
+    /**
+     * Called after component HTML is injected into the DOM
+     * Dispatches a custom event so JS modules can re-initialize
+     * @param {string} componentId - The loaded component ID
+     */
+    onComponentLoaded(componentId) {
+        window.scrollTo(0, 0);
+
+        // Dispatch event for other modules to reinitialize
+        document.dispatchEvent(new CustomEvent('component:loaded', {
+            detail: { componentId }
+        }));
     }
 
     /**
