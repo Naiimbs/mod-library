@@ -14,11 +14,6 @@
     padding: 0;
 }
 
-html,
-body {
-    height: 100%;
-}
-
 body {
     font-family: var(--font-family-primary);
     font-size: var(--font-size-sm);
@@ -66,19 +61,18 @@ button {
 .layout {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
 }
 
 .main-content {
     display: flex;
-    flex: 1;
-    padding-top: 72px; /* Navigation header height */
+    padding-top: 72px;
+    /* Navigation header height */
 }
 
 /* ============================================
    HEADER (DGA Navigation)
    ============================================ */
-.navigation-header {
+.layout > .navigation-header {
     position: fixed;
     top: 0;
     left: 0;

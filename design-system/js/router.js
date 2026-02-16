@@ -96,18 +96,11 @@ class Router {
     async loadComponent(componentId) {
         if (!this.contentContainer) return;
 
-        // Check cache first
-        if (this.cache.has(componentId)) {
-            this.contentContainer.innerHTML = this.cache.get(componentId);
-            this.onComponentLoaded(componentId);
-            return;
-        }
-
         // Build the path: components/{id}/{id}.html
         const url = `${this.componentsBasePath}/${componentId}/${componentId}.html`;
 
         try {
-            const response = await fetch(url);
+            const response = await fetch(url, { cache: 'no-cache' });
             if (!response.ok) {
                 this.contentContainer.innerHTML = `
                     <div class="content-header">
@@ -117,13 +110,20 @@ class Router {
                 return;
             }
 
-            const html = await response.text();
+            let html = await response.text();
+
+            // Strip scripts injected by dev tools (e.g. live-server).
+            // Live-server injects a reconnect script inside every <svg>,
+            // so we must strip both complete and truncated injections.
+            //  html = html.replace(/<!--\s*Code injected by live-server\s*-->[\s\S]*?<\/script>/gi, '');
+            //  html = html.replace(/<!--\s*Code injected by live-server\s*-->\s*<script\b[\s\S]*$/gi, '');
 
             // Cache the result
             this.cache.set(componentId, html);
 
             // Inject into container
             this.contentContainer.innerHTML = html;
+
             this.onComponentLoaded(componentId);
         } catch (error) {
             console.error(`Failed to load component: ${componentId}`, error);

@@ -115,7 +115,7 @@ class DGADesignSystem {
      */
     initSidebarNavDemo() {
         document.querySelectorAll('.sidebar-nav-demo .sidebar-nav-item').forEach(item => {
-            item.addEventListener('click', function(e) {
+            item.addEventListener('click', function (e) {
                 e.preventDefault();
                 const parent = this.closest('.sidebar-nav-demo');
                 if (parent) {
@@ -140,7 +140,7 @@ class DGADesignSystem {
         const actionButtons = previewContainer.querySelectorAll('.navigation-header .header-action--outline');
 
         menuItems.forEach(item => {
-            item.addEventListener('click', function(e) {
+            item.addEventListener('click', function (e) {
                 e.preventDefault();
                 const parent = this.closest('.navigation-header');
                 if (parent) {
@@ -153,7 +153,7 @@ class DGADesignSystem {
         });
 
         actionButtons.forEach(btn => {
-            btn.addEventListener('click', function(e) {
+            btn.addEventListener('click', function (e) {
                 e.preventDefault();
                 const parent = this.closest('.navigation-header');
                 if (parent) {
@@ -178,7 +178,7 @@ class DGADesignSystem {
         const actionButtons = header.querySelectorAll('.header-action--outline');
 
         menuItems.forEach(item => {
-            item.addEventListener('click', function(e) {
+            item.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
                 // Allow hash navigation for real destinations
                 if (href && href.length > 1 && href.startsWith('#')) {
@@ -192,7 +192,7 @@ class DGADesignSystem {
         });
 
         actionButtons.forEach(btn => {
-            btn.addEventListener('click', function(e) {
+            btn.addEventListener('click', function (e) {
                 e.preventDefault();
                 actionButtons.forEach(b => b.classList.remove('header-action--selected'));
                 this.classList.add('header-action--selected');
@@ -205,6 +205,6 @@ class DGADesignSystem {
 window.DGA = new DGADesignSystem();
 
 // Initialize on DOM ready
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     window.DGA.init();
 });
