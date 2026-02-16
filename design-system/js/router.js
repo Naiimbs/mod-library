@@ -64,6 +64,15 @@ class Router {
     handleRouting() {
         const hash = window.location.hash.slice(1) || this.defaultRoute;
 
+        // Full-page views that hide the sidebar
+        const fullPageViews = ['icons'];
+        const isFullPage = fullPageViews.includes(hash);
+
+        const mainContent = document.querySelector('.main-content');
+        if (mainContent) {
+            mainContent.classList.toggle('main-content--no-sidebar', isFullPage);
+        }
+
         this.updateSidebarLinks(hash);
         this.updateMainNav(hash);
         this.loadComponent(hash);
@@ -142,14 +151,31 @@ class Router {
 
     /**
      * Update main navigation active states
+     * Maps hashes to their parent top-level tab
      * @param {string} activeHash - Current active hash
      */
     updateMainNav(activeHash) {
+        // Determine which top-level tab should be active
+        const topLevelTabs = ['icons', 'screens'];
+        const activeTab = topLevelTabs.includes(activeHash) ? activeHash : 'components';
+
         document.querySelectorAll(this.mainNavSelector).forEach(link => {
-            const href = link.getAttribute('href');
-            if (href && href.startsWith('#')) {
-                link.classList.toggle(this.activeClass, href === '#' + activeHash);
+            const text = link.querySelector('.header-menu-item__text');
+            if (!text) return;
+
+            const tabName = text.textContent.trim().toLowerCase();
+            let isActive = false;
+
+            if (activeTab === 'icons') {
+                isActive = tabName === 'icons';
+            } else if (activeTab === 'screens') {
+                isActive = tabName === 'screen templates';
+            } else {
+                isActive = tabName === 'components';
             }
+
+            link.classList.toggle(this.activeClass, isActive);
+            link.classList.toggle('header-menu-item--selected', isActive);
         });
     }
 

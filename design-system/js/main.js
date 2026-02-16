@@ -88,6 +88,11 @@ class DGADesignSystem {
             this.register('textInput', new TextInputManager());
         }
 
+        // Icons Showcase
+        if (componentId === 'icons' && typeof IconsShowcase !== 'undefined') {
+            this.register('icons', new IconsShowcase());
+        }
+
         // Digital Stamp (uses its own init function)
         if (componentId === 'digital-stamp' && typeof initDigitalStamps !== 'undefined') {
             initDigitalStamps();
@@ -174,7 +179,13 @@ class DGADesignSystem {
 
         menuItems.forEach(item => {
             item.addEventListener('click', function(e) {
-                e.preventDefault();
+                const href = this.getAttribute('href');
+                // Allow hash navigation for real destinations
+                if (href && href.length > 1 && href.startsWith('#')) {
+                    // Let the browser follow the link; router handles the rest
+                } else {
+                    e.preventDefault();
+                }
                 menuItems.forEach(i => i.classList.remove('header-menu-item--selected'));
                 this.classList.add('header-menu-item--selected');
             });

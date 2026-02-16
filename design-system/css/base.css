@@ -147,6 +147,17 @@ button {
 }
 
 /* ============================================
+   FULL-PAGE VIEWS (no sidebar)
+   ============================================ */
+.main-content--no-sidebar .sidebar {
+    display: none;
+}
+
+.main-content--no-sidebar .content {
+    max-width: 100%;
+}
+
+/* ============================================
    CONTENT AREA
    ============================================ */
 .content {
