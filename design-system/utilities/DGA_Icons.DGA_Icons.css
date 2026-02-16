@@ -27,79 +27,79 @@
 /* ========================================================= */
 
 /* Imported Styles - Icons ================================= */
-@import url('../add-remove-delete.css?zUs5pzjWKUtd6N0xBAKsOQ');
-@import url('../ai.css?6YV7RiO_DyyTbe1POrsgDQ');
-@import url('../alert.css?p6gMo2aQvmhsEj0tYgwW0g');
-@import url('../animation.css?LZpjjBGlBGtyh2BpqNQVUw');
-@import url('../arrows.css?bxsswj6ykINJEyWn9YG0Jg');
-@import url('../award-reward.css?6HCwGgZD4he+SmTEVCQcCw');
-@import url('../bookmark-favourite.css?HAjh0KUDESyrWszWvsOBeg');
-@import url('../building-landmark-places.css?Okmzc88nlfQZWmT6bXt1pQ');
-@import url('../business-finance.css?+UtIbjqFvZ_SEGSysbsUqQ');
-@import url('../check-validation.css?3uVsEPMG5G70NMUcDaFw0A');
-@import url('../cloth-accessories.css?rqD_jFfMpkqbAGRA6na4GQ');
-@import url('../communications.css?Nd5u3UN0RB4fAb37zapIig');
-@import url('../community.css?dxTHbuwvxXzSBI2GNY8Umg');
-@import url('../crypto.css?6z8eVJwFXRzAmNXqxHOWmw');
-@import url('../dashboard.css?6PW3YLbqgF1Jcx7RQ2c0+A');
-@import url('../date-time.css?7XowQFMz3xiInHl0o2EXMw');
-@import url('../devices.css?I8a4b5QmvS62RRQ2oERl5g');
-@import url('../download-upload.css?XESD0O9Y50dl4gNZbQgqew');
-@import url('../e-commerce.css?KR0nTjPnyqCOt_Xr7rumSg');
-@import url('../edit-formatting.css?GK4KNMcIhVsug0D972nDkg');
-@import url('../education.css?veSZqa26bpOfWsL8NEmJYA');
-@import url('../emojis.css?gJxABZhcOWsBRK9ir4fPGg');
-@import url('../energy.css?RqrRnCY44UKSA2stlh2zYw');
-@import url('../files-folders.css?lRwloeEAX+dBmLk2_ASwYA');
-@import url('../filter-sorting.css?GRo+NA7n8d3A7_u7HvZPBA');
-@import url('../food-drink.css?rq4jRPuPBOSnSMR6angqaQ');
-@import url('../furnitures.css?mrudqb5thbfr+mn+tpLieQ');
-@import url('../game-sports.css?vdKX5d0LtzSy4vwaNTJPsg');
-@import url('../geometric-shapes.css?sprTVxw0iXn+wnekulYqpw');
-@import url('../git.css?CJL8+0kNMPckCL5yaJ6UIw');
-@import url('../gym-fitness.css?qOwygUo2JmPvWsWOVa3sKQ');
-@import url('../hands-gestures.css?gEEV4+F6rKEpbUvnesMqbA');
-@import url('../hierarchy.css?TCYaIHjcBzQfWM841RU4Aw');
-@import url('../home.css?dcuFdkDpZ_Kqg81jwpspTg');
-@import url('../image-camera-video.css?q7RNMphAg7CZGsztwDDYvQ');
-@import url('../islamic.css?fO0FsO+JYcY8BzkJoOv4zg');
-@import url('../kitchen.css?XahpbvTuu+Wuj8RGZ1hTRA');
-@import url('../layout-borders.css?ihwwK3zdpXTrC8x5bMyNYA');
-@import url('../legal.css?KVnqYoWmliY8qejtQg4LqA');
-@import url('../link-unlink.css?kdyD_mwjL96U8oCxqdc2uw');
-@import url('../location-maps.css?PcNHPZrLMG3VaXzzN0dfdw');
-@import url('../login-logout.css?5TW3k5+i4r6cUHEiWuDemw');
-@import url('../logos.css?tg2xqIS4T82bkl3UGDSACQ');
-@import url('../mathematics.css?FHKfQ63dK7koy+L7y_5YqA');
-@import url('../media.css?cwH2zhVGm5LAKt4OgBlrUw');
-@import url('../medical.css?LuLR5KLN3ifAB57391Nu5A');
-@import url('../menu.css?Lg_pB1NH+EzP7uiGRtpymg');
-@import url('../mouse-cursors.css?_Fwh4mpG6R77+FaFIVjOzQ');
-@import url('../notes-tasks.css?5QG6kdMRYA+lDTQW7dLUiQ');
-@import url('../presentation.css?o2eysEtFL2Gu8WUKgLetcA');
-@import url('../programming-languages.css?sno8sOx5rLX36zdKSIUpCA');
-@import url('../science-technology.css?bgSuzNGsB+WSCkGKiB2eJQ');
-@import url('../search.css?D2tl4BCuIW9tQypNFD7q_A');
-@import url('../security.css?8Uqu8wGCzsY1M4NnZxW+0w');
-@import url('../settings.css?nKG5kACK4IT+D6gbADJUrQ');
-@import url('../space-galaxy.css?DnPtWK4ZgiwfjbaJklpisw');
-@import url('../transportation-logistics.css?WfOMUJHa8nY0flU8fO2J6g');
-@import url('../users.css?6zP+AudngGiDjjRK9McJ6w');
-@import url('../weather.css?u_kE_7H4L+vqfVchIQfi3w');
-@import url('../wifi-signal.css?IMtIr62MGUxdh8MQQQlbLg');
+@import url('Icons_Css/add-remove-delete.css?zUs5pzjWKUtd6N0xBAKsOQ');
+@import url('Icons_Css/ai.css?6YV7RiO_DyyTbe1POrsgDQ');
+@import url('Icons_Css/alert.css?p6gMo2aQvmhsEj0tYgwW0g');
+@import url('Icons_Css/animation.css?LZpjjBGlBGtyh2BpqNQVUw');
+@import url('Icons_Css/arrows.css?bxsswj6ykINJEyWn9YG0Jg');
+@import url('Icons_Css/award-reward.css?6HCwGgZD4he+SmTEVCQcCw');
+@import url('Icons_Css/bookmark-favourite.css?HAjh0KUDESyrWszWvsOBeg');
+@import url('Icons_Css/building-landmark-places.css?Okmzc88nlfQZWmT6bXt1pQ');
+@import url('Icons_Css/business-finance.css?+UtIbjqFvZ_SEGSysbsUqQ');
+@import url('Icons_Css/check-validation.css?3uVsEPMG5G70NMUcDaFw0A');
+@import url('Icons_Css/cloth-accessories.css?rqD_jFfMpkqbAGRA6na4GQ');
+@import url('Icons_Css/communications.css?Nd5u3UN0RB4fAb37zapIig');
+@import url('Icons_Css/community.css?dxTHbuwvxXzSBI2GNY8Umg');
+@import url('Icons_Css/crypto.css?6z8eVJwFXRzAmNXqxHOWmw');
+@import url('Icons_Css/dashboard.css?6PW3YLbqgF1Jcx7RQ2c0+A');
+@import url('Icons_Css/date-time.css?7XowQFMz3xiInHl0o2EXMw');
+@import url('Icons_Css/devices.css?I8a4b5QmvS62RRQ2oERl5g');
+@import url('Icons_Css/download-upload.css?XESD0O9Y50dl4gNZbQgqew');
+@import url('Icons_Css/e-commerce.css?KR0nTjPnyqCOt_Xr7rumSg');
+@import url('Icons_Css/edit-formatting.css?GK4KNMcIhVsug0D972nDkg');
+@import url('Icons_Css/education.css?veSZqa26bpOfWsL8NEmJYA');
+@import url('Icons_Css/emojis.css?gJxABZhcOWsBRK9ir4fPGg');
+@import url('Icons_Css/energy.css?RqrRnCY44UKSA2stlh2zYw');
+@import url('Icons_Css/files-folders.css?lRwloeEAX+dBmLk2_ASwYA');
+@import url('Icons_Css/filter-sorting.css?GRo+NA7n8d3A7_u7HvZPBA');
+@import url('Icons_Css/food-drink.css?rq4jRPuPBOSnSMR6angqaQ');
+@import url('Icons_Css/furnitures.css?mrudqb5thbfr+mn+tpLieQ');
+@import url('Icons_Css/game-sports.css?vdKX5d0LtzSy4vwaNTJPsg');
+@import url('Icons_Css/geometric-shapes.css?sprTVxw0iXn+wnekulYqpw');
+@import url('Icons_Css/git.css?CJL8+0kNMPckCL5yaJ6UIw');
+@import url('Icons_Css/gym-fitness.css?qOwygUo2JmPvWsWOVa3sKQ');
+@import url('Icons_Css/hands-gestures.css?gEEV4+F6rKEpbUvnesMqbA');
+@import url('Icons_Css/hierarchy.css?TCYaIHjcBzQfWM841RU4Aw');
+@import url('Icons_Css/home.css?dcuFdkDpZ_Kqg81jwpspTg');
+@import url('Icons_Css/image-camera-video.css?q7RNMphAg7CZGsztwDDYvQ');
+@import url('Icons_Css/islamic.css?fO0FsO+JYcY8BzkJoOv4zg');
+@import url('Icons_Css/kitchen.css?XahpbvTuu+Wuj8RGZ1hTRA');
+@import url('Icons_Css/layout-borders.css?ihwwK3zdpXTrC8x5bMyNYA');
+@import url('Icons_Css/legal.css?KVnqYoWmliY8qejtQg4LqA');
+@import url('Icons_Css/link-unlink.css?kdyD_mwjL96U8oCxqdc2uw');
+@import url('Icons_Css/location-maps.css?PcNHPZrLMG3VaXzzN0dfdw');
+@import url('Icons_Css/login-logout.css?5TW3k5+i4r6cUHEiWuDemw');
+@import url('Icons_Css/logos.css?tg2xqIS4T82bkl3UGDSACQ');
+@import url('Icons_Css/mathematics.css?FHKfQ63dK7koy+L7y_5YqA');
+@import url('Icons_Css/media.css?cwH2zhVGm5LAKt4OgBlrUw');
+@import url('Icons_Css/medical.css?LuLR5KLN3ifAB57391Nu5A');
+@import url('Icons_Css/menu.css?Lg_pB1NH+EzP7uiGRtpymg');
+@import url('Icons_Css/mouse-cursors.css?_Fwh4mpG6R77+FaFIVjOzQ');
+@import url('Icons_Css/notes-tasks.css?5QG6kdMRYA+lDTQW7dLUiQ');
+@import url('Icons_Css/presentation.css?o2eysEtFL2Gu8WUKgLetcA');
+@import url('Icons_Css/programming-languages.css?sno8sOx5rLX36zdKSIUpCA');
+@import url('Icons_Css/science-technology.css?bgSuzNGsB+WSCkGKiB2eJQ');
+@import url('Icons_Css/search.css?D2tl4BCuIW9tQypNFD7q_A');
+@import url('Icons_Css/security.css?8Uqu8wGCzsY1M4NnZxW+0w');
+@import url('Icons_Css/settings.css?nKG5kACK4IT+D6gbADJUrQ');
+@import url('Icons_Css/space-galaxy.css?DnPtWK4ZgiwfjbaJklpisw');
+@import url('Icons_Css/transportation-logistics.css?WfOMUJHa8nY0flU8fO2J6g');
+@import url('Icons_Css/users.css?6zP+AudngGiDjjRK9McJ6w');
+@import url('Icons_Css/weather.css?u_kE_7H4L+vqfVchIQfi3w');
+@import url('Icons_Css/wifi-signal.css?IMtIr62MGUxdh8MQQQlbLg');
 
 /* Imported Styles - Misc ================================== */
-@import url('../flags.css?gkZHmgabvRPJV_SOPFDiTg');
-@import url('../payment.css?V6WO1OhVO9ag5j1RHTALkA');
-@import url('../social.css?7bJkMnt4DGNPIdFa_y6DGQ');
-@import url('../telecom.css?IZePOKovTUSVJaAh3j36rw');
+@import url('Icons_Css/flags.css?gkZHmgabvRPJV_SOPFDiTg');
+@import url('Icons_Css/payment.css?V6WO1OhVO9ag5j1RHTALkA');
+@import url('Icons_Css/social.css?7bJkMnt4DGNPIdFa_y6DGQ');
+@import url('Icons_Css/telecom.css?IZePOKovTUSVJaAh3j36rw');
 
 /* Imported Styles - Depricated ============================ */
-@import url('../flags_depricated.css?xxP7956+WlpHgJrjiu6iYA');
-@import url('../community_depricated.css?DA8zMhrPorIWbAIcFospDg');
-@import url('../mathematics_depricated.css?Bpoh+5nCT3_UdZlTCkxOcA');
-@import url('../programming-languages_depricated.css?tXszaxkLyoKegudADMKbgw');
-@import url('../devices_depricated.css?tlCqA9H6cZG2AAtQBCxoWQ');
+@import url('Icons_Css/flags_depricated.css?xxP7956+WlpHgJrjiu6iYA');
+@import url('Icons_Css/community_depricated.css?DA8zMhrPorIWbAIcFospDg');
+@import url('Icons_Css/mathematics_depricated.css?Bpoh+5nCT3_UdZlTCkxOcA');
+@import url('Icons_Css/programming-languages_depricated.css?tXszaxkLyoKegudADMKbgw');
+@import url('Icons_Css/devices_depricated.css?tlCqA9H6cZG2AAtQBCxoWQ');
 
 /* ========================================================= */
 /*  2. Icons                                                 */
@@ -108,427 +108,427 @@
 /* Icons - Font Families =================================== */
 @font-face {
     font-family: 'dga-fonts-icons-add-remove-delete';
-    src:  url('../add-remove-delete.woff2?DNb3BpX54psmi8vXwoI3Og');
+    src:  url('Fonts/add-remove-delete.woff2?DNb3BpX54psmi8vXwoI3Og');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-ai';
-    src:  url('../ai.woff2?udEdG2e5+D0Tx1zPPHYdZw');
+    src:  url('Fonts/ai.woff2?udEdG2e5+D0Tx1zPPHYdZw');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-alert';
-    src:  url('../alert.woff2?yCLsv05P_Zrs7ln0kUKdYw');
+    src:  url('Fonts/alert.woff2?yCLsv05P_Zrs7ln0kUKdYw');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-animation';
-    src:  url('../animation.woff2?8CHBMPklh1mU4bsnKugOOg');
+    src:  url('Fonts/animation.woff2?8CHBMPklh1mU4bsnKugOOg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-arrows';
-    src:  url('../arrows.woff2?s9XhcNXbqkxOR1brt_brSQ');
+    src:  url('Fonts/arrows.woff2?s9XhcNXbqkxOR1brt_brSQ');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-award-reward';
-    src:  url('../award-reward.woff2?_8Ivip6PnVBDHVFg7cuo9Q');
+    src:  url('Fonts/award-reward.woff2?_8Ivip6PnVBDHVFg7cuo9Q');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-bookmark-favourite';
-    src:  url('../bookmark-favourite.woff2?_4inEvjRA+LWC1KVr2mRqQ');
+    src:  url('Fonts/bookmark-favourite.woff2?_4inEvjRA+LWC1KVr2mRqQ');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-building-landmark-places';
-    src:  url('../building-landmark-places.woff2?XU+5ee14U+pRu6D+Zy64Kw');
+    src:  url('Fonts/building-landmark-places.woff2?XU+5ee14U+pRu6D+Zy64Kw');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-business-finance';
-    src:  url('../business-finance.woff2?RMF4EWiZesGO6lurnW6fag');
+    src:  url('Fonts/business-finance.woff2?RMF4EWiZesGO6lurnW6fag');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-check-validation';
-    src:  url('../check-validation.woff2?WpxwL4lXKQxUPQ04tDV3fg');
+    src:  url('Fonts/check-validation.woff2?WpxwL4lXKQxUPQ04tDV3fg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-cloth-accessories';
-    src:  url('../cloth-accessories.woff2?lexWV4VFKeHIG6XadRIPPg');
+    src:  url('Fonts/cloth-accessories.woff2?lexWV4VFKeHIG6XadRIPPg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-communications';
-    src:  url('../communications.woff2?Q8Kn823xRKptpKnUxb2Oow');
+    src:  url('Fonts/communications.woff2?Q8Kn823xRKptpKnUxb2Oow');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-community';
-    src:  url('../community.woff2?Zlndxxo8llUAm53zubIgHQ');
+    src:  url('Fonts/community.woff2?Zlndxxo8llUAm53zubIgHQ');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-community-2';
-    src:  url('../community-2.woff2?sxYIWYQHWD90lCh9+Sb2QQ');
+    src:  url('Fonts/community-2.woff2?sxYIWYQHWD90lCh9+Sb2QQ');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-crypto';
-    src:  url('../crypto.woff2?taBteDDPDgCN4I_KfUs6WQ');
+    src:  url('Fonts/crypto.woff2?taBteDDPDgCN4I_KfUs6WQ');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-dashboard';
-    src:  url('../dashboard.woff2?dTvKI2S035s+xjZGTS4DUQ');
+    src:  url('Fonts/dashboard.woff2?dTvKI2S035s+xjZGTS4DUQ');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-date-time';
-    src:  url('../date-time.woff2?P2ywMTjebglASy5qUIwtXg');
+    src:  url('Fonts/date-time.woff2?P2ywMTjebglASy5qUIwtXg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-devices';
-    src:  url('../devices.woff2?dlJwe5fYICrP3fV7iFXEOw');
+    src:  url('Fonts/devices.woff2?dlJwe5fYICrP3fV7iFXEOw');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-download-upload';
-    src:  url('../download-upload.woff2?rBzHI8+5Vf39ILryQQZbhw');
+    src:  url('Fonts/download-upload.woff2?rBzHI8+5Vf39ILryQQZbhw');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-e-commerce';
-    src:  url('../e-commerce.woff2?IrmIy1y2quMaUsWew0kWRw');
+    src:  url('Fonts/e-commerce.woff2?IrmIy1y2quMaUsWew0kWRw');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-edit-formatting';
-    src:  url('../edit-formatting.woff2?kYHZ3zyqbUHIv6ku32GJgg');
+    src:  url('Fonts/edit-formatting.woff2?kYHZ3zyqbUHIv6ku32GJgg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-education';
-    src:  url('../education.woff2?adWFMdwScXbBRgeI3I3DuA');
+    src:  url('Fonts/education.woff2?adWFMdwScXbBRgeI3I3DuA');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-emojis';
-    src:  url('../emojis.woff2?WXwMVZk1SwHDiv08oSBuLw');
+    src:  url('Fonts/emojis.woff2?WXwMVZk1SwHDiv08oSBuLw');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-energy';
-    src:  url('../energy.woff2?Pvz7xm_UjgaWe4u2oD4Kwg');
+    src:  url('Fonts/energy.woff2?Pvz7xm_UjgaWe4u2oD4Kwg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-files-folders';
-    src:  url('../files-folders.woff2?KUw2eVGevviXNxLTJwT7cA');
+    src:  url('Fonts/files-folders.woff2?KUw2eVGevviXNxLTJwT7cA');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-filter-sorting';
-    src:  url('../filter-sorting.woff2?+xXDR48eeqQEiYyLd7fj1g');
+    src:  url('Fonts/filter-sorting.woff2?+xXDR48eeqQEiYyLd7fj1g');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-food-drink';
-    src:  url('../food-drink.woff2?Lx9DVZtEMhJFm2EC1OtRzw');
+    src:  url('Fonts/food-drink.woff2?Lx9DVZtEMhJFm2EC1OtRzw');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-furnitures';
-    src:  url('../furnitures.woff2?ADEW_tsYtd2R_W4jsp89YA');
+    src:  url('Fonts/furnitures.woff2?ADEW_tsYtd2R_W4jsp89YA');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-game-sports';
-    src:  url('../game-sports.woff2?Dv07SVkLfmZCtmLNaWSW9g');
+    src:  url('Fonts/game-sports.woff2?Dv07SVkLfmZCtmLNaWSW9g');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-geometric-shapes';
-    src:  url('../geometric-shapes.woff2?ENXWzX8W9A1yYJluSSxJqw');
+    src:  url('Fonts/geometric-shapes.woff2?ENXWzX8W9A1yYJluSSxJqw');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-git';
-    src:  url('../git.woff2?sidijmXc7n6th9Mia_uVMA');
+    src:  url('Fonts/git.woff2?sidijmXc7n6th9Mia_uVMA');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-gym-fitness';
-    src:  url('../gym-fitness.woff2?Oe2I+69asLu5JPXbzU+4mg');
+    src:  url('Fonts/gym-fitness.woff2?Oe2I+69asLu5JPXbzU+4mg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-hands-gestures';
-    src:  url('../hands-gestures.woff2?h1ZA6QFC54w2NUSIdSQdKQ');
+    src:  url('Fonts/hands-gestures.woff2?h1ZA6QFC54w2NUSIdSQdKQ');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-hierarchy';
-    src:  url('../hierarchy.woff2?Y8xYqBqogjA+X4J7JWgQiw');
+    src:  url('Fonts/hierarchy.woff2?Y8xYqBqogjA+X4J7JWgQiw');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-home';
-    src:  url('../home.woff2?OODDm5Ti2isCrWLYvo0P7w');
+    src:  url('Fonts/home.woff2?OODDm5Ti2isCrWLYvo0P7w');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-image-camera-video';
-    src:  url('../image-camera-video.woff2?W+3V6b4Jj9zPU7XUoevzwA');
+    src:  url('Fonts/image-camera-video.woff2?W+3V6b4Jj9zPU7XUoevzwA');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-islamic';
-    src:  url('../islamic.woff2?1VnAGZqAOtXtQ5kfMAYdZQ');
+    src:  url('Fonts/islamic.woff2?1VnAGZqAOtXtQ5kfMAYdZQ');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-kitchen';
-    src:  url('../kitchen.woff2?qPNyiG2Btzz9cvVFmm5LJg');
+    src:  url('Fonts/kitchen.woff2?qPNyiG2Btzz9cvVFmm5LJg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-layout-borders';
-    src:  url('../layout-borders.woff2?ETR7rea_cfS8feDXXoNdSQ');
+    src:  url('Fonts/layout-borders.woff2?ETR7rea_cfS8feDXXoNdSQ');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-legal';
-    src:  url('../legal.woff2?pujGaNBBob3f1zk5N1YiOg');
+    src:  url('Fonts/legal.woff2?pujGaNBBob3f1zk5N1YiOg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-link-unlink';
-    src:  url('../link-unlink.woff2?sl6kMQ2e5tlMMON4a+QPmA');
+    src:  url('Fonts/link-unlink.woff2?sl6kMQ2e5tlMMON4a+QPmA');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-location-maps';
-    src:  url('../location-maps.woff2?wPsn4PUXcCc4Daw_kjKdpw');
+    src:  url('Fonts/location-maps.woff2?wPsn4PUXcCc4Daw_kjKdpw');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-login-logout';
-    src:  url('../login-logout.woff2?TyH5wimtuKrvgXZ_rnXPIQ');
+    src:  url('Fonts/login-logout.woff2?TyH5wimtuKrvgXZ_rnXPIQ');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-logos';
-    src:  url('../logos.woff2?3nSEILfZwYRbFp5dQfaSAQ');
+    src:  url('Fonts/logos.woff2?3nSEILfZwYRbFp5dQfaSAQ');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-mathematics';
-    src:  url('../mathematics.woff2?OamXI5NKKlpU1AoKNdD3yA');
+    src:  url('Fonts/mathematics.woff2?OamXI5NKKlpU1AoKNdD3yA');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-media';
-    src:  url('../media.woff2?XUZaFcZARQzD3HutCLA6jQ');
+    src:  url('Fonts/media.woff2?XUZaFcZARQzD3HutCLA6jQ');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-medical';
-    src:  url('../medical.woff2?GOFCBELS9JYgmUsde7PuFQ');
+    src:  url('Fonts/medical.woff2?GOFCBELS9JYgmUsde7PuFQ');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-menu';
-    src:  url('../menu.woff2?HJpKgXucxKj9PyKNSMs4xA');
+    src:  url('Fonts/menu.woff2?HJpKgXucxKj9PyKNSMs4xA');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-mouse-cursors';
-    src:  url('../mouse-cursors.woff2?mINjizfSU8aOoZxsU5Ejow');
+    src:  url('Fonts/mouse-cursors.woff2?mINjizfSU8aOoZxsU5Ejow');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-notes-tasks';
-    src:  url('../notes-tasks.woff2?Cx3BWR5FFmpyovsU5sTG6Q');
+    src:  url('Fonts/notes-tasks.woff2?Cx3BWR5FFmpyovsU5sTG6Q');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-presentation';
-    src:  url('../presentation.woff2?NVxItC8V91zQv00QSQ4NTQ');
+    src:  url('Fonts/presentation.woff2?NVxItC8V91zQv00QSQ4NTQ');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-programming-languages';
-    src:  url('../programming-languages.woff2?oEkhYqWsmG4Faaiudiyn+g');
+    src:  url('Fonts/programming-languages.woff2?oEkhYqWsmG4Faaiudiyn+g');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-science-technology';
-    src:  url('../science-technology.woff2?In6N14_gGAVRtukUnG1ZPg');
+    src:  url('Fonts/science-technology.woff2?In6N14_gGAVRtukUnG1ZPg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-search';
-    src:  url('../search.woff2?L8MxGxZbPf0DhNBJvV0h+g');
+    src:  url('Fonts/search.woff2?L8MxGxZbPf0DhNBJvV0h+g');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-security';
-    src:  url('../security.woff2?IbNYcsXuUbDJk4bUaz+e8g');
+    src:  url('Fonts/security.woff2?IbNYcsXuUbDJk4bUaz+e8g');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-settings';
-    src:  url('../settings.woff2?bEcSy2w2fXGqHRAC0N9q9w');
+    src:  url('Fonts/settings.woff2?bEcSy2w2fXGqHRAC0N9q9w');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-space-galaxy';
-    src:  url('../space-galaxy.woff2?8EKkap5ktjJTQl4z2BEFkQ');
+    src:  url('Fonts/space-galaxy.woff2?8EKkap5ktjJTQl4z2BEFkQ');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-transportation-logistics';
-    src:  url('../transportation-logistics.woff2?X_XD5Z__I+PVPnrhDTGPGw');
+    src:  url('Fonts/transportation-logistics.woff2?X_XD5Z__I+PVPnrhDTGPGw');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-users';
-    src:  url('../users.woff2?1tD47k7Zvh8n49+eGxQ1Sg');
+    src:  url('Fonts/users.woff2?1tD47k7Zvh8n49+eGxQ1Sg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-weather';
-    src:  url('../weather.woff2?cbqPLxnHb3tqNh9xaizVGw');
+    src:  url('Fonts/weather.woff2?cbqPLxnHb3tqNh9xaizVGw');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 @font-face {
     font-family: 'dga-fonts-icons-wifi-signal';
-    src:  url('../wifi-signal.woff2?aVn3SKk3W60bk7IHFI0CNA');
+    src:  url('Fonts/wifi-signal.woff2?aVn3SKk3W60bk7IHFI0CNA');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -561,7 +561,7 @@ body:has(.active-screen) .icon > [class*="path"]:before {
 
 @font-face {
     font-family: 'dga-fonts-misc-development';
-    src:  url('../misc-development.woff2?uC4DsdxfipoZa4Y9TVI4KQ');
+    src:  url('Fonts/misc-development.woff2?uC4DsdxfipoZa4Y9TVI4KQ');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -571,7 +571,7 @@ body:has(.active-screen) .icon > [class*="path"]:before {
 
 @font-face {
     font-family: 'dga-fonts-flags';
-    src:  url('../flags.woff2?02uQey+b5BUlNEl5fiU3FA');
+    src:  url('Fonts/flags.woff2?02uQey+b5BUlNEl5fiU3FA');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -593,7 +593,7 @@ body:not(:has(.active-screen)) .icon[class*="dga-flag-"]:before {
 
 @font-face {
     font-family: 'dga-fonts-payment';
-    src:  url('../payment.woff2?9Sr9swhHGriZmVV1g3Z7OA');
+    src:  url('Fonts/payment.woff2?9Sr9swhHGriZmVV1g3Z7OA');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -613,7 +613,7 @@ body:not(:has(.active-screen)) .icon[class*="dga-pay-"]:before {
 
 @font-face {
     font-family: 'dga-fonts-social';
-    src:  url('../social.woff2?9Wc58lSM+lz7gbBRKxPkxQ');
+    src:  url('Fonts/social.woff2?9Wc58lSM+lz7gbBRKxPkxQ');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -633,7 +633,7 @@ body:not(:has(.active-screen)) .icon[class*="dga-social-"]:before {
 
 @font-face {
     font-family: 'dga-fonts-telecom';
-    src:  url('../telecom.woff2?eO577tQRkCSdx4RUvSJTCg');
+    src:  url('Fonts/telecom.woff2?eO577tQRkCSdx4RUvSJTCg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -656,7 +656,7 @@ body:not(:has(.active-screen)) .icon[class*="dga-tel-"]:before {
 /* Depricated - Flags ====================================== */
 @font-face {
     font-family: 'dga-fonts-flags_depricated';
-    src:  url('../flags_depricated.woff2?y+gsj_28MWRJgxV2zA+6WA');
+    src:  url('Fonts/flags_depricated.woff2?y+gsj_28MWRJgxV2zA+6WA');
     font-weight: normal;
     font-style: normal;
     font-display: block;
