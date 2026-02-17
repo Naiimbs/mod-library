@@ -13,7 +13,6 @@ class Router {
     constructor(config = {}) {
         this.sidebarSelector = config.sidebarSelector || '.sidebar-link';
         this.contentContainerId = config.contentContainerId || 'component-content';
-        this.mainNavSelector = config.mainNavSelector || '.main-nav-link';
         this.defaultRoute = config.defaultRoute || 'nav-header';
         this.activeClass = config.activeClass || 'active';
         this.componentsBasePath = config.componentsBasePath || 'components';
@@ -74,7 +73,6 @@ class Router {
         }
 
         this.updateSidebarLinks(hash);
-        this.updateMainNav(hash);
         this.loadComponent(hash);
     }
 
@@ -147,36 +145,6 @@ class Router {
         document.dispatchEvent(new CustomEvent('component:loaded', {
             detail: { componentId }
         }));
-    }
-
-    /**
-     * Update main navigation active states
-     * Maps hashes to their parent top-level tab
-     * @param {string} activeHash - Current active hash
-     */
-    updateMainNav(activeHash) {
-        // Determine which top-level tab should be active
-        const topLevelTabs = ['icons', 'screens'];
-        const activeTab = topLevelTabs.includes(activeHash) ? activeHash : 'components';
-
-        document.querySelectorAll(this.mainNavSelector).forEach(link => {
-            const text = link.querySelector('.header-menu-item__text');
-            if (!text) return;
-
-            const tabName = text.textContent.trim().toLowerCase();
-            let isActive = false;
-
-            if (activeTab === 'icons') {
-                isActive = tabName === 'icons';
-            } else if (activeTab === 'screens') {
-                isActive = tabName === 'screen templates';
-            } else {
-                isActive = tabName === 'components';
-            }
-
-            link.classList.toggle(this.activeClass, isActive);
-            link.classList.toggle('header-menu-item--selected', isActive);
-        });
     }
 
     /**
