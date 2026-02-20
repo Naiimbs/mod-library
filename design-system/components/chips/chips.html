@@ -1,0 +1,496 @@
+<div class="content-header">
+    <h1 class="content-title">Chips</h1>
+    <p class="content-description">Chips are small, interactive elements used to display information, trigger actions,
+        or allow selections. Available in 2 styles, 3 sizes, with rounded, on-color, and selected variants.</p>
+</div>
+
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <!-- Left: Preview canvas -->
+        <div class="live-demo__canvas" id="chip-demo-preview">
+            <!-- Rendered dynamically by JS -->
+        </div>
+
+        <!-- Right: Controls sidebar -->
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Chip</h3>
+                <p class="live-demo__sidebar-desc">Chips are compact elements that represent an input, attribute, or
+                    action. They allow users to make selections, filter content, or trigger actions.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="chip-demo-size">Size</label>
+                <select class="live-demo__sidebar-select" id="chip-demo-size">
+                    <option value="large">Large</option>
+                    <option value="medium">Medium</option>
+                    <option value="small">Small</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="chip-demo-state">State</label>
+                <select class="live-demo__sidebar-select" id="chip-demo-state">
+                    <option value="default">Default</option>
+                    <option value="disabled">Disabled</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="chip-demo-style">Style</label>
+                <select class="live-demo__sidebar-select" id="chip-demo-style">
+                    <option value="primary">Primary</option>
+                    <option value="neutral">Neutral</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Rounded</label>
+                <button class="live-demo__switch" data-toggle="rounded" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">On-color</label>
+                <button class="live-demo__switch" data-toggle="on-color" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Selected</label>
+                <button class="live-demo__switch" data-toggle="selected" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Lead Icon</label>
+                <button class="live-demo__switch" data-toggle="leading-icon" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Trail Icon</label>
+                <button class="live-demo__switch" data-toggle="trailing-icon" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="live-demo__footer">
+        This live demo contains only a preview of functionality and styles available for this component.
+    </div>
+</div>
+
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">All available CSS classes and HTML attributes for configuring chip components.
+        </p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class / Attribute</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.chip</code></td>
+                    <td>CSS class</td>
+                    <td>Required</td>
+                    <td>Base chip class. Must be applied to all chips.</td>
+                </tr>
+                <tr>
+                    <td><code>.chip-primary</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Primary brand-colored chip style with green tones.</td>
+                </tr>
+                <tr>
+                    <td><code>.chip-neutral</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Neutral gray chip style for general-purpose use.</td>
+                </tr>
+                <tr>
+                    <td><code>.chip-medium</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Medium size (24px height).</td>
+                </tr>
+                <tr>
+                    <td><code>.chip-small</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Small size (20px height).</td>
+                </tr>
+                <tr>
+                    <td><code>.chip-rounded</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Applies full pill/rounded shape to the chip.</td>
+                </tr>
+                <tr>
+                    <td><code>.selected</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Visual selected state. Changes to filled background.</td>
+                </tr>
+                <tr>
+                    <td><code>.chip-on-color</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Modifier for dark/colored backgrounds. Inverts chip colors for contrast.</td>
+                </tr>
+                <tr>
+                    <td><code>.chip-icon-only</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Square chip containing only an icon (no label text).</td>
+                </tr>
+                <tr>
+                    <td><code>disabled</code></td>
+                    <td>HTML attr</td>
+                    <td><code>false</code></td>
+                    <td>Disables the chip. Grays out appearance and prevents interaction.</td>
+                </tr>
+                <tr>
+                    <td><code>aria-pressed</code></td>
+                    <td>HTML attr</td>
+                    <td>&mdash;</td>
+                    <td>Set to <code>"true"</code> for chips in selected state.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Section 1: Chip Styles -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Chip Styles</h2>
+        <p class="showcase-description">The two core chip styles. Primary for brand-colored selections and Neutral for
+            general-purpose use.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row">
+            <button class="chip chip-primary">Primary</button>
+            <button class="chip chip-neutral">Neutral</button>
+        </div>
+    </div>
+</div>
+
+<!-- Section 2: Chip Sizes -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Chip Sizes</h2>
+        <p class="showcase-description">Three size options to fit different contexts. Large (32px) is the default,
+            Medium (24px) for denser layouts, and Small (20px) for compact usage.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <span class="showcase-label">Primary</span>
+        <div class="showcase-row">
+            <button class="chip chip-primary">Large (32px)</button>
+            <button class="chip chip-primary chip-medium">Medium (24px)</button>
+            <button class="chip chip-primary chip-small">Small (20px)</button>
+        </div>
+        <span class="showcase-label">Neutral</span>
+        <div class="showcase-row">
+            <button class="chip chip-neutral">Large (32px)</button>
+            <button class="chip chip-neutral chip-medium">Medium (24px)</button>
+            <button class="chip chip-neutral chip-small">Small (20px)</button>
+        </div>
+    </div>
+</div>
+
+<!-- Section 3: Rounded Chips -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Rounded Chips</h2>
+        <p class="showcase-description">Apply the rounded modifier for a pill-shaped appearance. Works with all styles
+            and sizes.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <span class="showcase-label">Primary</span>
+        <div class="showcase-row">
+            <button class="chip chip-primary chip-rounded">Large</button>
+            <button class="chip chip-primary chip-rounded chip-medium">Medium</button>
+            <button class="chip chip-primary chip-rounded chip-small">Small</button>
+        </div>
+        <span class="showcase-label">Neutral</span>
+        <div class="showcase-row">
+            <button class="chip chip-neutral chip-rounded">Large</button>
+            <button class="chip chip-neutral chip-rounded chip-medium">Medium</button>
+            <button class="chip chip-neutral chip-rounded chip-small">Small</button>
+        </div>
+    </div>
+</div>
+
+<!-- Section 4: Chip States -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Chip States</h2>
+        <p class="showcase-description">Interactive states that provide visual feedback. Hover and press states are
+            handled by CSS pseudo-classes. Selected and Disabled states are set via classes and attributes.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <span class="showcase-label">Primary</span>
+        <div class="showcase-row">
+            <button class="chip chip-primary">Default</button>
+            <button class="chip chip-primary selected" aria-pressed="true">Selected</button>
+            <button class="chip chip-primary" disabled>Disabled</button>
+        </div>
+        <span class="showcase-label">Neutral</span>
+        <div class="showcase-row">
+            <button class="chip chip-neutral">Default</button>
+            <button class="chip chip-neutral selected" aria-pressed="true">Selected</button>
+            <button class="chip chip-neutral" disabled>Disabled</button>
+        </div>
+    </div>
+</div>
+
+<!-- Section 5: Selected State -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Selected State</h2>
+        <p class="showcase-description">Chips in selected state show a filled background to indicate active selection.
+            Useful for filter groups and multi-select scenarios.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <span class="showcase-label">Primary — All Sizes</span>
+        <div class="showcase-row">
+            <button class="chip chip-primary selected" aria-pressed="true">Large</button>
+            <button class="chip chip-primary chip-medium selected" aria-pressed="true">Medium</button>
+            <button class="chip chip-primary chip-small selected" aria-pressed="true">Small</button>
+        </div>
+        <span class="showcase-label">Neutral — All Sizes</span>
+        <div class="showcase-row">
+            <button class="chip chip-neutral selected" aria-pressed="true">Large</button>
+            <button class="chip chip-neutral chip-medium selected" aria-pressed="true">Medium</button>
+            <button class="chip chip-neutral chip-small selected" aria-pressed="true">Small</button>
+        </div>
+        <span class="showcase-label">Rounded Selected</span>
+        <div class="showcase-row">
+            <button class="chip chip-primary chip-rounded selected" aria-pressed="true">Primary</button>
+            <button class="chip chip-neutral chip-rounded selected" aria-pressed="true">Neutral</button>
+        </div>
+    </div>
+</div>
+
+<!-- Section 6: Chips with Icons -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Chips with Icons</h2>
+        <p class="showcase-description">Chips can include leading and/or trailing icons for enhanced visual
+            communication. Icons scale with chip size.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <span class="showcase-label">Leading Icon</span>
+        <div class="showcase-row">
+            <button class="chip chip-primary"><span class="chip__icon"><svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                            clip-rule="evenodd" />
+                    </svg></span>Add Item</button>
+            <button class="chip chip-neutral"><span class="chip__icon"><svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                            clip-rule="evenodd" />
+                    </svg></span>Add Item</button>
+        </div>
+        <span class="showcase-label">Trailing Icon</span>
+        <div class="showcase-row">
+            <button class="chip chip-primary">Remove<span class="chip__icon"><svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg></span></button>
+            <button class="chip chip-neutral">Remove<span class="chip__icon"><svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg></span></button>
+        </div>
+        <span class="showcase-label">Both Icons</span>
+        <div class="showcase-row">
+            <button class="chip chip-primary"><span class="chip__icon"><svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                            clip-rule="evenodd" />
+                    </svg></span>Item<span class="chip__icon"><svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg></span></button>
+            <button class="chip chip-neutral"><span class="chip__icon"><svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                            clip-rule="evenodd" />
+                    </svg></span>Item<span class="chip__icon"><svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg></span></button>
+        </div>
+    </div>
+</div>
+
+<!-- Section 7: On-Color -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">On-Color</h2>
+        <p class="showcase-description">Chips placed on dark or colored backgrounds use the on-color modifier to ensure
+            sufficient contrast. Colors are inverted to white/light tones.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview showcase-preview--dark">
+        <span class="showcase-label">Primary</span>
+        <div class="showcase-row">
+            <button class="chip chip-primary chip-on-color">Default</button>
+            <button class="chip chip-primary chip-on-color selected" aria-pressed="true">Selected</button>
+            <button class="chip chip-primary chip-on-color" disabled>Disabled</button>
+        </div>
+        <span class="showcase-label">Neutral</span>
+        <div class="showcase-row">
+            <button class="chip chip-neutral chip-on-color">Default</button>
+            <button class="chip chip-neutral chip-on-color selected" aria-pressed="true">Selected</button>
+            <button class="chip chip-neutral chip-on-color" disabled>Disabled</button>
+        </div>
+        <span class="showcase-label">Rounded</span>
+        <div class="showcase-row">
+            <button class="chip chip-primary chip-on-color chip-rounded">Primary</button>
+            <button class="chip chip-primary chip-on-color chip-rounded selected" aria-pressed="true">Selected</button>
+            <button class="chip chip-neutral chip-on-color chip-rounded">Neutral</button>
+            <button class="chip chip-neutral chip-on-color chip-rounded selected" aria-pressed="true">Selected</button>
+        </div>
+    </div>
+</div>
+
+<!-- Section 8: Size Matrix -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Size &times; Style Matrix</h2>
+        <p class="showcase-description">Complete matrix showing all combinations of sizes, styles, and rounded modifier
+            for both default and selected states.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <span class="showcase-label">Primary — Square</span>
+        <div class="showcase-row">
+            <button class="chip chip-primary">Large</button>
+            <button class="chip chip-primary chip-medium">Medium</button>
+            <button class="chip chip-primary chip-small">Small</button>
+            <button class="chip chip-primary selected" aria-pressed="true">Large</button>
+            <button class="chip chip-primary chip-medium selected" aria-pressed="true">Medium</button>
+            <button class="chip chip-primary chip-small selected" aria-pressed="true">Small</button>
+        </div>
+        <span class="showcase-label">Primary — Rounded</span>
+        <div class="showcase-row">
+            <button class="chip chip-primary chip-rounded">Large</button>
+            <button class="chip chip-primary chip-rounded chip-medium">Medium</button>
+            <button class="chip chip-primary chip-rounded chip-small">Small</button>
+            <button class="chip chip-primary chip-rounded selected" aria-pressed="true">Large</button>
+            <button class="chip chip-primary chip-rounded chip-medium selected" aria-pressed="true">Medium</button>
+            <button class="chip chip-primary chip-rounded chip-small selected" aria-pressed="true">Small</button>
+        </div>
+        <span class="showcase-label">Neutral — Square</span>
+        <div class="showcase-row">
+            <button class="chip chip-neutral">Large</button>
+            <button class="chip chip-neutral chip-medium">Medium</button>
+            <button class="chip chip-neutral chip-small">Small</button>
+            <button class="chip chip-neutral selected" aria-pressed="true">Large</button>
+            <button class="chip chip-neutral chip-medium selected" aria-pressed="true">Medium</button>
+            <button class="chip chip-neutral chip-small selected" aria-pressed="true">Small</button>
+        </div>
+        <span class="showcase-label">Neutral — Rounded</span>
+        <div class="showcase-row">
+            <button class="chip chip-neutral chip-rounded">Large</button>
+            <button class="chip chip-neutral chip-rounded chip-medium">Medium</button>
+            <button class="chip chip-neutral chip-rounded chip-small">Small</button>
+            <button class="chip chip-neutral chip-rounded selected" aria-pressed="true">Large</button>
+            <button class="chip chip-neutral chip-rounded chip-medium selected" aria-pressed="true">Medium</button>
+            <button class="chip chip-neutral chip-rounded chip-small selected" aria-pressed="true">Small</button>
+        </div>
+    </div>
+</div>
+
+<!-- Section 9: RTL Support -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Support</h2>
+        <p class="showcase-description">Chips in right-to-left layout for Arabic and other RTL languages. Icon positions
+            are mirrored automatically.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview showcase-preview--subtle" dir="rtl">
+        <span class="showcase-label">أساسي (Primary)</span>
+        <div class="showcase-row">
+            <button class="chip chip-primary">اختيار</button>
+            <button class="chip chip-primary selected" aria-pressed="true">اختيار</button>
+            <button class="chip chip-primary chip-rounded">اختيار</button>
+            <button class="chip chip-primary"><span class="chip__icon"><svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                            clip-rule="evenodd" />
+                    </svg></span>إضافة</button>
+        </div>
+        <span class="showcase-label">محايد (Neutral)</span>
+        <div class="showcase-row">
+            <button class="chip chip-neutral">اختيار</button>
+            <button class="chip chip-neutral selected" aria-pressed="true">اختيار</button>
+            <button class="chip chip-neutral chip-rounded">اختيار</button>
+            <button class="chip chip-neutral">إزالة<span class="chip__icon"><svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg></span></button>
+        </div>
+    </div>
+</div>

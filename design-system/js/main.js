@@ -41,7 +41,7 @@ class DGADesignSystem {
         // Initialize Router
         if (typeof Router !== 'undefined') {
             this.register('router', new Router({
-                defaultRoute: 'nav-header'
+                defaultRoute: 'components-overview'
             }));
         }
 
@@ -69,8 +69,13 @@ class DGADesignSystem {
         }
 
         // Tabs
-        if (componentId === 'tabs' && typeof TabManager !== 'undefined') {
-            this.register('tabs', new TabManager());
+        if (componentId === 'tabs') {
+            if (typeof TabsDemoManager !== 'undefined') {
+                this.register('tabsDemo', new TabsDemoManager());
+            }
+            if (typeof TabManager !== 'undefined') {
+                this.register('tabs', new TabManager());
+            }
         }
 
         // Pagination
@@ -103,9 +108,34 @@ class DGADesignSystem {
             this.initSidebarNavDemo();
         }
 
+        // Date Picker
+        if (componentId === 'date-picker' && typeof DatePickerManager !== 'undefined') {
+            this.register('datePicker', new DatePickerManager());
+        }
+
+        // Components Overview
+        if (componentId === 'components-overview' && typeof ComponentsOverviewManager !== 'undefined') {
+            this.register('componentsOverview', new ComponentsOverviewManager());
+        }
+
         // Nav header demo (for the nav-header component preview)
         if (componentId === 'nav-header') {
             this.initNavHeaderPreviewDemo();
+        }
+
+        // Nav Drawer
+        if (componentId === 'nav-drawer' && typeof NavDrawerManager !== 'undefined') {
+            this.register('navDrawer', new NavDrawerManager());
+        }
+
+        // Buttons
+        if (componentId === 'buttons' && typeof ButtonDemoManager !== 'undefined') {
+            this.register('buttons', new ButtonDemoManager());
+        }
+
+        // Chips
+        if (componentId === 'chips' && typeof ChipDemoManager !== 'undefined') {
+            this.register('chips', new ChipDemoManager());
         }
     }
 

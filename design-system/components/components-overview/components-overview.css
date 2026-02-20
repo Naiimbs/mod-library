@@ -1,0 +1,255 @@
+/* ============================================
+   COMPONENTS OVERVIEW PAGE
+   DGA Design System - Visual Component Catalog
+   ============================================ */
+
+/* Page Header */
+.overview-header {
+    margin-bottom: var(--spacing-5xl);
+}
+
+.overview-header__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-3xl);
+    margin-bottom: var(--spacing-3xl);
+}
+
+.overview-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-gray-900);
+    margin-bottom: var(--spacing-md);
+}
+
+.overview-description {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+/* Search Bar */
+.overview-search-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+.overview-search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gray-400);
+    pointer-events: none;
+}
+
+[dir="rtl"] .overview-search-icon {
+    left: auto;
+    right: 12px;
+}
+
+.overview-search-input {
+    width: 100%;
+    height: 40px;
+    padding: 0 40px 0 40px;
+    border: 1px solid var(--color-border-secondary);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-family: var(--font-family-primary);
+    color: var(--color-text-primary);
+    background: var(--color-bg-primary);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    outline: none;
+}
+
+.overview-search-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(27, 131, 84, 0.1);
+}
+
+.overview-search-input::placeholder {
+    color: var(--color-gray-400);
+}
+
+.overview-search-clear {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    color: var(--color-gray-400);
+    font-size: 18px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+[dir="rtl"] .overview-search-clear {
+    right: auto;
+    left: 8px;
+}
+
+.overview-search-clear:hover {
+    color: var(--color-gray-600);
+    background: var(--color-gray-100);
+}
+
+/* Category Sections */
+.overview-category {
+    margin-bottom: var(--spacing-5xl);
+}
+
+.overview-category--hidden {
+    display: none;
+}
+
+.overview-category-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-3xl);
+}
+
+.overview-category-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-gray-900);
+}
+
+.overview-category-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 var(--spacing-md);
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-full);
+}
+
+/* Card Grid */
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+/* Component Card */
+.overview-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-secondary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+    text-decoration: none;
+    color: inherit;
+}
+
+.overview-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.overview-card--hidden {
+    display: none;
+}
+
+/* Card Preview Area */
+.overview-card__preview {
+    height: 140px;
+    padding: var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border-secondary);
+    overflow: hidden;
+    pointer-events: none;
+    position: relative;
+}
+
+.overview-card__preview-inner {
+    transform: scale(0.75);
+    transform-origin: center center;
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Modifier for previews that need column layout */
+.overview-card__preview-inner--column {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* Modifier for previews that need smaller scale */
+.overview-card__preview-inner--compact {
+    transform: scale(0.6);
+}
+
+/* Card Footer */
+.overview-card__footer {
+    padding: var(--spacing-lg) var(--spacing-xl);
+    text-align: center;
+    background: var(--color-bg-primary);
+}
+
+.overview-card__name {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    transition: color var(--transition-fast);
+}
+
+.overview-card:hover .overview-card__name {
+    color: var(--color-primary);
+}
+
+/* No Results */
+.overview-no-results {
+    text-align: center;
+    padding: 80px var(--spacing-3xl);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-md);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .overview-header__top {
+        flex-direction: column;
+    }
+
+    .overview-search-wrapper {
+        max-width: 100%;
+    }
+
+    .overview-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+}
+
+/* ============================================
+   RTL SUPPORT
+   ============================================ */
+[dir="rtl"] .overview-search-input {
+    padding: 0 40px 0 40px;
+}

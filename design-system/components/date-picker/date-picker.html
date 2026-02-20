@@ -1,0 +1,1133 @@
+<div class="content-header">
+    <h1 class="content-title">Date Picker</h1>
+    <p class="content-description">A Date Picker enables users to select dates via a pop-up calendar dropdown. It is
+        triggered by clicking a calendar icon or input field and is used in forms for scheduling events, booking
+        appointments, or entering birthdates.</p>
+</div>
+
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <!-- Left: Preview canvas -->
+        <div class="live-demo__canvas" id="dp-demo-preview" style="min-height: 420px; align-items: flex-start;">
+            <!-- Rendered dynamically by JS -->
+        </div>
+
+        <!-- Right: Controls sidebar -->
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Date Picker</h3>
+                <p class="live-demo__sidebar-desc">A Date Picker enables users to select dates via a pop-up calendar dropdown for scheduling, booking, or entering dates.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="dp-demo-state">State</label>
+                <select class="live-demo__sidebar-select" id="dp-demo-state">
+                    <option value="default">Default</option>
+                    <option value="filled">Filled</option>
+                    <option value="error">Error</option>
+                    <option value="disabled">Disabled</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Input Field</label>
+                <button class="live-demo__switch active" data-toggle="input-field" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Range</label>
+                <button class="live-demo__switch" data-toggle="range" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Quick Options</label>
+                <button class="live-demo__switch" data-toggle="quick-options" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Submit Button</label>
+                <button class="live-demo__switch" data-toggle="submit-button" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="live-demo__footer">
+        This live demo contains only a preview of functionality and styles available for this component. View the <a
+            href="#">full demo</a> on Storybook for additional information such as its version, controls, and API
+        documentation.
+    </div>
+</div>
+
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">All available CSS classes and HTML attributes for configuring date picker
+            components.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <!-- Component Props (from DgaDatepicker library reference) -->
+        <h3 style="font-size: var(--font-size-base); font-weight: 600; color: var(--color-gray-900); margin: 0 0 var(--spacing-lg) 0;">Component Props</h3>
+        <p style="font-size: var(--font-size-sm); color: var(--color-gray-600); margin: 0 0 var(--spacing-xl) 0;">Boolean props from the <code>&lt;dga-datepicker&gt;</code> library component. These control which features are enabled.</p>
+        <table class="props-table" style="margin-bottom: var(--spacing-3xl);">
+            <thead>
+                <tr>
+                    <th>Prop</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>input-field</code></td>
+                    <td>boolean</td>
+                    <td>&mdash;</td>
+                    <td>Shows the date input field above the calendar panel.</td>
+                </tr>
+                <tr>
+                    <td><code>range</code></td>
+                    <td>boolean</td>
+                    <td>&mdash;</td>
+                    <td>Enables date range selection with start and end dates.</td>
+                </tr>
+                <tr>
+                    <td><code>qick-options</code></td>
+                    <td>boolean</td>
+                    <td>&mdash;</td>
+                    <td>Shows the quick-option presets sidebar (Today, This week, etc.).</td>
+                </tr>
+                <tr>
+                    <td><code>submit-button</code></td>
+                    <td>boolean</td>
+                    <td>&mdash;</td>
+                    <td>Shows the footer with Clear and Apply action buttons.</td>
+                </tr>
+                <tr>
+                    <td><code>dual-month-view</code></td>
+                    <td>boolean</td>
+                    <td>&mdash;</td>
+                    <td>Displays two calendar months side by side.</td>
+                </tr>
+                <tr>
+                    <td><code>RTL</code></td>
+                    <td>boolean</td>
+                    <td><code>false</code></td>
+                    <td>Enables right-to-left layout for Arabic and other RTL languages.</td>
+                </tr>
+                <tr>
+                    <td><code>initial-date</code></td>
+                    <td>Date</td>
+                    <td>&mdash;</td>
+                    <td>Sets the initial date displayed in the calendar (JS only).</td>
+                </tr>
+                <tr>
+                    <td><code>value</code></td>
+                    <td>object</td>
+                    <td>&mdash;</td>
+                    <td>The selected date value object (JS only).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 style="font-size: var(--font-size-base); font-weight: 600; color: var(--color-gray-900); margin: 0 0 var(--spacing-lg) 0;">Callbacks</h3>
+        <table class="props-table" style="margin-bottom: var(--spacing-3xl);">
+            <thead>
+                <tr>
+                    <th>Callback</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>onSubmit</code></td>
+                    <td>function</td>
+                    <td>&mdash;</td>
+                    <td>Fired when the user confirms a date selection (JS only).</td>
+                </tr>
+                <tr>
+                    <td><code>onCancel</code></td>
+                    <td>function</td>
+                    <td>&mdash;</td>
+                    <td>Fired when the user cancels the date picker (JS only).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- CSS Classes -->
+        <h3 style="font-size: var(--font-size-base); font-weight: 600; color: var(--color-gray-900); margin: 0 0 var(--spacing-lg) 0;">CSS Classes</h3>
+        <p style="font-size: var(--font-size-sm); color: var(--color-gray-600); margin: 0 0 var(--spacing-xl) 0;">Design system CSS classes used to build and style date picker sub-components.</p>
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class / Attribute</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.date-field</code></td>
+                    <td>CSS class</td>
+                    <td>Required</td>
+                    <td>Base container for the date input field.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-field__label</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Label text displayed above the input.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-field__label--required</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Adds a required asterisk (*) indicator to the label.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-field__wrapper</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Wrapper containing the input and calendar icon.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-field__input</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>The text input element for the date value.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-field__input--error</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Error state with red border color.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-field__input--active</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Active/focused state when calendar is open.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-field__icon</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Calendar icon container inside the input.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-field__helper</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Helper text displayed below the field.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-field__helper--error</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Error message styling with red text and icon.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-field--disabled</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Disabled state for the entire field container.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-picker__panel</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Calendar dropdown panel containing the grid.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-picker__panel--static</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Always-visible calendar (no open/close toggle).</td>
+                </tr>
+                <tr>
+                    <td><code>.date-cell</code></td>
+                    <td>CSS class</td>
+                    <td>Required</td>
+                    <td>Individual day cell in the calendar grid.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-cell--today</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Today's date highlight with green border.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-cell--selected</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Selected date with green fill.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-cell--disabled</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Non-selectable date cell.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-cell--outside</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Day from an adjacent month (dimmed text).</td>
+                </tr>
+                <tr>
+                    <td><code>.date-cell--range-start</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Start date of a selected range.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-cell--range-mid</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Dates within the selected range (light green).</td>
+                </tr>
+                <tr>
+                    <td><code>.date-cell--range-end</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>End date of a selected range.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-picker--with-presets</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Layout with quick-option presets sidebar.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-picker--attached</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Calendar visually attached below the input field.</td>
+                </tr>
+                <tr>
+                    <td><code>.date-picker__dual-fields</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Side-by-side start and end date fields.</td>
+                </tr>
+                <tr>
+                    <td><code>.is-open</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Opens the calendar panel or year dropdown.</td>
+                </tr>
+                <tr>
+                    <td><code>readonly</code></td>
+                    <td>HTML attr</td>
+                    <td>&mdash;</td>
+                    <td>Prevents manual text entry in the date field.</td>
+                </tr>
+                <tr>
+                    <td><code>disabled</code></td>
+                    <td>HTML attr</td>
+                    <td><code>false</code></td>
+                    <td>Disables the date field and prevents interaction.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ============================================
+     Section 1: Date Cell
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Sub-component: Date Cell</h2>
+        <p class="showcase-description">The atomic building block of the calendar grid. Each cell represents a single day
+            with various interaction states including default, hover, today, selected, disabled, and outside month.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="date-cell-showcase">
+            <div class="date-cell-showcase__item">
+                <div class="date-cell">15</div>
+                <span class="date-cell-showcase__label">Default</span>
+            </div>
+            <div class="date-cell-showcase__item">
+                <div class="date-cell" style="background-color: var(--color-gray-100); color: var(--color-gray-900);">16</div>
+                <span class="date-cell-showcase__label">Hover</span>
+            </div>
+            <div class="date-cell-showcase__item">
+                <div class="date-cell date-cell--today">3</div>
+                <span class="date-cell-showcase__label">Today</span>
+            </div>
+            <div class="date-cell-showcase__item">
+                <div class="date-cell date-cell--selected">19</div>
+                <span class="date-cell-showcase__label">Selected</span>
+            </div>
+            <div class="date-cell-showcase__item">
+                <div class="date-cell date-cell--disabled">5</div>
+                <span class="date-cell-showcase__label">Disabled</span>
+            </div>
+            <div class="date-cell-showcase__item">
+                <div class="date-cell date-cell--outside">29</div>
+                <span class="date-cell-showcase__label">Outside</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     Section 2: Date Cell - Range Selection
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Sub-component: Date Cell - Range Selection</h2>
+        <p class="showcase-description">Range states used when selecting a date range. The start and end dates have full
+            green fill while intermediate days have a light green background band.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div style="display: flex; align-items: center; gap: 0; margin-bottom: 12px;">
+            <div class="date-cell date-cell--range-start">19</div>
+            <div class="date-cell date-cell--range-mid">20</div>
+            <div class="date-cell date-cell--range-mid">21</div>
+            <div class="date-cell date-cell--range-mid">22</div>
+            <div class="date-cell date-cell--range-mid">23</div>
+            <div class="date-cell date-cell--range-end">24</div>
+        </div>
+        <div class="date-cell-showcase">
+            <div class="date-cell-showcase__item">
+                <div class="date-cell date-cell--range-start">19</div>
+                <span class="date-cell-showcase__label">Range Start</span>
+            </div>
+            <div class="date-cell-showcase__item">
+                <div class="date-cell date-cell--range-mid">21</div>
+                <span class="date-cell-showcase__label">Range Mid</span>
+            </div>
+            <div class="date-cell-showcase__item">
+                <div class="date-cell date-cell--range-end">24</div>
+                <span class="date-cell-showcase__label">Range End</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     Section 3: Date Field
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Sub-component: Date Field</h2>
+        <p class="showcase-description">The input field that triggers the calendar panel. Includes a trailing calendar
+            icon. Shown in empty, filled, and required states.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div style="display: flex; gap: 32px; flex-wrap: wrap;">
+            <div class="date-field" style="max-width: 280px;">
+                <label class="date-field__label">Label</label>
+                <div class="date-field__wrapper">
+                    <input type="text" class="date-field__input" placeholder="Month DD, YYYY" readonly>
+                    <span class="date-field__icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.667 1.667v3.333M13.333 1.667v3.333M2.917 7.575h14.166M17.5 7.083v7.084c0 3.333-1.667 5-5 5H7.5c-3.333 0-5-1.667-5-5V7.083c0-3.333 1.667-5 5-5h5c3.333 0 5 1.667 5 5Z" stroke="currentColor" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div class="date-field" style="max-width: 280px;">
+                <label class="date-field__label">Label</label>
+                <div class="date-field__wrapper">
+                    <input type="text" class="date-field__input" value="January 19, 2024" readonly>
+                    <span class="date-field__icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.667 1.667v3.333M13.333 1.667v3.333M2.917 7.575h14.166M17.5 7.083v7.084c0 3.333-1.667 5-5 5H7.5c-3.333 0-5-1.667-5-5V7.083c0-3.333 1.667-5 5-5h5c3.333 0 5 1.667 5 5Z" stroke="currentColor" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div class="date-field" style="max-width: 280px;">
+                <label class="date-field__label date-field__label--required">Label</label>
+                <div class="date-field__wrapper">
+                    <input type="text" class="date-field__input" placeholder="Month DD, YYYY" readonly>
+                    <span class="date-field__icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.667 1.667v3.333M13.333 1.667v3.333M2.917 7.575h14.166M17.5 7.083v7.084c0 3.333-1.667 5-5 5H7.5c-3.333 0-5-1.667-5-5V7.083c0-3.333 1.667-5 5-5h5c3.333 0 5 1.667 5 5Z" stroke="currentColor" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     Section 4: Date Field - States
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Sub-component: Date Field - States</h2>
+        <p class="showcase-description">Error and disabled field states. Error shows a red border with a validation
+            message below. Disabled grays out the entire field and prevents interaction.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div style="display: flex; gap: 32px; flex-wrap: wrap;">
+            <div class="date-field" style="max-width: 280px;">
+                <label class="date-field__label date-field__label--required">Label</label>
+                <div class="date-field__wrapper">
+                    <input type="text" class="date-field__input date-field__input--error" value="Invalid date" readonly>
+                    <span class="date-field__icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.667 1.667v3.333M13.333 1.667v3.333M2.917 7.575h14.166M17.5 7.083v7.084c0 3.333-1.667 5-5 5H7.5c-3.333 0-5-1.667-5-5V7.083c0-3.333 1.667-5 5-5h5c3.333 0 5 1.667 5 5Z" stroke="currentColor" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div>
+                <span class="date-field__helper date-field__helper--error">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5.333V8m0 2.667h.007M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Please enter a valid date.
+                </span>
+            </div>
+            <div class="date-field date-field--disabled" style="max-width: 280px;">
+                <label class="date-field__label">Disabled</label>
+                <div class="date-field__wrapper">
+                    <input type="text" class="date-field__input" placeholder="Month DD, YYYY" disabled readonly>
+                    <span class="date-field__icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.667 1.667v3.333M13.333 1.667v3.333M2.917 7.575h14.166M17.5 7.083v7.084c0 3.333-1.667 5-5 5H7.5c-3.333 0-5-1.667-5-5V7.083c0-3.333 1.667-5 5-5h5c3.333 0 5 1.667 5 5Z" stroke="currentColor" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     Section 5: Year Dropdown
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Sub-component: Year Dropdown</h2>
+        <p class="showcase-description">A compact dropdown embedded in the calendar header for quick year selection with
+            scroll. The selected year shows a checkmark indicator.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div style="display: flex; gap: 48px; flex-wrap: wrap; align-items: flex-start;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                <div class="year-dropdown">
+                    <button class="year-dropdown__trigger" type="button">
+                        2024
+                        <svg class="year-dropdown__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9L12 15L18 9"/>
+                        </svg>
+                    </button>
+                </div>
+                <span class="date-cell-showcase__label">Closed</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                <div class="year-dropdown is-open" style="z-index: 5;">
+                    <button class="year-dropdown__trigger" type="button">
+                        2024
+                        <svg class="year-dropdown__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9L12 15L18 9"/>
+                        </svg>
+                    </button>
+                    <div class="year-dropdown__menu" style="display: block; position: static; transform: none; margin-top: 4px;">
+                        <div class="year-dropdown__option">2023</div>
+                        <div class="year-dropdown__option year-dropdown__option--selected">2024</div>
+                        <div class="year-dropdown__option">2025</div>
+                        <div class="year-dropdown__option">2024</div>
+                        <div class="year-dropdown__option">2025</div>
+                        <div class="year-dropdown__option">2026</div>
+                        <div class="year-dropdown__option">2027</div>
+                    </div>
+                </div>
+                <span class="date-cell-showcase__label" style="margin-top: 8px;">Open</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     Section 6: Calendar with Year Dropdown Open
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Use Case: Calendar with Year Dropdown Open</h2>
+        <p class="showcase-description">The year dropdown overlays the calendar grid when opened, allowing users to
+            quickly jump to a different year without leaving the calendar view.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="date-picker__panel date-picker__panel--static" style="width: 312px;">
+            <div class="date-picker__header">
+                <div class="date-picker__nav">
+                    <span class="date-picker__month-label">Month</span>
+                    <div class="year-dropdown is-open" id="usecase-year-dropdown" style="z-index: 5;">
+                        <button class="year-dropdown__trigger" type="button">
+                            2024
+                            <svg class="year-dropdown__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 9L12 15L18 9"/>
+                            </svg>
+                        </button>
+                        <div class="year-dropdown__menu" style="display: block;">
+                            <div class="year-dropdown__option">2023</div>
+                            <div class="year-dropdown__option year-dropdown__option--selected">2024</div>
+                            <div class="year-dropdown__option">2025</div>
+                            <div class="year-dropdown__option">2024</div>
+                            <div class="year-dropdown__option">2025</div>
+                            <div class="year-dropdown__option">2026</div>
+                            <div class="year-dropdown__option">2027</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="date-picker__arrows">
+                    <button class="date-picker__nav-btn" type="button" aria-label="Previous month">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12L12 19M5 12L12 5"/></svg>
+                    </button>
+                    <button class="date-picker__nav-btn" type="button" aria-label="Next month">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="date-picker__weekdays">
+                <span class="date-picker__weekday">Su</span>
+                <span class="date-picker__weekday">Mo</span>
+                <span class="date-picker__weekday">Tu</span>
+                <span class="date-picker__weekday">We</span>
+                <span class="date-picker__weekday">Th</span>
+                <span class="date-picker__weekday">Fr</span>
+                <span class="date-picker__weekday">Sa</span>
+            </div>
+            <div class="date-picker__grid">
+                <div class="date-cell date-cell--outside">25</div>
+                <div class="date-cell date-cell--outside">26</div>
+                <div class="date-cell date-cell--outside">27</div>
+                <div class="date-cell date-cell--outside">28</div>
+                <div class="date-cell date-cell--outside">29</div>
+                <div class="date-cell date-cell--outside">30</div>
+                <div class="date-cell date-cell--outside">31</div>
+                <div class="date-cell">1</div><div class="date-cell">2</div><div class="date-cell date-cell--today">3</div><div class="date-cell">4</div><div class="date-cell">5</div><div class="date-cell">6</div><div class="date-cell">7</div>
+                <div class="date-cell">8</div><div class="date-cell">9</div><div class="date-cell">10</div><div class="date-cell">11</div><div class="date-cell">12</div><div class="date-cell">13</div><div class="date-cell">14</div>
+                <div class="date-cell">15</div><div class="date-cell">16</div><div class="date-cell">17</div><div class="date-cell">18</div><div class="date-cell date-cell--selected">19</div><div class="date-cell">20</div><div class="date-cell">21</div>
+                <div class="date-cell">22</div><div class="date-cell">23</div><div class="date-cell">24</div><div class="date-cell">25</div><div class="date-cell">26</div><div class="date-cell">27</div><div class="date-cell">28</div>
+                <div class="date-cell date-cell--outside">1</div><div class="date-cell date-cell--outside">2</div><div class="date-cell date-cell--outside">3</div><div class="date-cell date-cell--outside">4</div><div class="date-cell date-cell--outside">5</div><div class="date-cell date-cell--outside">6</div><div class="date-cell date-cell--outside">7</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     Section 7: Standard Calendar
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Use Case: Standard Calendar</h2>
+        <p class="showcase-description">Standard calendar panel with month/year on the left and navigation arrows on the
+            right. Day 3 shows as today (green border), day 19 as selected (green fill). Click any day to select it.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="date-picker__panel date-picker__panel--static" id="static-calendar-demo" style="width: 312px;">
+            <div class="date-picker__header">
+                <div class="date-picker__nav">
+                    <span class="date-picker__month-label">January</span>
+                    <div class="year-dropdown" id="static-year-dropdown">
+                        <button class="year-dropdown__trigger" type="button">
+                            2024
+                            <svg class="year-dropdown__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 9L12 15L18 9"/>
+                            </svg>
+                        </button>
+                        <div class="year-dropdown__menu">
+                            <div class="year-dropdown__option">2022</div>
+                            <div class="year-dropdown__option">2023</div>
+                            <div class="year-dropdown__option year-dropdown__option--selected" data-year="2024">2024</div>
+                            <div class="year-dropdown__option">2025</div>
+                            <div class="year-dropdown__option">2026</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="date-picker__arrows">
+                    <button class="date-picker__nav-btn" type="button" aria-label="Previous month">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12L12 19M5 12L12 5"/></svg>
+                    </button>
+                    <button class="date-picker__nav-btn" type="button" aria-label="Next month">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="date-picker__weekdays">
+                <span class="date-picker__weekday">Su</span><span class="date-picker__weekday">Mo</span><span class="date-picker__weekday">Tu</span><span class="date-picker__weekday">We</span><span class="date-picker__weekday">Th</span><span class="date-picker__weekday">Fr</span><span class="date-picker__weekday">Sa</span>
+            </div>
+            <div class="date-picker__grid">
+                <div class="date-cell date-cell--outside">25</div><div class="date-cell date-cell--outside">26</div><div class="date-cell date-cell--outside">27</div><div class="date-cell date-cell--outside">28</div><div class="date-cell date-cell--outside">29</div><div class="date-cell">1</div><div class="date-cell">2</div>
+                <div class="date-cell date-cell--today">3</div><div class="date-cell">4</div><div class="date-cell">5</div><div class="date-cell">6</div><div class="date-cell">7</div><div class="date-cell">8</div><div class="date-cell">9</div>
+                <div class="date-cell">10</div><div class="date-cell">11</div><div class="date-cell">12</div><div class="date-cell">13</div><div class="date-cell">14</div><div class="date-cell">15</div><div class="date-cell">16</div>
+                <div class="date-cell">17</div><div class="date-cell">18</div><div class="date-cell date-cell--selected">19</div><div class="date-cell">20</div><div class="date-cell">21</div><div class="date-cell">22</div><div class="date-cell">23</div>
+                <div class="date-cell">24</div><div class="date-cell">25</div><div class="date-cell">26</div><div class="date-cell">27</div><div class="date-cell">28</div><div class="date-cell">29</div><div class="date-cell">30</div>
+                <div class="date-cell">31</div><div class="date-cell date-cell--outside">1</div><div class="date-cell date-cell--outside">2</div><div class="date-cell date-cell--outside">3</div><div class="date-cell date-cell--outside">4</div><div class="date-cell date-cell--outside">5</div><div class="date-cell date-cell--outside">6</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     Section 8: Quick Option Presets
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Use Case: Quick Option Presets</h2>
+        <p class="showcase-description">A sidebar of quick-select presets (Today, This week, Last 7 days, etc.) paired
+            with the calendar for flexible date selection. Clicking a preset highlights the corresponding range on the
+            calendar.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="date-picker--with-presets" id="presets-demo">
+            <div class="date-picker__presets">
+                <span class="date-picker__presets-title">Quick Option</span>
+                <button class="date-picker__preset-option" type="button" data-preset="today">Today</button>
+                <button class="date-picker__preset-option" type="button" data-preset="this-week">This week</button>
+                <button class="date-picker__preset-option" type="button" data-preset="last-week">Last week</button>
+                <button class="date-picker__preset-option" type="button" data-preset="this-month">This month</button>
+                <button class="date-picker__preset-option" type="button" data-preset="last-month">Last month</button>
+                <button class="date-picker__preset-option" type="button" data-preset="last-3-months">Last 3 months</button>
+                <button class="date-picker__preset-option" type="button" data-preset="last-7-days">Last 7 days</button>
+                <button class="date-picker__preset-option" type="button" data-preset="last-30-days">Last 30 days</button>
+                <button class="date-picker__preset-option" type="button" data-preset="last-90-days">Last 90 days</button>
+            </div>
+            <div class="date-picker__panel date-picker__panel--static" style="width: 312px;" id="presets-calendar">
+                <div class="date-picker__header">
+                    <div class="date-picker__nav">
+                        <span class="date-picker__month-label" id="presets-month-label">January</span>
+                        <div class="year-dropdown">
+                            <button class="year-dropdown__trigger" type="button">
+                                2024
+                                <svg class="year-dropdown__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9L12 15L18 9"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="date-picker__arrows">
+                        <button class="date-picker__nav-btn" type="button" aria-label="Previous month">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12L12 19M5 12L12 5"/></svg>
+                        </button>
+                        <button class="date-picker__nav-btn" type="button" aria-label="Next month">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="date-picker__weekdays">
+                    <span class="date-picker__weekday">Su</span><span class="date-picker__weekday">Mo</span><span class="date-picker__weekday">Tu</span><span class="date-picker__weekday">We</span><span class="date-picker__weekday">Th</span><span class="date-picker__weekday">Fr</span><span class="date-picker__weekday">Sa</span>
+                </div>
+                <div class="date-picker__grid" id="presets-grid">
+                    <div class="date-cell date-cell--outside">25</div><div class="date-cell date-cell--outside">26</div><div class="date-cell date-cell--outside">27</div><div class="date-cell date-cell--outside">28</div><div class="date-cell date-cell--outside">29</div><div class="date-cell">1</div><div class="date-cell">2</div>
+                    <div class="date-cell date-cell--today">3</div><div class="date-cell">4</div><div class="date-cell">5</div><div class="date-cell">6</div><div class="date-cell">7</div><div class="date-cell">8</div><div class="date-cell">9</div>
+                    <div class="date-cell">10</div><div class="date-cell">11</div><div class="date-cell">12</div><div class="date-cell">13</div><div class="date-cell">14</div><div class="date-cell">15</div><div class="date-cell">16</div>
+                    <div class="date-cell">17</div><div class="date-cell">18</div><div class="date-cell date-cell--selected">19</div><div class="date-cell">20</div><div class="date-cell">21</div><div class="date-cell">22</div><div class="date-cell">23</div>
+                    <div class="date-cell">24</div><div class="date-cell">25</div><div class="date-cell">26</div><div class="date-cell">27</div><div class="date-cell">28</div><div class="date-cell">29</div><div class="date-cell">30</div>
+                    <div class="date-cell">31</div><div class="date-cell date-cell--outside">1</div><div class="date-cell date-cell--outside">2</div><div class="date-cell date-cell--outside">3</div><div class="date-cell date-cell--outside">4</div><div class="date-cell date-cell--outside">5</div><div class="date-cell date-cell--outside">6</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     Section 9: Single Date Picker with Attached Calendar
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Use Case: Single Date Picker with Attached Calendar</h2>
+        <p class="showcase-description">Input field with the calendar panel visually connected below it. Clicking the
+            field opens the calendar. The attached layout eliminates the gap between field and panel.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="date-picker--attached">
+            <div class="date-field">
+                <label class="date-field__label">Label</label>
+                <div class="date-field__wrapper">
+                    <input type="text" class="date-field__input" placeholder="Month DD, YYYY" readonly>
+                    <span class="date-field__icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.667 1.667v3.333M13.333 1.667v3.333M2.917 7.575h14.166M17.5 7.083v7.084c0 3.333-1.667 5-5 5H7.5c-3.333 0-5-1.667-5-5V7.083c0-3.333 1.667-5 5-5h5c3.333 0 5 1.667 5 5Z" stroke="currentColor" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div class="date-picker__panel date-picker__panel--static">
+                <div class="date-picker__header">
+                    <div class="date-picker__nav">
+                        <span class="date-picker__month-label">January</span>
+                        <div class="year-dropdown">
+                            <button class="year-dropdown__trigger" type="button">
+                                2024
+                                <svg class="year-dropdown__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9L12 15L18 9"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="date-picker__arrows">
+                        <button class="date-picker__nav-btn" type="button" aria-label="Previous month">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12L12 19M5 12L12 5"/></svg>
+                        </button>
+                        <button class="date-picker__nav-btn" type="button" aria-label="Next month">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="date-picker__weekdays">
+                    <span class="date-picker__weekday">Su</span><span class="date-picker__weekday">Mo</span><span class="date-picker__weekday">Tu</span><span class="date-picker__weekday">We</span><span class="date-picker__weekday">Th</span><span class="date-picker__weekday">Fr</span><span class="date-picker__weekday">Sa</span>
+                </div>
+                <div class="date-picker__grid">
+                    <div class="date-cell date-cell--outside">25</div><div class="date-cell date-cell--outside">26</div><div class="date-cell date-cell--outside">27</div><div class="date-cell date-cell--outside">28</div><div class="date-cell date-cell--outside">29</div><div class="date-cell">1</div><div class="date-cell">2</div>
+                    <div class="date-cell date-cell--today">3</div><div class="date-cell">4</div><div class="date-cell">5</div><div class="date-cell">6</div><div class="date-cell">7</div><div class="date-cell">8</div><div class="date-cell">9</div>
+                    <div class="date-cell">10</div><div class="date-cell">11</div><div class="date-cell">12</div><div class="date-cell">13</div><div class="date-cell">14</div><div class="date-cell">15</div><div class="date-cell">16</div>
+                    <div class="date-cell">17</div><div class="date-cell">18</div><div class="date-cell date-cell--selected">19</div><div class="date-cell">20</div><div class="date-cell">21</div><div class="date-cell">22</div><div class="date-cell">23</div>
+                    <div class="date-cell">24</div><div class="date-cell">25</div><div class="date-cell">26</div><div class="date-cell">27</div><div class="date-cell">28</div><div class="date-cell">29</div><div class="date-cell">30</div>
+                    <div class="date-cell">31</div><div class="date-cell date-cell--outside">1</div><div class="date-cell date-cell--outside">2</div><div class="date-cell date-cell--outside">3</div><div class="date-cell date-cell--outside">4</div><div class="date-cell date-cell--outside">5</div><div class="date-cell date-cell--outside">6</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     Section 10: Date Range Picker (with selection)
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Use Case: Date Range Picker (with selection)</h2>
+        <p class="showcase-description">Two date fields for start and end date, with the calendar showing a range
+            selection (Jan 19 - Jan 28). Range start and end have green fill, days in between have light green
+            background.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div style="max-width: 312px;">
+            <div class="date-picker__dual-fields">
+                <div class="date-field">
+                    <label class="date-field__label">Label</label>
+                    <div class="date-field__wrapper">
+                        <input type="text" class="date-field__input" value="Month DD, YYYY" readonly>
+                        <span class="date-field__icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.667 1.667v3.333M13.333 1.667v3.333M2.917 7.575h14.166M17.5 7.083v7.084c0 3.333-1.667 5-5 5H7.5c-3.333 0-5-1.667-5-5V7.083c0-3.333 1.667-5 5-5h5c3.333 0 5 1.667 5 5Z" stroke="currentColor" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+                <div class="date-field">
+                    <label class="date-field__label">Label</label>
+                    <div class="date-field__wrapper">
+                        <input type="text" class="date-field__input" value="Month DD, YYYY" readonly>
+                        <span class="date-field__icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.667 1.667v3.333M13.333 1.667v3.333M2.917 7.575h14.166M17.5 7.083v7.084c0 3.333-1.667 5-5 5H7.5c-3.333 0-5-1.667-5-5V7.083c0-3.333 1.667-5 5-5h5c3.333 0 5 1.667 5 5Z" stroke="currentColor" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="date-picker__panel date-picker__panel--static" style="margin-top: 4px;">
+                <div class="date-picker__header">
+                    <div class="date-picker__nav">
+                        <span class="date-picker__month-label">January</span>
+                        <div class="year-dropdown">
+                            <button class="year-dropdown__trigger" type="button">
+                                2024
+                                <svg class="year-dropdown__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9L12 15L18 9"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="date-picker__arrows">
+                        <button class="date-picker__nav-btn" type="button" aria-label="Previous month">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12L12 19M5 12L12 5"/></svg>
+                        </button>
+                        <button class="date-picker__nav-btn" type="button" aria-label="Next month">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="date-picker__weekdays">
+                    <span class="date-picker__weekday">Su</span><span class="date-picker__weekday">Mo</span><span class="date-picker__weekday">Tu</span><span class="date-picker__weekday">We</span><span class="date-picker__weekday">Th</span><span class="date-picker__weekday">Fr</span><span class="date-picker__weekday">Sa</span>
+                </div>
+                <div class="date-picker__grid">
+                    <div class="date-cell date-cell--outside">25</div><div class="date-cell date-cell--outside">26</div><div class="date-cell date-cell--outside">27</div><div class="date-cell date-cell--outside">28</div><div class="date-cell date-cell--outside">29</div><div class="date-cell">1</div><div class="date-cell">2</div>
+                    <div class="date-cell date-cell--today">3</div><div class="date-cell">4</div><div class="date-cell">5</div><div class="date-cell">6</div><div class="date-cell">7</div><div class="date-cell">8</div><div class="date-cell">9</div>
+                    <div class="date-cell">10</div><div class="date-cell">11</div><div class="date-cell">12</div><div class="date-cell">13</div><div class="date-cell">14</div><div class="date-cell">15</div><div class="date-cell">16</div>
+                    <div class="date-cell">17</div><div class="date-cell">18</div><div class="date-cell date-cell--range-start">19</div><div class="date-cell date-cell--range-mid">20</div><div class="date-cell date-cell--range-mid">21</div><div class="date-cell date-cell--range-mid">22</div><div class="date-cell date-cell--range-mid">23</div>
+                    <div class="date-cell date-cell--range-mid">24</div><div class="date-cell date-cell--range-mid">25</div><div class="date-cell date-cell--range-mid">26</div><div class="date-cell date-cell--range-mid">27</div><div class="date-cell date-cell--range-end">28</div><div class="date-cell">29</div><div class="date-cell">30</div>
+                    <div class="date-cell">31</div><div class="date-cell date-cell--outside">1</div><div class="date-cell date-cell--outside">2</div><div class="date-cell date-cell--outside">3</div><div class="date-cell date-cell--outside">4</div><div class="date-cell date-cell--outside">5</div><div class="date-cell date-cell--outside">6</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     Section 11: Date Range Picker (empty)
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Use Case: Date Range Picker (empty)</h2>
+        <p class="showcase-description">Two side-by-side date fields with the calendar below, before any range has been
+            selected. This is the initial state of the range picker.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div style="max-width: 312px;">
+            <div class="date-picker__dual-fields">
+                <div class="date-field">
+                    <label class="date-field__label">Label</label>
+                    <div class="date-field__wrapper">
+                        <input type="text" class="date-field__input" placeholder="Month DD, YYYY" readonly>
+                        <span class="date-field__icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.667 1.667v3.333M13.333 1.667v3.333M2.917 7.575h14.166M17.5 7.083v7.084c0 3.333-1.667 5-5 5H7.5c-3.333 0-5-1.667-5-5V7.083c0-3.333 1.667-5 5-5h5c3.333 0 5 1.667 5 5Z" stroke="currentColor" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+                <div class="date-field">
+                    <label class="date-field__label">Label</label>
+                    <div class="date-field__wrapper">
+                        <input type="text" class="date-field__input" placeholder="Month DD, YYYY" readonly>
+                        <span class="date-field__icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.667 1.667v3.333M13.333 1.667v3.333M2.917 7.575h14.166M17.5 7.083v7.084c0 3.333-1.667 5-5 5H7.5c-3.333 0-5-1.667-5-5V7.083c0-3.333 1.667-5 5-5h5c3.333 0 5 1.667 5 5Z" stroke="currentColor" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="date-picker__panel date-picker__panel--static" style="margin-top: 4px;">
+                <div class="date-picker__header">
+                    <div class="date-picker__nav">
+                        <span class="date-picker__month-label">January</span>
+                        <div class="year-dropdown">
+                            <button class="year-dropdown__trigger" type="button">
+                                2024
+                                <svg class="year-dropdown__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9L12 15L18 9"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="date-picker__arrows">
+                        <button class="date-picker__nav-btn" type="button" aria-label="Previous month">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12L12 19M5 12L12 5"/></svg>
+                        </button>
+                        <button class="date-picker__nav-btn" type="button" aria-label="Next month">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="date-picker__weekdays">
+                    <span class="date-picker__weekday">Su</span><span class="date-picker__weekday">Mo</span><span class="date-picker__weekday">Tu</span><span class="date-picker__weekday">We</span><span class="date-picker__weekday">Th</span><span class="date-picker__weekday">Fr</span><span class="date-picker__weekday">Sa</span>
+                </div>
+                <div class="date-picker__grid">
+                    <div class="date-cell date-cell--outside">25</div><div class="date-cell date-cell--outside">26</div><div class="date-cell date-cell--outside">27</div><div class="date-cell date-cell--outside">28</div><div class="date-cell date-cell--outside">29</div><div class="date-cell">1</div><div class="date-cell">2</div>
+                    <div class="date-cell date-cell--today">3</div><div class="date-cell">4</div><div class="date-cell">5</div><div class="date-cell">6</div><div class="date-cell">7</div><div class="date-cell">8</div><div class="date-cell">9</div>
+                    <div class="date-cell">10</div><div class="date-cell">11</div><div class="date-cell">12</div><div class="date-cell">13</div><div class="date-cell">14</div><div class="date-cell">15</div><div class="date-cell">16</div>
+                    <div class="date-cell">17</div><div class="date-cell">18</div><div class="date-cell">19</div><div class="date-cell">20</div><div class="date-cell">21</div><div class="date-cell">22</div><div class="date-cell">23</div>
+                    <div class="date-cell">24</div><div class="date-cell">25</div><div class="date-cell">26</div><div class="date-cell">27</div><div class="date-cell">28</div><div class="date-cell">29</div><div class="date-cell">30</div>
+                    <div class="date-cell">31</div><div class="date-cell date-cell--outside">1</div><div class="date-cell date-cell--outside">2</div><div class="date-cell date-cell--outside">3</div><div class="date-cell date-cell--outside">4</div><div class="date-cell date-cell--outside">5</div><div class="date-cell date-cell--outside">6</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     Section 12: Interactive Date Picker - Full Use Case
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Interactive Date Picker - Full Use Case</h2>
+        <p class="showcase-description">A fully interactive Date Picker with all sub-components connected: click the
+            field to open the calendar, navigate months, select a year from the dropdown, and pick a date. The selected
+            date populates the input field.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: flex-start;">
+        <div style="display: flex; gap: 48px; flex-wrap: wrap; align-items: flex-start;">
+            <!-- Interactive Single Date Picker -->
+            <div class="date-picker" id="interactive-datepicker" style="max-width: 312px;">
+                <div class="date-field">
+                    <label class="date-field__label date-field__label--required">Appointment Date</label>
+                    <div class="date-field__wrapper">
+                        <input type="text" class="date-field__input" id="datepicker-input" placeholder="Month DD, YYYY" readonly>
+                        <span class="date-field__icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.667 1.667v3.333M13.333 1.667v3.333M2.917 7.575h14.166M17.5 7.083v7.084c0 3.333-1.667 5-5 5H7.5c-3.333 0-5-1.667-5-5V7.083c0-3.333 1.667-5 5-5h5c3.333 0 5 1.667 5 5Z" stroke="currentColor" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <span class="date-field__helper">Click the field to select a date.</span>
+                </div>
+                <div class="date-picker__panel" id="datepicker-panel">
+                    <div class="date-picker__header">
+                        <div class="date-picker__nav">
+                            <span class="date-picker__month-label" id="datepicker-month-label">February</span>
+                            <div class="year-dropdown" id="datepicker-year-dropdown">
+                                <button class="year-dropdown__trigger" type="button" id="datepicker-year-trigger">
+                                    <span id="datepicker-year-label">2026</span>
+                                    <svg class="year-dropdown__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9L12 15L18 9"/></svg>
+                                </button>
+                                <div class="year-dropdown__menu" id="datepicker-year-menu"></div>
+                            </div>
+                        </div>
+                        <div class="date-picker__arrows">
+                            <button class="date-picker__nav-btn" type="button" id="datepicker-prev" aria-label="Previous month">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12L12 19M5 12L12 5"/></svg>
+                            </button>
+                            <button class="date-picker__nav-btn" type="button" id="datepicker-next" aria-label="Next month">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="date-picker__weekdays">
+                        <span class="date-picker__weekday">Su</span><span class="date-picker__weekday">Mo</span><span class="date-picker__weekday">Tu</span><span class="date-picker__weekday">We</span><span class="date-picker__weekday">Th</span><span class="date-picker__weekday">Fr</span><span class="date-picker__weekday">Sa</span>
+                    </div>
+                    <div class="date-picker__grid" id="datepicker-grid"></div>
+                    <div class="date-picker__footer">
+                        <button class="date-picker__footer-btn date-picker__footer-btn--clear" type="button" id="datepicker-clear">Clear</button>
+                        <button class="date-picker__footer-btn date-picker__footer-btn--today" type="button" id="datepicker-today">Today</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Date Picker 2 -->
+            <div class="date-picker" id="interactive-datepicker-2" style="max-width: 312px;">
+                <div class="date-field">
+                    <label class="date-field__label">End Date</label>
+                    <div class="date-field__wrapper">
+                        <input type="text" class="date-field__input" id="datepicker-input-2" placeholder="Month DD, YYYY" readonly>
+                        <span class="date-field__icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.667 1.667v3.333M13.333 1.667v3.333M2.917 7.575h14.166M17.5 7.083v7.084c0 3.333-1.667 5-5 5H7.5c-3.333 0-5-1.667-5-5V7.083c0-3.333 1.667-5 5-5h5c3.333 0 5 1.667 5 5Z" stroke="currentColor" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+                <div class="date-picker__panel" id="datepicker-panel-2">
+                    <div class="date-picker__header">
+                        <div class="date-picker__nav">
+                            <span class="date-picker__month-label" id="datepicker-month-label-2">February</span>
+                            <div class="year-dropdown" id="datepicker-year-dropdown-2">
+                                <button class="year-dropdown__trigger" type="button" id="datepicker-year-trigger-2">
+                                    <span id="datepicker-year-label-2">2026</span>
+                                    <svg class="year-dropdown__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9L12 15L18 9"/></svg>
+                                </button>
+                                <div class="year-dropdown__menu" id="datepicker-year-menu-2"></div>
+                            </div>
+                        </div>
+                        <div class="date-picker__arrows">
+                            <button class="date-picker__nav-btn" type="button" id="datepicker-prev-2" aria-label="Previous month">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12L12 19M5 12L12 5"/></svg>
+                            </button>
+                            <button class="date-picker__nav-btn" type="button" id="datepicker-next-2" aria-label="Next month">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="date-picker__weekdays">
+                        <span class="date-picker__weekday">Su</span><span class="date-picker__weekday">Mo</span><span class="date-picker__weekday">Tu</span><span class="date-picker__weekday">We</span><span class="date-picker__weekday">Th</span><span class="date-picker__weekday">Fr</span><span class="date-picker__weekday">Sa</span>
+                    </div>
+                    <div class="date-picker__grid" id="datepicker-grid-2"></div>
+                    <div class="date-picker__footer">
+                        <button class="date-picker__footer-btn date-picker__footer-btn--clear" type="button" id="datepicker-clear-2">Clear</button>
+                        <button class="date-picker__footer-btn date-picker__footer-btn--today" type="button" id="datepicker-today-2">Today</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     Section 13: RTL Support
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Support</h2>
+        <p class="showcase-description">Right-to-left layout support for Arabic and other RTL languages. The date field,
+            calendar navigation, and weekday headers are all automatically mirrored.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview showcase-preview--subtle" dir="rtl">
+        <div style="display: flex; gap: 32px; flex-wrap: wrap;">
+            <div class="date-field" style="max-width: 280px;">
+                <label class="date-field__label date-field__label--required">&#x062A;&#x0627;&#x0631;&#x064A;&#x062E; &#x0627;&#x0644;&#x0645;&#x064A;&#x0644;&#x0627;&#x062F;</label>
+                <div class="date-field__wrapper">
+                    <input type="text" class="date-field__input" value="18/02/2026" readonly>
+                    <span class="date-field__icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.667 1.667v3.333M13.333 1.667v3.333M2.917 7.575h14.166M17.5 7.083v7.084c0 3.333-1.667 5-5 5H7.5c-3.333 0-5-1.667-5-5V7.083c0-3.333 1.667-5 5-5h5c3.333 0 5 1.667 5 5Z" stroke="currentColor" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div>
+                <span class="date-field__helper">&#x0627;&#x062E;&#x062A;&#x0631; &#x062A;&#x0627;&#x0631;&#x064A;&#x062E; &#x0645;&#x064A;&#x0644;&#x0627;&#x062F;&#x0643;.</span>
+            </div>
+            <div class="date-picker__panel date-picker__panel--static" style="width: 312px;">
+                <div class="date-picker__header">
+                    <div class="date-picker__nav">
+                        <span class="date-picker__month-label">&#x064A;&#x0646;&#x0627;&#x064A;&#x0631;</span>
+                        <div class="year-dropdown">
+                            <button class="year-dropdown__trigger" type="button">
+                                2024
+                                <svg class="year-dropdown__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9L12 15L18 9"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="date-picker__arrows">
+                        <button class="date-picker__nav-btn" type="button" aria-label="&#x0627;&#x0644;&#x0634;&#x0647;&#x0631; &#x0627;&#x0644;&#x062A;&#x0627;&#x0644;&#x064A;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                        <button class="date-picker__nav-btn" type="button" aria-label="&#x0627;&#x0644;&#x0634;&#x0647;&#x0631; &#x0627;&#x0644;&#x0633;&#x0627;&#x0628;&#x0642;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12L12 19M5 12L12 5"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="date-picker__weekdays">
+                    <span class="date-picker__weekday">&#x0623;&#x062D;</span><span class="date-picker__weekday">&#x0627;&#x062B;</span><span class="date-picker__weekday">&#x062B;&#x0644;</span><span class="date-picker__weekday">&#x0623;&#x0631;</span><span class="date-picker__weekday">&#x062E;&#x0645;</span><span class="date-picker__weekday">&#x062C;&#x0645;</span><span class="date-picker__weekday">&#x0633;&#x0628;</span>
+                </div>
+                <div class="date-picker__grid">
+                    <div class="date-cell date-cell--outside">25</div><div class="date-cell date-cell--outside">26</div><div class="date-cell date-cell--outside">27</div><div class="date-cell date-cell--outside">28</div><div class="date-cell date-cell--outside">29</div><div class="date-cell">1</div><div class="date-cell">2</div>
+                    <div class="date-cell date-cell--today">3</div><div class="date-cell">4</div><div class="date-cell">5</div><div class="date-cell">6</div><div class="date-cell">7</div><div class="date-cell">8</div><div class="date-cell">9</div>
+                    <div class="date-cell">10</div><div class="date-cell">11</div><div class="date-cell">12</div><div class="date-cell">13</div><div class="date-cell">14</div><div class="date-cell">15</div><div class="date-cell">16</div>
+                    <div class="date-cell">17</div><div class="date-cell">18</div><div class="date-cell date-cell--selected">19</div><div class="date-cell">20</div><div class="date-cell">21</div><div class="date-cell">22</div><div class="date-cell">23</div>
+                    <div class="date-cell">24</div><div class="date-cell">25</div><div class="date-cell">26</div><div class="date-cell">27</div><div class="date-cell">28</div><div class="date-cell">29</div><div class="date-cell">30</div>
+                    <div class="date-cell">31</div><div class="date-cell date-cell--outside">1</div><div class="date-cell date-cell--outside">2</div><div class="date-cell date-cell--outside">3</div><div class="date-cell date-cell--outside">4</div><div class="date-cell date-cell--outside">5</div><div class="date-cell date-cell--outside">6</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

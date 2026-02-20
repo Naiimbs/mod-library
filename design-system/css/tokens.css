@@ -10,6 +10,7 @@
        ============================================ */
     --color-primary: #1B8354;
     --color-primary-hover: #166A45;
+    --color-primary-active: #14573A;
     --color-primary-light: #F3FCF6;
     --color-primary-50: #F3FCF6;
 
@@ -29,6 +30,14 @@
     --color-gray-700: #384250;
     --color-gray-800: #1F2A37;
     --color-gray-900: #111927;
+    --color-gray-950: #0D121C;
+
+    /* ============================================
+       COLORS - On-Color (dark backgrounds)
+       ============================================ */
+    --color-on-color-hover: #CDDBD6;
+    --color-on-color-active: #9CB8AD;
+    --color-on-color-disabled-bg: #39715A;
 
     /* ============================================
        COLORS - Text

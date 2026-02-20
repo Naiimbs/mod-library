@@ -1,133 +1,350 @@
 <div class="content-header">
     <h1 class="content-title">Tabs</h1>
-    <p class="content-description">A tablist is a group of headers, or tabs, that lets people navigate between different views of related information without going to different pages. Tablists help reduce scrolling by chunking related information into categories.</p>
+    <p class="content-description">A tablist is a group of headers that lets people navigate between different views of related information without going to different pages. Available in 3 sizes with icon, divider, flush, and RTL support.</p>
 </div>
 
-<!-- Medium with Icons (LTR) -->
-<div class="component-preview">
-    <div class="component-preview-title">Horizontal Tab List - Medium with Icons</div>
-    <div class="tab-list" role="tablist">
-        <div class="tab-list__divider"></div>
-        <div class="tab-list__tabs">
-            <button class="tab-item active" role="tab" aria-selected="true" tabindex="0">
-                <span class="tab-item__icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                <span class="tab-item__title">First Tab</span>
-                <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
-            </button>
-            <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
-                <span class="tab-item__icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                <span class="tab-item__title">Second Tab</span>
-                <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
-            </button>
-            <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
-                <span class="tab-item__icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                <span class="tab-item__title">Third Tab</span>
-                <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
-            </button>
-            <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
-                <span class="tab-item__icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                <span class="tab-item__title">Forth Tab</span>
-                <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
-            </button>
-            <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
-                <span class="tab-item__icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                <span class="tab-item__title">Fifth Tab</span>
-                <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
-            </button>
-            <button class="tab-list__more" aria-label="More tabs">
-                <span class="tab-list__more-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-            </button>
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <!-- Left: Preview canvas -->
+        <div class="live-demo__canvas" id="tabs-demo-preview" style="justify-content: flex-start; align-items: stretch; padding: var(--spacing-4xl);">
+            <!-- Rendered dynamically by JS -->
         </div>
+
+        <!-- Right: Controls sidebar -->
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Tabs</h3>
+                <p class="live-demo__sidebar-desc">Tabs organize content into separate views where only one view is visible at a time. Selecting a tab reveals its associated content.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="tabs-demo-size">Size</label>
+                <select class="live-demo__sidebar-select" id="tabs-demo-size">
+                    <option value="md" selected>Medium</option>
+                    <option value="sm">Small</option>
+                    <option value="lg">Large</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="tabs-demo-count">Tab Count</label>
+                <select class="live-demo__sidebar-select" id="tabs-demo-count">
+                    <option value="3">3 Tabs</option>
+                    <option value="4">4 Tabs</option>
+                    <option value="5" selected>5 Tabs</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Icons</label>
+                <button class="live-demo__switch active" data-toggle="icons" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Divider</label>
+                <button class="live-demo__switch active" data-toggle="divider" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Disabled Tab</label>
+                <button class="live-demo__switch" data-toggle="disabled-tab" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="live-demo__footer">
+        This live demo contains only a preview of functionality and styles available for this component.
     </div>
 </div>
 
-<!-- Small without Icons (LTR) -->
-<div class="component-preview">
-    <div class="component-preview-title">Horizontal Tab List - Small without Icons</div>
-    <div class="tab-list tab-list--sm" role="tablist">
-        <div class="tab-list__divider"></div>
-        <div class="tab-list__tabs">
-            <button class="tab-item tab-item--sm active" role="tab" aria-selected="true" tabindex="0">
-                <span class="tab-item__title">First Tab</span>
-                <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
-            </button>
-            <button class="tab-item tab-item--sm" role="tab" aria-selected="false" tabindex="-1">
-                <span class="tab-item__title">Second Tab</span>
-                <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
-            </button>
-            <button class="tab-item tab-item--sm" role="tab" aria-selected="false" tabindex="-1">
-                <span class="tab-item__title">Third Tab</span>
-                <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
-            </button>
-            <button class="tab-item tab-item--sm" role="tab" aria-selected="false" tabindex="-1">
-                <span class="tab-item__title">Forth Tab</span>
-                <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
-            </button>
-            <button class="tab-item tab-item--sm" role="tab" aria-selected="false" tabindex="-1">
-                <span class="tab-item__title">Fifth Tab</span>
-                <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
-            </button>
-            <button class="tab-list__more" aria-label="More tabs">
-                <span class="tab-list__more-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z" stroke="#384250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-            </button>
-        </div>
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">All available CSS classes and HTML attributes for configuring tab components.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class / Attribute</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.tab-list</code></td>
+                    <td>CSS class</td>
+                    <td>Required</td>
+                    <td>Container element for the tab list. Provides flex layout and positioning.</td>
+                </tr>
+                <tr>
+                    <td><code>.tab-list__divider</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Full-width bottom line behind tabs. Provides a visual baseline.</td>
+                </tr>
+                <tr>
+                    <td><code>.tab-list__tabs</code></td>
+                    <td>CSS class</td>
+                    <td>Required</td>
+                    <td>Inner wrapper that holds the individual tab items.</td>
+                </tr>
+                <tr>
+                    <td><code>.tab-item</code></td>
+                    <td>CSS class</td>
+                    <td>Required</td>
+                    <td>Individual tab element. Defaults to medium size.</td>
+                </tr>
+                <tr>
+                    <td><code>.tab-item--sm</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Small tab size (8px/12px padding).</td>
+                </tr>
+                <tr>
+                    <td><code>.tab-item--lg</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Large tab size (16px padding all sides).</td>
+                </tr>
+                <tr>
+                    <td><code>.tab-list--sm</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Applies small size to all child tab items.</td>
+                </tr>
+                <tr>
+                    <td><code>.tab-list--lg</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Applies large size to all child tab items.</td>
+                </tr>
+                <tr>
+                    <td><code>.tab-list--flush</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Flush variant. Removes container padding so tabs sit edge-to-edge.</td>
+                </tr>
+                <tr>
+                    <td><code>.active</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Marks the currently selected tab. Shows green indicator bar and bold text.</td>
+                </tr>
+                <tr>
+                    <td><code>disabled</code></td>
+                    <td>HTML attr</td>
+                    <td><code>false</code></td>
+                    <td>Disables a tab. Grays out text and icon, prevents interaction.</td>
+                </tr>
+                <tr>
+                    <td><code>role="tablist"</code></td>
+                    <td>HTML attr</td>
+                    <td>&mdash;</td>
+                    <td>ARIA role on the tab-list container.</td>
+                </tr>
+                <tr>
+                    <td><code>role="tab"</code></td>
+                    <td>HTML attr</td>
+                    <td>&mdash;</td>
+                    <td>ARIA role on each tab-item for accessibility.</td>
+                </tr>
+                <tr>
+                    <td><code>aria-selected</code></td>
+                    <td>HTML attr</td>
+                    <td>&mdash;</td>
+                    <td>Set to <code>"true"</code> on the active tab, <code>"false"</code> on others.</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
-<!-- Arabic Tabs (RTL) -->
-<div class="component-preview">
-    <div class="component-preview-title">Arabic Tabs (RTL) - Medium with Icons</div>
-    <div dir="rtl">
+<!-- Section 1: Tab Sizes -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Tab Sizes</h2>
+        <p class="showcase-description">Three size options for different content density. Medium is the default, Small for compact layouts, and Large for prominent navigation.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <span class="showcase-label">Medium (Default)</span>
         <div class="tab-list" role="tablist">
             <div class="tab-list__divider"></div>
             <div class="tab-list__tabs">
-                <button class="tab-item active" role="tab" aria-selected="true" tabindex="0">
+                <button class="tab-item active" role="tab" aria-selected="true">
+                    <span class="tab-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="tab-item__title">First Tab</span>
+                    <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                </button>
+                <button class="tab-item" role="tab" aria-selected="false">
+                    <span class="tab-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="tab-item__title">Second Tab</span>
+                    <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                </button>
+                <button class="tab-item" role="tab" aria-selected="false">
+                    <span class="tab-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="tab-item__title">Third Tab</span>
+                    <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                </button>
+            </div>
+        </div>
+
+        <span class="showcase-label">Small</span>
+        <div class="tab-list tab-list--sm" role="tablist">
+            <div class="tab-list__divider"></div>
+            <div class="tab-list__tabs">
+                <button class="tab-item tab-item--sm active" role="tab" aria-selected="true">
+                    <span class="tab-item__title">First Tab</span>
+                    <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                </button>
+                <button class="tab-item tab-item--sm" role="tab" aria-selected="false">
+                    <span class="tab-item__title">Second Tab</span>
+                    <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                </button>
+                <button class="tab-item tab-item--sm" role="tab" aria-selected="false">
+                    <span class="tab-item__title">Third Tab</span>
+                    <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                </button>
+            </div>
+        </div>
+
+        <span class="showcase-label">Large</span>
+        <div class="tab-list tab-list--lg" role="tablist">
+            <div class="tab-list__divider"></div>
+            <div class="tab-list__tabs">
+                <button class="tab-item tab-item--lg active" role="tab" aria-selected="true">
+                    <span class="tab-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="tab-item__title">First Tab</span>
+                    <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                </button>
+                <button class="tab-item tab-item--lg" role="tab" aria-selected="false">
+                    <span class="tab-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="tab-item__title">Second Tab</span>
+                    <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                </button>
+                <button class="tab-item tab-item--lg" role="tab" aria-selected="false">
+                    <span class="tab-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="tab-item__title">Third Tab</span>
+                    <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 2: Without Icons -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Without Icons</h2>
+        <p class="showcase-description">Tabs can be used without icons for a simpler, text-only appearance. Works with all sizes.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="tab-list" role="tablist">
+            <div class="tab-list__divider"></div>
+            <div class="tab-list__tabs">
+                <button class="tab-item active" role="tab" aria-selected="true">
+                    <span class="tab-item__title">First Tab</span>
+                    <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                </button>
+                <button class="tab-item" role="tab" aria-selected="false">
+                    <span class="tab-item__title">Second Tab</span>
+                    <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                </button>
+                <button class="tab-item" role="tab" aria-selected="false">
+                    <span class="tab-item__title">Third Tab</span>
+                    <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                </button>
+                <button class="tab-item" role="tab" aria-selected="false">
+                    <span class="tab-item__title">Fourth Tab</span>
+                    <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 3: Tab States -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Tab States</h2>
+        <p class="showcase-description">Interactive states provide visual feedback. The active tab shows a green indicator bar and bold text. Disabled tabs are grayed out and non-interactive. Hover and pressed states are handled by CSS.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="tab-list" role="tablist">
+            <div class="tab-list__divider"></div>
+            <div class="tab-list__tabs">
+                <button class="tab-item active" role="tab" aria-selected="true">
+                    <span class="tab-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="tab-item__title">Selected</span>
+                    <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                </button>
+                <button class="tab-item" role="tab" aria-selected="false">
+                    <span class="tab-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="tab-item__title">Default</span>
+                    <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                </button>
+                <button class="tab-item" role="tab" aria-selected="false" disabled>
+                    <span class="tab-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="tab-item__title">Disabled</span>
+                    <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 4: RTL Support -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Support</h2>
+        <p class="showcase-description">Tabs in right-to-left layout for Arabic and other RTL languages. Tab order and icon positions are mirrored automatically.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview showcase-preview--subtle" dir="rtl">
+        <div class="tab-list" role="tablist">
+            <div class="tab-list__divider"></div>
+            <div class="tab-list__tabs">
+                <button class="tab-item active" role="tab" aria-selected="true">
                     <span class="tab-item__title">تبويب أول</span>
-                    <span class="tab-item__icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
+                    <span class="tab-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                     <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
                 </button>
-                <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                <button class="tab-item" role="tab" aria-selected="false">
                     <span class="tab-item__title">تبويب ثاني</span>
-                    <span class="tab-item__icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
+                    <span class="tab-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                     <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
                 </button>
-                <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                <button class="tab-item" role="tab" aria-selected="false">
                     <span class="tab-item__title">تبويب ثالث</span>
-                    <span class="tab-item__icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
-                    <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
-                </button>
-                <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
-                    <span class="tab-item__title">تبويب رابع</span>
-                    <span class="tab-item__icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
-                    <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
-                </button>
-                <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">
-                    <span class="tab-item__title">تبويب خامس</span>
-                    <span class="tab-item__icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
+                    <span class="tab-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17H16M11.018 2.764L4.235 8.039C3.624 8.505 3.319 8.739 3.098 9.029C2.902 9.288 2.753 9.579 2.658 9.889C2.551 10.238 2.551 10.614 2.551 11.365V17.8C2.551 18.92 2.551 19.48 2.769 19.908C2.961 20.284 3.267 20.59 3.643 20.782C4.071 21 4.631 21 5.751 21H18.251C19.371 21 19.931 21 20.359 20.782C20.735 20.59 21.041 20.284 21.233 19.908C21.451 19.48 21.451 18.92 21.451 17.8V11.365C21.451 10.614 21.451 10.238 21.344 9.889C21.249 9.579 21.1 9.288 20.904 9.029C20.683 8.739 20.378 8.505 19.767 8.039L12.984 2.764C12.508 2.401 12.27 2.22 12.008 2.152C11.777 2.092 11.534 2.092 11.303 2.152C11.041 2.22 10.803 2.401 10.327 2.764L11.018 2.764Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                     <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
                 </button>
             </div>

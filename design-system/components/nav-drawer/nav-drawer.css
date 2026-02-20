@@ -1,0 +1,457 @@
+/* ============================================
+   COMPONENT: NAV DRAWER
+   DGA Design System - Navigation Drawer
+   Figma Nodes: 30150:160274, 30150:161144, 30150:160799
+   ============================================ */
+
+/* ============================================
+   SCOPED CUSTOM PROPERTIES
+   Override on .nav-drawer--bg-green for dark variant
+   ============================================ */
+
+.nav-drawer {
+    --nd-text-color: #161616;
+    --nd-text-color-secondary: #6C737F;
+    --nd-bg: #FFFFFF;
+    --nd-hover-bg: #F3F4F6;
+    --nd-pressed-bg: #E5E7EB;
+    --nd-selected-bg: #E5E7EB;
+    --nd-selected-text: #1B8354;
+    --nd-selected-indicator: #1B8354;
+    --nd-border-color: #D2D6DB;
+    --nd-divider-color: #D2D6DB;
+    --nd-header-bg: #F9FAFB;
+    --nd-header-divider: #D2D6DB;
+    --nd-icon-color: inherit;
+    --nd-badge-bg: #F9FAFB;
+    --nd-badge-text: #1F2A37;
+    --nd-badge-border: #E5E7EB;
+    --nd-disabled-opacity: 0.4;
+    --nd-focus-ring-color: #1B8354;
+}
+
+.nav-drawer--bg-gray {
+    --nd-bg: #F9FAFB;
+}
+
+.nav-drawer--bg-green {
+    --nd-text-color: #FFFFFF;
+    --nd-text-color-secondary: rgba(255, 255, 255, 0.7);
+    --nd-bg: #14573A;
+    --nd-hover-bg: rgba(255, 255, 255, 0.1);
+    --nd-pressed-bg: rgba(255, 255, 255, 0.15);
+    --nd-selected-bg: rgba(255, 255, 255, 0.15);
+    --nd-selected-text: #FFFFFF;
+    --nd-selected-indicator: #FFFFFF;
+    --nd-border-color: rgba(255, 255, 255, 0.1);
+    --nd-divider-color: rgba(255, 255, 255, 0.3);
+    --nd-header-bg: #14573A;
+    --nd-header-divider: rgba(255, 255, 255, 0.3);
+    --nd-icon-color: #FFFFFF;
+    --nd-badge-bg: rgba(255, 255, 255, 0.2);
+    --nd-badge-text: #FFFFFF;
+    --nd-badge-border: rgba(255, 255, 255, 0.3);
+    --nd-focus-ring-color: rgba(255, 255, 255, 0.6);
+}
+
+/* ============================================
+   NAV DRAWER CONTAINER
+   Width: 256px, full height, flex column
+   ============================================ */
+
+.nav-drawer {
+    width: 256px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--nd-bg);
+    border-right: 1px solid var(--nd-border-color);
+    font-family: var(--font-family-primary, 'IBM Plex Sans Arabic', sans-serif);
+    position: relative;
+    overflow: hidden;
+    color: var(--nd-text-color);
+}
+
+[dir="rtl"] .nav-drawer {
+    border-right: none;
+    border-left: 1px solid var(--nd-border-color);
+}
+
+/* ============================================
+   NAV DRAWER HEADER
+   Height: 72px, sticky, logo placeholder
+   ============================================ */
+
+.nav-drawer__header {
+    display: flex;
+    align-items: center;
+    height: 72px;
+    min-height: 72px;
+    padding: 0 var(--spacing-4xl, 32px);
+    background-color: var(--nd-header-bg);
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.nav-drawer__header--bg-gray {
+    background-color: #F9FAFB;
+}
+
+.nav-drawer__header--bg-green {
+    background-color: #14573A;
+}
+
+.nav-drawer__header--divider {
+    position: relative;
+}
+
+.nav-drawer__header--divider::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: var(--nd-header-divider);
+}
+
+.nav-drawer__header-logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md, 8px);
+    padding: 5px var(--spacing-xs, 4px);
+    background-color: #FFFFFF;
+    border-radius: var(--radius-sm, 4px);
+}
+
+.nav-drawer__header-logo {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.nav-drawer__header-text {
+    font-size: var(--font-size-xs, 12px);
+    font-weight: var(--font-weight-medium, 500);
+    line-height: var(--line-height-xs, 18px);
+    color: var(--nd-text-color-secondary);
+    white-space: nowrap;
+}
+
+.nav-drawer__header--bg-green .nav-drawer__header-text {
+    color: #6C737F;
+}
+
+/* ============================================
+   NAV DRAWER BODY (scrollable area)
+   ============================================ */
+
+.nav-drawer__body {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1;
+}
+
+/* Custom scrollbar - WebKit */
+.nav-drawer__body::-webkit-scrollbar {
+    width: 4px;
+}
+
+.nav-drawer__body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.nav-drawer__body::-webkit-scrollbar-thumb {
+    background-color: var(--nd-divider-color);
+    border-radius: var(--radius-full, 9999px);
+}
+
+/* Custom scrollbar - Firefox */
+.nav-drawer__body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--nd-divider-color) transparent;
+}
+
+.nav-drawer__body-inner {
+    padding: var(--spacing-xl, 16px) var(--spacing-xl, 16px) var(--spacing-8xl, 80px);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============================================
+   NAV DRAWER ITEM - BASE (Level 1 Link)
+   ============================================ */
+
+.nav-drawer-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md, 8px);
+    width: 100%;
+    height: 36px;
+    padding: 0 var(--spacing-xl, 16px);
+    border-radius: var(--radius-sm, 4px);
+    font-size: var(--font-size-sm, 14px);
+    font-weight: var(--font-weight-semibold, 600);
+    line-height: var(--line-height-sm, 20px);
+    color: var(--nd-text-color);
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    background: none;
+    box-sizing: border-box;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    position: relative;
+    font-family: inherit;
+    text-align: left;
+}
+
+[dir="rtl"] .nav-drawer-item {
+    text-align: right;
+}
+
+/* ============================================
+   ITEM STATES
+   ============================================ */
+
+/* Hover */
+.nav-drawer-item:hover:not(.nav-drawer-item--disabled):not(.nav-drawer-item--divider) {
+    background-color: var(--nd-hover-bg);
+}
+
+/* Pressed */
+.nav-drawer-item:active:not(.nav-drawer-item--disabled):not(.nav-drawer-item--divider) {
+    background-color: var(--nd-pressed-bg);
+}
+
+/* Focus (keyboard) */
+.nav-drawer-item:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--nd-focus-ring-color);
+}
+
+/* Selected */
+.nav-drawer-item--selected {
+    background-color: var(--nd-selected-bg);
+    color: var(--nd-selected-text);
+}
+
+.nav-drawer-item--selected:hover {
+    background-color: var(--nd-selected-bg);
+}
+
+/* Selection indicator - 6px wide green vertical bar */
+.nav-drawer-item--selected::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: var(--spacing-sm, 6px);
+    bottom: var(--spacing-sm, 6px);
+    width: 6px;
+    background-color: var(--nd-selected-indicator);
+    border-radius: var(--radius-full, 9999px);
+}
+
+[dir="rtl"] .nav-drawer-item--selected::before {
+    left: auto;
+    right: 0;
+}
+
+/* Disabled */
+.nav-drawer-item--disabled {
+    opacity: var(--nd-disabled-opacity);
+    pointer-events: none;
+    cursor: default;
+}
+
+/* ============================================
+   LEVEL 2 ITEMS (children)
+   ============================================ */
+
+.nav-drawer-item--level-2 {
+    padding: 0 var(--spacing-xl, 16px) 0 var(--spacing-5xl, 40px);
+    font-weight: var(--font-weight-regular, 400);
+}
+
+[dir="rtl"] .nav-drawer-item--level-2 {
+    padding: 0 var(--spacing-5xl, 40px) 0 var(--spacing-xl, 16px);
+}
+
+/* Level 2 selected becomes semibold */
+.nav-drawer-item--level-2.nav-drawer-item--selected {
+    font-weight: var(--font-weight-semibold, 600);
+}
+
+/* ============================================
+   ITEM SUB-ELEMENTS
+   ============================================ */
+
+/* Leading icon (16px) */
+.nav-drawer-item__icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+/* Label text */
+.nav-drawer-item__label {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Badge pill */
+.nav-drawer-item__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    padding: 0 var(--spacing-md, 8px);
+    background-color: var(--nd-badge-bg);
+    color: var(--nd-badge-text);
+    font-size: 10px;
+    font-weight: var(--font-weight-semibold, 600);
+    line-height: 14px;
+    border-radius: var(--radius-full, 9999px);
+    border: 1px solid var(--nd-badge-border);
+    flex-shrink: 0;
+    text-align: center;
+}
+
+/* External link icon */
+.nav-drawer-item__external-icon {
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: clip;
+}
+
+.nav-drawer-item__external-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Chevron (expand/collapse arrow) */
+.nav-drawer-item__chevron {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 1;
+    transition: transform 0.2s ease;
+}
+
+/* Rotate chevron when expanded */
+.nav-drawer-item--expanded .nav-drawer-item__chevron {
+    transform: rotate(180deg);
+}
+
+/* ============================================
+   PARENT ITEM + COLLAPSIBLE CHILDREN
+   ============================================ */
+
+.nav-drawer-item--group {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-drawer-item--parent {
+    /* Inherits base .nav-drawer-item styles */
+}
+
+.nav-drawer-item__children {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.nav-drawer-item__children--open {
+    max-height: 600px;
+}
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+
+.nav-drawer-item--divider {
+    display: flex;
+    align-items: center;
+    height: auto;
+    padding: var(--spacing-md, 8px) var(--spacing-xl, 16px);
+    cursor: default;
+    pointer-events: none;
+    background: none;
+}
+
+.nav-drawer-item--divider::before {
+    display: none;
+}
+
+.nav-drawer-item__divider-line {
+    flex: 1;
+    height: 1px;
+    background-color: var(--nd-divider-color);
+}
+
+/* ============================================
+   RTL SUPPORT
+   ============================================ */
+
+[dir="rtl"] .nav-drawer__header {
+    direction: rtl;
+}
+
+[dir="rtl"] .nav-drawer__header-logo-wrapper {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-drawer__header-text {
+    text-align: right;
+}
+
+/* ============================================
+   ITEM STATES SHOWCASE HELPER
+   For the isolated item states preview
+   ============================================ */
+
+.nav-drawer-states-row {
+    display: flex;
+    gap: var(--spacing-xl, 16px);
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-xl, 16px);
+}
+
+.nav-drawer-states-row .nav-drawer-item {
+    width: 224px;
+    flex-shrink: 0;
+}
+
+.nav-drawer-states-label {
+    font-size: var(--font-size-xs, 12px);
+    font-weight: var(--font-weight-medium, 500);
+    color: var(--color-text-secondary, #6C737F);
+    margin-bottom: var(--spacing-md, 8px);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.nav-drawer-oncolor-bg {
+    background-color: #14573A;
+    padding: var(--spacing-xl, 16px);
+    border-radius: var(--radius-md, 8px);
+}

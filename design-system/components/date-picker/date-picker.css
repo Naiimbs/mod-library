@@ -1,0 +1,730 @@
+/* ============================================
+   COMPONENT: DATE PICKER
+   DGA Design System - Date Picker Component
+   A Date Picker enables users to select dates
+   via a pop-up calendar dropdown.
+
+   Sub-components:
+   - Date Cell
+   - Date Field
+   - Year Dropdown
+   - Date Picker (calendar panel)
+   ============================================ */
+
+/* ============================================
+   SUB-COMPONENT: DATE CELL
+   Individual day cell inside the calendar grid.
+   States: default, hover, pressed, selected,
+   today, disabled, range-start, range-mid, range-end
+   ============================================ */
+
+.date-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-sm);
+    color: var(--color-gray-700);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
+    user-select: none;
+    position: relative;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+}
+
+/* Hover */
+.date-cell:hover:not(.date-cell--disabled):not(.date-cell--selected) {
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-900);
+}
+
+/* Pressed / Active */
+.date-cell:active:not(.date-cell--disabled):not(.date-cell--selected) {
+    background-color: var(--color-gray-200);
+}
+
+/* Today */
+.date-cell--today {
+    font-weight: var(--font-weight-semibold);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.date-cell--today:hover:not(.date-cell--disabled):not(.date-cell--selected) {
+    background-color: var(--color-primary-light);
+}
+
+/* Selected */
+.date-cell--selected {
+    background-color: var(--color-primary);
+    color: var(--color-text-on-color);
+    font-weight: var(--font-weight-medium);
+    border-color: var(--color-primary);
+}
+
+.date-cell--selected:hover {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+}
+
+/* Disabled */
+.date-cell--disabled {
+    color: var(--color-gray-300);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Outside current month (muted) */
+.date-cell--outside {
+    color: var(--color-gray-400);
+}
+
+.date-cell--outside:hover:not(.date-cell--disabled) {
+    background-color: var(--color-gray-50);
+}
+
+/* Range Start */
+.date-cell--range-start {
+    background-color: var(--color-primary);
+    color: var(--color-text-on-color);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-full) 0 0 var(--radius-full);
+}
+
+[dir="rtl"] .date-cell--range-start {
+    border-radius: 0 var(--radius-full) var(--radius-full) 0;
+}
+
+/* Range End */
+.date-cell--range-end {
+    background-color: var(--color-primary);
+    color: var(--color-text-on-color);
+    font-weight: var(--font-weight-medium);
+    border-radius: 0 var(--radius-full) var(--radius-full) 0;
+}
+
+[dir="rtl"] .date-cell--range-end {
+    border-radius: var(--radius-full) 0 0 var(--radius-full);
+}
+
+/* Range Middle */
+.date-cell--range-mid {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+    border-radius: 0;
+}
+
+.date-cell--range-mid:hover {
+    background-color: var(--color-primary-50);
+}
+
+/* ============================================
+   SUB-COMPONENT: DATE FIELD
+   The input field that triggers the calendar.
+   Reuses text-input patterns for consistency.
+   ============================================ */
+
+.date-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.date-field__label {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-sm);
+    color: var(--color-text-primary);
+}
+
+.date-field__label--required::after {
+    content: ' *';
+    color: var(--color-error-700);
+}
+
+.date-field__label--optional::after {
+    content: ' (Optional)';
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-secondary);
+}
+
+[dir="rtl"] .date-field__label--optional::after {
+    content: ' (اختياري)';
+}
+
+.date-field__wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.date-field__input {
+    width: 100%;
+    height: 40px;
+    padding: 8px 40px 8px 12px;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-md);
+    color: var(--color-gray-700);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-400);
+    border-radius: var(--radius-sm);
+    outline: none;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+[dir="rtl"] .date-field__input {
+    padding: 8px 12px 8px 40px;
+}
+
+.date-field__input::placeholder {
+    color: var(--color-gray-400);
+    font-family: var(--font-family-primary);
+}
+
+/* Calendar Icon */
+.date-field__icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: var(--color-gray-500);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--transition-fast);
+}
+
+[dir="rtl"] .date-field__icon {
+    right: auto;
+    left: 12px;
+}
+
+/* Field States */
+.date-field__input:hover:not(:disabled):not(:focus):not(.date-field__input--error) {
+    border-color: var(--color-gray-700);
+}
+
+.date-field__input:focus,
+.date-field__input--active {
+    border-color: var(--color-gray-400);
+    box-shadow: var(--shadow-md), inset 0 -2px 0 0 #0d121c;
+}
+
+.date-field__wrapper:hover .date-field__icon,
+.date-field__wrapper:focus-within .date-field__icon {
+    color: var(--color-gray-700);
+}
+
+/* Error */
+.date-field__input--error {
+    border-color: var(--color-error-700);
+}
+
+.date-field__input--error:focus {
+    border-color: var(--color-error-700);
+    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--color-error-700);
+}
+
+/* Disabled */
+.date-field__input:disabled {
+    background-color: var(--color-gray-100);
+    border-color: var(--color-gray-400);
+    color: var(--color-gray-400);
+    cursor: not-allowed;
+}
+
+.date-field__input:disabled::placeholder {
+    color: var(--color-gray-300);
+}
+
+.date-field--disabled .date-field__label {
+    color: var(--color-gray-400);
+}
+
+.date-field--disabled .date-field__icon {
+    color: var(--color-gray-300);
+}
+
+/* Helper text */
+.date-field__helper {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    color: var(--color-gray-700);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+}
+
+.date-field__helper--error {
+    color: var(--color-error-700);
+}
+
+/* Medium size */
+.date-field__input--md {
+    height: 32px;
+    padding: 4px 36px 4px 8px;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
+}
+
+[dir="rtl"] .date-field__input--md {
+    padding: 4px 8px 4px 36px;
+}
+
+/* ============================================
+   SUB-COMPONENT: YEAR DROPDOWN
+   Dropdown for selecting year in the header.
+   ============================================ */
+
+.year-dropdown {
+    position: relative;
+    display: inline-flex;
+}
+
+.year-dropdown__trigger {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-sm);
+    color: var(--color-gray-900);
+    background: none;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.year-dropdown__trigger:hover {
+    background-color: var(--color-gray-100);
+}
+
+.year-dropdown__trigger:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.year-dropdown__arrow {
+    width: 16px;
+    height: 16px;
+    color: var(--color-gray-500);
+    transition: transform var(--transition-fast);
+}
+
+.year-dropdown.is-open .year-dropdown__arrow {
+    transform: rotate(180deg);
+}
+
+.year-dropdown__menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-secondary);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    z-index: 10;
+    display: none;
+    padding: 4px;
+}
+
+.year-dropdown.is-open .year-dropdown__menu {
+    display: block;
+}
+
+.year-dropdown__option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 8px;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
+    color: var(--color-gray-700);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.year-dropdown__option:hover {
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-900);
+}
+
+.year-dropdown__option--selected {
+    background-color: var(--color-primary);
+    color: var(--color-text-on-color);
+    font-weight: var(--font-weight-medium);
+}
+
+.year-dropdown__option--selected:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* Scrollbar styling */
+.year-dropdown__menu::-webkit-scrollbar {
+    width: 4px;
+}
+
+.year-dropdown__menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.year-dropdown__menu::-webkit-scrollbar-thumb {
+    background-color: var(--color-gray-300);
+    border-radius: var(--radius-full);
+}
+
+/* ============================================
+   MAIN COMPONENT: DATE PICKER (Calendar Panel)
+   The dropdown calendar panel itself.
+   ============================================ */
+
+.date-picker {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+}
+
+.date-picker__panel {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 312px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-secondary);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    z-index: 100;
+    display: none;
+    overflow: hidden;
+}
+
+[dir="rtl"] .date-picker__panel {
+    left: auto;
+    right: 0;
+}
+
+.date-picker.is-open .date-picker__panel {
+    display: block;
+}
+
+/* Static / always-visible panel (for showcase) */
+.date-picker__panel--static {
+    position: static;
+    display: block;
+}
+
+/* Header: Month/Year left, arrows right (matches Figma) */
+.date-picker__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px 8px;
+}
+
+.date-picker__nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.date-picker__arrows {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.date-picker__month-label {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-sm);
+    color: var(--color-gray-900);
+}
+
+.date-picker__nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: 1px solid var(--color-border-secondary);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--color-gray-500);
+    transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.date-picker__nav-btn:hover {
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-700);
+    border-color: var(--color-gray-400);
+}
+
+.date-picker__nav-btn:active {
+    background-color: var(--color-gray-200);
+}
+
+.date-picker__nav-btn:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.date-picker__nav-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Weekday labels row */
+.date-picker__weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 4px 16px;
+    gap: 0;
+}
+
+.date-picker__weekday {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-xs);
+    color: var(--color-gray-500);
+    text-transform: uppercase;
+}
+
+/* Calendar grid */
+.date-picker__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 0 16px 12px;
+    gap: 4px 0;
+    justify-items: center;
+}
+
+/* Footer with actions */
+.date-picker__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px 12px;
+    border-top: 1px solid var(--color-border-secondary);
+}
+
+.date-picker__footer-btn {
+    padding: 6px 12px;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-sm);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.date-picker__footer-btn--clear {
+    background: none;
+    border: 1px solid var(--color-border-secondary);
+    color: var(--color-gray-700);
+}
+
+.date-picker__footer-btn--clear:hover {
+    background-color: var(--color-gray-100);
+}
+
+.date-picker__footer-btn--today {
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    color: var(--color-text-on-color);
+}
+
+.date-picker__footer-btn--today:hover {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+}
+
+/* ============================================
+   USE CASE: Quick Option Presets + Calendar
+   Side panel with preset date ranges next to calendar.
+   ============================================ */
+
+.date-picker--with-presets {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid var(--color-border-secondary);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    width: fit-content;
+}
+
+.date-picker--with-presets .date-picker__panel--static {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.date-picker__presets {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 0;
+    border-right: 1px solid var(--color-border-secondary);
+    min-width: 160px;
+}
+
+[dir="rtl"] .date-picker__presets {
+    border-right: none;
+    border-left: 1px solid var(--color-border-secondary);
+}
+
+.date-picker__presets-title {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-xs);
+    color: var(--color-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 16px 8px;
+}
+
+.date-picker__preset-option {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
+    color: var(--color-gray-700);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+}
+
+[dir="rtl"] .date-picker__preset-option {
+    text-align: right;
+}
+
+.date-picker__preset-option:hover {
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-900);
+}
+
+.date-picker__preset-option--active {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+}
+
+/* ============================================
+   USE CASE: Attached Calendar (field + calendar)
+   Calendar directly below the input, visually connected.
+   ============================================ */
+
+.date-picker--attached {
+    max-width: 312px;
+}
+
+.date-picker--attached .date-picker__panel--static {
+    border-top: none;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    margin-top: -1px;
+}
+
+.date-picker--attached .date-field__input {
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+/* ============================================
+   USE CASE: Dual Date Fields (Range Picker)
+   Two date fields side by side for range selection.
+   ============================================ */
+
+.date-picker__dual-fields {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.date-picker__dual-fields .date-field {
+    flex: 1;
+    min-width: 0;
+}
+
+/* ============================================
+   ANIMATION
+   ============================================ */
+
+.date-picker__panel {
+    animation: datepicker-fade-in 150ms ease;
+}
+
+@keyframes datepicker-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   SHOWCASE HELPERS
+   Layout helpers for the showcase page
+   ============================================ */
+
+.date-cell-showcase {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+.date-cell-showcase__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.date-cell-showcase__label {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    text-align: center;
+}

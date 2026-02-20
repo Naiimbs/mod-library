@@ -38,6 +38,10 @@
     <link rel="stylesheet" href="components/form-template/form-template.css">
     <link rel="stylesheet" href="components/filters/filters.css">
     <link rel="stylesheet" href="components/footer/footer.css">
+    <link rel="stylesheet" href="components/chips/chips.css">
+    <link rel="stylesheet" href="components/date-picker/date-picker.css">
+    <link rel="stylesheet" href="components/nav-drawer/nav-drawer.css">
+    <link rel="stylesheet" href="components/components-overview/components-overview.css">
 
     <!-- Icon Font Styles -->
     <link rel="stylesheet" href="css/icons-fonts.css">
@@ -95,7 +99,7 @@
                     </a>
 
                     <!-- Components (Selected) -->
-                    <a href="#cards" class="header-menu-item header-menu-item--selected main-nav-link active" role="menuitem">
+                    <a href="#components-overview" class="header-menu-item header-menu-item--selected main-nav-link active" role="menuitem">
                         <span class="header-menu-item__text">Components</span>
                         <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -167,9 +171,11 @@
             <!-- Sidebar Navigation -->
             <aside class="sidebar">
                 <nav class="sidebar-nav">
+                    <a href="#" class="sidebar-link" data-component="components-overview"><span class="icon sidebar-link__icon dga-icon-dashboard-square-01"></span>Overview</a>
                     <a href="#" class="sidebar-link" data-component="buttons"><span class="icon sidebar-link__icon dga-icon-cursor-pointer-01"></span>Buttons</a>
                     <a href="#" class="sidebar-link" data-component="text-input"><span class="icon sidebar-link__icon dga-icon-type-cursor"></span>Text Input</a>
                     <a href="#" class="sidebar-link" data-component="tags"><span class="icon sidebar-link__icon dga-icon-tag-01"></span>Tags</a>
+                    <a href="#" class="sidebar-link" data-component="chips"><span class="icon sidebar-link__icon dga-icon-tag-01"></span>Chips</a>
                     <a href="#" class="sidebar-link" data-component="status-tag"><span class="icon sidebar-link__icon dga-icon-checkmark-badge-01"></span>Status Tag</a>
                     <a href="#" class="sidebar-link" data-component="pagination"><span class="icon sidebar-link__icon dga-icon-more-horizontal"></span>Pagination</a>
                     <a href="#" class="sidebar-link" data-component="tabs"><span class="icon sidebar-link__icon dga-icon-browser"></span>Tabs</a>
@@ -179,7 +185,7 @@
                     <a href="#" class="sidebar-link" data-component="links"><span class="icon sidebar-link__icon dga-icon-link-01"></span>Links</a>
                     <a href="#" class="sidebar-link" data-component="cards"><span class="icon sidebar-link__icon dga-icon-dashboard-square-01"></span>Cards</a>
                     <a href="#" class="sidebar-link" data-component="menus"><span class="icon sidebar-link__icon dga-icon-menu-01"></span>Menus</a>
-                    <a href="#" class="sidebar-link active" data-component="nav-header"><span class="icon sidebar-link__icon dga-icon-layout-top"></span>Nav Header</a>
+                    <a href="#" class="sidebar-link" data-component="nav-header"><span class="icon sidebar-link__icon dga-icon-layout-top"></span>Nav Header</a>
                     <a href="#" class="sidebar-link" data-component="nav-drawer"><span class="icon sidebar-link__icon dga-icon-sidebar-left-01"></span>Nav Drawer</a>
                     <a href="#" class="sidebar-link" data-component="sidebar"><span class="icon sidebar-link__icon dga-icon-layout-left"></span>Sidebar</a>
                     <a href="#" class="sidebar-link" data-component="tooltip"><span class="icon sidebar-link__icon dga-icon-comment-01"></span>Tooltip</a>
@@ -188,6 +194,7 @@
                     <a href="#" class="sidebar-link" data-component="form-template"><span class="icon sidebar-link__icon dga-icon-check-list"></span>Form Template</a>
                     <a href="#" class="sidebar-link" data-component="filters"><span class="icon sidebar-link__icon dga-icon-filter"></span>Filters</a>
                     <a href="#" class="sidebar-link" data-component="footer"><span class="icon sidebar-link__icon dga-icon-layout-bottom"></span>Footer</a>
+                    <a href="#" class="sidebar-link" data-component="date-picker"><span class="icon sidebar-link__icon dga-icon-calendar-03"></span>Date Picker</a>
                 </nav>
             </aside>
 
@@ -207,6 +214,11 @@
     <script src="js/components/digital-stamp.js"></script>
     <script src="js/components/filters.js"></script>
     <script src="js/components/text-input.js"></script>
+    <script src="js/components/date-picker.js"></script>
+    <script src="js/components/components-overview.js"></script>
+    <script src="js/components/nav-drawer.js"></script>
+    <script src="js/components/buttons.js"></script>
+    <script src="js/components/chips.js"></script>
     <script src="js/icons-data.js"></script>
     <script src="js/components/icons.js"></script>
     <script src="js/main.js"></script>

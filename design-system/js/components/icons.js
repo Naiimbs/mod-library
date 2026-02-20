@@ -26,6 +26,7 @@ class IconsShowcase {
 
         this.currentPack = 'all';
         this.currentSearch = '';
+        this.currentVariantIndex = 0;
         this.debounceTimer = null;
         this.toastTimer = null;
         this.activeTab = 'html';
@@ -46,6 +47,7 @@ class IconsShowcase {
 
     init() {
         this.renderPacksSidebar();
+        this.renderTypeFilters();
         this.renderIcons();
         this.bindEvents();
     }
@@ -116,6 +118,32 @@ class IconsShowcase {
     }
 
     /* ------------------------------------------
+       ICON TYPE FILTERS
+       ------------------------------------------ */
+    renderTypeFilters() {
+        const container = document.querySelector('.icons-type-filters-list');
+        if (!container) return;
+        container.innerHTML = '';
+
+        const fragment = document.createDocumentFragment();
+
+        ICON_VARIANTS.forEach((variant, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'icons-type-filter-btn';
+            if (i === this.currentVariantIndex) btn.classList.add('icons-type-filter-btn--active');
+            btn.dataset.variantIndex = i;
+
+            const label = document.createElement('span');
+            label.textContent = variant.label;
+            btn.appendChild(label);
+
+            fragment.appendChild(btn);
+        });
+
+        container.appendChild(fragment);
+    }
+
+    /* ------------------------------------------
        ICONS GRID
        ------------------------------------------ */
     renderIcons() {
@@ -137,6 +165,8 @@ class IconsShowcase {
             if (matchingIcons.length === 0) return;
             totalVisible += matchingIcons.length;
 
+            const gridVariant = ICON_VARIANTS[this.currentVariantIndex] || ICON_VARIANTS[0];
+
             matchingIcons.forEach(iconClass => {
                 const item = document.createElement('div');
                 item.className = 'icons-grid-item';
@@ -144,6 +174,9 @@ class IconsShowcase {
 
                 const iconEl = document.createElement('span');
                 iconEl.className = 'icon ' + iconClass;
+                if (gridVariant.classes) {
+                    iconEl.className += ' ' + gridVariant.classes;
+                }
                 item.appendChild(iconEl);
 
                 const nameEl = document.createElement('span');
@@ -218,6 +251,20 @@ class IconsShowcase {
                 packsList.querySelectorAll('.icons-pack-item').forEach(i =>
                     i.classList.remove('icons-pack-item--active'));
                 item.classList.add('icons-pack-item--active');
+                this.renderIcons();
+            });
+        }
+
+        // Type filter clicks
+        const typeFilters = document.querySelector('.icons-type-filters-list');
+        if (typeFilters) {
+            typeFilters.addEventListener('click', (e) => {
+                const btn = e.target.closest('.icons-type-filter-btn');
+                if (!btn) return;
+                this.currentVariantIndex = parseInt(btn.dataset.variantIndex, 10);
+                typeFilters.querySelectorAll('.icons-type-filter-btn').forEach(b =>
+                    b.classList.remove('icons-type-filter-btn--active'));
+                btn.classList.add('icons-type-filter-btn--active');
                 this.renderIcons();
             });
         }
