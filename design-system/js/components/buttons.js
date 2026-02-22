@@ -28,6 +28,11 @@ class ButtonDemoManager {
         this.initSwitches();
         this.bindEvents();
         this.render();
+
+        // Attach interactive context menu to live demo canvas (uses global instance)
+        if (window.DGA && window.DGA._contextMenu) {
+            window.DGA._contextMenu.attachTo('#btn-demo-preview', '.live-demo__sidebar');
+        }
     }
 
     initSwitches() {

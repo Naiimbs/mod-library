@@ -1,0 +1,569 @@
+<!-- ============================================
+   NOTIFICATION TOAST COMPONENT PAGE
+   DGA Design System
+   ============================================ -->
+
+<!-- Content Header -->
+<div class="content-header">
+    <h1 class="content-title">Notification Toast</h1>
+    <p class="content-description">
+        Notifications are peripheral messages in digital products that communicate information or feedback to the user.
+        These are transient, non-modal messages that appear at the top of the screen to provide brief alerts, disappearing after a set duration.
+    </p>
+</div>
+
+<!-- ============================================
+   LIVE DEMO
+   ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+<div class="live-demo">
+    <div class="live-demo__body">
+        <!-- Preview Canvas -->
+        <div class="live-demo__canvas" id="toast-demo-preview">
+            <!-- Rendered dynamically by NotificationToastDemoManager -->
+        </div>
+
+        <!-- Sidebar Controls -->
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Notification Toast</h3>
+                <p class="live-demo__sidebar-desc">Configure the toast appearance and features.</p>
+            </div>
+
+            <!-- RTL Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <!-- Type Select -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="toast-demo-type">Type</label>
+                <select class="live-demo__sidebar-select" id="toast-demo-type">
+                    <option value="neutral" selected>Neutral</option>
+                    <option value="info">Info</option>
+                    <option value="critical">Critical</option>
+                    <option value="warning">Warning</option>
+                    <option value="success">Success</option>
+                </select>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Mobile</label>
+                <button class="live-demo__switch" data-toggle="mobile" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <!-- Helper Text Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Helper Text</label>
+                <button class="live-demo__switch active" data-toggle="helper-text" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <!-- Actions Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Actions</label>
+                <button class="live-demo__switch active" data-toggle="actions" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <!-- Secondary Action Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Secondary Action</label>
+                <button class="live-demo__switch active" data-toggle="secondary-action" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <!-- Close Button Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Close Button</label>
+                <button class="live-demo__switch active" data-toggle="close-button" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   PROPS TABLE
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2>Props</h2>
+    </div>
+    <div class="showcase-divider"></div>
+    <table class="props-table">
+        <thead>
+            <tr>
+                <th>Prop</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>type</code></td>
+                <td><code>'neutral' | 'info' | 'critical' | 'warning' | 'success'</code></td>
+                <td><code>'neutral'</code></td>
+                <td>Visual style variant of the toast notification.</td>
+            </tr>
+            <tr>
+                <td><code>lead-text</code></td>
+                <td><code>string</code></td>
+                <td>---</td>
+                <td>Bold title text displayed prominently.</td>
+            </tr>
+            <tr>
+                <td><code>helper-text</code></td>
+                <td><code>string</code></td>
+                <td>---</td>
+                <td>Supporting description text below the title.</td>
+            </tr>
+            <tr>
+                <td><code>has-helper-text</code></td>
+                <td><code>boolean</code></td>
+                <td><code>false</code></td>
+                <td>Show or hide the helper/description text.</td>
+            </tr>
+            <tr>
+                <td><code>action</code></td>
+                <td><code>boolean</code></td>
+                <td><code>false</code></td>
+                <td>Show action buttons.</td>
+            </tr>
+            <tr>
+                <td><code>close-button</code></td>
+                <td><code>boolean</code></td>
+                <td><code>true</code></td>
+                <td>Show the close/dismiss button.</td>
+            </tr>
+            <tr>
+                <td><code>v-position</code></td>
+                <td><code>'top' | 'bottom'</code></td>
+                <td><code>'top'</code></td>
+                <td>Vertical position on the screen.</td>
+            </tr>
+            <tr>
+                <td><code>h-position</code></td>
+                <td><code>'left' | 'right'</code></td>
+                <td><code>'right'</code></td>
+                <td>Horizontal position on the screen.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ============================================
+   TYPES SHOWCASE
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Types</h2>
+        <p class="showcase-description">Five type variants control the accent line color and icon style.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+        <!-- Neutral -->
+        <div class="notification-toast notification-toast--neutral">
+            <div class="notification-toast__header">
+                <div class="notification-toast__icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#6C737F" stroke-width="2"/><path d="M12 16v-4m0-4h.01" stroke="#6C737F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="notification-toast__text">
+                    <p class="notification-toast__title">Notification/Alert message title</p>
+                    <p class="notification-toast__helper">When a Notification/Alert needs a further detailed explanation, it goes here.</p>
+                </div>
+                <button class="notification-toast__close" aria-label="Dismiss"><svg class="notification-toast__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="notification-toast__actions">
+                <button class="btn btn-subtle btn-medium" type="button">Button</button>
+                <button class="btn btn-subtle btn-medium" type="button">Button</button>
+            </div>
+            <div class="notification-toast__line"></div>
+        </div>
+
+        <!-- Info -->
+        <div class="notification-toast notification-toast--info">
+            <div class="notification-toast__header">
+                <div class="notification-toast__icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#1570EF" stroke-width="2"/><path d="M12 16v-4m0-4h.01" stroke="#1570EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="notification-toast__text">
+                    <p class="notification-toast__title">Notification/Alert message title</p>
+                    <p class="notification-toast__helper">When a Notification/Alert needs a further detailed explanation, it goes here.</p>
+                </div>
+                <button class="notification-toast__close" aria-label="Dismiss"><svg class="notification-toast__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="notification-toast__actions">
+                <button class="btn btn-subtle btn-medium" type="button">Button</button>
+                <button class="btn btn-subtle btn-medium" type="button">Button</button>
+            </div>
+            <div class="notification-toast__line"></div>
+        </div>
+
+        <!-- Critical -->
+        <div class="notification-toast notification-toast--critical">
+            <div class="notification-toast__header">
+                <div class="notification-toast__icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="#D92D20" stroke-width="2" fill="none"/><path d="M12 9v4m0 4h.01" stroke="#D92D20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="notification-toast__text">
+                    <p class="notification-toast__title">Notification/Alert message title</p>
+                    <p class="notification-toast__helper">When a Notification/Alert needs a further detailed explanation, it goes here.</p>
+                </div>
+                <button class="notification-toast__close" aria-label="Dismiss"><svg class="notification-toast__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="notification-toast__actions">
+                <button class="btn btn-subtle btn-medium" type="button">Button</button>
+                <button class="btn btn-subtle btn-medium" type="button">Button</button>
+            </div>
+            <div class="notification-toast__line"></div>
+        </div>
+
+        <!-- Warning -->
+        <div class="notification-toast notification-toast--warning">
+            <div class="notification-toast__header">
+                <div class="notification-toast__icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#DC6803" stroke-width="2"/><path d="M12 8v4m0 4h.01" stroke="#DC6803" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="notification-toast__text">
+                    <p class="notification-toast__title">Notification/Alert message title</p>
+                    <p class="notification-toast__helper">When a Notification/Alert needs a further detailed explanation, it goes here.</p>
+                </div>
+                <button class="notification-toast__close" aria-label="Dismiss"><svg class="notification-toast__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="notification-toast__actions">
+                <button class="btn btn-subtle btn-medium" type="button">Button</button>
+                <button class="btn btn-subtle btn-medium" type="button">Button</button>
+            </div>
+            <div class="notification-toast__line"></div>
+        </div>
+
+        <!-- Success -->
+        <div class="notification-toast notification-toast--success">
+            <div class="notification-toast__header">
+                <div class="notification-toast__icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#079455" stroke-width="2"/><path d="M8 12l2.5 2.5L16 9.5" stroke="#079455" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="notification-toast__text">
+                    <p class="notification-toast__title">Notification/Alert message title</p>
+                    <p class="notification-toast__helper">When a Notification/Alert needs a further detailed explanation, it goes here.</p>
+                </div>
+                <button class="notification-toast__close" aria-label="Dismiss"><svg class="notification-toast__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="notification-toast__actions">
+                <button class="btn btn-subtle btn-medium" type="button">Button</button>
+                <button class="btn btn-subtle btn-medium" type="button">Button</button>
+            </div>
+            <div class="notification-toast__line"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   MOBILE LAYOUT SHOWCASE
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Mobile Layout</h2>
+        <p class="showcase-description">On smaller screens, the toast uses a stacked vertical layout with full-width buttons and a horizontal top accent line.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start;">
+        <!-- Neutral Mobile -->
+        <div class="notification-toast notification-toast--neutral notification-toast--mobile">
+            <div class="notification-toast__header">
+                <div class="notification-toast__icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#6C737F" stroke-width="2"/><path d="M12 16v-4m0-4h.01" stroke="#6C737F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <button class="notification-toast__close" aria-label="Dismiss"><svg class="notification-toast__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="notification-toast__text">
+                <p class="notification-toast__title">Notification/Alert message title</p>
+                <p class="notification-toast__helper">When a Notification/Alert needs a further detailed explanation, it goes here.</p>
+            </div>
+            <div class="notification-toast__actions">
+                <button class="btn btn-secondary-solid btn-full-width" type="button">Button</button>
+                <button class="btn btn-secondary-solid btn-full-width" type="button">Button</button>
+            </div>
+            <div class="notification-toast__line"></div>
+        </div>
+
+        <!-- Info Mobile -->
+        <div class="notification-toast notification-toast--info notification-toast--mobile">
+            <div class="notification-toast__header">
+                <div class="notification-toast__icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#1570EF" stroke-width="2"/><path d="M12 16v-4m0-4h.01" stroke="#1570EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <button class="notification-toast__close" aria-label="Dismiss"><svg class="notification-toast__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="notification-toast__text">
+                <p class="notification-toast__title">Notification/Alert message title</p>
+                <p class="notification-toast__helper">When a Notification/Alert needs a further detailed explanation, it goes here.</p>
+            </div>
+            <div class="notification-toast__actions">
+                <button class="btn btn-secondary-solid btn-full-width" type="button">Button</button>
+                <button class="btn btn-secondary-solid btn-full-width" type="button">Button</button>
+            </div>
+            <div class="notification-toast__line"></div>
+        </div>
+
+        <!-- Critical Mobile -->
+        <div class="notification-toast notification-toast--critical notification-toast--mobile">
+            <div class="notification-toast__header">
+                <div class="notification-toast__icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="#D92D20" stroke-width="2" fill="none"/><path d="M12 9v4m0 4h.01" stroke="#D92D20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <button class="notification-toast__close" aria-label="Dismiss"><svg class="notification-toast__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="notification-toast__text">
+                <p class="notification-toast__title">Notification/Alert message title</p>
+                <p class="notification-toast__helper">When a Notification/Alert needs a further detailed explanation, it goes here.</p>
+            </div>
+            <div class="notification-toast__actions">
+                <button class="btn btn-secondary-solid btn-full-width" type="button">Button</button>
+                <button class="btn btn-secondary-solid btn-full-width" type="button">Button</button>
+            </div>
+            <div class="notification-toast__line"></div>
+        </div>
+
+        <!-- Warning Mobile -->
+        <div class="notification-toast notification-toast--warning notification-toast--mobile">
+            <div class="notification-toast__header">
+                <div class="notification-toast__icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#DC6803" stroke-width="2"/><path d="M12 8v4m0 4h.01" stroke="#DC6803" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <button class="notification-toast__close" aria-label="Dismiss"><svg class="notification-toast__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="notification-toast__text">
+                <p class="notification-toast__title">Notification/Alert message title</p>
+                <p class="notification-toast__helper">When a Notification/Alert needs a further detailed explanation, it goes here.</p>
+            </div>
+            <div class="notification-toast__actions">
+                <button class="btn btn-secondary-solid btn-full-width" type="button">Button</button>
+                <button class="btn btn-secondary-solid btn-full-width" type="button">Button</button>
+            </div>
+            <div class="notification-toast__line"></div>
+        </div>
+
+        <!-- Success Mobile -->
+        <div class="notification-toast notification-toast--success notification-toast--mobile">
+            <div class="notification-toast__header">
+                <div class="notification-toast__icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#079455" stroke-width="2"/><path d="M8 12l2.5 2.5L16 9.5" stroke="#079455" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <button class="notification-toast__close" aria-label="Dismiss"><svg class="notification-toast__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="notification-toast__text">
+                <p class="notification-toast__title">Notification/Alert message title</p>
+                <p class="notification-toast__helper">When a Notification/Alert needs a further detailed explanation, it goes here.</p>
+            </div>
+            <div class="notification-toast__actions">
+                <button class="btn btn-secondary-solid btn-full-width" type="button">Button</button>
+                <button class="btn btn-secondary-solid btn-full-width" type="button">Button</button>
+            </div>
+            <div class="notification-toast__line"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   WITHOUT HELPER TEXT
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Without Helper Text</h2>
+        <p class="showcase-description">Toast with only the title, no supporting description.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+        <div class="notification-toast notification-toast--info">
+            <div class="notification-toast__header">
+                <div class="notification-toast__icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#1570EF" stroke-width="2"/><path d="M12 16v-4m0-4h.01" stroke="#1570EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="notification-toast__text">
+                    <p class="notification-toast__title">Notification/Alert message title</p>
+                </div>
+                <button class="notification-toast__close" aria-label="Dismiss"><svg class="notification-toast__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="notification-toast__actions">
+                <button class="btn btn-subtle btn-medium" type="button">Button</button>
+                <button class="btn btn-subtle btn-medium" type="button">Button</button>
+            </div>
+            <div class="notification-toast__line"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   WITHOUT ACTIONS
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Without Actions</h2>
+        <p class="showcase-description">Toast without action buttons, used for informational-only messages.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+        <div class="notification-toast notification-toast--success">
+            <div class="notification-toast__header">
+                <div class="notification-toast__icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#079455" stroke-width="2"/><path d="M8 12l2.5 2.5L16 9.5" stroke="#079455" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="notification-toast__text">
+                    <p class="notification-toast__title">Notification/Alert message title</p>
+                    <p class="notification-toast__helper">When a Notification/Alert needs a further detailed explanation, it goes here.</p>
+                </div>
+                <button class="notification-toast__close" aria-label="Dismiss"><svg class="notification-toast__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="notification-toast__line"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   WITHOUT CLOSE BUTTON
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Without Close Button</h2>
+        <p class="showcase-description">Toast without the dismiss button, typically auto-dismissed after a set duration.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+        <div class="notification-toast notification-toast--warning">
+            <div class="notification-toast__header">
+                <div class="notification-toast__icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#DC6803" stroke-width="2"/><path d="M12 8v4m0 4h.01" stroke="#DC6803" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="notification-toast__text">
+                    <p class="notification-toast__title">Notification/Alert message title</p>
+                    <p class="notification-toast__helper">When a Notification/Alert needs a further detailed explanation, it goes here.</p>
+                </div>
+            </div>
+            <div class="notification-toast__actions">
+                <button class="btn btn-subtle btn-medium" type="button">Button</button>
+                <button class="btn btn-subtle btn-medium" type="button">Button</button>
+            </div>
+            <div class="notification-toast__line"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   RTL LAYOUT
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Layout</h2>
+        <p class="showcase-description">Right-to-left layout with Arabic text. The accent line moves to the right side on desktop.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" dir="rtl" style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+        <!-- Neutral RTL -->
+        <div class="notification-toast notification-toast--neutral">
+            <div class="notification-toast__header">
+                <div class="notification-toast__icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#6C737F" stroke-width="2"/><path d="M12 16v-4m0-4h.01" stroke="#6C737F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="notification-toast__text">
+                    <p class="notification-toast__title">عنوان رسالة الاشعار أو التنبيه</p>
+                    <p class="notification-toast__helper">يكتب المحتوى الإضافي هنا في حال ان رسالة الاشعار أو التنبيه تحتاج الى شرح أو تفصيل.</p>
+                </div>
+                <button class="notification-toast__close" aria-label="إغلاق"><svg class="notification-toast__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="notification-toast__actions">
+                <button class="btn btn-subtle btn-medium" type="button">إجراء</button>
+                <button class="btn btn-subtle btn-medium" type="button">إجراء</button>
+            </div>
+            <div class="notification-toast__line"></div>
+        </div>
+
+        <!-- Info RTL -->
+        <div class="notification-toast notification-toast--info">
+            <div class="notification-toast__header">
+                <div class="notification-toast__icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#1570EF" stroke-width="2"/><path d="M12 16v-4m0-4h.01" stroke="#1570EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="notification-toast__text">
+                    <p class="notification-toast__title">عنوان رسالة الاشعار أو التنبيه</p>
+                    <p class="notification-toast__helper">يكتب المحتوى الإضافي هنا في حال ان رسالة الاشعار أو التنبيه تحتاج الى شرح أو تفصيل.</p>
+                </div>
+                <button class="notification-toast__close" aria-label="إغلاق"><svg class="notification-toast__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="notification-toast__actions">
+                <button class="btn btn-subtle btn-medium" type="button">إجراء</button>
+                <button class="btn btn-subtle btn-medium" type="button">إجراء</button>
+            </div>
+            <div class="notification-toast__line"></div>
+        </div>
+
+        <!-- Critical RTL -->
+        <div class="notification-toast notification-toast--critical">
+            <div class="notification-toast__header">
+                <div class="notification-toast__icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="#D92D20" stroke-width="2" fill="none"/><path d="M12 9v4m0 4h.01" stroke="#D92D20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="notification-toast__text">
+                    <p class="notification-toast__title">عنوان رسالة الاشعار أو التنبيه</p>
+                    <p class="notification-toast__helper">يكتب المحتوى الإضافي هنا في حال ان رسالة الاشعار أو التنبيه تحتاج الى شرح أو تفصيل.</p>
+                </div>
+                <button class="notification-toast__close" aria-label="إغلاق"><svg class="notification-toast__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="notification-toast__actions">
+                <button class="btn btn-subtle btn-medium" type="button">إجراء</button>
+                <button class="btn btn-subtle btn-medium" type="button">إجراء</button>
+            </div>
+            <div class="notification-toast__line"></div>
+        </div>
+
+        <!-- Warning RTL -->
+        <div class="notification-toast notification-toast--warning">
+            <div class="notification-toast__header">
+                <div class="notification-toast__icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#DC6803" stroke-width="2"/><path d="M12 8v4m0 4h.01" stroke="#DC6803" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="notification-toast__text">
+                    <p class="notification-toast__title">عنوان رسالة الاشعار أو التنبيه</p>
+                    <p class="notification-toast__helper">يكتب المحتوى الإضافي هنا في حال ان رسالة الاشعار أو التنبيه تحتاج الى شرح أو تفصيل.</p>
+                </div>
+                <button class="notification-toast__close" aria-label="إغلاق"><svg class="notification-toast__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="notification-toast__actions">
+                <button class="btn btn-subtle btn-medium" type="button">إجراء</button>
+                <button class="btn btn-subtle btn-medium" type="button">إجراء</button>
+            </div>
+            <div class="notification-toast__line"></div>
+        </div>
+
+        <!-- Success RTL -->
+        <div class="notification-toast notification-toast--success">
+            <div class="notification-toast__header">
+                <div class="notification-toast__icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#079455" stroke-width="2"/><path d="M8 12l2.5 2.5L16 9.5" stroke="#079455" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="notification-toast__text">
+                    <p class="notification-toast__title">عنوان رسالة الاشعار أو التنبيه</p>
+                    <p class="notification-toast__helper">يكتب المحتوى الإضافي هنا في حال ان رسالة الاشعار أو التنبيه تحتاج الى شرح أو تفصيل.</p>
+                </div>
+                <button class="notification-toast__close" aria-label="إغلاق"><svg class="notification-toast__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="notification-toast__actions">
+                <button class="btn btn-subtle btn-medium" type="button">إجراء</button>
+                <button class="btn btn-subtle btn-medium" type="button">إجراء</button>
+            </div>
+            <div class="notification-toast__line"></div>
+        </div>
+    </div>
+</div>

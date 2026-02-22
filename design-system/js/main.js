@@ -45,9 +45,16 @@ class DGADesignSystem {
             }));
         }
 
+        // Initialize global context menu inspector for .btn elements
+        if (typeof ContextMenuManager !== 'undefined') {
+            this._contextMenu = new ContextMenuManager();
+            this._contextMenu.attachGlobal('#component-content');
+        }
+
         // Listen for dynamically loaded components to reinitialize JS
         document.addEventListener('component:loaded', (e) => {
             this.initComponentModules(e.detail.componentId);
+            this.buildTableOfContents();
         });
 
         // Initialize demo interactions for the shell (main app header)
@@ -89,8 +96,8 @@ class DGADesignSystem {
         }
 
         // Text Input
-        if (componentId === 'text-input' && typeof TextInputManager !== 'undefined') {
-            this.register('textInput', new TextInputManager());
+        if (componentId === 'text-input' && typeof TextInputDemoManager !== 'undefined') {
+            this.register('textInput', new TextInputDemoManager());
         }
 
         // Icons Showcase
@@ -136,6 +143,46 @@ class DGADesignSystem {
         // Chips
         if (componentId === 'chips' && typeof ChipDemoManager !== 'undefined') {
             this.register('chips', new ChipDemoManager());
+        }
+
+        // Progress Indicator
+        if (componentId === 'progress-indicator' && typeof ProgressIndicatorDemoManager !== 'undefined') {
+            this.register('progressIndicator', new ProgressIndicatorDemoManager());
+        }
+
+        // Textarea
+        if (componentId === 'textarea' && typeof TextareaDemoManager !== 'undefined') {
+            this.register('textarea', new TextareaDemoManager());
+        }
+
+        // Radio Button
+        if (componentId === 'radio' && typeof RadioDemoManager !== 'undefined') {
+            this.register('radio', new RadioDemoManager());
+        }
+
+        // Checkbox
+        if (componentId === 'checkbox' && typeof CheckboxDemoManager !== 'undefined') {
+            this.register('checkbox', new CheckboxDemoManager());
+        }
+
+        // Notification
+        if (componentId === 'notification' && typeof NotificationDemoManager !== 'undefined') {
+            this.register('notification', new NotificationDemoManager());
+        }
+
+        // Notification Toast
+        if (componentId === 'notification-toast' && typeof NotificationToastDemoManager !== 'undefined') {
+            this.register('notificationToast', new NotificationToastDemoManager());
+        }
+
+        // Second Nav Header
+        if (componentId === 'second-nav-header' && typeof SecondNavHeaderDemoManager !== 'undefined') {
+            this.register('secondNavHeader', new SecondNavHeaderDemoManager());
+        }
+
+        // Footer
+        if (componentId === 'footer' && typeof FooterDemoManager !== 'undefined') {
+            this.register('footer', new FooterDemoManager());
         }
     }
 
@@ -200,6 +247,97 @@ class DGADesignSystem {
      * Initialize main navigation header demo interactions
      * (the actual app header — always present in the shell)
      */
+    /**
+     * Build sticky table of contents from page sections with scroll spy
+     */
+    buildTableOfContents() {
+        const toc = document.getElementById('content-toc');
+        const content = document.getElementById('component-content');
+        if (!toc || !content) return;
+
+        // Cleanup previous observer
+        if (this._tocObserver) {
+            this._tocObserver.disconnect();
+            this._tocObserver = null;
+        }
+
+        // Collect sections: live-demo headings and showcase-section headings
+        const sections = [];
+
+        // Live demo heading
+        const liveDemoHeading = content.querySelector('h2.live-demo__heading');
+        if (liveDemoHeading) {
+            const liveDemoParent = liveDemoHeading.closest('.live-demo');
+            if (liveDemoParent) {
+                liveDemoParent.id = 'section-live-demo';
+                sections.push({ id: 'section-live-demo', label: 'Live demo' });
+            }
+        }
+
+        // Showcase sections (Props, Horizontal Layout, etc.)
+        content.querySelectorAll('.showcase-section').forEach(section => {
+            const heading = section.querySelector('.showcase-header h2, .showcase-header .showcase-title');
+            if (heading) {
+                const text = heading.textContent.trim();
+                const slug = 'section-' + text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '');
+                section.id = slug;
+                sections.push({ id: slug, label: text });
+            }
+        });
+
+        // Empty state — hide TOC
+        if (sections.length === 0) {
+            toc.innerHTML = '';
+            return;
+        }
+
+        // Build TOC HTML
+        const links = sections.map(s =>
+            `<li><a class="content-toc__item" href="#${s.id}" data-toc-target="${s.id}">${s.label}</a></li>`
+        ).join('');
+
+        toc.innerHTML = `
+            <p class="content-toc__title">On this page</p>
+            <ul class="content-toc__list">${links}</ul>
+        `;
+
+        // Smooth scroll on click
+        toc.querySelectorAll('.content-toc__item').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.getElementById(link.dataset.tocTarget);
+                if (target) {
+                    const top = target.getBoundingClientRect().top + window.scrollY - 96;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Scroll spy with IntersectionObserver
+        const tocLinks = toc.querySelectorAll('.content-toc__item');
+
+        const setActive = (id) => {
+            tocLinks.forEach(link => {
+                link.classList.toggle('content-toc__item--active', link.dataset.tocTarget === id);
+            });
+        };
+
+        this._tocObserver = new IntersectionObserver((entries) => {
+            for (const entry of entries) {
+                if (entry.isIntersecting) {
+                    setActive(entry.target.id);
+                }
+            }
+        }, {
+            rootMargin: '-96px 0px -60% 0px'
+        });
+
+        sections.forEach(s => {
+            const el = document.getElementById(s.id);
+            if (el) this._tocObserver.observe(el);
+        });
+    }
+
     initNavigationHeaderDemo() {
         const header = document.querySelector('.layout > .navigation-header');
         if (!header) return;

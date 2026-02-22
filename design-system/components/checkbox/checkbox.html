@@ -1,0 +1,732 @@
+<div class="content-header">
+    <h1 class="content-title">Checkbox</h1>
+    <p class="content-description">A checkbox allows users to make a single selection or indicate a binary choice. Checkboxes enable users to interact with options within an interface. They can be toggled individually for specific selections or grouped together to allow multiple choices.</p>
+</div>
+
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <!-- Left: Preview canvas -->
+        <div class="live-demo__canvas" id="cb-demo-preview" style="align-items: center; padding: var(--spacing-4xl);">
+            <!-- Rendered dynamically by JS -->
+        </div>
+
+        <!-- Right: Controls sidebar -->
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Checkbox</h3>
+                <p class="live-demo__sidebar-desc">Toggle individual selections or group checkboxes for multiple choices.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="cb-demo-state">State</label>
+                <select class="live-demo__sidebar-select" id="cb-demo-state">
+                    <option value="default">Default</option>
+                    <option value="disabled">Disabled</option>
+                    <option value="readonly">Read-only</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="cb-demo-style">Style</label>
+                <select class="live-demo__sidebar-select" id="cb-demo-style">
+                    <option value="primary">Primary</option>
+                    <option value="neutral">Neutral</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="cb-demo-size">Size</label>
+                <select class="live-demo__sidebar-select" id="cb-demo-size">
+                    <option value="medium">Medium</option>
+                    <option value="small">Small</option>
+                    <option value="xsmall">x Small</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Checked</label>
+                <button class="live-demo__switch" data-toggle="checked" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Indeterminate</label>
+                <button class="live-demo__switch" data-toggle="indeterminate" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Helper Text</label>
+                <button class="live-demo__switch active" data-toggle="helper-text" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Alert Message</label>
+                <button class="live-demo__switch" data-toggle="alert-message" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     PROPS TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2>Props</h2>
+    </div>
+    <div class="showcase-divider"></div>
+
+    <table class="props-table">
+        <thead>
+            <tr>
+                <th>Prop</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>label</code></td>
+                <td><code>string</code></td>
+                <td>—</td>
+                <td>Label text displayed next to the checkbox.</td>
+            </tr>
+            <tr>
+                <td><code>name</code></td>
+                <td><code>string</code></td>
+                <td>—</td>
+                <td>Groups checkboxes for form submission.</td>
+            </tr>
+            <tr>
+                <td><code>value</code></td>
+                <td><code>string</code></td>
+                <td>—</td>
+                <td>The value submitted when this checkbox is checked.</td>
+            </tr>
+            <tr>
+                <td><code>checked</code></td>
+                <td><code>boolean</code></td>
+                <td><code>false</code></td>
+                <td>Whether the checkbox is selected.</td>
+            </tr>
+            <tr>
+                <td><code>indeterminate</code></td>
+                <td><code>boolean</code></td>
+                <td><code>false</code></td>
+                <td>Shows a partial selection state (minus icon). Set via JavaScript.</td>
+            </tr>
+            <tr>
+                <td><code>disabled</code></td>
+                <td><code>boolean</code></td>
+                <td><code>false</code></td>
+                <td>Prevents user interaction.</td>
+            </tr>
+            <tr>
+                <td><code>style</code></td>
+                <td><code>'primary' | 'neutral'</code></td>
+                <td><code>'primary'</code></td>
+                <td>Visual style — primary (green fill) or neutral (black fill).</td>
+            </tr>
+            <tr>
+                <td><code>size</code></td>
+                <td><code>'md' | 'sm' | 'xs'</code></td>
+                <td><code>'md'</code></td>
+                <td>Hitbox size — medium (24px), small (20px), or x-small (16px).</td>
+            </tr>
+            <tr>
+                <td><code>helper-text</code></td>
+                <td><code>string</code></td>
+                <td>—</td>
+                <td>Descriptive text displayed below the label.</td>
+            </tr>
+            <tr>
+                <td><code>alert-message</code></td>
+                <td><code>string</code></td>
+                <td>—</td>
+                <td>Error or warning message with icon.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ============================================
+     SHOWCASE: States
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">States</h2>
+        <p class="showcase-description">All interactive states — default, hover (move mouse over), disabled, and read-only.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="showcase-row" style="gap: 48px; align-items: flex-start;">
+            <!-- Unchecked states -->
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <p style="font-size: var(--font-size-xs); color: var(--color-text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Unchecked</p>
+                <label class="checkbox">
+                    <div class="checkbox__row">
+                        <div class="checkbox__control">
+                            <span class="checkbox__ripple"></span>
+                            <input type="checkbox" class="checkbox__input">
+                            <span class="checkbox__box">
+                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <span class="checkbox__label">Default</span>
+                    </div>
+                </label>
+                <label class="checkbox checkbox--disabled">
+                    <div class="checkbox__row">
+                        <div class="checkbox__control">
+                            <input type="checkbox" class="checkbox__input" disabled>
+                            <span class="checkbox__box">
+                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <span class="checkbox__label">Disabled</span>
+                    </div>
+                </label>
+                <label class="checkbox checkbox--readonly">
+                    <div class="checkbox__row">
+                        <div class="checkbox__control">
+                            <input type="checkbox" class="checkbox__input">
+                            <span class="checkbox__box">
+                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <span class="checkbox__label">Read-only</span>
+                    </div>
+                </label>
+            </div>
+            <!-- Checked states -->
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <p style="font-size: var(--font-size-xs); color: var(--color-text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Checked (Primary)</p>
+                <label class="checkbox">
+                    <div class="checkbox__row">
+                        <div class="checkbox__control">
+                            <span class="checkbox__ripple"></span>
+                            <input type="checkbox" class="checkbox__input" checked>
+                            <span class="checkbox__box">
+                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <span class="checkbox__label">Default</span>
+                    </div>
+                </label>
+                <label class="checkbox checkbox--disabled">
+                    <div class="checkbox__row">
+                        <div class="checkbox__control">
+                            <input type="checkbox" class="checkbox__input" checked disabled>
+                            <span class="checkbox__box">
+                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <span class="checkbox__label">Disabled</span>
+                    </div>
+                </label>
+                <label class="checkbox checkbox--readonly">
+                    <div class="checkbox__row">
+                        <div class="checkbox__control">
+                            <input type="checkbox" class="checkbox__input" checked>
+                            <span class="checkbox__box">
+                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <span class="checkbox__label">Read-only</span>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: Styles
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Styles</h2>
+        <p class="showcase-description">Primary style uses a green fill, while Neutral uses a black fill.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="showcase-row" style="gap: 48px; align-items: flex-start;">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <p style="font-size: var(--font-size-xs); color: var(--color-text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Primary</p>
+                <label class="checkbox">
+                    <div class="checkbox__row">
+                        <div class="checkbox__control">
+                            <span class="checkbox__ripple"></span>
+                            <input type="checkbox" class="checkbox__input" checked>
+                            <span class="checkbox__box">
+                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <span class="checkbox__label">Selected option</span>
+                    </div>
+                </label>
+                <label class="checkbox checkbox--indeterminate">
+                    <div class="checkbox__row">
+                        <div class="checkbox__control">
+                            <span class="checkbox__ripple"></span>
+                            <input type="checkbox" class="checkbox__input">
+                            <span class="checkbox__box">
+                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <span class="checkbox__label">Indeterminate</span>
+                    </div>
+                </label>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <p style="font-size: var(--font-size-xs); color: var(--color-text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Neutral</p>
+                <label class="checkbox checkbox--neutral">
+                    <div class="checkbox__row">
+                        <div class="checkbox__control">
+                            <span class="checkbox__ripple"></span>
+                            <input type="checkbox" class="checkbox__input" checked>
+                            <span class="checkbox__box">
+                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <span class="checkbox__label">Selected option</span>
+                    </div>
+                </label>
+                <label class="checkbox checkbox--neutral checkbox--indeterminate">
+                    <div class="checkbox__row">
+                        <div class="checkbox__control">
+                            <span class="checkbox__ripple"></span>
+                            <input type="checkbox" class="checkbox__input">
+                            <span class="checkbox__box">
+                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <span class="checkbox__label">Indeterminate</span>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: Sizes
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Sizes</h2>
+        <p class="showcase-description">Three hitbox sizes — medium (24px, default), small (20px), and x-small (16px). The checkbox base remains 16px.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="showcase-row" style="gap: 48px; align-items: flex-start;">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <p style="font-size: var(--font-size-xs); color: var(--color-text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Medium (24px)</p>
+                <label class="checkbox">
+                    <div class="checkbox__row">
+                        <div class="checkbox__control">
+                            <span class="checkbox__ripple"></span>
+                            <input type="checkbox" class="checkbox__input" checked>
+                            <span class="checkbox__box">
+                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <span class="checkbox__label">Medium checkbox</span>
+                    </div>
+                </label>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <p style="font-size: var(--font-size-xs); color: var(--color-text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Small (20px)</p>
+                <label class="checkbox">
+                    <div class="checkbox__row">
+                        <div class="checkbox__control checkbox__control--sm">
+                            <span class="checkbox__ripple"></span>
+                            <input type="checkbox" class="checkbox__input" checked>
+                            <span class="checkbox__box">
+                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <span class="checkbox__label">Small checkbox</span>
+                    </div>
+                </label>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <p style="font-size: var(--font-size-xs); color: var(--color-text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">x Small (16px)</p>
+                <label class="checkbox">
+                    <div class="checkbox__row">
+                        <div class="checkbox__control checkbox__control--xs">
+                            <span class="checkbox__ripple"></span>
+                            <input type="checkbox" class="checkbox__input" checked>
+                            <span class="checkbox__box">
+                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <span class="checkbox__label">Extra small checkbox</span>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: Indeterminate
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Indeterminate</h2>
+        <p class="showcase-description">A partial selection state shown with a minus icon. Commonly used for "select all" when only some items are checked.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div style="display: flex; flex-direction: column; gap: 8px; max-width: 300px;">
+            <label class="checkbox checkbox--indeterminate">
+                <div class="checkbox__row">
+                    <div class="checkbox__control">
+                        <span class="checkbox__ripple"></span>
+                        <input type="checkbox" class="checkbox__input">
+                        <span class="checkbox__box">
+                            <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </div>
+                    <span class="checkbox__label">Select all</span>
+                </div>
+            </label>
+            <div style="padding-left: 40px; display: flex; flex-direction: column; gap: 4px;">
+                <label class="checkbox">
+                    <div class="checkbox__row">
+                        <div class="checkbox__control">
+                            <span class="checkbox__ripple"></span>
+                            <input type="checkbox" class="checkbox__input" checked>
+                            <span class="checkbox__box">
+                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <span class="checkbox__label">Option A</span>
+                    </div>
+                </label>
+                <label class="checkbox">
+                    <div class="checkbox__row">
+                        <div class="checkbox__control">
+                            <span class="checkbox__ripple"></span>
+                            <input type="checkbox" class="checkbox__input" checked>
+                            <span class="checkbox__box">
+                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <span class="checkbox__label">Option B</span>
+                    </div>
+                </label>
+                <label class="checkbox">
+                    <div class="checkbox__row">
+                        <div class="checkbox__control">
+                            <span class="checkbox__ripple"></span>
+                            <input type="checkbox" class="checkbox__input">
+                            <span class="checkbox__box">
+                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <span class="checkbox__label">Option C</span>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: With Helper Text
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">With Helper Text</h2>
+        <p class="showcase-description">Descriptive text below the label provides additional context for each option.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="checkbox-group" style="max-width: 400px;">
+            <label class="checkbox">
+                <div class="checkbox__row">
+                    <div class="checkbox__control">
+                        <span class="checkbox__ripple"></span>
+                        <input type="checkbox" class="checkbox__input" checked>
+                        <span class="checkbox__box">
+                            <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </div>
+                    <span class="checkbox__label">Email notifications</span>
+                </div>
+                <span class="checkbox__helper">Receive updates about your account via email.</span>
+            </label>
+            <label class="checkbox">
+                <div class="checkbox__row">
+                    <div class="checkbox__control">
+                        <span class="checkbox__ripple"></span>
+                        <input type="checkbox" class="checkbox__input">
+                        <span class="checkbox__box">
+                            <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </div>
+                    <span class="checkbox__label">SMS notifications</span>
+                </div>
+                <span class="checkbox__helper">Get text messages for important alerts.</span>
+            </label>
+            <label class="checkbox">
+                <div class="checkbox__row">
+                    <div class="checkbox__control">
+                        <span class="checkbox__ripple"></span>
+                        <input type="checkbox" class="checkbox__input" checked>
+                        <span class="checkbox__box">
+                            <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </div>
+                    <span class="checkbox__label">Push notifications</span>
+                </div>
+                <span class="checkbox__helper">Receive real-time alerts on your device.</span>
+            </label>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: With Alert Message
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">With Alert Message</h2>
+        <p class="showcase-description">Error or warning feedback displayed below a checkbox option.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="checkbox-group" style="max-width: 400px;">
+            <label class="checkbox">
+                <div class="checkbox__row">
+                    <div class="checkbox__control">
+                        <span class="checkbox__ripple"></span>
+                        <input type="checkbox" class="checkbox__input">
+                        <span class="checkbox__box">
+                            <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </div>
+                    <span class="checkbox__label">I agree to the terms and conditions</span>
+                </div>
+                <span class="checkbox__helper">Please read the terms before proceeding.</span>
+                <div class="checkbox__alert">
+                    <svg class="checkbox__alert-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5.333V8m0 2.667h.007M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="checkbox__alert-text">You must accept the terms to continue.</span>
+                </div>
+            </label>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: Checkbox Group
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Checkbox Group</h2>
+        <p class="showcase-description">A group of checkboxes where multiple options can be selected. Available in vertical (default) and horizontal layouts.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="showcase-row" style="gap: 64px; align-items: flex-start;">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <p style="font-size: var(--font-size-xs); color: var(--color-text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Vertical</p>
+                <div class="checkbox-group">
+                    <label class="checkbox">
+                        <div class="checkbox__row">
+                            <div class="checkbox__control">
+                                <span class="checkbox__ripple"></span>
+                                <input type="checkbox" class="checkbox__input" name="group-v" checked>
+                                <span class="checkbox__box">
+                                    <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </div>
+                            <span class="checkbox__label">Option A</span>
+                        </div>
+                    </label>
+                    <label class="checkbox">
+                        <div class="checkbox__row">
+                            <div class="checkbox__control">
+                                <span class="checkbox__ripple"></span>
+                                <input type="checkbox" class="checkbox__input" name="group-v">
+                                <span class="checkbox__box">
+                                    <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </div>
+                            <span class="checkbox__label">Option B</span>
+                        </div>
+                    </label>
+                    <label class="checkbox">
+                        <div class="checkbox__row">
+                            <div class="checkbox__control">
+                                <span class="checkbox__ripple"></span>
+                                <input type="checkbox" class="checkbox__input" name="group-v" checked>
+                                <span class="checkbox__box">
+                                    <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </div>
+                            <span class="checkbox__label">Option C</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <p style="font-size: var(--font-size-xs); color: var(--color-text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Horizontal</p>
+                <div class="checkbox-group checkbox-group--horizontal">
+                    <label class="checkbox">
+                        <div class="checkbox__row">
+                            <div class="checkbox__control">
+                                <span class="checkbox__ripple"></span>
+                                <input type="checkbox" class="checkbox__input" name="group-h" checked>
+                                <span class="checkbox__box">
+                                    <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </div>
+                            <span class="checkbox__label">Left</span>
+                        </div>
+                    </label>
+                    <label class="checkbox">
+                        <div class="checkbox__row">
+                            <div class="checkbox__control">
+                                <span class="checkbox__ripple"></span>
+                                <input type="checkbox" class="checkbox__input" name="group-h">
+                                <span class="checkbox__box">
+                                    <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </div>
+                            <span class="checkbox__label">Center</span>
+                        </div>
+                    </label>
+                    <label class="checkbox">
+                        <div class="checkbox__row">
+                            <div class="checkbox__control">
+                                <span class="checkbox__ripple"></span>
+                                <input type="checkbox" class="checkbox__input" name="group-h">
+                                <span class="checkbox__box">
+                                    <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </div>
+                            <span class="checkbox__label">Right</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: RTL Layout
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Layout</h2>
+        <p class="showcase-description">Right-to-left support for Arabic and other RTL languages.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div dir="rtl" style="width: 100%;">
+            <div class="checkbox-group" style="max-width: 400px; margin-left: auto;">
+                <label class="checkbox">
+                    <div class="checkbox__row">
+                        <div class="checkbox__control">
+                            <span class="checkbox__ripple"></span>
+                            <input type="checkbox" class="checkbox__input" checked>
+                            <span class="checkbox__box">
+                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <span class="checkbox__label">عنوان اختيار متعدد</span>
+                    </div>
+                    <span class="checkbox__helper">يكتب المحتوى الإضافي هنا في حال ان عنوان الاختيار يحتاج الى شرح أو تفصيل.</span>
+                </label>
+                <label class="checkbox">
+                    <div class="checkbox__row">
+                        <div class="checkbox__control">
+                            <span class="checkbox__ripple"></span>
+                            <input type="checkbox" class="checkbox__input">
+                            <span class="checkbox__box">
+                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <span class="checkbox__label">خيار ثاني</span>
+                    </div>
+                    <span class="checkbox__helper">وصف إضافي للخيار الثاني.</span>
+                </label>
+                <label class="checkbox">
+                    <div class="checkbox__row">
+                        <div class="checkbox__control">
+                            <span class="checkbox__ripple"></span>
+                            <input type="checkbox" class="checkbox__input">
+                            <span class="checkbox__box">
+                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </div>
+                        <span class="checkbox__label">خيار ثالث</span>
+                    </div>
+                    <span class="checkbox__helper">وصف إضافي للخيار الثالث.</span>
+                    <div class="checkbox__alert">
+                        <svg class="checkbox__alert-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 5.333V8m0 2.667h.007M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="checkbox__alert-text">رسالة خطأ أو تحذير</span>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

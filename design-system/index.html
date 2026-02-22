@@ -40,8 +40,16 @@
     <link rel="stylesheet" href="components/footer/footer.css">
     <link rel="stylesheet" href="components/chips/chips.css">
     <link rel="stylesheet" href="components/date-picker/date-picker.css">
+    <link rel="stylesheet" href="components/progress-indicator/progress-indicator.css">
+    <link rel="stylesheet" href="components/textarea/textarea.css">
     <link rel="stylesheet" href="components/nav-drawer/nav-drawer.css">
+    <link rel="stylesheet" href="components/radio/radio.css">
+    <link rel="stylesheet" href="components/checkbox/checkbox.css">
+    <link rel="stylesheet" href="components/notification/notification.css">
+    <link rel="stylesheet" href="components/notification-toast/notification-toast.css">
+    <link rel="stylesheet" href="components/second-nav-header/second-nav-header.css">
     <link rel="stylesheet" href="components/components-overview/components-overview.css">
+    <link rel="stylesheet" href="css/context-menu.css">
 
     <!-- Icon Font Styles -->
     <link rel="stylesheet" href="css/icons-fonts.css">
@@ -172,29 +180,36 @@
             <aside class="sidebar">
                 <nav class="sidebar-nav">
                     <a href="#" class="sidebar-link" data-component="components-overview"><span class="icon sidebar-link__icon dga-icon-dashboard-square-01"></span>Overview</a>
-                    <a href="#" class="sidebar-link" data-component="buttons"><span class="icon sidebar-link__icon dga-icon-cursor-pointer-01"></span>Buttons</a>
+                    <a href="#" class="sidebar-link" data-component="buttons"><span class="icon sidebar-link__icon dga-icon-cursor-pointer-01"></span>Buttons<span class="sidebar-link__badge">New</span></a>
                     <a href="#" class="sidebar-link" data-component="text-input"><span class="icon sidebar-link__icon dga-icon-type-cursor"></span>Text Input</a>
+                    <a href="#" class="sidebar-link" data-component="textarea"><span class="icon sidebar-link__icon dga-icon-note-01"></span>Textarea<span class="sidebar-link__badge">New</span></a>
+                    <a href="#" class="sidebar-link" data-component="radio"><span class="icon sidebar-link__icon dga-icon-circle"></span>Radio Button<span class="sidebar-link__badge">New</span></a>
+                    <a href="#" class="sidebar-link" data-component="checkbox"><span class="icon sidebar-link__icon dga-icon-checkmark-square-01"></span>Checkbox<span class="sidebar-link__badge">New</span></a>
                     <a href="#" class="sidebar-link" data-component="tags"><span class="icon sidebar-link__icon dga-icon-tag-01"></span>Tags</a>
-                    <a href="#" class="sidebar-link" data-component="chips"><span class="icon sidebar-link__icon dga-icon-tag-01"></span>Chips</a>
+                    <a href="#" class="sidebar-link" data-component="chips"><span class="icon sidebar-link__icon dga-icon-chip"></span>Chips<span class="sidebar-link__badge">New</span></a>
                     <a href="#" class="sidebar-link" data-component="status-tag"><span class="icon sidebar-link__icon dga-icon-checkmark-badge-01"></span>Status Tag</a>
                     <a href="#" class="sidebar-link" data-component="pagination"><span class="icon sidebar-link__icon dga-icon-more-horizontal"></span>Pagination</a>
-                    <a href="#" class="sidebar-link" data-component="tabs"><span class="icon sidebar-link__icon dga-icon-browser"></span>Tabs</a>
+                    <a href="#" class="sidebar-link" data-component="tabs"><span class="icon sidebar-link__icon dga-icon-browser"></span>Tabs<span class="sidebar-link__badge">New</span></a>
                     <a href="#" class="sidebar-link" data-component="tables"><span class="icon sidebar-link__icon dga-icon-grid-table"></span>Tables</a>
                     <a href="#" class="sidebar-link" data-component="screens"><span class="icon sidebar-link__icon dga-icon-computer"></span>Screens</a>
                     <a href="#" class="sidebar-link" data-component="breadcrumbs"><span class="icon sidebar-link__icon dga-icon-hierarchy"></span>Breadcrumbs</a>
                     <a href="#" class="sidebar-link" data-component="links"><span class="icon sidebar-link__icon dga-icon-link-01"></span>Links</a>
-                    <a href="#" class="sidebar-link" data-component="cards"><span class="icon sidebar-link__icon dga-icon-dashboard-square-01"></span>Cards</a>
+                    <a href="#" class="sidebar-link" data-component="cards"><span class="icon sidebar-link__icon dga-icon-credit-card"></span>Cards</a>
                     <a href="#" class="sidebar-link" data-component="menus"><span class="icon sidebar-link__icon dga-icon-menu-01"></span>Menus</a>
                     <a href="#" class="sidebar-link" data-component="nav-header"><span class="icon sidebar-link__icon dga-icon-layout-top"></span>Nav Header</a>
+                    <a href="#" class="sidebar-link" data-component="second-nav-header"><span class="icon sidebar-link__icon dga-icon-layout-top"></span>Second Nav Header<span class="sidebar-link__badge">New</span></a>
                     <a href="#" class="sidebar-link" data-component="nav-drawer"><span class="icon sidebar-link__icon dga-icon-sidebar-left-01"></span>Nav Drawer</a>
                     <a href="#" class="sidebar-link" data-component="sidebar"><span class="icon sidebar-link__icon dga-icon-layout-left"></span>Sidebar</a>
                     <a href="#" class="sidebar-link" data-component="tooltip"><span class="icon sidebar-link__icon dga-icon-comment-01"></span>Tooltip</a>
+                    <a href="#" class="sidebar-link" data-component="notification"><span class="icon sidebar-link__icon dga-icon-notification-01"></span>Notification<span class="sidebar-link__badge">New</span></a>
+                    <a href="#" class="sidebar-link" data-component="notification-toast"><span class="icon sidebar-link__icon dga-icon-notification-01"></span>Notification Toast<span class="sidebar-link__badge">New</span></a>
                     <a href="#" class="sidebar-link" data-component="modal"><span class="icon sidebar-link__icon dga-icon-alert-02"></span>Modal</a>
                     <a href="#" class="sidebar-link" data-component="digital-stamp"><span class="icon sidebar-link__icon dga-icon-stamp-01"></span>Digital Stamp</a>
                     <a href="#" class="sidebar-link" data-component="form-template"><span class="icon sidebar-link__icon dga-icon-check-list"></span>Form Template</a>
                     <a href="#" class="sidebar-link" data-component="filters"><span class="icon sidebar-link__icon dga-icon-filter"></span>Filters</a>
                     <a href="#" class="sidebar-link" data-component="footer"><span class="icon sidebar-link__icon dga-icon-layout-bottom"></span>Footer</a>
-                    <a href="#" class="sidebar-link" data-component="date-picker"><span class="icon sidebar-link__icon dga-icon-calendar-03"></span>Date Picker</a>
+                    <a href="#" class="sidebar-link" data-component="date-picker"><span class="icon sidebar-link__icon dga-icon-calendar-03"></span>Date Picker<span class="sidebar-link__badge">New</span></a>
+                    <a href="#" class="sidebar-link" data-component="progress-indicator"><span class="icon sidebar-link__icon dga-icon-loading-01"></span>Progress Indicator<span class="sidebar-link__badge">New</span></a>
                 </nav>
             </aside>
 
@@ -202,6 +217,7 @@
             <main class="content" role="main">
                 <!-- Component content is dynamically loaded by router.js -->
                 <div id="component-content"></div>
+                <nav id="content-toc" class="content-toc"></nav>
             </main>
         </div>
     </div>
@@ -217,8 +233,17 @@
     <script src="js/components/date-picker.js"></script>
     <script src="js/components/components-overview.js"></script>
     <script src="js/components/nav-drawer.js"></script>
+    <script src="js/components/context-menu.js"></script>
     <script src="js/components/buttons.js"></script>
     <script src="js/components/chips.js"></script>
+    <script src="js/components/progress-indicator.js"></script>
+    <script src="js/components/textarea.js"></script>
+    <script src="js/components/radio.js"></script>
+    <script src="js/components/checkbox.js"></script>
+    <script src="js/components/notification.js"></script>
+    <script src="js/components/notification-toast.js"></script>
+    <script src="js/components/second-nav-header.js"></script>
+    <script src="js/components/footer.js"></script>
     <script src="js/icons-data.js"></script>
     <script src="js/components/icons.js"></script>
     <script src="js/main.js"></script>

@@ -1,0 +1,581 @@
+<div class="content-header">
+    <h1 class="content-title">Progress Indicator</h1>
+    <p class="content-description">Progress Indicator enables incremental navigation through a series of steps or stages
+        in a process. It provides clear visual cues indicating the current step to help users understand their progress.</p>
+</div>
+
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <!-- Left: Preview canvas -->
+        <div class="live-demo__canvas" id="pi-demo-preview" style="align-items: stretch; padding: var(--spacing-4xl);">
+            <!-- Rendered dynamically by JS -->
+        </div>
+
+        <!-- Right: Controls sidebar -->
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Progress Indicator</h3>
+                <p class="live-demo__sidebar-desc">Facilitates step-by-step navigation through a process or sequence,
+                    commonly used in forms or multi-step processes.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="pi-demo-alignment">Alignment</label>
+                <select class="live-demo__sidebar-select" id="pi-demo-alignment">
+                    <option value="horizontal">Horizontal</option>
+                    <option value="vertical">Vertical</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="pi-demo-style">Style</label>
+                <select class="live-demo__sidebar-select" id="pi-demo-style">
+                    <option value="circles">Circles</option>
+                    <option value="dot">Dot</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="pi-demo-steps">Steps</label>
+                <select class="live-demo__sidebar-select" id="pi-demo-steps">
+                    <option value="3">3</option>
+                    <option value="4" selected>4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="pi-demo-current">Current Step</label>
+                <select class="live-demo__sidebar-select" id="pi-demo-current">
+                    <option value="1">1</option>
+                    <option value="2" selected>2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Focused</label>
+                <button class="live-demo__switch" data-toggle="focused" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Step Name</label>
+                <button class="live-demo__switch active" data-toggle="step-name" type="button" role="switch"
+                    aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Description</label>
+                <button class="live-demo__switch active" data-toggle="description" type="button" role="switch"
+                    aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="live-demo__footer">
+        Adjust controls to explore different Progress Indicator configurations. Each step shows Completed, Current, or
+        Upcoming state automatically.
+    </div>
+</div>
+
+<!-- ============================================
+     PROPS TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2>Props</h2>
+    </div>
+    <div class="showcase-divider"></div>
+
+    <table class="props-table">
+        <thead>
+            <tr>
+                <th>Prop</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>active-step</code></td>
+                <td>number</td>
+                <td>—</td>
+                <td>Index of the currently active step (1-based)</td>
+            </tr>
+            <tr>
+                <td><code>alignment</code></td>
+                <td>"horizontal" | "vertical"</td>
+                <td>"horizontal"</td>
+                <td>Layout direction of the progress indicator</td>
+            </tr>
+            <tr>
+                <td><code>show-step-name</code></td>
+                <td>boolean</td>
+                <td>true</td>
+                <td>Whether to display the step title text</td>
+            </tr>
+            <tr>
+                <td><code>show-step-description</code></td>
+                <td>boolean</td>
+                <td>true</td>
+                <td>Whether to display the step description text</td>
+            </tr>
+            <tr>
+                <td><code>RTL</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Right-to-left layout direction</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 style="margin-top: 24px; font-size: 14px; font-weight: 600; color: #1f2a37;">Step Child Props</h3>
+    <table class="props-table" style="margin-top: 8px;">
+        <thead>
+            <tr>
+                <th>Prop</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>title</code></td>
+                <td>string</td>
+                <td>—</td>
+                <td>Step title text</td>
+            </tr>
+            <tr>
+                <td><code>description</code></td>
+                <td>string</td>
+                <td>—</td>
+                <td>Step description text</td>
+            </tr>
+            <tr>
+                <td><code>status</code></td>
+                <td>"completed" | "current" | "upcoming"</td>
+                <td>—</td>
+                <td>Visual state of the step (derived from active-step)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ============================================
+     SHOWCASE: Horizontal Layout
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2>Horizontal Layout</h2>
+    </div>
+    <div class="showcase-divider"></div>
+
+    <div class="showcase-preview" style="padding: 32px;">
+        <div class="showcase-row" style="flex-direction: column; gap: 12px;">
+            <span class="showcase-label">4 Steps — Step 2 Active</span>
+            <div class="progress-indicator progress-indicator--horizontal">
+                <div class="progress-step progress-step--completed">
+                    <div class="progress-step__track">
+                        <div class="progress-step__circle" tabindex="0">
+                            <svg class="progress-step__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div class="progress-step__connector"></div>
+                    </div>
+                    <div class="progress-step__text">
+                        <span class="progress-step__name">Account Setup</span>
+                        <span class="progress-step__desc">Create your account</span>
+                    </div>
+                </div>
+                <div class="progress-step progress-step--current">
+                    <div class="progress-step__track">
+                        <div class="progress-step__circle" tabindex="0">
+                            <span class="progress-step__number">2</span>
+                        </div>
+                        <div class="progress-step__connector"></div>
+                    </div>
+                    <div class="progress-step__text">
+                        <span class="progress-step__name">Personal Info</span>
+                        <span class="progress-step__desc">Fill in your details</span>
+                    </div>
+                </div>
+                <div class="progress-step progress-step--upcoming">
+                    <div class="progress-step__track">
+                        <div class="progress-step__circle" tabindex="0">
+                            <span class="progress-step__number">3</span>
+                        </div>
+                        <div class="progress-step__connector"></div>
+                    </div>
+                    <div class="progress-step__text">
+                        <span class="progress-step__name">Verification</span>
+                        <span class="progress-step__desc">Verify your identity</span>
+                    </div>
+                </div>
+                <div class="progress-step progress-step--upcoming">
+                    <div class="progress-step__track">
+                        <div class="progress-step__circle" tabindex="0">
+                            <span class="progress-step__number">4</span>
+                        </div>
+                        <div class="progress-step__connector"></div>
+                    </div>
+                    <div class="progress-step__text">
+                        <span class="progress-step__name">Confirmation</span>
+                        <span class="progress-step__desc">Review and confirm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: Vertical Layout
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2>Vertical Layout</h2>
+    </div>
+    <div class="showcase-divider"></div>
+
+    <div class="showcase-preview" style="padding: 32px;">
+        <div class="showcase-row" style="flex-direction: column; gap: 12px;">
+            <span class="showcase-label">4 Steps — Step 2 Active</span>
+            <div class="progress-indicator progress-indicator--vertical" style="max-width: 300px;">
+                <div class="progress-step progress-step--completed">
+                    <div class="progress-step__track">
+                        <div class="progress-step__circle" tabindex="0">
+                            <svg class="progress-step__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div class="progress-step__connector"></div>
+                    </div>
+                    <div class="progress-step__text">
+                        <span class="progress-step__name">Account Setup</span>
+                        <span class="progress-step__desc">Create your account</span>
+                    </div>
+                </div>
+                <div class="progress-step progress-step--current">
+                    <div class="progress-step__track">
+                        <div class="progress-step__circle" tabindex="0">
+                            <span class="progress-step__number">2</span>
+                        </div>
+                        <div class="progress-step__connector"></div>
+                    </div>
+                    <div class="progress-step__text">
+                        <span class="progress-step__name">Personal Info</span>
+                        <span class="progress-step__desc">Fill in your details</span>
+                    </div>
+                </div>
+                <div class="progress-step progress-step--upcoming">
+                    <div class="progress-step__track">
+                        <div class="progress-step__circle" tabindex="0">
+                            <span class="progress-step__number">3</span>
+                        </div>
+                        <div class="progress-step__connector"></div>
+                    </div>
+                    <div class="progress-step__text">
+                        <span class="progress-step__name">Verification</span>
+                        <span class="progress-step__desc">Verify your identity</span>
+                    </div>
+                </div>
+                <div class="progress-step progress-step--upcoming">
+                    <div class="progress-step__track">
+                        <div class="progress-step__circle" tabindex="0">
+                            <span class="progress-step__number">4</span>
+                        </div>
+                        <div class="progress-step__connector"></div>
+                    </div>
+                    <div class="progress-step__text">
+                        <span class="progress-step__name">Confirmation</span>
+                        <span class="progress-step__desc">Review and confirm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: States
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2>Step States</h2>
+    </div>
+    <div class="showcase-divider"></div>
+
+    <div class="showcase-preview" style="padding: 32px;">
+        <div class="showcase-row" style="gap: 48px; flex-wrap: wrap;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                <div class="progress-step progress-step--completed" style="width: auto;">
+                    <div class="progress-step__track" style="width: auto;">
+                        <div class="progress-step__circle" tabindex="0">
+                            <svg class="progress-step__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                    </div>
+                </div>
+                <span class="showcase-label">Completed</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                <div class="progress-step progress-step--current" style="width: auto;">
+                    <div class="progress-step__track" style="width: auto;">
+                        <div class="progress-step__circle" tabindex="0">
+                            <span class="progress-step__number">2</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="showcase-label">Current</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                <div class="progress-step progress-step--upcoming" style="width: auto;">
+                    <div class="progress-step__track" style="width: auto;">
+                        <div class="progress-step__circle" tabindex="0">
+                            <span class="progress-step__number">3</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="showcase-label">Upcoming</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                <div class="progress-step progress-step--completed progress-step--focused" style="width: auto;">
+                    <div class="progress-step__track" style="width: auto;">
+                        <div class="progress-step__circle" tabindex="0">
+                            <svg class="progress-step__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                    </div>
+                </div>
+                <span class="showcase-label">Completed + Focused</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                <div class="progress-step progress-step--current progress-step--focused" style="width: auto;">
+                    <div class="progress-step__track" style="width: auto;">
+                        <div class="progress-step__circle" tabindex="0">
+                            <span class="progress-step__number">2</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="showcase-label">Current + Focused</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: Dot Style
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2>Dot Style</h2>
+    </div>
+    <div class="showcase-divider"></div>
+
+    <div class="showcase-preview" style="padding: 32px;">
+        <div class="showcase-row" style="flex-direction: column; gap: 24px;">
+            <span class="showcase-label">Horizontal — Dot Style</span>
+            <div class="progress-indicator progress-indicator--horizontal progress-indicator--dot">
+                <div class="progress-step progress-step--completed">
+                    <div class="progress-step__track">
+                        <div class="progress-step__circle" tabindex="0"></div>
+                        <div class="progress-step__connector"></div>
+                    </div>
+                    <div class="progress-step__text">
+                        <span class="progress-step__name">Account Setup</span>
+                        <span class="progress-step__desc">Create your account</span>
+                    </div>
+                </div>
+                <div class="progress-step progress-step--current">
+                    <div class="progress-step__track">
+                        <div class="progress-step__circle" tabindex="0"></div>
+                        <div class="progress-step__connector"></div>
+                    </div>
+                    <div class="progress-step__text">
+                        <span class="progress-step__name">Personal Info</span>
+                        <span class="progress-step__desc">Fill in your details</span>
+                    </div>
+                </div>
+                <div class="progress-step progress-step--upcoming">
+                    <div class="progress-step__track">
+                        <div class="progress-step__circle" tabindex="0"></div>
+                        <div class="progress-step__connector"></div>
+                    </div>
+                    <div class="progress-step__text">
+                        <span class="progress-step__name">Verification</span>
+                        <span class="progress-step__desc">Verify your identity</span>
+                    </div>
+                </div>
+                <div class="progress-step progress-step--upcoming">
+                    <div class="progress-step__track">
+                        <div class="progress-step__circle" tabindex="0"></div>
+                        <div class="progress-step__connector"></div>
+                    </div>
+                    <div class="progress-step__text">
+                        <span class="progress-step__name">Confirmation</span>
+                        <span class="progress-step__desc">Review and confirm</span>
+                    </div>
+                </div>
+            </div>
+
+            <span class="showcase-label" style="margin-top: 16px;">Dot States</span>
+            <div style="display: flex; gap: 48px; align-items: center;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                    <div class="progress-indicator--dot">
+                        <div class="progress-step progress-step--completed" style="width: auto;">
+                            <div class="progress-step__track" style="width: auto;">
+                                <div class="progress-step__circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="showcase-label">Completed</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                    <div class="progress-indicator--dot">
+                        <div class="progress-step progress-step--current" style="width: auto;">
+                            <div class="progress-step__track" style="width: auto;">
+                                <div class="progress-step__circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="showcase-label">Current</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                    <div class="progress-indicator--dot">
+                        <div class="progress-step progress-step--upcoming" style="width: auto;">
+                            <div class="progress-step__track" style="width: auto;">
+                                <div class="progress-step__circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="showcase-label">Upcoming</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: Without Description
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2>Without Description</h2>
+    </div>
+    <div class="showcase-divider"></div>
+
+    <div class="showcase-preview" style="padding: 32px;">
+        <div class="showcase-row" style="flex-direction: column; gap: 12px;">
+            <span class="showcase-label">Name Only — No Description</span>
+            <div class="progress-indicator progress-indicator--horizontal">
+                <div class="progress-step progress-step--completed">
+                    <div class="progress-step__track">
+                        <div class="progress-step__circle" tabindex="0">
+                            <svg class="progress-step__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div class="progress-step__connector"></div>
+                    </div>
+                    <div class="progress-step__text">
+                        <span class="progress-step__name">Step One</span>
+                    </div>
+                </div>
+                <div class="progress-step progress-step--current">
+                    <div class="progress-step__track">
+                        <div class="progress-step__circle" tabindex="0">
+                            <span class="progress-step__number">2</span>
+                        </div>
+                        <div class="progress-step__connector"></div>
+                    </div>
+                    <div class="progress-step__text">
+                        <span class="progress-step__name">Step Two</span>
+                    </div>
+                </div>
+                <div class="progress-step progress-step--upcoming">
+                    <div class="progress-step__track">
+                        <div class="progress-step__circle" tabindex="0">
+                            <span class="progress-step__number">3</span>
+                        </div>
+                        <div class="progress-step__connector"></div>
+                    </div>
+                    <div class="progress-step__text">
+                        <span class="progress-step__name">Step Three</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: RTL Layout
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2>RTL Layout</h2>
+    </div>
+    <div class="showcase-divider"></div>
+
+    <div class="showcase-preview" style="padding: 32px;">
+        <div class="showcase-row" style="flex-direction: column; gap: 24px;">
+            <span class="showcase-label">Horizontal — Arabic RTL</span>
+            <div dir="rtl">
+                <div class="progress-indicator progress-indicator--horizontal">
+                    <div class="progress-step progress-step--completed">
+                        <div class="progress-step__track">
+                            <div class="progress-step__circle" tabindex="0">
+                                <svg class="progress-step__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div class="progress-step__connector"></div>
+                        </div>
+                        <div class="progress-step__text">
+                            <span class="progress-step__name">الخطوة الأولى</span>
+                            <span class="progress-step__desc">وصف الخطوة</span>
+                        </div>
+                    </div>
+                    <div class="progress-step progress-step--current">
+                        <div class="progress-step__track">
+                            <div class="progress-step__circle" tabindex="0">
+                                <span class="progress-step__number">2</span>
+                            </div>
+                            <div class="progress-step__connector"></div>
+                        </div>
+                        <div class="progress-step__text">
+                            <span class="progress-step__name">الخطوة الثانية</span>
+                            <span class="progress-step__desc">وصف الخطوة</span>
+                        </div>
+                    </div>
+                    <div class="progress-step progress-step--upcoming">
+                        <div class="progress-step__track">
+                            <div class="progress-step__circle" tabindex="0">
+                                <span class="progress-step__number">3</span>
+                            </div>
+                            <div class="progress-step__connector"></div>
+                        </div>
+                        <div class="progress-step__text">
+                            <span class="progress-step__name">الخطوة الثالثة</span>
+                            <span class="progress-step__desc">وصف الخطوة</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

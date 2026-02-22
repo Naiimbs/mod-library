@@ -33,115 +33,9 @@
    Stepper / Progress Indicator
    ============================================ */
 
-.stepper {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+.form-template__stepper {
     width: 200px;
     flex-shrink: 0;
-}
-
-.stepper__item {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    position: relative;
-}
-
-[dir="rtl"] .stepper__item {
-    flex-direction: row-reverse;
-}
-
-.stepper__indicator {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.stepper__circle {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: "IBM Plex Sans Arabic", sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    flex-shrink: 0;
-    position: relative;
-    z-index: 1;
-}
-
-.stepper__circle--completed {
-    background-color: #1b8354;
-    color: #ffffff;
-}
-
-.stepper__circle--current {
-    background-color: #1b8354;
-    color: #ffffff;
-}
-
-.stepper__circle--upcoming {
-    background-color: #ffffff;
-    border: 2px solid #d2d6db;
-    color: #6c737f;
-}
-
-.stepper__line {
-    width: 2px;
-    height: 40px;
-    background-color: #d2d6db;
-}
-
-.stepper__line--completed {
-    background-color: #1b8354;
-}
-
-.stepper__content {
-    padding-top: 4px;
-    padding-bottom: 48px;
-}
-
-[dir="rtl"] .stepper__content {
-    text-align: right;
-}
-
-.stepper__title {
-    font-family: "IBM Plex Sans Arabic", sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
-    color: #1f2a37;
-    margin: 0;
-}
-
-.stepper__title--completed,
-.stepper__title--current {
-    color: #1f2a37;
-}
-
-.stepper__title--upcoming {
-    color: #6c737f;
-}
-
-.stepper__description {
-    font-family: "IBM Plex Sans Arabic", sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    color: #6c737f;
-    margin: 4px 0 0 0;
-}
-
-/* Checkmark icon for completed steps */
-.stepper__checkmark {
-    width: 24px;
-    height: 24px;
-    stroke: currentColor;
-    stroke-width: 2;
-    fill: none;
 }
 
 /* ============================================
@@ -319,120 +213,6 @@
     color: #161616;
 }
 
-/* ============================================
-   Template Footer
-   ============================================ */
-
-.template-footer {
-    background-color: #1f2a37;
-    color: #ffffff;
-    padding: 48px 80px;
-}
-
-.template-footer__content {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 48px;
-    max-width: 1280px;
-    margin: 0 auto;
-}
-
-[dir="rtl"] .template-footer__content {
-    direction: rtl;
-}
-
-.template-footer__column {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-[dir="rtl"] .template-footer__column {
-    text-align: right;
-}
-
-.template-footer__title {
-    font-family: "IBM Plex Sans Arabic", sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 24px;
-    color: #ffffff;
-    margin: 0;
-}
-
-.template-footer__links {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.template-footer__link {
-    font-family: "IBM Plex Sans Arabic", sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    transition: color 150ms ease;
-}
-
-.template-footer__link:hover {
-    color: #ffffff;
-}
-
-.template-footer__social {
-    display: flex;
-    gap: 12px;
-}
-
-[dir="rtl"] .template-footer__social {
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-}
-
-.template-footer__social-icon {
-    width: 24px;
-    height: 24px;
-    color: rgba(255, 255, 255, 0.6);
-    transition: color 150ms ease;
-}
-
-.template-footer__social-icon:hover {
-    color: #ffffff;
-}
-
-.template-footer__bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 24px;
-    margin-top: 48px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-[dir="rtl"] .template-footer__bottom {
-    flex-direction: row-reverse;
-}
-
-.template-footer__copyright {
-    font-family: "IBM Plex Sans Arabic", sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.template-footer__bottom-links {
-    display: flex;
-    gap: 24px;
-}
-
-[dir="rtl"] .template-footer__bottom-links {
-    flex-direction: row-reverse;
-}
 
 /* ============================================
    Navigation Tabs (Service Tabs)
@@ -530,13 +310,6 @@
         padding: 0 40px;
     }
 
-    .template-footer {
-        padding: 40px;
-    }
-
-    .template-footer__content {
-        grid-template-columns: repeat(2, 1fr);
-    }
 }
 
 @media (max-width: 768px) {
@@ -549,25 +322,8 @@
         flex-direction: column;
     }
 
-    .stepper {
-        flex-direction: row;
+    .form-template__stepper {
         width: 100%;
-        overflow-x: auto;
-    }
-
-    .stepper__item {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .stepper__content {
-        padding: 8px 0 0 0;
-        text-align: center;
-    }
-
-    .stepper__line {
-        width: 40px;
-        height: 2px;
     }
 
     .feedback-section {
@@ -588,9 +344,5 @@
     .service-tabs {
         padding: 0 20px;
         overflow-x: auto;
-    }
-
-    .template-footer__content {
-        grid-template-columns: 1fr;
     }
 }

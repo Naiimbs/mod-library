@@ -1,0 +1,661 @@
+<!-- ============================================
+   NOTIFICATION COMPONENT PAGE
+   DGA Design System
+   ============================================ -->
+
+<!-- Content Header -->
+<div class="content-header">
+    <h1 class="content-title">Notification</h1>
+    <p class="content-description">
+        Notifications are prominent UI elements used to convey important information or alerts to users.
+        They typically appear at the top of a webpage or application screen, drawing immediate attention to their content.
+    </p>
+</div>
+
+<!-- ============================================
+   LIVE DEMO
+   ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+<div class="live-demo">
+    <div class="live-demo__body">
+        <!-- Preview Canvas -->
+        <div class="live-demo__canvas" id="notif-demo-preview">
+            <!-- Rendered dynamically by NotificationDemoManager -->
+        </div>
+
+        <!-- Sidebar Controls -->
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Notification</h3>
+                <p class="live-demo__sidebar-desc">Configure the notification appearance and features.</p>
+            </div>
+
+            <!-- RTL Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <!-- Style Select -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="notif-demo-style">Style</label>
+                <select class="live-demo__sidebar-select" id="notif-demo-style">
+                    <option value="critical" selected>Critical</option>
+                    <option value="warning">Warning</option>
+                    <option value="success">Success</option>
+                    <option value="info">Info</option>
+                    <option value="neutral">Neutral</option>
+                </select>
+            </div>
+
+            <!-- Icon Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Icon</label>
+                <button class="live-demo__switch active" data-toggle="icon" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <!-- Lead Text Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Lead Text</label>
+                <button class="live-demo__switch active" data-toggle="lead-text" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <!-- Link Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Link</label>
+                <button class="live-demo__switch" data-toggle="link" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <!-- Action Button Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Action Button</label>
+                <button class="live-demo__switch" data-toggle="button" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <!-- Dismissible Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Dismissible</label>
+                <button class="live-demo__switch active" data-toggle="dismissible" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   PROPS TABLE
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2>Props</h2>
+    </div>
+    <div class="showcase-divider"></div>
+    <table class="props-table">
+        <thead>
+            <tr>
+                <th>Prop</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>variant</code></td>
+                <td><code>'critical' | 'warning' | 'success' | 'info' | 'neutral'</code></td>
+                <td>---</td>
+                <td>Visual style variant of the notification.</td>
+            </tr>
+            <tr>
+                <td><code>lead-text</code></td>
+                <td><code>string</code></td>
+                <td>---</td>
+                <td>Bold heading text displayed before the content.</td>
+            </tr>
+            <tr>
+                <td><code>content</code></td>
+                <td><code>string</code></td>
+                <td>---</td>
+                <td>Helper/body text of the notification.</td>
+            </tr>
+            <tr>
+                <td><code>icon</code></td>
+                <td><code>boolean</code></td>
+                <td><code>true</code></td>
+                <td>Show or hide the feedback icon.</td>
+            </tr>
+            <tr>
+                <td><code>link</code></td>
+                <td><code>boolean</code></td>
+                <td><code>false</code></td>
+                <td>Show a text link in the actions area.</td>
+            </tr>
+            <tr>
+                <td><code>text-link</code></td>
+                <td><code>string</code></td>
+                <td>---</td>
+                <td>Text content for the link.</td>
+            </tr>
+            <tr>
+                <td><code>button</code></td>
+                <td><code>boolean</code></td>
+                <td><code>false</code></td>
+                <td>Show an action button.</td>
+            </tr>
+            <tr>
+                <td><code>dismissable</code></td>
+                <td><code>boolean</code></td>
+                <td><code>false</code></td>
+                <td>Show a close/dismiss button.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ============================================
+   SHOWCASE: Variants
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Variants</h2>
+        <p class="showcase-description">Five style variants for different severity levels: critical, warning, success, info, and neutral.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+
+            <!-- Critical -->
+            <div class="notification notification--critical">
+                <div class="notification__body">
+                    <div class="notification__content">
+                        <span class="notification__icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" fill="#D92D20"/>
+                                <path d="M12 8v4m0 4h.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="notification__lead-text">Important:</span>
+                        <span class="notification__text">This is a very important banner message that requires attention</span>
+                    </div>
+                    <button class="notification__close" aria-label="Dismiss">
+                        <svg class="notification__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="notification__line"></div>
+            </div>
+
+            <!-- Warning -->
+            <div class="notification notification--warning">
+                <div class="notification__body">
+                    <div class="notification__content">
+                        <span class="notification__icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" fill="#DC6803"/>
+                                <path d="M12 9v4m0 4h.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="notification__lead-text">Important:</span>
+                        <span class="notification__text">This is a very important banner message that requires attention</span>
+                    </div>
+                    <button class="notification__close" aria-label="Dismiss">
+                        <svg class="notification__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="notification__line"></div>
+            </div>
+
+            <!-- Success -->
+            <div class="notification notification--success">
+                <div class="notification__body">
+                    <div class="notification__content">
+                        <span class="notification__icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" fill="#079455"/>
+                                <path d="M8 12l2.5 2.5L16 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="notification__lead-text">Important:</span>
+                        <span class="notification__text">This is a very important banner message that requires attention</span>
+                    </div>
+                    <button class="notification__close" aria-label="Dismiss">
+                        <svg class="notification__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="notification__line"></div>
+            </div>
+
+            <!-- Info -->
+            <div class="notification notification--info">
+                <div class="notification__body">
+                    <div class="notification__content">
+                        <span class="notification__icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" fill="#1570EF"/>
+                                <path d="M12 16v-4m0-4h.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="notification__lead-text">Important:</span>
+                        <span class="notification__text">This is a very important banner message that requires attention</span>
+                    </div>
+                    <button class="notification__close" aria-label="Dismiss">
+                        <svg class="notification__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="notification__line"></div>
+            </div>
+
+            <!-- Neutral -->
+            <div class="notification notification--neutral">
+                <div class="notification__body">
+                    <div class="notification__content">
+                        <span class="notification__icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" fill="#6C737F"/>
+                                <path d="M12 16v-4m0-4h.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="notification__lead-text">Important:</span>
+                        <span class="notification__text">This is a very important banner message that requires attention</span>
+                    </div>
+                    <button class="notification__close" aria-label="Dismiss">
+                        <svg class="notification__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="notification__line"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   SHOWCASE: With Link
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">With Link</h2>
+        <p class="showcase-description">Notifications can include a text link for additional context or navigation.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+
+            <div class="notification notification--critical">
+                <div class="notification__body">
+                    <div class="notification__content">
+                        <span class="notification__icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" fill="#D92D20"/>
+                                <path d="M12 8v4m0 4h.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="notification__lead-text">Important:</span>
+                        <span class="notification__text">This is a very important banner message that requires attention</span>
+                        <div class="notification__actions">
+                            <a href="#" class="notification__link">Learn more</a>
+                        </div>
+                    </div>
+                    <button class="notification__close" aria-label="Dismiss">
+                        <svg class="notification__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="notification__line"></div>
+            </div>
+
+            <div class="notification notification--info">
+                <div class="notification__body">
+                    <div class="notification__content">
+                        <span class="notification__icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" fill="#1570EF"/>
+                                <path d="M12 16v-4m0-4h.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="notification__lead-text">Important:</span>
+                        <span class="notification__text">This is a very important banner message that requires attention</span>
+                        <div class="notification__actions">
+                            <a href="#" class="notification__link">Learn more</a>
+                        </div>
+                    </div>
+                    <button class="notification__close" aria-label="Dismiss">
+                        <svg class="notification__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="notification__line"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   SHOWCASE: With Action Button
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">With Action Button</h2>
+        <p class="showcase-description">Notifications can include an action button for quick user responses.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+
+            <div class="notification notification--warning">
+                <div class="notification__body">
+                    <div class="notification__content">
+                        <span class="notification__icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" fill="#DC6803"/>
+                                <path d="M12 9v4m0 4h.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="notification__lead-text">Important:</span>
+                        <span class="notification__text">This is a very important banner message that requires attention</span>
+                        <div class="notification__actions">
+                            <a href="#" class="notification__link">Learn more</a>
+                            <button class="btn btn-neutral btn-medium" type="button">
+                                <span class="btn__icon">
+                                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3.33 8h9.34M8 3.33L12.67 8 8 12.67" stroke="currentColor" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                                Action Button
+                            </button>
+                        </div>
+                    </div>
+                    <button class="notification__close" aria-label="Dismiss">
+                        <svg class="notification__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="notification__line"></div>
+            </div>
+
+            <div class="notification notification--success">
+                <div class="notification__body">
+                    <div class="notification__content">
+                        <span class="notification__icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" fill="#079455"/>
+                                <path d="M8 12l2.5 2.5L16 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="notification__lead-text">Important:</span>
+                        <span class="notification__text">This is a very important banner message that requires attention</span>
+                        <div class="notification__actions">
+                            <button class="btn btn-neutral btn-medium" type="button">
+                                <span class="btn__icon">
+                                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3.33 8h9.34M8 3.33L12.67 8 8 12.67" stroke="currentColor" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                                Action Button
+                            </button>
+                        </div>
+                    </div>
+                    <button class="notification__close" aria-label="Dismiss">
+                        <svg class="notification__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="notification__line"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   SHOWCASE: Without Icon
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Without Icon</h2>
+        <p class="showcase-description">Notifications can omit the feedback icon for a simpler appearance.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+
+            <div class="notification notification--critical">
+                <div class="notification__body">
+                    <div class="notification__content">
+                        <span class="notification__lead-text">Important:</span>
+                        <span class="notification__text">This is a very important banner message that requires attention</span>
+                    </div>
+                    <button class="notification__close" aria-label="Dismiss">
+                        <svg class="notification__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="notification__line"></div>
+            </div>
+
+            <div class="notification notification--info">
+                <div class="notification__body">
+                    <div class="notification__content">
+                        <span class="notification__lead-text">Important:</span>
+                        <span class="notification__text">This is a very important banner message that requires attention</span>
+                    </div>
+                    <button class="notification__close" aria-label="Dismiss">
+                        <svg class="notification__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="notification__line"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   SHOWCASE: Without Lead Text
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Without Lead Text</h2>
+        <p class="showcase-description">Notifications can omit the bold heading for a simpler layout.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+
+            <div class="notification notification--warning">
+                <div class="notification__body">
+                    <div class="notification__content">
+                        <span class="notification__icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" fill="#DC6803"/>
+                                <path d="M12 9v4m0 4h.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="notification__text">This is a very important banner message that requires attention</span>
+                    </div>
+                    <button class="notification__close" aria-label="Dismiss">
+                        <svg class="notification__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="notification__line"></div>
+            </div>
+
+            <div class="notification notification--neutral">
+                <div class="notification__body">
+                    <div class="notification__content">
+                        <span class="notification__icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" fill="#6C737F"/>
+                                <path d="M12 16v-4m0-4h.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="notification__text">This is a very important banner message that requires attention</span>
+                    </div>
+                    <button class="notification__close" aria-label="Dismiss">
+                        <svg class="notification__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="notification__line"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   SHOWCASE: RTL Layout
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Layout</h2>
+        <p class="showcase-description">Notifications fully support right-to-left layout with Arabic text.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div dir="rtl" style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+
+            <!-- Critical RTL -->
+            <div class="notification notification--critical">
+                <div class="notification__body">
+                    <div class="notification__content">
+                        <span class="notification__icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" fill="#D92D20"/>
+                                <path d="M12 8v4m0 4h.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="notification__lead-text">مهم:</span>
+                        <span class="notification__text">هذه رسالة تنبيهية مهمة للغاية تستدعي التركيز.</span>
+                    </div>
+                    <button class="notification__close" aria-label="إغلاق">
+                        <svg class="notification__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="notification__line"></div>
+            </div>
+
+            <!-- Warning RTL -->
+            <div class="notification notification--warning">
+                <div class="notification__body">
+                    <div class="notification__content">
+                        <span class="notification__icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" fill="#DC6803"/>
+                                <path d="M12 9v4m0 4h.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="notification__lead-text">مهم:</span>
+                        <span class="notification__text">هذه رسالة تنبيهية مهمة للغاية تستدعي التركيز.</span>
+                    </div>
+                    <button class="notification__close" aria-label="إغلاق">
+                        <svg class="notification__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="notification__line"></div>
+            </div>
+
+            <!-- Success RTL -->
+            <div class="notification notification--success">
+                <div class="notification__body">
+                    <div class="notification__content">
+                        <span class="notification__icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" fill="#079455"/>
+                                <path d="M8 12l2.5 2.5L16 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="notification__lead-text">مهم:</span>
+                        <span class="notification__text">هذه رسالة تنبيهية مهمة للغاية تستدعي التركيز.</span>
+                    </div>
+                    <button class="notification__close" aria-label="إغلاق">
+                        <svg class="notification__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="notification__line"></div>
+            </div>
+
+            <!-- Info RTL -->
+            <div class="notification notification--info">
+                <div class="notification__body">
+                    <div class="notification__content">
+                        <span class="notification__icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" fill="#1570EF"/>
+                                <path d="M12 16v-4m0-4h.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="notification__lead-text">مهم:</span>
+                        <span class="notification__text">هذه رسالة تنبيهية مهمة للغاية تستدعي التركيز.</span>
+                    </div>
+                    <button class="notification__close" aria-label="إغلاق">
+                        <svg class="notification__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="notification__line"></div>
+            </div>
+
+            <!-- Neutral RTL -->
+            <div class="notification notification--neutral">
+                <div class="notification__body">
+                    <div class="notification__content">
+                        <span class="notification__icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" fill="#6C737F"/>
+                                <path d="M12 16v-4m0-4h.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="notification__lead-text">مهم:</span>
+                        <span class="notification__text">هذه رسالة تنبيهية مهمة للغاية تستدعي التركيز.</span>
+                    </div>
+                    <button class="notification__close" aria-label="إغلاق">
+                        <svg class="notification__close-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="notification__line"></div>
+            </div>
+
+        </div>
+    </div>
+</div>

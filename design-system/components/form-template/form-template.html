@@ -114,44 +114,43 @@
         <!-- Main Content -->
         <div class="form-template">
             <div class="form-template__main">
-                <!-- Stepper -->
-                <aside class="stepper">
-                    <!-- Step 1 - Completed -->
-                    <div class="stepper__item">
-                        <div class="stepper__indicator">
-                            <div class="stepper__circle stepper__circle--completed">
-                                <svg class="stepper__checkmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M20 6L9 17l-5-5"/>
-                                </svg>
+                <!-- Progress Indicator (Vertical) -->
+                <aside class="form-template__stepper">
+                    <div class="progress-indicator progress-indicator--vertical">
+                        <div class="progress-step progress-step--completed">
+                            <div class="progress-step__track">
+                                <div class="progress-step__circle" tabindex="0">
+                                    <svg class="progress-step__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="progress-step__connector"></div>
                             </div>
-                            <div class="stepper__line stepper__line--completed"></div>
+                            <div class="progress-step__text">
+                                <span class="progress-step__name">الخطوة الأولى</span>
+                                <span class="progress-step__desc">وصف الخطوة</span>
+                            </div>
                         </div>
-                        <div class="stepper__content">
-                            <h3 class="stepper__title stepper__title--completed">الخطوة الأولى</h3>
-                            <p class="stepper__description">وصف الخطوة</p>
+                        <div class="progress-step progress-step--current">
+                            <div class="progress-step__track">
+                                <div class="progress-step__circle" tabindex="0">
+                                    <span class="progress-step__number">2</span>
+                                </div>
+                                <div class="progress-step__connector"></div>
+                            </div>
+                            <div class="progress-step__text">
+                                <span class="progress-step__name">الخطوة الثانية</span>
+                                <span class="progress-step__desc">وصف الخطوة</span>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Step 2 - Current -->
-                    <div class="stepper__item">
-                        <div class="stepper__indicator">
-                            <div class="stepper__circle stepper__circle--current">2</div>
-                            <div class="stepper__line"></div>
-                        </div>
-                        <div class="stepper__content">
-                            <h3 class="stepper__title stepper__title--current">الخطوة الثانية</h3>
-                            <p class="stepper__description">وصف الخطوة</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 - Upcoming -->
-                    <div class="stepper__item">
-                        <div class="stepper__indicator">
-                            <div class="stepper__circle stepper__circle--upcoming">3</div>
-                        </div>
-                        <div class="stepper__content">
-                            <h3 class="stepper__title stepper__title--upcoming">الخطوة الثالثة</h3>
-                            <p class="stepper__description">وصف الخطوة</p>
+                        <div class="progress-step progress-step--upcoming">
+                            <div class="progress-step__track">
+                                <div class="progress-step__circle" tabindex="0">
+                                    <span class="progress-step__number">3</span>
+                                </div>
+                            </div>
+                            <div class="progress-step__text">
+                                <span class="progress-step__name">الخطوة الثالثة</span>
+                                <span class="progress-step__desc">وصف الخطوة</span>
+                            </div>
                         </div>
                     </div>
                 </aside>
@@ -322,6 +321,123 @@
                                 <input type="text" class="text-input__field" placeholder="نص تلميحي">
                             </div>
                         </div>
+
+                        <!-- Row 8 - Textarea -->
+                        <div class="form-row">
+                            <div class="textarea">
+                                <label class="textarea__label textarea__label--required">الوصف</label>
+                                <textarea class="textarea__field" placeholder="أدخل الوصف هنا..." rows="4"></textarea>
+                                <span class="textarea__helper">الحد الأقصى 500 حرف.</span>
+                            </div>
+                            <div class="textarea">
+                                <label class="textarea__label">ملاحظات إضافية</label>
+                                <textarea class="textarea__field" placeholder="أدخل ملاحظاتك هنا..." rows="4"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Row 9 - Radio Group -->
+                        <div class="form-row">
+                            <div class="radio-group">
+                                <p class="text-input__label text-input__label--required" style="margin: 0 0 4px 0;">نوع الطلب</p>
+                                <label class="radio">
+                                    <div class="radio__row">
+                                        <div class="radio__control">
+                                            <span class="radio__ripple"></span>
+                                            <input type="radio" class="radio__input" name="form-rtl-request-type" value="new" checked>
+                                            <span class="radio__circle"></span>
+                                        </div>
+                                        <span class="radio__label">طلب جديد</span>
+                                    </div>
+                                    <span class="radio__helper">تقديم طلب لأول مرة.</span>
+                                </label>
+                                <label class="radio">
+                                    <div class="radio__row">
+                                        <div class="radio__control">
+                                            <span class="radio__ripple"></span>
+                                            <input type="radio" class="radio__input" name="form-rtl-request-type" value="renewal">
+                                            <span class="radio__circle"></span>
+                                        </div>
+                                        <span class="radio__label">تجديد</span>
+                                    </div>
+                                    <span class="radio__helper">تجديد طلب سابق.</span>
+                                </label>
+                                <label class="radio">
+                                    <div class="radio__row">
+                                        <div class="radio__control">
+                                            <span class="radio__ripple"></span>
+                                            <input type="radio" class="radio__input" name="form-rtl-request-type" value="update">
+                                            <span class="radio__circle"></span>
+                                        </div>
+                                        <span class="radio__label">تحديث بيانات</span>
+                                    </div>
+                                    <span class="radio__helper">تعديل بيانات طلب قائم.</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Row 10 - Checkbox Group -->
+                        <div class="form-row">
+                            <div class="checkbox-group">
+                                <p class="text-input__label" style="margin: 0 0 4px 0;">المستندات المرفقة</p>
+                                <label class="checkbox">
+                                    <div class="checkbox__row">
+                                        <div class="checkbox__control">
+                                            <span class="checkbox__ripple"></span>
+                                            <input type="checkbox" class="checkbox__input" name="form-rtl-docs" checked>
+                                            <span class="checkbox__box">
+                                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            </span>
+                                        </div>
+                                        <span class="checkbox__label">صورة الهوية الوطنية</span>
+                                    </div>
+                                </label>
+                                <label class="checkbox">
+                                    <div class="checkbox__row">
+                                        <div class="checkbox__control">
+                                            <span class="checkbox__ripple"></span>
+                                            <input type="checkbox" class="checkbox__input" name="form-rtl-docs">
+                                            <span class="checkbox__box">
+                                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            </span>
+                                        </div>
+                                        <span class="checkbox__label">السجل التجاري</span>
+                                    </div>
+                                </label>
+                                <label class="checkbox">
+                                    <div class="checkbox__row">
+                                        <div class="checkbox__control">
+                                            <span class="checkbox__ripple"></span>
+                                            <input type="checkbox" class="checkbox__input" name="form-rtl-docs" checked>
+                                            <span class="checkbox__box">
+                                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            </span>
+                                        </div>
+                                        <span class="checkbox__label">خطاب التفويض</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Row 11 - Terms Checkbox -->
+                        <div class="form-row">
+                            <label class="checkbox">
+                                <div class="checkbox__row">
+                                    <div class="checkbox__control">
+                                        <span class="checkbox__ripple"></span>
+                                        <input type="checkbox" class="checkbox__input" name="form-rtl-terms">
+                                        <span class="checkbox__box">
+                                            <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        </span>
+                                    </div>
+                                    <span class="checkbox__label">أوافق على الشروط والأحكام</span>
+                                </div>
+                                <span class="checkbox__helper">يرجى قراءة الشروط والأحكام قبل المتابعة.</span>
+                            </label>
+                        </div>
                     </div>
 
                     <!-- Form Actions -->
@@ -346,90 +462,90 @@
         </div>
 
         <!-- Footer -->
-        <footer class="template-footer" dir="rtl">
-            <div class="template-footer__content">
-                <div class="template-footer__column">
-                    <h4 class="template-footer__title">ملخص</h4>
-                    <div class="template-footer__links">
-                        <a href="#" class="template-footer__link">حول [اسم البوابة]</a>
-                        <a href="#" class="template-footer__link">الخصوصية وشروط الاستخدام</a>
-                        <a href="#" class="template-footer__link">كيفية استخدام [اسم البوابة]</a>
-                        <a href="#" class="template-footer__link">الأخبار والأحداث</a>
-                        <a href="#" class="template-footer__link">إحصائيات اتفاقية مستوى الخدمة</a>
+        <footer class="footer" dir="rtl">
+            <div class="footer__content">
+                <div class="footer__nav-links">
+                    <div class="footer__group">
+                        <h3 class="footer__group-label">ملخص</h3>
+                        <div class="footer__link-group">
+                            <ul class="footer__link-list">
+                                <li><a href="#" class="footer__link">حول [اسم البوابة]</a></li>
+                                <li><a href="#" class="footer__link">الخصوصية وشروط الاستخدام</a></li>
+                                <li><a href="#" class="footer__link">كيفية استخدام [اسم البوابة]</a></li>
+                                <li><a href="#" class="footer__link">الأخبار والأحداث</a></li>
+                                <li><a href="#" class="footer__link">إحصائيات اتفاقية مستوى الخدمة</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer__group">
+                        <h3 class="footer__group-label">روابط مهمة</h3>
+                        <div class="footer__link-group">
+                            <ul class="footer__link-list">
+                                <li><a href="#" class="footer__link">بوابة الخدمة الوطنية</a></li>
+                                <li><a href="#" class="footer__link">البيانات الحكومية المفتوحة</a></li>
+                                <li><a href="#" class="footer__link">الاستراتيجية الوطنية للبيانات والذكاء الاصطناعي</a></li>
+                                <li><a href="#" class="footer__link">بوابة البيانات المفتوحة</a></li>
+                                <li><a href="#" class="footer__link">بوابة المشاركة الإلكترونية</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer__group">
+                        <h3 class="footer__group-label">الاتصال والدعم</h3>
+                        <div class="footer__link-group">
+                            <ul class="footer__link-list">
+                                <li><a href="#" class="footer__link">مركز المساعدة</a></li>
+                                <li><a href="#" class="footer__link">تواصل معنا</a></li>
+                                <li><a href="#" class="footer__link">شارك معنا</a></li>
+                                <li><a href="#" class="footer__link">تقديم شكوى</a></li>
+                                <li><a href="#" class="footer__link">الإبلاغ عن الفساد</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer__group footer__group--extra">
+                        <div class="footer__social-section">
+                            <h3 class="footer__group-label">تابعنا على</h3>
+                            <div class="footer__social-icons">
+                                <button class="btn btn-secondary-outline btn-medium btn-icon-only" type="button" aria-label="X (Twitter)"><span class="icon dga-icon-new-twitter"></span></button>
+                                <button class="btn btn-secondary-outline btn-medium btn-icon-only" type="button" aria-label="Instagram"><span class="icon dga-icon-instagram"></span></button>
+                                <button class="btn btn-secondary-outline btn-medium btn-icon-only" type="button" aria-label="YouTube"><span class="icon dga-icon-youtube"></span></button>
+                                <button class="btn btn-secondary-outline btn-medium btn-icon-only" type="button" aria-label="LinkedIn"><span class="icon dga-icon-linkedin-01"></span></button>
+                            </div>
+                        </div>
+                        <div class="footer__social-section">
+                            <h3 class="footer__group-label">أدوات الاتاحة والوصول</h3>
+                            <div class="footer__social-icons">
+                                <button class="btn btn-secondary-outline btn-medium btn-icon-only" type="button" aria-label="تكبير الخط"><span class="icon dga-icon-text-font"></span></button>
+                                <button class="btn btn-secondary-outline btn-medium btn-icon-only" type="button" aria-label="تباين عالي"><span class="icon dga-icon-eye"></span></button>
+                                <button class="btn btn-secondary-outline btn-medium btn-icon-only" type="button" aria-label="قارئ الشاشة"><span class="icon dga-icon-view"></span></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="template-footer__column">
-                    <h4 class="template-footer__title">روابط مهمة</h4>
-                    <div class="template-footer__links">
-                        <a href="#" class="template-footer__link">بوابة الخدمة الوطنية</a>
-                        <a href="#" class="template-footer__link">البيانات الحكومية المفتوحة</a>
-                        <a href="#" class="template-footer__link">الاستراتيجية الوطنية للبيانات والذكاء الاصطناعي</a>
-                        <a href="#" class="template-footer__link">بوابة البيانات المفتوحة</a>
-                        <a href="#" class="template-footer__link">بوابة المشاركة الإلكترونية</a>
+                <div class="footer__legal">
+                    <div class="footer__legal-content">
+                        <ul class="footer__legal-links">
+                            <li><a href="#" class="footer__link footer__link--underline">خريطة الموقع</a></li>
+                            <li><a href="#" class="footer__link footer__link--underline">RSS</a></li>
+                            <li><a href="#" class="footer__link footer__link--underline">تطبيق الجوال</a></li>
+                        </ul>
+                        <div class="footer__legal-info">
+                            <p class="footer__legal-caption">جميع الحقوق محفوظة لهيئة الحكومة الرقمية &copy; 2024</p>
+                            <ul class="footer__extra-links">
+                                <li><a href="#" class="footer__link">الشروط والأحكام</a></li>
+                                <li><a href="#" class="footer__link">سياسة الخصوصية</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="template-footer__column">
-                    <h4 class="template-footer__title">الاتصال والدعم</h4>
-                    <div class="template-footer__links">
-                        <a href="#" class="template-footer__link">مركز المساعدة</a>
-                        <a href="#" class="template-footer__link">تواصل معنا</a>
-                        <a href="#" class="template-footer__link">شارك معنا</a>
-                        <a href="#" class="template-footer__link">تقديم شكوى</a>
-                        <a href="#" class="template-footer__link">الإبلاغ عن الفساد</a>
+                    <div class="footer__logos">
+                        <div class="footer__logo">
+                            <span class="footer__logo-text">شعار المنصة</span>
+                            <svg class="footer__logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="4" fill="#F5F5F5"/><path d="M16 6C15.3 6 14.7 6.75 14.7 7.67V12L12 11.53C11.53 11.47 11.07 11.8 11 12.27C10.93 12.73 11.27 13.13 11.73 13.2L14.7 13.67V15.33L11.33 17C10.93 17.2 10.8 17.67 11 18.07C11.2 18.47 11.67 18.6 12.07 18.4L14.7 17.07V19.33L11.33 22.67C11.07 22.93 11.07 23.33 11.33 23.6C11.6 23.87 12 23.87 12.27 23.6L14.7 21.2V25.33C14.7 26.27 15.3 27 16 27C16.7 27 17.3 26.27 17.3 25.33V21.2L19.73 23.6C20 23.87 20.4 23.87 20.67 23.6C20.93 23.33 20.93 22.93 20.67 22.67L17.3 19.33V17.07L19.93 18.4C20.33 18.6 20.8 18.47 21 18.07C21.2 17.67 21.07 17.2 20.67 17L17.3 15.33V13.67L20.27 13.2C20.73 13.13 21.07 12.73 21 12.27C20.93 11.8 20.47 11.47 20 11.53L17.3 12V7.67C17.3 6.75 16.7 6 16 6Z" fill="#9DA4AE"/></svg>
+                        </div>
+                        <div class="footer__logo">
+                            <span class="footer__logo-text">شعار المنصة</span>
+                            <svg class="footer__logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="4" fill="#F5F5F5"/><path d="M16 6C15.3 6 14.7 6.75 14.7 7.67V12L12 11.53C11.53 11.47 11.07 11.8 11 12.27C10.93 12.73 11.27 13.13 11.73 13.2L14.7 13.67V15.33L11.33 17C10.93 17.2 10.8 17.67 11 18.07C11.2 18.47 11.67 18.6 12.07 18.4L14.7 17.07V19.33L11.33 22.67C11.07 22.93 11.07 23.33 11.33 23.6C11.6 23.87 12 23.87 12.27 23.6L14.7 21.2V25.33C14.7 26.27 15.3 27 16 27C16.7 27 17.3 26.27 17.3 25.33V21.2L19.73 23.6C20 23.87 20.4 23.87 20.67 23.6C20.93 23.33 20.93 22.93 20.67 22.67L17.3 19.33V17.07L19.93 18.4C20.33 18.6 20.8 18.47 21 18.07C21.2 17.67 21.07 17.2 20.67 17L17.3 15.33V13.67L20.27 13.2C20.73 13.13 21.07 12.73 21 12.27C20.93 11.8 20.47 11.47 20 11.53L17.3 12V7.67C17.3 6.75 16.7 6 16 6Z" fill="#9DA4AE"/></svg>
+                        </div>
                     </div>
-                </div>
-                <div class="template-footer__column">
-                    <h4 class="template-footer__title">تابعنا على</h4>
-                    <div class="template-footer__social">
-                        <a href="#" class="template-footer__social-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="template-footer__social-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="template-footer__social-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
-                            </svg>
-                        </a>
-                    </div>
-                    <h4 class="template-footer__title" style="margin-top: 24px;">أدوات الاتاحة والوصول</h4>
-                    <div class="template-footer__social">
-                        <a href="#" class="template-footer__social-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M12 8v4l2 2"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="template-footer__social-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"/>
-                                <path d="M21 21l-4.35-4.35"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="template-footer__social-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                                <circle cx="12" cy="12" r="3"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="template-footer__bottom">
-                <div class="template-footer__bottom-links">
-                    <a href="#" class="template-footer__link">خريطة الموقع</a>
-                    <a href="#" class="template-footer__link">RSS</a>
-                    <a href="#" class="template-footer__link">تطبيق الجوال</a>
-                </div>
-                <div>
-                    <p class="template-footer__copyright">جميع الحقوق محفوظة لهيئة الحكومة الرقمية © 2024</p>
-                    <p class="template-footer__copyright">تم تطويره وصيانته بواسطة [أدخل اسم الجهة]</p>
-                    <p class="template-footer__copyright">تاريخ آخر تعديل: 04/12/2020</p>
                 </div>
             </div>
         </footer>
@@ -535,44 +651,43 @@
         <!-- Main Content -->
         <div class="form-template">
             <div class="form-template__main">
-                <!-- Stepper -->
-                <aside class="stepper">
-                    <!-- Step 1 - Completed -->
-                    <div class="stepper__item">
-                        <div class="stepper__indicator">
-                            <div class="stepper__circle stepper__circle--completed">
-                                <svg class="stepper__checkmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M20 6L9 17l-5-5"/>
-                                </svg>
+                <!-- Progress Indicator (Vertical) -->
+                <aside class="form-template__stepper">
+                    <div class="progress-indicator progress-indicator--vertical">
+                        <div class="progress-step progress-step--completed">
+                            <div class="progress-step__track">
+                                <div class="progress-step__circle" tabindex="0">
+                                    <svg class="progress-step__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="progress-step__connector"></div>
                             </div>
-                            <div class="stepper__line stepper__line--completed"></div>
+                            <div class="progress-step__text">
+                                <span class="progress-step__name">Step One</span>
+                                <span class="progress-step__desc">Step description</span>
+                            </div>
                         </div>
-                        <div class="stepper__content">
-                            <h3 class="stepper__title stepper__title--completed">Step One</h3>
-                            <p class="stepper__description">Step description</p>
+                        <div class="progress-step progress-step--current">
+                            <div class="progress-step__track">
+                                <div class="progress-step__circle" tabindex="0">
+                                    <span class="progress-step__number">2</span>
+                                </div>
+                                <div class="progress-step__connector"></div>
+                            </div>
+                            <div class="progress-step__text">
+                                <span class="progress-step__name">Step Two</span>
+                                <span class="progress-step__desc">Step description</span>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Step 2 - Current -->
-                    <div class="stepper__item">
-                        <div class="stepper__indicator">
-                            <div class="stepper__circle stepper__circle--current">2</div>
-                            <div class="stepper__line"></div>
-                        </div>
-                        <div class="stepper__content">
-                            <h3 class="stepper__title stepper__title--current">Step Two</h3>
-                            <p class="stepper__description">Step description</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 - Upcoming -->
-                    <div class="stepper__item">
-                        <div class="stepper__indicator">
-                            <div class="stepper__circle stepper__circle--upcoming">3</div>
-                        </div>
-                        <div class="stepper__content">
-                            <h3 class="stepper__title stepper__title--upcoming">Step Three</h3>
-                            <p class="stepper__description">Step description</p>
+                        <div class="progress-step progress-step--upcoming">
+                            <div class="progress-step__track">
+                                <div class="progress-step__circle" tabindex="0">
+                                    <span class="progress-step__number">3</span>
+                                </div>
+                            </div>
+                            <div class="progress-step__text">
+                                <span class="progress-step__name">Step Three</span>
+                                <span class="progress-step__desc">Step description</span>
+                            </div>
                         </div>
                     </div>
                 </aside>
@@ -667,6 +782,123 @@
                                 </span>
                             </div>
                         </div>
+
+                        <!-- Row 4 - Textarea -->
+                        <div class="form-row">
+                            <div class="textarea">
+                                <label class="textarea__label textarea__label--required">Description</label>
+                                <textarea class="textarea__field" placeholder="Enter description here..." rows="4"></textarea>
+                                <span class="textarea__helper">Maximum 500 characters.</span>
+                            </div>
+                            <div class="textarea">
+                                <label class="textarea__label">Additional Notes</label>
+                                <textarea class="textarea__field" placeholder="Enter your notes here..." rows="4"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Row 5 - Radio Group -->
+                        <div class="form-row">
+                            <div class="radio-group">
+                                <p class="text-input__label text-input__label--required" style="margin: 0 0 4px 0;">Request Type</p>
+                                <label class="radio">
+                                    <div class="radio__row">
+                                        <div class="radio__control">
+                                            <span class="radio__ripple"></span>
+                                            <input type="radio" class="radio__input" name="form-ltr-request-type" value="new" checked>
+                                            <span class="radio__circle"></span>
+                                        </div>
+                                        <span class="radio__label">New request</span>
+                                    </div>
+                                    <span class="radio__helper">Submit a request for the first time.</span>
+                                </label>
+                                <label class="radio">
+                                    <div class="radio__row">
+                                        <div class="radio__control">
+                                            <span class="radio__ripple"></span>
+                                            <input type="radio" class="radio__input" name="form-ltr-request-type" value="renewal">
+                                            <span class="radio__circle"></span>
+                                        </div>
+                                        <span class="radio__label">Renewal</span>
+                                    </div>
+                                    <span class="radio__helper">Renew a previous request.</span>
+                                </label>
+                                <label class="radio">
+                                    <div class="radio__row">
+                                        <div class="radio__control">
+                                            <span class="radio__ripple"></span>
+                                            <input type="radio" class="radio__input" name="form-ltr-request-type" value="update">
+                                            <span class="radio__circle"></span>
+                                        </div>
+                                        <span class="radio__label">Update information</span>
+                                    </div>
+                                    <span class="radio__helper">Modify details of an existing request.</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Row 6 - Checkbox Group -->
+                        <div class="form-row">
+                            <div class="checkbox-group">
+                                <p class="text-input__label" style="margin: 0 0 4px 0;">Attached Documents</p>
+                                <label class="checkbox">
+                                    <div class="checkbox__row">
+                                        <div class="checkbox__control">
+                                            <span class="checkbox__ripple"></span>
+                                            <input type="checkbox" class="checkbox__input" name="form-ltr-docs" checked>
+                                            <span class="checkbox__box">
+                                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            </span>
+                                        </div>
+                                        <span class="checkbox__label">National ID copy</span>
+                                    </div>
+                                </label>
+                                <label class="checkbox">
+                                    <div class="checkbox__row">
+                                        <div class="checkbox__control">
+                                            <span class="checkbox__ripple"></span>
+                                            <input type="checkbox" class="checkbox__input" name="form-ltr-docs">
+                                            <span class="checkbox__box">
+                                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            </span>
+                                        </div>
+                                        <span class="checkbox__label">Commercial registration</span>
+                                    </div>
+                                </label>
+                                <label class="checkbox">
+                                    <div class="checkbox__row">
+                                        <div class="checkbox__control">
+                                            <span class="checkbox__ripple"></span>
+                                            <input type="checkbox" class="checkbox__input" name="form-ltr-docs" checked>
+                                            <span class="checkbox__box">
+                                                <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                                <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            </span>
+                                        </div>
+                                        <span class="checkbox__label">Authorization letter</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Row 7 - Terms Checkbox -->
+                        <div class="form-row">
+                            <label class="checkbox">
+                                <div class="checkbox__row">
+                                    <div class="checkbox__control">
+                                        <span class="checkbox__ripple"></span>
+                                        <input type="checkbox" class="checkbox__input" name="form-ltr-terms">
+                                        <span class="checkbox__box">
+                                            <svg class="checkbox__icon checkbox__icon--check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            <svg class="checkbox__icon checkbox__icon--minus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6h7" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        </span>
+                                    </div>
+                                    <span class="checkbox__label">I agree to the terms and conditions</span>
+                                </div>
+                                <span class="checkbox__helper">Please read the terms before proceeding.</span>
+                            </label>
+                        </div>
                     </div>
 
                     <!-- Form Actions -->
@@ -691,65 +923,90 @@
         </div>
 
         <!-- Footer -->
-        <footer class="template-footer" dir="ltr">
-            <div class="template-footer__content">
-                <div class="template-footer__column">
-                    <h4 class="template-footer__title">Summary</h4>
-                    <div class="template-footer__links">
-                        <a href="#" class="template-footer__link">About [Portal Name]</a>
-                        <a href="#" class="template-footer__link">Privacy & Terms of Use</a>
-                        <a href="#" class="template-footer__link">How to use [Portal Name]</a>
-                        <a href="#" class="template-footer__link">News & Events</a>
-                        <a href="#" class="template-footer__link">SLA Statistics</a>
+        <footer class="footer">
+            <div class="footer__content">
+                <div class="footer__nav-links">
+                    <div class="footer__group">
+                        <h3 class="footer__group-label">Summary</h3>
+                        <div class="footer__link-group">
+                            <ul class="footer__link-list">
+                                <li><a href="#" class="footer__link">About [Portal Name]</a></li>
+                                <li><a href="#" class="footer__link">Privacy & Terms of Use</a></li>
+                                <li><a href="#" class="footer__link">How to use [Portal Name]</a></li>
+                                <li><a href="#" class="footer__link">News & Events</a></li>
+                                <li><a href="#" class="footer__link">SLA Statistics</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer__group">
+                        <h3 class="footer__group-label">Important Links</h3>
+                        <div class="footer__link-group">
+                            <ul class="footer__link-list">
+                                <li><a href="#" class="footer__link">National Service Portal</a></li>
+                                <li><a href="#" class="footer__link">Open Government Data</a></li>
+                                <li><a href="#" class="footer__link">National Data & AI Strategy</a></li>
+                                <li><a href="#" class="footer__link">Open Data Portal</a></li>
+                                <li><a href="#" class="footer__link">E-Participation Portal</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer__group">
+                        <h3 class="footer__group-label">Contact & Support</h3>
+                        <div class="footer__link-group">
+                            <ul class="footer__link-list">
+                                <li><a href="#" class="footer__link">Help Center</a></li>
+                                <li><a href="#" class="footer__link">Contact Us</a></li>
+                                <li><a href="#" class="footer__link">Share with Us</a></li>
+                                <li><a href="#" class="footer__link">Submit Complaint</a></li>
+                                <li><a href="#" class="footer__link">Report Corruption</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer__group footer__group--extra">
+                        <div class="footer__social-section">
+                            <h3 class="footer__group-label">Follow Us</h3>
+                            <div class="footer__social-icons">
+                                <button class="btn btn-secondary-outline btn-medium btn-icon-only" type="button" aria-label="X (Twitter)"><span class="icon dga-icon-new-twitter"></span></button>
+                                <button class="btn btn-secondary-outline btn-medium btn-icon-only" type="button" aria-label="Instagram"><span class="icon dga-icon-instagram"></span></button>
+                                <button class="btn btn-secondary-outline btn-medium btn-icon-only" type="button" aria-label="YouTube"><span class="icon dga-icon-youtube"></span></button>
+                                <button class="btn btn-secondary-outline btn-medium btn-icon-only" type="button" aria-label="LinkedIn"><span class="icon dga-icon-linkedin-01"></span></button>
+                            </div>
+                        </div>
+                        <div class="footer__social-section">
+                            <h3 class="footer__group-label">Accessibility Tools</h3>
+                            <div class="footer__social-icons">
+                                <button class="btn btn-secondary-outline btn-medium btn-icon-only" type="button" aria-label="Increase font size"><span class="icon dga-icon-text-font"></span></button>
+                                <button class="btn btn-secondary-outline btn-medium btn-icon-only" type="button" aria-label="High contrast"><span class="icon dga-icon-eye"></span></button>
+                                <button class="btn btn-secondary-outline btn-medium btn-icon-only" type="button" aria-label="Screen reader"><span class="icon dga-icon-view"></span></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="template-footer__column">
-                    <h4 class="template-footer__title">Important Links</h4>
-                    <div class="template-footer__links">
-                        <a href="#" class="template-footer__link">National Service Portal</a>
-                        <a href="#" class="template-footer__link">Open Government Data</a>
-                        <a href="#" class="template-footer__link">National Data & AI Strategy</a>
-                        <a href="#" class="template-footer__link">Open Data Portal</a>
-                        <a href="#" class="template-footer__link">E-Participation Portal</a>
+                <div class="footer__legal">
+                    <div class="footer__legal-content">
+                        <ul class="footer__legal-links">
+                            <li><a href="#" class="footer__link footer__link--underline">Sitemap</a></li>
+                            <li><a href="#" class="footer__link footer__link--underline">RSS</a></li>
+                            <li><a href="#" class="footer__link footer__link--underline">Mobile App</a></li>
+                        </ul>
+                        <div class="footer__legal-info">
+                            <p class="footer__legal-caption">All Right Reserved For Digital Government Authority &copy; 2024</p>
+                            <ul class="footer__extra-links">
+                                <li><a href="#" class="footer__link">Terms and Conditions</a></li>
+                                <li><a href="#" class="footer__link">Privacy Policy</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="template-footer__column">
-                    <h4 class="template-footer__title">Contact & Support</h4>
-                    <div class="template-footer__links">
-                        <a href="#" class="template-footer__link">Help Center</a>
-                        <a href="#" class="template-footer__link">Contact Us</a>
-                        <a href="#" class="template-footer__link">Share with Us</a>
-                        <a href="#" class="template-footer__link">Submit Complaint</a>
-                        <a href="#" class="template-footer__link">Report Corruption</a>
+                    <div class="footer__logos">
+                        <div class="footer__logo">
+                            <svg class="footer__logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="4" fill="#F5F5F5"/><path d="M16 6C15.3 6 14.7 6.75 14.7 7.67V12L12 11.53C11.53 11.47 11.07 11.8 11 12.27C10.93 12.73 11.27 13.13 11.73 13.2L14.7 13.67V15.33L11.33 17C10.93 17.2 10.8 17.67 11 18.07C11.2 18.47 11.67 18.6 12.07 18.4L14.7 17.07V19.33L11.33 22.67C11.07 22.93 11.07 23.33 11.33 23.6C11.6 23.87 12 23.87 12.27 23.6L14.7 21.2V25.33C14.7 26.27 15.3 27 16 27C16.7 27 17.3 26.27 17.3 25.33V21.2L19.73 23.6C20 23.87 20.4 23.87 20.67 23.6C20.93 23.33 20.93 22.93 20.67 22.67L17.3 19.33V17.07L19.93 18.4C20.33 18.6 20.8 18.47 21 18.07C21.2 17.67 21.07 17.2 20.67 17L17.3 15.33V13.67L20.27 13.2C20.73 13.13 21.07 12.73 21 12.27C20.93 11.8 20.47 11.47 20 11.53L17.3 12V7.67C17.3 6.75 16.7 6 16 6Z" fill="#9DA4AE"/></svg>
+                            <span class="footer__logo-text">Platform Logo</span>
+                        </div>
+                        <div class="footer__logo">
+                            <svg class="footer__logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="4" fill="#F5F5F5"/><path d="M16 6C15.3 6 14.7 6.75 14.7 7.67V12L12 11.53C11.53 11.47 11.07 11.8 11 12.27C10.93 12.73 11.27 13.13 11.73 13.2L14.7 13.67V15.33L11.33 17C10.93 17.2 10.8 17.67 11 18.07C11.2 18.47 11.67 18.6 12.07 18.4L14.7 17.07V19.33L11.33 22.67C11.07 22.93 11.07 23.33 11.33 23.6C11.6 23.87 12 23.87 12.27 23.6L14.7 21.2V25.33C14.7 26.27 15.3 27 16 27C16.7 27 17.3 26.27 17.3 25.33V21.2L19.73 23.6C20 23.87 20.4 23.87 20.67 23.6C20.93 23.33 20.93 22.93 20.67 22.67L17.3 19.33V17.07L19.93 18.4C20.33 18.6 20.8 18.47 21 18.07C21.2 17.67 21.07 17.2 20.67 17L17.3 15.33V13.67L20.27 13.2C20.73 13.13 21.07 12.73 21 12.27C20.93 11.8 20.47 11.47 20 11.53L17.3 12V7.67C17.3 6.75 16.7 6 16 6Z" fill="#9DA4AE"/></svg>
+                            <span class="footer__logo-text">Platform Logo</span>
+                        </div>
                     </div>
-                </div>
-                <div class="template-footer__column">
-                    <h4 class="template-footer__title">Follow Us</h4>
-                    <div class="template-footer__social">
-                        <a href="#" class="template-footer__social-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="template-footer__social-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="template-footer__social-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="template-footer__bottom">
-                <p class="template-footer__copyright">All rights reserved to Digital Government Authority © 2024</p>
-                <div class="template-footer__bottom-links">
-                    <a href="#" class="template-footer__link">Sitemap</a>
-                    <a href="#" class="template-footer__link">RSS</a>
-                    <a href="#" class="template-footer__link">Mobile App</a>
                 </div>
             </div>
         </footer>

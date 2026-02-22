@@ -1,0 +1,103 @@
+/* ============================================
+   SECOND NAV HEADER
+   DGA Design System
+   Secondary navigation bar with contextual info
+   and action buttons
+   ============================================ */
+
+/* --- Block --- */
+
+.second-nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    padding: 0 var(--spacing-4xl);
+    position: relative;
+    width: 100%;
+    font-family: var(--font-family-primary);
+    box-sizing: border-box;
+}
+
+/* --- Style Variants --- */
+
+.second-nav-header--gray {
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-700);
+}
+
+.second-nav-header--primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+/* --- Content Area (left side LTR / right side RTL) --- */
+
+.second-nav-header__content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+    flex: 1;
+    min-width: 0;
+}
+
+/* --- Individual Content Item (icon + text) --- */
+
+.second-nav-header__item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    flex-shrink: 0;
+}
+
+.second-nav-header__item-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: inherit;
+}
+
+.second-nav-header__item-text {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-md);
+    color: inherit;
+    white-space: nowrap;
+}
+
+/* --- Action Buttons --- */
+
+.second-nav-header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex-shrink: 0;
+}
+
+/* --- Bottom Divider --- */
+
+.second-nav-header__divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+}
+
+.second-nav-header--gray .second-nav-header__divider {
+    background-color: var(--color-gray-300);
+}
+
+.second-nav-header--primary .second-nav-header__divider {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* --- RTL ---
+   dir="rtl" on the element automatically reverses flex layout:
+   - Main bar: content moves RIGHT, actions move LEFT
+   - Each item: icon moves RIGHT, text moves LEFT (text before icon in reading order)
+   No manual overrides needed — flexbox respects the dir attribute natively.
+*/

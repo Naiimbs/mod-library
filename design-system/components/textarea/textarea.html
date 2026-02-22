@@ -1,0 +1,415 @@
+<div class="content-header">
+    <h1 class="content-title">Textarea</h1>
+    <p class="content-description">A text area enables users to input and edit multiple lines of text, providing a larger space than a regular text input field, making it suitable for longer text entries such as comments, descriptions, or messages.</p>
+</div>
+
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <!-- Left: Preview canvas -->
+        <div class="live-demo__canvas" id="ta-demo-preview" style="align-items: center; padding: var(--spacing-4xl);">
+            <!-- Rendered dynamically by JS -->
+        </div>
+
+        <!-- Right: Controls sidebar -->
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Textarea</h3>
+                <p class="live-demo__sidebar-desc">A multi-line text input for longer form content like comments, descriptions, or messages.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="ta-demo-state">State</label>
+                <select class="live-demo__sidebar-select" id="ta-demo-state">
+                    <option value="default">Default</option>
+                    <option value="disabled">Disabled</option>
+                    <option value="readonly">Read-only</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="ta-demo-style">Style</label>
+                <select class="live-demo__sidebar-select" id="ta-demo-style">
+                    <option value="default">Default</option>
+                    <option value="filled-darker">Filled darker</option>
+                    <option value="filled-lighter">Filled lighter</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Filled</label>
+                <button class="live-demo__switch active" data-toggle="filled" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Error</label>
+                <button class="live-demo__switch" data-toggle="error" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Resize</label>
+                <button class="live-demo__switch active" data-toggle="resize" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Show Label</label>
+                <button class="live-demo__switch active" data-toggle="show-label" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Required</label>
+                <button class="live-demo__switch" data-toggle="required" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Helper Text</label>
+                <button class="live-demo__switch" data-toggle="helper-text" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="ta-demo-rows">Rows</label>
+                <select class="live-demo__sidebar-select" id="ta-demo-rows">
+                    <option value="3">3</option>
+                    <option value="4" selected>4</option>
+                    <option value="6">6</option>
+                    <option value="8">8</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     PROPS TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2>Props</h2>
+    </div>
+    <div class="showcase-divider"></div>
+
+    <table class="props-table">
+        <thead>
+            <tr>
+                <th>Prop</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>label</code></td>
+                <td><code>string</code></td>
+                <td>—</td>
+                <td>Label text displayed above the textarea.</td>
+            </tr>
+            <tr>
+                <td><code>placeholder</code></td>
+                <td><code>string</code></td>
+                <td>—</td>
+                <td>Placeholder text shown when the field is empty.</td>
+            </tr>
+            <tr>
+                <td><code>variant</code></td>
+                <td><code>'default' | 'lighter' | 'darker'</code></td>
+                <td><code>'default'</code></td>
+                <td>Visual style variant controlling background color.</td>
+            </tr>
+            <tr>
+                <td><code>value</code></td>
+                <td><code>string</code></td>
+                <td><code>''</code></td>
+                <td>Current value of the textarea.</td>
+            </tr>
+            <tr>
+                <td><code>disabled</code></td>
+                <td><code>boolean</code></td>
+                <td><code>false</code></td>
+                <td>Prevents user interaction.</td>
+            </tr>
+            <tr>
+                <td><code>readonly</code></td>
+                <td><code>boolean</code></td>
+                <td><code>false</code></td>
+                <td>Makes the content non-editable but copyable.</td>
+            </tr>
+            <tr>
+                <td><code>error</code></td>
+                <td><code>boolean</code></td>
+                <td><code>false</code></td>
+                <td>Applies error styling (red border).</td>
+            </tr>
+            <tr>
+                <td><code>required</code></td>
+                <td><code>boolean</code></td>
+                <td><code>false</code></td>
+                <td>Marks the field as required (asterisk on label).</td>
+            </tr>
+            <tr>
+                <td><code>resize</code></td>
+                <td><code>boolean</code></td>
+                <td><code>true</code></td>
+                <td>Enables vertical resizing of the textarea.</td>
+            </tr>
+            <tr>
+                <td><code>rows</code></td>
+                <td><code>number</code></td>
+                <td><code>4</code></td>
+                <td>Number of visible text lines.</td>
+            </tr>
+            <tr>
+                <td><code>cols</code></td>
+                <td><code>number</code></td>
+                <td><code>50</code></td>
+                <td>Visible width of the textarea in character widths.</td>
+            </tr>
+            <tr>
+                <td><code>helper-text</code></td>
+                <td><code>string</code></td>
+                <td>—</td>
+                <td>Descriptive hint text displayed below the field.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ============================================
+     SHOWCASE: States
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">States</h2>
+        <p class="showcase-description">All interactive states of the textarea component — default, filled, disabled, read-only, and focus (click to see).</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start;">
+            <!-- Default empty -->
+            <div class="textarea" style="max-width: 280px;">
+                <label class="textarea__label">Default</label>
+                <textarea class="textarea__field" placeholder="Placeholder text" rows="3"></textarea>
+            </div>
+            <!-- Filled -->
+            <div class="textarea" style="max-width: 280px;">
+                <label class="textarea__label">Filled</label>
+                <textarea class="textarea__field" rows="3">Entered text content that the user has typed into the field.</textarea>
+            </div>
+            <!-- Disabled empty -->
+            <div class="textarea textarea--disabled" style="max-width: 280px;">
+                <label class="textarea__label">Disabled</label>
+                <textarea class="textarea__field" placeholder="Placeholder text" rows="3" disabled></textarea>
+            </div>
+        </div>
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start; margin-top: 16px;">
+            <!-- Disabled filled -->
+            <div class="textarea textarea--disabled" style="max-width: 280px;">
+                <label class="textarea__label">Disabled filled</label>
+                <textarea class="textarea__field" rows="3" disabled>Entered text</textarea>
+            </div>
+            <!-- Read-only -->
+            <div class="textarea" style="max-width: 280px;">
+                <label class="textarea__label">Read-only</label>
+                <textarea class="textarea__field" rows="3" readonly>Read-only content that cannot be edited.</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: Error State
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Error State</h2>
+        <p class="showcase-description">Error styling with helper text for validation feedback.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start;">
+            <!-- Error filled -->
+            <div class="textarea" style="max-width: 320px;">
+                <label class="textarea__label textarea__label--required">Description</label>
+                <textarea class="textarea__field textarea__field--error" rows="3">Invalid value</textarea>
+                <span class="textarea__helper textarea__helper--error">
+                    <svg class="textarea__helper-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5.333V8m0 2.667h.007M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    This field is required. Please enter a description.
+                </span>
+            </div>
+            <!-- Error empty -->
+            <div class="textarea" style="max-width: 320px;">
+                <label class="textarea__label textarea__label--required">Comments</label>
+                <textarea class="textarea__field textarea__field--error" placeholder="Enter your comments" rows="3"></textarea>
+                <span class="textarea__helper textarea__helper--error">
+                    <svg class="textarea__helper-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5.333V8m0 2.667h.007M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Please provide your comments.
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: Filled Darker Style
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Filled Darker Style</h2>
+        <p class="showcase-description">A subtle gray background variant for use on white surfaces.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start;">
+            <div class="textarea" style="max-width: 280px;">
+                <label class="textarea__label">Default</label>
+                <textarea class="textarea__field textarea__field--filled-darker" placeholder="Placeholder text" rows="3"></textarea>
+            </div>
+            <div class="textarea" style="max-width: 280px;">
+                <label class="textarea__label">Filled</label>
+                <textarea class="textarea__field textarea__field--filled-darker" rows="3">Entered text</textarea>
+            </div>
+            <div class="textarea textarea--disabled" style="max-width: 280px;">
+                <label class="textarea__label">Disabled</label>
+                <textarea class="textarea__field textarea__field--filled-darker" placeholder="Placeholder text" rows="3" disabled></textarea>
+            </div>
+        </div>
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start; margin-top: 16px;">
+            <div class="textarea" style="max-width: 280px;">
+                <label class="textarea__label">Error</label>
+                <textarea class="textarea__field textarea__field--filled-darker textarea__field--error" rows="3">Invalid value</textarea>
+                <span class="textarea__helper textarea__helper--error">
+                    <svg class="textarea__helper-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5.333V8m0 2.667h.007M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    This field has an error.
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: Filled Lighter Style
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Filled Lighter Style</h2>
+        <p class="showcase-description">A near-white background variant for use on gray surfaces.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview showcase-preview--subtle" style="align-items: stretch;">
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start;">
+            <div class="textarea" style="max-width: 280px;">
+                <label class="textarea__label">Default</label>
+                <textarea class="textarea__field textarea__field--filled-lighter" placeholder="Placeholder text" rows="3"></textarea>
+            </div>
+            <div class="textarea" style="max-width: 280px;">
+                <label class="textarea__label">Filled</label>
+                <textarea class="textarea__field textarea__field--filled-lighter" rows="3">Entered text</textarea>
+            </div>
+            <div class="textarea textarea--disabled" style="max-width: 280px;">
+                <label class="textarea__label">Disabled</label>
+                <textarea class="textarea__field textarea__field--filled-lighter" placeholder="Placeholder text" rows="3" disabled></textarea>
+            </div>
+        </div>
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start; margin-top: 16px;">
+            <div class="textarea" style="max-width: 280px;">
+                <label class="textarea__label">Error</label>
+                <textarea class="textarea__field textarea__field--filled-lighter textarea__field--error" rows="3">Invalid value</textarea>
+                <span class="textarea__helper textarea__helper--error">
+                    <svg class="textarea__helper-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5.333V8m0 2.667h.007M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    This field has an error.
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: RTL Layout
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Layout</h2>
+        <p class="showcase-description">Right-to-left support for Arabic and other RTL languages.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div dir="rtl" class="showcase-row" style="gap: 32px; align-items: flex-start; width: 100%;">
+            <div class="textarea" style="max-width: 320px;">
+                <label class="textarea__label textarea__label--required">الوصف</label>
+                <textarea class="textarea__field" rows="3">نص تم إدخاله في حقل النص المتعدد الأسطر</textarea>
+                <span class="textarea__helper">يرجى إدخال وصف مفصل.</span>
+            </div>
+            <div class="textarea" style="max-width: 320px;">
+                <label class="textarea__label textarea__label--required">التعليقات</label>
+                <textarea class="textarea__field textarea__field--error" rows="3"></textarea>
+                <span class="textarea__helper textarea__helper--error">
+                    <svg class="textarea__helper-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5.333V8m0 2.667h.007M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    يرجى إدخال تعليقاتك.
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: With Helper Text
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">With Helper Text</h2>
+        <p class="showcase-description">Helper text provides additional context or instructions below the textarea.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start;">
+            <div class="textarea" style="max-width: 320px;">
+                <label class="textarea__label">Bio</label>
+                <textarea class="textarea__field" placeholder="Tell us about yourself..." rows="3"></textarea>
+                <span class="textarea__helper">
+                    <svg class="textarea__helper-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 7.333V10.667M8 5.333h.007M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Write a short description about yourself.
+                </span>
+            </div>
+            <div class="textarea" style="max-width: 320px;">
+                <label class="textarea__label textarea__label--required">Feedback</label>
+                <textarea class="textarea__field" placeholder="Share your feedback..." rows="3"></textarea>
+                <span class="textarea__helper">Maximum 500 characters.</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -42,14 +42,7 @@
     color: var(--alpha-white, #FFFFFF);
 }
 
-.footer--dark .footer__social-btn {
-    border-color: var(--alpha-white-30, rgba(255, 255, 255, 0.3));
-    color: var(--alpha-white, #FFFFFF);
-}
-
-.footer--dark .footer__social-btn:hover {
-    background-color: var(--alpha-white-30, rgba(255, 255, 255, 0.1));
-}
+/* Dark variant social buttons use btn-on-color class instead */
 
 /* ============================================
    FOOTER CONTENT
@@ -70,11 +63,6 @@
     padding-bottom: var(--spacing-3xl, 24px);
 }
 
-/* RTL alignment */
-[dir="rtl"] .footer__content {
-    align-items: flex-end;
-}
-
 /* ============================================
    NAV LINKS SECTION
    Gap: 24px between groups
@@ -91,11 +79,6 @@
     padding-bottom: var(--spacing-5xl, 40px);
 }
 
-/* RTL alignment */
-[dir="rtl"] .footer__nav-links {
-    justify-content: flex-end;
-}
-
 /* ============================================
    FOOTER GROUP
    Flex: 1, min-width: 180px
@@ -110,11 +93,6 @@
     min-width: 180px;
     min-height: 1px;
     gap: var(--spacing-md, 8px);
-}
-
-/* RTL alignment */
-[dir="rtl"] .footer__group {
-    align-items: flex-end;
 }
 
 /* Group with extra sections (social + accessibility) */
@@ -143,12 +121,6 @@
     color: var(--text-default, #161616);
 }
 
-/* RTL alignment */
-[dir="rtl"] .footer__group-label {
-    align-items: flex-end;
-    text-align: right;
-}
-
 /* ============================================
    LINK GROUP & LINK LIST
    ============================================ */
@@ -157,10 +129,6 @@
     display: flex;
     align-items: flex-start;
     width: 100%;
-}
-
-[dir="rtl"] .footer__link-group {
-    justify-content: flex-end;
 }
 
 .footer__link-list {
@@ -174,10 +142,6 @@
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-[dir="rtl"] .footer__link-list {
-    align-items: flex-end;
 }
 
 /* ============================================
@@ -205,11 +169,6 @@
     color: var(--sa-600, #1B8354);
 }
 
-[dir="rtl"] .footer__link {
-    justify-content: flex-end;
-    text-align: right;
-}
-
 /* Underlined variant for legal links */
 .footer__link--underline {
     text-decoration: underline;
@@ -228,10 +187,6 @@
     gap: var(--spacing-md, 8px);
 }
 
-[dir="rtl"] .footer__social-section {
-    align-items: flex-end;
-}
-
 .footer__social-icons {
     display: flex;
     flex-wrap: wrap;
@@ -240,41 +195,9 @@
     width: 100%;
 }
 
-[dir="rtl"] .footer__social-icons {
-    justify-content: flex-end;
-}
-
-/* Social Button - 32x32 with border */
-.footer__social-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    min-height: 32px;
-    max-width: 32px;
-    max-height: 32px;
-    padding: 0;
-    border: 1px solid var(--gray-300, #D2D6DB);
-    border-radius: var(--radius-sm, 4px);
-    background: transparent;
-    color: var(--gray-700, #384250);
-    cursor: pointer;
-    transition: background-color 0.15s ease, border-color 0.15s ease;
-    overflow: hidden;
-}
-
-.footer__social-btn:hover {
-    background-color: var(--gray-100, #F3F4F6);
-    border-color: var(--gray-400, #9DA4AE);
-}
-
-.footer__social-btn svg,
-.footer__social-btn img {
-    width: 20px;
-    height: 20px;
-}
+/* Social/Accessibility icon buttons use the reusable
+   btn btn-secondary-outline btn-medium btn-icon-only classes.
+   Dark variant adds btn-on-color. No custom styles needed. */
 
 /* ============================================
    LEGAL SECTION
@@ -306,7 +229,6 @@
 }
 
 [dir="rtl"] .footer__legal-content {
-    align-items: flex-end;
     gap: var(--spacing-3xl, 24px);
 }
 
@@ -322,10 +244,6 @@
     margin: 0;
 }
 
-[dir="rtl"] .footer__legal-links {
-    justify-content: flex-end;
-}
-
 /* Legal Info Section */
 .footer__legal-info {
     display: flex;
@@ -333,10 +251,6 @@
     align-items: flex-start;
     gap: var(--spacing-md, 8px);
     width: 100%;
-}
-
-[dir="rtl"] .footer__legal-info {
-    align-items: flex-end;
 }
 
 /* Legal Caption */
@@ -349,10 +263,6 @@
     margin: 0;
 }
 
-[dir="rtl"] .footer__legal-caption {
-    text-align: right;
-}
-
 /* Extra Link List (Terms, Privacy) */
 .footer__extra-links {
     display: flex;
@@ -362,10 +272,6 @@
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-[dir="rtl"] .footer__extra-links {
-    justify-content: flex-end;
 }
 
 /* ============================================
@@ -380,10 +286,6 @@
     gap: var(--spacing-xl, 16px);
     opacity: 0.7;
     flex-shrink: 0;
-}
-
-[dir="rtl"] .footer__logos {
-    justify-content: flex-end;
 }
 
 /* Logo Placeholder */
@@ -416,6 +318,9 @@
 
 /* ============================================
    MOBILE RESPONSIVE (< 600px)
+   Figma: 2-column grid for nav groups,
+   side-by-side social/accessibility,
+   centered legal, space-between logos
    ============================================ */
 
 @media (max-width: 599px) {
@@ -423,19 +328,31 @@
         padding-top: var(--spacing-3xl, 24px);
     }
 
+    /* 2-column grid for nav link groups */
     .footer__nav-links {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: var(--spacing-3xl, 24px);
         padding-bottom: var(--spacing-3xl, 24px);
     }
 
     .footer__group {
-        width: 100%;
+        min-width: 0;
         flex: none;
     }
 
+    /* Social/Accessibility group spans full width, side-by-side sections */
+    .footer__group--extra {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-3xl, 24px);
+    }
+
+    /* Legal section stacks vertically */
     .footer__legal {
         flex-direction: column;
+        align-items: center;
         gap: var(--spacing-3xl, 24px);
     }
 
@@ -443,21 +360,104 @@
         flex-direction: column;
     }
 
-    .footer__logos {
-        width: 100%;
-        justify-content: flex-start;
-    }
-
-    [dir="rtl"] .footer__logos {
-        justify-content: flex-end;
-    }
-
     .footer__legal-content {
+        align-items: center;
         gap: var(--spacing-3xl, 24px);
     }
 
-    .footer__legal-links {
-        flex-direction: column;
-        gap: var(--spacing-md, 8px);
+    [dir="rtl"] .footer__legal-content {
+        align-items: center;
     }
+
+    .footer__legal-links {
+        justify-content: center;
+    }
+
+    [dir="rtl"] .footer__legal-links {
+        justify-content: center;
+    }
+
+    .footer__legal-info {
+        align-items: center;
+        text-align: center;
+    }
+
+    [dir="rtl"] .footer__legal-info {
+        align-items: center;
+    }
+
+    .footer__extra-links {
+        justify-content: center;
+    }
+
+    [dir="rtl"] .footer__extra-links {
+        justify-content: center;
+    }
+
+    /* Logos at opposite ends */
+    .footer__logos {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    [dir="rtl"] .footer__logos {
+        justify-content: space-between;
+    }
+}
+
+/* ============================================
+   FORCED MOBILE PREVIEW
+   Applies mobile layout regardless of viewport
+   ============================================ */
+
+.footer--mobile-preview .footer__content {
+    padding-top: var(--spacing-3xl, 24px);
+}
+
+.footer--mobile-preview .footer__nav-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl, 24px);
+    padding-bottom: var(--spacing-3xl, 24px);
+}
+
+.footer--mobile-preview .footer__group {
+    min-width: 0;
+    flex: none;
+}
+
+.footer--mobile-preview .footer__group--extra {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl, 24px);
+}
+
+.footer--mobile-preview .footer__legal {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-3xl, 24px);
+}
+
+.footer--mobile-preview .footer__legal-content {
+    align-items: center;
+    gap: var(--spacing-3xl, 24px);
+}
+
+.footer--mobile-preview .footer__legal-links {
+    justify-content: center;
+}
+
+.footer--mobile-preview .footer__legal-info {
+    align-items: center;
+    text-align: center;
+}
+
+.footer--mobile-preview .footer__extra-links {
+    justify-content: center;
+}
+
+.footer--mobile-preview .footer__logos {
+    width: 100%;
+    justify-content: space-between;
 }

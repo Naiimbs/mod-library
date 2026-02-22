@@ -3,392 +3,651 @@
     <p class="content-description">An input allows people to enter short, free form text data. If you need to collect more than one line of information, try a textarea.</p>
 </div>
 
-<!-- Default Text Input -->
-<div class="component-preview">
-    <div class="component-preview-title">Default</div>
-    <div style="display: flex; gap: 32px; flex-wrap: wrap;">
-        <div class="text-input" style="max-width: 320px;">
-            <label class="text-input__label">Label</label>
-            <input type="text" class="text-input__field" placeholder="Placeholder">
-            <span class="text-input__helper">This is a hint text to help the user.</span>
-        </div>
-        <div class="text-input" style="max-width: 320px;">
-            <label class="text-input__label text-input__label--required">Label</label>
-            <input type="text" class="text-input__field" placeholder="Placeholder" required>
-            <span class="text-input__helper">This is a hint text to help the user.</span>
-        </div>
-        <div class="text-input" style="max-width: 320px;">
-            <label class="text-input__label text-input__label--optional">Label</label>
-            <input type="text" class="text-input__field" placeholder="Placeholder">
-            <span class="text-input__helper">This is a hint text to help the user.</span>
-        </div>
-    </div>
-</div>
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
 
-<!-- Input States -->
-<div class="component-preview">
-    <div class="component-preview-title">States</div>
-    <div style="display: flex; gap: 32px; flex-wrap: wrap;">
-        <!-- Default -->
-        <div class="text-input" style="max-width: 280px;">
-            <label class="text-input__label">Default</label>
-            <input type="text" class="text-input__field" placeholder="Placeholder">
+<div class="live-demo">
+    <div class="live-demo__body">
+        <!-- Left: Preview canvas -->
+        <div class="live-demo__canvas" id="ti-demo-preview" style="align-items: center; padding: var(--spacing-4xl);">
+            <!-- Rendered dynamically by JS -->
         </div>
-        <!-- Filled -->
-        <div class="text-input" style="max-width: 280px;">
-            <label class="text-input__label">Filled</label>
-            <input type="text" class="text-input__field" value="Input text">
-        </div>
-        <!-- Disabled Empty -->
-        <div class="text-input text-input--disabled" style="max-width: 280px;">
-            <label class="text-input__label">Disabled</label>
-            <input type="text" class="text-input__field" placeholder="Placeholder" disabled>
-        </div>
-        <!-- Disabled Filled -->
-        <div class="text-input text-input--disabled" style="max-width: 280px;">
-            <label class="text-input__label">Disabled filled</label>
-            <input type="text" class="text-input__field" value="Input text" disabled>
-        </div>
-        <!-- Read-only -->
-        <div class="text-input" style="max-width: 280px;">
-            <label class="text-input__label">Read-only</label>
-            <input type="text" class="text-input__field" value="Read-only value" readonly>
-        </div>
-    </div>
-</div>
 
-<!-- Validation States -->
-<div class="component-preview">
-    <div class="component-preview-title">Validation</div>
-    <div style="display: flex; gap: 32px; flex-wrap: wrap;">
-        <!-- Error -->
-        <div class="text-input" style="max-width: 320px;">
-            <label class="text-input__label text-input__label--required">Email</label>
-            <input type="email" class="text-input__field text-input__field--error" value="invalid-email">
-            <span class="text-input__helper text-input__helper--error">
-                <svg class="text-input__helper-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 5.333V8m0 2.667h.007M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Please enter a valid email address.
-            </span>
-        </div>
-        <!-- Success -->
-        <div class="text-input" style="max-width: 320px;">
-            <label class="text-input__label text-input__label--required">Email</label>
-            <input type="email" class="text-input__field text-input__field--success" value="user@example.com">
-            <span class="text-input__helper text-input__helper--success">
-                <svg class="text-input__helper-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.333 8L7.333 10l3.334-4M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Email address is valid.
-            </span>
-        </div>
-    </div>
-</div>
-
-<!-- Filled Darker Style -->
-<div class="component-preview">
-    <div class="component-preview-title">Filled Darker Style</div>
-    <div style="display: flex; gap: 32px; flex-wrap: wrap;">
-        <!-- Filled Darker Default -->
-        <div class="text-input" style="max-width: 280px;">
-            <label class="text-input__label">Default</label>
-            <input type="text" class="text-input__field text-input__field--filled-darker" placeholder="Placeholder">
-        </div>
-        <!-- Filled Darker with value -->
-        <div class="text-input" style="max-width: 280px;">
-            <label class="text-input__label">Filled</label>
-            <input type="text" class="text-input__field text-input__field--filled-darker" value="Entered text">
-        </div>
-        <!-- Filled Darker Disabled -->
-        <div class="text-input text-input--disabled" style="max-width: 280px;">
-            <label class="text-input__label">Disabled</label>
-            <input type="text" class="text-input__field text-input__field--filled-darker" placeholder="Placeholder" disabled>
-        </div>
-        <!-- Filled Darker Error -->
-        <div class="text-input" style="max-width: 280px;">
-            <label class="text-input__label">Error</label>
-            <input type="text" class="text-input__field text-input__field--filled-darker text-input__field--error" value="Invalid value">
-            <span class="text-input__helper text-input__helper--error">
-                <svg class="text-input__helper-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 5.333V8m0 2.667h.007M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                This field has an error.
-            </span>
-        </div>
-    </div>
-</div>
-
-<!-- Filled Lighter Style -->
-<div class="component-preview">
-    <div class="component-preview-title">Filled Lighter Style</div>
-    <div style="display: flex; gap: 32px; flex-wrap: wrap;">
-        <!-- Filled Lighter Default -->
-        <div class="text-input" style="max-width: 280px;">
-            <label class="text-input__label">Default</label>
-            <input type="text" class="text-input__field text-input__field--filled-lighter" placeholder="Placeholder">
-        </div>
-        <!-- Filled Lighter with value -->
-        <div class="text-input" style="max-width: 280px;">
-            <label class="text-input__label">Filled</label>
-            <input type="text" class="text-input__field text-input__field--filled-lighter" value="Entered text">
-        </div>
-        <!-- Filled Lighter Disabled -->
-        <div class="text-input text-input--disabled" style="max-width: 280px;">
-            <label class="text-input__label">Disabled</label>
-            <input type="text" class="text-input__field text-input__field--filled-lighter" placeholder="Placeholder" disabled>
-        </div>
-        <!-- Filled Lighter Error -->
-        <div class="text-input" style="max-width: 280px;">
-            <label class="text-input__label">Error</label>
-            <input type="text" class="text-input__field text-input__field--filled-lighter text-input__field--error" value="Invalid value">
-            <span class="text-input__helper text-input__helper--error">
-                <svg class="text-input__helper-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 5.333V8m0 2.667h.007M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                This field has an error.
-            </span>
-        </div>
-    </div>
-</div>
-
-<!-- Prefix / Suffix -->
-<div class="component-preview">
-    <div class="component-preview-title">Prefix &amp; Suffix</div>
-    <div style="display: flex; gap: 32px; flex-wrap: wrap;">
-        <!-- With Prefix -->
-        <div class="text-input" style="max-width: 320px;">
-            <label class="text-input__label">Website</label>
-            <div class="text-input__field-wrapper text-input__field-wrapper--prefix">
-                <span class="text-input__prefix">https://</span>
-                <input type="text" class="text-input__field" placeholder="www.example.com">
+        <!-- Right: Controls sidebar -->
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Text Input</h3>
+                <p class="live-demo__sidebar-desc">A single-line text field for short form input like names, emails, and search queries.</p>
             </div>
-        </div>
-        <!-- With Suffix -->
-        <div class="text-input" style="max-width: 320px;">
-            <label class="text-input__label">Email</label>
-            <div class="text-input__field-wrapper text-input__field-wrapper--suffix">
-                <input type="text" class="text-input__field" placeholder="username">
-                <span class="text-input__suffix">@domain.com</span>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
             </div>
-        </div>
-        <!-- With Both -->
-        <div class="text-input" style="max-width: 320px;">
-            <label class="text-input__label">Price</label>
-            <div class="text-input__field-wrapper text-input__field-wrapper--prefix text-input__field-wrapper--suffix">
-                <span class="text-input__prefix">SAR</span>
-                <input type="number" class="text-input__field" placeholder="0.00" style="border-radius: 0;">
-                <span class="text-input__suffix">.00</span>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="ti-demo-state">State</label>
+                <select class="live-demo__sidebar-select" id="ti-demo-state">
+                    <option value="default">Default</option>
+                    <option value="disabled">Disabled</option>
+                    <option value="readonly">Read-only</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="ti-demo-style">Style</label>
+                <select class="live-demo__sidebar-select" id="ti-demo-style">
+                    <option value="default">Default</option>
+                    <option value="filled-darker">Filled darker</option>
+                    <option value="filled-lighter">Filled lighter</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="ti-demo-size">Size</label>
+                <select class="live-demo__sidebar-select" id="ti-demo-size">
+                    <option value="large">Large</option>
+                    <option value="medium">Medium</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Filled</label>
+                <button class="live-demo__switch active" data-toggle="filled" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Error</label>
+                <button class="live-demo__switch" data-toggle="error" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Show Label</label>
+                <button class="live-demo__switch active" data-toggle="show-label" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Required</label>
+                <button class="live-demo__switch" data-toggle="required" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Helper Text</label>
+                <button class="live-demo__switch" data-toggle="helper-text" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Leading Icon</label>
+                <button class="live-demo__switch" data-toggle="leading-icon" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Trailing Icon</label>
+                <button class="live-demo__switch" data-toggle="trailing-icon" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Prefix</label>
+                <button class="live-demo__switch" data-toggle="prefix" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Suffix</label>
+                <button class="live-demo__switch" data-toggle="suffix" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="ti-demo-addon-type">Addon Type</label>
+                <select class="live-demo__sidebar-select" id="ti-demo-addon-type">
+                    <option value="text">Text</option>
+                    <option value="dropdown">Dropdown</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="ti-demo-addon-style">Addon Style</label>
+                <select class="live-demo__sidebar-select" id="ti-demo-addon-style">
+                    <option value="solid">Solid</option>
+                    <option value="subtle">Subtle</option>
+                </select>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Input with Icons -->
-<div class="component-preview">
-    <div class="component-preview-title">With Icons</div>
-    <div style="display: flex; gap: 32px; flex-wrap: wrap;">
-        <!-- Leading icon -->
-        <div class="text-input" style="max-width: 320px;">
-            <label class="text-input__label">Search</label>
-            <div class="text-input__field-wrapper text-input__field-wrapper--leading">
-                <span class="text-input__icon--leading">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.5 17.5L13.875 13.875M15.833 9.167a6.667 6.667 0 1 1-13.333 0 6.667 6.667 0 0 1 13.333 0Z" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-                <input type="text" class="text-input__field" placeholder="Search...">
+<!-- ============================================
+     PROPS TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2>Props</h2>
+    </div>
+    <div class="showcase-divider"></div>
+
+    <table class="props-table">
+        <thead>
+            <tr>
+                <th>Prop</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>label</code></td>
+                <td><code>string</code></td>
+                <td>—</td>
+                <td>Label text displayed above the input.</td>
+            </tr>
+            <tr>
+                <td><code>placeholder</code></td>
+                <td><code>string</code></td>
+                <td>—</td>
+                <td>Placeholder text shown when the field is empty.</td>
+            </tr>
+            <tr>
+                <td><code>size</code></td>
+                <td><code>'md' | 'lg'</code></td>
+                <td><code>'lg'</code></td>
+                <td>Input height — medium (32px) or large (40px).</td>
+            </tr>
+            <tr>
+                <td><code>type</code></td>
+                <td><code>'text' | 'number' | 'password' | 'email' | 'tel'</code></td>
+                <td><code>'text'</code></td>
+                <td>HTML input type.</td>
+            </tr>
+            <tr>
+                <td><code>variant</code></td>
+                <td><code>'default' | 'lighter' | 'darker'</code></td>
+                <td><code>'default'</code></td>
+                <td>Visual style variant controlling background color.</td>
+            </tr>
+            <tr>
+                <td><code>value</code></td>
+                <td><code>string</code></td>
+                <td><code>''</code></td>
+                <td>Current value of the input.</td>
+            </tr>
+            <tr>
+                <td><code>disabled</code></td>
+                <td><code>boolean</code></td>
+                <td><code>false</code></td>
+                <td>Prevents user interaction.</td>
+            </tr>
+            <tr>
+                <td><code>readonly</code></td>
+                <td><code>boolean</code></td>
+                <td><code>false</code></td>
+                <td>Makes the content non-editable but copyable.</td>
+            </tr>
+            <tr>
+                <td><code>error</code></td>
+                <td><code>boolean</code></td>
+                <td><code>false</code></td>
+                <td>Applies error styling (red border).</td>
+            </tr>
+            <tr>
+                <td><code>required</code></td>
+                <td><code>boolean</code></td>
+                <td><code>false</code></td>
+                <td>Marks the field as required (asterisk on label).</td>
+            </tr>
+            <tr>
+                <td><code>helper-text</code></td>
+                <td><code>string</code></td>
+                <td>—</td>
+                <td>Descriptive hint text displayed below the field.</td>
+            </tr>
+            <tr>
+                <td><code>icon</code></td>
+                <td><code>leading | trailing</code></td>
+                <td>—</td>
+                <td>Icon position inside the input field.</td>
+            </tr>
+            <tr>
+                <td><code>addon-type</code></td>
+                <td><code>'text' | 'dropdown'</code></td>
+                <td><code>'text'</code></td>
+                <td>Prefix/suffix type — plain text or interactive dropdown with chevron.</td>
+            </tr>
+            <tr>
+                <td><code>addon-style</code></td>
+                <td><code>'solid' | 'subtle'</code></td>
+                <td><code>'solid'</code></td>
+                <td>Prefix/suffix visual style — solid (gray bg) or subtle (transparent).</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ============================================
+     SHOWCASE: States
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">States</h2>
+        <p class="showcase-description">All interactive states — default, filled, disabled, read-only, and focus (click to see).</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start;">
+            <div class="text-input" style="max-width: 280px;">
+                <label class="text-input__label">Default</label>
+                <input type="text" class="text-input__field" placeholder="Placeholder">
+            </div>
+            <div class="text-input" style="max-width: 280px;">
+                <label class="text-input__label">Filled</label>
+                <input type="text" class="text-input__field" value="Input text">
+            </div>
+            <div class="text-input text-input--disabled" style="max-width: 280px;">
+                <label class="text-input__label">Disabled</label>
+                <input type="text" class="text-input__field" placeholder="Placeholder" disabled>
             </div>
         </div>
-        <!-- Trailing icon -->
-        <div class="text-input" style="max-width: 320px;">
-            <label class="text-input__label">Email</label>
-            <div class="text-input__field-wrapper text-input__field-wrapper--trailing">
-                <input type="email" class="text-input__field" placeholder="you@example.com">
-                <span class="text-input__icon--trailing">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1.667 5.833l6.804 4.763c.462.323.693.485.946.548.223.056.457.056.68 0 .253-.063.484-.225.946-.548l6.804-4.763M5.667 16.667h8.666c1.4 0 2.1 0 2.635-.273a2.5 2.5 0 0 0 1.093-1.092c.272-.535.272-1.235.272-2.635V7.333c0-1.4 0-2.1-.272-2.635a2.5 2.5 0 0 0-1.093-1.092c-.535-.273-1.235-.273-2.635-.273H5.667c-1.4 0-2.1 0-2.635.273a2.5 2.5 0 0 0-1.093 1.092c-.272.535-.272 1.235-.272 2.635v5.334c0 1.4 0 2.1.272 2.635a2.5 2.5 0 0 0 1.093 1.092c.535.273 1.235.273 2.635.273Z" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start; margin-top: 16px;">
+            <div class="text-input text-input--disabled" style="max-width: 280px;">
+                <label class="text-input__label">Disabled filled</label>
+                <input type="text" class="text-input__field" value="Input text" disabled>
+            </div>
+            <div class="text-input" style="max-width: 280px;">
+                <label class="text-input__label">Read-only</label>
+                <input type="text" class="text-input__field" value="Read-only value" readonly>
             </div>
         </div>
-        <!-- Both icons -->
-        <div class="text-input" style="max-width: 320px;">
-            <label class="text-input__label">Website</label>
-            <div class="text-input__field-wrapper text-input__field-wrapper--leading text-input__field-wrapper--trailing">
-                <span class="text-input__icon--leading">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 1.667a8.333 8.333 0 1 0 0 16.666 8.333 8.333 0 0 0 0-16.666Zm0 0c1.841 0 3.333 3.731 3.333 8.333s-1.492 8.333-3.333 8.333S6.667 14.602 6.667 10 8.159 1.667 10 1.667ZM1.667 10h16.666" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: Validation
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Validation</h2>
+        <p class="showcase-description">Error and success validation states with helper text feedback.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start;">
+            <div class="text-input" style="max-width: 320px;">
+                <label class="text-input__label text-input__label--required">Email</label>
+                <input type="email" class="text-input__field text-input__field--error" value="invalid-email">
+                <span class="text-input__helper text-input__helper--error">
+                    <svg class="text-input__helper-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5.333V8m0 2.667h.007M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
+                    Please enter a valid email address.
                 </span>
-                <input type="url" class="text-input__field" placeholder="www.example.com">
-                <span class="text-input__icon--trailing">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.5 17.5h5M10 14.167V17.5M3.333 5c0-.933 0-1.4.182-1.757a1.667 1.667 0 0 1 .728-.728C4.6 2.333 5.067 2.333 6 2.333h8c.933 0 1.4 0 1.757.182.313.16.568.415.728.728.182.357.182.824.182 1.757v4.167c0 .933 0 1.4-.182 1.757a1.667 1.667 0 0 1-.728.728c-.357.181-.824.181-1.757.181H6c-.933 0-1.4 0-1.757-.181a1.667 1.667 0 0 1-.728-.728c-.182-.357-.182-.824-.182-1.757V5Z" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
+            </div>
+            <div class="text-input" style="max-width: 320px;">
+                <label class="text-input__label text-input__label--required">Email</label>
+                <input type="email" class="text-input__field text-input__field--success" value="user@example.com">
+                <span class="text-input__helper text-input__helper--success">
+                    <svg class="text-input__helper-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.333 8L7.333 10l3.334-4M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
+                    Email address is valid.
                 </span>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Input Sizes -->
-<div class="component-preview">
-    <div class="component-preview-title">Sizes</div>
-    <div style="display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start;">
-        <!-- Medium -->
-        <div class="text-input" style="max-width: 280px;">
-            <label class="text-input__label">Medium (32px)</label>
-            <input type="text" class="text-input__field text-input__field--md" placeholder="Medium input">
-        </div>
-        <!-- Large (Default) -->
-        <div class="text-input" style="max-width: 280px;">
-            <label class="text-input__label">Large (40px) — Default</label>
-            <input type="text" class="text-input__field" placeholder="Large input">
-        </div>
+<!-- ============================================
+     SHOWCASE: Filled Darker Style
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Filled Darker Style</h2>
+        <p class="showcase-description">A subtle gray background variant for use on white surfaces.</p>
     </div>
-</div>
-
-<!-- Sizes with Icons -->
-<div class="component-preview">
-    <div class="component-preview-title">Sizes with Icons</div>
-    <div style="display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start;">
-        <!-- Medium with icon -->
-        <div class="text-input" style="max-width: 280px;">
-            <label class="text-input__label">Medium</label>
-            <div class="text-input__field-wrapper text-input__field-wrapper--leading">
-                <span class="text-input__icon--leading">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.5 17.5L13.875 13.875M15.833 9.167a6.667 6.667 0 1 1-13.333 0 6.667 6.667 0 0 1 13.333 0Z" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-                <input type="text" class="text-input__field text-input__field--md" placeholder="Search...">
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start;">
+            <div class="text-input" style="max-width: 280px;">
+                <label class="text-input__label">Default</label>
+                <input type="text" class="text-input__field text-input__field--filled-darker" placeholder="Placeholder">
+            </div>
+            <div class="text-input" style="max-width: 280px;">
+                <label class="text-input__label">Filled</label>
+                <input type="text" class="text-input__field text-input__field--filled-darker" value="Entered text">
+            </div>
+            <div class="text-input text-input--disabled" style="max-width: 280px;">
+                <label class="text-input__label">Disabled</label>
+                <input type="text" class="text-input__field text-input__field--filled-darker" placeholder="Placeholder" disabled>
             </div>
         </div>
-        <!-- Large (Default) with icon -->
-        <div class="text-input" style="max-width: 280px;">
-            <label class="text-input__label">Large (Default)</label>
-            <div class="text-input__field-wrapper text-input__field-wrapper--leading">
-                <span class="text-input__icon--leading">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.5 17.5L13.875 13.875M15.833 9.167a6.667 6.667 0 1 1-13.333 0 6.667 6.667 0 0 1 13.333 0Z" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start; margin-top: 16px;">
+            <div class="text-input" style="max-width: 280px;">
+                <label class="text-input__label">Error</label>
+                <input type="text" class="text-input__field text-input__field--filled-darker text-input__field--error" value="Invalid value">
+                <span class="text-input__helper text-input__helper--error">
+                    <svg class="text-input__helper-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5.333V8m0 2.667h.007M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
+                    This field has an error.
                 </span>
-                <input type="text" class="text-input__field" placeholder="Search...">
             </div>
         </div>
     </div>
 </div>
 
-<!-- Character Count -->
-<div class="component-preview">
-    <div class="component-preview-title">With Character Count</div>
-    <div style="display: flex; gap: 32px; flex-wrap: wrap;">
-        <div class="text-input" style="max-width: 320px;">
-            <label class="text-input__label">Username</label>
-            <input type="text" class="text-input__field" placeholder="Enter username" maxlength="30" data-text-input-counter>
-            <div class="text-input__footer">
-                <span class="text-input__helper">Choose a unique username.</span>
-                <span class="text-input__char-count">0/30</span>
+<!-- ============================================
+     SHOWCASE: Filled Lighter Style
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Filled Lighter Style</h2>
+        <p class="showcase-description">A near-white background variant for use on gray surfaces.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview showcase-preview--subtle" style="align-items: stretch;">
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start;">
+            <div class="text-input" style="max-width: 280px;">
+                <label class="text-input__label">Default</label>
+                <input type="text" class="text-input__field text-input__field--filled-lighter" placeholder="Placeholder">
+            </div>
+            <div class="text-input" style="max-width: 280px;">
+                <label class="text-input__label">Filled</label>
+                <input type="text" class="text-input__field text-input__field--filled-lighter" value="Entered text">
+            </div>
+            <div class="text-input text-input--disabled" style="max-width: 280px;">
+                <label class="text-input__label">Disabled</label>
+                <input type="text" class="text-input__field text-input__field--filled-lighter" placeholder="Placeholder" disabled>
             </div>
         </div>
-        <div class="text-input" style="max-width: 320px;">
-            <label class="text-input__label">Bio</label>
-            <input type="text" class="text-input__field text-input__field--error" value="This is an example of a value that exceeds the maximum" maxlength="30" data-text-input-counter>
-            <div class="text-input__footer">
-                <span class="text-input__helper text-input__helper--error">Character limit exceeded.</span>
-                <span class="text-input__char-count text-input__char-count--error">54/30</span>
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start; margin-top: 16px;">
+            <div class="text-input" style="max-width: 280px;">
+                <label class="text-input__label">Error</label>
+                <input type="text" class="text-input__field text-input__field--filled-lighter text-input__field--error" value="Invalid value">
+                <span class="text-input__helper text-input__helper--error">
+                    <svg class="text-input__helper-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5.333V8m0 2.667h.007M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    This field has an error.
+                </span>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Input Types -->
-<div class="component-preview">
-    <div class="component-preview-title">Input Types</div>
-    <div style="display: flex; gap: 32px; flex-wrap: wrap;">
-        <div class="text-input" style="max-width: 280px;">
-            <label class="text-input__label">Text</label>
-            <input type="text" class="text-input__field" placeholder="Enter text">
-        </div>
-        <div class="text-input" style="max-width: 280px;">
-            <label class="text-input__label">Email</label>
-            <div class="text-input__field-wrapper text-input__field-wrapper--leading">
-                <span class="text-input__icon--leading">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1.667 5.833l6.804 4.763c.462.323.693.485.946.548.223.056.457.056.68 0 .253-.063.484-.225.946-.548l6.804-4.763M5.667 16.667h8.666c1.4 0 2.1 0 2.635-.273a2.5 2.5 0 0 0 1.093-1.092c.272-.535.272-1.235.272-2.635V7.333c0-1.4 0-2.1-.272-2.635a2.5 2.5 0 0 0-1.093-1.092c-.535-.273-1.235-.273-2.635-.273H5.667c-1.4 0-2.1 0-2.635.273a2.5 2.5 0 0 0-1.093 1.092c-.272.535-.272 1.235-.272 2.635v5.334c0 1.4 0 2.1.272 2.635a2.5 2.5 0 0 0 1.093 1.092c.535.273 1.235.273 2.635.273Z" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-                <input type="email" class="text-input__field" placeholder="you@example.com">
+<!-- ============================================
+     SHOWCASE: With Icons
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">With Icons</h2>
+        <p class="showcase-description">Leading and trailing icons provide visual cues about the input's purpose.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start;">
+            <div class="text-input" style="max-width: 320px;">
+                <label class="text-input__label">Leading icon</label>
+                <div class="text-input__field-wrapper text-input__field-wrapper--leading">
+                    <span class="text-input__icon--leading">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.5 17.5L13.875 13.875M15.833 9.167a6.667 6.667 0 1 1-13.333 0 6.667 6.667 0 0 1 13.333 0Z" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <input type="text" class="text-input__field" placeholder="Search...">
+                </div>
             </div>
-        </div>
-        <div class="text-input" style="max-width: 280px;">
-            <label class="text-input__label">Password</label>
-            <div class="text-input__field-wrapper text-input__field-wrapper--trailing">
-                <input type="password" class="text-input__field" placeholder="Enter password">
-                <span class="text-input__icon--trailing" style="pointer-events: auto; cursor: pointer;" data-toggle-password>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2.017 10.594a1.2 1.2 0 0 1 0-1.188C3.236 7.42 6.279 3.333 10 3.333c3.722 0 6.764 4.088 7.983 6.073a1.2 1.2 0 0 1 0 1.188C16.764 12.58 13.722 16.667 10 16.667c-3.721 0-6.764-4.088-7.983-6.073Z" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
+            <div class="text-input" style="max-width: 320px;">
+                <label class="text-input__label">Trailing icon</label>
+                <div class="text-input__field-wrapper text-input__field-wrapper--trailing">
+                    <input type="email" class="text-input__field" placeholder="you@example.com">
+                    <span class="text-input__icon--trailing">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1.667 5.833l6.804 4.763c.462.323.693.485.946.548.223.056.457.056.68 0 .253-.063.484-.225.946-.548l6.804-4.763M5.667 16.667h8.666c1.4 0 2.1 0 2.635-.273a2.5 2.5 0 0 0 1.093-1.092c.272-.535.272-1.235.272-2.635V7.333c0-1.4 0-2.1-.272-2.635a2.5 2.5 0 0 0-1.093-1.092c-.535-.273-1.235-.273-2.635-.273H5.667c-1.4 0-2.1 0-2.635.273a2.5 2.5 0 0 0-1.093 1.092c-.272.535-.272 1.235-.272 2.635v5.334c0 1.4 0 2.1.272 2.635a2.5 2.5 0 0 0 1.093 1.092c.535.273 1.235.273 2.635.273Z" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div>
             </div>
-        </div>
-        <div class="text-input" style="max-width: 280px;">
-            <label class="text-input__label">Number</label>
-            <input type="number" class="text-input__field" placeholder="0">
-        </div>
-        <div class="text-input" style="max-width: 280px;">
-            <label class="text-input__label">Phone</label>
-            <div class="text-input__field-wrapper text-input__field-wrapper--leading">
-                <span class="text-input__icon--leading">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.983 7.633a8.81 8.81 0 0 0 1.934 2.95 8.81 8.81 0 0 0 2.95 1.934c.14.065.21.097.298.118a.96.96 0 0 0 .758-.135c.076-.05.143-.116.276-.25.407-.406.61-.61.815-.734a1.667 1.667 0 0 1 1.629-.001c.205.125.407.33.812.736l.173.173c.627.627.94.94 1.1 1.29a1.667 1.667 0 0 1 0 1.31c-.16.349-.473.663-1.1 1.29l-.14.14c-.625.625-.938.938-1.362 1.175-.472.263-1.13.452-1.668.45-.484-.001-.82-.106-1.49-.315A16.12 16.12 0 0 1 3.636 9.36c-.209-.671-.314-1.006-.315-1.49-.002-.539.187-1.196.45-1.668.237-.424.55-.737 1.175-1.362l.14-.14c.627-.627.941-.94 1.29-1.1a1.667 1.667 0 0 1 1.31 0c.35.16.663.473 1.29 1.1l.173.173c.406.405.61.607.736.812a1.667 1.667 0 0 1 .001 1.63c-.125.204-.328.407-.734.814-.134.133-.2.2-.25.276a.96.96 0 0 0-.135.758c.02.088.053.158.117.298Z" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-                <input type="tel" class="text-input__field" placeholder="+966 5X XXX XXXX">
+            <div class="text-input" style="max-width: 320px;">
+                <label class="text-input__label">Both icons</label>
+                <div class="text-input__field-wrapper text-input__field-wrapper--leading text-input__field-wrapper--trailing">
+                    <span class="text-input__icon--leading">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 1.667a8.333 8.333 0 1 0 0 16.666 8.333 8.333 0 0 0 0-16.666Zm0 0c1.841 0 3.333 3.731 3.333 8.333s-1.492 8.333-3.333 8.333S6.667 14.602 6.667 10 8.159 1.667 10 1.667ZM1.667 10h16.666" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <input type="url" class="text-input__field" placeholder="www.example.com">
+                    <span class="text-input__icon--trailing">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.5 17.5h5M10 14.167V17.5M3.333 5c0-.933 0-1.4.182-1.757a1.667 1.667 0 0 1 .728-.728C4.6 2.333 5.067 2.333 6 2.333h8c.933 0 1.4 0 1.757.182.313.16.568.415.728.728.182.357.182.824.182 1.757v4.167c0 .933 0 1.4-.182 1.757a1.667 1.667 0 0 1-.728.728c-.357.181-.824.181-1.757.181H6c-.933 0-1.4 0-1.757-.181a1.667 1.667 0 0 1-.728-.728c-.182-.357-.182-.824-.182-1.757V5Z" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- RTL Support -->
-<div class="component-preview">
-    <div class="component-preview-title">RTL Support</div>
-    <div dir="rtl" style="display: flex; gap: 32px; flex-wrap: wrap; background: var(--color-bg-secondary); padding: 24px; border-radius: var(--radius-md);">
-        <div class="text-input" style="max-width: 320px;">
-            <label class="text-input__label text-input__label--required">البريد الإلكتروني</label>
-            <div class="text-input__field-wrapper text-input__field-wrapper--leading">
-                <span class="text-input__icon--leading">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1.667 5.833l6.804 4.763c.462.323.693.485.946.548.223.056.457.056.68 0 .253-.063.484-.225.946-.548l6.804-4.763M5.667 16.667h8.666c1.4 0 2.1 0 2.635-.273a2.5 2.5 0 0 0 1.093-1.092c.272-.535.272-1.235.272-2.635V7.333c0-1.4 0-2.1-.272-2.635a2.5 2.5 0 0 0-1.093-1.092c-.535-.273-1.235-.273-2.635-.273H5.667c-1.4 0-2.1 0-2.635.273a2.5 2.5 0 0 0-1.093 1.092c-.272.535-.272 1.235-.272 2.635v5.334c0 1.4 0 2.1.272 2.635a2.5 2.5 0 0 0 1.093 1.092c.535.273 1.235.273 2.635.273Z" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-                <input type="email" class="text-input__field" placeholder="أدخل بريدك الإلكتروني">
+<!-- ============================================
+     SHOWCASE: Prefix & Suffix
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Prefix &amp; Suffix</h2>
+        <p class="showcase-description">Information added before (prefix) or after (suffix) the input to provide contextual information. Available in Solid and Subtle styles, with Text or Dropdown types.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <!-- Row 1: Solid Text type -->
+        <p style="font-size: var(--font-size-xs); color: var(--color-text-secondary); font-weight: 500; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Solid — Text type</p>
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start;">
+            <div class="text-input" style="max-width: 320px;">
+                <label class="text-input__label">Website</label>
+                <div class="text-input__field-wrapper text-input__field-wrapper--prefix">
+                    <span class="text-input__prefix">https://</span>
+                    <input type="text" class="text-input__field" placeholder="www.example.com">
+                </div>
             </div>
-            <span class="text-input__helper">يرجى إدخال بريد إلكتروني صالح.</span>
-        </div>
-        <div class="text-input" style="max-width: 320px;">
-            <label class="text-input__label text-input__label--required">رقم الهاتف</label>
-            <div class="text-input__field-wrapper text-input__field-wrapper--leading">
-                <span class="text-input__icon--leading">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.983 7.633a8.81 8.81 0 0 0 1.934 2.95 8.81 8.81 0 0 0 2.95 1.934c.14.065.21.097.298.118a.96.96 0 0 0 .758-.135c.076-.05.143-.116.276-.25.407-.406.61-.61.815-.734a1.667 1.667 0 0 1 1.629-.001c.205.125.407.33.812.736l.173.173c.627.627.94.94 1.1 1.29a1.667 1.667 0 0 1 0 1.31c-.16.349-.473.663-1.1 1.29l-.14.14c-.625.625-.938.938-1.362 1.175-.472.263-1.13.452-1.668.45-.484-.001-.82-.106-1.49-.315A16.12 16.12 0 0 1 3.636 9.36c-.209-.671-.314-1.006-.315-1.49-.002-.539.187-1.196.45-1.668.237-.424.55-.737 1.175-1.362l.14-.14c.627-.627.941-.94 1.29-1.1a1.667 1.667 0 0 1 1.31 0c.35.16.663.473 1.29 1.1l.173.173c.406.405.61.607.736.812a1.667 1.667 0 0 1 .001 1.63c-.125.204-.328.407-.734.814-.134.133-.2.2-.25.276a.96.96 0 0 0-.135.758c.02.088.053.158.117.298Z" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-                <input type="tel" class="text-input__field" placeholder="٩٦٦ ٥X XXX XXXX+">
+            <div class="text-input" style="max-width: 320px;">
+                <label class="text-input__label">Email</label>
+                <div class="text-input__field-wrapper text-input__field-wrapper--suffix">
+                    <input type="text" class="text-input__field" placeholder="username">
+                    <span class="text-input__suffix">@domain.com</span>
+                </div>
             </div>
-            <span class="text-input__helper">أدخل رقم الهاتف مع رمز الدولة.</span>
+            <div class="text-input" style="max-width: 320px;">
+                <label class="text-input__label">Price</label>
+                <div class="text-input__field-wrapper text-input__field-wrapper--prefix text-input__field-wrapper--suffix">
+                    <span class="text-input__prefix">SAR</span>
+                    <input type="number" class="text-input__field" placeholder="0.00">
+                    <span class="text-input__suffix">.00</span>
+                </div>
+            </div>
         </div>
-        <div class="text-input" style="max-width: 320px;">
-            <label class="text-input__label">البحث</label>
-            <div class="text-input__field-wrapper text-input__field-wrapper--leading">
-                <span class="text-input__icon--leading">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.5 17.5L13.875 13.875M15.833 9.167a6.667 6.667 0 1 1-13.333 0 6.667 6.667 0 0 1 13.333 0Z" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-                <input type="text" class="text-input__field" placeholder="ابحث هنا...">
+
+        <!-- Row 2: Subtle Text type -->
+        <p style="font-size: var(--font-size-xs); color: var(--color-text-secondary); font-weight: 500; margin-top: 24px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Subtle — Text type</p>
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start;">
+            <div class="text-input" style="max-width: 320px;">
+                <label class="text-input__label">Website</label>
+                <div class="text-input__field-wrapper text-input__field-wrapper--prefix">
+                    <span class="text-input__prefix text-input__prefix--subtle">https://</span>
+                    <input type="text" class="text-input__field" placeholder="www.example.com">
+                </div>
+            </div>
+            <div class="text-input" style="max-width: 320px;">
+                <label class="text-input__label">Email</label>
+                <div class="text-input__field-wrapper text-input__field-wrapper--suffix">
+                    <input type="text" class="text-input__field" placeholder="username">
+                    <span class="text-input__suffix text-input__suffix--subtle">@domain.com</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 3: Dropdown type -->
+        <p style="font-size: var(--font-size-xs); color: var(--color-text-secondary); font-weight: 500; margin-top: 24px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Solid — Dropdown type</p>
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start;">
+            <div class="text-input" style="max-width: 360px;">
+                <label class="text-input__label">Phone</label>
+                <div class="text-input__field-wrapper text-input__field-wrapper--prefix">
+                    <button type="button" class="text-input__prefix text-input__prefix--dropdown" tabindex="0">
+                        <span class="text-input__addon-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 1.667a8.333 8.333 0 1 0 0 16.666 8.333 8.333 0 0 0 0-16.666Zm0 0c1.841 0 3.333 3.731 3.333 8.333s-1.492 8.333-3.333 8.333S6.667 14.602 6.667 10 8.159 1.667 10 1.667ZM1.667 10h16.666" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                        +966
+                        <span class="text-input__addon-chevron">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </button>
+                    <input type="tel" class="text-input__field" placeholder="5X XXX XXXX">
+                </div>
+            </div>
+            <div class="text-input" style="max-width: 360px;">
+                <label class="text-input__label">Currency</label>
+                <div class="text-input__field-wrapper text-input__field-wrapper--suffix">
+                    <input type="number" class="text-input__field" placeholder="0.00">
+                    <button type="button" class="text-input__suffix text-input__suffix--dropdown" tabindex="0">
+                        SAR
+                        <span class="text-input__addon-chevron">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 4: Dropdown selected state -->
+        <p style="font-size: var(--font-size-xs); color: var(--color-text-secondary); font-weight: 500; margin-top: 24px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Dropdown — Selected state</p>
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start;">
+            <div class="text-input" style="max-width: 360px;">
+                <label class="text-input__label">Country code</label>
+                <div class="text-input__field-wrapper text-input__field-wrapper--prefix">
+                    <button type="button" class="text-input__prefix text-input__prefix--dropdown text-input__prefix--selected" tabindex="0">
+                        <span class="text-input__addon-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 1.667a8.333 8.333 0 1 0 0 16.666 8.333 8.333 0 0 0 0-16.666Zm0 0c1.841 0 3.333 3.731 3.333 8.333s-1.492 8.333-3.333 8.333S6.667 14.602 6.667 10 8.159 1.667 10 1.667ZM1.667 10h16.666" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                        +966
+                        <span class="text-input__addon-chevron">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </button>
+                    <input type="tel" class="text-input__field" value="512 345 678">
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 5: Disabled & Medium size -->
+        <p style="font-size: var(--font-size-xs); color: var(--color-text-secondary); font-weight: 500; margin-top: 24px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Disabled &amp; Medium size</p>
+        <div class="showcase-row" style="gap: 32px; align-items: flex-start;">
+            <div class="text-input text-input--disabled" style="max-width: 320px;">
+                <label class="text-input__label">Disabled</label>
+                <div class="text-input__field-wrapper text-input__field-wrapper--prefix">
+                    <span class="text-input__prefix text-input__prefix--disabled">https://</span>
+                    <input type="text" class="text-input__field" placeholder="www.example.com" disabled>
+                </div>
+            </div>
+            <div class="text-input" style="max-width: 320px;">
+                <label class="text-input__label">Medium prefix</label>
+                <div class="text-input__field-wrapper text-input__field-wrapper--prefix">
+                    <span class="text-input__prefix text-input__prefix--md">https://</span>
+                    <input type="text" class="text-input__field text-input__field--md" placeholder="www.example.com">
+                </div>
+            </div>
+            <div class="text-input" style="max-width: 360px;">
+                <label class="text-input__label">Medium dropdown</label>
+                <div class="text-input__field-wrapper text-input__field-wrapper--prefix">
+                    <button type="button" class="text-input__prefix text-input__prefix--dropdown text-input__prefix--md" tabindex="0">
+                        <span class="text-input__addon-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 1.667a8.333 8.333 0 1 0 0 16.666 8.333 8.333 0 0 0 0-16.666Zm0 0c1.841 0 3.333 3.731 3.333 8.333s-1.492 8.333-3.333 8.333S6.667 14.602 6.667 10 8.159 1.667 10 1.667ZM1.667 10h16.666" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                        +966
+                        <span class="text-input__addon-chevron">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </button>
+                    <input type="tel" class="text-input__field text-input__field--md" placeholder="5X XXX XXXX">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: Sizes
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Sizes</h2>
+        <p class="showcase-description">Two size options — medium (32px) for compact layouts and large (40px, default) for standard forms.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="showcase-row" style="gap: 32px; align-items: flex-end;">
+            <div class="text-input" style="max-width: 280px;">
+                <label class="text-input__label">Medium (32px)</label>
+                <input type="text" class="text-input__field text-input__field--md" placeholder="Medium input">
+            </div>
+            <div class="text-input" style="max-width: 280px;">
+                <label class="text-input__label">Large (40px) — Default</label>
+                <input type="text" class="text-input__field" placeholder="Large input">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHOWCASE: RTL Support
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Layout</h2>
+        <p class="showcase-description">Right-to-left support for Arabic and other RTL languages.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div dir="rtl" class="showcase-row" style="gap: 32px; align-items: flex-start; width: 100%;">
+            <div class="text-input" style="max-width: 320px;">
+                <label class="text-input__label text-input__label--required">البريد الإلكتروني</label>
+                <div class="text-input__field-wrapper text-input__field-wrapper--leading">
+                    <span class="text-input__icon--leading">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1.667 5.833l6.804 4.763c.462.323.693.485.946.548.223.056.457.056.68 0 .253-.063.484-.225.946-.548l6.804-4.763M5.667 16.667h8.666c1.4 0 2.1 0 2.635-.273a2.5 2.5 0 0 0 1.093-1.092c.272-.535.272-1.235.272-2.635V7.333c0-1.4 0-2.1-.272-2.635a2.5 2.5 0 0 0-1.093-1.092c-.535-.273-1.235-.273-2.635-.273H5.667c-1.4 0-2.1 0-2.635.273a2.5 2.5 0 0 0-1.093 1.092c-.272.535-.272 1.235-.272 2.635v5.334c0 1.4 0 2.1.272 2.635a2.5 2.5 0 0 0 1.093 1.092c.535.273 1.235.273 2.635.273Z" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <input type="email" class="text-input__field" placeholder="أدخل بريدك الإلكتروني">
+                </div>
+                <span class="text-input__helper">يرجى إدخال بريد إلكتروني صالح.</span>
+            </div>
+            <div class="text-input" style="max-width: 320px;">
+                <label class="text-input__label text-input__label--required">رقم الهاتف</label>
+                <div class="text-input__field-wrapper text-input__field-wrapper--leading">
+                    <span class="text-input__icon--leading">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.983 7.633a8.81 8.81 0 0 0 1.934 2.95 8.81 8.81 0 0 0 2.95 1.934c.14.065.21.097.298.118a.96.96 0 0 0 .758-.135c.076-.05.143-.116.276-.25.407-.406.61-.61.815-.734a1.667 1.667 0 0 1 1.629-.001c.205.125.407.33.812.736l.173.173c.627.627.94.94 1.1 1.29a1.667 1.667 0 0 1 0 1.31c-.16.349-.473.663-1.1 1.29l-.14.14c-.625.625-.938.938-1.362 1.175-.472.263-1.13.452-1.668.45-.484-.001-.82-.106-1.49-.315A16.12 16.12 0 0 1 3.636 9.36c-.209-.671-.314-1.006-.315-1.49-.002-.539.187-1.196.45-1.668.237-.424.55-.737 1.175-1.362l.14-.14c.627-.627.941-.94 1.29-1.1a1.667 1.667 0 0 1 1.31 0c.35.16.663.473 1.29 1.1l.173.173c.406.405.61.607.736.812a1.667 1.667 0 0 1 .001 1.63c-.125.204-.328.407-.734.814-.134.133-.2.2-.25.276a.96.96 0 0 0-.135.758c.02.088.053.158.117.298Z" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <input type="tel" class="text-input__field" placeholder="٩٦٦ ٥X XXX XXXX+">
+                </div>
+                <span class="text-input__helper">أدخل رقم الهاتف مع رمز الدولة.</span>
             </div>
         </div>
     </div>

@@ -1,0 +1,611 @@
+<!-- ============================================
+   SECOND NAV HEADER COMPONENT PAGE
+   DGA Design System
+   ============================================ -->
+
+<!-- Content Header -->
+<div class="content-header">
+    <h1 class="content-title">Second Nav Header</h1>
+    <p class="content-description">
+        The Second Nav Header is a secondary navigation bar that appears above the primary navigation,
+        offering additional controls or context-based information such as weather, date, time, and location,
+        along with action buttons for quick access to features like zoom and microphone.
+    </p>
+</div>
+
+<!-- ============================================
+   LIVE DEMO
+   ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+<div class="live-demo">
+    <div class="live-demo__body">
+        <!-- Preview Canvas -->
+        <div class="live-demo__canvas" id="second-nav-demo-preview">
+            <!-- Rendered dynamically by SecondNavHeaderDemoManager -->
+        </div>
+
+        <!-- Sidebar Controls -->
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Second Nav Header</h3>
+                <p class="live-demo__sidebar-desc">Configure the secondary navigation header appearance.</p>
+            </div>
+
+            <!-- RTL Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <!-- Style Select -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="second-nav-demo-style">Style</label>
+                <select class="live-demo__sidebar-select" id="second-nav-demo-style">
+                    <option value="primary" selected>Primary</option>
+                    <option value="gray">Gray</option>
+                </select>
+            </div>
+
+            <!-- Divider Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Divider</label>
+                <button class="live-demo__switch active" data-toggle="divider" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <!-- Content Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Content</label>
+                <button class="live-demo__switch active" data-toggle="content" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <!-- Item 2 (Date) Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Item 2 (Date)</label>
+                <button class="live-demo__switch active" data-toggle="item2" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <!-- Item 3 (Time) Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Item 3 (Time)</label>
+                <button class="live-demo__switch active" data-toggle="item3" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <!-- Item 4 (Location) Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Item 4 (Location)</label>
+                <button class="live-demo__switch active" data-toggle="item4" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <!-- Actions Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Actions</label>
+                <button class="live-demo__switch active" data-toggle="actions" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <!-- Action 2 (Zoom In) Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Action 2 (Zoom In)</label>
+                <button class="live-demo__switch active" data-toggle="action2" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <!-- Action 3 (Zoom Out) Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Action 3 (Zoom Out)</label>
+                <button class="live-demo__switch active" data-toggle="action3" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <!-- Action 4 (Mic) Toggle -->
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Action 4 (Mic)</label>
+                <button class="live-demo__switch active" data-toggle="action4" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   PROPS TABLE
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props</h2>
+    </div>
+    <div class="showcase-content">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Prop</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>style</code></td>
+                    <td><code>'Gray' | 'Primary'</code></td>
+                    <td><code>'Gray'</code></td>
+                    <td>Visual style — Gray (neutral background) or Primary (green background)</td>
+                </tr>
+                <tr>
+                    <td><code>rtl</code></td>
+                    <td><code>boolean</code></td>
+                    <td><code>false</code></td>
+                    <td>Right-to-left layout (Arabic text, reversed item/action order)</td>
+                </tr>
+                <tr>
+                    <td><code>showContent</code></td>
+                    <td><code>boolean</code></td>
+                    <td><code>true</code></td>
+                    <td>Show the first content item (e.g. weather)</td>
+                </tr>
+                <tr>
+                    <td><code>showItem2</code></td>
+                    <td><code>boolean</code></td>
+                    <td><code>true</code></td>
+                    <td>Show the 2nd content item (date)</td>
+                </tr>
+                <tr>
+                    <td><code>showItem3</code></td>
+                    <td><code>boolean</code></td>
+                    <td><code>true</code></td>
+                    <td>Show the 3rd content item (time)</td>
+                </tr>
+                <tr>
+                    <td><code>showItem4</code></td>
+                    <td><code>boolean</code></td>
+                    <td><code>true</code></td>
+                    <td>Show the 4th content item (location)</td>
+                </tr>
+                <tr>
+                    <td><code>showActions</code></td>
+                    <td><code>boolean</code></td>
+                    <td><code>true</code></td>
+                    <td>Show the action buttons group</td>
+                </tr>
+                <tr>
+                    <td><code>showAction2</code></td>
+                    <td><code>boolean</code></td>
+                    <td><code>true</code></td>
+                    <td>Show the zoom-in action button</td>
+                </tr>
+                <tr>
+                    <td><code>showAction3</code></td>
+                    <td><code>boolean</code></td>
+                    <td><code>true</code></td>
+                    <td>Show the zoom-out action button</td>
+                </tr>
+                <tr>
+                    <td><code>showAction4</code></td>
+                    <td><code>boolean</code></td>
+                    <td><code>true</code></td>
+                    <td>Show the mic/voice action button</td>
+                </tr>
+                <tr>
+                    <td><code>showDivider</code></td>
+                    <td><code>boolean</code></td>
+                    <td><code>true</code></td>
+                    <td>Show the bottom border divider</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ============================================
+   SHOWCASE: GRAY STYLE
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Gray Style</h2>
+    </div>
+    <div class="showcase-content">
+        <div class="second-nav-header second-nav-header--gray">
+            <div class="second-nav-header__content">
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-cloud"></span>
+                    <span class="second-nav-header__item-text">Cloudy</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-calendar-04"></span>
+                    <span class="second-nav-header__item-text">3-Sep-2024</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-time-04"></span>
+                    <span class="second-nav-header__item-text">2:30 PM</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-location-01"></span>
+                    <span class="second-nav-header__item-text">Al-Riyadh</span>
+                </div>
+            </div>
+            <div class="second-nav-header__actions">
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-mic-01"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-zoom-out-area"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-zoom-in-area"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-view"></span>
+                </button>
+            </div>
+            <div class="second-nav-header__divider"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   SHOWCASE: PRIMARY STYLE
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Primary Style</h2>
+    </div>
+    <div class="showcase-content">
+        <div class="second-nav-header second-nav-header--primary">
+            <div class="second-nav-header__content">
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-cloud"></span>
+                    <span class="second-nav-header__item-text">Cloudy</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-calendar-04"></span>
+                    <span class="second-nav-header__item-text">3-Sep-2024</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-time-04"></span>
+                    <span class="second-nav-header__item-text">2:30 PM</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-location-01"></span>
+                    <span class="second-nav-header__item-text">Al-Riyadh</span>
+                </div>
+            </div>
+            <div class="second-nav-header__actions">
+                <button class="btn btn-subtle btn-medium btn-icon-only btn-on-color" type="button">
+                    <span class="icon dga-icon-mic-01"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only btn-on-color" type="button">
+                    <span class="icon dga-icon-zoom-out-area"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only btn-on-color" type="button">
+                    <span class="icon dga-icon-zoom-in-area"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only btn-on-color" type="button">
+                    <span class="icon dga-icon-view"></span>
+                </button>
+            </div>
+            <div class="second-nav-header__divider"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   SHOWCASE: RTL LAYOUT
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Layout</h2>
+    </div>
+    <div class="showcase-content" style="display: flex; flex-direction: column; gap: 16px;">
+        <!-- Gray RTL -->
+        <div class="second-nav-header second-nav-header--gray" dir="rtl">
+            <div class="second-nav-header__content">
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-cloud"></span>
+                    <span class="second-nav-header__item-text">غائم</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-calendar-04"></span>
+                    <span class="second-nav-header__item-text">3-سبتمبر-2024</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-time-04"></span>
+                    <span class="second-nav-header__item-text">2:30 مساءً</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-location-01"></span>
+                    <span class="second-nav-header__item-text">الرياض</span>
+                </div>
+            </div>
+            <div class="second-nav-header__actions">
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-mic-01"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-zoom-out-area"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-zoom-in-area"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-view"></span>
+                </button>
+            </div>
+            <div class="second-nav-header__divider"></div>
+        </div>
+
+        <!-- Primary RTL -->
+        <div class="second-nav-header second-nav-header--primary" dir="rtl">
+            <div class="second-nav-header__content">
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-cloud"></span>
+                    <span class="second-nav-header__item-text">غائم</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-calendar-04"></span>
+                    <span class="second-nav-header__item-text">3-سبتمبر-2024</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-time-04"></span>
+                    <span class="second-nav-header__item-text">2:30 مساءً</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-location-01"></span>
+                    <span class="second-nav-header__item-text">الرياض</span>
+                </div>
+            </div>
+            <div class="second-nav-header__actions">
+                <button class="btn btn-subtle btn-medium btn-icon-only btn-on-color" type="button">
+                    <span class="icon dga-icon-mic-01"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only btn-on-color" type="button">
+                    <span class="icon dga-icon-zoom-out-area"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only btn-on-color" type="button">
+                    <span class="icon dga-icon-zoom-in-area"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only btn-on-color" type="button">
+                    <span class="icon dga-icon-view"></span>
+                </button>
+            </div>
+            <div class="second-nav-header__divider"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   SHOWCASE: WITHOUT ACTIONS
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Without Actions</h2>
+        <p class="showcase-desc">showActions: false</p>
+    </div>
+    <div class="showcase-content">
+        <div class="second-nav-header second-nav-header--gray">
+            <div class="second-nav-header__content">
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-cloud"></span>
+                    <span class="second-nav-header__item-text">Cloudy</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-calendar-04"></span>
+                    <span class="second-nav-header__item-text">3-Sep-2024</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-time-04"></span>
+                    <span class="second-nav-header__item-text">2:30 PM</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-location-01"></span>
+                    <span class="second-nav-header__item-text">Al-Riyadh</span>
+                </div>
+            </div>
+            <div class="second-nav-header__divider"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   SHOWCASE: WITHOUT CONTENT
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Without Content</h2>
+        <p class="showcase-desc">showContent: false, showItem2: false, showItem3: false, showItem4: false</p>
+    </div>
+    <div class="showcase-content">
+        <div class="second-nav-header second-nav-header--gray">
+            <div class="second-nav-header__actions">
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-mic-01"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-zoom-out-area"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-zoom-in-area"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-view"></span>
+                </button>
+            </div>
+            <div class="second-nav-header__divider"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   SHOWCASE: PARTIAL CONTENT ITEMS
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Partial Content Items</h2>
+        <p class="showcase-desc">showItem3: false, showItem4: false — Only weather and date visible</p>
+    </div>
+    <div class="showcase-content">
+        <div class="second-nav-header second-nav-header--gray">
+            <div class="second-nav-header__content">
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-cloud"></span>
+                    <span class="second-nav-header__item-text">Cloudy</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-calendar-04"></span>
+                    <span class="second-nav-header__item-text">3-Sep-2024</span>
+                </div>
+            </div>
+            <div class="second-nav-header__actions">
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-mic-01"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-zoom-out-area"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-zoom-in-area"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-view"></span>
+                </button>
+            </div>
+            <div class="second-nav-header__divider"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   SHOWCASE: PARTIAL ACTION BUTTONS
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Partial Action Buttons</h2>
+        <p class="showcase-desc">showAction3: false, showAction4: false — Only zoom-in and view visible</p>
+    </div>
+    <div class="showcase-content">
+        <div class="second-nav-header second-nav-header--primary">
+            <div class="second-nav-header__content">
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-cloud"></span>
+                    <span class="second-nav-header__item-text">Cloudy</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-calendar-04"></span>
+                    <span class="second-nav-header__item-text">3-Sep-2024</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-time-04"></span>
+                    <span class="second-nav-header__item-text">2:30 PM</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-location-01"></span>
+                    <span class="second-nav-header__item-text">Al-Riyadh</span>
+                </div>
+            </div>
+            <div class="second-nav-header__actions">
+                <button class="btn btn-subtle btn-medium btn-icon-only btn-on-color" type="button">
+                    <span class="icon dga-icon-zoom-in-area"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only btn-on-color" type="button">
+                    <span class="icon dga-icon-view"></span>
+                </button>
+            </div>
+            <div class="second-nav-header__divider"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+   SHOWCASE: WITHOUT DIVIDER
+   ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Without Divider</h2>
+        <p class="showcase-desc">showDivider: false</p>
+    </div>
+    <div class="showcase-content" style="display: flex; flex-direction: column; gap: 16px;">
+        <div class="second-nav-header second-nav-header--gray">
+            <div class="second-nav-header__content">
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-cloud"></span>
+                    <span class="second-nav-header__item-text">Cloudy</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-calendar-04"></span>
+                    <span class="second-nav-header__item-text">3-Sep-2024</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-time-04"></span>
+                    <span class="second-nav-header__item-text">2:30 PM</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-location-01"></span>
+                    <span class="second-nav-header__item-text">Al-Riyadh</span>
+                </div>
+            </div>
+            <div class="second-nav-header__actions">
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-mic-01"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-zoom-out-area"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-zoom-in-area"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only" type="button">
+                    <span class="icon dga-icon-view"></span>
+                </button>
+            </div>
+        </div>
+        <div class="second-nav-header second-nav-header--primary">
+            <div class="second-nav-header__content">
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-cloud"></span>
+                    <span class="second-nav-header__item-text">Cloudy</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-calendar-04"></span>
+                    <span class="second-nav-header__item-text">3-Sep-2024</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-time-04"></span>
+                    <span class="second-nav-header__item-text">2:30 PM</span>
+                </div>
+                <div class="second-nav-header__item">
+                    <span class="second-nav-header__item-icon icon dga-icon-location-01"></span>
+                    <span class="second-nav-header__item-text">Al-Riyadh</span>
+                </div>
+            </div>
+            <div class="second-nav-header__actions">
+                <button class="btn btn-subtle btn-medium btn-icon-only btn-on-color" type="button">
+                    <span class="icon dga-icon-mic-01"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only btn-on-color" type="button">
+                    <span class="icon dga-icon-zoom-out-area"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only btn-on-color" type="button">
+                    <span class="icon dga-icon-zoom-in-area"></span>
+                </button>
+                <button class="btn btn-subtle btn-medium btn-icon-only btn-on-color" type="button">
+                    <span class="icon dga-icon-view"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

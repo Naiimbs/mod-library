@@ -1,0 +1,255 @@
+/* ============================================
+   COMPONENT: TEXTAREA
+   DGA Design System - Textarea Component
+   A text area enables users to input and edit
+   multiple lines of text.
+   ============================================ */
+
+/* ============================================
+   Textarea Container
+   ============================================ */
+
+.textarea {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 96px;
+    min-width: 200px;
+    width: 100%;
+}
+
+/* ============================================
+   Label
+   ============================================ */
+
+.textarea__label {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-sm);
+    color: #161616;
+}
+
+.textarea__label--required::before {
+    content: '* ';
+    color: var(--color-error-700);
+}
+
+[dir="rtl"] .textarea__label--required::before {
+    content: ' *';
+}
+
+/* ============================================
+   Field (native textarea element)
+   ============================================ */
+
+.textarea__field {
+    width: 100%;
+    min-height: 96px;
+    padding: 12px 16px;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-md);
+    color: #161616;
+    background-color: var(--color-white);
+    border: 1px solid #9da4ae;
+    border-radius: var(--radius-sm);
+    outline: none;
+    resize: vertical;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+    box-sizing: border-box;
+}
+
+.textarea__field::placeholder {
+    color: #9da4ae;
+    font-family: var(--font-family-primary);
+}
+
+/* No resize */
+.textarea__field--no-resize {
+    resize: none;
+}
+
+/* ============================================
+   States
+   ============================================ */
+
+/* Hover */
+.textarea__field:hover:not(:disabled):not(:read-only):not(:focus):not(.textarea__field--error) {
+    border-color: var(--color-gray-700);
+}
+
+/* Focus — shadow-md + bottom underline */
+.textarea__field:focus:not(:read-only) {
+    border-color: #9da4ae;
+    box-shadow: var(--shadow-md), inset 0 -2px 0 0 #0d121c;
+}
+
+/* Pressed (active) */
+.textarea__field:active:not(:disabled):not(:read-only) {
+    border-color: #9da4ae;
+    box-shadow: inset 0 -2px 0 0 #0d121c;
+}
+
+/* Read-only */
+.textarea__field:read-only:not(:disabled) {
+    border-color: #d2d6db;
+    cursor: default;
+}
+
+.textarea__field:read-only:not(:disabled):focus {
+    border-color: #d2d6db;
+    box-shadow: none;
+}
+
+/* Disabled */
+.textarea__field:disabled {
+    border-color: #d2d6db;
+    color: #7e838b;
+    cursor: not-allowed;
+    resize: none;
+}
+
+.textarea__field:disabled::placeholder {
+    color: #d2d6db;
+}
+
+/* ============================================
+   Error State
+   ============================================ */
+
+.textarea__field--error {
+    border-color: var(--color-error-700);
+}
+
+.textarea__field--error:hover:not(:disabled):not(:focus) {
+    border-color: var(--color-error-800);
+}
+
+.textarea__field--error:focus:not(:read-only) {
+    border-color: var(--color-error-700);
+    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--color-error-700);
+}
+
+/* ============================================
+   Filled Darker Style Variant
+   Background: #F3F4F6
+   ============================================ */
+
+.textarea__field--filled-darker {
+    background-color: #f3f4f6;
+    border-color: #f3f4f6;
+}
+
+.textarea__field--filled-darker:hover:not(:disabled):not(:read-only):not(:focus):not(.textarea__field--error) {
+    background-color: #f3f4f6;
+    border-color: var(--color-gray-700);
+}
+
+.textarea__field--filled-darker:focus:not(:read-only) {
+    background-color: #f3f4f6;
+    border-color: #9da4ae;
+    box-shadow: var(--shadow-md), inset 0 -2px 0 0 #0d121c;
+}
+
+.textarea__field--filled-darker:disabled {
+    background-color: #f3f4f6;
+    border-color: #f3f4f6;
+    color: #7e838b;
+}
+
+.textarea__field--filled-darker.textarea__field--error {
+    background-color: #f3f4f6;
+    border-color: var(--color-error-700);
+}
+
+.textarea__field--filled-darker.textarea__field--error:hover:not(:disabled):not(:focus) {
+    border-color: var(--color-error-800);
+}
+
+.textarea__field--filled-darker.textarea__field--error:focus:not(:read-only) {
+    border-color: var(--color-error-700);
+    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--color-error-700);
+}
+
+/* ============================================
+   Filled Lighter Style Variant
+   Background: #FCFCFD
+   ============================================ */
+
+.textarea__field--filled-lighter {
+    background-color: #fcfcfd;
+    border-color: #fcfcfd;
+}
+
+.textarea__field--filled-lighter:hover:not(:disabled):not(:read-only):not(:focus):not(.textarea__field--error) {
+    background-color: #fcfcfd;
+    border-color: var(--color-gray-700);
+}
+
+.textarea__field--filled-lighter:focus:not(:read-only) {
+    background-color: #fcfcfd;
+    border-color: #9da4ae;
+    box-shadow: var(--shadow-md), inset 0 -2px 0 0 #0d121c;
+}
+
+.textarea__field--filled-lighter:disabled {
+    background-color: #fcfcfd;
+    border-color: #fcfcfd;
+    color: #7e838b;
+}
+
+.textarea__field--filled-lighter.textarea__field--error {
+    background-color: #fcfcfd;
+    border-color: var(--color-error-700);
+}
+
+.textarea__field--filled-lighter.textarea__field--error:hover:not(:disabled):not(:focus) {
+    border-color: var(--color-error-800);
+}
+
+.textarea__field--filled-lighter.textarea__field--error:focus:not(:read-only) {
+    border-color: var(--color-error-700);
+    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--color-error-700);
+}
+
+/* ============================================
+   Helper Text
+   ============================================ */
+
+.textarea__helper {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
+    color: #384250;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+}
+
+.textarea__helper--error {
+    color: var(--color-error-700);
+}
+
+.textarea__helper-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   Disabled Label
+   ============================================ */
+
+.textarea--disabled .textarea__label {
+    color: #9da4ae;
+}
+
+/* ============================================
+   RTL Support
+   ============================================ */
+
+[dir="rtl"] .textarea__field {
+    text-align: right;
+}
