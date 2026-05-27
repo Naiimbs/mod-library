@@ -204,33 +204,38 @@
        Figma Node: 5698-52957
        ============================================ */
 
+    /* Tokens below mirror the Figma Tag frame 5698:52957 — `Tag/tag-text-*` is
+       the darker swatch used for the label, `Tag/tag-background-*` is the solid
+       inverted fill, `Tag/tag-background-*-light` is the subtle tint, and the
+       dot in subtle/ghost matches the text color. */
+
     /* Neutral */
     --status-tag-neutral-bg: #4D5761;
     --status-tag-neutral-bg-light: #F9FAFB;
-    --status-tag-neutral-text: #4D5761;
+    --status-tag-neutral-text: #1F2A37;
     --status-tag-neutral-dot: #4D5761;
 
     /* Success */
     --status-tag-success-bg: #067647;
     --status-tag-success-bg-light: #ECFDF3;
-    --status-tag-success-text: #067647;
-    --status-tag-success-dot: #067647;
+    --status-tag-success-text: #085D3A;
+    --status-tag-success-dot: #085D3A;
 
     /* Error */
     --status-tag-error-bg: #D92D20;
     --status-tag-error-bg-light: #FEF3F2;
-    --status-tag-error-text: #D92D20;
-    --status-tag-error-dot: #D92D20;
+    --status-tag-error-text: #912018;
+    --status-tag-error-dot: #912018;
 
     /* Warning */
     --status-tag-warning-bg: #B54708;
     --status-tag-warning-bg-light: #FFFAEB;
-    --status-tag-warning-text: #B54708;
-    --status-tag-warning-dot: #B54708;
+    --status-tag-warning-text: #93370D;
+    --status-tag-warning-dot: #93370D;
 
     /* Info */
     --status-tag-info-bg: #1570EF;
     --status-tag-info-bg-light: #EFF8FF;
-    --status-tag-info-text: #1570EF;
-    --status-tag-info-dot: #1570EF;
+    --status-tag-info-text: #1849A9;
+    --status-tag-info-dot: #1849A9;
 }

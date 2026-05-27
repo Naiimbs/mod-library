@@ -1,115 +1,256 @@
 <div class="content-header">
     <h1 class="content-title">Status Tag</h1>
-    <p class="content-description">Status tags display the current state or condition of an item using a colored dot indicator and label. Figma Node: 5698-52957</p>
+    <p class="content-description">Pill-shaped indicators that surface the state of an item with a colored dot and a
+        short label. Five semantic variants (Neutral, Info, Success, Warning, Error), three sizes (Medium, Small,
+        X-Small), and three styles (Subtle, Inverted, Ghost). Modeled on the Figma source frame 5698:52957.</p>
 </div>
 
-<!-- Sizes -->
-<div class="component-preview">
-    <div class="component-preview-title">Status Tag Sizes</div>
-    <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-        <span class="status-tag status-tag--md status-tag--subtle status-tag--neutral">
-            <span class="status-tag__dot"></span>
-            <span class="status-tag__label">Medium</span>
-        </span>
-        <span class="status-tag status-tag--sm status-tag--subtle status-tag--neutral">
-            <span class="status-tag__dot"></span>
-            <span class="status-tag__label">Small</span>
-        </span>
-        <span class="status-tag status-tag--xs status-tag--subtle status-tag--neutral">
-            <span class="status-tag__dot"></span>
-            <span class="status-tag__label">X-Small</span>
-        </span>
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <!-- Left: Preview canvas -->
+        <div class="live-demo__canvas" id="status-tag-demo-preview">
+            <!-- Rendered dynamically by JS -->
+        </div>
+
+        <!-- Right: Controls sidebar -->
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Status Tag</h3>
+                <p class="live-demo__sidebar-desc">A status tag pairs a colored dot with a short label to communicate
+                    the current state of an item — for example, a record's review status or a workflow stage.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="status-tag-demo-size">Size</label>
+                <select class="live-demo__sidebar-select" id="status-tag-demo-size">
+                    <option value="md" selected>Medium</option>
+                    <option value="sm">Small</option>
+                    <option value="xs">X-Small</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="status-tag-demo-style">Style</label>
+                <select class="live-demo__sidebar-select" id="status-tag-demo-style">
+                    <option value="subtle" selected>Subtle</option>
+                    <option value="inverted">Inverted</option>
+                    <option value="ghost">Ghost</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="status-tag-demo-variant">Variant</label>
+                <select class="live-demo__sidebar-select" id="status-tag-demo-variant">
+                    <option value="neutral">Neutral</option>
+                    <option value="info">Info</option>
+                    <option value="success" selected>Success</option>
+                    <option value="warning">Warning</option>
+                    <option value="error">Error</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="live-demo__footer">
+        This live demo contains only a preview of functionality and styles available for this component.
     </div>
 </div>
 
-<!-- Subtle Style (Light Background) -->
-<div class="component-preview">
-    <div class="component-preview-title">Subtle Style (Light Background)</div>
-    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-        <span class="status-tag status-tag--md status-tag--subtle status-tag--neutral">
-            <span class="status-tag__dot"></span>
-            <span class="status-tag__label">Status</span>
-        </span>
-        <span class="status-tag status-tag--md status-tag--subtle status-tag--info">
-            <span class="status-tag__dot"></span>
-            <span class="status-tag__label">Status</span>
-        </span>
-        <span class="status-tag status-tag--md status-tag--subtle status-tag--success">
-            <span class="status-tag__dot"></span>
-            <span class="status-tag__label">Status</span>
-        </span>
-        <span class="status-tag status-tag--md status-tag--subtle status-tag--warning">
-            <span class="status-tag__dot"></span>
-            <span class="status-tag__label">Status</span>
-        </span>
-        <span class="status-tag status-tag--md status-tag--subtle status-tag--error">
-            <span class="status-tag__dot"></span>
-            <span class="status-tag__label">Status</span>
-        </span>
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">All available CSS classes for configuring status tag components.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.status-tag</code></td>
+                    <td>CSS class</td>
+                    <td>Required</td>
+                    <td>Base status-tag class. Must be applied to all status tags.</td>
+                </tr>
+                <tr>
+                    <td><code>.status-tag__dot</code></td>
+                    <td>CSS class</td>
+                    <td>Required</td>
+                    <td>Colored dot indicator. Place as the first child of the tag.</td>
+                </tr>
+                <tr>
+                    <td><code>.status-tag__label</code></td>
+                    <td>CSS class</td>
+                    <td>Required</td>
+                    <td>Status label text. Place as the second child of the tag.</td>
+                </tr>
+                <tr>
+                    <td><code>.status-tag--neutral</code></td>
+                    <td>CSS class</td>
+                    <td>Default variant</td>
+                    <td>Gray variant for unset or default states. Applied implicitly when no other variant is present.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>.status-tag--info</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Blue variant for informational states.</td>
+                </tr>
+                <tr>
+                    <td><code>.status-tag--success</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Green variant for positive or completed states.</td>
+                </tr>
+                <tr>
+                    <td><code>.status-tag--warning</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Amber variant for cautionary states.</td>
+                </tr>
+                <tr>
+                    <td><code>.status-tag--error</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Red variant for errors or destructive states.</td>
+                </tr>
+                <tr>
+                    <td><code>.status-tag--subtle</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Light tinted background with colored text and dot.</td>
+                </tr>
+                <tr>
+                    <td><code>.status-tag--inverted</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Solid colored background with white text and a translucent white dot.</td>
+                </tr>
+                <tr>
+                    <td><code>.status-tag--ghost</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Transparent background showing only the colored dot and label.</td>
+                </tr>
+                <tr>
+                    <td><code>.status-tag--md</code></td>
+                    <td>CSS class</td>
+                    <td>Default size</td>
+                    <td>Medium size (32px height, 16px / 24px text). Default when no size class is applied.</td>
+                </tr>
+                <tr>
+                    <td><code>.status-tag--sm</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Small size (24px height, 14px / 20px text).</td>
+                </tr>
+                <tr>
+                    <td><code>.status-tag--xs</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>X-Small size (20px height, 10px / 14px text). Dot shrinks from 8px to 6px.</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
-<!-- Inverted Style (Solid Background) -->
-<div class="component-preview">
-    <div class="component-preview-title">Inverted Style (Solid Background)</div>
-    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-        <span class="status-tag status-tag--md status-tag--inverted status-tag--neutral">
-            <span class="status-tag__dot"></span>
-            <span class="status-tag__label">Status</span>
-        </span>
-        <span class="status-tag status-tag--md status-tag--inverted status-tag--info">
-            <span class="status-tag__dot"></span>
-            <span class="status-tag__label">Status</span>
-        </span>
-        <span class="status-tag status-tag--md status-tag--inverted status-tag--success">
-            <span class="status-tag__dot"></span>
-            <span class="status-tag__label">Status</span>
-        </span>
-        <span class="status-tag status-tag--md status-tag--inverted status-tag--warning">
-            <span class="status-tag__dot"></span>
-            <span class="status-tag__label">Status</span>
-        </span>
-        <span class="status-tag status-tag--md status-tag--inverted status-tag--error">
-            <span class="status-tag__dot"></span>
-            <span class="status-tag__label">Status</span>
-        </span>
+<!-- Section 1: Variants -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Variants</h2>
+        <p class="showcase-description">The five semantic variants shown in the default Subtle style. Variant choice
+            communicates meaning &mdash; Neutral for unset, Info for information, Success for positive states, Warning
+            for caution, Error for failure.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row">
+            <span class="status-tag status-tag--md status-tag--subtle status-tag--neutral">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Neutral</span>
+            </span>
+            <span class="status-tag status-tag--md status-tag--subtle status-tag--info">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Info</span>
+            </span>
+            <span class="status-tag status-tag--md status-tag--subtle status-tag--success">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Success</span>
+            </span>
+            <span class="status-tag status-tag--md status-tag--subtle status-tag--warning">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Warning</span>
+            </span>
+            <span class="status-tag status-tag--md status-tag--subtle status-tag--error">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Error</span>
+            </span>
+        </div>
     </div>
 </div>
 
-<!-- Ghost Style (No Background) -->
-<div class="component-preview">
-    <div class="component-preview-title">Ghost Style (No Background)</div>
-    <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-        <span class="status-tag status-tag--md status-tag--ghost status-tag--neutral">
-            <span class="status-tag__dot"></span>
-            <span class="status-tag__label">Status</span>
-        </span>
-        <span class="status-tag status-tag--md status-tag--ghost status-tag--info">
-            <span class="status-tag__dot"></span>
-            <span class="status-tag__label">Status</span>
-        </span>
-        <span class="status-tag status-tag--md status-tag--ghost status-tag--success">
-            <span class="status-tag__dot"></span>
-            <span class="status-tag__label">Status</span>
-        </span>
-        <span class="status-tag status-tag--md status-tag--ghost status-tag--warning">
-            <span class="status-tag__dot"></span>
-            <span class="status-tag__label">Status</span>
-        </span>
-        <span class="status-tag status-tag--md status-tag--ghost status-tag--error">
-            <span class="status-tag__dot"></span>
-            <span class="status-tag__label">Status</span>
-        </span>
+<!-- Section 2: Sizes -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Sizes</h2>
+        <p class="showcase-description">Three sizes matching the Figma typography scale. Medium (32px, 16/24 medium),
+            Small (24px, 14/20 medium), and X-Small (20px, 10/14 medium &mdash; dot shrinks from 8px to 6px).</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row">
+            <span class="status-tag status-tag--md status-tag--subtle status-tag--success">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Medium (32px)</span>
+            </span>
+            <span class="status-tag status-tag--sm status-tag--subtle status-tag--success">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Small (24px)</span>
+            </span>
+            <span class="status-tag status-tag--xs status-tag--subtle status-tag--success">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">X-Small (20px)</span>
+            </span>
+        </div>
     </div>
 </div>
 
-<!-- All Sizes - Subtle -->
-<div class="component-preview">
-    <div class="component-preview-title">All Sizes - Subtle Style</div>
-    <div style="display: flex; flex-direction: column; gap: 16px;">
-        <!-- Medium Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <span style="width: 80px; font-size: 12px; color: #6C737F;">Medium:</span>
+<!-- Section 3: Subtle Style -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Subtle Style</h2>
+        <p class="showcase-description">Light tinted background paired with darker colored text. The default
+            presentation &mdash; quiet enough to use anywhere in dense UIs while still carrying semantic color.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <span class="showcase-label">Medium</span>
+        <div class="showcase-row">
             <span class="status-tag status-tag--md status-tag--subtle status-tag--neutral">
                 <span class="status-tag__dot"></span>
                 <span class="status-tag__label">Status</span>
@@ -131,9 +272,8 @@
                 <span class="status-tag__label">Status</span>
             </span>
         </div>
-        <!-- Small Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <span style="width: 80px; font-size: 12px; color: #6C737F;">Small:</span>
+        <span class="showcase-label">Small</span>
+        <div class="showcase-row">
             <span class="status-tag status-tag--sm status-tag--subtle status-tag--neutral">
                 <span class="status-tag__dot"></span>
                 <span class="status-tag__label">Status</span>
@@ -155,9 +295,8 @@
                 <span class="status-tag__label">Status</span>
             </span>
         </div>
-        <!-- X-Small Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <span style="width: 80px; font-size: 12px; color: #6C737F;">X-Small:</span>
+        <span class="showcase-label">X-Small</span>
+        <div class="showcase-row">
             <span class="status-tag status-tag--xs status-tag--subtle status-tag--neutral">
                 <span class="status-tag__dot"></span>
                 <span class="status-tag__label">Status</span>
@@ -182,13 +321,18 @@
     </div>
 </div>
 
-<!-- All Sizes - Inverted -->
-<div class="component-preview">
-    <div class="component-preview-title">All Sizes - Inverted Style</div>
-    <div style="display: flex; flex-direction: column; gap: 16px;">
-        <!-- Medium Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <span style="width: 80px; font-size: 12px; color: #6C737F;">Medium:</span>
+<!-- Section 4: Inverted Style -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Inverted Style</h2>
+        <p class="showcase-description">Solid colored background with white text and a translucent white dot
+            (<code>rgba(255,255,255,0.6)</code> per the Figma <code>tag-dot</code> token). Use for high-emphasis
+            states such as a primary success in a header card.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <span class="showcase-label">Medium</span>
+        <div class="showcase-row">
             <span class="status-tag status-tag--md status-tag--inverted status-tag--neutral">
                 <span class="status-tag__dot"></span>
                 <span class="status-tag__label">Status</span>
@@ -210,9 +354,8 @@
                 <span class="status-tag__label">Status</span>
             </span>
         </div>
-        <!-- Small Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <span style="width: 80px; font-size: 12px; color: #6C737F;">Small:</span>
+        <span class="showcase-label">Small</span>
+        <div class="showcase-row">
             <span class="status-tag status-tag--sm status-tag--inverted status-tag--neutral">
                 <span class="status-tag__dot"></span>
                 <span class="status-tag__label">Status</span>
@@ -234,9 +377,8 @@
                 <span class="status-tag__label">Status</span>
             </span>
         </div>
-        <!-- X-Small Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <span style="width: 80px; font-size: 12px; color: #6C737F;">X-Small:</span>
+        <span class="showcase-label">X-Small</span>
+        <div class="showcase-row">
             <span class="status-tag status-tag--xs status-tag--inverted status-tag--neutral">
                 <span class="status-tag__dot"></span>
                 <span class="status-tag__label">Status</span>
@@ -261,12 +403,124 @@
     </div>
 </div>
 
-<!-- Arabic RTL -->
-<div class="component-preview">
-    <div class="component-preview-title">Arabic Status Tags (RTL)</div>
-    <div style="display: flex; flex-direction: column; gap: 16px;">
-        <!-- Subtle Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;" dir="rtl">
+<!-- Section 5: Ghost Style -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Ghost Style</h2>
+        <p class="showcase-description">No background, no padding &mdash; just the colored dot and label. Use inline
+            with body text or in dense tables where any background tint would be visual noise.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <span class="showcase-label">Medium</span>
+        <div class="showcase-row">
+            <span class="status-tag status-tag--md status-tag--ghost status-tag--neutral">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Status</span>
+            </span>
+            <span class="status-tag status-tag--md status-tag--ghost status-tag--info">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Status</span>
+            </span>
+            <span class="status-tag status-tag--md status-tag--ghost status-tag--success">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Status</span>
+            </span>
+            <span class="status-tag status-tag--md status-tag--ghost status-tag--warning">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Status</span>
+            </span>
+            <span class="status-tag status-tag--md status-tag--ghost status-tag--error">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Status</span>
+            </span>
+        </div>
+        <span class="showcase-label">Small</span>
+        <div class="showcase-row">
+            <span class="status-tag status-tag--sm status-tag--ghost status-tag--neutral">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Status</span>
+            </span>
+            <span class="status-tag status-tag--sm status-tag--ghost status-tag--info">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Status</span>
+            </span>
+            <span class="status-tag status-tag--sm status-tag--ghost status-tag--success">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Status</span>
+            </span>
+            <span class="status-tag status-tag--sm status-tag--ghost status-tag--warning">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Status</span>
+            </span>
+            <span class="status-tag status-tag--sm status-tag--ghost status-tag--error">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Status</span>
+            </span>
+        </div>
+        <span class="showcase-label">X-Small</span>
+        <div class="showcase-row">
+            <span class="status-tag status-tag--xs status-tag--ghost status-tag--neutral">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Status</span>
+            </span>
+            <span class="status-tag status-tag--xs status-tag--ghost status-tag--info">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Status</span>
+            </span>
+            <span class="status-tag status-tag--xs status-tag--ghost status-tag--success">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Status</span>
+            </span>
+            <span class="status-tag status-tag--xs status-tag--ghost status-tag--warning">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Status</span>
+            </span>
+            <span class="status-tag status-tag--xs status-tag--ghost status-tag--error">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Status</span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- Section 6: Style Comparison -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Style Comparison</h2>
+        <p class="showcase-description">The same Success status rendered in all three styles side by side, so the
+            visual weight differences are easy to compare at a glance.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row">
+            <span class="status-tag status-tag--md status-tag--subtle status-tag--success">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Subtle</span>
+            </span>
+            <span class="status-tag status-tag--md status-tag--inverted status-tag--success">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Inverted</span>
+            </span>
+            <span class="status-tag status-tag--md status-tag--ghost status-tag--success">
+                <span class="status-tag__dot"></span>
+                <span class="status-tag__label">Ghost</span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- Section 7: RTL Support -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Support</h2>
+        <p class="showcase-description">Right-to-left layout support for Arabic and other RTL languages. The dot
+            placement automatically flips to the trailing edge.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview showcase-preview--subtle" dir="rtl">
+        <span class="showcase-label">Subtle</span>
+        <div class="showcase-row">
             <span class="status-tag status-tag--md status-tag--subtle status-tag--neutral">
                 <span class="status-tag__dot"></span>
                 <span class="status-tag__label">حالة</span>
@@ -288,8 +542,8 @@
                 <span class="status-tag__label">حالة</span>
             </span>
         </div>
-        <!-- Inverted Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;" dir="rtl">
+        <span class="showcase-label">Inverted</span>
+        <div class="showcase-row">
             <span class="status-tag status-tag--md status-tag--inverted status-tag--neutral">
                 <span class="status-tag__dot"></span>
                 <span class="status-tag__label">حالة</span>
@@ -311,8 +565,8 @@
                 <span class="status-tag__label">حالة</span>
             </span>
         </div>
-        <!-- Ghost Row -->
-        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;" dir="rtl">
+        <span class="showcase-label">Ghost</span>
+        <div class="showcase-row">
             <span class="status-tag status-tag--md status-tag--ghost status-tag--neutral">
                 <span class="status-tag__dot"></span>
                 <span class="status-tag__label">حالة</span>

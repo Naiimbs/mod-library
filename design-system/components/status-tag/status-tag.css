@@ -23,36 +23,46 @@
    STATUS TAG SIZES
    ============================================ */
 
+/* Figma typography tokens (Tag frame 5698:52957)
+   Medium  : text-md/medium  — 16/24/500
+   Small   : text-sm/medium  — 14/20/500
+   X-Small : text-2xs/medium — 10/14/500
+*/
+
 /* Medium - 32px height, 16px horizontal padding */
 .status-tag--md {
     height: 32px;
     padding: 0 var(--spacing-xl);
-    font-size: var(--font-size-sm);
-    line-height: var(--line-height-sm);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
 }
 
 /* Small - 24px height, 8px horizontal padding */
 .status-tag--sm {
     height: 24px;
     padding: 0 var(--spacing-md);
-    font-size: var(--font-size-xs);
-    line-height: var(--line-height-xs);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
 }
 
 /* Extra Small - 20px height, 8px horizontal padding */
 .status-tag--xs {
     height: 20px;
     padding: 0 var(--spacing-md);
-    font-size: 11px;
-    line-height: 16px;
+    font-size: 10px;
+    line-height: 14px;
+    font-weight: 500;
 }
 
 /* Default size is medium */
 .status-tag:not(.status-tag--sm):not(.status-tag--xs) {
     height: 32px;
     padding: 0 var(--spacing-xl);
-    font-size: var(--font-size-sm);
-    line-height: var(--line-height-sm);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
 }
 
 /* ============================================
@@ -89,7 +99,7 @@
 .status-tag--neutral.status-tag--subtle,
 .status-tag--subtle:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) {
     background-color: var(--status-tag-neutral-bg-light, #F9FAFB);
-    color: var(--status-tag-neutral-text, #4D5761);
+    color: var(--status-tag-neutral-text, #1f2a37);
 }
 
 .status-tag--neutral.status-tag--subtle .status-tag__dot,
@@ -151,7 +161,7 @@
 
 .status-tag--neutral.status-tag--inverted .status-tag__dot,
 .status-tag--inverted:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) .status-tag__dot {
-    background-color: var(--color-white, #FFFFFF);
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 /* Success - Inverted */
@@ -161,7 +171,7 @@
 }
 
 .status-tag--success.status-tag--inverted .status-tag__dot {
-    background-color: var(--color-white, #FFFFFF);
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 /* Error - Inverted */
@@ -171,7 +181,7 @@
 }
 
 .status-tag--error.status-tag--inverted .status-tag__dot {
-    background-color: var(--color-white, #FFFFFF);
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 /* Warning - Inverted */
@@ -181,7 +191,7 @@
 }
 
 .status-tag--warning.status-tag--inverted .status-tag__dot {
-    background-color: var(--color-white, #FFFFFF);
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 /* Info - Inverted */
@@ -191,7 +201,7 @@
 }
 
 .status-tag--info.status-tag--inverted .status-tag__dot {
-    background-color: var(--color-white, #FFFFFF);
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 /* ============================================
@@ -207,7 +217,7 @@
 /* Neutral - Ghost */
 .status-tag--neutral.status-tag--ghost,
 .status-tag--ghost:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) {
-    color: var(--status-tag-neutral-text, #4D5761);
+    color: var(--status-tag-neutral-text, #1f2a37);
 }
 
 .status-tag--neutral.status-tag--ghost .status-tag__dot,
