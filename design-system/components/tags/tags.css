@@ -10,32 +10,44 @@
     justify-content: center;
     gap: var(--spacing-xs);
     font-family: var(--font-family-primary);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-medium);
-    line-height: var(--line-height-xs);
+    /* Default (sm): Figma text-xs / medium — 12px / 18px / 500 */
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
     text-align: center;
     border: 1px solid;
     box-sizing: border-box;
 }
 
 /* ============================================
-   Tag Sizes
+   Tag Sizes — Figma tokens
+   x Small: text-2xs/semibold (10/14/600)
+   Small  : text-xs/medium    (12/18/500)  ← default
+   Medium : text-md/medium    (16/24/500)
    ============================================ */
 
 .tag--md {
     height: 32px;
     padding: 0 var(--spacing-lg);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
 }
 
 .tag--sm {
     height: 24px;
     padding: 0 var(--spacing-md);
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500;
 }
 
 .tag--xs {
     height: 20px;
     padding: 0 var(--spacing-sm);
-    font-size: 11px;
+    font-size: 10px;
+    line-height: 14px;
+    font-weight: 600;
 }
 
 /* Default size is small */
@@ -62,14 +74,14 @@
    ============================================ */
 
 .tag--neutral,
-.tag:not(.tag--success):not(.tag--error):not(.tag--warning):not(.tag--info):not(.tag--primary) {
+.tag:not(.tag--success):not(.tag--error):not(.tag--warning):not(.tag--info):not(.tag--on-color) {
     background-color: var(--color-gray-50);
     border-color: var(--color-border-secondary);
     color: var(--color-gray-800);
 }
 
 .tag--neutral.tag--outline,
-.tag:not(.tag--success):not(.tag--error):not(.tag--warning):not(.tag--info):not(.tag--primary).tag--outline {
+.tag:not(.tag--success):not(.tag--error):not(.tag--warning):not(.tag--info):not(.tag--on-color).tag--outline {
     background-color: transparent;
     border-color: var(--color-border-secondary);
     color: var(--color-gray-800);
@@ -140,19 +152,21 @@
 }
 
 /* ============================================
-   Tag Styles - Primary (Brand)
+   Tag Styles - On-Color
+   For use on dark or colored backgrounds.
+   Figma tokens: bg #ffffff33 (white 20%), border #ffffff99 (white 60%), text/icon #ffffff
    ============================================ */
 
-.tag--primary {
-    background-color: var(--color-primary-light);
-    border-color: var(--color-primary);
-    color: var(--color-primary);
+.tag--on-color {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #ffffff;
 }
 
-.tag--primary.tag--outline {
+.tag--on-color.tag--outline {
     background-color: transparent;
-    border-color: var(--color-primary);
-    color: var(--color-primary);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #ffffff;
 }
 
 /* ============================================

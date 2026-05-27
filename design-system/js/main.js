@@ -145,6 +145,11 @@ class DGADesignSystem {
             this.register('chips', new ChipDemoManager());
         }
 
+        // Tags
+        if (componentId === 'tags' && typeof TagDemoManager !== 'undefined') {
+            this.register('tags', new TagDemoManager());
+        }
+
         // Progress Indicator
         if (componentId === 'progress-indicator' && typeof ProgressIndicatorDemoManager !== 'undefined') {
             this.register('progressIndicator', new ProgressIndicatorDemoManager());

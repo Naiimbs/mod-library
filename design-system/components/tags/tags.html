@@ -1,1363 +1,574 @@
 <div class="content-header">
     <h1 class="content-title">Tags</h1>
-    <p class="content-description">Tags visually convey important information or actions related to components. They use
-        brief text, color, and icons to offer quick insights or alerts to users.</p>
+    <p class="content-description">Compact, non-interactive labels used to attach metadata, categorize content, or
+        surface status. Tags come in five semantic variants plus an On-Color variant for dark surfaces, three sizes,
+        and support filled and outlined styles, rounded (pill) shape, leading and trailing icon slots, and icon-only
+        forms.</p>
 </div>
 
-<!-- Sizes -->
-<div class="component-preview">
-    <div class="component-preview-title">Tag Sizes</div>
-    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-        <span class="tag tag--md">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="8" x2="12" y2="12" />
-                    <line x1="12" y1="16" x2="12.01" y2="16" />
-                </svg>
-            </span>
-            Medium
-        </span>
-        <span class="tag tag--sm">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="8" x2="12" y2="12" />
-                    <line x1="12" y1="16" x2="12.01" y2="16" />
-                </svg>
-            </span>
-            Small
-        </span>
-        <span class="tag tag--xs">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="8" x2="12" y2="12" />
-                    <line x1="12" y1="16" x2="12.01" y2="16" />
-                </svg>
-            </span>
-            X-Small
-        </span>
-    </div>
-</div>
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
 
-<!-- Neutral Style -->
-<div class="component-preview">
-    <div class="component-preview-title">Neutral Tags</div>
-    <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <span class="tag tag--neutral">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="8" x2="12" y2="12" />
-                    <line x1="12" y1="16" x2="12.01" y2="16" />
-                </svg>
-            </span>
-            Label
-        </span>
-        <span class="tag tag--neutral tag--outline">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="8" x2="12" y2="12" />
-                    <line x1="12" y1="16" x2="12.01" y2="16" />
-                </svg>
-            </span>
-            Label
-        </span>
-        <span class="tag tag--neutral tag--rounded">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="8" x2="12" y2="12" />
-                    <line x1="12" y1="16" x2="12.01" y2="16" />
-                </svg>
-            </span>
-            Label
-        </span>
-        <span class="tag tag--neutral tag--icon-only">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="8" x2="12" y2="12" />
-                    <line x1="12" y1="16" x2="12.01" y2="16" />
-                </svg>
-            </span>
-        </span>
-    </div>
-</div>
-
-<!-- Success Style -->
-<div class="component-preview">
-    <div class="component-preview-title">Success Tags</div>
-    <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <span class="tag tag--success">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-            </span>
-            Success
-        </span>
-        <span class="tag tag--success tag--outline">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-            </span>
-            Success
-        </span>
-        <span class="tag tag--success tag--rounded">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-            </span>
-            Success
-        </span>
-        <span class="tag tag--success tag--icon-only">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-            </span>
-        </span>
-    </div>
-</div>
-
-<!-- Error Style -->
-<div class="component-preview">
-    <div class="component-preview-title">Error Tags</div>
-    <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <span class="tag tag--error">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="15" y1="9" x2="9" y2="15" />
-                    <line x1="9" y1="9" x2="15" y2="15" />
-                </svg>
-            </span>
-            Error
-        </span>
-        <span class="tag tag--error tag--outline">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="15" y1="9" x2="9" y2="15" />
-                    <line x1="9" y1="9" x2="15" y2="15" />
-                </svg>
-            </span>
-            Error
-        </span>
-        <span class="tag tag--error tag--rounded">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="15" y1="9" x2="9" y2="15" />
-                    <line x1="9" y1="9" x2="15" y2="15" />
-                </svg>
-            </span>
-            Error
-        </span>
-        <span class="tag tag--error tag--icon-only">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="15" y1="9" x2="9" y2="15" />
-                    <line x1="9" y1="9" x2="15" y2="15" />
-                </svg>
-            </span>
-        </span>
-    </div>
-</div>
-
-<!-- Warning Style -->
-<div class="component-preview">
-    <div class="component-preview-title">Warning Tags</div>
-    <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <span class="tag tag--warning">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path
-                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                    <line x1="12" y1="9" x2="12" y2="13" />
-                    <line x1="12" y1="17" x2="12.01" y2="17" />
-                </svg>
-            </span>
-            Warning
-        </span>
-        <span class="tag tag--warning tag--outline">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path
-                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                    <line x1="12" y1="9" x2="12" y2="13" />
-                    <line x1="12" y1="17" x2="12.01" y2="17" />
-                </svg>
-            </span>
-            Warning
-        </span>
-        <span class="tag tag--warning tag--rounded">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path
-                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                    <line x1="12" y1="9" x2="12" y2="13" />
-                    <line x1="12" y1="17" x2="12.01" y2="17" />
-                </svg>
-            </span>
-            Warning
-        </span>
-        <span class="tag tag--warning tag--icon-only">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path
-                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                    <line x1="12" y1="9" x2="12" y2="13" />
-                    <line x1="12" y1="17" x2="12.01" y2="17" />
-                </svg>
-            </span>
-        </span>
-    </div>
-</div>
-
-<!-- Info Style -->
-<div class="component-preview">
-    <div class="component-preview-title">Info Tags</div>
-    <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <span class="tag tag--info">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="16" x2="12" y2="12" />
-                    <line x1="12" y1="8" x2="12.01" y2="8" />
-                </svg>
-            </span>
-            Info
-        </span>
-        <span class="tag tag--info tag--outline">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="16" x2="12" y2="12" />
-                    <line x1="12" y1="8" x2="12.01" y2="8" />
-                </svg>
-            </span>
-            Info
-        </span>
-        <span class="tag tag--info tag--rounded">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="16" x2="12" y2="12" />
-                    <line x1="12" y1="8" x2="12.01" y2="8" />
-                </svg>
-            </span>
-            Info
-        </span>
-        <span class="tag tag--info tag--icon-only">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="16" x2="12" y2="12" />
-                    <line x1="12" y1="8" x2="12.01" y2="8" />
-                </svg>
-            </span>
-        </span>
-    </div>
-</div>
-
-<!-- Primary Style -->
-<div class="component-preview">
-    <div class="component-preview-title">Primary Tags</div>
-    <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <span class="tag tag--primary">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-            </span>
-            Active
-        </span>
-        <span class="tag tag--primary tag--outline">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-            </span>
-            Active
-        </span>
-        <span class="tag tag--primary tag--rounded">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-            </span>
-            Active
-        </span>
-        <span class="tag tag--primary tag--icon-only">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-            </span>
-        </span>
-    </div>
-</div>
-
-<!-- Text Only (No Icon) -->
-<div class="component-preview">
-    <div class="component-preview-title">Text Only (No Icon)</div>
-    <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <span class="tag tag--neutral">Label</span>
-        <span class="tag tag--success">Success</span>
-        <span class="tag tag--error">Error</span>
-        <span class="tag tag--warning">Warning</span>
-        <span class="tag tag--info">Info</span>
-        <span class="tag tag--primary">Active</span>
-    </div>
-</div>
-
-<!-- Outline Variants -->
-<div class="component-preview">
-    <div class="component-preview-title">Outline Variants</div>
-    <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <span class="tag tag--neutral tag--outline">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="8" x2="12" y2="12" />
-                    <line x1="12" y1="16" x2="12.01" y2="16" />
-                </svg>
-            </span>
-            Label
-        </span>
-        <span class="tag tag--success tag--outline">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-            </span>
-            Success
-        </span>
-        <span class="tag tag--error tag--outline">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="15" y1="9" x2="9" y2="15" />
-                    <line x1="9" y1="9" x2="15" y2="15" />
-                </svg>
-            </span>
-            Error
-        </span>
-        <span class="tag tag--warning tag--outline">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path
-                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                    <line x1="12" y1="9" x2="12" y2="13" />
-                    <line x1="12" y1="17" x2="12.01" y2="17" />
-                </svg>
-            </span>
-            Warning
-        </span>
-        <span class="tag tag--info tag--outline">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="16" x2="12" y2="12" />
-                    <line x1="12" y1="8" x2="12.01" y2="8" />
-                </svg>
-            </span>
-            Info
-        </span>
-        <span class="tag tag--primary tag--outline">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-            </span>
-            Active
-        </span>
-    </div>
-</div>
-
-<!-- Rounded Variants -->
-<div class="component-preview">
-    <div class="component-preview-title">Rounded Variants</div>
-    <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <span class="tag tag--neutral tag--rounded">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="8" x2="12" y2="12" />
-                    <line x1="12" y1="16" x2="12.01" y2="16" />
-                </svg>
-            </span>
-            Label
-        </span>
-        <span class="tag tag--success tag--rounded">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-            </span>
-            Success
-        </span>
-        <span class="tag tag--error tag--rounded">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="15" y1="9" x2="9" y2="15" />
-                    <line x1="9" y1="9" x2="15" y2="15" />
-                </svg>
-            </span>
-            Error
-        </span>
-        <span class="tag tag--warning tag--rounded">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path
-                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                    <line x1="12" y1="9" x2="12" y2="13" />
-                    <line x1="12" y1="17" x2="12.01" y2="17" />
-                </svg>
-            </span>
-            Warning
-        </span>
-        <span class="tag tag--info tag--rounded">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="16" x2="12" y2="12" />
-                    <line x1="12" y1="8" x2="12.01" y2="8" />
-                </svg>
-            </span>
-            Info
-        </span>
-        <span class="tag tag--primary tag--rounded">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-            </span>
-            Active
-        </span>
-    </div>
-</div>
-
-<!-- Icon Only Variants -->
-<div class="component-preview">
-    <div class="component-preview-title">Icon Only Variants</div>
-    <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <span class="tag tag--neutral tag--icon-only">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="8" x2="12" y2="12" />
-                    <line x1="12" y1="16" x2="12.01" y2="16" />
-                </svg>
-            </span>
-        </span>
-        <span class="tag tag--success tag--icon-only">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-            </span>
-        </span>
-        <span class="tag tag--error tag--icon-only">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="15" y1="9" x2="9" y2="15" />
-                    <line x1="9" y1="9" x2="15" y2="15" />
-                </svg>
-            </span>
-        </span>
-        <span class="tag tag--warning tag--icon-only">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path
-                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                    <line x1="12" y1="9" x2="12" y2="13" />
-                    <line x1="12" y1="17" x2="12.01" y2="17" />
-                </svg>
-            </span>
-        </span>
-        <span class="tag tag--info tag--icon-only">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="16" x2="12" y2="12" />
-                    <line x1="12" y1="8" x2="12.01" y2="8" />
-                </svg>
-            </span>
-        </span>
-        <span class="tag tag--primary tag--icon-only">
-            <span class="tag__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-            </span>
-        </span>
-    </div>
-</div>
-
-
-<!-- All Sizes - Filled -->
-<div class="component-preview">
-    <div class="component-preview-title">All Sizes - Filled Style</div>
-    <div style="display: flex; flex-direction: column; gap: 16px;">
-        <!-- Medium Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <span style="width: 80px; font-size: 12px; color: #6C737F;">Medium:</span>
-            <span class="tag tag--md tag--neutral">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
-                    </svg></span>
-                Label
-            </span>
-            <span class="tag tag--md tag--success">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-                Success
-            </span>
-            <span class="tag tag--md tag--error">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="15" y1="9" x2="9" y2="15" />
-                        <line x1="9" y1="9" x2="15" y2="15" />
-                    </svg></span>
-                Error
-            </span>
-            <span class="tag tag--md tag--warning">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg></span>
-                Warning
-            </span>
-            <span class="tag tag--md tag--info">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="16" x2="12" y2="12" />
-                        <line x1="12" y1="8" x2="12.01" y2="8" />
-                    </svg></span>
-                Info
-            </span>
-            <span class="tag tag--md tag--primary">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-                Active
-            </span>
+<div class="live-demo">
+    <div class="live-demo__body">
+        <!-- Left: Preview canvas -->
+        <div class="live-demo__canvas" id="tag-demo-preview">
+            <!-- Rendered dynamically by JS -->
         </div>
-        <!-- Small Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <span style="width: 80px; font-size: 12px; color: #6C737F;">Small:</span>
-            <span class="tag tag--sm tag--neutral">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
-                    </svg></span>
-                Label
-            </span>
-            <span class="tag tag--sm tag--success">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-                Success
-            </span>
-            <span class="tag tag--sm tag--error">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="15" y1="9" x2="9" y2="15" />
-                        <line x1="9" y1="9" x2="15" y2="15" />
-                    </svg></span>
-                Error
-            </span>
-            <span class="tag tag--sm tag--warning">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg></span>
-                Warning
-            </span>
-            <span class="tag tag--sm tag--info">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="16" x2="12" y2="12" />
-                        <line x1="12" y1="8" x2="12.01" y2="8" />
-                    </svg></span>
-                Info
-            </span>
-            <span class="tag tag--sm tag--primary">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-                Active
-            </span>
+
+        <!-- Right: Controls sidebar -->
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Tag</h3>
+                <p class="live-demo__sidebar-desc">Tags are short, non-interactive labels. Use them to mark items with
+                    a category, a status, or a piece of metadata that a reader can scan at a glance.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="tag-demo-size">Size</label>
+                <select class="live-demo__sidebar-select" id="tag-demo-size">
+                    <option value="md">Medium</option>
+                    <option value="sm" selected>Small</option>
+                    <option value="xs">X-Small</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="tag-demo-variant">Variant</label>
+                <select class="live-demo__sidebar-select" id="tag-demo-variant">
+                    <option value="neutral">Neutral</option>
+                    <option value="success">Success</option>
+                    <option value="error">Error</option>
+                    <option value="warning">Warning</option>
+                    <option value="info">Info</option>
+                    <option value="on-color">On-Color</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Outline</label>
+                <button class="live-demo__switch" data-toggle="outline" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Rounded</label>
+                <button class="live-demo__switch" data-toggle="rounded" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Icon only</label>
+                <button class="live-demo__switch" data-toggle="icon-only" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Lead Icon</label>
+                <button class="live-demo__switch" data-toggle="lead-icon" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Trail Icon</label>
+                <button class="live-demo__switch" data-toggle="trail-icon" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
         </div>
-        <!-- X-Small Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <span style="width: 80px; font-size: 12px; color: #6C737F;">X-Small:</span>
-            <span class="tag tag--xs tag--neutral">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
-                    </svg></span>
-                Label
-            </span>
-            <span class="tag tag--xs tag--success">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-                Success
-            </span>
-            <span class="tag tag--xs tag--error">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="15" y1="9" x2="9" y2="15" />
-                        <line x1="9" y1="9" x2="15" y2="15" />
-                    </svg></span>
-                Error
-            </span>
-            <span class="tag tag--xs tag--warning">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg></span>
-                Warning
-            </span>
-            <span class="tag tag--xs tag--info">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="16" x2="12" y2="12" />
-                        <line x1="12" y1="8" x2="12.01" y2="8" />
-                    </svg></span>
-                Info
-            </span>
-            <span class="tag tag--xs tag--primary">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-                Active
-            </span>
+    </div>
+
+    <!-- Footer -->
+    <div class="live-demo__footer">
+        This live demo contains only a preview of functionality and styles available for this component. Selecting the
+        On-Color variant darkens the preview canvas so the white-on-alpha styling has its intended backdrop.
+    </div>
+</div>
+
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">All available CSS classes for configuring tag components.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.tag</code></td>
+                    <td>CSS class</td>
+                    <td>Required</td>
+                    <td>Base tag class. Must be applied to all tags.</td>
+                </tr>
+                <tr>
+                    <td><code>.tag--neutral</code></td>
+                    <td>CSS class</td>
+                    <td>Default variant</td>
+                    <td>Gray neutral variant. Applied implicitly when no other variant class is present.</td>
+                </tr>
+                <tr>
+                    <td><code>.tag--success</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Green variant for positive or completed states.</td>
+                </tr>
+                <tr>
+                    <td><code>.tag--error</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Red variant for errors or destructive states.</td>
+                </tr>
+                <tr>
+                    <td><code>.tag--warning</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Yellow/amber variant for cautionary states.</td>
+                </tr>
+                <tr>
+                    <td><code>.tag--info</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Blue variant for informational states.</td>
+                </tr>
+                <tr>
+                    <td><code>.tag--on-color</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>White-on-alpha variant for use on dark or colored backgrounds.</td>
+                </tr>
+                <tr>
+                    <td><code>.tag--md</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Medium size (32px height, 16px / 24px text).</td>
+                </tr>
+                <tr>
+                    <td><code>.tag--sm</code></td>
+                    <td>CSS class</td>
+                    <td>Default size</td>
+                    <td>Small size (24px height, 12px / 18px text). Default when no size class is applied.</td>
+                </tr>
+                <tr>
+                    <td><code>.tag--xs</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>X-Small size (20px height, 10px / 14px semibold text).</td>
+                </tr>
+                <tr>
+                    <td><code>.tag--outline</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Transparent fill with colored border. Combines with any variant.</td>
+                </tr>
+                <tr>
+                    <td><code>.tag--rounded</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Pill shape with fully rounded corners.</td>
+                </tr>
+                <tr>
+                    <td><code>.tag--icon-only</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Square tag containing only an icon (no label).</td>
+                </tr>
+                <tr>
+                    <td><code>.tag__icon</code></td>
+                    <td>CSS class</td>
+                    <td>&mdash;</td>
+                    <td>Icon slot. Use one before the label for a leading icon, one after for a trailing icon, or both.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Section 1: Tag Variants -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Tag Variants</h2>
+        <p class="showcase-description">The five semantic variants. Neutral for default metadata, Success and Error for
+            positive and negative states, Warning and Info for cautionary and informational signals. The On-Color
+            variant is shown separately below.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row">
+            <span class="tag tag--neutral">Neutral</span>
+            <span class="tag tag--success">Success</span>
+            <span class="tag tag--error">Error</span>
+            <span class="tag tag--warning">Warning</span>
+            <span class="tag tag--info">Info</span>
         </div>
     </div>
 </div>
 
-<!-- All Sizes - Outline -->
-<div class="component-preview">
-    <div class="component-preview-title">All Sizes - Outline Style</div>
-    <div style="display: flex; flex-direction: column; gap: 16px;">
-        <!-- Medium Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <span style="width: 80px; font-size: 12px; color: #6C737F;">Medium:</span>
-            <span class="tag tag--md tag--neutral tag--outline">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
-                    </svg></span>
-                Label
-            </span>
-            <span class="tag tag--md tag--success tag--outline">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-                Success
-            </span>
-            <span class="tag tag--md tag--error tag--outline">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="15" y1="9" x2="9" y2="15" />
-                        <line x1="9" y1="9" x2="15" y2="15" />
-                    </svg></span>
-                Error
-            </span>
-            <span class="tag tag--md tag--warning tag--outline">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg></span>
-                Warning
-            </span>
-            <span class="tag tag--md tag--info tag--outline">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="16" x2="12" y2="12" />
-                        <line x1="12" y1="8" x2="12.01" y2="8" />
-                    </svg></span>
-                Info
-            </span>
-            <span class="tag tag--md tag--primary tag--outline">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-                Active
-            </span>
-        </div>
-        <!-- Small Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <span style="width: 80px; font-size: 12px; color: #6C737F;">Small:</span>
-            <span class="tag tag--sm tag--neutral tag--outline">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
-                    </svg></span>
-                Label
-            </span>
-            <span class="tag tag--sm tag--success tag--outline">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-                Success
-            </span>
-            <span class="tag tag--sm tag--error tag--outline">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="15" y1="9" x2="9" y2="15" />
-                        <line x1="9" y1="9" x2="15" y2="15" />
-                    </svg></span>
-                Error
-            </span>
-            <span class="tag tag--sm tag--warning tag--outline">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg></span>
-                Warning
-            </span>
-            <span class="tag tag--sm tag--info tag--outline">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="16" x2="12" y2="12" />
-                        <line x1="12" y1="8" x2="12.01" y2="8" />
-                    </svg></span>
-                Info
-            </span>
-            <span class="tag tag--sm tag--primary tag--outline">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-                Active
-            </span>
-        </div>
-        <!-- X-Small Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <span style="width: 80px; font-size: 12px; color: #6C737F;">X-Small:</span>
-            <span class="tag tag--xs tag--neutral tag--outline">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
-                    </svg></span>
-                Label
-            </span>
-            <span class="tag tag--xs tag--success tag--outline">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-                Success
-            </span>
-            <span class="tag tag--xs tag--error tag--outline">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="15" y1="9" x2="9" y2="15" />
-                        <line x1="9" y1="9" x2="15" y2="15" />
-                    </svg></span>
-                Error
-            </span>
-            <span class="tag tag--xs tag--warning tag--outline">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg></span>
-                Warning
-            </span>
-            <span class="tag tag--xs tag--info tag--outline">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="16" x2="12" y2="12" />
-                        <line x1="12" y1="8" x2="12.01" y2="8" />
-                    </svg></span>
-                Info
-            </span>
-            <span class="tag tag--xs tag--primary tag--outline">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-                Active
-            </span>
+<!-- Section 2: Tag Sizes -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Tag Sizes</h2>
+        <p class="showcase-description">Three size options matching the Figma typography scale. Medium (32px, 16/24
+            medium), Small (24px, 12/18 medium &mdash; the default), and X-Small (20px, 10/14 semibold).</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row">
+            <span class="tag tag--success tag--md">Medium (32px)</span>
+            <span class="tag tag--success tag--sm">Small (24px)</span>
+            <span class="tag tag--success tag--xs">X-Small (20px)</span>
         </div>
     </div>
 </div>
 
-<!-- All Sizes - Rounded -->
-<div class="component-preview">
-    <div class="component-preview-title">All Sizes - Rounded Style</div>
-    <div style="display: flex; flex-direction: column; gap: 16px;">
-        <!-- Medium Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <span style="width: 80px; font-size: 12px; color: #6C737F;">Medium:</span>
-            <span class="tag tag--md tag--neutral tag--rounded">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
-                    </svg></span>
-                Label
-            </span>
-            <span class="tag tag--md tag--success tag--rounded">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-                Success
-            </span>
-            <span class="tag tag--md tag--error tag--rounded">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="15" y1="9" x2="9" y2="15" />
-                        <line x1="9" y1="9" x2="15" y2="15" />
-                    </svg></span>
-                Error
-            </span>
-            <span class="tag tag--md tag--warning tag--rounded">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg></span>
-                Warning
-            </span>
-            <span class="tag tag--md tag--info tag--rounded">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="16" x2="12" y2="12" />
-                        <line x1="12" y1="8" x2="12.01" y2="8" />
-                    </svg></span>
-                Info
-            </span>
-            <span class="tag tag--md tag--primary tag--rounded">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-                Active
-            </span>
-        </div>
-        <!-- Small Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <span style="width: 80px; font-size: 12px; color: #6C737F;">Small:</span>
-            <span class="tag tag--sm tag--neutral tag--rounded">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
-                    </svg></span>
-                Label
-            </span>
-            <span class="tag tag--sm tag--success tag--rounded">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-                Success
-            </span>
-            <span class="tag tag--sm tag--error tag--rounded">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="15" y1="9" x2="9" y2="15" />
-                        <line x1="9" y1="9" x2="15" y2="15" />
-                    </svg></span>
-                Error
-            </span>
-            <span class="tag tag--sm tag--warning tag--rounded">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg></span>
-                Warning
-            </span>
-            <span class="tag tag--sm tag--info tag--rounded">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="16" x2="12" y2="12" />
-                        <line x1="12" y1="8" x2="12.01" y2="8" />
-                    </svg></span>
-                Info
-            </span>
-            <span class="tag tag--sm tag--primary tag--rounded">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-                Active
-            </span>
-        </div>
-        <!-- X-Small Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <span style="width: 80px; font-size: 12px; color: #6C737F;">X-Small:</span>
-            <span class="tag tag--xs tag--neutral tag--rounded">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
-                    </svg></span>
-                Label
-            </span>
-            <span class="tag tag--xs tag--success tag--rounded">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-                Success
-            </span>
-            <span class="tag tag--xs tag--error tag--rounded">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="15" y1="9" x2="9" y2="15" />
-                        <line x1="9" y1="9" x2="15" y2="15" />
-                    </svg></span>
-                Error
-            </span>
-            <span class="tag tag--xs tag--warning tag--rounded">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg></span>
-                Warning
-            </span>
-            <span class="tag tag--xs tag--info tag--rounded">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="16" x2="12" y2="12" />
-                        <line x1="12" y1="8" x2="12.01" y2="8" />
-                    </svg></span>
-                Info
-            </span>
-            <span class="tag tag--xs tag--primary tag--rounded">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-                Active
-            </span>
+<!-- Section 3: Outline Variants -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Outline Variants</h2>
+        <p class="showcase-description">Outlined style strips the fill, keeping only the border and label color. Use
+            when a softer visual weight is needed, such as in dense lists or alongside other UI controls.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row">
+            <span class="tag tag--neutral tag--outline">Neutral</span>
+            <span class="tag tag--success tag--outline">Success</span>
+            <span class="tag tag--error tag--outline">Error</span>
+            <span class="tag tag--warning tag--outline">Warning</span>
+            <span class="tag tag--info tag--outline">Info</span>
         </div>
     </div>
 </div>
 
-<!-- All Sizes - Icon Only -->
-<div class="component-preview">
-    <div class="component-preview-title">All Sizes - Icon Only</div>
-    <div style="display: flex; flex-direction: column; gap: 16px;">
-        <!-- Medium Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <span style="width: 80px; font-size: 12px; color: #6C737F;">Medium:</span>
-            <span class="tag tag--md tag--neutral tag--icon-only">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
-                    </svg></span>
-            </span>
-            <span class="tag tag--md tag--success tag--icon-only">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-            </span>
-            <span class="tag tag--md tag--error tag--icon-only">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="15" y1="9" x2="9" y2="15" />
-                        <line x1="9" y1="9" x2="15" y2="15" />
-                    </svg></span>
-            </span>
-            <span class="tag tag--md tag--warning tag--icon-only">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg></span>
-            </span>
-            <span class="tag tag--md tag--info tag--icon-only">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="16" x2="12" y2="12" />
-                        <line x1="12" y1="8" x2="12.01" y2="8" />
-                    </svg></span>
-            </span>
-            <span class="tag tag--md tag--primary tag--icon-only">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-            </span>
+<!-- Section 4: Rounded Variants -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Rounded Variants</h2>
+        <p class="showcase-description">Pill-shaped tags use a fully rounded border-radius. Available across all
+            variants and combinable with the outline modifier.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row">
+            <span class="tag tag--neutral tag--rounded">Neutral</span>
+            <span class="tag tag--success tag--rounded">Success</span>
+            <span class="tag tag--error tag--rounded">Error</span>
+            <span class="tag tag--warning tag--rounded">Warning</span>
+            <span class="tag tag--info tag--rounded">Info</span>
         </div>
-        <!-- Small Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <span style="width: 80px; font-size: 12px; color: #6C737F;">Small:</span>
-            <span class="tag tag--sm tag--neutral tag--icon-only">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
-                    </svg></span>
-            </span>
-            <span class="tag tag--sm tag--success tag--icon-only">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-            </span>
-            <span class="tag tag--sm tag--error tag--icon-only">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="15" y1="9" x2="9" y2="15" />
-                        <line x1="9" y1="9" x2="15" y2="15" />
-                    </svg></span>
-            </span>
-            <span class="tag tag--sm tag--warning tag--icon-only">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg></span>
-            </span>
-            <span class="tag tag--sm tag--info tag--icon-only">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="16" x2="12" y2="12" />
-                        <line x1="12" y1="8" x2="12.01" y2="8" />
-                    </svg></span>
-            </span>
-            <span class="tag tag--sm tag--primary tag--icon-only">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-            </span>
-        </div>
-        <!-- X-Small Row -->
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <span style="width: 80px; font-size: 12px; color: #6C737F;">X-Small:</span>
-            <span class="tag tag--xs tag--neutral tag--icon-only">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
-                    </svg></span>
-            </span>
-            <span class="tag tag--xs tag--success tag--icon-only">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-            </span>
-            <span class="tag tag--xs tag--error tag--icon-only">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="15" y1="9" x2="9" y2="15" />
-                        <line x1="9" y1="9" x2="15" y2="15" />
-                    </svg></span>
-            </span>
-            <span class="tag tag--xs tag--warning tag--icon-only">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg></span>
-            </span>
-            <span class="tag tag--xs tag--info tag--icon-only">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="16" x2="12" y2="12" />
-                        <line x1="12" y1="8" x2="12.01" y2="8" />
-                    </svg></span>
-            </span>
-            <span class="tag tag--xs tag--primary tag--icon-only">
-                <span class="tag__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg></span>
-            </span>
+        <span class="showcase-label">Rounded + Outline</span>
+        <div class="showcase-row">
+            <span class="tag tag--neutral tag--rounded tag--outline">Neutral</span>
+            <span class="tag tag--success tag--rounded tag--outline">Success</span>
+            <span class="tag tag--error tag--rounded tag--outline">Error</span>
+            <span class="tag tag--warning tag--rounded tag--outline">Warning</span>
+            <span class="tag tag--info tag--rounded tag--outline">Info</span>
         </div>
     </div>
 </div>
 
-<!-- Arabic RTL -->
-<div class="component-preview">
-    <div class="component-preview-title">Arabic Tags (RTL)</div>
-    <div style="display: flex; flex-direction: column; gap: 16px;">
-        <!-- Filled Row -->
-        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;" dir="rtl">
-            <span class="tag tag--neutral">
-                <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
-                    </svg>
-                </span>
-                وسم
-            </span>
+<!-- Section 5: Tags with Icons (SVG) -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Tags with Icons (SVG)</h2>
+        <p class="showcase-description">Tags paired with inline SVG icons for stronger visual recognition. The same
+            <code>.tag__icon</code> slot is used for leading and trailing icons &mdash; placement is determined by
+            HTML order.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <span class="showcase-label">Leading icon</span>
+        <div class="showcase-row">
             <span class="tag tag--success">
                 <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16"
+                        height="16">
+                        <path fill-rule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clip-rule="evenodd" />
                     </svg>
                 </span>
-                نجاح
+                Completed
             </span>
             <span class="tag tag--error">
                 <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="15" y1="9" x2="9" y2="15" />
-                        <line x1="9" y1="9" x2="15" y2="15" />
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16"
+                        height="16">
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                            clip-rule="evenodd" />
                     </svg>
                 </span>
-                خطأ
+                Failed
             </span>
             <span class="tag tag--warning">
                 <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16"
+                        height="16">
+                        <path fill-rule="evenodd"
+                            d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                            clip-rule="evenodd" />
                     </svg>
                 </span>
-                تحذير
+                Review
+            </span>
+        </div>
+        <span class="showcase-label">Trailing icon</span>
+        <div class="showcase-row">
+            <span class="tag tag--info">
+                Beta
+                <span class="tag__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16"
+                        height="16">
+                        <path fill-rule="evenodd"
+                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </span>
+            </span>
+            <span class="tag tag--success">
+                New
+                <span class="tag__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16"
+                        height="16">
+                        <path
+                            d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" />
+                    </svg>
+                </span>
+            </span>
+        </div>
+        <span class="showcase-label">Both leading and trailing</span>
+        <div class="showcase-row">
+            <span class="tag tag--neutral">
+                <span class="tag__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16"
+                        height="16">
+                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                        <path fill-rule="evenodd"
+                            d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </span>
+                Public
+                <span class="tag__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16"
+                        height="16">
+                        <path fill-rule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- Section 6: Tags with Icon Font -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Tags with Icon Font</h2>
+        <p class="showcase-description">Using the DGA icon font system instead of inline SVGs. Apply an icon font class
+            directly to a span inside the <code>.tag__icon</code> slot, or use the icon font class on the slot itself.
+        </p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row">
+            <span class="tag tag--success">
+                <span class="tag__icon dga-icon-checkmark-circle-02"></span>
+                Verified
+            </span>
+            <span class="tag tag--error">
+                <span class="tag__icon dga-icon-cancel-circle"></span>
+                Rejected
+            </span>
+            <span class="tag tag--warning">
+                <span class="tag__icon dga-icon-alert-02"></span>
+                Pending
             </span>
             <span class="tag tag--info">
-                <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="16" x2="12" y2="12" />
-                        <line x1="12" y1="8" x2="12.01" y2="8" />
-                    </svg>
-                </span>
-                معلومات
+                <span class="tag__icon dga-icon-information-circle"></span>
+                Note
+            </span>
+            <span class="tag tag--neutral">
+                <span class="tag__icon dga-icon-star"></span>
+                Featured
             </span>
         </div>
-        <!-- Outline Row -->
-        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;" dir="rtl">
-            <span class="tag tag--neutral tag--outline">
-                <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
-                    </svg>
-                </span>
-                وسم
+        <span class="showcase-label">Sizes</span>
+        <div class="showcase-row">
+            <span class="tag tag--success tag--md">
+                <span class="tag__icon dga-icon-star"></span>
+                Medium
             </span>
-            <span class="tag tag--success tag--outline">
-                <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg>
-                </span>
-                نجاح
+            <span class="tag tag--success tag--sm">
+                <span class="tag__icon dga-icon-star"></span>
+                Small
             </span>
-            <span class="tag tag--error tag--outline">
-                <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="15" y1="9" x2="9" y2="15" />
-                        <line x1="9" y1="9" x2="15" y2="15" />
-                    </svg>
-                </span>
-                خطأ
-            </span>
-            <span class="tag tag--warning tag--outline">
-                <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg>
-                </span>
-                تحذير
-            </span>
-            <span class="tag tag--info tag--outline">
-                <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="16" x2="12" y2="12" />
-                        <line x1="12" y1="8" x2="12.01" y2="8" />
-                    </svg>
-                </span>
-                معلومات
+            <span class="tag tag--success tag--xs">
+                <span class="tag__icon dga-icon-star"></span>
+                X-Small
             </span>
         </div>
-        <!-- Rounded Row -->
-        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;" dir="rtl">
-            <span class="tag tag--neutral tag--rounded">
-                <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
-                    </svg>
-                </span>
-                وسم
+    </div>
+</div>
+
+<!-- Section 7: Icon-Only Tags -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Icon-Only Tags</h2>
+        <p class="showcase-description">Square tags containing only an icon (no label). Useful for compact status
+            indicators in tables and lists. Available across all three sizes and combinable with any variant or shape.
+        </p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <span class="showcase-label">Sizes</span>
+        <div class="showcase-row">
+            <span class="tag tag--success tag--icon-only tag--md">
+                <span class="tag__icon dga-icon-checkmark-circle-02"></span>
             </span>
-            <span class="tag tag--success tag--rounded">
-                <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg>
-                </span>
-                نجاح
+            <span class="tag tag--success tag--icon-only tag--sm">
+                <span class="tag__icon dga-icon-checkmark-circle-02"></span>
             </span>
-            <span class="tag tag--error tag--rounded">
-                <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="15" y1="9" x2="9" y2="15" />
-                        <line x1="9" y1="9" x2="15" y2="15" />
-                    </svg>
-                </span>
-                خطأ
-            </span>
-            <span class="tag tag--warning tag--rounded">
-                <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg>
-                </span>
-                تحذير
-            </span>
-            <span class="tag tag--info tag--rounded">
-                <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="16" x2="12" y2="12" />
-                        <line x1="12" y1="8" x2="12.01" y2="8" />
-                    </svg>
-                </span>
-                معلومات
+            <span class="tag tag--success tag--icon-only tag--xs">
+                <span class="tag__icon dga-icon-checkmark-circle-02"></span>
             </span>
         </div>
-        <!-- Text Only Row -->
-        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;" dir="rtl">
-            <span class="tag tag--neutral">وسم</span>
-            <span class="tag tag--success">نجاح</span>
-            <span class="tag tag--error">خطأ</span>
-            <span class="tag tag--warning">تحذير</span>
-            <span class="tag tag--info">معلومات</span>
-        </div>
-        <!-- Icon Only Row -->
-        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;" dir="rtl">
+        <span class="showcase-label">Variants</span>
+        <div class="showcase-row">
             <span class="tag tag--neutral tag--icon-only">
-                <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
-                    </svg>
-                </span>
+                <span class="tag__icon dga-icon-tag-01"></span>
             </span>
             <span class="tag tag--success tag--icon-only">
-                <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg>
-                </span>
+                <span class="tag__icon dga-icon-checkmark-circle-02"></span>
             </span>
             <span class="tag tag--error tag--icon-only">
-                <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="15" y1="9" x2="9" y2="15" />
-                        <line x1="9" y1="9" x2="15" y2="15" />
-                    </svg>
-                </span>
+                <span class="tag__icon dga-icon-cancel-circle"></span>
             </span>
             <span class="tag tag--warning tag--icon-only">
-                <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg>
-                </span>
+                <span class="tag__icon dga-icon-alert-02"></span>
             </span>
             <span class="tag tag--info tag--icon-only">
-                <span class="tag__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="16" x2="12" y2="12" />
-                        <line x1="12" y1="8" x2="12.01" y2="8" />
-                    </svg>
-                </span>
+                <span class="tag__icon dga-icon-information-circle"></span>
+            </span>
+        </div>
+        <span class="showcase-label">Rounded + Outline</span>
+        <div class="showcase-row">
+            <span class="tag tag--success tag--icon-only tag--rounded">
+                <span class="tag__icon dga-icon-checkmark-circle-02"></span>
+            </span>
+            <span class="tag tag--success tag--icon-only tag--rounded tag--outline">
+                <span class="tag__icon dga-icon-checkmark-circle-02"></span>
+            </span>
+            <span class="tag tag--error tag--icon-only tag--outline">
+                <span class="tag__icon dga-icon-cancel-circle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- Section 8: On-Color Variant -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">On-Color Variant</h2>
+        <p class="showcase-description">For use on dark or colored backgrounds. Uses white at 20% alpha for the fill,
+            white at 60% alpha for the border, and pure white for the label and icon &mdash; matching the Figma
+            <code>tag-background-on-color</code> and <code>tag-border-on-color</code> tokens.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview showcase-preview--dark">
+        <span class="showcase-label" style="color: rgba(255,255,255,0.75);">Filled, outline, rounded</span>
+        <div class="showcase-row">
+            <span class="tag tag--on-color">On-Color</span>
+            <span class="tag tag--on-color tag--outline">Outline</span>
+            <span class="tag tag--on-color tag--rounded">Rounded</span>
+            <span class="tag tag--on-color tag--rounded tag--outline">Rounded + Outline</span>
+        </div>
+        <span class="showcase-label" style="color: rgba(255,255,255,0.75);">Sizes</span>
+        <div class="showcase-row">
+            <span class="tag tag--on-color tag--md">Medium</span>
+            <span class="tag tag--on-color tag--sm">Small</span>
+            <span class="tag tag--on-color tag--xs">X-Small</span>
+        </div>
+        <span class="showcase-label" style="color: rgba(255,255,255,0.75);">With icon and icon-only</span>
+        <div class="showcase-row">
+            <span class="tag tag--on-color">
+                <span class="tag__icon dga-icon-star"></span>
+                Featured
+            </span>
+            <span class="tag tag--on-color tag--outline">
+                <span class="tag__icon dga-icon-checkmark-circle-02"></span>
+                Verified
+            </span>
+            <span class="tag tag--on-color tag--icon-only">
+                <span class="tag__icon dga-icon-star"></span>
+            </span>
+            <span class="tag tag--on-color tag--icon-only tag--outline tag--rounded">
+                <span class="tag__icon dga-icon-information-circle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- Section 9: RTL Support -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Support</h2>
+        <p class="showcase-description">Right-to-left layout support for Arabic and other RTL languages. Icon placement
+            is automatically mirrored based on document direction.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview showcase-preview--subtle" dir="rtl">
+        <div class="showcase-row">
+            <span class="tag tag--success">
+                <span class="tag__icon dga-icon-checkmark-circle-02"></span>
+                مكتمل
+            </span>
+            <span class="tag tag--error">
+                <span class="tag__icon dga-icon-cancel-circle"></span>
+                مرفوض
+            </span>
+            <span class="tag tag--warning">
+                <span class="tag__icon dga-icon-alert-02"></span>
+                قيد المراجعة
+            </span>
+            <span class="tag tag--info">
+                <span class="tag__icon dga-icon-information-circle"></span>
+                ملاحظة
+            </span>
+            <span class="tag tag--neutral tag--rounded">
+                <span class="tag__icon dga-icon-star"></span>
+                مميز
             </span>
         </div>
     </div>
