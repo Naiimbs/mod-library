@@ -155,6 +155,11 @@ class DGADesignSystem {
             this.register('statusTag', new StatusTagDemoManager());
         }
 
+        // Tables
+        if (componentId === 'tables' && typeof TableDemoManager !== 'undefined') {
+            this.register('tables', new TableDemoManager());
+        }
+
         // Progress Indicator
         if (componentId === 'progress-indicator' && typeof ProgressIndicatorDemoManager !== 'undefined') {
             this.register('progressIndicator', new ProgressIndicatorDemoManager());

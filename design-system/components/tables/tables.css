@@ -1,20 +1,45 @@
 /* ============================================
    COMPONENT: TABLES
    DGA Design System - Table Components
+   Figma frames: 5698:40875 (Table), 5898:27389 (Header),
+                 5698:40844 (Row), 5698:40230 (Header Cell),
+                 5698:40125 (Cell), 5698:40813 (Sort), 5894:21746 (Filter)
+
+   Figma tokens used:
+     Table/table-cell-border         #d2d6db
+     Table/table-text-head           #384250
+     Table/table-text-body           #161616
+     Table/table-background-header   #f3f4f6
+     Table/table-background-row      #f9fafb   (alt rows + hover)
+     Table/table-cell-h-padding      16
+     Table/table-cell-v-padding      8
+     Table/table-cell-gap            8
+     Link/link-primary               #1b8354
+   ============================================ */
+
+/* ============================================
+   Wrapper — gives the table its rounded outer border and horizontal
+   scroll on overflow.
    ============================================ */
 
 .table-wrapper {
     overflow-x: auto;
-    border: 1px solid var(--color-border-secondary);
-    border-radius: var(--radius-lg);
+    border: 1px solid #d2d6db;
+    border-radius: var(--radius-md, 8px);
+    background-color: #ffffff;
 }
+
+/* ============================================
+   Base table
+   ============================================ */
 
 .table {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
     font-family: var(--font-family-primary);
-    font-size: var(--font-size-sm);
+    color: #161616;
+    background-color: #ffffff;
 }
 
 [dir="rtl"] .table {
@@ -22,134 +47,375 @@
 }
 
 /* ============================================
-   Table Header
+   Cells — shared base for <th> and <td>
    ============================================ */
 
-.table thead {
-    background-color: var(--color-gray-50);
-}
-
-.table th {
-    padding: var(--spacing-lg) var(--spacing-3xl);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text-secondary);
-    border-bottom: 1px solid var(--color-border-secondary);
+.table th,
+.table td {
+    padding: 8px 16px;
+    border-bottom: 1px solid #d2d6db;
+    vertical-align: middle;
     white-space: nowrap;
 }
 
-/* ============================================
-   Table Body
-   ============================================ */
-
-.table tbody {
-    background-color: var(--color-white);
-}
-
-.table td {
-    padding: var(--spacing-xl) var(--spacing-3xl);
-    color: var(--color-gray-900);
-    border-bottom: 1px solid var(--color-border-secondary);
-}
-
+/* Last row drops its bottom border so it doesn't double up with the
+   wrapper border. */
 .table tbody tr:last-child td {
     border-bottom: none;
 }
 
 /* ============================================
-   Table Row States
+   Header row
    ============================================ */
 
-.table tbody tr:hover {
-    background-color: var(--color-gray-50);
+.table thead {
+    background-color: #f3f4f6;
 }
 
-.table tbody tr.selected {
-    background-color: var(--color-primary-light);
+.table thead th {
+    color: #384250;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500;
+    text-align: inherit;
 }
 
 /* ============================================
-   Table Cell Variants
+   Body cells — typography only. Color inherits from `.table` so the
+   single-class cell modifiers (.table__cell--link, etc.) can override it
+   without specificity wars.
    ============================================ */
 
-.table-cell--primary {
-    color: var(--color-gray-900);
-    font-weight: var(--font-weight-medium);
+.table tbody td {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
 }
 
-.table-cell--secondary {
-    color: var(--color-text-secondary);
+/* ============================================
+   Row states
+   ============================================ */
+
+.table tbody tr {
+    transition: background-color 0.12s ease;
 }
 
-.table-cell--action {
-    color: var(--color-primary);
-    font-weight: var(--font-weight-medium);
+.table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+.table tbody tr.is-selected,
+.table tbody tr[aria-selected="true"] {
+    background-color: var(--color-primary-light, #f3fcf6);
+}
+
+/* ============================================
+   Cell types — applied to <td> by purpose
+   ============================================ */
+
+/* Link cell — Saudi green, medium weight, underline on hover */
+.table__cell--link {
+    color: #1b8354;
+    font-weight: 500;
     cursor: pointer;
 }
 
-.table-cell--action:hover {
-    color: var(--color-primary-hover);
+.table__cell--link:hover {
+    text-decoration: underline;
+}
+
+/* Plain text cell — explicit so authors can use it for readability. */
+.table__cell--text {
+    color: #161616;
+}
+
+/* Action cell — narrow, holds a single icon button (arrow, more, etc.). */
+.table__cell--action {
+    width: 1%;
+    text-align: center;
+}
+
+[dir="rtl"] .table__cell--action {
+    text-align: center;
+}
+
+/* Checkbox column — narrow, the leading selection column. */
+.table__cell--checkbox {
+    width: 1%;
+    padding-right: 0;
+}
+
+[dir="rtl"] .table__cell--checkbox {
+    padding-right: 16px;
+    padding-left: 0;
 }
 
 /* ============================================
-   Table Status Badges
+   Checkbox control — used in header (select-all) and body rows.
+   Native <input type="checkbox"> with custom styling.
    ============================================ */
 
-.table-status {
-    display: inline-flex;
-    align-items: center;
-    padding: 2px var(--spacing-md);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-medium);
-    border-radius: var(--radius-full);
+.table__checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #6c737f;
+    border-radius: 4px;
+    background-color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    flex-shrink: 0;
+    margin: 0;
 }
 
-.table-status--active {
-    background-color: var(--color-success-50);
-    color: var(--color-success-700);
+.table__checkbox:hover {
+    border-color: #1b8354;
 }
 
-.table-status--pending {
-    background-color: var(--color-warning-50);
-    color: var(--color-warning-700);
+.table__checkbox:checked {
+    background-color: #1b8354;
+    border-color: #1b8354;
 }
 
-.table-status--inactive {
-    background-color: var(--color-gray-100);
-    color: var(--color-gray-700);
+.table__checkbox:checked::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 5px;
+    height: 9px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
 }
 
-.table-status--error {
-    background-color: var(--color-error-50);
-    color: var(--color-error-700);
+.table__checkbox:indeterminate {
+    background-color: #1b8354;
+    border-color: #1b8354;
+}
+
+.table__checkbox:indeterminate::after {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 7px;
+    width: 10px;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 1px;
+}
+
+.table__checkbox:focus-visible {
+    outline: 2px solid #1b8354;
+    outline-offset: 2px;
 }
 
 /* ============================================
-   Table Sizes
+   Sortable header cell — wraps the label in a clickable button-like span
+   so the up/down arrows align to the label.
+   ============================================ */
+
+.table__sort {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    user-select: none;
+}
+
+[dir="rtl"] .table__sort {
+    flex-direction: row-reverse;
+}
+
+.table__sort:hover {
+    color: #161616;
+}
+
+.table__sort:focus-visible {
+    outline: 2px solid #1b8354;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* The arrow indicator — two stacked chevrons by default, one highlighted
+   when the column is actively sorted. */
+.table__sort-icon {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    flex-shrink: 0;
+}
+
+.table__sort-icon::before,
+.table__sort-icon::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+}
+
+.table__sort-icon::before {
+    border-bottom: 4px solid #6c737f;
+    opacity: 0.5;
+}
+
+.table__sort-icon::after {
+    border-top: 4px solid #6c737f;
+    opacity: 0.5;
+}
+
+.table__sort[data-sort="asc"] .table__sort-icon::before {
+    border-bottom-color: #161616;
+    opacity: 1;
+}
+
+.table__sort[data-sort="desc"] .table__sort-icon::after {
+    border-top-color: #161616;
+    opacity: 1;
+}
+
+/* ============================================
+   Filter button — sits in a header cell (often the last column or first
+   column in RTL) and toggles a filter UI in real apps.
+   ============================================ */
+
+.table__filter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0;
+    color: #6c737f;
+    transition: background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+
+.table__filter:hover {
+    background-color: #ffffff;
+    border-color: #d2d6db;
+    color: #161616;
+}
+
+.table__filter.is-active,
+.table__filter[aria-pressed="true"] {
+    background-color: #161616;
+    border-color: #161616;
+    color: #ffffff;
+}
+
+.table__filter:focus-visible {
+    outline: 2px solid #1b8354;
+    outline-offset: 2px;
+}
+
+.table__filter-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.table__filter-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* ============================================
+   Action arrow inside a cell — the → control on a row.
+   ============================================ */
+
+.table__action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: transparent;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #161616;
+    padding: 0;
+}
+
+.table__action:hover {
+    background-color: #f3f4f6;
+}
+
+.table__action:focus-visible {
+    outline: 2px solid #1b8354;
+    outline-offset: 2px;
+}
+
+.table__action svg {
+    width: 16px;
+    height: 16px;
+}
+
+[dir="rtl"] .table__action svg {
+    transform: scaleX(-1);
+}
+
+/* ============================================
+   Density modifiers
    ============================================ */
 
 .table--compact th,
 .table--compact td {
-    padding: var(--spacing-md) var(--spacing-xl);
+    padding: 4px 12px;
 }
 
 .table--relaxed th,
 .table--relaxed td {
-    padding: var(--spacing-2xl) var(--spacing-3xl);
+    padding: 16px 24px;
 }
 
 /* ============================================
-   Striped Table
+   Striped — alternate row tint
    ============================================ */
 
 .table--striped tbody tr:nth-child(even) {
-    background-color: var(--color-gray-50);
+    background-color: #f9fafb;
+}
+
+.table--striped tbody tr:nth-child(even):hover {
+    background-color: #f3f4f6;
 }
 
 /* ============================================
-   Bordered Table
+   Bordered — full grid borders (column dividers too)
    ============================================ */
 
 .table--bordered th,
 .table--bordered td {
-    border: 1px solid var(--color-border-secondary);
+    border: 1px solid #d2d6db;
+}
+
+.table--bordered tbody tr:last-child td {
+    border-bottom: 1px solid #d2d6db;
+}
+
+/* ============================================
+   Sharp corners — drops the wrapper border-radius so the table sits flush
+   in dashboard-style cards.
+   ============================================ */
+
+.table-wrapper--sharp,
+.table--sharp .table-wrapper,
+.table-wrapper:has(.table--sharp) {
+    border-radius: 0;
 }

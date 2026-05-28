@@ -1,49 +1,574 @@
 <div class="content-header">
     <h1 class="content-title">Tables</h1>
-    <p class="content-description">Table component for displaying data rows.</p>
+    <p class="content-description">Structured rows and columns for displaying and interacting with data. Includes
+        sortable and filterable header cells, row selection (with select-all + indeterminate state), six body cell
+        types (text, link, status, tag, action, checkbox), striped and bordered variants, three densities, and full
+        RTL support. Modeled on Figma frames 5698:40875 (Table), 5898:27389 (Header), 5698:40844 (Row).</p>
 </div>
 
-<div class="component-preview">
-    <div class="component-preview-title">Table Preview</div>
-    <div style="overflow-x: auto; border: 1px solid #E5E7EB; border-radius: 12px;">
-        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px;">
-            <thead style="background-color: #F9FAFB; border-bottom: 1px solid #E5E7EB;">
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <div class="live-demo__canvas live-demo__canvas--wide" id="table-demo-preview"
+            style="align-items: stretch; padding: var(--spacing-3xl);">
+            <!-- Rendered dynamically by JS -->
+        </div>
+
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Table</h3>
+                <p class="live-demo__sidebar-desc">A composition of header and body cells. Toggle behaviors below to
+                    see the data table re-render in place.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="table-demo-density">Density</label>
+                <select class="live-demo__sidebar-select" id="table-demo-density">
+                    <option value="compact">Compact</option>
+                    <option value="regular" selected>Regular</option>
+                    <option value="relaxed">Relaxed</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Striped</label>
+                <button class="live-demo__switch" data-toggle="striped" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Bordered</label>
+                <button class="live-demo__switch" data-toggle="bordered" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Selection</label>
+                <button class="live-demo__switch" data-toggle="selection" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Sortable</label>
+                <button class="live-demo__switch" data-toggle="sort" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Filter + Row actions</label>
+                <button class="live-demo__switch" data-toggle="filter" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="table-demo-sort">Sort column</label>
+                <select class="live-demo__sidebar-select" id="table-demo-sort">
+                    <option value="name" selected>Name</option>
+                    <option value="role">Role</option>
+                    <option value="team">Team</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="live-demo__footer">
+        Click sortable headers to cycle ascending → descending. The select-all checkbox supports the indeterminate
+        state when some (but not all) rows are checked.
+    </div>
+</div>
+
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">All available CSS classes for composing tables.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
                 <tr>
-                    <th style="padding: 12px 24px; font-weight: 600; color: #6C737F;">Name</th>
-                    <th style="padding: 12px 24px; font-weight: 600; color: #6C737F;">Role</th>
-                    <th style="padding: 12px 24px; font-weight: 600; color: #6C737F;">Status</th>
-                    <th style="padding: 12px 24px; font-weight: 600; color: #6C737F;">Action</th>
+                    <th>Class</th>
+                    <th>Type</th>
+                    <th>Description</th>
                 </tr>
             </thead>
-            <tbody style="background-color: #FFFFFF;">
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                    <td style="padding: 16px 24px; color: #111927;">John Doe</td>
-                    <td style="padding: 16px 24px; color: #6C737F;">Admin</td>
-                    <td style="padding: 16px 24px;"><span
-                            style="background: #ECFDF5; color: #027A48; padding: 2px 8px; border-radius: 9999px; font-size: 12px; font-weight: 500;">Active</span>
-                    </td>
-                    <td style="padding: 16px 24px; color: #1B8354; font-weight: 500; cursor: pointer;">Edit
-                    </td>
+            <tbody>
+                <tr><td><code>.table-wrapper</code></td><td>CSS class</td><td>Container providing the rounded outer
+                        border and horizontal scroll on overflow.</td></tr>
+                <tr><td><code>.table</code></td><td>CSS class</td><td>Applied to the <code>&lt;table&gt;</code>
+                        element. Sets typography, collapse mode, and base spacing.</td></tr>
+                <tr><td><code>.table--compact</code></td><td>CSS class</td><td>Tighter cell padding (4px × 12px) for
+                        dense layouts.</td></tr>
+                <tr><td><code>.table--relaxed</code></td><td>CSS class</td><td>Roomier cell padding (16px × 24px).
+                    </td></tr>
+                <tr><td><code>.table--striped</code></td><td>CSS class</td><td>Alternate row background tint.</td>
                 </tr>
-                <tr style="border-bottom: 1px solid #E5E7EB;">
-                    <td style="padding: 16px 24px; color: #111927;">Jane Smith</td>
-                    <td style="padding: 16px 24px; color: #6C737F;">User</td>
-                    <td style="padding: 16px 24px;"><span
-                            style="background: #FFFBEB; color: #B45309; padding: 2px 8px; border-radius: 9999px; font-size: 12px; font-weight: 500;">Pending</span>
-                    </td>
-                    <td style="padding: 16px 24px; color: #1B8354; font-weight: 500; cursor: pointer;">Edit
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding: 16px 24px; color: #111927;">Robert Fox</td>
-                    <td style="padding: 16px 24px; color: #6C737F;">User</td>
-                    <td style="padding: 16px 24px;"><span
-                            style="background: #F9FAFB; color: #374151; padding: 2px 8px; border-radius: 9999px; font-size: 12px; font-weight: 500;">Inactive</span>
-                    </td>
-                    <td style="padding: 16px 24px; color: #1B8354; font-weight: 500; cursor: pointer;">Edit
-                    </td>
+                <tr><td><code>.table--bordered</code></td><td>CSS class</td><td>Adds vertical borders between
+                        columns in addition to the row dividers.</td></tr>
+                <tr><td><code>.table__cell--link</code></td><td>CSS class on <code>&lt;td&gt;</code></td><td>Link-styled
+                        cell (Saudi green text, underline on hover).</td></tr>
+                <tr><td><code>.table__cell--text</code></td><td>CSS class on <code>&lt;td&gt;</code></td><td>Plain
+                        body text cell. Default styling — class is optional and exists for clarity.</td></tr>
+                <tr><td><code>.table__cell--action</code></td><td>CSS class on
+                        <code>&lt;td&gt;</code>/<code>&lt;th&gt;</code></td><td>Narrow column holding a single icon
+                        button.</td></tr>
+                <tr><td><code>.table__cell--checkbox</code></td><td>CSS class on
+                        <code>&lt;td&gt;</code>/<code>&lt;th&gt;</code></td><td>Narrow leading column for the selection
+                        checkbox.</td></tr>
+                <tr><td><code>.table__checkbox</code></td><td>CSS class on <code>&lt;input
+                            type="checkbox"&gt;</code></td><td>Styled checkbox used for both select-all and per-row
+                        selection. Supports <code>:indeterminate</code>.</td></tr>
+                <tr><td><code>.table__sort</code></td><td>CSS class on
+                        <code>&lt;button&gt;</code> inside <code>&lt;th&gt;</code></td><td>Sortable header. Set
+                        <code>data-sort="asc"</code> or <code>"desc"</code> to display the active arrow.</td></tr>
+                <tr><td><code>.table__sort-icon</code></td><td>CSS class</td><td>Decorative element rendering the
+                        up/down arrows. Place inside <code>.table__sort</code>.</td></tr>
+                <tr><td><code>.table__filter</code></td><td>CSS class on
+                        <code>&lt;button&gt;</code></td><td>Filter button (funnel icon). Use
+                        <code>aria-pressed="true"</code> for the active/filtered state.</td></tr>
+                <tr><td><code>.table__action</code></td><td>CSS class on <code>&lt;button&gt;</code></td><td>Generic
+                        icon button used in row action cells. Arrow auto-flips in RTL.</td></tr>
+                <tr><td><code>.is-selected</code> / <code>aria-selected="true"</code></td><td>State on
+                        <code>&lt;tr&gt;</code></td><td>Highlights a selected row using the primary-light token.</td>
                 </tr>
             </tbody>
         </table>
+    </div>
+</div>
+
+<!-- Section 1: Basic Table -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Basic Table</h2>
+        <p class="showcase-description">The minimum composition: a <code>.table-wrapper</code> around a
+            <code>&lt;table class="table"&gt;</code> with a header row and body rows.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div style="width: 100%;">
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead>
+                        <tr><th>Name</th><th>Role</th><th>Team</th><th>Status</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="table__cell--link">Sara Al-Otaibi</td><td>Admin</td><td>Platform</td><td><span
+                                    class="status-tag status-tag--sm status-tag--subtle status-tag--success"><span
+                                        class="status-tag__dot"></span><span
+                                        class="status-tag__label">Active</span></span></td></tr>
+                        <tr><td class="table__cell--link">Khalid Al-Subaie</td><td>Editor</td><td>Content</td><td><span
+                                    class="status-tag status-tag--sm status-tag--subtle status-tag--warning"><span
+                                        class="status-tag__dot"></span><span
+                                        class="status-tag__label">Pending</span></span></td></tr>
+                        <tr><td class="table__cell--link">Maya Hassan</td><td>Reviewer</td><td>QA</td><td><span
+                                    class="status-tag status-tag--sm status-tag--subtle status-tag--success"><span
+                                        class="status-tag__dot"></span><span
+                                        class="status-tag__label">Active</span></span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 2: Header Cell Types -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Header Cell Types</h2>
+        <p class="showcase-description">The four header cell flavors: plain text, sortable (click to cycle), filter
+            (toggleable funnel), and select-all checkbox.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div style="width: 100%;" data-table-interactive>
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="table__cell--checkbox"><input type="checkbox" class="table__checkbox"
+                                    data-role="select-all" aria-label="Select all"></th>
+                            <th>Plain header</th>
+                            <th><button type="button" class="table__sort" data-sort=""><span>Sortable
+                                    </span><span class="table__sort-icon" aria-hidden="true"></span></button></th>
+                            <th><button type="button" class="table__sort" data-sort="asc"><span>Active ASC
+                                    </span><span class="table__sort-icon" aria-hidden="true"></span></button></th>
+                            <th><button type="button" class="table__sort" data-sort="desc"><span>Active DESC
+                                    </span><span class="table__sort-icon" aria-hidden="true"></span></button></th>
+                            <th class="table__cell--action"><button type="button" class="table__filter"
+                                    aria-pressed="false" aria-label="Filter"><span
+                                        class="table__filter-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M2 3h12L9.5 9v4.5L6.5 12V9L2 3z" />
+                                        </svg></span></button></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="table__cell--checkbox"><input type="checkbox" class="table__checkbox"
+                                    aria-label="Select row"></td>
+                            <td>—</td><td>—</td><td>—</td><td>—</td><td>—</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 3: Body Cell Types -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Body Cell Types</h2>
+        <p class="showcase-description">The body cell variants modeled on Figma frame 5698:40125: plain text, link,
+            status tag, neutral tag, action arrow, and checkbox.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div style="width: 100%;">
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead>
+                        <tr><th>Type</th><th>Example</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>.table__cell--text</code> (default)</td><td>Plain body text</td></tr>
+                        <tr><td><code>.table__cell--link</code></td><td class="table__cell--link">Open record</td></tr>
+                        <tr><td>Status tag</td><td><span
+                                    class="status-tag status-tag--sm status-tag--subtle status-tag--success"><span
+                                        class="status-tag__dot"></span><span
+                                        class="status-tag__label">Active</span></span></td></tr>
+                        <tr><td>Tag</td><td><span class="tag tag--neutral tag--sm">Beta</span></td></tr>
+                        <tr><td>Action arrow</td><td><button type="button" class="table__action"
+                                    aria-label="Open"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                                        fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M3 8h10M9 4l4 4-4 4" />
+                                    </svg></button></td></tr>
+                        <tr><td>Checkbox</td><td><input type="checkbox" class="table__checkbox" aria-label="Select"
+                                    checked></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 4: Row States -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Row States</h2>
+        <p class="showcase-description">Default, hover (tinted with <code>table-background-row</code>), and selected
+            (uses <code>--color-primary-light</code>, the Saudi-green-50 token).</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div style="width: 100%;">
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead>
+                        <tr><th>Row</th><th>Name</th><th>Status</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Default</td><td class="table__cell--link">Sara Al-Otaibi</td><td><span
+                                    class="status-tag status-tag--sm status-tag--subtle status-tag--success"><span
+                                        class="status-tag__dot"></span><span
+                                        class="status-tag__label">Active</span></span></td></tr>
+                        <tr class="is-selected" aria-selected="true"><td>Selected</td><td
+                                class="table__cell--link">Maya Hassan</td><td><span
+                                    class="status-tag status-tag--sm status-tag--subtle status-tag--success"><span
+                                        class="status-tag__dot"></span><span
+                                        class="status-tag__label">Active</span></span></td></tr>
+                        <tr><td>Hover this row →</td><td class="table__cell--link">Omar Al-Harbi</td><td><span
+                                    class="status-tag status-tag--sm status-tag--subtle status-tag--neutral"><span
+                                        class="status-tag__dot"></span><span
+                                        class="status-tag__label">Inactive</span></span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 5: With Selection -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">With Selection</h2>
+        <p class="showcase-description">Per-row checkboxes plus a select-all in the header. Checking some but not all
+            rows puts the header checkbox into the indeterminate state. Selected rows highlight automatically.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div style="width: 100%;" data-table-interactive>
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="table__cell--checkbox"><input type="checkbox" class="table__checkbox"
+                                    data-role="select-all" aria-label="Select all"></th>
+                            <th>Name</th><th>Role</th><th>Team</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="table__cell--checkbox"><input type="checkbox" class="table__checkbox"
+                                    aria-label="Select row"></td>
+                            <td class="table__cell--link">Sara Al-Otaibi</td><td>Admin</td><td>Platform</td>
+                        </tr>
+                        <tr>
+                            <td class="table__cell--checkbox"><input type="checkbox" class="table__checkbox"
+                                    aria-label="Select row" checked></td>
+                            <td class="table__cell--link">Khalid Al-Subaie</td><td>Editor</td><td>Content</td>
+                        </tr>
+                        <tr>
+                            <td class="table__cell--checkbox"><input type="checkbox" class="table__checkbox"
+                                    aria-label="Select row"></td>
+                            <td class="table__cell--link">Maya Hassan</td><td>Reviewer</td><td>QA</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 6: With Sorting -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">With Sorting</h2>
+        <p class="showcase-description">Click a sortable header to cycle ascending → descending. The active column's
+            arrow highlights to indicate the current sort direction.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div style="width: 100%;" data-table-interactive>
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th><button type="button" class="table__sort" data-sort="asc"><span>Name</span><span
+                                        class="table__sort-icon" aria-hidden="true"></span></button></th>
+                            <th><button type="button" class="table__sort" data-sort=""><span>Role</span><span
+                                        class="table__sort-icon" aria-hidden="true"></span></button></th>
+                            <th><button type="button" class="table__sort" data-sort=""><span>Team</span><span
+                                        class="table__sort-icon" aria-hidden="true"></span></button></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="table__cell--link">Khalid Al-Subaie</td><td>Editor</td><td>Content</td></tr>
+                        <tr><td class="table__cell--link">Maya Hassan</td><td>Reviewer</td><td>QA</td></tr>
+                        <tr><td class="table__cell--link">Omar Al-Harbi</td><td>Viewer</td><td>Analytics</td></tr>
+                        <tr><td class="table__cell--link">Sara Al-Otaibi</td><td>Admin</td><td>Platform</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 7: Striped + Bordered -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Striped and Bordered</h2>
+        <p class="showcase-description">Two visual modifiers for emphasizing row separation. Striped tints every
+            other row; bordered adds full column dividers.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <span class="showcase-label">Striped</span>
+        <div style="width: 100%;">
+            <div class="table-wrapper">
+                <table class="table table--striped">
+                    <thead>
+                        <tr><th>Name</th><th>Role</th><th>Status</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="table__cell--link">Sara Al-Otaibi</td><td>Admin</td><td><span
+                                    class="status-tag status-tag--sm status-tag--subtle status-tag--success"><span
+                                        class="status-tag__dot"></span><span
+                                        class="status-tag__label">Active</span></span></td></tr>
+                        <tr><td class="table__cell--link">Khalid Al-Subaie</td><td>Editor</td><td><span
+                                    class="status-tag status-tag--sm status-tag--subtle status-tag--warning"><span
+                                        class="status-tag__dot"></span><span
+                                        class="status-tag__label">Pending</span></span></td></tr>
+                        <tr><td class="table__cell--link">Maya Hassan</td><td>Reviewer</td><td><span
+                                    class="status-tag status-tag--sm status-tag--subtle status-tag--success"><span
+                                        class="status-tag__dot"></span><span
+                                        class="status-tag__label">Active</span></span></td></tr>
+                        <tr><td class="table__cell--link">Omar Al-Harbi</td><td>Viewer</td><td><span
+                                    class="status-tag status-tag--sm status-tag--subtle status-tag--neutral"><span
+                                        class="status-tag__dot"></span><span
+                                        class="status-tag__label">Inactive</span></span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <span class="showcase-label">Bordered</span>
+        <div style="width: 100%;">
+            <div class="table-wrapper">
+                <table class="table table--bordered">
+                    <thead>
+                        <tr><th>Name</th><th>Role</th><th>Team</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="table__cell--link">Sara Al-Otaibi</td><td>Admin</td><td>Platform</td></tr>
+                        <tr><td class="table__cell--link">Khalid Al-Subaie</td><td>Editor</td><td>Content</td></tr>
+                        <tr><td class="table__cell--link">Maya Hassan</td><td>Reviewer</td><td>QA</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 8: Density -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Density</h2>
+        <p class="showcase-description">Three densities for different contexts. Compact (4×12 padding) for data-dense
+            screens, Regular (8×16) for the default, Relaxed (16×24) for marketing-style or low-density tables.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <span class="showcase-label">Compact</span>
+        <div style="width: 100%;">
+            <div class="table-wrapper">
+                <table class="table table--compact">
+                    <thead>
+                        <tr><th>Name</th><th>Role</th><th>Team</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="table__cell--link">Sara Al-Otaibi</td><td>Admin</td><td>Platform</td></tr>
+                        <tr><td class="table__cell--link">Khalid Al-Subaie</td><td>Editor</td><td>Content</td></tr>
+                        <tr><td class="table__cell--link">Maya Hassan</td><td>Reviewer</td><td>QA</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <span class="showcase-label">Regular (default)</span>
+        <div style="width: 100%;">
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead>
+                        <tr><th>Name</th><th>Role</th><th>Team</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="table__cell--link">Sara Al-Otaibi</td><td>Admin</td><td>Platform</td></tr>
+                        <tr><td class="table__cell--link">Khalid Al-Subaie</td><td>Editor</td><td>Content</td></tr>
+                        <tr><td class="table__cell--link">Maya Hassan</td><td>Reviewer</td><td>QA</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <span class="showcase-label">Relaxed</span>
+        <div style="width: 100%;">
+            <div class="table-wrapper">
+                <table class="table table--relaxed">
+                    <thead>
+                        <tr><th>Name</th><th>Role</th><th>Team</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="table__cell--link">Sara Al-Otaibi</td><td>Admin</td><td>Platform</td></tr>
+                        <tr><td class="table__cell--link">Khalid Al-Subaie</td><td>Editor</td><td>Content</td></tr>
+                        <tr><td class="table__cell--link">Maya Hassan</td><td>Reviewer</td><td>QA</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 9: RTL -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Support</h2>
+        <p class="showcase-description">Tables flip cleanly for Arabic and other RTL languages. The selection
+            checkbox column moves to the trailing edge and the action arrow auto-mirrors.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview showcase-preview--subtle" dir="rtl">
+        <div style="width: 100%;" data-table-interactive>
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="table__cell--checkbox"><input type="checkbox" class="table__checkbox"
+                                    data-role="select-all" aria-label="تحديد الكل"></th>
+                            <th><button type="button" class="table__sort" data-sort="asc"><span>الاسم</span><span
+                                        class="table__sort-icon" aria-hidden="true"></span></button></th>
+                            <th>الدور</th>
+                            <th>الفريق</th>
+                            <th>الحالة</th>
+                            <th class="table__cell--action"><button type="button" class="table__filter"
+                                    aria-pressed="false" aria-label="تصفية"><span class="table__filter-icon"><svg
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none"
+                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path d="M2 3h12L9.5 9v4.5L6.5 12V9L2 3z" />
+                                        </svg></span></button></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="table__cell--checkbox"><input type="checkbox" class="table__checkbox"
+                                    aria-label="تحديد الصف"></td>
+                            <td class="table__cell--link">سارة العتيبي</td>
+                            <td>مدير</td>
+                            <td>المنصة</td>
+                            <td><span
+                                    class="status-tag status-tag--sm status-tag--subtle status-tag--success"><span
+                                        class="status-tag__dot"></span><span
+                                        class="status-tag__label">نشط</span></span></td>
+                            <td class="table__cell--action"><button type="button" class="table__action"
+                                    aria-label="فتح"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                                        fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M3 8h10M9 4l4 4-4 4" />
+                                    </svg></button></td>
+                        </tr>
+                        <tr>
+                            <td class="table__cell--checkbox"><input type="checkbox" class="table__checkbox"
+                                    aria-label="تحديد الصف" checked></td>
+                            <td class="table__cell--link">خالد السبيعي</td>
+                            <td>محرر</td>
+                            <td>المحتوى</td>
+                            <td><span
+                                    class="status-tag status-tag--sm status-tag--subtle status-tag--warning"><span
+                                        class="status-tag__dot"></span><span class="status-tag__label">قيد
+                                        المراجعة</span></span></td>
+                            <td class="table__cell--action"><button type="button" class="table__action"
+                                    aria-label="فتح"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                                        fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M3 8h10M9 4l4 4-4 4" />
+                                    </svg></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
