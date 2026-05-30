@@ -1,18 +1,366 @@
 <div class="content-header">
     <h1 class="content-title">Modal</h1>
-    <p class="content-description">Modal dialog component.</p>
+    <p class="content-description">A focused dialog for messages, confirmations, and short tasks that need the user's
+        attention. Composed of a header (featured icon + close), a body (title + description + optional swap content),
+        and an actions row. Supports desktop (600px) and mobile (320px) widths, leading/center title alignment,
+        inline or stacked actions, and full RTL. Modeled on Figma frames 30150:55001 (Modal), 30150:55018 (Header),
+        30150:55083 (Body), 30150:55043 (Actions), 30150:55096 (Swap placeholder).</p>
 </div>
 
-<div class="component-preview">
-    <div class="component-preview-title">Modal Preview</div>
-    <div
-        style="max-width: 400px; background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 24px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);">
-        <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">Modal Title</h3>
-        <p style="font-size: 14px; color: #6C737F; margin-bottom: 24px;">This is the modal content.
-            You can add any content here.</p>
-        <div style="display: flex; gap: 12px; justify-content: flex-end;">
-            <button class="btn btn-secondary">Cancel</button>
-            <button class="btn btn-primary">Confirm</button>
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <div class="live-demo__canvas" id="modal-demo-preview" style="padding: var(--spacing-4xl);">
+            <!-- Rendered dynamically -->
+        </div>
+
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Modal</h3>
+                <p class="live-demo__sidebar-desc">The dialog is shown inline here for preview. Use the controls to
+                    reshape the header, body, and actions.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Mobile</label>
+                <button class="live-demo__switch" data-toggle="mobile" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="modal-demo-align">Title align</label>
+                <select class="live-demo__sidebar-select" id="modal-demo-align">
+                    <option value="leading" selected>Leading</option>
+                    <option value="center">Center</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="modal-demo-actions">Actions</label>
+                <select class="live-demo__sidebar-select" id="modal-demo-actions">
+                    <option value="1">1 button</option>
+                    <option value="2" selected>2 buttons</option>
+                    <option value="3">3 buttons</option>
+                    <option value="0">None</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Featured icon</label>
+                <button class="live-demo__switch active" data-toggle="icon" type="button" role="switch"
+                    aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="modal-demo-icon-color">Icon color</label>
+                <select class="live-demo__sidebar-select" id="modal-demo-icon-color">
+                    <option value="neutral" selected>Neutral</option>
+                    <option value="brand">Brand</option>
+                    <option value="gray">Gray</option>
+                    <option value="success">Success</option>
+                    <option value="error">Error</option>
+                    <option value="warning">Warning</option>
+                    <option value="info">Info</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="modal-demo-icon-variant">Icon style</label>
+                <select class="live-demo__sidebar-select" id="modal-demo-icon-variant">
+                    <option value="light" selected>Light</option>
+                    <option value="dark">Dark</option>
+                    <option value="outlined">Outlined</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Close button</label>
+                <button class="live-demo__switch active" data-toggle="close" type="button" role="switch"
+                    aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Stacked actions</label>
+                <button class="live-demo__switch" data-toggle="stack" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Swap content</label>
+                <button class="live-demo__switch" data-toggle="custom" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="live-demo__footer">
+        Turning on <strong>Mobile</strong> narrows the dialog to 320px and stacks the action buttons full-width, per
+        the Figma mobile variant. See the "Open as overlay" section below to try the real backdrop + ESC behavior.
+    </div>
+</div>
+
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">All available CSS classes and JS hooks for composing and controlling modals.
+        </p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class / Attribute</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><code>.modal-backdrop</code></td><td>CSS class</td><td>Fixed full-screen overlay that centers
+                        the modal and dims the page. Add <code>.is-open</code> to show it.</td></tr>
+                <tr><td><code>.modal</code></td><td>CSS class</td><td>The dialog container. White bg, 8px radius,
+                        shadow-3xl, 24px padding. 600px wide by default.</td></tr>
+                <tr><td><code>.modal--mobile</code></td><td>Modifier</td><td>Narrows the dialog to 320px (mobile
+                        layout).</td></tr>
+                <tr><td><code>.modal--center</code></td><td>Modifier</td><td>Centers the featured icon and title.</td>
+                </tr>
+                <tr><td><code>.modal-header</code> / <code>.modal-header__top</code></td><td>Slot</td><td>Header
+                        stack: the top row holds the featured icon (leading) and close button (trailing); the title
+                        sits below.</td></tr>
+                <tr><td><code>.modal-icon</code></td><td>Slot</td><td>Circular featured icon (40px). Holds an
+                        icon-font glyph.</td></tr>
+                <tr><td><code>.modal-close</code></td><td>Slot</td><td>Close (X) button. Pair with
+                        <code>data-modal-close</code> to wire dismissal.</td></tr>
+                <tr><td><code>.modal-title</code></td><td>Slot</td><td>Title — 18/28 semibold,
+                        <code>text-display</code> #1F2A37.</td></tr>
+                <tr><td><code>.modal-body</code> / <code>.modal-description</code></td><td>Slot</td><td>Body wrapper +
+                        description copy — 14/20 regular, <code>text-primary-paragraph</code> #384250.</td></tr>
+                <tr><td><code>.modal-custom</code></td><td>Slot</td><td>Dashed primary swap-content placeholder for
+                        composing custom modal content.</td></tr>
+                <tr><td><code>.modal-actions</code></td><td>Slot</td><td>Action row. Inline + trailing-aligned by
+                        default.</td></tr>
+                <tr><td><code>.modal-actions--stack</code></td><td>Modifier</td><td>Stacks the buttons vertically,
+                        full-width (mobile pattern).</td></tr>
+                <tr><td><code>.modal-actions--fill</code></td><td>Modifier</td><td>Each button stretches to fill the
+                        row equally.</td></tr>
+                <tr><td><code>data-modal-open="ID"</code></td><td>JS hook</td><td>On any trigger element — opens the
+                        <code>.modal-backdrop</code> with that id.</td></tr>
+                <tr><td><code>data-modal-close</code></td><td>JS hook</td><td>On any element inside a backdrop —
+                        closes the modal. Backdrop click and ESC also close.</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Section 1: Anatomy -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Anatomy</h2>
+        <p class="showcase-description">A complete modal: header (featured icon + close), body (title + description),
+            and an actions row with a secondary and a primary button.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-header__top">
+                    <span class="modal-icon"><span class="dga-icon-information-circle" aria-hidden="true"></span></span>
+                    <button type="button" class="modal-close" aria-label="Close"><span class="dga-icon-cancel-01"
+                            aria-hidden="true"></span></button>
+                </div>
+                <h3 class="modal-title">Title goes here</h3>
+            </div>
+            <div class="modal-body">
+                <p class="modal-description">When a Modal needs a further detailed explanation, it goes here.</p>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary-outline"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 8h10M9 4l4 4-4 4" />
+                        </svg></span>Button</button>
+                <button class="btn btn-primary"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 8h10M9 4l4 4-4 4" />
+                        </svg></span>Button</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 2: Actions layouts -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Action Layouts</h2>
+        <p class="showcase-description">Actions sit inline and trailing-aligned on desktop (1, 2, or 3 buttons) and
+            stack full-width on mobile. The last button is the primary action.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="gap: var(--spacing-4xl);">
+        <span class="showcase-label">One action</span>
+        <div class="modal" style="box-shadow: none; border: 1px solid var(--color-border-secondary);">
+            <div class="modal-header">
+                <h3 class="modal-title">Single primary action</h3>
+            </div>
+            <div class="modal-body">
+                <p class="modal-description">A confirmation with one call to action.</p>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+
+        <span class="showcase-label">Two actions (inline)</span>
+        <div class="modal" style="box-shadow: none; border: 1px solid var(--color-border-secondary);">
+            <div class="modal-header">
+                <h3 class="modal-title">Secondary + primary</h3>
+            </div>
+            <div class="modal-body">
+                <p class="modal-description">The most common pairing — cancel and confirm.</p>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary-outline">Cancel</button>
+                <button class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+
+        <span class="showcase-label">Three actions, stacked (mobile)</span>
+        <div class="modal modal--mobile" style="box-shadow: none; border: 1px solid var(--color-border-secondary);">
+            <div class="modal-header">
+                <h3 class="modal-title">Stacked actions</h3>
+            </div>
+            <div class="modal-body">
+                <p class="modal-description">On mobile, actions stack full-width with the primary on top.</p>
+            </div>
+            <div class="modal-actions modal-actions--stack">
+                <button class="btn btn-primary">Primary</button>
+                <button class="btn btn-secondary-outline">Secondary</button>
+                <button class="btn btn-secondary-outline">Tertiary</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 3: Swap content -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Swap Content Body</h2>
+        <p class="showcase-description">The body can host any custom component via the <code>.modal-custom</code>
+            swap slot (Figma 30150:55096) — a form, a table, an illustration, etc.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-header__top">
+                    <span class="modal-icon"><span class="dga-icon-information-circle" aria-hidden="true"></span></span>
+                    <button type="button" class="modal-close" aria-label="Close"><span class="dga-icon-cancel-01"
+                            aria-hidden="true"></span></button>
+                </div>
+                <h3 class="modal-title">Title goes here</h3>
+            </div>
+            <div class="modal-body">
+                <p class="modal-description">When a Modal needs a further detailed explanation, it goes here.</p>
+                <div class="modal-custom">
+                    <h4 class="modal-custom__title">Swap with content component</h4>
+                    <p class="modal-custom__body">Replace this slot with any component</p>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary-outline">Cancel</button>
+                <button class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 4: Open as overlay -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Open as Overlay</h2>
+        <p class="showcase-description">The real behavior: a trigger opens the modal over a dimmed backdrop. Click the
+            backdrop, the close button, or press <kbd>Esc</kbd> to dismiss.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <button class="btn btn-primary" data-modal-open="demo-overlay-modal">Open modal</button>
+
+        <div class="modal-backdrop" id="demo-overlay-modal">
+            <div class="modal" role="dialog" aria-modal="true" aria-labelledby="demo-overlay-title">
+                <div class="modal-header">
+                    <div class="modal-header__top">
+                        <span class="modal-icon"><span class="dga-icon-information-circle"
+                                aria-hidden="true"></span></span>
+                        <button type="button" class="modal-close" aria-label="Close" data-modal-close><span
+                                class="dga-icon-cancel-01" aria-hidden="true"></span></button>
+                    </div>
+                    <h3 class="modal-title" id="demo-overlay-title">Confirm your action</h3>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-description">This modal is rendered over a real backdrop. Click outside, press
+                        Esc, or use a button to close it.</p>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn btn-secondary-outline" data-modal-close>Cancel</button>
+                    <button class="btn btn-primary" data-modal-close>Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 5: RTL -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Support</h2>
+        <p class="showcase-description">Arabic and other right-to-left layouts mirror the modal: the featured icon
+            moves to the trailing (right) edge, the close button to the left, and the title + actions align from the
+            right.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview showcase-preview--subtle" dir="rtl">
+        <div class="modal modal--rtl" dir="rtl">
+            <div class="modal-header">
+                <div class="modal-header__top">
+                    <span class="modal-icon"><span class="dga-icon-information-circle" aria-hidden="true"></span></span>
+                    <button type="button" class="modal-close" aria-label="إغلاق"><span class="dga-icon-cancel-01"
+                            aria-hidden="true"></span></button>
+                </div>
+                <h3 class="modal-title">عنوان الرسالة يُكتب هنا</h3>
+            </div>
+            <div class="modal-body">
+                <p class="modal-description">يُكتب المحتوى الإضافي هنا في حال أن رسالة الإشعار أو التنبيه تحتاج إلى شرح
+                    أو تفصيل.</p>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary-outline">إجراء</button>
+                <button class="btn btn-primary">إجراء</button>
+            </div>
         </div>
     </div>
 </div>

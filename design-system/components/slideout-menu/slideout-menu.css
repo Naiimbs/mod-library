@@ -1,0 +1,284 @@
+/* ============================================
+   COMPONENT: SLIDEOUT MENU
+   DGA Design System - Slideout (side panel)
+   Figma frames: 23360:17219 (Slideout Menu), 23521:31454 (Header)
+   Body reuses the Menu component (.menu-group / .menu-item).
+
+   Figma tokens:
+     Background/background-menu        #ffffff  (white bg)
+     Background/background-neutral-50  #f9fafb  (gray bg)
+     Border/border-neutral-primary     #d2d6db
+     Text/text-default                 #161616  (title)
+     Text/text-secondary-paragraph     #6c737f  (description)
+     Icon/icon-success                 #067647  (featured icon)
+     Icon/background-brand-light        #f3fcf6  (featured icon bg)
+     Text md/Semibold                  16/24/600 (title)
+     Text xs/Regular                   12/18/400 (description)
+   ============================================ */
+
+/* ============================================
+   Backdrop / overlay
+   ============================================ */
+
+.slideout-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(16, 24, 40, 0.5);
+    z-index: var(--z-modal-backdrop, 1000);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.slideout-backdrop.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ============================================
+   Panel
+   ============================================ */
+
+.slideout {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    inset-inline-start: 0;                  /* default: left edge */
+    z-index: var(--z-modal, 1001);
+    display: flex;
+    flex-direction: column;
+    width: 346px;
+    max-width: 100%;
+    background-color: #ffffff;              /* background-menu (white) */
+    border-inline-end: 1px solid #d2d6db;
+    box-shadow: 0 24px 48px -12px rgba(16, 24, 40, 0.18);
+    transition: transform 0.25s ease;
+    box-sizing: border-box;
+    font-family: var(--font-family-primary);
+}
+
+/* Off-screen slide-start positions apply ONLY to the fixed (overlay)
+   panel — never the inline docs preview. Scoping with :not(--inline)
+   keeps these from overriding the inline panel's transform: none even
+   when the dir="rtl" selector has higher specificity. */
+.slideout:not(.slideout--inline) {
+    transform: translateX(-100%);
+}
+
+[dir="rtl"] .slideout:not(.slideout--inline),
+.slideout--rtl:not(.slideout--inline) {
+    transform: translateX(100%);
+}
+
+/* Anchor right */
+.slideout--right {
+    inset-inline-start: auto;
+    inset-inline-end: 0;
+    border-inline-end: 0;
+    border-inline-start: 1px solid #d2d6db;
+}
+
+.slideout--right:not(.slideout--inline) {
+    transform: translateX(100%);
+}
+
+[dir="rtl"] .slideout--right:not(.slideout--inline),
+.slideout--right.slideout--rtl:not(.slideout--inline) {
+    transform: translateX(-100%);
+}
+
+/* Open state — slide into view */
+.slideout.is-open {
+    transform: translateX(0);
+}
+
+/* Gray background variant */
+.slideout--gray {
+    background-color: #f9fafb;              /* background-neutral-50 */
+}
+
+/* When rendered inline in the docs (static showcase), neutralize the
+   fixed positioning, transform, AND z-index so the panel sits in normal
+   flow and never floats over the fixed app header. (The base .slideout
+   carries z-index: var(--z-modal) for the real overlay; inline must drop
+   out of that layer entirely.) */
+.slideout--inline {
+    position: relative;
+    inset: auto;
+    transform: none;
+    z-index: auto;
+    height: 640px;
+    border: 1px solid #d2d6db;
+    border-radius: var(--radius-md, 8px);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+/* ============================================
+   Header  (Figma 23521:31454)
+   featured icon (leading) + title/description + close (trailing)
+   ============================================ */
+
+.slideout__header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl);
+    border-bottom: 1px solid var(--color-border-secondary, #e5e7eb);
+    flex-shrink: 0;
+}
+
+.slideout__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: var(--radius-full);
+    background-color: #f3fcf6;              /* background-brand-light */
+    color: #067647;                         /* icon-success */
+    font-size: 18px;
+    line-height: 1;
+}
+
+.slideout__icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.slideout__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.slideout__title {
+    margin: 0;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;                       /* text-md/Semibold */
+    color: #161616;                         /* text-default */
+}
+
+.slideout__description {
+    margin: 0;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;                       /* text-xs/Regular */
+    color: #6c737f;                         /* text-secondary-paragraph */
+}
+
+.slideout__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border: 0;
+    background: transparent;
+    border-radius: var(--radius-sm, 4px);
+    color: #161616;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.12s ease;
+}
+
+.slideout__close:hover {
+    background-color: var(--color-gray-100, #f3f4f6);
+}
+
+.slideout__close:focus-visible {
+    outline: 2px solid var(--color-primary, #1b8354);
+    outline-offset: 2px;
+}
+
+/* ============================================
+   Body — scrollable. Hosts .menu groups/items OR a custom slot.
+   ============================================ */
+
+.slideout__body {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: var(--spacing-xl);
+}
+
+/* When the body holds a .menu, strip the popover chrome — it's already
+   inside the panel. */
+.slideout__body .menu {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+}
+
+/* Custom swap-content slot (dashed primary placeholder) */
+.slideout-custom {
+    width: 100%;
+    min-height: 200px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xl);
+    background-color: #f3fcf6;              /* background-primary-50 */
+    border: 1px dashed #1b8354;            /* border-primary */
+    border-radius: var(--radius-md, 8px);
+    color: #1b8354;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.slideout-custom__title {
+    margin: 0;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.slideout-custom__body {
+    margin: 0;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+}
+
+/* ============================================
+   Footer — action buttons
+   ============================================ */
+
+.slideout__footer {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl);
+    border-top: 1px solid var(--color-border-secondary, #e5e7eb);
+    flex-shrink: 0;
+}
+
+.slideout__footer .btn {
+    flex: 1 0 0;
+    justify-content: center;
+}
+
+/* ============================================
+   RTL Support
+   ============================================ */
+
+[dir="rtl"] .slideout,
+.slideout--rtl {
+    direction: rtl;
+    text-align: right;
+}

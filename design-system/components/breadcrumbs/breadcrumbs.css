@@ -1,78 +1,141 @@
 /* ============================================
-   COMPONENT: BREADCRUMBS
-   DGA Design System - Breadcrumb Components
+   COMPONENT: BREADCRUMB
+   DGA Design System - Breadcrumb navigation
+   Figma frames: 5698:2597 (Breadcrumb), 5698:2585 (Breadcrumb Item)
+
+   Figma tokens:
+     Link/link-neutral             #384250  (link items)
+     Global/text-default-disabled  #9da4ae  (current item)
+     Icon/icon-default-400         #9da4ae  (separator chevron)
+     Text sm/Regular               14/20/400
+     Link/link-sm-gap / spacing-xs 4
    ============================================ */
 
 .breadcrumb {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);                  /* 4 */
     font-family: var(--font-family-primary);
-    font-size: var(--font-size-sm);
-}
-
-.breadcrumb-link {
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    transition: color var(--transition-fast);
-}
-
-.breadcrumb-link:hover {
-    color: var(--color-primary);
-}
-
-.breadcrumb-separator {
-    color: var(--color-border-primary);
-    user-select: none;
-}
-
-.breadcrumb-current {
-    font-weight: var(--font-weight-medium);
-    color: var(--color-text-primary);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;                        /* text-sm/Regular */
 }
 
 /* ============================================
-   Breadcrumb Variants
+   Items
    ============================================ */
 
-/* With icons */
-.breadcrumb--with-icons .breadcrumb-link {
-    display: flex;
+.breadcrumb-item {
+    display: inline-flex;
     align-items: center;
     gap: var(--spacing-xs);
 }
 
-.breadcrumb__icon {
+/* Link (root + middle) */
+.breadcrumb-link {
+    color: #384250;                          /* link-neutral */
+    text-decoration: none;
+    border-radius: var(--radius-sm, 4px);
+    transition: color 0.12s ease;
+    cursor: pointer;
+}
+
+.breadcrumb-link:hover {
+    text-decoration: underline;
+    color: #1f2a37;
+}
+
+.breadcrumb-link:focus-visible {
+    outline: 2px solid var(--color-primary, #1b8354);
+    outline-offset: 2px;
+}
+
+/* Current (last) item — disabled gray, not interactive */
+.breadcrumb-current {
+    color: #9da4ae;                          /* text-default-disabled */
+    cursor: default;
+}
+
+/* ============================================
+   Separator chevron
+   ============================================ */
+
+.breadcrumb-separator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: #9da4ae;                          /* icon-default-400 */
+}
+
+.breadcrumb-separator svg {
     width: 16px;
     height: 16px;
 }
 
-/* Collapsed breadcrumb */
-.breadcrumb-collapsed {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    border-radius: var(--radius-sm);
-    background-color: var(--color-gray-100);
-    color: var(--color-text-secondary);
-    cursor: pointer;
+/* The chevron points toward the trailing edge; flip for RTL. */
+[dir="rtl"] .breadcrumb-separator svg,
+.breadcrumb--rtl .breadcrumb-separator svg {
+    transform: scaleX(-1);
 }
 
-.breadcrumb-collapsed:hover {
-    background-color: var(--color-primary-light);
-    color: var(--color-primary);
+/* ============================================
+   Overflow item ( ... ) + dropdown
+   ============================================ */
+
+.breadcrumb-overflow {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.breadcrumb-overflow__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 var(--spacing-xs);
+    border: 0;
+    background: transparent;
+    border-radius: var(--radius-sm, 4px);
+    color: #384250;                          /* link-neutral */
+    font: inherit;
+    cursor: pointer;
+    transition: background-color 0.12s ease;
+}
+
+.breadcrumb-overflow__toggle:hover {
+    background-color: var(--color-gray-100, #f3f4f6);
+}
+
+.breadcrumb-overflow__toggle:focus-visible {
+    outline: 2px solid var(--color-primary, #1b8354);
+    outline-offset: 2px;
+}
+
+/* The dropdown reuses the .menu component. It's hidden until opened. */
+.breadcrumb-overflow .menu {
+    position: absolute;
+    top: calc(100% + var(--spacing-xs));
+    inset-inline-start: 0;
+    z-index: var(--z-dropdown, 600);
+    display: none;
+    min-width: 200px;
+}
+
+.breadcrumb-overflow .menu.is-open {
+    display: inline-flex;
 }
 
 /* ============================================
    RTL Support
    ============================================ */
 
-[dir="rtl"] .breadcrumb {
+[dir="rtl"] .breadcrumb,
+.breadcrumb--rtl {
     direction: rtl;
-}
-
-[dir="rtl"] .breadcrumb-separator {
-    transform: scaleX(-1);
 }

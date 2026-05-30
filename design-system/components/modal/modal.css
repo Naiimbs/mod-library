@@ -1,168 +1,347 @@
 /* ============================================
    COMPONENT: MODAL
-   DGA Design System - Modal Dialog Components
+   DGA Design System - Modal Dialog
+   Figma frames: 30150:55001 (Modal), 30150:55018 (Header),
+                 30150:55083 (Body), 30150:55043 (Actions),
+                 30150:55096 (Swap placeholder)
+
+   Figma tokens:
+     Model/modal-padding                 24
+     Model/modal-gap                      8
+     Model/modal-content-bottom-padding   16
+     Radius/radius-md                     8
+     Background/background-white          #ffffff
+     Shadows/shadow-3xl  0 32 64 -12 rgba(16,24,40,0.14)
+     Text/text-display                    #1f2a37  (title)
+     Text/text-primary-paragraph          #384250  (description)
+     Icon/icon-default                    #161616  (featured + close)
+     Border/border-neutral-primary        #d2d6db
+     Button/buttons-group-gap             8
+   ============================================ */
+
+/* ============================================
+   Backdrop / overlay
    ============================================ */
 
 .modal-backdrop {
     position: fixed;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: var(--z-modal-backdrop);
+    background-color: rgba(16, 24, 40, 0.5);
+    z-index: var(--z-modal-backdrop, 1000);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: var(--spacing-xl);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-fast), visibility var(--transition-fast);
 }
 
-.modal {
-    width: 100%;
-    max-width: 400px;
-    background-color: var(--color-white);
-    border: 1px solid var(--color-border-secondary);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-2xl);
-    z-index: var(--z-modal);
+.modal-backdrop.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Position variants (Figma `position`: start | center | end) */
+.modal-backdrop--start {
+    align-items: flex-start;
+}
+
+.modal-backdrop--end {
+    align-items: flex-end;
 }
 
 /* ============================================
-   Modal Header
+   Modal container
+   ============================================ */
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);                 /* modal-gap = 8 */
+    width: 600px;
+    max-width: 100%;
+    padding: var(--spacing-3xl);            /* modal-padding = 24 */
+    background-color: #ffffff;              /* background-white */
+    border-radius: var(--radius-md, 8px);
+    box-shadow: 0 32px 64px -12px rgba(16, 24, 40, 0.14);  /* shadow-3xl */
+    box-sizing: border-box;
+}
+
+/* Mobile variant — narrower, used by the docs demo + responsive breakpoint */
+.modal--mobile {
+    width: 320px;
+}
+
+/* ============================================
+   Modal Header  (Figma 30150:55018)
+   Row: featured icon (leading) + close button (trailing).
+   The title sits beneath the icon row inside the header.
    ============================================ */
 
 .modal-header {
     display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.modal-header__top {
+    display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    padding: var(--spacing-3xl);
-    border-bottom: 1px solid var(--color-border-secondary);
+    gap: var(--spacing-md);
 }
 
-.modal-title {
-    font-family: var(--font-family-primary);
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-gray-900);
-    margin: 0;
+/* Featured icon — circular badge holding an icon glyph. Defaults to the
+   neutral outlined look; colour + variant modifiers below follow the
+   DgaFeaturedIcon spec (colors: brand/gray/error/warning/success/info ×
+   variants: light / dark / outlined). */
+.modal-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border-secondary, #e5e7eb);
+    background-color: #ffffff;
+    color: #161616;                         /* icon-default */
+    font-size: 20px;
+    line-height: 1;
+    box-sizing: border-box;
 }
 
+.modal-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* --- Featured-icon colour states ---------------------------------------
+   Each colour declares a --fi-50 (tint), --fi-600 (solid/icon) pair; the
+   variant modifiers then compose bg/border/color from those. */
+.modal-icon--brand   { --fi-50: var(--color-primary-light); --fi-600: var(--color-primary); }
+.modal-icon--gray    { --fi-50: var(--color-gray-50);       --fi-600: var(--color-gray-600); }
+.modal-icon--success { --fi-50: var(--color-success-50);    --fi-600: var(--color-success-600); }
+.modal-icon--error   { --fi-50: var(--color-error-50);      --fi-600: var(--color-error-600); }
+.modal-icon--warning { --fi-50: var(--color-warning-50);    --fi-600: var(--color-warning-600); }
+.modal-icon--info    { --fi-50: var(--color-info-50);       --fi-600: var(--color-info-600); }
+
+/* Variant: light — tinted background, coloured glyph, no border (default
+   when a colour is set without an explicit variant). */
+.modal-icon--brand,
+.modal-icon--gray,
+.modal-icon--success,
+.modal-icon--error,
+.modal-icon--warning,
+.modal-icon--info {
+    background-color: var(--fi-50);
+    border-color: transparent;
+    color: var(--fi-600);
+}
+
+/* Variant: dark — solid coloured background, white glyph. */
+.modal-icon--dark {
+    background-color: var(--fi-600);
+    border-color: transparent;
+    color: #ffffff;
+}
+
+/* Variant: outlined — white background, coloured border + glyph. */
+.modal-icon--outlined {
+    background-color: #ffffff;
+    border-color: var(--fi-600);
+    color: var(--fi-600);
+}
+
+/* Close button — X glyph at the trailing edge */
 .modal-close {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 32px;
     height: 32px;
-    border-radius: var(--radius-md);
-    color: var(--color-text-secondary);
+    margin-inline-start: auto;              /* push to trailing edge */
+    border: 0;
+    background: transparent;
+    border-radius: var(--radius-sm, 4px);
+    color: #161616;                         /* icon-default */
+    font-size: 20px;
+    line-height: 1;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: background-color var(--transition-fast);
 }
 
 .modal-close:hover {
-    background-color: var(--color-gray-100);
-    color: var(--color-text-primary);
+    background-color: var(--color-gray-100, #f3f4f6);
+}
+
+.modal-close:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.modal-close svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Title — text-lg/Semibold 18/28/600, text-display */
+.modal-title {
+    margin: 0;
+    font-family: var(--font-family-primary);
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 600;
+    color: #1f2a37;                         /* text-display */
 }
 
 /* ============================================
-   Modal Body
+   Modal Body  (Figma 30150:55083)
+   Description copy + optional swap-content slot. The body carries the
+   16px content-bottom-padding before the actions row.
    ============================================ */
 
 .modal-body {
-    padding: var(--spacing-3xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);      /* modal-content-bottom-padding = 16 */
     font-family: var(--font-family-primary);
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-md);
+}
+
+.modal-description {
+    margin: 0;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #384250;                         /* text-primary-paragraph */
+}
+
+/* Swap-content slot — dashed primary placeholder (Figma 30150:55096),
+   identical treatment to the card custom slot. */
+.modal-custom {
+    width: 100%;
+    padding: var(--spacing-xl);
+    background-color: #f3fcf6;              /* background-primary-50 */
+    border: 1px dashed #1b8354;            /* border-primary */
+    border-radius: var(--radius-md, 8px);
+    color: #1b8354;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.modal-custom__title {
+    margin: 0;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.modal-custom__body {
+    margin: var(--spacing-xs) 0 0;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
 }
 
 /* ============================================
-   Modal Footer
+   Modal Actions  (Figma 30150:55043)
+   Default: inline, aligned to the trailing edge, 8px gap.
+   --stack: vertical, full-width buttons (mobile pattern).
+   --fill: each button stretches to fill the row.
    ============================================ */
 
-.modal-footer {
+.modal-actions {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: var(--spacing-lg);
-    padding: var(--spacing-xl) var(--spacing-3xl);
-    border-top: 1px solid var(--color-border-secondary);
+    gap: var(--spacing-md);                 /* buttons-group-gap = 8 */
+    width: 100%;
 }
 
-[dir="rtl"] .modal-footer {
-    justify-content: flex-start;
+/* Split layout: when there are 3+ buttons in the default (trailing) layout,
+   the first (tertiary) button is pushed to the LEADING edge while the
+   remaining secondary + primary group stays on the trailing edge — per
+   Figma 30150:55043. */
+.modal-actions > .btn:first-child:nth-last-child(n+3) {
+    margin-inline-end: auto;
 }
 
-/* ============================================
-   Modal Sizes
-   ============================================ */
-
-.modal--sm {
-    max-width: 320px;
-}
-
-.modal--lg {
-    max-width: 560px;
-}
-
-.modal--xl {
-    max-width: 720px;
-}
-
-.modal--fullscreen {
-    max-width: none;
-    width: calc(100% - var(--spacing-4xl));
-    height: calc(100% - var(--spacing-4xl));
-    border-radius: var(--radius-md);
-}
-
-/* ============================================
-   Modal with Icon
-   ============================================ */
-
-.modal-icon {
-    display: flex;
-    align-items: center;
+/* Center align — group all buttons in the middle (Center Align=True). */
+.modal-actions--center {
     justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-full);
-    margin-bottom: var(--spacing-xl);
 }
 
-.modal-icon--success {
-    background-color: var(--color-success-50);
-    color: var(--color-success-600);
+.modal-actions--center > .btn:first-child:nth-last-child(n+3) {
+    margin-inline-end: 0;                   /* no split when centered */
 }
 
-.modal-icon--error {
-    background-color: var(--color-error-50);
-    color: var(--color-error-600);
+/* Fill container — every button stretches to share the row equally. */
+.modal-actions--fill .btn {
+    flex: 1 0 0;
+    justify-content: center;
 }
 
-.modal-icon--warning {
-    background-color: var(--color-warning-50);
-    color: var(--color-warning-600);
+/* Stacked — vertical, full-width. Primary sits on top (handled in markup). */
+.modal-actions--stack {
+    flex-direction: column;
+    align-items: stretch;
 }
 
-.modal-icon--info {
-    background-color: var(--color-info-50);
-    color: var(--color-info-600);
+.modal-actions--stack .btn {
+    width: 100%;
+    justify-content: center;
+}
+
+.modal-actions--stack > .btn:first-child:nth-last-child(n+3) {
+    margin-inline-end: 0;                   /* no split when stacked */
 }
 
 /* ============================================
-   Centered Modal Content
+   Title alignment variants
    ============================================ */
 
-.modal--centered .modal-body {
+.modal--center .modal-header {
+    align-items: center;
     text-align: center;
 }
 
-.modal--centered .modal-footer {
-    justify-content: center;
+.modal--center .modal-title {
+    text-align: center;
 }
 
 /* ============================================
    RTL Support
+   With dir="rtl" the flex axes mirror automatically; we only need to set
+   direction + text alignment. The close button uses margin-inline-start
+   so it stays on the trailing edge in both directions.
    ============================================ */
 
-[dir="rtl"] .modal {
+[dir="rtl"] .modal,
+.modal--rtl {
     direction: rtl;
+    text-align: right;
+}
+
+/* ============================================
+   Responsive — collapse to the mobile layout on small screens
+   ============================================ */
+
+@media (max-width: 480px) {
+    .modal {
+        width: 100%;
+    }
+
+    .modal-actions:not(.modal-actions--inline-keep) {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .modal-actions:not(.modal-actions--inline-keep) .btn {
+        width: 100%;
+        justify-content: center;
+    }
 }

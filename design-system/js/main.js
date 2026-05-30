@@ -73,6 +73,9 @@ class DGADesignSystem {
         // Cards
         if (componentId === 'cards' && typeof CardManager !== 'undefined') {
             this.register('cards', new CardManager());
+            if (typeof CardDemoManager !== 'undefined') {
+                this.register('cardsDemo', new CardDemoManager());
+            }
         }
 
         // Tabs
@@ -86,8 +89,13 @@ class DGADesignSystem {
         }
 
         // Pagination
-        if (componentId === 'pagination' && typeof PaginationManager !== 'undefined') {
-            this.register('pagination', new PaginationManager());
+        if (componentId === 'pagination') {
+            if (typeof PaginationManager !== 'undefined') {
+                this.register('pagination', new PaginationManager());
+            }
+            if (typeof PaginationDemoManager !== 'undefined') {
+                this.register('paginationDemo', new PaginationDemoManager());
+            }
         }
 
         // Filters
@@ -105,9 +113,13 @@ class DGADesignSystem {
             this.register('icons', new IconsShowcase());
         }
 
-        // Digital Stamp (uses its own init function)
+        // Digital Stamp (uses its own init function for static showcase
+        // stamps, plus a demo manager for the interactive live demo)
         if (componentId === 'digital-stamp' && typeof initDigitalStamps !== 'undefined') {
             initDigitalStamps();
+            if (typeof DigitalStampDemoManager !== 'undefined') {
+                this.register('digitalStampDemo', new DigitalStampDemoManager());
+            }
         }
 
         // Sidebar nav demo (for the sidebar component preview)
@@ -125,9 +137,16 @@ class DGADesignSystem {
             this.register('componentsOverview', new ComponentsOverviewManager());
         }
 
-        // Nav header demo (for the nav-header component preview)
+        // Nav header — selection + sub-menu dropdowns + live demo
         if (componentId === 'nav-header') {
-            this.initNavHeaderPreviewDemo();
+            if (typeof NavHeaderManager !== 'undefined') {
+                this.register('navHeader', new NavHeaderManager());
+            } else {
+                this.initNavHeaderPreviewDemo();
+            }
+            if (typeof NavHeaderDemoManager !== 'undefined') {
+                this.register('navHeaderDemo', new NavHeaderDemoManager());
+            }
         }
 
         // Nav Drawer
@@ -158,6 +177,56 @@ class DGADesignSystem {
         // Tables
         if (componentId === 'tables' && typeof TableDemoManager !== 'undefined') {
             this.register('tables', new TableDemoManager());
+        }
+
+        // Modal
+        if (componentId === 'modal') {
+            if (typeof ModalManager !== 'undefined') {
+                this.register('modal', new ModalManager());
+            }
+            if (typeof ModalDemoManager !== 'undefined') {
+                this.register('modalDemo', new ModalDemoManager());
+            }
+        }
+
+        // Menus
+        if (componentId === 'menus') {
+            if (typeof MenuManager !== 'undefined') {
+                this.register('menu', new MenuManager());
+            }
+            if (typeof MenuDemoManager !== 'undefined') {
+                this.register('menuDemo', new MenuDemoManager());
+            }
+        }
+
+        // Breadcrumbs
+        if (componentId === 'breadcrumbs') {
+            if (typeof BreadcrumbManager !== 'undefined') {
+                this.register('breadcrumb', new BreadcrumbManager());
+            }
+            if (typeof BreadcrumbDemoManager !== 'undefined') {
+                this.register('breadcrumbDemo', new BreadcrumbDemoManager());
+            }
+        }
+
+        // Slideout Menu
+        if (componentId === 'slideout-menu') {
+            if (typeof SlideoutManager !== 'undefined') {
+                this.register('slideout', new SlideoutManager());
+            }
+            if (typeof SlideoutDemoManager !== 'undefined') {
+                this.register('slideoutDemo', new SlideoutDemoManager());
+            }
+        }
+
+        // File Upload
+        if (componentId === 'file-upload') {
+            if (typeof FileUploadManager !== 'undefined') {
+                this.register('fileUpload', new FileUploadManager());
+            }
+            if (typeof FileUploadDemoManager !== 'undefined') {
+                this.register('fileUploadDemo', new FileUploadDemoManager());
+            }
         }
 
         // Progress Indicator

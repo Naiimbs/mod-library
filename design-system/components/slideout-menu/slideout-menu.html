@@ -1,0 +1,343 @@
+<div class="content-header">
+    <h1 class="content-title">Slideout Menu</h1>
+    <p class="content-description">A panel that slides in from the side of the screen, triggered by a button. It
+        surfaces navigation, options, or extra content without cluttering the main view. Composed of a header
+        (featured icon + title + description + close), a scrollable body (a menu-items list or a custom content slot),
+        and an actions footer. Anchors left or right, ships gray or white, and mirrors fully for RTL. Modeled on Figma
+        frames 23360:17219 (Slideout Menu) and 23521:31454 (Slideout Menu Header); the body reuses the Menu
+        component.</p>
+</div>
+
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <div class="live-demo__canvas" id="slideout-demo-preview"
+            style="padding: var(--spacing-3xl); align-items: stretch; justify-content: flex-start;">
+            <!-- Rendered dynamically -->
+        </div>
+
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Slideout</h3>
+                <p class="live-demo__sidebar-desc">Shown inline here for preview. Use the controls to switch the body,
+                    background, anchor, and direction.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="slideout-demo-body">Body</label>
+                <select class="live-demo__sidebar-select" id="slideout-demo-body">
+                    <option value="menu" selected>Menu list</option>
+                    <option value="custom">Custom content</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Gray background</label>
+                <button class="live-demo__switch" data-toggle="gray" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Anchor right</label>
+                <button class="live-demo__switch" data-toggle="right" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="live-demo__footer">
+        The preview shows the panel inline. The "Open as overlay" section below triggers the real slide-in behavior
+        with a backdrop — click outside, the close button, or press <kbd>Esc</kbd> to dismiss.
+    </div>
+</div>
+
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">Classes and JS hooks for composing and triggering a slideout.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class / Attribute</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><code>.slideout-backdrop</code></td><td>Overlay</td><td>Dimmed full-screen overlay. Add
+                        <code>.is-open</code> to show.</td></tr>
+                <tr><td><code>.slideout</code></td><td>Panel</td><td>346px side panel, fixed full-height, slides in
+                        via transform. <code>.is-open</code> reveals it.</td></tr>
+                <tr><td><code>.slideout--right</code></td><td>Modifier</td><td>Anchor the panel to the right edge
+                        (default is left / leading).</td></tr>
+                <tr><td><code>.slideout--gray</code></td><td>Modifier</td><td>Use the gray background
+                        (<code>#F9FAFB</code>) instead of white.</td></tr>
+                <tr><td><code>.slideout--inline</code></td><td>Modifier</td><td>Render the panel in normal flow
+                        (used by the docs previews) instead of fixed/sliding.</td></tr>
+                <tr><td><code>.slideout__header</code></td><td>Slot</td><td>Featured icon + title + description +
+                        close button.</td></tr>
+                <tr><td><code>.slideout__body</code></td><td>Slot</td><td>Scrollable content area. Hosts a
+                        <code>.menu</code> (groups/items) or a <code>.slideout-custom</code> slot.</td></tr>
+                <tr><td><code>.slideout__footer</code></td><td>Slot</td><td>Action buttons row (equal-width).</td>
+                </tr>
+                <tr><td><code>data-slideout-open="ID"</code></td><td>JS hook</td><td>On a trigger — opens the panel
+                        with that id over its backdrop.</td></tr>
+                <tr><td><code>data-slideout-close</code></td><td>JS hook</td><td>On any element inside the panel —
+                        closes it. Backdrop click and ESC also close.</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Section 1: Anatomy (menu body) -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Anatomy</h2>
+        <p class="showcase-description">Header (featured icon + title + description + close), a scrollable body — here
+            a grouped menu list — and an actions footer.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="slideout slideout--inline" style="width: 346px;">
+            <div class="slideout__header">
+                <span class="slideout__icon"><span class="dga-icon-add-01" aria-hidden="true"></span></span>
+                <div class="slideout__heading">
+                    <h3 class="slideout__title">Title</h3>
+                    <p class="slideout__description">Description goes here.</p>
+                </div>
+                <button type="button" class="slideout__close" aria-label="Close"><span class="dga-icon-cancel-01"
+                        aria-hidden="true"></span></button>
+            </div>
+            <div class="slideout__body">
+                <div class="menu" role="menu">
+                    <div class="menu-group">
+                        <p class="menu-group__label">Group label</p>
+                        <div class="menu-item" role="menuitem"><span class="menu-item__icon"><span
+                                    class="dga-icon-file-01" aria-hidden="true"></span></span><span
+                                class="menu-item__label">Item Label</span></div>
+                        <div class="menu-item" role="menuitem"><span class="menu-item__icon"><span
+                                    class="dga-icon-file-01" aria-hidden="true"></span></span><span
+                                class="menu-item__label">Item Label</span></div>
+                        <div class="menu-item" role="menuitem"><span class="menu-item__icon"><span
+                                    class="dga-icon-file-01" aria-hidden="true"></span></span><span
+                                class="menu-item__label">Item Label</span></div>
+                    </div>
+                    <div class="menu-group" data-menu-select>
+                        <p class="menu-group__label">Group label</p>
+                        <div class="menu-item menu-item--selected" role="menuitem"><span class="menu-item__icon"><span
+                                    class="dga-icon-file-01" aria-hidden="true"></span></span><span
+                                class="menu-item__label">Item Label</span><span class="menu-item__trail-icon"><svg
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M4 10l4 4 8-8" />
+                                </svg></span></div>
+                        <div class="menu-item" role="menuitem"><span class="menu-item__icon"><span
+                                    class="dga-icon-file-01" aria-hidden="true"></span></span><span
+                                class="menu-item__label">Item Label</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="slideout__footer">
+                <button class="btn btn-secondary-outline">Action</button>
+                <button class="btn btn-primary">Action</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 2: Background + custom body -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Backgrounds & Custom Content</h2>
+        <p class="showcase-description">Gray vs white background, and the custom-content body slot (a dashed primary
+            drop-zone for any component — a form, table, illustration, etc.).</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row" style="align-items: flex-start;">
+            <div class="slideout slideout--inline slideout--gray" style="width: 346px;">
+                <div class="slideout__header">
+                    <span class="slideout__icon"><span class="dga-icon-add-01" aria-hidden="true"></span></span>
+                    <div class="slideout__heading">
+                        <h3 class="slideout__title">Gray background</h3>
+                        <p class="slideout__description">Description goes here.</p>
+                    </div>
+                    <button type="button" class="slideout__close" aria-label="Close"><span class="dga-icon-cancel-01"
+                            aria-hidden="true"></span></button>
+                </div>
+                <div class="slideout__body">
+                    <div class="slideout-custom">
+                        <h4 class="slideout-custom__title">Swap with content component</h4>
+                        <p class="slideout-custom__body">Replace this slot with any component</p>
+                    </div>
+                </div>
+                <div class="slideout__footer">
+                    <button class="btn btn-secondary-outline">Action</button>
+                    <button class="btn btn-primary">Action</button>
+                </div>
+            </div>
+
+            <div class="slideout slideout--inline" style="width: 346px;">
+                <div class="slideout__header">
+                    <span class="slideout__icon"><span class="dga-icon-add-01" aria-hidden="true"></span></span>
+                    <div class="slideout__heading">
+                        <h3 class="slideout__title">White background</h3>
+                        <p class="slideout__description">Description goes here.</p>
+                    </div>
+                    <button type="button" class="slideout__close" aria-label="Close"><span class="dga-icon-cancel-01"
+                            aria-hidden="true"></span></button>
+                </div>
+                <div class="slideout__body">
+                    <div class="slideout-custom">
+                        <h4 class="slideout-custom__title">Swap with content component</h4>
+                        <p class="slideout-custom__body">Replace this slot with any component</p>
+                    </div>
+                </div>
+                <div class="slideout__footer">
+                    <button class="btn btn-secondary-outline">Action</button>
+                    <button class="btn btn-primary">Action</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 3: Open as overlay -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Open as Overlay</h2>
+        <p class="showcase-description">The real behavior — a trigger slides the panel in over a dimmed backdrop.
+            Use the left or right trigger; close via the X, the backdrop, or <kbd>Esc</kbd>.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row">
+            <button class="btn btn-primary" data-slideout-open="slideout-left">Open from left</button>
+            <button class="btn btn-secondary-outline" data-slideout-open="slideout-right">Open from right</button>
+        </div>
+    </div>
+</div>
+
+<!-- Overlay instances (fixed; live at page level) -->
+<div class="slideout-backdrop" data-for="slideout-left"></div>
+<div class="slideout" id="slideout-left" role="dialog" aria-modal="true" aria-label="Navigation">
+    <div class="slideout__header">
+        <span class="slideout__icon"><span class="dga-icon-add-01" aria-hidden="true"></span></span>
+        <div class="slideout__heading">
+            <h3 class="slideout__title">Navigation</h3>
+            <p class="slideout__description">Slides in from the left.</p>
+        </div>
+        <button type="button" class="slideout__close" aria-label="Close" data-slideout-close><span
+                class="dga-icon-cancel-01" aria-hidden="true"></span></button>
+    </div>
+    <div class="slideout__body">
+        <div class="menu" role="menu">
+            <div class="menu-group">
+                <p class="menu-group__label">Main</p>
+                <div class="menu-item" role="menuitem"><span class="menu-item__icon"><span class="dga-icon-home-01"
+                            aria-hidden="true"></span></span><span class="menu-item__label">Home</span></div>
+                <div class="menu-item" role="menuitem"><span class="menu-item__icon"><span class="dga-icon-folder-01"
+                            aria-hidden="true"></span></span><span class="menu-item__label">Services</span></div>
+                <div class="menu-item" role="menuitem"><span class="menu-item__icon"><span
+                            class="dga-icon-settings-01" aria-hidden="true"></span></span><span
+                        class="menu-item__label">Settings</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="slideout__footer">
+        <button class="btn btn-secondary-outline" data-slideout-close>Cancel</button>
+        <button class="btn btn-primary" data-slideout-close>Confirm</button>
+    </div>
+</div>
+
+<div class="slideout-backdrop" data-for="slideout-right"></div>
+<div class="slideout slideout--right slideout--gray" id="slideout-right" role="dialog" aria-modal="true"
+    aria-label="Filters">
+    <div class="slideout__header">
+        <span class="slideout__icon"><span class="dga-icon-add-01" aria-hidden="true"></span></span>
+        <div class="slideout__heading">
+            <h3 class="slideout__title">Filters</h3>
+            <p class="slideout__description">Slides in from the right.</p>
+        </div>
+        <button type="button" class="slideout__close" aria-label="Close" data-slideout-close><span
+                class="dga-icon-cancel-01" aria-hidden="true"></span></button>
+    </div>
+    <div class="slideout__body">
+        <div class="slideout-custom">
+            <h4 class="slideout-custom__title">Swap with content component</h4>
+            <p class="slideout-custom__body">Replace this slot with any component</p>
+        </div>
+    </div>
+    <div class="slideout__footer">
+        <button class="btn btn-secondary-outline" data-slideout-close>Reset</button>
+        <button class="btn btn-primary" data-slideout-close>Apply</button>
+    </div>
+</div>
+
+<!-- Section 4: RTL -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Support</h2>
+        <p class="showcase-description">For Arabic, the header mirrors (featured icon on the right, close on the
+            left), the menu items read right-to-left, and the panel slides from the opposite edge.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview showcase-preview--subtle" dir="rtl">
+        <div class="slideout slideout--inline slideout--rtl" dir="rtl" style="width: 346px;">
+            <div class="slideout__header">
+                <span class="slideout__icon"><span class="dga-icon-add-01" aria-hidden="true"></span></span>
+                <div class="slideout__heading">
+                    <h3 class="slideout__title">عنوان</h3>
+                    <p class="slideout__description">هنا يوضع الوصف.</p>
+                </div>
+                <button type="button" class="slideout__close" aria-label="إغلاق"><span class="dga-icon-cancel-01"
+                        aria-hidden="true"></span></button>
+            </div>
+            <div class="slideout__body">
+                <div class="menu" role="menu">
+                    <div class="menu-group" data-menu-select>
+                        <p class="menu-group__label">عنوان المجموعة</p>
+                        <div class="menu-item menu-item--selected" role="menuitem"><span class="menu-item__icon"><span
+                                    class="dga-icon-file-01" aria-hidden="true"></span></span><span
+                                class="menu-item__label">نص العنصر</span><span class="menu-item__trail-icon"><svg
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M4 10l4 4 8-8" />
+                                </svg></span></div>
+                        <div class="menu-item" role="menuitem"><span class="menu-item__icon"><span
+                                    class="dga-icon-file-01" aria-hidden="true"></span></span><span
+                                class="menu-item__label">نص العنصر</span></div>
+                        <div class="menu-item" role="menuitem"><span class="menu-item__icon"><span
+                                    class="dga-icon-file-01" aria-hidden="true"></span></span><span
+                                class="menu-item__label">نص العنصر</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="slideout__footer">
+                <button class="btn btn-secondary-outline">إجراء</button>
+                <button class="btn btn-primary">إجراء</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,91 +1,286 @@
 /* ============================================
-   COMPONENT: MENUS / DROPDOWN
-   DGA Design System - Menu Components
+   COMPONENT: MENU
+   DGA Design System - Menu (dropdown / context list)
+   Figma frames: 30195:22214 (Menu), 30195:21865 (Menu list item)
+
+   Figma tokens:
+     Background/background-menu        #ffffff
+     Border/border-neutral-primary     #d2d6db
+     Shadows/shadow-2xl  0 24 48 -12 rgba(16,24,40,0.18)
+     radius/8                          8   (menu corners)
+     Radius/radius-sm                  4   (item corners)
+     Button/button-menu-gap/h/v-pad    8
+     Text/text-display                 #1f2a37  (group label)
+     Text/text-default                 #161616  (item label)
+     Text/text-secondary-paragraph     #6c737f  (trail text)
+     Button/button-background-neutral-hovered  #f3f4f6
+     Button/button-background-neutral-pressed  #e5e7eb
+     Background/background-primary-50   #f3fcf6  (selected bg)
+     Text/text-primary                  #1b8354  (selected text/icon)
+     Border/border-black                #161616  (focus ring)
+     Controls/control-neutral-checked   #0d121c  (switch on)
    ============================================ */
 
-.dropdown-demo {
+/* ============================================
+   Menu container (popover)
+   ============================================ */
+
+.menu {
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 240px;
+    padding: var(--spacing-md);             /* 8 */
+    background-color: #ffffff;              /* background-menu */
+    border: 1px solid #d2d6db;             /* border-neutral-primary */
+    border-radius: 8px;                     /* radius/8 */
+    box-shadow: 0 24px 48px -12px rgba(16, 24, 40, 0.18);  /* shadow-2xl */
+    box-sizing: border-box;
+    font-family: var(--font-family-primary);
+}
+
+/* ============================================
+   Group — label + items, separated by dividers
+   ============================================ */
+
+.menu-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md) 0;
+}
+
+.menu-group:first-child {
+    padding-top: 0;
+}
+
+.menu-group:last-child {
+    padding-bottom: 0;
+}
+
+/* Divider between groups */
+.menu-group + .menu-group {
+    border-top: 1px solid var(--color-border-secondary, #e5e7eb);
+}
+
+.menu-divider {
+    height: 1px;
+    margin: var(--spacing-md) 0;
+    background-color: var(--color-border-secondary, #e5e7eb);
+    border: 0;
+}
+
+.menu-group__label {
+    margin: 0;
+    padding: var(--spacing-md);
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;                       /* text-xs/Bold */
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #1f2a37;                         /* text-display */
+}
+
+/* ============================================
+   Menu item
+   ============================================ */
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);                 /* button-menu-gap = 8 */
+    min-height: 40px;
+    padding: var(--spacing-md);             /* 8 */
+    border: 1px solid transparent;          /* reserve space for focus ring */
+    border-radius: var(--radius-sm, 4px);
+    background: none;
+    text-decoration: none;
+    color: #161616;                         /* text-default */
+    cursor: pointer;
+    transition: background-color 0.12s ease;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: start;
+    font: inherit;
+}
+
+/* Leading icon — 16px glyph */
+.menu-item__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: #161616;                         /* icon-default */
+    font-size: 16px;
+    line-height: 1;
+}
+
+.menu-item__icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Label — fills available space */
+.menu-item__label {
+    flex: 1 1 auto;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;                       /* text-md/Regular */
+    color: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Trailing slot — text / icon / tag / button / switch */
+.menu-item__trail {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin-inline-start: auto;
+    color: var(--color-text-secondary, #6c737f);
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.menu-item__trail--text {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-secondary, #6c737f);
+}
+
+.menu-item__trail-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    color: #161616;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.menu-item__trail-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* ============================================
+   Menu item — states
+   ============================================ */
+
+.menu-item:hover:not(.menu-item--disabled):not(.menu-item--selected) {
+    background-color: #f3f4f6;              /* button-background-neutral-hovered */
+}
+
+.menu-item:active:not(.menu-item--disabled):not(.menu-item--selected) {
+    background-color: #e5e7eb;              /* button-background-neutral-pressed */
+}
+
+.menu-item:focus-visible {
+    outline: none;
+    border-color: #161616;                  /* border-black focus ring */
+}
+
+/* Selected — green tint, primary text + icon */
+.menu-item--selected {
+    background-color: #f3fcf6;              /* background-primary-50 */
+    color: #1b8354;                         /* text-primary */
+}
+
+.menu-item--selected .menu-item__icon,
+.menu-item--selected .menu-item__trail-icon {
+    color: #1b8354;                         /* icon-primary */
+}
+
+/* Disabled */
+.menu-item--disabled {
+    color: #9da4ae;                         /* text-default-disabled */
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.menu-item--disabled .menu-item__icon,
+.menu-item--disabled .menu-item__trail,
+.menu-item--disabled .menu-item__trail-icon {
+    color: #9da4ae;                         /* icon-default-disabled */
+}
+
+/* ============================================
+   Trailing switch (toggle) — minimal control for the menu trail slot
+   ============================================ */
+
+.menu-switch {
+    position: relative;
+    width: 36px;
+    height: 20px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: var(--radius-full, 9999px);
+    background-color: var(--color-gray-300, #d2d6db);
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.15s ease;
+}
+
+.menu-switch__thumb {
+    position: absolute;
+    top: 2px;
+    inset-inline-start: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: var(--shadow-xs, 0 1px 2px rgba(16, 24, 40, 0.05));
+    transition: transform 0.15s ease;
+    pointer-events: none;
+}
+
+.menu-switch.is-on {
+    background-color: #0d121c;              /* control-neutral-checked */
+}
+
+.menu-switch.is-on .menu-switch__thumb {
+    transform: translateX(16px);
+}
+
+[dir="rtl"] .menu-switch.is-on .menu-switch__thumb {
+    transform: translateX(-16px);
+}
+
+.menu-switch:focus-visible {
+    outline: 2px solid #161616;
+    outline-offset: 2px;
+}
+
+/* ============================================
+   Dropdown trigger anchoring (for the open-on-click example)
+   ============================================ */
+
+.menu-anchor {
     position: relative;
     display: inline-block;
 }
 
-.dropdown-menu {
-    min-width: 200px;
-    background-color: var(--color-white);
-    border: 1px solid var(--color-border-secondary);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
-    padding: var(--spacing-md) 0;
+.menu-anchor .menu {
+    position: absolute;
+    top: calc(100% + var(--spacing-xs));
+    inset-inline-start: 0;
+    z-index: var(--z-dropdown, 600);
+    display: none;
 }
 
-.dropdown-item {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-lg);
-    padding: 10px var(--spacing-xl);
-    font-family: var(--font-family-primary);
-    font-size: var(--font-size-sm);
-    color: var(--color-text-primary);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    text-decoration: none;
-}
-
-.dropdown-item:hover {
-    background-color: var(--color-primary-light);
-    color: var(--color-primary);
-}
-
-.dropdown-item--danger {
-    color: var(--color-error-600);
-}
-
-.dropdown-item--danger:hover {
-    background-color: var(--color-error-50);
-    color: var(--color-error-700);
-}
-
-.dropdown-item--disabled {
-    color: var(--color-gray-400);
-    pointer-events: none;
-}
-
-.dropdown-divider {
-    height: 1px;
-    background-color: var(--color-border-secondary);
-    margin: var(--spacing-md) 0;
-}
-
-/* ============================================
-   Dropdown Item Icon
-   ============================================ */
-
-.dropdown-item__icon {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-}
-
-/* ============================================
-   Dropdown Header
-   ============================================ */
-
-.dropdown-header {
-    padding: var(--spacing-md) var(--spacing-xl);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+.menu-anchor .menu.is-open {
+    display: inline-flex;
 }
 
 /* ============================================
    RTL Support
    ============================================ */
 
-[dir="rtl"] .dropdown-menu {
+[dir="rtl"] .menu,
+.menu--rtl {
     direction: rtl;
-}
-
-[dir="rtl"] .dropdown-item {
-    flex-direction: row-reverse;
+    text-align: right;
 }

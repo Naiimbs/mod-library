@@ -1,0 +1,323 @@
+<div class="content-header">
+    <h1 class="content-title">File Upload</h1>
+    <p class="content-description">Lets users select and upload files from their device. They drop or browse to a
+        designated zone, review their selections, and watch upload progress before getting a success (or error)
+        confirmation. Supports single or multiple files, a disabled state, and full RTL. Modeled on Figma frames
+        30146:37007 (Multiple), 30146:37020 (Single), and the nested _File and _Drop Zone components.</p>
+</div>
+
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <div class="live-demo__canvas" id="file-upload-demo-preview"
+            style="padding: var(--spacing-4xl); align-items: stretch;">
+            <!-- Rendered dynamically -->
+        </div>
+
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">File Upload</h3>
+                <p class="live-demo__sidebar-desc">This demo really works — drop a file or click the browse button to
+                    add one, watch the simulated progress, then remove it.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="file-upload-demo-mode">Mode</label>
+                <select class="live-demo__sidebar-select" id="file-upload-demo-mode">
+                    <option value="multiple" selected>Multiple</option>
+                    <option value="single">Single</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Disabled</label>
+                <button class="live-demo__switch" data-toggle="disabled" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="live-demo__footer">
+        Single mode keeps only the most recent file; multiple mode appends each new selection. The disabled state
+        blocks all interaction.
+    </div>
+</div>
+
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">Classes and JS hooks for the file upload component.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class / Attribute</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><code>.file-upload</code></td><td>Container</td><td>Wraps the drop zone and the file list.
+                        Add <code>--single</code> or <code>--rtl</code>.</td></tr>
+                <tr><td><code>.file-upload__dropzone</code></td><td>Slot</td><td>The drop area with the upload icon,
+                        title, browse button, and helper text. States: <code>.is-dragover</code>,
+                        <code>.is-disabled</code>.</td></tr>
+                <tr><td><code>.file-upload__browse-btn</code></td><td>Control</td><td>The browse action — a real
+                        <code>.btn</code> (Figma _Drop Zone "Button" / action-name).</td></tr>
+                <tr><td><code>.file-upload__dz-hint</code></td><td>Slot</td><td>The helper text (Figma "Show Helper
+                        Text") — max size + supported formats.</td></tr>
+                <tr><td><code>.file-upload__input</code></td><td>Control</td><td>The visually-hidden native
+                        <code>&lt;input type="file"&gt;</code>. Set <code>multiple</code> / <code>accept</code> on
+                        it.</td></tr>
+                <tr><td><code>.file-upload__file</code></td><td>Item</td><td>A file row: type icon, name + meta,
+                        progress or status, and a remove button. States: <code>--success</code>,
+                        <code>--error</code>.</td></tr>
+                <tr><td><code>data-file-upload</code></td><td>JS hook</td><td>On the container — activates drag/drop,
+                        browse, progress, and remove. Add <code>data-multiple</code> for multi-file.</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Section 1: Drop Zone states -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Drop Zone</h2>
+        <p class="showcase-description">The entry point (Figma _Drop Zone): an upload icon, instruction, a browse
+            button, and helper text. States: default, drag-over (primary border + brand tint), and disabled.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <span class="showcase-label">Default</span>
+        <div style="width: 100%; max-width: 460px;">
+            <div class="file-upload__dropzone">
+                <span class="file-upload__dz-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 16V4M8 8l4-4 4 4" />
+                        <path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+                    </svg></span>
+                <p class="file-upload__dz-title">Drag and drop your files here</p>
+                <button type="button" class="btn btn-secondary-outline file-upload__browse-btn">Browse files</button>
+                <p class="file-upload__dz-hint">Maximum file size allowed is 2MB, supported file formats include .jpg,
+                    .png, and .pdf.</p>
+            </div>
+        </div>
+        <span class="showcase-label">Drag-over</span>
+        <div style="width: 100%; max-width: 460px;">
+            <div class="file-upload__dropzone is-dragover">
+                <span class="file-upload__dz-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 16V4M8 8l4-4 4 4" />
+                        <path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+                    </svg></span>
+                <p class="file-upload__dz-title">Drag and drop your files here</p>
+                <button type="button" class="btn btn-secondary-outline file-upload__browse-btn">Browse files</button>
+                <p class="file-upload__dz-hint">Maximum file size allowed is 2MB, supported file formats include .jpg,
+                    .png, and .pdf.</p>
+            </div>
+        </div>
+        <span class="showcase-label">Disabled</span>
+        <div style="width: 100%; max-width: 460px;">
+            <div class="file-upload__dropzone is-disabled">
+                <span class="file-upload__dz-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 16V4M8 8l4-4 4 4" />
+                        <path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+                    </svg></span>
+                <p class="file-upload__dz-title">Drag and drop your files here</p>
+                <button type="button" class="btn btn-secondary-outline file-upload__browse-btn" disabled>Browse
+                    files</button>
+                <p class="file-upload__dz-hint">Maximum file size allowed is 2MB, supported file formats include .jpg,
+                    .png, and .pdf.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 2: File item states -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">File Item</h2>
+        <p class="showcase-description">A selected file (Figma _File) across its lifecycle: uploading (progress bar),
+            uploaded/success (green check), and error.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="file-upload__list" style="max-width: 460px; width: 100%;">
+            <div class="file-upload__file">
+                <span class="file-upload__file-icon"><span class="dga-icon-file-02" aria-hidden="true"></span></span>
+                <div class="file-upload__file-body">
+                    <span class="file-upload__file-name">File-name.csv</span>
+                    <span class="file-upload__file-meta">1.2 MB</span>
+                    <div class="file-upload__progress">
+                        <span class="file-upload__progress-track"><span class="file-upload__progress-fill"
+                                style="width: 64%;"></span></span>
+                        <span class="file-upload__progress-value">64%</span>
+                    </div>
+                </div>
+                <button type="button" class="file-upload__file-action" aria-label="Remove"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 6l12 12M18 6L6 18" />
+                    </svg></button>
+            </div>
+
+            <div class="file-upload__file file-upload__file--success">
+                <span class="file-upload__file-icon"><span class="dga-icon-file-02" aria-hidden="true"></span></span>
+                <div class="file-upload__file-body">
+                    <span class="file-upload__file-name">File-name.csv</span>
+                    <span class="file-upload__file-meta">1.2 MB • Uploaded</span>
+                </div>
+                <span class="file-upload__status" style="color: var(--color-success-700, #067647);"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M8.5 12.5l2.5 2.5 4.5-5" />
+                    </svg></span>
+                <button type="button" class="file-upload__file-action" aria-label="Remove"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 6l12 12M18 6L6 18" />
+                    </svg></button>
+            </div>
+
+            <div class="file-upload__file file-upload__file--error">
+                <span class="file-upload__file-icon"><span class="dga-icon-file-02" aria-hidden="true"></span></span>
+                <div class="file-upload__file-body">
+                    <span class="file-upload__file-name">File-name.csv</span>
+                    <span class="file-upload__file-meta">Upload failed — file exceeds 2 MB</span>
+                </div>
+                <button type="button" class="file-upload__file-action" aria-label="Remove"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 6l12 12M18 6L6 18" />
+                    </svg></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 3: Single -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Single File</h2>
+        <p class="showcase-description">Single mode (Figma 30146:37020) keeps only one file — a new selection replaces
+            the previous. This example is live; try it.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="file-upload file-upload--single" data-file-upload style="max-width: 460px;">
+            <div class="file-upload__dropzone" tabindex="0" role="button">
+                <span class="file-upload__dz-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 16V4M8 8l4-4 4 4" />
+                        <path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+                    </svg></span>
+                <p class="file-upload__dz-title">Drag and drop a file here</p>
+                <button type="button" class="btn btn-secondary-outline file-upload__browse-btn">Browse files</button>
+                <p class="file-upload__dz-hint">Maximum file size allowed is 2MB, supported file formats include .jpg,
+                    .png, and .pdf.</p>
+                <input type="file" class="file-upload__input" accept=".png,.jpg,.jpeg,.pdf" aria-label="Upload file">
+            </div>
+            <div class="file-upload__list"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 4: Multiple -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Multiple Files</h2>
+        <p class="showcase-description">Multiple mode (Figma 30146:37007) appends each selection to a growing list.
+            This example is live — drop several files.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="file-upload" data-file-upload data-multiple style="max-width: 460px;">
+            <div class="file-upload__dropzone" tabindex="0" role="button">
+                <span class="file-upload__dz-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 16V4M8 8l4-4 4 4" />
+                        <path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+                    </svg></span>
+                <p class="file-upload__dz-title">Drag and drop your files here</p>
+                <button type="button" class="btn btn-secondary-outline file-upload__browse-btn">Browse files</button>
+                <p class="file-upload__dz-hint">Maximum file size allowed is 2MB, supported file formats include .jpg,
+                    .png, and .pdf.</p>
+                <input type="file" class="file-upload__input" multiple accept=".png,.jpg,.jpeg,.pdf"
+                    aria-label="Upload files">
+            </div>
+            <div class="file-upload__list"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 5: RTL -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Support</h2>
+        <p class="showcase-description">For Arabic, the drop zone text aligns right and the file rows mirror — the
+            type icon moves to the right, the remove control to the left.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview showcase-preview--subtle" dir="rtl">
+        <div class="file-upload file-upload--rtl" dir="rtl" style="max-width: 460px;">
+            <div class="file-upload__dropzone">
+                <span class="file-upload__dz-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 16V4M8 8l4-4 4 4" />
+                        <path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+                    </svg></span>
+                <p class="file-upload__dz-title">اسحب وأفلت ملفاتك هنا</p>
+                <button type="button" class="btn btn-secondary-outline file-upload__browse-btn">تصفّح الملفات</button>
+                <p class="file-upload__dz-hint">الحد الأقصى لحجم الملف 2 ميجابايت، الصيغ المدعومة: ‎.jpg‎ و‎.png‎
+                    و‎.pdf‎.</p>
+            </div>
+            <div class="file-upload__list">
+                <div class="file-upload__file file-upload__file--success">
+                    <span class="file-upload__file-icon"><span class="dga-icon-file-02"
+                            aria-hidden="true"></span></span>
+                    <div class="file-upload__file-body">
+                        <span class="file-upload__file-name">اسم-الملف.csv</span>
+                        <span class="file-upload__file-meta">1.2 ميجابايت • تم الرفع</span>
+                    </div>
+                    <span class="file-upload__status" style="color: var(--color-success-700, #067647);"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="9" />
+                            <path d="M8.5 12.5l2.5 2.5 4.5-5" />
+                        </svg></span>
+                    <button type="button" class="file-upload__file-action" aria-label="إزالة"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 6l12 12M18 6L6 18" />
+                        </svg></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

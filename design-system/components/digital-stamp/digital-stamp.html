@@ -1,126 +1,149 @@
-<div class="content-header">
+﻿<div class="content-header">
     <h1 class="content-title">Digital Stamp</h1>
-    <p class="content-description">The Digital Stamp Component ensures users are interacting with a verified and secure source, confirming the integrity and authenticity of government sites. Figma Node: 17274-104</p>
+    <p class="content-description">A trust indicator that confirms users are interacting with a verified and secure
+        Saudi government source. The component renders as a thin notification bar across the top of a page; tapping
+        "How you know?" expands it to show verification cards (URL extension + HTTPS) and the DGA registration
+        record. Modeled on Figma frames 17504:520 (main) and 25079:5361 (extension variants).</p>
 </div>
 
-<!-- Desktop Collapsed -->
-<div class="component-preview">
-    <div class="component-preview-title">Desktop - Collapsed (LTR)</div>
-    <div class="digital-stamp">
-        <div class="digital-stamp__content">
-            <div class="digital-stamp__flag" style="background-color: #006923;">
-                <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="14" height="10" fill="#006923"/>
-                    <path d="M3 3h8v1H3V3zm0 2h6v1H3V5zm2 2h4v1H5V7z" fill="white"/>
-                </svg>
-            </div>
-            <p class="digital-stamp__text">A government website registered with the Digital Government Authority.</p>
-            <button class="digital-stamp__toggle">
-                <span>How you know?</span>
-                <span class="digital-stamp__toggle-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-            </button>
-        </div>
-    </div>
-</div>
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
 
-<!-- Desktop Opened -->
-<div class="component-preview">
-    <div class="component-preview-title">Desktop - Opened (.gov.sa)</div>
-    <div class="digital-stamp digital-stamp--opened">
-        <div class="digital-stamp__content">
-            <div class="digital-stamp__flag" style="background-color: #006923;">
-                <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="14" height="10" fill="#006923"/>
-                    <path d="M3 3h8v1H3V3zm0 2h6v1H3V5zm2 2h4v1H5V7z" fill="white"/>
-                </svg>
-            </div>
-            <p class="digital-stamp__text">A government website registered with the Digital Government Authority.</p>
-            <button class="digital-stamp__toggle">
-                <span>How you know?</span>
-                <span class="digital-stamp__toggle-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-            </button>
+<div class="live-demo">
+    <div class="live-demo__body">
+        <div class="live-demo__canvas" id="ds-demo-preview"
+            style="align-items: stretch; padding: var(--spacing-3xl);">
+            <!-- Rendered dynamically -->
         </div>
 
-        <div class="digital-stamp__extension">
-            <div class="digital-stamp__verification-card">
-                <div class="digital-stamp__verification-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M13.213 9.787a3.391 3.391 0 0 0-4.795 0l-3.425 3.426a3.39 3.39 0 0 0 4.795 4.794l.321-.304" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M10.787 14.213a3.39 3.39 0 0 0 4.795 0l3.425-3.426a3.39 3.39 0 0 0-4.795-4.794l-.321.304" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div class="digital-stamp__verification-text">
-                    <p class="digital-stamp__verification-title">
-                        Official Saudi Government websites URL ends with <span class="highlight">.gov.sa</span>
-                    </p>
-                    <p class="digital-stamp__verification-description">
-                        Website belongs to an official government organization in the Kingdom of Saudi Arabia always ends with .gov.sa.
-                    </p>
-                </div>
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Digital Stamp</h3>
+                <p class="live-demo__sidebar-desc">The stamp ships in two device layouts (desktop bar / mobile bar)
+                    and six URL-extension variants. Toggle Opened to reveal the verification cards and the DGA
+                    registration record.</p>
             </div>
-            <div class="digital-stamp__verification-card">
-                <div class="digital-stamp__verification-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div class="digital-stamp__verification-text">
-                    <p class="digital-stamp__verification-title">
-                        Official Secure websites use <span class="highlight">HTTPS</span>
-                    </p>
-                    <p class="digital-stamp__verification-description">
-                        Ensure the website is using the HTTPS protocol.
-                    </p>
-                </div>
-            </div>
-        </div>
 
-        <div class="digital-stamp__registration">
-            <div class="digital-stamp__registration-content">
-                <div class="digital-stamp__dga-logo">
-                    <svg viewBox="0 0 21 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10.5 0L0 5.5v10c0 8.5 10.5 15.5 10.5 15.5S21 24 21 15.5v-10L10.5 0z" fill="#1b8354"/>
-                        <path d="M10.5 3L3 7v8c0 6 7.5 11 7.5 11S18 21 18 15V7l-7.5-4z" fill="white"/>
-                    </svg>
-                </div>
-                <div class="digital-stamp__registration-text">
-                    <p class="digital-stamp__registration-label">Registered on Digital Government Authority:</p>
-                    <a href="#" class="digital-stamp__registration-link">20230103200</a>
-                </div>
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="ds-demo-device">Device</label>
+                <select class="live-demo__sidebar-select" id="ds-demo-device">
+                    <option value="desktop" selected>Desktop</option>
+                    <option value="mobile">Mobile</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Opened</label>
+                <button class="live-demo__switch" data-toggle="opened" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="ds-demo-extension">Extension</label>
+                <select class="live-demo__sidebar-select" id="ds-demo-extension">
+                    <option value=".gov.sa" selected>.gov.sa</option>
+                    <option value=".edu.sa">.edu.sa</option>
+                    <option value=".med.sa">.med.sa</option>
+                    <option value=".org.sa">.org.sa</option>
+                    <option value=".sch.sa">.sch.sa</option>
+                    <option value=".sa">.sa</option>
+                </select>
             </div>
         </div>
     </div>
+
+    <div class="live-demo__footer">
+        Click the stamp's <strong>How you know?</strong> button (or the Opened toggle) to switch between the
+        collapsed and expanded views. The Extension select swaps the URL-extension verification card content per
+        Figma frame 25079:5361.
+    </div>
 </div>
 
-<!-- Mobile Collapsed -->
-<div class="component-preview">
-    <div class="component-preview-title">Mobile - Collapsed (LTR)</div>
-    <div style="max-width: 390px; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-        <div class="digital-stamp digital-stamp--mobile">
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">All available CSS classes and the high-level slots that compose a stamp.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><code>.digital-stamp</code></td><td>Required</td><td>Base container. Holds the collapsed bar
+                        and (when opened) the verification cards + registration card.</td></tr>
+                <tr><td><code>.digital-stamp--opened</code></td><td>State</td><td>Expands the stamp to show the
+                        extension and registration sections.</td></tr>
+                <tr><td><code>.digital-stamp--mobile</code></td><td>Modifier</td><td>Switches the bar to the compact
+                        mobile layout where the toggle button drops below the flag + text row.</td></tr>
+                <tr><td><code>.digital-stamp--rtl</code></td><td>Modifier</td><td>Right-to-left layout. Equivalent to
+                        setting <code>dir="rtl"</code> on the element.</td></tr>
+                <tr><td><code>.digital-stamp__content</code></td><td>Slot</td><td>The collapsed-state bar:
+                        <code>.digital-stamp__flag</code>, <code>.digital-stamp__text</code>, and
+                        <code>.digital-stamp__toggle</code>.</td></tr>
+                <tr><td><code>.digital-stamp__flag</code></td><td>Slot</td><td>Small Saudi flag indicator at the
+                        leading edge of the bar.</td></tr>
+                <tr><td><code>.digital-stamp__text</code></td><td>Slot</td><td>The short attestation sentence.</td>
+                </tr>
+                <tr><td><code>.digital-stamp__toggle</code></td><td>Slot</td><td>The "How you know?" link button with
+                        chevron. Rotates 180° when opened via the existing
+                        <code>.digital-stamp__toggle-icon</code> rule.</td></tr>
+                <tr><td><code>.digital-stamp__extension</code></td><td>Slot</td><td>Container for the two
+                        verification cards. Only visible when <code>.digital-stamp--opened</code> is present.</td>
+                </tr>
+                <tr><td><code>.digital-stamp__verification-card</code></td><td>Slot</td><td>A single icon + title +
+                        description verification card (used twice in the extension section).</td></tr>
+                <tr><td><code>.digital-stamp__registration</code></td><td>Slot</td><td>The DGA registration row at
+                        the bottom of the opened stamp.</td></tr>
+                <tr><td><code>data-card-expandable</code></td><td>JS hook</td><td>Not required — stamps register
+                        automatically via <code>initDigitalStamps()</code> on the <code>.digital-stamp</code>
+                        selector.</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Section 1: Anatomy -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Anatomy</h2>
+        <p class="showcase-description">The collapsed bar has three parts: the Saudi flag indicator, the attestation
+            text, and the "How you know?" toggle. Tapping the toggle reveals two verification cards (URL extension
+            and HTTPS) and the DGA registration record.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <span class="showcase-label">Collapsed</span>
+        <div class="digital-stamp">
             <div class="digital-stamp__content">
-                <div class="digital-stamp__content">
-                    <div class="digital-stamp__flag" style="background-color: #006923;">
-                        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="14" height="10" fill="#006923"/>
-                            <path d="M3 3h8v1H3V3zm0 2h6v1H3V5zm2 2h4v1H5V7z" fill="white"/>
-                        </svg>
-                    </div>
-                    <p class="digital-stamp__text">A government website registered with the Digital Government Authority.</p>
+                <div class="digital-stamp__flag" style="background-color: #006923;">
+                    <span class="dga-icon-flag-01" aria-hidden="true"></span>
                 </div>
-                <button class="digital-stamp__toggle">
+                <p class="digital-stamp__text">A government website registered with the Digital Government Authority.
+                </p>
+                <button type="button" class="digital-stamp__toggle">
                     <span>How you know?</span>
                     <span class="digital-stamp__toggle-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                        <span class="dga-icon-arrow-down-01" aria-hidden="true"></span>
                     </span>
                 </button>
             </div>
@@ -128,27 +151,27 @@
     </div>
 </div>
 
-<!-- Mobile Opened -->
-<div class="component-preview">
-    <div class="component-preview-title">Mobile - Opened (.gov.sa)</div>
-    <div style="max-width: 390px; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-        <div class="digital-stamp digital-stamp--mobile digital-stamp--opened">
+<!-- Section 2: Opened state -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Opened State</h2>
+        <p class="showcase-description">Click the toggle below to expand the stamp. The opened state reveals two
+            verification cards side-by-side (URL extension and HTTPS) and a registration row with the DGA logo and a
+            link to the registration record. The chevron rotates 180°.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="digital-stamp digital-stamp--opened">
             <div class="digital-stamp__content">
-                <div class="digital-stamp__content">
-                    <div class="digital-stamp__flag" style="background-color: #006923;">
-                        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="14" height="10" fill="#006923"/>
-                            <path d="M3 3h8v1H3V3zm0 2h6v1H3V5zm2 2h4v1H5V7z" fill="white"/>
-                        </svg>
-                    </div>
-                    <p class="digital-stamp__text">A government website registered with the Digital Government Authority.</p>
+                <div class="digital-stamp__flag" style="background-color: #006923;">
+                    <span class="dga-icon-flag-01" aria-hidden="true"></span>
                 </div>
-                <button class="digital-stamp__toggle">
+                <p class="digital-stamp__text">A government website registered with the Digital Government Authority.
+                </p>
+                <button type="button" class="digital-stamp__toggle" aria-expanded="true">
                     <span>How you know?</span>
                     <span class="digital-stamp__toggle-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                        <span class="dga-icon-arrow-down-01" aria-hidden="true"></span>
                     </span>
                 </button>
             </div>
@@ -156,33 +179,24 @@
             <div class="digital-stamp__extension">
                 <div class="digital-stamp__verification-card">
                     <div class="digital-stamp__verification-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M13.213 9.787a3.391 3.391 0 0 0-4.795 0l-3.425 3.426a3.39 3.39 0 0 0 4.795 4.794l.321-.304" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M10.787 14.213a3.39 3.39 0 0 0 4.795 0l3.425-3.426a3.39 3.39 0 0 0-4.795-4.794l-.321.304" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                        <span class="dga-icon-link-01" aria-hidden="true"></span>
                     </div>
                     <div class="digital-stamp__verification-text">
-                        <p class="digital-stamp__verification-title">
-                            Official Saudi Government websites URL ends with <span class="highlight">.gov.sa</span>
-                        </p>
-                        <p class="digital-stamp__verification-description">
-                            Website belongs to an official government organization in the Kingdom of Saudi Arabia always ends with .gov.sa.
-                        </p>
+                        <p class="digital-stamp__verification-title">Official Saudi Government websites URL ends with
+                            <span class="highlight">.gov.sa</span></p>
+                        <p class="digital-stamp__verification-description">Website belongs to an official government
+                            organization in the Kingdom of Saudi Arabia always ends with .gov.sa.</p>
                     </div>
                 </div>
                 <div class="digital-stamp__verification-card">
                     <div class="digital-stamp__verification-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                        <span class="dga-icon-security-check" aria-hidden="true"></span>
                     </div>
                     <div class="digital-stamp__verification-text">
-                        <p class="digital-stamp__verification-title">
-                            Official Secure websites use <span class="highlight">HTTPS</span>
-                        </p>
-                        <p class="digital-stamp__verification-description">
-                            Ensure the website is using the HTTPS protocol.
-                        </p>
+                        <p class="digital-stamp__verification-title">Official Secure websites use <span
+                                class="highlight">HTTPS</span></p>
+                        <p class="digital-stamp__verification-description">Ensure the website is using the HTTPS
+                            protocol.</p>
                     </div>
                 </div>
             </div>
@@ -190,10 +204,7 @@
             <div class="digital-stamp__registration">
                 <div class="digital-stamp__registration-content">
                     <div class="digital-stamp__dga-logo">
-                        <svg viewBox="0 0 21 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.5 0L0 5.5v10c0 8.5 10.5 15.5 10.5 15.5S21 24 21 15.5v-10L10.5 0z" fill="#1b8354"/>
-                            <path d="M10.5 3L3 7v8c0 6 7.5 11 7.5 11S18 21 18 15V7l-7.5-4z" fill="white"/>
-                        </svg>
+                        <span class="dga-icon-checkmark-badge-01" aria-hidden="true"></span>
                     </div>
                     <div class="digital-stamp__registration-text">
                         <p class="digital-stamp__registration-label">Registered on Digital Government Authority:</p>
@@ -205,97 +216,403 @@
     </div>
 </div>
 
-<!-- RTL Desktop Collapsed -->
-<div class="component-preview">
-    <div class="component-preview-title">Desktop - Collapsed (RTL)</div>
-    <div class="digital-stamp digital-stamp--rtl" dir="rtl">
-        <div class="digital-stamp__content">
-            <div class="digital-stamp__flag" style="background-color: #006923;">
-                <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="14" height="10" fill="#006923"/>
-                    <path d="M3 3h8v1H3V3zm0 2h6v1H3V5zm2 2h4v1H5V7z" fill="white"/>
-                </svg>
+<!-- Section 3: Extension variants -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">URL Extensions</h2>
+        <p class="showcase-description">Six extension variants per Figma frame 25079:5361. Each variant changes the
+            URL-extension card's title, description, and the highlighted suffix. The HTTPS card and registration row
+            stay the same.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch; gap: var(--spacing-3xl);">
+        <span class="showcase-label">.gov.sa — Government</span>
+        <div class="digital-stamp digital-stamp--opened">
+            <div class="digital-stamp__content">
+                <div class="digital-stamp__flag" style="background-color: #006923;">
+                    <span class="dga-icon-flag-01" aria-hidden="true"></span>
+                </div>
+                <p class="digital-stamp__text">A government website registered with the Digital Government Authority.
+                </p>
+                <button type="button" class="digital-stamp__toggle" aria-expanded="true"><span>How you
+                        know?</span><span class="digital-stamp__toggle-icon">
+                        <span class="dga-icon-arrow-down-01" aria-hidden="true"></span>
+                    </span></button>
             </div>
-            <p class="digital-stamp__text">موقع حكومي مسجل لدى هيئة الحكومة الرقمية.</p>
-            <button class="digital-stamp__toggle">
-                <span>كيف تتحقق؟</span>
-                <span class="digital-stamp__toggle-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-            </button>
+            <div class="digital-stamp__extension">
+                <div class="digital-stamp__verification-card">
+                    <div class="digital-stamp__verification-icon">
+                        <span class="dga-icon-link-01" aria-hidden="true"></span>
+                    </div>
+                    <div class="digital-stamp__verification-text">
+                        <p class="digital-stamp__verification-title">Official Saudi Government websites URL ends with
+                            <span class="highlight">.gov.sa</span></p>
+                        <p class="digital-stamp__verification-description">Website belongs to an official government
+                            organization in the Kingdom of Saudi Arabia always ends with .gov.sa.</p>
+                    </div>
+                </div>
+                <div class="digital-stamp__verification-card">
+                    <div class="digital-stamp__verification-icon">
+                        <span class="dga-icon-security-check" aria-hidden="true"></span>
+                    </div>
+                    <div class="digital-stamp__verification-text">
+                        <p class="digital-stamp__verification-title">Official Secure websites use <span
+                                class="highlight">HTTPS</span></p>
+                        <p class="digital-stamp__verification-description">Ensure the website is using the HTTPS
+                            protocol.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="digital-stamp__registration">
+                <div class="digital-stamp__registration-content">
+                    <div class="digital-stamp__dga-logo">
+                        <span class="dga-icon-checkmark-badge-01" aria-hidden="true"></span>
+                    </div>
+                    <div class="digital-stamp__registration-text">
+                        <p class="digital-stamp__registration-label">Registered on Digital Government Authority:</p>
+                        <a href="#" class="digital-stamp__registration-link">20230103200</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span class="showcase-label">.edu.sa — Educational</span>
+        <div class="digital-stamp digital-stamp--opened">
+            <div class="digital-stamp__content">
+                <div class="digital-stamp__flag" style="background-color: #006923;">
+                    <span class="dga-icon-flag-01" aria-hidden="true"></span>
+                </div>
+                <p class="digital-stamp__text">A government website registered with the Digital Government Authority.
+                </p>
+                <button type="button" class="digital-stamp__toggle" aria-expanded="true"><span>How you
+                        know?</span><span class="digital-stamp__toggle-icon">
+                        <span class="dga-icon-arrow-down-01" aria-hidden="true"></span>
+                    </span></button>
+            </div>
+            <div class="digital-stamp__extension">
+                <div class="digital-stamp__verification-card">
+                    <div class="digital-stamp__verification-icon">
+                        <span class="dga-icon-link-01" aria-hidden="true"></span>
+                    </div>
+                    <div class="digital-stamp__verification-text">
+                        <p class="digital-stamp__verification-title">Official Saudi educational websites URL ends
+                            with <span class="highlight">.edu.sa</span></p>
+                        <p class="digital-stamp__verification-description">Website belongs to an official educational
+                            organization in the Kingdom of Saudi Arabia always ends with .edu.sa.</p>
+                    </div>
+                </div>
+                <div class="digital-stamp__verification-card">
+                    <div class="digital-stamp__verification-icon">
+                        <span class="dga-icon-security-check" aria-hidden="true"></span>
+                    </div>
+                    <div class="digital-stamp__verification-text">
+                        <p class="digital-stamp__verification-title">Official Secure websites use <span
+                                class="highlight">HTTPS</span></p>
+                        <p class="digital-stamp__verification-description">Ensure the website is using the HTTPS
+                            protocol.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span class="showcase-label">.med.sa — Medical</span>
+        <div class="digital-stamp digital-stamp--opened">
+            <div class="digital-stamp__content">
+                <div class="digital-stamp__flag" style="background-color: #006923;">
+                    <span class="dga-icon-flag-01" aria-hidden="true"></span>
+                </div>
+                <p class="digital-stamp__text">A government website registered with the Digital Government Authority.
+                </p>
+                <button type="button" class="digital-stamp__toggle" aria-expanded="true"><span>How you
+                        know?</span><span class="digital-stamp__toggle-icon">
+                        <span class="dga-icon-arrow-down-01" aria-hidden="true"></span>
+                    </span></button>
+            </div>
+            <div class="digital-stamp__extension">
+                <div class="digital-stamp__verification-card">
+                    <div class="digital-stamp__verification-icon">
+                        <span class="dga-icon-link-01" aria-hidden="true"></span>
+                    </div>
+                    <div class="digital-stamp__verification-text">
+                        <p class="digital-stamp__verification-title">Official Saudi medical websites URL ends with
+                            <span class="highlight">.med.sa</span></p>
+                        <p class="digital-stamp__verification-description">Website belongs to an official medical
+                            organization in the Kingdom of Saudi Arabia always ends with .med.sa.</p>
+                    </div>
+                </div>
+                <div class="digital-stamp__verification-card">
+                    <div class="digital-stamp__verification-icon">
+                        <span class="dga-icon-security-check" aria-hidden="true"></span>
+                    </div>
+                    <div class="digital-stamp__verification-text">
+                        <p class="digital-stamp__verification-title">Official Secure websites use <span
+                                class="highlight">HTTPS</span></p>
+                        <p class="digital-stamp__verification-description">Ensure the website is using the HTTPS
+                            protocol.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span class="showcase-label">.org.sa — Non-profit / NGO</span>
+        <div class="digital-stamp digital-stamp--opened">
+            <div class="digital-stamp__content">
+                <div class="digital-stamp__flag" style="background-color: #006923;">
+                    <span class="dga-icon-flag-01" aria-hidden="true"></span>
+                </div>
+                <p class="digital-stamp__text">A government website registered with the Digital Government Authority.
+                </p>
+                <button type="button" class="digital-stamp__toggle" aria-expanded="true"><span>How you
+                        know?</span><span class="digital-stamp__toggle-icon">
+                        <span class="dga-icon-arrow-down-01" aria-hidden="true"></span>
+                    </span></button>
+            </div>
+            <div class="digital-stamp__extension">
+                <div class="digital-stamp__verification-card">
+                    <div class="digital-stamp__verification-icon">
+                        <span class="dga-icon-link-01" aria-hidden="true"></span>
+                    </div>
+                    <div class="digital-stamp__verification-text">
+                        <p class="digital-stamp__verification-title">Official Saudi non-profit organizations websites
+                            URL ends with <span class="highlight">.org.sa</span></p>
+                        <p class="digital-stamp__verification-description">Website belongs to an official non-profit
+                            organization in the Kingdom of Saudi Arabia always ends with .org.sa.</p>
+                    </div>
+                </div>
+                <div class="digital-stamp__verification-card">
+                    <div class="digital-stamp__verification-icon">
+                        <span class="dga-icon-security-check" aria-hidden="true"></span>
+                    </div>
+                    <div class="digital-stamp__verification-text">
+                        <p class="digital-stamp__verification-title">Official Secure websites use <span
+                                class="highlight">HTTPS</span></p>
+                        <p class="digital-stamp__verification-description">Ensure the website is using the HTTPS
+                            protocol.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span class="showcase-label">.sch.sa — Schools</span>
+        <div class="digital-stamp digital-stamp--opened">
+            <div class="digital-stamp__content">
+                <div class="digital-stamp__flag" style="background-color: #006923;">
+                    <span class="dga-icon-flag-01" aria-hidden="true"></span>
+                </div>
+                <p class="digital-stamp__text">A government website registered with the Digital Government Authority.
+                </p>
+                <button type="button" class="digital-stamp__toggle" aria-expanded="true"><span>How you
+                        know?</span><span class="digital-stamp__toggle-icon">
+                        <span class="dga-icon-arrow-down-01" aria-hidden="true"></span>
+                    </span></button>
+            </div>
+            <div class="digital-stamp__extension">
+                <div class="digital-stamp__verification-card">
+                    <div class="digital-stamp__verification-icon">
+                        <span class="dga-icon-link-01" aria-hidden="true"></span>
+                    </div>
+                    <div class="digital-stamp__verification-text">
+                        <p class="digital-stamp__verification-title">Official Saudi school websites URL ends with
+                            <span class="highlight">.sch.sa</span></p>
+                        <p class="digital-stamp__verification-description">Website belongs to an official school in
+                            the Kingdom of Saudi Arabia always ends with .sch.sa.</p>
+                    </div>
+                </div>
+                <div class="digital-stamp__verification-card">
+                    <div class="digital-stamp__verification-icon">
+                        <span class="dga-icon-security-check" aria-hidden="true"></span>
+                    </div>
+                    <div class="digital-stamp__verification-text">
+                        <p class="digital-stamp__verification-title">Official Secure websites use <span
+                                class="highlight">HTTPS</span></p>
+                        <p class="digital-stamp__verification-description">Ensure the website is using the HTTPS
+                            protocol.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span class="showcase-label">.sa — Authorities & initiatives</span>
+        <div class="digital-stamp digital-stamp--opened">
+            <div class="digital-stamp__content">
+                <div class="digital-stamp__flag" style="background-color: #006923;">
+                    <span class="dga-icon-flag-01" aria-hidden="true"></span>
+                </div>
+                <p class="digital-stamp__text">A government website registered with the Digital Government Authority.
+                </p>
+                <button type="button" class="digital-stamp__toggle" aria-expanded="true"><span>How you
+                        know?</span><span class="digital-stamp__toggle-icon">
+                        <span class="dga-icon-arrow-down-01" aria-hidden="true"></span>
+                    </span></button>
+            </div>
+            <div class="digital-stamp__extension">
+                <div class="digital-stamp__verification-card">
+                    <div class="digital-stamp__verification-icon">
+                        <span class="dga-icon-link-01" aria-hidden="true"></span>
+                    </div>
+                    <div class="digital-stamp__verification-text">
+                        <p class="digital-stamp__verification-title">Official Saudi authorities and initiatives
+                            websites URL ends with <span class="highlight">.sa</span></p>
+                        <p class="digital-stamp__verification-description">Website belongs to an official Saudi
+                            authority or initiative in the Kingdom of Saudi Arabia always ends with .sa.</p>
+                    </div>
+                </div>
+                <div class="digital-stamp__verification-card">
+                    <div class="digital-stamp__verification-icon">
+                        <span class="dga-icon-security-check" aria-hidden="true"></span>
+                    </div>
+                    <div class="digital-stamp__verification-text">
+                        <p class="digital-stamp__verification-title">Official Secure websites use <span
+                                class="highlight">HTTPS</span></p>
+                        <p class="digital-stamp__verification-description">Ensure the website is using the HTTPS
+                            protocol.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- RTL Desktop Opened -->
-<div class="component-preview">
-    <div class="component-preview-title">Desktop - Opened (RTL, .gov.sa)</div>
-    <div class="digital-stamp digital-stamp--opened digital-stamp--rtl" dir="rtl">
-        <div class="digital-stamp__content">
-            <div class="digital-stamp__flag" style="background-color: #006923;">
-                <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="14" height="10" fill="#006923"/>
-                    <path d="M3 3h8v1H3V3zm0 2h6v1H3V5zm2 2h4v1H5V7z" fill="white"/>
-                </svg>
-            </div>
-            <p class="digital-stamp__text">موقع حكومي مسجل لدى هيئة الحكومة الرقمية.</p>
-            <button class="digital-stamp__toggle">
-                <span>كيف تتحقق؟</span>
-                <span class="digital-stamp__toggle-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-            </button>
-        </div>
-
-        <div class="digital-stamp__extension">
-            <div class="digital-stamp__verification-card">
-                <div class="digital-stamp__verification-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M13.213 9.787a3.391 3.391 0 0 0-4.795 0l-3.425 3.426a3.39 3.39 0 0 0 4.795 4.794l.321-.304" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M10.787 14.213a3.39 3.39 0 0 0 4.795 0l3.425-3.426a3.39 3.39 0 0 0-4.795-4.794l-.321.304" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div class="digital-stamp__verification-text">
-                    <p class="digital-stamp__verification-title">
-                        روابط المواقع الإلكترونية الرسمية الحكومية تنتهي بـ <span class="highlight">.gov.sa</span>
-                    </p>
-                    <p class="digital-stamp__verification-description">
-                        جميع روابط المواقع الرسمية التابعة للجهات الحكومية في المملكة العربية السعودية تنتهي بـ .gov.sa
-                    </p>
-                </div>
-            </div>
-            <div class="digital-stamp__verification-card">
-                <div class="digital-stamp__verification-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div class="digital-stamp__verification-text">
-                    <p class="digital-stamp__verification-title">
-                        المواقع الإلكترونية الحكومية الموثوقة تستخدم بروتوكول <span class="highlight">HTTPS</span>
-                    </p>
-                    <p class="digital-stamp__verification-description">
-                        تحقق من أن الموقع يستخدم بروتوكول HTTPS
-                    </p>
+<!-- Section 4: Mobile layout -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Mobile Layout</h2>
+        <p class="showcase-description">The compact mobile bar drops the "How you know?" toggle below the flag + text
+            row to fit narrow viewports. When opened, the verification cards stack vertically instead of sitting
+            side-by-side. Triggered by <code>.digital-stamp--mobile</code>.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: center;">
+        <span class="showcase-label">Collapsed</span>
+        <div style="max-width: 390px; width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+            <div class="digital-stamp digital-stamp--mobile">
+                <div class="digital-stamp__content">
+                    <div class="digital-stamp__content">
+                        <div class="digital-stamp__flag" style="background-color: #006923;">
+                            <span class="dga-icon-flag-01" aria-hidden="true"></span>
+                        </div>
+                        <p class="digital-stamp__text">A government website registered with the Digital Government
+                            Authority.</p>
+                    </div>
+                    <button type="button" class="digital-stamp__toggle"><span>How you know?</span><span
+                            class="digital-stamp__toggle-icon">
+                            <span class="dga-icon-arrow-down-01" aria-hidden="true"></span>
+                        </span></button>
                 </div>
             </div>
         </div>
 
-        <div class="digital-stamp__registration">
-            <div class="digital-stamp__registration-content">
-                <div class="digital-stamp__dga-logo">
-                    <svg viewBox="0 0 21 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10.5 0L0 5.5v10c0 8.5 10.5 15.5 10.5 15.5S21 24 21 15.5v-10L10.5 0z" fill="#1b8354"/>
-                        <path d="M10.5 3L3 7v8c0 6 7.5 11 7.5 11S18 21 18 15V7l-7.5-4z" fill="white"/>
-                    </svg>
+        <span class="showcase-label">Opened</span>
+        <div style="max-width: 390px; width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+            <div class="digital-stamp digital-stamp--mobile digital-stamp--opened">
+                <div class="digital-stamp__content">
+                    <div class="digital-stamp__content">
+                        <div class="digital-stamp__flag" style="background-color: #006923;">
+                            <span class="dga-icon-flag-01" aria-hidden="true"></span>
+                        </div>
+                        <p class="digital-stamp__text">A government website registered with the Digital Government
+                            Authority.</p>
+                    </div>
+                    <button type="button" class="digital-stamp__toggle" aria-expanded="true"><span>How you
+                            know?</span><span class="digital-stamp__toggle-icon">
+                            <span class="dga-icon-arrow-down-01" aria-hidden="true"></span>
+                        </span></button>
                 </div>
-                <div class="digital-stamp__registration-text">
-                    <p class="digital-stamp__registration-label">مسجل لدى هيئة الحكومة الرقمية برقم:</p>
-                    <a href="#" class="digital-stamp__registration-link">20230103200</a>
+                <div class="digital-stamp__extension">
+                    <div class="digital-stamp__verification-card">
+                        <div class="digital-stamp__verification-icon">
+                            <span class="dga-icon-link-01" aria-hidden="true"></span>
+                        </div>
+                        <div class="digital-stamp__verification-text">
+                            <p class="digital-stamp__verification-title">Official Saudi Government websites URL ends
+                                with <span class="highlight">.gov.sa</span></p>
+                            <p class="digital-stamp__verification-description">Website belongs to an official
+                                government organization in the Kingdom of Saudi Arabia always ends with .gov.sa.</p>
+                        </div>
+                    </div>
+                    <div class="digital-stamp__verification-card">
+                        <div class="digital-stamp__verification-icon">
+                            <span class="dga-icon-security-check" aria-hidden="true"></span>
+                        </div>
+                        <div class="digital-stamp__verification-text">
+                            <p class="digital-stamp__verification-title">Official Secure websites use <span
+                                    class="highlight">HTTPS</span></p>
+                            <p class="digital-stamp__verification-description">Ensure the website is using the HTTPS
+                                protocol.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="digital-stamp__registration">
+                    <div class="digital-stamp__registration-content">
+                        <div class="digital-stamp__dga-logo">
+                            <span class="dga-icon-checkmark-badge-01" aria-hidden="true"></span>
+                        </div>
+                        <div class="digital-stamp__registration-text">
+                            <p class="digital-stamp__registration-label">Registered on Digital Government Authority:
+                            </p>
+                            <a href="#" class="digital-stamp__registration-link">20230103200</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 5: RTL -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Support</h2>
+        <p class="showcase-description">Arabic and other right-to-left layouts mirror the bar so the flag sits at the
+            trailing edge, the "How you know?" link reads from the right, and the verification cards reverse
+            direction. Triggered by <code>.digital-stamp--rtl</code> or <code>dir="rtl"</code>.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview showcase-preview--subtle" style="align-items: stretch;" dir="rtl">
+        <span class="showcase-label">مفتوح</span>
+        <div class="digital-stamp digital-stamp--opened digital-stamp--rtl" dir="rtl">
+            <div class="digital-stamp__content">
+                <div class="digital-stamp__flag" style="background-color: #006923;">
+                    <span class="dga-icon-flag-01" aria-hidden="true"></span>
+                </div>
+                <p class="digital-stamp__text">موقع حكومي مسجل لدى هيئة الحكومة الرقمية.</p>
+                <button type="button" class="digital-stamp__toggle" aria-expanded="true"><span>كيف تتحقق؟</span><span
+                        class="digital-stamp__toggle-icon">
+                        <span class="dga-icon-arrow-down-01" aria-hidden="true"></span>
+                    </span></button>
+            </div>
+            <div class="digital-stamp__extension">
+                <div class="digital-stamp__verification-card">
+                    <div class="digital-stamp__verification-icon">
+                        <span class="dga-icon-link-01" aria-hidden="true"></span>
+                    </div>
+                    <div class="digital-stamp__verification-text">
+                        <p class="digital-stamp__verification-title">روابط المواقع الإلكترونية الرسمية الحكومية تنتهي
+                            بـ <span class="highlight">.gov.sa</span></p>
+                        <p class="digital-stamp__verification-description">جميع روابط المواقع الرسمية التابعة للجهات
+                            الحكومية في المملكة العربية السعودية تنتهي بـ .gov.sa</p>
+                    </div>
+                </div>
+                <div class="digital-stamp__verification-card">
+                    <div class="digital-stamp__verification-icon">
+                        <span class="dga-icon-security-check" aria-hidden="true"></span>
+                    </div>
+                    <div class="digital-stamp__verification-text">
+                        <p class="digital-stamp__verification-title">المواقع الإلكترونية الحكومية الموثوقة تستخدم
+                            بروتوكول <span class="highlight">HTTPS</span></p>
+                        <p class="digital-stamp__verification-description">تحقق من أن الموقع يستخدم بروتوكول HTTPS</p>
+                    </div>
+                </div>
+            </div>
+            <div class="digital-stamp__registration">
+                <div class="digital-stamp__registration-content">
+                    <div class="digital-stamp__dga-logo">
+                        <span class="dga-icon-checkmark-badge-01" aria-hidden="true"></span>
+                    </div>
+                    <div class="digital-stamp__registration-text">
+                        <p class="digital-stamp__registration-label">مسجل لدى هيئة الحكومة الرقمية برقم:</p>
+                        <a href="#" class="digital-stamp__registration-link">20230103200</a>
+                    </div>
                 </div>
             </div>
         </div>

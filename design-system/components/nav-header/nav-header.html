@@ -1,171 +1,345 @@
 <div class="content-header">
     <h1 class="content-title">Nav Header</h1>
-    <p class="content-description">Top navigation header component following DGA guidelines.</p>
+    <p class="content-description">The UI-shell navigation header that guides users through a site. It appears at the
+        top of every page and holds the platform logo, primary menu items (with optional sub-menu dropdowns), and
+        action buttons. Adapts across desktop (&gt;960), tablet (600–960), and mobile (&lt;600) breakpoints, supports
+        contained or full-width layouts, and mirrors fully for RTL. Modeled on Figma frames 30150:148751 (Nav Header),
+        148312 (Menu Item), 148445 (Action), 148860 (Menu), 148877 (Sub-menu), 148183 (Sub-menu Item), 148742 (Item
+        Icon).</p>
 </div>
 
-<!-- LTR (English) Version -->
-<div class="component-preview">
-    <div class="component-preview-title">Default (LTR) - Figma 30150:148752</div>
-    <header class="navigation-header" style="border-bottom: 1px solid #E5E7EB;">
-        <div class="navigation-header__left">
-            <div class="logo-placeholder">
-                <svg class="logo-placeholder__icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-                    <rect width="48" height="48" rx="4" fill="#F5F5F5" />
-                    <path
-                        d="M24 8C22.9 8 22 9.12 22 10.5V18L18 17.3C17.3 17.2 16.6 17.7 16.5 18.4C16.4 19.1 16.9 19.7 17.6 19.8L22 20.5V23L17 25.5C16.4 25.8 16.2 26.5 16.5 27.1C16.8 27.7 17.5 27.9 18.1 27.6L22 25.6V29L17 34C16.6 34.4 16.6 35 17 35.4C17.4 35.8 18 35.8 18.4 35.4L22 31.8V38C22 39.1 22.9 40 24 40C25.1 40 26 39.1 26 38V31.8L29.6 35.4C30 35.8 30.6 35.8 31 35.4C31.4 35 31.4 34.4 31 34L26 29V25.6L29.9 27.6C30.5 27.9 31.2 27.7 31.5 27.1C31.8 26.5 31.6 25.8 31 25.5L26 23V20.5L30.4 19.8C31.1 19.7 31.6 19.1 31.5 18.4C31.4 17.7 30.7 17.2 30 17.3L26 18V10.5C26 9.12 25.1 8 24 8Z"
-                        fill="#9DA4AE" />
-                </svg>
-                <span class="logo-placeholder__text">Platform Logo</span>
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <div class="live-demo__canvas" id="nav-header-demo-preview"
+            style="align-items: stretch; justify-content: flex-start; padding: var(--spacing-xl);">
+            <!-- Rendered dynamically -->
+        </div>
+
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Nav Header</h3>
+                <p class="live-demo__sidebar-desc">Adjust the breakpoint, direction, and width to see how the header
+                    reflows.</p>
             </div>
-            <nav class="navigation-menu" role="menubar">
-                <a href="#" class="header-menu-item" role="menuitem">
-                    <span class="header-menu-item__text">Home</span>
-                    <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2">
-                        <path d="M6 9L12 15L18 9" />
-                    </svg>
-                </a>
-                <a href="#" class="header-menu-item" role="menuitem">
-                    <span class="header-menu-item__text">Services</span>
-                    <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2">
-                        <path d="M6 9L12 15L18 9" />
-                    </svg>
-                </a>
-                <a href="#" class="header-menu-item" role="menuitem">
-                    <span class="header-menu-item__text">Screens</span>
-                    <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2">
-                        <path d="M6 9L12 15L18 9" />
-                    </svg>
-                </a>
-                <a href="#" class="header-menu-item" role="menuitem">
-                    <span class="header-menu-item__text">Reports</span>
-                    <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2">
-                        <path d="M6 9L12 15L18 9" />
-                    </svg>
-                </a>
-                <a href="#" class="header-menu-item" role="menuitem">
-                    <span class="header-menu-item__text">Settings</span>
-                    <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2">
-                        <path d="M6 9L12 15L18 9" />
-                    </svg>
-                </a>
-            </nav>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="nav-header-demo-breakpoint">Breakpoint</label>
+                <select class="live-demo__sidebar-select" id="nav-header-demo-breakpoint">
+                    <option value="desktop" selected>Desktop (&gt;960)</option>
+                    <option value="tablet">Tablet (600–960)</option>
+                    <option value="mobile">Mobile (&lt;600)</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Full width</label>
+                <button class="live-demo__switch" data-toggle="fullwidth" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
         </div>
-        <div class="navigation-header__right">
-            <a href="#" class="header-action header-action--outline">
-                <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <path d="M9 12H15" />
-                    <path d="M12 9L15 12L12 15" />
-                </svg>
-                <span>Action</span>
-            </a>
-            <a href="#" class="header-action header-action--outline">
-                <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <path d="M9 12H15" />
-                    <path d="M12 9L15 12L12 15" />
-                </svg>
-                <span>Action</span>
-            </a>
-            <a href="#" class="header-action header-action--primary">
-                <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <path d="M9 12H15" />
-                    <path d="M12 9L15 12L12 15" />
-                </svg>
-                <span>Action</span>
-            </a>
-        </div>
-    </header>
+    </div>
+
+    <div class="live-demo__footer">
+        On Tablet and Mobile the primary menu collapses behind a hamburger trigger. Full width removes the centered
+        max-width container so the header spans edge to edge.
+    </div>
 </div>
-<!-- Arabic (RTL) Version -->
-<div class="component-preview">
-    <div class="component-preview-title">Arabic (RTL) - Figma 30150:148752</div>
-    <header class="navigation-header" dir="rtl" style="border-bottom: 1px solid #E5E7EB;">
-        <div class="navigation-header__left">
-            <div class="logo-placeholder">
-                <svg class="logo-placeholder__icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-                    <rect width="48" height="48" rx="4" fill="#F5F5F5" />
-                    <path
-                        d="M24 8C22.9 8 22 9.12 22 10.5V18L18 17.3C17.3 17.2 16.6 17.7 16.5 18.4C16.4 19.1 16.9 19.7 17.6 19.8L22 20.5V23L17 25.5C16.4 25.8 16.2 26.5 16.5 27.1C16.8 27.7 17.5 27.9 18.1 27.6L22 25.6V29L17 34C16.6 34.4 16.6 35 17 35.4C17.4 35.8 18 35.8 18.4 35.4L22 31.8V38C22 39.1 22.9 40 24 40C25.1 40 26 39.1 26 38V31.8L29.6 35.4C30 35.8 30.6 35.8 31 35.4C31.4 35 31.4 34.4 31 34L26 29V25.6L29.9 27.6C30.5 27.9 31.2 27.7 31.5 27.1C31.8 26.5 31.6 25.8 31 25.5L26 23V20.5L30.4 19.8C31.1 19.7 31.6 19.1 31.5 18.4C31.4 17.7 30.7 17.2 30 17.3L26 18V10.5C26 9.12 25.1 8 24 8Z"
-                        fill="#9DA4AE" />
-                </svg>
-                <span class="logo-placeholder__text">شعار المنصة</span>
-            </div>
-            <nav class="navigation-menu" role="menubar">
-                <a href="#" class="header-menu-item" role="menuitem">
-                    <span class="header-menu-item__text">الرئيسية</span>
-                    <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2">
-                        <path d="M6 9L12 15L18 9" />
-                    </svg>
-                </a>
-                <a href="#" class="header-menu-item" role="menuitem">
-                    <span class="header-menu-item__text">الخدمات</span>
-                    <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2">
-                        <path d="M6 9L12 15L18 9" />
-                    </svg>
-                </a>
-                <a href="#" class="header-menu-item" role="menuitem">
-                    <span class="header-menu-item__text">التدريب</span>
-                    <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2">
-                        <path d="M6 9L12 15L18 9" />
-                    </svg>
-                </a>
-                <a href="#" class="header-menu-item" role="menuitem">
-                    <span class="header-menu-item__text">المقالات</span>
-                    <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2">
-                        <path d="M6 9L12 15L18 9" />
-                    </svg>
-                </a>
-                <a href="#" class="header-menu-item" role="menuitem">
-                    <span class="header-menu-item__text">المعلومات</span>
-                    <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2">
-                        <path d="M6 9L12 15L18 9" />
-                    </svg>
-                </a>
-            </nav>
+
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">The classes and JS hooks that compose the navigation header.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class / Attribute</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><code>.navigation-header</code></td><td>Container</td><td>72px-tall header bar with a left
+                        section (logo + menu) and right section (actions).</td></tr>
+                <tr><td><code>.logo-placeholder</code></td><td>Slot</td><td>Platform logo + label at the leading
+                        edge.</td></tr>
+                <tr><td><code>.navigation-menu</code></td><td>Slot</td><td>The primary menu bar holding
+                        <code>.header-menu-item</code> links.</td></tr>
+                <tr><td><code>.header-menu-item</code></td><td>Item</td><td>A menu link. Add
+                        <code>--selected</code> for the active state, <code>--disabled</code> to disable, and
+                        <code>data-submenu="ID"</code> to attach a dropdown.</td></tr>
+                <tr><td><code>.header-action</code></td><td>Item</td><td>Action button. Variants:
+                        <code>--outline</code>, <code>--primary</code>, <code>--icon-only</code>. Plus
+                        <code>--selected</code> / <code>--disabled</code> states.</td></tr>
+                <tr><td><code>.header-sub-menu</code></td><td>Dropdown</td><td>Panel opened by a menu item. Add
+                        <code>.is-open</code> to show, <code>--full</code> for a mega-menu, <code>--brand</code> for
+                        the green panel.</td></tr>
+                <tr><td><code>.header-sub-menu-group</code> / <code>__label</code></td><td>Slot</td><td>A column of
+                        sub-menu items with an optional group label.</td></tr>
+                <tr><td><code>.header-sub-menu-item</code></td><td>Item</td><td>Icon + label + optional helper text
+                        link inside the dropdown.</td></tr>
+                <tr><td><code>.header-menu-toggle</code></td><td>Trigger</td><td>Hamburger button shown on
+                        tablet/mobile breakpoints.</td></tr>
+                <tr><td><code>data-submenu="ID"</code></td><td>JS hook</td><td>On a menu item — toggles the
+                        <code>.header-sub-menu</code> with that id (click outside / ESC closes).</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Section 1: Menu Item states -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Menu Item</h2>
+        <p class="showcase-description">States per Figma 30150:148312. Default, hover (gray fill + gray indicator
+            pill), selected (green fill + light-green indicator), and disabled. Each item can carry a dropdown
+            chevron.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="nav-header-preview">
+            <header class="navigation-header" style="position: static;">
+                <div class="navigation-header__left">
+                    <nav class="navigation-menu" role="menubar">
+                        <a href="#" class="header-menu-item header-menu-item--selected" role="menuitem"><span
+                                class="header-menu-item__text">Selected</span><svg class="header-menu-item__arrow"
+                                width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M6 9L12 15L18 9" />
+                            </svg></a>
+                        <a href="#" class="header-menu-item" role="menuitem"><span
+                                class="header-menu-item__text">Default</span><svg class="header-menu-item__arrow"
+                                width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M6 9L12 15L18 9" />
+                            </svg></a>
+                        <a href="#" class="header-menu-item" role="menuitem"><span
+                                class="header-menu-item__text">Hover me</span><svg class="header-menu-item__arrow"
+                                width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M6 9L12 15L18 9" />
+                            </svg></a>
+                        <a href="#" class="header-menu-item header-menu-item--disabled" role="menuitem"
+                            aria-disabled="true"><span class="header-menu-item__text">Disabled</span><svg
+                                class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M6 9L12 15L18 9" />
+                            </svg></a>
+                    </nav>
+                </div>
+            </header>
         </div>
-        <div class="navigation-header__right">
-            <a href="#" class="header-action header-action--outline">
-                <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <path d="M9 12H15" />
-                    <path d="M12 9L15 12L12 15" />
-                </svg>
-                <span>إجراء</span>
-            </a>
-            <a href="#" class="header-action header-action--outline">
-                <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <path d="M9 12H15" />
-                    <path d="M12 9L15 12L12 15" />
-                </svg>
-                <span>إجراء</span>
-            </a>
-            <a href="#" class="header-action header-action--primary">
-                <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <path d="M9 12H15" />
-                    <path d="M12 9L15 12L12 15" />
-                </svg>
-                <span>إجراء</span>
-            </a>
+    </div>
+</div>
+
+<!-- Section 2: Header Action variants -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Header Action</h2>
+        <p class="showcase-description">Action button variants per Figma 30150:148445. Outline (default), primary
+            (green filled), and icon-only. Click toggles the selected state on outline actions.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="nav-header-preview">
+            <header class="navigation-header" style="position: static; justify-content: flex-end;">
+                <div class="navigation-header__right">
+                    <a href="#" class="header-action header-action--outline">
+                        <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <path d="M9 12H15" />
+                            <path d="M12 9L15 12L12 15" />
+                        </svg><span>Outline</span></a>
+                    <a href="#" class="header-action header-action--icon-only header-action--outline"
+                        aria-label="Icon only">
+                        <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <path d="M9 12H15" />
+                            <path d="M12 9L15 12L12 15" />
+                        </svg><span>Icon</span></a>
+                    <a href="#" class="header-action header-action--primary">
+                        <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <path d="M9 12H15" />
+                            <path d="M12 9L15 12L12 15" />
+                        </svg><span>Primary</span></a>
+                </div>
+            </header>
         </div>
-    </header>
+    </div>
+</div>
+
+<!-- Section 3: Sub-menu dropdown -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Sub-menu Dropdown</h2>
+        <p class="showcase-description">Menu items can open a sub-menu panel (Figma 30150:148877) with grouped items
+            (icon + label + helper text, Figma 148183 / 148742). Click "Services" below to open it; click outside or
+            press <kbd>Esc</kbd> to close.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch; min-height: 320px;">
+        <div class="nav-header-preview">
+            <header class="navigation-header" style="position: static;">
+                <div class="navigation-header__left">
+                    <div class="logo-placeholder">
+                        <svg class="logo-placeholder__icon" width="40" height="40" viewBox="0 0 48 48" fill="none">
+                            <rect width="48" height="48" rx="4" fill="#F5F5F5" />
+                            <path
+                                d="M24 8C22.9 8 22 9.12 22 10.5V18L18 17.3C17.3 17.2 16.6 17.7 16.5 18.4C16.4 19.1 16.9 19.7 17.6 19.8L22 20.5V23L17 25.5C16.4 25.8 16.2 26.5 16.5 27.1C16.8 27.7 17.5 27.9 18.1 27.6L22 25.6V29L17 34C16.6 34.4 16.6 35 17 35.4C17.4 35.8 18 35.8 18.4 35.4L22 31.8V38C22 39.1 22.9 40 24 40C25.1 40 26 39.1 26 38V31.8L29.6 35.4C30 35.8 30.6 35.8 31 35.4C31.4 35 31.4 34.4 31 34L26 29V25.6L29.9 27.6C30.5 27.9 31.2 27.7 31.5 27.1C31.8 26.5 31.6 25.8 31 25.5L26 23V20.5L30.4 19.8C31.1 19.7 31.6 19.1 31.5 18.4C31.4 17.7 30.7 17.2 30 17.3L26 18V10.5C26 9.12 25.1 8 24 8Z"
+                                fill="#9DA4AE" />
+                        </svg>
+                        <span class="logo-placeholder__text">Platform Logo</span>
+                    </div>
+                    <nav class="navigation-menu" role="menubar">
+                        <a href="#" class="header-menu-item" role="menuitem"><span
+                                class="header-menu-item__text">Home</span></a>
+                        <div class="header-menu-item" role="menuitem" tabindex="0"
+                            data-submenu="nav-submenu-services"><span
+                                class="header-menu-item__text">Services</span><svg class="header-menu-item__arrow"
+                                width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M6 9L12 15L18 9" />
+                            </svg>
+                            <div class="header-sub-menu" id="nav-submenu-services">
+                                <div class="header-sub-menu-group">
+                                    <p class="header-sub-menu-group__label">For individuals</p>
+                                    <a href="#" class="header-sub-menu-item">
+                                        <span class="header-sub-menu-item__icon"><span class="dga-icon-user"
+                                                aria-hidden="true"></span></span>
+                                        <span class="header-sub-menu-item__body"><span
+                                                class="header-sub-menu-item__label">Personal account</span><span
+                                                class="header-sub-menu-item__helper">Manage your profile and
+                                                requests</span></span>
+                                    </a>
+                                    <a href="#" class="header-sub-menu-item">
+                                        <span class="header-sub-menu-item__icon"><span class="dga-icon-file-01"
+                                                aria-hidden="true"></span></span>
+                                        <span class="header-sub-menu-item__body"><span
+                                                class="header-sub-menu-item__label">Documents</span><span
+                                                class="header-sub-menu-item__helper">Certificates and
+                                                records</span></span>
+                                    </a>
+                                </div>
+                                <div class="header-sub-menu-group">
+                                    <p class="header-sub-menu-group__label">For business</p>
+                                    <a href="#" class="header-sub-menu-item">
+                                        <span class="header-sub-menu-item__icon"><span
+                                                class="dga-icon-building-01" aria-hidden="true"></span></span>
+                                        <span class="header-sub-menu-item__body"><span
+                                                class="header-sub-menu-item__label">Organizations</span><span
+                                                class="header-sub-menu-item__helper">Register and manage
+                                                entities</span></span>
+                                    </a>
+                                    <a href="#" class="header-sub-menu-item">
+                                        <span class="header-sub-menu-item__icon"><span
+                                                class="dga-icon-analytics-01" aria-hidden="true"></span></span>
+                                        <span class="header-sub-menu-item__body"><span
+                                                class="header-sub-menu-item__label">Analytics</span><span
+                                                class="header-sub-menu-item__helper">Usage and performance</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="header-menu-item" role="menuitem"><span
+                                class="header-menu-item__text">Reports</span></a>
+                    </nav>
+                </div>
+                <div class="navigation-header__right">
+                    <a href="#" class="header-action header-action--primary">
+                        <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <path d="M9 12H15" />
+                            <path d="M12 9L15 12L12 15" />
+                        </svg><span>Sign in</span></a>
+                </div>
+            </header>
+        </div>
+    </div>
+</div>
+
+<!-- Section 4: RTL -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Support</h2>
+        <p class="showcase-description">The full header mirrored for Arabic: logo on the right, menu reading from the
+            right, and actions on the left.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="nav-header-preview">
+            <header class="navigation-header" dir="rtl" style="position: static;">
+                <div class="navigation-header__left">
+                    <div class="logo-placeholder">
+                        <svg class="logo-placeholder__icon" width="40" height="40" viewBox="0 0 48 48" fill="none">
+                            <rect width="48" height="48" rx="4" fill="#F5F5F5" />
+                            <path
+                                d="M24 8C22.9 8 22 9.12 22 10.5V18L18 17.3C17.3 17.2 16.6 17.7 16.5 18.4C16.4 19.1 16.9 19.7 17.6 19.8L22 20.5V23L17 25.5C16.4 25.8 16.2 26.5 16.5 27.1C16.8 27.7 17.5 27.9 18.1 27.6L22 25.6V29L17 34C16.6 34.4 16.6 35 17 35.4C17.4 35.8 18 35.8 18.4 35.4L22 31.8V38C22 39.1 22.9 40 24 40C25.1 40 26 39.1 26 38V31.8L29.6 35.4C30 35.8 30.6 35.8 31 35.4C31.4 35 31.4 34.4 31 34L26 29V25.6L29.9 27.6C30.5 27.9 31.2 27.7 31.5 27.1C31.8 26.5 31.6 25.8 31 25.5L26 23V20.5L30.4 19.8C31.1 19.7 31.6 19.1 31.5 18.4C31.4 17.7 30.7 17.2 30 17.3L26 18V10.5C26 9.12 25.1 8 24 8Z"
+                                fill="#9DA4AE" />
+                        </svg>
+                        <span class="logo-placeholder__text">شعار المنصة</span>
+                    </div>
+                    <nav class="navigation-menu" role="menubar">
+                        <a href="#" class="header-menu-item header-menu-item--selected" role="menuitem"><span
+                                class="header-menu-item__text">الرئيسية</span><svg class="header-menu-item__arrow"
+                                width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M6 9L12 15L18 9" />
+                            </svg></a>
+                        <a href="#" class="header-menu-item" role="menuitem"><span
+                                class="header-menu-item__text">الخدمات</span><svg class="header-menu-item__arrow"
+                                width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M6 9L12 15L18 9" />
+                            </svg></a>
+                        <a href="#" class="header-menu-item" role="menuitem"><span
+                                class="header-menu-item__text">المقالات</span><svg class="header-menu-item__arrow"
+                                width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M6 9L12 15L18 9" />
+                            </svg></a>
+                    </nav>
+                </div>
+                <div class="navigation-header__right">
+                    <a href="#" class="header-action header-action--outline">
+                        <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <path d="M9 12H15" />
+                            <path d="M12 9L15 12L12 15" />
+                        </svg><span>إجراء</span></a>
+                    <a href="#" class="header-action header-action--primary">
+                        <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <path d="M9 12H15" />
+                            <path d="M12 9L15 12L12 15" />
+                        </svg><span>إجراء</span></a>
+                </div>
+            </header>
+        </div>
+    </div>
 </div>

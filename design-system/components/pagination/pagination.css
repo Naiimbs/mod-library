@@ -1,6 +1,12 @@
 /* ============================================
    COMPONENT: PAGINATION
-   DGA Design System - Pagination Components
+   DGA Design System - Pagination
+   Figma frames: 7936:8133 (Pagination), 7936:16660 (Pagination Item)
+
+   Horizontal navigation between pages of a dataset. Borderless page
+   numbers with a filled-primary active page, plus prev/next controls
+   and ellipsis truncation driven by current-page + sibling-count.
+   Tokens follow the shared DGA system used across the design system.
    ============================================ */
 
 .pagination {
@@ -8,68 +14,116 @@
     align-items: center;
     justify-content: center;
     gap: var(--spacing-xs);
+    font-family: var(--font-family-primary);
 }
+
+/* ============================================
+   Page item (number / prev / next / ellipsis)
+   ============================================ */
 
 .pagination-item {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: var(--spacing-xs);
     min-width: 40px;
     height: 40px;
-    padding: var(--spacing-md);
-    font-family: var(--font-family-primary);
+    padding: 0 var(--spacing-md);
     font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
     font-weight: var(--font-weight-medium);
-    color: var(--color-text-primary);
-    border: 1px solid var(--color-border-secondary);
-    border-radius: var(--radius-md);
-    background-color: var(--color-white);
+    color: var(--color-text-primary, #161616);
+    border: 1px solid transparent;
+    border-radius: var(--radius-md, 8px);
+    background-color: transparent;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease;
     text-decoration: none;
+    box-sizing: border-box;
+    user-select: none;
 }
 
-.pagination-item:hover:not(.disabled):not(.active) {
-    color: var(--color-primary);
-    border-color: var(--color-primary);
-    background-color: var(--color-primary-light);
+/* Hover (non-active, non-disabled) — neutral gray fill */
+.pagination-item:hover:not(.is-disabled):not(.is-active):not(.pagination-ellipsis) {
+    background-color: var(--color-gray-100, #f3f4f6);
 }
 
-.pagination-item.active {
-    color: var(--color-white);
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
+.pagination-item:active:not(.is-disabled):not(.is-active):not(.pagination-ellipsis) {
+    background-color: var(--color-gray-200, #e5e7eb);
 }
 
-.pagination-item.disabled {
-    color: var(--color-border-primary);
+.pagination-item:focus-visible {
+    outline: none;
+    border-color: #161616;
+}
+
+/* Active / current page — filled primary */
+.pagination-item.is-active {
+    background-color: var(--color-primary, #1b8354);
+    color: #ffffff;
+    border-color: var(--color-primary, #1b8354);
+    cursor: default;
+}
+
+/* Disabled (prev/next at bounds) */
+.pagination-item.is-disabled {
+    color: var(--color-gray-400, #9da4ae);
     cursor: not-allowed;
     pointer-events: none;
 }
 
+/* Ellipsis — non-interactive gap marker */
+.pagination-ellipsis {
+    color: var(--color-text-secondary, #6c737f);
+    cursor: default;
+    pointer-events: none;
+}
+
+/* Prev/Next control — arrow icon + optional label */
+.pagination-item--nav {
+    color: var(--color-text-primary, #161616);
+}
+
 .pagination-icon {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.pagination-item--nav.is-disabled .pagination-icon {
+    color: var(--color-gray-400, #9da4ae);
 }
 
 /* ============================================
-   Pagination Sizes
+   Sizes
    ============================================ */
 
 .pagination--sm .pagination-item {
     min-width: 32px;
     height: 32px;
     font-size: var(--font-size-xs);
+    padding: 0 var(--spacing-sm);
+}
+
+.pagination--sm .pagination-icon {
+    width: 16px;
+    height: 16px;
 }
 
 .pagination--lg .pagination-item {
     min-width: 48px;
     height: 48px;
     font-size: var(--font-size-md);
+    padding: 0 var(--spacing-lg);
+}
+
+.pagination--lg .pagination-icon {
+    width: 20px;
+    height: 20px;
 }
 
 /* ============================================
-   RTL Support
+   RTL Support — mirror the prev/next arrows
    ============================================ */
 
 [dir="rtl"] .pagination {

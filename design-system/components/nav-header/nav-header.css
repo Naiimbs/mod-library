@@ -1,0 +1,224 @@
+/* ============================================
+   COMPONENT: NAV HEADER (component-page additions)
+   DGA Design System - Navigation Header
+
+   NOTE: The base .navigation-header / .header-menu-item / .header-action
+   styles live in components/navigation.css (shared with the live app
+   shell). This file ONLY adds the pieces the shared file is missing —
+   the sub-menu dropdown panel, disabled states, the icon-only action,
+   and a relative-positioned preview wrapper — so the shell is untouched.
+
+   Figma frames: 30150:148751 (Nav Header), 148312 (Menu Item),
+   148445 (Action), 148860 (Menu), 148877 (Sub-menu),
+   148183 (Sub-menu Item), 148742 (Item Icon)
+   ============================================ */
+
+/* Preview wrapper so absolutely-positioned dropdowns anchor correctly
+   inside the docs canvas. */
+.nav-header-preview {
+    position: relative;
+    width: 100%;
+    border: 1px solid var(--color-border-secondary, #e5e7eb);
+    border-radius: var(--radius-lg, 16px);
+    overflow: visible;
+    background: #ffffff;
+}
+
+/* A menu item that owns a sub-menu becomes the positioning anchor. */
+.header-menu-item {
+    position: relative;
+}
+
+/* ============================================
+   Menu item — disabled state (Figma 30150:148312)
+   ============================================ */
+.header-menu-item--disabled,
+.header-menu-item[aria-disabled="true"] {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+/* ============================================
+   Header Action — icon-only + disabled (Figma 30150:148445)
+   ============================================ */
+.header-action--icon-only {
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+}
+
+.header-action--icon-only span:not(.header-action__icon) {
+    display: none;
+}
+
+.header-action--disabled,
+.header-action[aria-disabled="true"] {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+/* ============================================
+   Header Sub-menu (dropdown panel)  Figma 30150:148877
+   Opens beneath a menu item; holds one or more groups of sub-menu items.
+   ============================================ */
+
+.header-sub-menu {
+    position: absolute;
+    top: calc(100% - 8px);
+    inset-inline-start: 0;
+    z-index: var(--z-dropdown, 600);
+    display: none;
+    min-width: 280px;
+    padding: var(--spacing-xl);
+    gap: var(--spacing-4xl);
+    background-color: #ffffff;             /* background-menu */
+    border: 1px solid var(--color-border-secondary, #e5e7eb);
+    border-radius: var(--radius-md, 8px);
+    box-shadow: 0 12px 24px -6px rgba(16, 24, 40, 0.12), 0 4px 8px -4px rgba(16, 24, 40, 0.08);
+    box-sizing: border-box;
+}
+
+.header-sub-menu.is-open {
+    display: flex;
+}
+
+/* Full-width mega-menu spanning the header */
+.header-sub-menu--full {
+    inset-inline: 0;
+    min-width: 0;
+}
+
+/* Brand-background variant (green panel, white text) */
+.header-sub-menu--brand {
+    background-color: var(--color-primary, #1b8354);
+    border-color: var(--color-primary, #1b8354);
+}
+
+.header-sub-menu--brand .header-sub-menu-group__label,
+.header-sub-menu--brand .header-sub-menu-item__label {
+    color: #ffffff;
+}
+
+.header-sub-menu--brand .header-sub-menu-item__helper {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.header-sub-menu--brand .header-sub-menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.header-sub-menu--brand .header-sub-menu-item__icon {
+    color: #ffffff;
+}
+
+/* Column / group inside the panel */
+.header-sub-menu-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    min-width: 220px;
+}
+
+.header-sub-menu-group__label {
+    font-family: var(--font-family-primary);
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-secondary, #6c737f);
+    padding: 0 var(--spacing-md);
+    margin: 0 0 var(--spacing-xs);
+}
+
+/* ============================================
+   Header Sub-menu Item  Figma 30150:148183
+   icon + (label + optional helper text)
+   ============================================ */
+
+.header-sub-menu-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm, 4px);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.header-sub-menu-item:hover {
+    background-color: var(--color-gray-50, #f9fafb);
+}
+
+/* Item icon (Figma 30150:148742) — leading glyph */
+.header-sub-menu-item__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--color-primary, #1b8354);
+    font-size: 20px;
+    line-height: 1;
+}
+
+.header-sub-menu-item__icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.header-sub-menu-item__body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.header-sub-menu-item__label {
+    font-family: var(--font-family-primary);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    color: var(--color-text-primary, #161616);
+}
+
+.header-sub-menu-item__helper {
+    font-family: var(--font-family-primary);
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    color: var(--color-text-secondary, #6c737f);
+}
+
+/* ============================================
+   Mobile / hamburger trigger (Figma <600 breakpoint)
+   ============================================ */
+
+.header-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    background: transparent;
+    border-radius: var(--radius-sm, 4px);
+    color: #161616;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.header-menu-toggle:hover {
+    background-color: var(--color-gray-100, #f3f4f6);
+}
+
+/* RTL: dropdown anchors to the trailing edge naturally via
+   inset-inline-start. Chevron rotation on open handled in JS/below. */
+.header-menu-item[aria-expanded="true"] .header-menu-item__arrow {
+    transform: rotate(180deg);
+}

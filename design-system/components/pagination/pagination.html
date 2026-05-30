@@ -1,28 +1,331 @@
 <div class="content-header">
     <h1 class="content-title">Pagination</h1>
-    <p class="content-description">Pagination component for navigating through pages of content.</p>
+    <p class="content-description">Horizontal navigation between chunks (pages) of a dataset. Shows the first and last
+        page plus the current page and a configurable number of sibling pages on each side, collapsing the rest into
+        ellipses. Includes previous/next controls (disabled at the bounds), three sizes, optional text labels, and
+        full RTL support. Modeled on Figma frames 7936:8133 (Pagination) and 7936:16660 (Pagination Item).</p>
 </div>
 
-<div class="component-preview">
-    <div class="component-preview-title">Default</div>
-    <nav class="pagination" aria-label="Pagination">
-        <a href="#" class="pagination-item" aria-label="Previous">
-            <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <path d="m15 18-6-6 6-6" />
-            </svg>
-        </a>
-        <a href="#" class="pagination-item">1</a>
-        <a href="#" class="pagination-item active">2</a>
-        <a href="#" class="pagination-item">3</a>
-        <a href="#" class="pagination-item">4</a>
-        <span class="pagination-item disabled">...</span>
-        <a href="#" class="pagination-item">10</a>
-        <a href="#" class="pagination-item" aria-label="Next">
-            <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <path d="m9 18 6-6-6-6" />
-            </svg>
-        </a>
-    </nav>
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <div class="live-demo__canvas" id="pagination-demo-preview" style="padding: var(--spacing-4xl);">
+            <!-- Rendered dynamically -->
+        </div>
+
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Pagination</h3>
+                <p class="live-demo__sidebar-desc">Click pages or prev/next to navigate. Adjust total pages and
+                    sibling count to see the ellipsis truncation respond.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="pagination-demo-total">Total pages</label>
+                <select class="live-demo__sidebar-select" id="pagination-demo-total">
+                    <option value="5">5</option>
+                    <option value="10" selected>10</option>
+                    <option value="25">25</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="pagination-demo-siblings">Sibling count</label>
+                <select class="live-demo__sidebar-select" id="pagination-demo-siblings">
+                    <option value="0">0</option>
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="pagination-demo-size">Size</label>
+                <select class="live-demo__sidebar-select" id="pagination-demo-size">
+                    <option value="sm">Small</option>
+                    <option value="md" selected>Medium</option>
+                    <option value="lg">Large</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Prev/Next labels</label>
+                <button class="live-demo__switch" data-toggle="labels" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="live-demo__footer">
+        The sequence always keeps the first and last page visible. With a high total page count, only the current
+        page ± the sibling count stay expanded; everything else collapses to "…".
+    </div>
+</div>
+
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">Classes and the JS API for the pagination component.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class / API</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><code>.pagination</code></td><td>Container</td><td>The <code>&lt;nav&gt;</code> wrapper.
+                        Add <code>--sm</code> / <code>--lg</code> to change size.</td></tr>
+                <tr><td><code>.pagination-item</code></td><td>Item</td><td>A page number or prev/next control. 40px
+                        square (md), borderless, rounded.</td></tr>
+                <tr><td><code>.pagination-item.is-active</code></td><td>State</td><td>The current page — filled with
+                        the primary token, white text. Pair with <code>aria-current="page"</code>.</td></tr>
+                <tr><td><code>.pagination-item.is-disabled</code></td><td>State</td><td>Disabled prev/next at the
+                        first/last page.</td></tr>
+                <tr><td><code>.pagination-item--nav</code></td><td>Modifier</td><td>Marks a prev/next control (holds
+                        the arrow icon and optional label).</td></tr>
+                <tr><td><code>.pagination-ellipsis</code></td><td>Item</td><td>Non-interactive "…" gap marker.</td>
+                </tr>
+                <tr><td><code>paginationRange(total, current, siblings)</code></td><td>JS fn</td><td>Returns the
+                        token sequence (page numbers + "…") to render, per the DgaPagination algorithm.</td></tr>
+                <tr><td><code>PaginationDemoManager</code></td><td>JS class</td><td>Renders a dynamic, navigable
+                        pagination driven by total page count, current page, and sibling count.</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Section 1: Page item states -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Page Item States</h2>
+        <p class="showcase-description">Default, hover (gray fill), active (filled primary), and the non-interactive
+            ellipsis. Prev/Next become disabled at the bounds.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <nav class="pagination" aria-label="States">
+            <button type="button" class="pagination-item">1</button>
+            <button type="button" class="pagination-item is-active" aria-current="page">2</button>
+            <button type="button" class="pagination-item">3</button>
+            <span class="pagination-item pagination-ellipsis" aria-hidden="true">…</span>
+            <button type="button" class="pagination-item">10</button>
+        </nav>
+    </div>
+</div>
+
+<!-- Section 2: Sizes -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Sizes</h2>
+        <p class="showcase-description">Small (32px), Medium (40px, default), and Large (48px).</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <span class="showcase-label">Small</span>
+        <nav class="pagination pagination--sm" aria-label="Small">
+            <button type="button" class="pagination-item pagination-item--nav" aria-label="Previous">
+                <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m15 18-6-6 6-6" />
+                </svg></button>
+            <button type="button" class="pagination-item">1</button>
+            <button type="button" class="pagination-item is-active" aria-current="page">2</button>
+            <button type="button" class="pagination-item">3</button>
+            <button type="button" class="pagination-item pagination-item--nav" aria-label="Next">
+                <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6" />
+                </svg></button>
+        </nav>
+        <span class="showcase-label">Medium</span>
+        <nav class="pagination" aria-label="Medium">
+            <button type="button" class="pagination-item pagination-item--nav" aria-label="Previous">
+                <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m15 18-6-6 6-6" />
+                </svg></button>
+            <button type="button" class="pagination-item">1</button>
+            <button type="button" class="pagination-item is-active" aria-current="page">2</button>
+            <button type="button" class="pagination-item">3</button>
+            <button type="button" class="pagination-item pagination-item--nav" aria-label="Next">
+                <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6" />
+                </svg></button>
+        </nav>
+        <span class="showcase-label">Large</span>
+        <nav class="pagination pagination--lg" aria-label="Large">
+            <button type="button" class="pagination-item pagination-item--nav" aria-label="Previous">
+                <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m15 18-6-6 6-6" />
+                </svg></button>
+            <button type="button" class="pagination-item">1</button>
+            <button type="button" class="pagination-item is-active" aria-current="page">2</button>
+            <button type="button" class="pagination-item">3</button>
+            <button type="button" class="pagination-item pagination-item--nav" aria-label="Next">
+                <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6" />
+                </svg></button>
+        </nav>
+    </div>
+</div>
+
+<!-- Section 3: Truncation -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Truncation</h2>
+        <p class="showcase-description">With many pages, the sequence keeps the first and last page and the current
+            page ± the sibling count, collapsing the rest into ellipses — shown here near the start, middle, and end
+            of a 20-page set.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <span class="showcase-label">Near the start (page 2 of 20)</span>
+        <nav class="pagination" aria-label="Start">
+            <button type="button" class="pagination-item">1</button>
+            <button type="button" class="pagination-item is-active" aria-current="page">2</button>
+            <button type="button" class="pagination-item">3</button>
+            <button type="button" class="pagination-item">4</button>
+            <button type="button" class="pagination-item">5</button>
+            <span class="pagination-item pagination-ellipsis" aria-hidden="true">…</span>
+            <button type="button" class="pagination-item">20</button>
+        </nav>
+        <span class="showcase-label">In the middle (page 10 of 20)</span>
+        <nav class="pagination" aria-label="Middle">
+            <button type="button" class="pagination-item">1</button>
+            <span class="pagination-item pagination-ellipsis" aria-hidden="true">…</span>
+            <button type="button" class="pagination-item">9</button>
+            <button type="button" class="pagination-item is-active" aria-current="page">10</button>
+            <button type="button" class="pagination-item">11</button>
+            <span class="pagination-item pagination-ellipsis" aria-hidden="true">…</span>
+            <button type="button" class="pagination-item">20</button>
+        </nav>
+        <span class="showcase-label">Near the end (page 19 of 20)</span>
+        <nav class="pagination" aria-label="End">
+            <button type="button" class="pagination-item">1</button>
+            <span class="pagination-item pagination-ellipsis" aria-hidden="true">…</span>
+            <button type="button" class="pagination-item">16</button>
+            <button type="button" class="pagination-item">17</button>
+            <button type="button" class="pagination-item">18</button>
+            <button type="button" class="pagination-item is-active" aria-current="page">19</button>
+            <button type="button" class="pagination-item">20</button>
+        </nav>
+    </div>
+</div>
+
+<!-- Section 4: Bounds -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Boundary States</h2>
+        <p class="showcase-description">On the first page the Previous control is disabled; on the last page the Next
+            control is disabled.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <span class="showcase-label">First page — Previous disabled</span>
+        <nav class="pagination" aria-label="First">
+            <button type="button" class="pagination-item pagination-item--nav is-disabled" aria-label="Previous"
+                disabled>
+                <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m15 18-6-6 6-6" />
+                </svg></button>
+            <button type="button" class="pagination-item is-active" aria-current="page">1</button>
+            <button type="button" class="pagination-item">2</button>
+            <button type="button" class="pagination-item">3</button>
+            <button type="button" class="pagination-item pagination-item--nav" aria-label="Next">
+                <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6" />
+                </svg></button>
+        </nav>
+        <span class="showcase-label">Last page — Next disabled</span>
+        <nav class="pagination" aria-label="Last">
+            <button type="button" class="pagination-item pagination-item--nav" aria-label="Previous">
+                <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m15 18-6-6 6-6" />
+                </svg></button>
+            <button type="button" class="pagination-item">1</button>
+            <button type="button" class="pagination-item">2</button>
+            <button type="button" class="pagination-item is-active" aria-current="page">3</button>
+            <button type="button" class="pagination-item pagination-item--nav is-disabled" aria-label="Next" disabled>
+                <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6" />
+                </svg></button>
+        </nav>
+    </div>
+</div>
+
+<!-- Section 5: With labels + RTL -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Labels & RTL</h2>
+        <p class="showcase-description">Prev/Next can show text labels alongside the arrow. In RTL the whole control
+            mirrors and the arrows flip.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <span class="showcase-label">With labels (LTR)</span>
+        <nav class="pagination" aria-label="Labels">
+            <button type="button" class="pagination-item pagination-item--nav" aria-label="Previous">
+                <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m15 18-6-6 6-6" />
+                </svg><span>Previous</span></button>
+            <button type="button" class="pagination-item">1</button>
+            <button type="button" class="pagination-item is-active" aria-current="page">2</button>
+            <button type="button" class="pagination-item">3</button>
+            <button type="button" class="pagination-item pagination-item--nav" aria-label="Next"><span>Next</span>
+                <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6" />
+                </svg></button>
+        </nav>
+        <span class="showcase-label">RTL with labels</span>
+        <div class="showcase-preview--subtle" style="width: 100%; padding: var(--spacing-xl); border-radius: var(--radius-md);"
+            dir="rtl">
+            <nav class="pagination" dir="rtl" aria-label="RTL">
+                <button type="button" class="pagination-item pagination-item--nav" aria-label="السابق">
+                    <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m15 18-6-6 6-6" />
+                    </svg><span>السابق</span></button>
+                <button type="button" class="pagination-item">١</button>
+                <button type="button" class="pagination-item is-active" aria-current="page">٢</button>
+                <button type="button" class="pagination-item">٣</button>
+                <span class="pagination-item pagination-ellipsis" aria-hidden="true">…</span>
+                <button type="button" class="pagination-item">١٠</button>
+                <button type="button" class="pagination-item pagination-item--nav" aria-label="التالي"><span>التالي</span>
+                    <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg></button>
+            </nav>
+        </div>
+    </div>
 </div>

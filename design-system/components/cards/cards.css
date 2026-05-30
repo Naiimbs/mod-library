@@ -127,55 +127,53 @@
 
 /* ============================================
    Expandable Card
+   Per Figma frame 30195:10358 — the card stays as a normal vertical
+   stack (icon → title → body); a chevron at the bottom-right corner
+   indicates the expand/collapse direction. We use ONE chevron-down SVG
+   and rotate it 180deg when expanded.
    ============================================ */
 
 .card--expandable {
+    position: relative;
     cursor: pointer;
+    /* Add bottom padding to clear the absolutely positioned chevron */
+    padding-bottom: calc(var(--spacing-xl) + 24px + var(--spacing-md));
 }
 
-.card--expandable .card-header {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--spacing-xl);
-    width: 100%;
-}
-
-.card--expandable .card-header .card-icon {
-    flex-shrink: 0;
-}
-
-.card--expandable .card-header .card-content {
-    flex: 1;
-}
-
-.card-toggle {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.card-chevron {
+    position: absolute;
+    bottom: var(--spacing-xl);
+    inset-inline-end: var(--spacing-xl);
     width: 24px;
     height: 24px;
-    border-radius: var(--radius-full);
-    border: 1px solid var(--color-border-primary);
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-    background-color: var(--color-white);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    color: #161616;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: transform 0.18s ease;
 }
 
-.card-toggle:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
+.card-chevron svg {
+    width: 20px;
+    height: 20px;
 }
 
-.card--collapsed .card-header ~ .card-content,
-.card--collapsed .card-header ~ .card-footer {
-    display: none;
+.card--expanded .card-chevron {
+    transform: rotate(180deg);
 }
+
+/* RTL: chevron stays at bottom-trailing edge via inset-inline-end; no other
+   adjustment needed. */
 
 /* ============================================
    Selectable Card
+   Per Figma frame 30195:10358 — top-trailing SQUARE checkbox. Default
+   is an empty box; selected fills with primary + white check. The card
+   border itself does NOT change on selection.
    ============================================ */
 
 .card--selectable {
@@ -184,64 +182,285 @@
     transition: all var(--transition-fast);
 }
 
-.card--selectable:hover {
-    border-color: var(--color-primary);
-}
-
 .card-select-indicator {
     position: absolute;
     top: var(--spacing-xl);
     inset-inline-end: var(--spacing-xl);
     width: 20px;
     height: 20px;
-    border-radius: var(--radius-full);
-    border: 2px solid var(--color-text-secondary);
+    /* Square (not pill) — matches Figma checkbox */
+    border-radius: 4px;
+    /* Figma Controls/control-border = #6c737f */
+    border: 1px solid #6c737f;
+    background-color: var(--color-bg-card);
     box-sizing: border-box;
     transition: all var(--transition-fast);
 }
 
-.card--selected {
-    border-color: var(--color-primary);
-    box-shadow:
-        0 0 0 1px var(--color-primary),
-        var(--shadow-md);
-}
-
 .card--selected .card-select-indicator {
-    border-color: var(--color-primary);
-    background-color: var(--color-primary);
+    /* Figma Controls/control-primary-checked = #1b8354 */
+    border-color: #1b8354;
+    background-color: #1b8354;
 }
 
 .card--selected .card-select-indicator::after {
-    content: '\2713';
-    color: var(--color-white);
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
 }
 
 /* ============================================
-   Disabled Card
+   Hover state — Expandable & Selectable
+   Subtle: shadow gets a touch more present, no color shift on the card
+   surface itself.
+   ============================================ */
+
+.card--expandable:hover:not(.card--disabled),
+.card--selectable:hover:not(.card--disabled) {
+    box-shadow:
+        0 6px 12px -2px rgba(16, 24, 40, 0.12),
+        0 4px 6px -2px rgba(16, 24, 40, 0.07);
+}
+
+/* No-shadow / Stroke variants don't have a base shadow — hover swaps the
+   border to black to give visual feedback instead. */
+.card--no-shadow.card--expandable:hover:not(.card--disabled),
+.card--no-shadow.card--selectable:hover:not(.card--disabled),
+.card--stroke.card--expandable:hover:not(.card--disabled),
+.card--stroke.card--selectable:hover:not(.card--disabled) {
+    box-shadow: none;
+    border-color: #161616;
+}
+
+/* ============================================
+   Focused state — Expandable & Selectable
+   Figma uses a thick black border ring inside the card radius. We use
+   an inset box-shadow so the ring lands inside the rounded corners
+   instead of an outline that extends outside.
+   ============================================ */
+
+.card--expandable:focus-visible,
+.card--selectable:focus-visible {
+    outline: none;
+    /* Inner ring matches Figma "Focused" state with Border/border-black */
+    box-shadow:
+        inset 0 0 0 2px #161616,
+        var(--shadow-md);
+}
+
+.card--no-shadow.card--expandable:focus-visible,
+.card--no-shadow.card--selectable:focus-visible,
+.card--stroke.card--expandable:focus-visible,
+.card--stroke.card--selectable:focus-visible {
+    box-shadow: inset 0 0 0 2px #161616;
+    border-color: transparent;
+}
+
+/* ============================================
+   Disabled Card — Figma tokens
+   Global/background-disabled        #e5e7eb
+   Global/border-disabled            #9da4ae
+   Global/text-default-disabled      #9da4ae
+   Global/background-inverse-disabled #f3f4f6 (icon bg)
+   Icon/icon-default-400             #9da4ae (icon color)
    ============================================ */
 
 .card--disabled {
-    background-color: var(--color-gray-100);
-    border-color: var(--color-border-secondary);
-    color: var(--color-gray-400);
+    background-color: #e5e7eb;
+    border-color: #9da4ae;
+    color: #9da4ae;
+    box-shadow: none;
     pointer-events: none;
+    user-select: none;
 }
 
 .card--disabled .card-title,
 .card--disabled .card-body {
-    color: var(--color-gray-400);
+    color: #9da4ae;
 }
 
 .card--disabled .card-icon {
-    background-color: var(--color-border-secondary);
-    color: var(--color-gray-400);
+    background-color: #f3f4f6;
+    color: #9da4ae;
+}
+
+/* Disabled buttons inside a disabled card sit visually quiet. */
+.card--disabled .card-footer .btn {
+    background-color: #f3f4f6;
+    color: #9da4ae;
+    border-color: #9da4ae;
+    cursor: not-allowed;
+}
+
+/* Disabled selection indicator — keep box visible but neutralized; if
+   .card--selected is also present, hide the inner checkmark so we don't
+   show a "checked but disabled" state with the primary green fill. */
+.card--disabled .card-select-indicator {
+    border-color: #9da4ae;
+    background-color: transparent;
+}
+
+.card--disabled.card--selected .card-select-indicator {
+    background-color: #9da4ae;
+    border-color: #9da4ae;
+}
+
+.card--disabled .card-select-indicator::after {
+    border-color: #ffffff;
+}
+
+/* ============================================
+   Rich-card slots (Figma instance 11853:20826)
+   Image, on-image featured icon, custom-component slot, tags row, and
+   star rating with review count.
+   ============================================ */
+
+/* --- Image slot ---------------------------------------------------------
+   Per Figma rich card (11853:20826), the image sits INSIDE the card
+   padding — there's a visible gap between the image edges and the card
+   border. Image uses 4:3 aspect ratio and its own subtle radius (8px).
+   The featured icon, when present, is rendered as a separate sibling
+   below the image (NOT overlapping). */
+.card-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: var(--radius-md, 8px);
+    background-color: var(--color-gray-100, #f3f4f6);
+}
+
+.card-image > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- Custom component slot ---------------------------------------------
+   A flexible drop-zone with primary-tinted bg + dashed primary border.
+   Use to compose any app-specific content in the canonical card layout. */
+.card-custom {
+    width: 100%;
+    padding: var(--spacing-xl);
+    background-color: #f3fcf6;             /* Background/background-primary-50 */
+    border: 1px dashed #1b8354;            /* Border/border-primary */
+    border-radius: var(--radius-md, 8px);
+    color: #1b8354;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.card-custom__title {
+    margin: 0;
+    font-family: var(--font-family-primary);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;                       /* Text sm/Semibold */
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.card-custom__body {
+    margin: var(--spacing-xs) 0 0;
+    font-family: var(--font-family-primary);
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+}
+
+/* --- Tags row -----------------------------------------------------------
+   Per Figma, tags align to the LEADING edge of the card (left in LTR,
+   right in RTL) — same alignment as the title and body. Using the
+   default `flex-start` lets the writing-mode handle the flip naturally. */
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-md);
+    width: 100%;
+    justify-content: flex-start;
+}
+
+/* --- Star rating with review count -------------------------------------
+   Five stars in a row plus a count label below. Aligned to the leading
+   edge to match title/body. Stars themselves render left-to-right (the
+   3.5 fill order doesn't reverse in RTL). */
+.card-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    width: 100%;
+}
+
+.card-rating__stars {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.card-rating__star {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    color: #e5e7eb;                         /* Background/background-neutral-200 */
+}
+
+.card-rating__star svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.card-rating__star--filled {
+    color: #dba102;                         /* Background/background-secondary */
+}
+
+/* Half-fill: render the empty star, then overlay a clipped filled version
+   covering the leading half via clip-path. */
+.card-rating__star--half {
+    color: #e5e7eb;
+}
+
+.card-rating__star--half::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    color: #dba102;
+    background-color: currentColor;
+    /* SVG mask of the star shape, clipped to the leading half */
+    -webkit-mask: var(--card-star-mask);
+            mask: var(--card-star-mask);
+    -webkit-mask-size: contain;
+            mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+    clip-path: inset(0 50% 0 0);
+}
+
+[dir="rtl"] .card-rating__star--half::after {
+    clip-path: inset(0 0 0 50%);
+}
+
+/* Star SVG mask data-URL — single star polygon */
+.card-rating__star {
+    --card-star-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z' fill='black'/></svg>");
+}
+
+.card-rating__count {
+    font-family: var(--font-family-primary);
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    color: #4d5761;                         /* Text 2/text-tertiary */
+    margin: 0;
 }
 
 /* ============================================

@@ -23,7 +23,7 @@
     align-items: center;
     width: 100%;
     padding: 0 var(--spacing-4xl);
-    background-color: var(--gray-100);
+    background-color: var(--color-gray-100);
     font-family: var(--font-family-primary);
     min-height: 32px;
 }
@@ -34,16 +34,23 @@
     gap: var(--spacing-md);
 }
 
-/* Flag */
+/* Flag — green-tinted indicator at the leading edge of the bar.
+   Houses either an icon-font glyph (dga-icon-flag-01) or a fallback
+   inline SVG. The container provides the Saudi-green background so the
+   white icon glyph reads cleanly. */
 .digital-stamp__flag {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 20px;
     height: 14px;
     flex-shrink: 0;
     overflow: hidden;
-    background-color: var(--alpha-white);
+    background-color: #006923;
+    color: #ffffff;
+    border-radius: 1px;
+    font-size: 10px;
+    line-height: 1;
 }
 
 .digital-stamp__flag svg,
@@ -55,10 +62,10 @@
 
 /* Text */
 .digital-stamp__text {
-    font-size: var(--text-sm);
+    font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
     line-height: var(--line-height-sm);
-    color: var(--text-default);
+    color: var(--color-text-primary);
     margin: 0;
 }
 
@@ -72,19 +79,19 @@
     border: none;
     cursor: pointer;
     font-family: var(--font-family-primary);
-    font-size: var(--text-sm);
+    font-size: var(--font-size-sm);
     font-weight: var(--font-weight-regular);
     line-height: var(--line-height-sm);
-    color: var(--sa-600);
+    color: var(--color-primary);
     transition: color var(--transition-fast);
 }
 
 .digital-stamp__toggle:hover {
-    color: var(--sa-700);
+    color: var(--color-primary-hover);
 }
 
 .digital-stamp__toggle:focus {
-    outline: 2px solid var(--sa-600);
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
     border-radius: 2px;
 }
@@ -96,9 +103,15 @@
     width: 24px;
     height: 24px;
     flex-shrink: 0;
+    /* Size the icon font glyph */
+    font-size: 16px;
+    line-height: 1;
+    color: currentColor;
     transition: transform var(--transition-fast);
 }
 
+/* Keep the inline-SVG sizing as a fallback for any consumer who hasn't
+   switched to the icon font yet. */
 .digital-stamp__toggle-icon svg {
     width: 14px;
     height: 14px;
@@ -165,14 +178,22 @@
     height: 48px;
     flex-shrink: 0;
     border-radius: var(--radius-full);
-    border: 1px solid var(--success-700);
+    border: 1px solid var(--color-success-700);
     box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
 }
 
+/* Icon-font glyph */
+.digital-stamp__verification-icon {
+    font-size: 24px;
+    line-height: 1;
+    color: var(--color-success-700);
+}
+
+/* Fallback for inline SVG */
 .digital-stamp__verification-icon svg {
     width: 24px;
     height: 24px;
-    stroke: var(--success-700);
+    stroke: var(--color-success-700);
     stroke-width: 2;
     fill: none;
 }
@@ -185,22 +206,22 @@
 }
 
 .digital-stamp__verification-title {
-    font-size: var(--text-lg);
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
     line-height: var(--line-height-lg);
-    color: var(--text-default);
+    color: var(--color-text-primary);
     margin: 0;
 }
 
 .digital-stamp__verification-title .highlight {
-    color: var(--sa-600);
+    color: var(--color-primary);
 }
 
 .digital-stamp__verification-description {
-    font-size: var(--text-md);
+    font-size: var(--font-size-md);
     font-weight: var(--font-weight-regular);
     line-height: var(--line-height-md);
-    color: var(--gray-700);
+    color: var(--color-gray-700);
     margin: 0;
 }
 
@@ -226,9 +247,15 @@
 }
 
 .digital-stamp__dga-logo {
-    width: 21px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 31px;
     height: 31px;
     flex-shrink: 0;
+    color: var(--color-primary);
+    font-size: 28px;
+    line-height: 1;
 }
 
 .digital-stamp__dga-logo svg,
@@ -246,24 +273,24 @@
 }
 
 .digital-stamp__registration-label {
-    font-size: var(--text-md);
+    font-size: var(--font-size-md);
     font-weight: var(--font-weight-regular);
     line-height: var(--line-height-md);
-    color: var(--text-default);
+    color: var(--color-text-primary);
     margin: 0;
 }
 
 .digital-stamp__registration-link {
-    font-size: var(--text-md);
+    font-size: var(--font-size-md);
     font-weight: var(--font-weight-regular);
     line-height: var(--line-height-md);
-    color: var(--sa-600);
+    color: var(--color-primary);
     text-decoration: underline;
     transition: color var(--transition-fast);
 }
 
 .digital-stamp__registration-link:hover {
-    color: var(--sa-700);
+    color: var(--color-primary-hover);
 }
 
 /* ============================================
@@ -337,85 +364,48 @@
 
 /* .edu.sa - Educational institutions */
 .digital-stamp--edu .digital-stamp__verification-title .highlight {
-    color: var(--sa-600);
+    color: var(--color-primary);
 }
 
 /* .med.sa - Medical institutions */
 .digital-stamp--med .digital-stamp__verification-title .highlight {
-    color: var(--sa-600);
+    color: var(--color-primary);
 }
 
 /* .org.sa - Organizations */
 .digital-stamp--org .digital-stamp__verification-title .highlight {
-    color: var(--sa-600);
+    color: var(--color-primary);
 }
 
 /* .sch.sa - Schools */
 .digital-stamp--sch .digital-stamp__verification-title .highlight {
-    color: var(--sa-600);
+    color: var(--color-primary);
 }
 
 /* .sa - General Saudi domains */
 .digital-stamp--sa .digital-stamp__verification-title .highlight {
-    color: var(--sa-600);
+    color: var(--color-primary);
 }
 
 /* ============================================
    RTL Support
+   ------------------------------------------------
+   With `direction: rtl` on the container, flex containers automatically
+   mirror their main axis — children laid out left→right in LTR will
+   appear right→left in RTL. So we should NOT also apply
+   `flex-direction: row-reverse`: that double-reverses and puts items
+   back in LTR order (which was the bug).
+
+   Likewise `align-items: flex-end` aligns to the trailing edge — in RTL
+   that's the LEFT side, which is the opposite of what we want. The
+   leading (right) edge in RTL is `flex-start`, which is also the
+   default, so we drop those overrides entirely.
    ============================================ */
 
 [dir="rtl"] .digital-stamp,
 .digital-stamp--rtl {
     direction: rtl;
-}
-
-[dir="rtl"] .digital-stamp__content,
-.digital-stamp--rtl .digital-stamp__content {
-    flex-direction: row-reverse;
-}
-
-[dir="rtl"] .digital-stamp__toggle,
-.digital-stamp--rtl .digital-stamp__toggle {
-    flex-direction: row-reverse;
-}
-
-[dir="rtl"] .digital-stamp__verification-card,
-.digital-stamp--rtl .digital-stamp__verification-card {
-    flex-direction: row-reverse;
     text-align: right;
-}
-
-[dir="rtl"] .digital-stamp__verification-text,
-.digital-stamp--rtl .digital-stamp__verification-text {
-    align-items: flex-end;
-}
-
-[dir="rtl"] .digital-stamp__registration-content,
-.digital-stamp--rtl .digital-stamp__registration-content {
-    flex-direction: row-reverse;
-}
-
-[dir="rtl"] .digital-stamp__registration-text,
-.digital-stamp--rtl .digital-stamp__registration-text {
-    flex-direction: row-reverse;
-    text-align: right;
-}
-
-/* RTL Mobile */
-[dir="rtl"] .digital-stamp--mobile .digital-stamp__content,
-.digital-stamp--rtl.digital-stamp--mobile .digital-stamp__content {
-    align-items: flex-end;
-}
-
-[dir="rtl"] .digital-stamp--mobile .digital-stamp__content > .digital-stamp__content,
-.digital-stamp--rtl.digital-stamp--mobile .digital-stamp__content > .digital-stamp__content {
-    flex-direction: row-reverse;
-}
-
-[dir="rtl"] .digital-stamp--mobile .digital-stamp__registration-text,
-.digital-stamp--rtl.digital-stamp--mobile .digital-stamp__registration-text {
-    flex-direction: column;
-    align-items: flex-end;
 }
 
 /* ============================================
@@ -423,7 +413,7 @@
    ============================================ */
 
 .digital-stamp__toggle:focus-visible {
-    outline: 2px solid var(--sa-600);
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
 }
 

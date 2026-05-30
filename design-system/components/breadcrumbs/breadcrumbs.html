@@ -1,29 +1,238 @@
 <div class="content-header">
-    <h1 class="content-title">Breadcrumbs</h1>
-    <p class="content-description">Navigation breadcrumb component for hierarchical page structure.
-    </p>
+    <h1 class="content-title">Breadcrumb</h1>
+    <p class="content-description">A navigation aid that shows the current page's position within the site hierarchy
+        and lets users backtrack to ancestor pages. Links use the neutral link color; the current page is a muted,
+        non-interactive label; and a chevron separates each level. When the trail gets long it collapses the middle
+        into an overflow (…) that opens a dropdown of the hidden links. Full RTL support. Modeled on Figma frames
+        5698:2597 (Breadcrumb) and 5698:2585 (Breadcrumb Item).</p>
 </div>
 
-<div class="component-preview">
-    <div class="component-preview-title">Default</div>
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="#" class="breadcrumb-link">Home</a>
-        <span class="breadcrumb-separator">›</span>
-        <a href="#" class="breadcrumb-link">Services</a>
-        <span class="breadcrumb-separator">›</span>
-        <a href="#" class="breadcrumb-link">Category</a>
-        <span class="breadcrumb-separator">›</span>
-        <span class="breadcrumb-current">Current Page</span>
-    </nav>
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <div class="live-demo__canvas" id="breadcrumb-demo-preview"
+            style="padding: var(--spacing-4xl); align-items: center;">
+            <!-- Rendered dynamically -->
+        </div>
+
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Breadcrumb</h3>
+                <p class="live-demo__sidebar-desc">Adjust the depth and toggle overflow to see the trail collapse
+                    into a dropdown.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="breadcrumb-demo-depth">Levels</label>
+                <select class="live-demo__sidebar-select" id="breadcrumb-demo-depth">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4" selected>4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Overflow (…)</label>
+                <button class="live-demo__switch" data-toggle="overflow" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="live-demo__footer">
+        With overflow on and 4+ levels, the middle links collapse behind a … toggle — click it to reveal the hidden
+        links in a dropdown (reusing the Menu component). Click outside or press <kbd>Esc</kbd> to close.
+    </div>
 </div>
 
-<div class="component-preview">
-    <div class="component-preview-title">Arabic (RTL)</div>
-    <nav class="breadcrumb" aria-label="Breadcrumb" dir="rtl">
-        <a href="#" class="breadcrumb-link">الرئيسية</a>
-        <span class="breadcrumb-separator">‹</span>
-        <a href="#" class="breadcrumb-link">الخدمات</a>
-        <span class="breadcrumb-separator">‹</span>
-        <span class="breadcrumb-current">تفاصيل الخدمة</span>
-    </nav>
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">Classes for composing a breadcrumb trail.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class / Attribute</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><code>.breadcrumb</code></td><td>Container</td><td>The <code>&lt;nav&gt;</code> trail. Use
+                        <code>aria-label="Breadcrumb"</code>. 14/20 regular text.</td></tr>
+                <tr><td><code>.breadcrumb-item</code></td><td>Item</td><td>Wraps a link, the current label, or the
+                        overflow toggle.</td></tr>
+                <tr><td><code>.breadcrumb-link</code></td><td>Link</td><td>Ancestor link — neutral color
+                        (<code>#384250</code>), underlines on hover.</td></tr>
+                <tr><td><code>.breadcrumb-current</code></td><td>Label</td><td>The current page — muted
+                        (<code>#9DA4AE</code>), non-interactive. Pair with
+                        <code>aria-current="page"</code>.</td></tr>
+                <tr><td><code>.breadcrumb-separator</code></td><td>Slot</td><td>Chevron between items
+                        (<code>#9DA4AE</code>). Auto-flips in RTL. Mark <code>aria-hidden="true"</code>.</td></tr>
+                <tr><td><code>.breadcrumb-overflow</code></td><td>Item</td><td>Collapsed-middle item holding the …
+                        toggle and a <code>.menu</code> dropdown of hidden links.</td></tr>
+                <tr><td><code>.breadcrumb-overflow__toggle</code></td><td>Trigger</td><td>The … button that opens the
+                        overflow dropdown (outside-click / ESC close).</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Section 1: Anatomy -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Anatomy</h2>
+        <p class="showcase-description">Root link → middle links separated by chevrons → the current page as a muted
+            label.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <span class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></span>
+            <span class="breadcrumb-separator" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M6 4l4 4-4 4" />
+                </svg></span>
+            <span class="breadcrumb-item"><a href="#" class="breadcrumb-link">Services</a></span>
+            <span class="breadcrumb-separator" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M6 4l4 4-4 4" />
+                </svg></span>
+            <span class="breadcrumb-item"><span class="breadcrumb-current" aria-current="page">Current Page</span></span>
+        </nav>
+    </div>
+</div>
+
+<!-- Section 2: Levels -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Levels</h2>
+        <p class="showcase-description">The trail grows one level at a time. The last item is always the current
+            page.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: flex-start; gap: var(--spacing-3xl);">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <span class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></span>
+            <span class="breadcrumb-separator" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M6 4l4 4-4 4" />
+                </svg></span>
+            <span class="breadcrumb-item"><span class="breadcrumb-current" aria-current="page">Services</span></span>
+        </nav>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <span class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></span>
+            <span class="breadcrumb-separator" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M6 4l4 4-4 4" />
+                </svg></span>
+            <span class="breadcrumb-item"><a href="#" class="breadcrumb-link">Services</a></span>
+            <span class="breadcrumb-separator" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M6 4l4 4-4 4" />
+                </svg></span>
+            <span class="breadcrumb-item"><a href="#" class="breadcrumb-link">Category</a></span>
+            <span class="breadcrumb-separator" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M6 4l4 4-4 4" />
+                </svg></span>
+            <span class="breadcrumb-item"><span class="breadcrumb-current" aria-current="page">Subcategory</span></span>
+        </nav>
+    </div>
+</div>
+
+<!-- Section 3: Overflow -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Overflow Dropdown</h2>
+        <p class="showcase-description">A long trail collapses its middle into an overflow … that opens a dropdown of
+            the hidden links (Figma "Middle-overflow open"). Click the … below.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="min-height: 220px; align-items: flex-start;">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <span class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></span>
+            <span class="breadcrumb-separator" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M6 4l4 4-4 4" />
+                </svg></span>
+            <span class="breadcrumb-item breadcrumb-overflow">
+                <button type="button" class="breadcrumb-overflow__toggle" aria-label="Show more links">…</button>
+                <div class="menu" role="menu">
+                    <div class="menu-group">
+                        <a href="#" class="menu-item" role="menuitem"><span class="menu-item__label">Services</span></a>
+                        <a href="#" class="menu-item" role="menuitem"><span class="menu-item__label">Category</span></a>
+                        <a href="#" class="menu-item" role="menuitem"><span
+                                class="menu-item__label">Subcategory</span></a>
+                    </div>
+                </div>
+            </span>
+            <span class="breadcrumb-separator" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M6 4l4 4-4 4" />
+                </svg></span>
+            <span class="breadcrumb-item"><a href="#" class="breadcrumb-link">Details</a></span>
+            <span class="breadcrumb-separator" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M6 4l4 4-4 4" />
+                </svg></span>
+            <span class="breadcrumb-item"><span class="breadcrumb-current" aria-current="page">Current Page</span></span>
+        </nav>
+    </div>
+</div>
+
+<!-- Section 4: RTL -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Support</h2>
+        <p class="showcase-description">For Arabic, the trail reads right-to-left and the chevron separators flip
+            direction automatically.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview showcase-preview--subtle" dir="rtl">
+        <nav class="breadcrumb breadcrumb--rtl" dir="rtl" aria-label="Breadcrumb">
+            <span class="breadcrumb-item"><a href="#" class="breadcrumb-link">الرئيسية</a></span>
+            <span class="breadcrumb-separator" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M6 4l4 4-4 4" />
+                </svg></span>
+            <span class="breadcrumb-item"><a href="#" class="breadcrumb-link">الخدمات</a></span>
+            <span class="breadcrumb-separator" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M6 4l4 4-4 4" />
+                </svg></span>
+            <span class="breadcrumb-item"><span class="breadcrumb-current" aria-current="page">تفاصيل الخدمة</span></span>
+        </nav>
+    </div>
 </div>

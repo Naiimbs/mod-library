@@ -11,6 +11,7 @@ class TableDemoManager {
         this.preview = document.getElementById('table-demo-preview');
         this.densitySelect = document.getElementById('table-demo-density');
         this.sortSelect = document.getElementById('table-demo-sort');
+        this.cellTypeSelect = document.getElementById('table-demo-cell-type');
 
         if (!this.preview) return;
 
@@ -82,6 +83,42 @@ class TableDemoManager {
                 this.render();
             });
         }
+        if (this.cellTypeSelect) {
+            this.cellTypeSelect.addEventListener('change', () => this.render());
+        }
+    }
+
+    // Map a Role value (en or ar) to a status-tag variant for the "Status tag"
+    // cell type demo.
+    roleStatusVariant(role) {
+        const r = role.toLowerCase();
+        if (r.includes('admin')   || role.includes('مدير'))   return 'success';
+        if (r.includes('editor')  || role.includes('محرر'))   return 'info';
+        if (r.includes('reviewer')|| role.includes('مراجع'))  return 'warning';
+        return 'neutral';
+    }
+
+    // Render a single Role-column <td> in the style chosen by the Cell type
+    // select. Mirrors every variant documented in the "Body Cell Types" section.
+    renderRoleCell(role) {
+        const type = this.cellTypeSelect ? this.cellTypeSelect.value : 'text';
+        switch (type) {
+            case 'link':
+                return `<td class="table__cell--link">${role}</td>`;
+            case 'tag':
+                return `<td><span class="tag tag--neutral tag--sm">${role}</span></td>`;
+            case 'status': {
+                const v = this.roleStatusVariant(role);
+                return `<td><span class="status-tag status-tag--sm status-tag--subtle status-tag--${v}"><span class="status-tag__dot"></span><span class="status-tag__label">${role}</span></span></td>`;
+            }
+            case 'action':
+                return `<td class="table__cell--action"><button type="button" class="table__action" aria-label="${role}">${this.arrowSVG()}</button></td>`;
+            case 'checkbox':
+                return `<td><input type="checkbox" class="table__checkbox" aria-label="${role}"></td>`;
+            case 'text':
+            default:
+                return `<td>${role}</td>`;
+        }
     }
 
     statusTagClass(status) {
@@ -150,7 +187,7 @@ class TableDemoManager {
         const body = `<tbody>${rows.map(r => `<tr>
     ${showSelection ? '<td class="table__cell--checkbox"><input type="checkbox" class="table__checkbox" aria-label="Select row"></td>' : ''}
     <td class="table__cell--link">${r.name}</td>
-    <td>${r.role}</td>
+    ${this.renderRoleCell(r.role)}
     <td>${r.team}</td>
     <td><span class="status-tag status-tag--sm status-tag--subtle ${this.statusTagClass(r.status)}"><span class="status-tag__dot"></span><span class="status-tag__label">${r.status}</span></span></td>
     <td>${r.joined}</td>

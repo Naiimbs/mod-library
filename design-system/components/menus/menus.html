@@ -1,29 +1,351 @@
 <div class="content-header">
-    <h1 class="content-title">Menus</h1>
-    <p class="content-description">Dropdown and context menu components.</p>
+    <h1 class="content-title">Menu</h1>
+    <p class="content-description">A floating list of actions or options, opened from a trigger (button, icon, or
+        nav item) or used as a context menu. Items can group under labels, carry a leading icon, and show a trailing
+        element (count text, icon, tag, or switch). Six item states — default, hover, pressed, selected, focused,
+        disabled — plus full RTL. Modeled on Figma frames 30195:22214 (Menu) and 30195:21865 (Menu list item).</p>
 </div>
 
-<div class="component-preview">
-    <div class="component-preview-title">Dropdown Menu</div>
-    <div class="dropdown-demo">
-        <div class="dropdown-menu">
-            <a href="#" class="dropdown-item">
-                <span>📄</span>
-                <span>View Details</span>
-            </a>
-            <a href="#" class="dropdown-item">
-                <span>✏️</span>
-                <span>Edit</span>
-            </a>
-            <a href="#" class="dropdown-item">
-                <span>📋</span>
-                <span>Duplicate</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item" style="color: #DC2626;">
-                <span>🗑️</span>
-                <span>Delete</span>
-            </a>
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <div class="live-demo__canvas" id="menu-demo-preview" style="padding: var(--spacing-4xl);">
+            <!-- Rendered dynamically -->
+        </div>
+
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Menu</h3>
+                <p class="live-demo__sidebar-desc">A group of menu items inside the popover container. Switch the
+                    trailing element and item state to explore the variants.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="menu-demo-trail">Trailing</label>
+                <select class="live-demo__sidebar-select" id="menu-demo-trail">
+                    <option value="none" selected>None</option>
+                    <option value="text">Text (+99)</option>
+                    <option value="check">Check icon</option>
+                    <option value="icon">Arrow icon</option>
+                    <option value="tag">Tag</option>
+                    <option value="switch">Switch</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="menu-demo-state">State</label>
+                <select class="live-demo__sidebar-select" id="menu-demo-state">
+                    <option value="default" selected>Default</option>
+                    <option value="selected">Selected (1st)</option>
+                    <option value="disabled">Disabled (3rd)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="live-demo__footer">
+        Items support hover and pressed states automatically — hover the preview items to see them. The selected
+        state uses the primary-50 green tint with primary text/icon.
+    </div>
+</div>
+
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">Classes and JS hooks for composing menus.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class / Attribute</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><code>.menu</code></td><td>Container</td><td>The popover: white bg, neutral-primary border, 8px
+                        radius, shadow-2xl, 8px padding.</td></tr>
+                <tr><td><code>.menu-group</code></td><td>Slot</td><td>A group of items. Adjacent groups are separated
+                        by a top divider. Add <code>data-menu-select</code> for single-select behavior.</td></tr>
+                <tr><td><code>.menu-group__label</code></td><td>Slot</td><td>Uppercase group heading (12/18 bold,
+                        text-display).</td></tr>
+                <tr><td><code>.menu-divider</code></td><td>Slot</td><td>Standalone 1px divider between items.</td></tr>
+                <tr><td><code>.menu-item</code></td><td>Item</td><td>40px row: leading icon + label + optional trailing
+                        slot. States via <code>--selected</code> / <code>--disabled</code>, plus :hover / :active /
+                        :focus-visible.</td></tr>
+                <tr><td><code>.menu-item__icon</code></td><td>Slot</td><td>16px leading icon glyph.</td></tr>
+                <tr><td><code>.menu-item__label</code></td><td>Slot</td><td>Item text (16/24 regular). Fills the row
+                        and ellipsizes on overflow.</td></tr>
+                <tr><td><code>.menu-item__trail</code> / <code>--text</code></td><td>Slot</td><td>Trailing element
+                        wrapper. <code>--text</code> styles a small count/label (#6C737F).</td></tr>
+                <tr><td><code>.menu-item__trail-icon</code></td><td>Slot</td><td>Trailing icon (20px) — e.g. a check
+                        for selected or an arrow for submenu.</td></tr>
+                <tr><td><code>.menu-switch</code></td><td>Control</td><td>Trailing toggle. Add <code>.is-on</code> for
+                        the checked (#0D121C) state.</td></tr>
+                <tr><td><code>data-menu-trigger="ID"</code></td><td>JS hook</td><td>On a trigger — opens the
+                        <code>.menu</code> inside a <code>.menu-anchor</code> with that id. Outside-click / ESC
+                        close.</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Section 1: Anatomy -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Anatomy</h2>
+        <p class="showcase-description">The popover container holding a group label and a set of menu items, each with
+            a leading icon and a label.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="menu" role="menu">
+            <div class="menu-group">
+                <p class="menu-group__label">Group label</p>
+                <div class="menu-item" role="menuitem" tabindex="0">
+                    <span class="menu-item__icon"><span class="dga-icon-file-01" aria-hidden="true"></span></span>
+                    <span class="menu-item__label">Item Label</span>
+                </div>
+                <div class="menu-item" role="menuitem" tabindex="0">
+                    <span class="menu-item__icon"><span class="dga-icon-file-01" aria-hidden="true"></span></span>
+                    <span class="menu-item__label">Item Label</span>
+                </div>
+                <div class="menu-item" role="menuitem" tabindex="0">
+                    <span class="menu-item__icon"><span class="dga-icon-file-01" aria-hidden="true"></span></span>
+                    <span class="menu-item__label">Item Label</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 2: Item states -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Item States</h2>
+        <p class="showcase-description">Per Figma 30195:21865: default, hover (gray fill), pressed (darker gray),
+            selected (green tint + primary text/icon), focused (black ring), and disabled.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="menu" role="menu" style="min-width: 280px;">
+            <div class="menu-group">
+                <div class="menu-item" role="menuitem">
+                    <span class="menu-item__icon"><span class="dga-icon-file-01" aria-hidden="true"></span></span>
+                    <span class="menu-item__label">Default</span>
+                </div>
+                <div class="menu-item" role="menuitem" style="background-color: #f3f4f6;">
+                    <span class="menu-item__icon"><span class="dga-icon-file-01" aria-hidden="true"></span></span>
+                    <span class="menu-item__label">Hover</span>
+                </div>
+                <div class="menu-item" role="menuitem" style="background-color: #e5e7eb;">
+                    <span class="menu-item__icon"><span class="dga-icon-file-01" aria-hidden="true"></span></span>
+                    <span class="menu-item__label">Pressed</span>
+                </div>
+                <div class="menu-item menu-item--selected" role="menuitem">
+                    <span class="menu-item__icon"><span class="dga-icon-file-01" aria-hidden="true"></span></span>
+                    <span class="menu-item__label">Selected</span>
+                    <span class="menu-item__trail-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M4 10l4 4 8-8" />
+                        </svg></span>
+                </div>
+                <div class="menu-item" role="menuitem" style="border-color: #161616;">
+                    <span class="menu-item__icon"><span class="dga-icon-file-01" aria-hidden="true"></span></span>
+                    <span class="menu-item__label">Focused</span>
+                </div>
+                <div class="menu-item menu-item--disabled" role="menuitem" aria-disabled="true">
+                    <span class="menu-item__icon"><span class="dga-icon-file-01" aria-hidden="true"></span></span>
+                    <span class="menu-item__label">Disabled</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 3: Trailing elements -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Trailing Elements</h2>
+        <p class="showcase-description">Items can carry a trailing count text, icon, tag, or switch — reusing the
+            existing Tag component for the tag variant.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="menu" role="menu" style="min-width: 300px;">
+            <div class="menu-group">
+                <div class="menu-item" role="menuitem">
+                    <span class="menu-item__icon"><span class="dga-icon-inbox" aria-hidden="true"></span></span>
+                    <span class="menu-item__label">Count text</span>
+                    <span class="menu-item__trail menu-item__trail--text">+99</span>
+                </div>
+                <div class="menu-item" role="menuitem">
+                    <span class="menu-item__icon"><span class="dga-icon-folder-01" aria-hidden="true"></span></span>
+                    <span class="menu-item__label">Submenu arrow</span>
+                    <span class="menu-item__trail-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M5 10h10M11 6l4 4-4 4" />
+                        </svg></span>
+                </div>
+                <div class="menu-item" role="menuitem">
+                    <span class="menu-item__icon"><span class="dga-icon-tag-01" aria-hidden="true"></span></span>
+                    <span class="menu-item__label">With a tag</span>
+                    <span class="menu-item__trail"><span class="tag tag--success tag--sm">New</span></span>
+                </div>
+                <div class="menu-item" role="menuitem">
+                    <span class="menu-item__icon"><span class="dga-icon-notification-01"
+                            aria-hidden="true"></span></span>
+                    <span class="menu-item__label">With a switch</span>
+                    <span class="menu-switch is-on" role="switch" aria-checked="true"><span
+                            class="menu-switch__thumb"></span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 4: Grouped menu -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Grouped Menu</h2>
+        <p class="showcase-description">Multiple groups, each with its own label, separated by dividers — the full
+            composition from the Figma Menu frame.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="menu" role="menu" style="min-width: 280px;">
+            <div class="menu-group" data-menu-select>
+                <p class="menu-group__label">Group label</p>
+                <div class="menu-item menu-item--selected" role="menuitem">
+                    <span class="menu-item__icon"><span class="dga-icon-file-01" aria-hidden="true"></span></span>
+                    <span class="menu-item__label">Item Label</span>
+                    <span class="menu-item__trail-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M4 10l4 4 8-8" />
+                        </svg></span>
+                </div>
+                <div class="menu-item" role="menuitem">
+                    <span class="menu-item__icon"><span class="dga-icon-file-01" aria-hidden="true"></span></span>
+                    <span class="menu-item__label">Item Label</span>
+                </div>
+            </div>
+            <div class="menu-group">
+                <p class="menu-group__label">Group label</p>
+                <div class="menu-item" role="menuitem">
+                    <span class="menu-item__icon"><span class="dga-icon-notification-01"
+                            aria-hidden="true"></span></span>
+                    <span class="menu-item__label">Notifications</span>
+                    <span class="menu-switch is-on" role="switch" aria-checked="true"><span
+                            class="menu-switch__thumb"></span></span>
+                </div>
+                <div class="menu-item" role="menuitem">
+                    <span class="menu-item__icon"><span class="dga-icon-moon-02" aria-hidden="true"></span></span>
+                    <span class="menu-item__label">Dark mode</span>
+                    <span class="menu-switch" role="switch" aria-checked="false"><span
+                            class="menu-switch__thumb"></span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 5: Open on click -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Open on Click</h2>
+        <p class="showcase-description">The real behavior: a trigger opens the menu as a dropdown. Click the trigger
+            to toggle; click outside or press <kbd>Esc</kbd> to close.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="min-height: 280px; align-items: flex-start;">
+        <div class="menu-anchor">
+            <button class="btn btn-secondary-outline" type="button" data-menu-trigger="demo-dropdown-menu">
+                Options
+                <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 8l5 5 5-5" />
+                    </svg></span>
+            </button>
+            <div class="menu" id="demo-dropdown-menu" role="menu">
+                <div class="menu-group">
+                    <div class="menu-item" role="menuitem" tabindex="0">
+                        <span class="menu-item__icon"><span class="dga-icon-view" aria-hidden="true"></span></span>
+                        <span class="menu-item__label">View details</span>
+                    </div>
+                    <div class="menu-item" role="menuitem" tabindex="0">
+                        <span class="menu-item__icon"><span class="dga-icon-edit-01" aria-hidden="true"></span></span>
+                        <span class="menu-item__label">Edit</span>
+                    </div>
+                    <div class="menu-item" role="menuitem" tabindex="0">
+                        <span class="menu-item__icon"><span class="dga-icon-copy-01" aria-hidden="true"></span></span>
+                        <span class="menu-item__label">Duplicate</span>
+                        <span class="menu-item__trail menu-item__trail--text">⌘D</span>
+                    </div>
+                </div>
+                <div class="menu-group">
+                    <div class="menu-item" role="menuitem" tabindex="0">
+                        <span class="menu-item__icon"><span class="dga-icon-delete-02" aria-hidden="true"></span></span>
+                        <span class="menu-item__label">Delete</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 6: RTL -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Support</h2>
+        <p class="showcase-description">Arabic and other right-to-left layouts mirror the menu: the leading icon moves
+            to the right, the label aligns right, and trailing elements move to the left.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview showcase-preview--subtle" dir="rtl">
+        <div class="menu menu--rtl" dir="rtl" role="menu" style="min-width: 280px;">
+            <div class="menu-group" data-menu-select>
+                <p class="menu-group__label">عنوان مجموعة</p>
+                <div class="menu-item menu-item--selected" role="menuitem">
+                    <span class="menu-item__icon"><span class="dga-icon-file-01" aria-hidden="true"></span></span>
+                    <span class="menu-item__label">نص العنصر</span>
+                    <span class="menu-item__trail-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M4 10l4 4 8-8" />
+                        </svg></span>
+                </div>
+                <div class="menu-item" role="menuitem">
+                    <span class="menu-item__icon"><span class="dga-icon-file-01" aria-hidden="true"></span></span>
+                    <span class="menu-item__label">نص العنصر</span>
+                    <span class="menu-item__trail"><span class="tag tag--neutral tag--sm">وسم</span></span>
+                </div>
+                <div class="menu-item" role="menuitem">
+                    <span class="menu-item__icon"><span class="dga-icon-notification-01"
+                            aria-hidden="true"></span></span>
+                    <span class="menu-item__label">نص العنصر</span>
+                    <span class="menu-switch is-on" role="switch" aria-checked="true"><span
+                            class="menu-switch__thumb"></span></span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
