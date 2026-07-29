@@ -1,0 +1,214 @@
+<div class="content-header">
+    <h1 class="content-title">Search Box</h1>
+    <p class="content-description">A dedicated search field with a leading search icon, a clear action that appears
+        while typing, the library's bottom press line on focus, and error, read-only, and disabled states. Ported
+        from the DGA library's <code>dga-search-box</code> component.</p>
+</div>
+
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <!-- Left: Preview canvas -->
+        <div class="live-demo__canvas" id="search-box-demo-preview">
+            <!-- Rendered dynamically by JS -->
+        </div>
+
+        <!-- Right: Controls sidebar -->
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Search Box</h3>
+                <p class="live-demo__sidebar-desc">Focus the field to see the press line grow; type to reveal the
+                    clear action.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="search-box-demo-state">State</label>
+                <select class="live-demo__sidebar-select" id="search-box-demo-state">
+                    <option value="default" selected>Default</option>
+                    <option value="error">Error</option>
+                    <option value="success">Success</option>
+                    <option value="readonly">Read-only</option>
+                    <option value="disabled">Disabled</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Clear button</label>
+                <button class="live-demo__switch active" data-toggle="clear" type="button" role="switch"
+                    aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="live-demo__footer">
+        This live demo contains only a preview of functionality and styles available for this component.
+    </div>
+</div>
+
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">All available CSS classes for configuring search boxes, mapped from the
+            library's <code>dga-search-box</code> API.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Type</th>
+                    <th>Library prop</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.search-box</code></td>
+                    <td>Base</td>
+                    <td>—</td>
+                    <td>40px field with a gray-400 border; hover darkens it to gray-700.</td>
+                </tr>
+                <tr>
+                    <td><code>.search-box.focus</code> / <code>.active</code></td>
+                    <td>State</td>
+                    <td>—</td>
+                    <td>Focus grows the bottom press line to full width; active (pressed) shows 50%.</td>
+                </tr>
+                <tr>
+                    <td><code>.search-box--error</code></td>
+                    <td>State</td>
+                    <td><code>error</code></td>
+                    <td>Error border and press line, usually with the error feedback icon.</td>
+                </tr>
+                <tr>
+                    <td><code>.search-box--readonly</code> / <code>--disabled</code></td>
+                    <td>State</td>
+                    <td><code>readonly</code>, <code>disabled</code></td>
+                    <td>Muted field without the press line; disabled also mutes the icons.</td>
+                </tr>
+                <tr>
+                    <td><code>.search-box__icon</code> / <code>.search-box__field</code></td>
+                    <td>Element</td>
+                    <td><code>placeholder</code></td>
+                    <td>Leading 20px search icon and the borderless input.</td>
+                </tr>
+                <tr>
+                    <td><code>.search-box__actions</code> / <code>__action-btn</code> / <code>__divider</code></td>
+                    <td>Element</td>
+                    <td>—</td>
+                    <td>Trailing actions (clear, optional search button) separated by a 1px divider. The page script
+                        shows them only while the field has text.</td>
+                </tr>
+                <tr>
+                    <td><code>.search-box__feedback-icon--success|--error|--warning</code></td>
+                    <td>Element</td>
+                    <td><code>feedback</code></td>
+                    <td>Status icon with a soft tinted halo before the actions.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ============================================
+     DEFAULT
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Default</h2>
+        <p class="showcase-description">Type in the field: the clear action appears with its divider, and clearing
+            refocuses the input.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: flex-start;">
+        <div class="search-box" style="max-width: 360px;">
+            <span class="search-box__icon"><span class="icon dga-icon-search-01" aria-hidden="true"></span></span>
+            <input type="text" class="search-box__field" placeholder="Search services..." aria-label="Search">
+            <div class="search-box__actions" style="display:none;">
+                <button type="button" class="search-box__action-btn" data-search-clear aria-label="Clear search">
+                    <span class="icon dga-icon-multiplication-sign"></span>
+                </button>
+                <span class="search-box__divider"></span>
+                <button type="button" class="search-box__search-btn" aria-label="Search">
+                    <span class="icon dga-icon-search-01"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     STATES
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Validation &amp; States</h2>
+        <p class="showcase-description">Error recolors the border and press line; success shows the tinted check;
+            read-only and disabled mute the field.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: flex-start;">
+        <div class="showcase-row" style="justify-content: flex-start; align-items: flex-start; width: 100%;">
+            <div class="search-box search-box--error" style="max-width: 260px;">
+                <span class="search-box__icon"><span class="icon dga-icon-search-01"></span></span>
+                <input type="text" class="search-box__field" placeholder="Error" aria-label="Search with error">
+                <span class="search-box__feedback-icon search-box__feedback-icon--error"><span
+                        class="icon dga-icon-cancel-circle"></span></span>
+            </div>
+            <div class="search-box" style="max-width: 260px;">
+                <span class="search-box__icon"><span class="icon dga-icon-search-01"></span></span>
+                <input type="text" class="search-box__field" value="National services" aria-label="Search success">
+                <span class="search-box__feedback-icon search-box__feedback-icon--success"><span
+                        class="icon dga-icon-checkmark-circle-02"></span></span>
+            </div>
+            <div class="search-box search-box--readonly" style="max-width: 260px;">
+                <span class="search-box__icon"><span class="icon dga-icon-search-01"></span></span>
+                <input type="text" class="search-box__field" value="Read-only query" readonly aria-label="Read-only">
+            </div>
+            <div class="search-box search-box--disabled" style="max-width: 260px;">
+                <span class="search-box__icon"><span class="icon dga-icon-search-01"></span></span>
+                <input type="text" class="search-box__field" placeholder="Disabled" disabled aria-label="Disabled">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     RTL LAYOUT
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Layout</h2>
+        <p class="showcase-description">The icon leads from the right and the actions trail on the left.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: flex-start;" dir="rtl">
+        <div class="search-box" style="max-width: 360px;">
+            <span class="search-box__icon"><span class="icon dga-icon-search-01" aria-hidden="true"></span></span>
+            <input type="text" class="search-box__field" placeholder="ابحث في الخدمات..." aria-label="بحث">
+            <div class="search-box__actions" style="display:none;">
+                <button type="button" class="search-box__action-btn" data-search-clear aria-label="مسح">
+                    <span class="icon dga-icon-multiplication-sign"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

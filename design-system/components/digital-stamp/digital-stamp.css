@@ -23,7 +23,7 @@
     align-items: center;
     width: 100%;
     padding: 0 var(--spacing-4xl);
-    background-color: var(--color-gray-100);
+    background-color: var(--gray-100);
     font-family: var(--font-family-primary);
     min-height: 32px;
 }
@@ -47,7 +47,7 @@
     flex-shrink: 0;
     overflow: hidden;
     background-color: #006923;
-    color: #ffffff;
+    color: var(--alpha-white);
     border-radius: 1px;
     font-size: 10px;
     line-height: 1;
@@ -65,7 +65,7 @@
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
     line-height: var(--line-height-sm);
-    color: var(--color-text-primary);
+    color: var(--text-default);
     margin: 0;
 }
 
@@ -82,18 +82,18 @@
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-regular);
     line-height: var(--line-height-sm);
-    color: var(--color-primary);
+    color: var(--sa-600);
     transition: color var(--transition-fast);
 }
 
 .digital-stamp__toggle:hover {
-    color: var(--color-primary-hover);
+    color: var(--sa-700);
 }
 
 .digital-stamp__toggle:focus {
-    outline: 2px solid var(--color-primary);
+    outline: 2px solid var(--sa-600);
     outline-offset: 2px;
-    border-radius: 2px;
+    border-radius: var(--radius-xs);
 }
 
 .digital-stamp__toggle-icon {
@@ -104,7 +104,7 @@
     height: 24px;
     flex-shrink: 0;
     /* Size the icon font glyph */
-    font-size: 16px;
+    font-size: var(--font-size-md);
     line-height: 1;
     color: currentColor;
     transition: transform var(--transition-fast);
@@ -178,22 +178,22 @@
     height: 48px;
     flex-shrink: 0;
     border-radius: var(--radius-full);
-    border: 1px solid var(--color-success-700);
+    border: 1px solid var(--success-700);
     box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
 }
 
 /* Icon-font glyph */
 .digital-stamp__verification-icon {
-    font-size: 24px;
+    font-size: var(--font-size-2xl);
     line-height: 1;
-    color: var(--color-success-700);
+    color: var(--success-700);
 }
 
 /* Fallback for inline SVG */
 .digital-stamp__verification-icon svg {
     width: 24px;
     height: 24px;
-    stroke: var(--color-success-700);
+    stroke: var(--success-700);
     stroke-width: 2;
     fill: none;
 }
@@ -209,19 +209,19 @@
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
     line-height: var(--line-height-lg);
-    color: var(--color-text-primary);
+    color: var(--text-default);
     margin: 0;
 }
 
 .digital-stamp__verification-title .highlight {
-    color: var(--color-primary);
+    color: var(--sa-600);
 }
 
 .digital-stamp__verification-description {
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-regular);
     line-height: var(--line-height-md);
-    color: var(--color-gray-700);
+    color: var(--gray-700);
     margin: 0;
 }
 
@@ -253,7 +253,7 @@
     width: 31px;
     height: 31px;
     flex-shrink: 0;
-    color: var(--color-primary);
+    color: var(--sa-600);
     font-size: 28px;
     line-height: 1;
 }
@@ -276,7 +276,7 @@
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-regular);
     line-height: var(--line-height-md);
-    color: var(--color-text-primary);
+    color: var(--text-default);
     margin: 0;
 }
 
@@ -284,13 +284,13 @@
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-regular);
     line-height: var(--line-height-md);
-    color: var(--color-primary);
+    color: var(--sa-600);
     text-decoration: underline;
     transition: color var(--transition-fast);
 }
 
 .digital-stamp__registration-link:hover {
-    color: var(--color-primary-hover);
+    color: var(--sa-700);
 }
 
 /* ============================================
@@ -364,27 +364,27 @@
 
 /* .edu.sa - Educational institutions */
 .digital-stamp--edu .digital-stamp__verification-title .highlight {
-    color: var(--color-primary);
+    color: var(--sa-600);
 }
 
 /* .med.sa - Medical institutions */
 .digital-stamp--med .digital-stamp__verification-title .highlight {
-    color: var(--color-primary);
+    color: var(--sa-600);
 }
 
 /* .org.sa - Organizations */
 .digital-stamp--org .digital-stamp__verification-title .highlight {
-    color: var(--color-primary);
+    color: var(--sa-600);
 }
 
 /* .sch.sa - Schools */
 .digital-stamp--sch .digital-stamp__verification-title .highlight {
-    color: var(--color-primary);
+    color: var(--sa-600);
 }
 
 /* .sa - General Saudi domains */
 .digital-stamp--sa .digital-stamp__verification-title .highlight {
-    color: var(--color-primary);
+    color: var(--sa-600);
 }
 
 /* ============================================
@@ -413,7 +413,7 @@
    ============================================ */
 
 .digital-stamp__toggle:focus-visible {
-    outline: 2px solid var(--color-primary);
+    outline: 2px solid var(--sa-600);
     outline-offset: 2px;
 }
 

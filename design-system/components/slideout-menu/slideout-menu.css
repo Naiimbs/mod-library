@@ -5,13 +5,13 @@
    Body reuses the Menu component (.menu-group / .menu-item).
 
    Figma tokens:
-     Background/background-menu        #ffffff  (white bg)
-     Background/background-neutral-50  #f9fafb  (gray bg)
-     Border/border-neutral-primary     #d2d6db
-     Text/text-default                 #161616  (title)
-     Text/text-secondary-paragraph     #6c737f  (description)
-     Icon/icon-success                 #067647  (featured icon)
-     Icon/background-brand-light        #f3fcf6  (featured icon bg)
+     Background/background-menu        var(--alpha-white)  (white bg)
+     Background/background-neutral-50  var(--gray-50)  (gray bg)
+     Border/border-neutral-primary     var(--gray-300)
+     Text/text-default                 var(--text-default)  (title)
+     Text/text-secondary-paragraph     var(--gray-500)  (description)
+     Icon/icon-success                 var(--success-700)  (featured icon)
+     Icon/background-brand-light        var(--sa-50)  (featured icon bg)
      Text md/Semibold                  16/24/600 (title)
      Text xs/Regular                   12/18/400 (description)
    ============================================ */
@@ -24,7 +24,7 @@
     position: fixed;
     inset: 0;
     background-color: rgba(16, 24, 40, 0.5);
-    z-index: var(--z-modal-backdrop, 1000);
+    z-index: var(--z-modal-backdrop);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.2s ease, visibility 0.2s ease;
@@ -44,13 +44,13 @@
     top: 0;
     bottom: 0;
     inset-inline-start: 0;                  /* default: left edge */
-    z-index: var(--z-modal, 1001);
+    z-index: var(--z-modal);
     display: flex;
     flex-direction: column;
     width: 346px;
     max-width: 100%;
-    background-color: #ffffff;              /* background-menu (white) */
-    border-inline-end: 1px solid #d2d6db;
+    background-color: var(--alpha-white);              /* background-menu (white) */
+    border-inline-end: 1px solid var(--gray-300);
     box-shadow: 0 24px 48px -12px rgba(16, 24, 40, 0.18);
     transition: transform 0.25s ease;
     box-sizing: border-box;
@@ -75,7 +75,7 @@
     inset-inline-start: auto;
     inset-inline-end: 0;
     border-inline-end: 0;
-    border-inline-start: 1px solid #d2d6db;
+    border-inline-start: 1px solid var(--gray-300);
 }
 
 .slideout--right:not(.slideout--inline) {
@@ -94,7 +94,7 @@
 
 /* Gray background variant */
 .slideout--gray {
-    background-color: #f9fafb;              /* background-neutral-50 */
+    background-color: var(--gray-50);              /* background-neutral-50 */
 }
 
 /* When rendered inline in the docs (static showcase), neutralize the
@@ -108,8 +108,8 @@
     transform: none;
     z-index: auto;
     height: 640px;
-    border: 1px solid #d2d6db;
-    border-radius: var(--radius-md, 8px);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
     overflow: hidden;
     box-shadow: var(--shadow-md);
 }
@@ -124,7 +124,7 @@
     align-items: flex-start;
     gap: var(--spacing-md);
     padding: var(--spacing-xl);
-    border-bottom: 1px solid var(--color-border-secondary, #e5e7eb);
+    border-bottom: 1px solid var(--gray-200);
     flex-shrink: 0;
 }
 
@@ -136,9 +136,9 @@
     height: 36px;
     flex-shrink: 0;
     border-radius: var(--radius-full);
-    background-color: #f3fcf6;              /* background-brand-light */
-    color: #067647;                         /* icon-success */
-    font-size: 18px;
+    background-color: var(--sa-50);              /* background-brand-light */
+    color: var(--success-700);                         /* icon-success */
+    font-size: var(--font-size-lg);
     line-height: 1;
 }
 
@@ -150,25 +150,25 @@
 .slideout__heading {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: var(--spacing-xxs);
     flex: 1 1 auto;
     min-width: 0;
 }
 
 .slideout__title {
     margin: 0;
-    font-size: 16px;
+    font-size: var(--font-size-md);
     line-height: 24px;
-    font-weight: 600;                       /* text-md/Semibold */
-    color: #161616;                         /* text-default */
+    font-weight: var(--font-weight-semibold);                       /* text-md/Semibold */
+    color: var(--text-default);                         /* text-default */
 }
 
 .slideout__description {
     margin: 0;
-    font-size: 12px;
+    font-size: var(--font-size-xs);
     line-height: 18px;
-    font-weight: 400;                       /* text-xs/Regular */
-    color: #6c737f;                         /* text-secondary-paragraph */
+    font-weight: var(--font-weight-regular);                       /* text-xs/Regular */
+    color: var(--gray-500);                         /* text-secondary-paragraph */
 }
 
 .slideout__close {
@@ -180,20 +180,20 @@
     flex-shrink: 0;
     border: 0;
     background: transparent;
-    border-radius: var(--radius-sm, 4px);
-    color: #161616;
-    font-size: 20px;
+    border-radius: var(--radius-sm);
+    color: var(--text-default);
+    font-size: var(--font-size-xl);
     line-height: 1;
     cursor: pointer;
     transition: background-color 0.12s ease;
 }
 
 .slideout__close:hover {
-    background-color: var(--color-gray-100, #f3f4f6);
+    background-color: var(--gray-100);
 }
 
 .slideout__close:focus-visible {
-    outline: 2px solid var(--color-primary, #1b8354);
+    outline: 2px solid var(--sa-600);
     outline-offset: 2px;
 }
 
@@ -231,28 +231,28 @@
     justify-content: center;
     gap: var(--spacing-xs);
     padding: var(--spacing-xl);
-    background-color: #f3fcf6;              /* background-primary-50 */
-    border: 1px dashed #1b8354;            /* border-primary */
-    border-radius: var(--radius-md, 8px);
-    color: #1b8354;
+    background-color: var(--sa-50);              /* background-primary-50 */
+    border: 1px dashed var(--sa-600);            /* border-primary */
+    border-radius: var(--radius-md);
+    color: var(--sa-600);
     text-align: center;
     box-sizing: border-box;
 }
 
 .slideout-custom__title {
     margin: 0;
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     line-height: 20px;
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     text-transform: uppercase;
     letter-spacing: 0.02em;
 }
 
 .slideout-custom__body {
     margin: 0;
-    font-size: 12px;
+    font-size: var(--font-size-xs);
     line-height: 18px;
-    font-weight: 400;
+    font-weight: var(--font-weight-regular);
 }
 
 /* ============================================
@@ -264,7 +264,7 @@
     align-items: center;
     gap: var(--spacing-md);
     padding: var(--spacing-xl);
-    border-top: 1px solid var(--color-border-secondary, #e5e7eb);
+    border-top: 1px solid var(--gray-200);
     flex-shrink: 0;
 }
 

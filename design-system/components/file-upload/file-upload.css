@@ -1,320 +1,192 @@
 /* ============================================
-   COMPONENT: FILE UPLOAD
-   DGA Design System - File Upload
-   Figma frames: 30146:37007 (Multiple), 30146:37020 (Single),
-                 30146:36958 (_File), 30146:36921 (_Drop Zone)
-   Tokens follow the shared DGA system used across the design system.
+   FILE UPLOAD COMPONENT
+   DGA Design System — rebuilt to match @platformscode/core@0.0.50
+   dga-file-upload exactly: dashed drop area (SVG border), browse
+   button, and a list of flat gray file rows with a status icon,
+   name, and close action. Errors wrap the row with a red border
+   and attach a message strip below it.
    ============================================ */
 
 .file-upload {
     display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xl);
     width: 100%;
-    max-width: 520px;
-    font-family: var(--font-family-primary);
-}
-
-/* ============================================
-   Drop Zone (_Drop Zone)
-   ============================================ */
-
-.file-upload__dropzone {
-    display: flex;
+    max-width: 334px;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
     gap: var(--spacing-md);
-    width: 100%;
-    padding: var(--spacing-4xl) var(--spacing-xl);
-    text-align: center;
-    background-color: #ffffff;
-    border: 1px dashed var(--color-border-primary, #d2d6db);
-    border-radius: var(--radius-md, 8px);
-    cursor: pointer;
-    transition: border-color 0.15s ease, background-color 0.15s ease;
-    box-sizing: border-box;
 }
 
-/* Dragover / hover — primary dashed border + brand-light tint */
-.file-upload__dropzone:hover,
-.file-upload__dropzone.is-dragover {
-    border-color: var(--color-primary, #1b8354);
-    background-color: #f3fcf6;              /* background-primary-50 */
-}
-
-.file-upload__dropzone:focus-visible {
-    outline: 2px solid var(--color-primary, #1b8354);
-    outline-offset: 2px;
-}
-
-/* Disabled */
-.file-upload__dropzone.is-disabled {
-    background-color: var(--color-gray-50, #f9fafb);
-    border-color: var(--color-border-secondary, #e5e7eb);
-    cursor: not-allowed;
-    pointer-events: none;
-    opacity: 0.7;
-}
-
-.file-upload__dropzone.is-disabled .file-upload__dz-icon {
-    background-color: var(--color-gray-100, #f3f4f6);
-    color: var(--color-gray-400, #9da4ae);
-}
-
-/* Upload icon — circular brand-light badge */
-.file-upload__dz-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: var(--radius-full);
-    background-color: #f3fcf6;              /* background-brand-light */
-    color: var(--color-primary, #1b8354);
-    font-size: 20px;
-    line-height: 1;
-    margin-bottom: var(--spacing-xs);
-}
-
-.file-upload__dz-icon svg {
-    width: 22px;
-    height: 22px;
-}
-
-.file-upload__dz-title {
-    margin: 0;
-    font-size: var(--font-size-sm);
-    line-height: var(--line-height-sm);
-    font-weight: var(--font-weight-medium);
-    color: var(--color-text-primary, #161616);
-}
-
-/* Browse action — a real button (Figma _Drop Zone "Button" + action-name).
-   Reuses the shared .btn component; this only handles spacing in the zone. */
-.file-upload__browse-btn {
-    margin: var(--spacing-xs) 0;
-}
-
-/* "browse" action — inline primary link (kept as a fallback alternative) */
-.file-upload__browse {
-    color: var(--color-primary, #1b8354);
-    font-weight: var(--font-weight-semibold);
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.file-upload__browse:hover {
-    text-decoration: underline;
-}
-
-.file-upload__dz-hint {
-    margin: 0;
-    font-size: var(--font-size-xs);
-    line-height: var(--line-height-xs);
-    color: var(--color-text-secondary, #6c737f);
-    max-width: 320px;
-}
-
-/* The native input is visually hidden but reachable. */
+/* visually hidden native input */
 .file-upload__input {
     position: absolute;
     width: 1px;
     height: 1px;
-    padding: 0;
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
 
-/* ============================================
-   File list + file item (_File)
-   ============================================ */
-
-.file-upload__list {
+/* --- Drop area: gray fill + dashed SVG border (12 / 6.5 dashes) --- */
+.file-upload__drop-area {
     display: flex;
+    padding: var(--spacing-3xl);
     flex-direction: column;
-    gap: var(--spacing-md);
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-xl);
     width: 100%;
+    border-radius: var(--radius-sm);
+    background: var(--gray-100);
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='4' ry='4' stroke='%23D2D6DBFF' stroke-width='2' stroke-dasharray='12%2c6.5' stroke-dashoffset='5' stroke-linecap='square'/%3e%3c/svg%3e");
+    cursor: pointer;
 }
 
-.file-upload__file {
+.file-upload__icon {
+    font-size: 32px;
+    color: var(--gray-800);
     display: flex;
+    align-items: center;
+}
+
+.file-upload__content {
+    text-align: center;
+}
+
+.file-upload__instructions {
+    margin: 0;
+    font-size: var(--font-size-md);
+    line-height: 24px;
+    font-weight: var(--font-weight-medium);
+    color: var(--gray-800);
+}
+
+.file-upload__formats {
+    margin: 0;
+    font-size: var(--font-size-xs);
+    line-height: 18px;
+    color: var(--gray-700);
+}
+
+/* --- Drag-over: brand tint + green dashed border --- */
+.file-upload--drag-over .file-upload__drop-area {
+    background-color: var(--sa-50);
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='4' ry='4' stroke='%231B8354FF' stroke-width='2' stroke-dasharray='12%2c6.5' stroke-dashoffset='5' stroke-linecap='square'/%3e%3c/svg%3e");
+}
+
+.file-upload--drag-over .file-upload__icon,
+.file-upload--drag-over .file-upload__instructions,
+.file-upload--drag-over .file-upload__formats {
+    color: var(--success-700);
+}
+
+/* --- Disabled --- */
+.file-upload--disabled .file-upload__drop-area {
+    background-color: var(--gray-200);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.file-upload--disabled .file-upload__icon,
+.file-upload--disabled .file-upload__instructions,
+.file-upload--disabled .file-upload__formats {
+    color: var(--gray-400);
+}
+
+/* ============================================
+   Files list
+   ============================================ */
+.file-upload__files-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     align-items: flex-start;
     gap: var(--spacing-md);
-    width: 100%;
-    padding: var(--spacing-lg);
-    background-color: #ffffff;
-    border: 1px solid var(--color-border-primary, #d2d6db);
-    border-radius: var(--radius-md, 8px);
-    box-sizing: border-box;
 }
 
-/* File-type icon */
-.file-upload__file-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    flex-shrink: 0;
-    border-radius: var(--radius-sm, 4px);
-    background-color: var(--color-gray-50, #f9fafb);
-    color: var(--color-text-secondary, #6c737f);
-    font-size: 20px;
-    line-height: 1;
-}
-
-.file-upload__file-icon svg {
-    width: 20px;
-    height: 20px;
-}
-
-.file-upload__file-body {
-    flex: 1 1 auto;
-    min-width: 0;
+/* one flat file row */
+.file-upload__file-item {
     display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
+    align-items: center;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--gray-300);
+    background: var(--gray-100);
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+    width: 100%;
+}
+
+.file-upload__file-status {
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.file-upload__file-status--complete { color: var(--success-700); }
+.file-upload__file-status--error { color: var(--error-700); }
+
+.file-upload__file-status .icon { font-size: var(--font-size-xl); }
+
+/* tiny neutral spinner for the uploading state (library: dga-loading tiny) */
+.file-upload__spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--gray-300);
+    border-top-color: var(--gray-700);
+    border-radius: var(--radius-full);
+    animation: file-upload-spin 0.8s linear infinite;
+}
+
+@keyframes file-upload-spin {
+    to { transform: rotate(360deg); }
 }
 
 .file-upload__file-name {
-    font-size: var(--font-size-sm);
-    line-height: var(--line-height-sm);
-    font-weight: var(--font-weight-medium);
-    color: var(--color-text-primary, #161616);
+    color: var(--text-default);
+    overflow: hidden;
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis;
+    flex: 1;
+    font-size: var(--font-size-sm);
+    line-height: 20px;
+    font-weight: var(--font-weight-medium);
+    /* keep Latin file names readable in RTL */
+    unicode-bidi: plaintext;
+    text-align: start;
 }
 
-.file-upload__file-meta {
-    font-size: var(--font-size-xs);
-    line-height: var(--line-height-xs);
-    color: var(--color-text-secondary, #6c737f);
-}
-
-/* Progress bar (uploading) */
-.file-upload__progress {
+/* --- Error item: red-bordered wrapper with a message strip below --- */
+.file-upload__file-item--error {
     display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-xs);
-}
-
-.file-upload__progress-track {
-    flex: 1 1 auto;
-    height: 6px;
-    border-radius: var(--radius-full);
-    background-color: var(--color-gray-200, #e5e7eb);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--error-700);
+    background: var(--gray-100);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
     overflow: hidden;
+    gap: 0;
+    width: 100%;
 }
 
-.file-upload__progress-fill {
-    height: 100%;
-    width: 0%;
-    border-radius: var(--radius-full);
-    background-color: var(--color-primary, #1b8354);
-    transition: width 0.2s ease;
-}
-
-.file-upload__progress-value {
-    font-size: var(--font-size-xs);
-    color: var(--color-text-secondary, #6c737f);
-    flex-shrink: 0;
-    min-width: 34px;
-    text-align: end;
-}
-
-/* Trailing control (remove / status) */
-.file-upload__file-action {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    flex-shrink: 0;
+.file-upload__file-item--error .file-upload__file-item {
+    border-radius: 0;
     border: 0;
-    background: transparent;
-    border-radius: var(--radius-sm, 4px);
-    color: var(--color-text-secondary, #6c737f);
-    font-size: 18px;
-    line-height: 1;
-    cursor: pointer;
-    transition: background-color 0.12s ease, color 0.12s ease;
+    border-bottom: 1px solid var(--gray-300);
 }
 
-.file-upload__file-action:hover {
-    background-color: var(--color-gray-100, #f3f4f6);
-    color: var(--color-text-primary, #161616);
+.file-upload__file-item-msg {
+    display: flex;
+    width: 100%;
+    color: var(--error-700);
+    padding: var(--spacing-md);
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    font-size: var(--font-size-sm);
+    line-height: 20px;
 }
 
-.file-upload__file-action svg {
-    width: 18px;
-    height: 18px;
-}
-
-/* ============================================
-   File item states
-   ============================================ */
-
-/* Success — green accent + check */
-.file-upload__file--success {
-    border-color: var(--color-success-200, #abefc6);
-}
-
-.file-upload__file--success .file-upload__file-icon {
-    background-color: var(--color-success-50, #ecfdf3);
-    color: var(--color-success-700, #067647);
-}
-
-.file-upload__file--success .file-upload__status {
-    color: var(--color-success-700, #067647);
-}
-
-/* Error — red accent */
-.file-upload__file--error {
-    border-color: var(--color-error-200, #fecdca);
-    background-color: var(--color-error-50, #fef3f2);
-}
-
-.file-upload__file--error .file-upload__file-icon {
-    background-color: var(--color-error-50, #fef3f2);
-    color: var(--color-error-600, #d92d20);
-}
-
-.file-upload__file--error .file-upload__file-meta {
-    color: var(--color-error-600, #d92d20);
-}
-
-.file-upload__status {
-    display: inline-flex;
-    align-items: center;
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-}
-
-.file-upload__status svg {
-    width: 20px;
-    height: 20px;
-}
-
-/* ============================================
-   Single-file variant — compact, swaps dropzone for the file row
-   ============================================ */
-
-.file-upload--single .file-upload__dropzone {
-    padding: var(--spacing-xl);
-}
-
-/* ============================================
-   RTL Support
-   ============================================ */
-
-[dir="rtl"] .file-upload,
-.file-upload--rtl {
-    direction: rtl;
-    text-align: right;
+@media (prefers-reduced-motion: reduce) {
+    .file-upload__spinner { animation-duration: 2s; }
 }

@@ -798,7 +798,7 @@ class DatePickerManager {
         const nextArrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
         const yearArrow = '<svg class="year-dropdown__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9L12 15L18 9"/></svg>';
 
-        let html = '<div class="date-picker__panel date-picker__panel--static" style="margin-top: 4px;">';
+        let html = '<div class="date-picker__panel date-picker__panel--static" style="margin-top: var(--spacing-xs);">';
 
         // Header
         html += '<div class="date-picker__header">';

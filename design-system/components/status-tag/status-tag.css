@@ -33,18 +33,18 @@
 .status-tag--md {
     height: 32px;
     padding: 0 var(--spacing-xl);
-    font-size: 16px;
+    font-size: var(--font-size-md);
     line-height: 24px;
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
 }
 
 /* Small - 24px height, 8px horizontal padding */
 .status-tag--sm {
     height: 24px;
     padding: 0 var(--spacing-md);
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     line-height: 20px;
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
 }
 
 /* Extra Small - 20px height, 8px horizontal padding */
@@ -53,16 +53,16 @@
     padding: 0 var(--spacing-md);
     font-size: 10px;
     line-height: 14px;
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
 }
 
 /* Default size is medium */
 .status-tag:not(.status-tag--sm):not(.status-tag--xs) {
     height: 32px;
     padding: 0 var(--spacing-xl);
-    font-size: 16px;
+    font-size: var(--font-size-md);
     line-height: 24px;
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
 }
 
 /* ============================================
@@ -98,53 +98,53 @@
 /* Neutral - Subtle */
 .status-tag--neutral.status-tag--subtle,
 .status-tag--subtle:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) {
-    background-color: var(--status-tag-neutral-bg-light, #F9FAFB);
-    color: var(--status-tag-neutral-text, #1f2a37);
+    background-color: var(--status-tag-neutral-bg-light);
+    color: var(--status-tag-neutral-text);
 }
 
 .status-tag--neutral.status-tag--subtle .status-tag__dot,
 .status-tag--subtle:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) .status-tag__dot {
-    background-color: var(--status-tag-neutral-dot, #4D5761);
+    background-color: var(--status-tag-neutral-dot);
 }
 
 /* Success - Subtle */
 .status-tag--success.status-tag--subtle {
-    background-color: var(--status-tag-success-bg-light, #ECFDF3);
-    color: var(--status-tag-success-text, #067647);
+    background-color: var(--status-tag-success-bg-light);
+    color: var(--status-tag-success-text);
 }
 
 .status-tag--success.status-tag--subtle .status-tag__dot {
-    background-color: var(--status-tag-success-dot, #067647);
+    background-color: var(--status-tag-success-dot);
 }
 
 /* Error - Subtle */
 .status-tag--error.status-tag--subtle {
-    background-color: var(--status-tag-error-bg-light, #FEF3F2);
-    color: var(--status-tag-error-text, #D92D20);
+    background-color: var(--status-tag-error-bg-light);
+    color: var(--status-tag-error-text);
 }
 
 .status-tag--error.status-tag--subtle .status-tag__dot {
-    background-color: var(--status-tag-error-dot, #D92D20);
+    background-color: var(--status-tag-error-dot);
 }
 
 /* Warning - Subtle */
 .status-tag--warning.status-tag--subtle {
-    background-color: var(--status-tag-warning-bg-light, #FFFAEB);
-    color: var(--status-tag-warning-text, #B54708);
+    background-color: var(--status-tag-warning-bg-light);
+    color: var(--status-tag-warning-text);
 }
 
 .status-tag--warning.status-tag--subtle .status-tag__dot {
-    background-color: var(--status-tag-warning-dot, #B54708);
+    background-color: var(--status-tag-warning-dot);
 }
 
 /* Info - Subtle */
 .status-tag--info.status-tag--subtle {
-    background-color: var(--status-tag-info-bg-light, #EFF8FF);
-    color: var(--status-tag-info-text, #1570EF);
+    background-color: var(--status-tag-info-bg-light);
+    color: var(--status-tag-info-text);
 }
 
 .status-tag--info.status-tag--subtle .status-tag__dot {
-    background-color: var(--status-tag-info-dot, #1570EF);
+    background-color: var(--status-tag-info-dot);
 }
 
 /* ============================================
@@ -155,53 +155,53 @@
 /* Neutral - Inverted */
 .status-tag--neutral.status-tag--inverted,
 .status-tag--inverted:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) {
-    background-color: var(--status-tag-neutral-bg, #4D5761);
-    color: var(--color-text-on-color, #FFFFFF);
+    background-color: var(--status-tag-neutral-bg);
+    color: var(--alpha-white);
 }
 
 .status-tag--neutral.status-tag--inverted .status-tag__dot,
 .status-tag--inverted:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) .status-tag__dot {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: var(--alpha-white-60);
 }
 
 /* Success - Inverted */
 .status-tag--success.status-tag--inverted {
-    background-color: var(--status-tag-success-bg, #067647);
-    color: var(--color-text-on-color, #FFFFFF);
+    background-color: var(--status-tag-success-bg);
+    color: var(--alpha-white);
 }
 
 .status-tag--success.status-tag--inverted .status-tag__dot {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: var(--alpha-white-60);
 }
 
 /* Error - Inverted */
 .status-tag--error.status-tag--inverted {
-    background-color: var(--status-tag-error-bg, #D92D20);
-    color: var(--color-text-on-color, #FFFFFF);
+    background-color: var(--status-tag-error-bg);
+    color: var(--alpha-white);
 }
 
 .status-tag--error.status-tag--inverted .status-tag__dot {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: var(--alpha-white-60);
 }
 
 /* Warning - Inverted */
 .status-tag--warning.status-tag--inverted {
-    background-color: var(--status-tag-warning-bg, #B54708);
-    color: var(--color-text-on-color, #FFFFFF);
+    background-color: var(--status-tag-warning-bg);
+    color: var(--alpha-white);
 }
 
 .status-tag--warning.status-tag--inverted .status-tag__dot {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: var(--alpha-white-60);
 }
 
 /* Info - Inverted */
 .status-tag--info.status-tag--inverted {
-    background-color: var(--status-tag-info-bg, #1570EF);
-    color: var(--color-text-on-color, #FFFFFF);
+    background-color: var(--status-tag-info-bg);
+    color: var(--alpha-white);
 }
 
 .status-tag--info.status-tag--inverted .status-tag__dot {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: var(--alpha-white-60);
 }
 
 /* ============================================
@@ -217,58 +217,57 @@
 /* Neutral - Ghost */
 .status-tag--neutral.status-tag--ghost,
 .status-tag--ghost:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) {
-    color: var(--status-tag-neutral-text, #1f2a37);
+    color: var(--status-tag-neutral-text);
 }
 
 .status-tag--neutral.status-tag--ghost .status-tag__dot,
 .status-tag--ghost:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) .status-tag__dot {
-    background-color: var(--status-tag-neutral-dot, #4D5761);
+    background-color: var(--status-tag-neutral-dot);
 }
 
 /* Success - Ghost */
 .status-tag--success.status-tag--ghost {
-    color: var(--status-tag-success-text, #067647);
+    color: var(--status-tag-success-text);
 }
 
 .status-tag--success.status-tag--ghost .status-tag__dot {
-    background-color: var(--status-tag-success-dot, #067647);
+    background-color: var(--status-tag-success-dot);
 }
 
 /* Error - Ghost */
 .status-tag--error.status-tag--ghost {
-    color: var(--status-tag-error-text, #D92D20);
+    color: var(--status-tag-error-text);
 }
 
 .status-tag--error.status-tag--ghost .status-tag__dot {
-    background-color: var(--status-tag-error-dot, #D92D20);
+    background-color: var(--status-tag-error-dot);
 }
 
 /* Warning - Ghost */
 .status-tag--warning.status-tag--ghost {
-    color: var(--status-tag-warning-text, #B54708);
+    color: var(--status-tag-warning-text);
 }
 
 .status-tag--warning.status-tag--ghost .status-tag__dot {
-    background-color: var(--status-tag-warning-dot, #B54708);
+    background-color: var(--status-tag-warning-dot);
 }
 
 /* Info - Ghost */
 .status-tag--info.status-tag--ghost {
-    color: var(--status-tag-info-text, #1570EF);
+    color: var(--status-tag-info-text);
 }
 
 .status-tag--info.status-tag--ghost .status-tag__dot {
-    background-color: var(--status-tag-info-dot, #1570EF);
+    background-color: var(--status-tag-info-dot);
 }
 
 /* ============================================
    RTL SUPPORT
    ============================================ */
 
-[dir="rtl"] .status-tag {
-    direction: rtl;
-    flex-direction: row-reverse;
-}
+/* No [dir="rtl"] override needed: the flex row (dot, label) mirrors
+   automatically in RTL. A row-reverse here double-reverses and pushes
+   the dot to the wrong side. */
 
 /* ============================================
    ACCESSIBILITY

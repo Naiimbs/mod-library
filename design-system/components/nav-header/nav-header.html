@@ -23,8 +23,8 @@
         <div class="live-demo__sidebar">
             <div class="live-demo__sidebar-header">
                 <h3 class="live-demo__sidebar-title">Nav Header</h3>
-                <p class="live-demo__sidebar-desc">Adjust the breakpoint, direction, and width to see how the header
-                    reflows.</p>
+                <p class="live-demo__sidebar-desc">Every Figma prop across the header and its subcomponents: menu
+                    item, action, logo placeholder, and sub-menu.</p>
             </div>
 
             <div class="live-demo__sidebar-row">
@@ -35,7 +35,7 @@
             </div>
 
             <div class="live-demo__sidebar-row">
-                <label class="live-demo__sidebar-label" for="nav-header-demo-breakpoint">Breakpoint</label>
+                <label class="live-demo__sidebar-label">Breakpoint</label>
                 <select class="live-demo__sidebar-select" id="nav-header-demo-breakpoint">
                     <option value="desktop" selected>Desktop (&gt;960)</option>
                     <option value="tablet">Tablet (600–960)</option>
@@ -45,12 +45,112 @@
 
             <div class="live-demo__sidebar-row">
                 <label class="live-demo__sidebar-label">Full width</label>
-                <button class="live-demo__switch" data-toggle="fullwidth" type="button" role="switch"
-                    aria-checked="false">
+                <button class="live-demo__switch active" data-toggle="fullwidth" type="button" role="switch" aria-checked="true">
                     <span class="live-demo__switch-thumb"></span>
                 </button>
             </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Divider</label>
+                <button class="live-demo__switch active" data-toggle="divider" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Logo size</label>
+                <select class="live-demo__sidebar-select" id="nav-header-demo-logo-size">
+                    <option value="small">Small (32)</option>
+                    <option value="medium" selected>Medium (48)</option>
+                    <option value="large">Large (64)</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Logo position</label>
+                <select class="live-demo__sidebar-select" id="nav-header-demo-logo-pos">
+                    <option value="side" selected>Side</option>
+                    <option value="top">Top</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Menu item state</label>
+                <select class="live-demo__sidebar-select" id="nav-header-demo-item-state">
+                    <option value="default" selected>Default</option>
+                    <option value="hovered">Hovered</option>
+                    <option value="pressed">Pressed</option>
+                    <option value="focused">Focused</option>
+                    <option value="disabled">Disabled</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Menu item selected</label>
+                <button class="live-demo__switch active" data-toggle="item-selected" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Menu item leading icon</label>
+                <button class="live-demo__switch" data-toggle="item-icon" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Action state</label>
+                <select class="live-demo__sidebar-select" id="nav-header-demo-action-state">
+                    <option value="default" selected>Default</option>
+                    <option value="hovered">Hovered</option>
+                    <option value="pressed">Pressed</option>
+                    <option value="focused">Focused</option>
+                    <option value="disabled">Disabled</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Action selected</label>
+                <button class="live-demo__switch active" data-toggle="action-selected" type="button" role="switch" aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Action icon position</label>
+                <select class="live-demo__sidebar-select" id="nav-header-demo-action-icon">
+                    <option value="inline" selected>Inline</option>
+                    <option value="top">Top</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Action icon only</label>
+                <button class="live-demo__switch" data-toggle="action-icon-only" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Sub-menu</label>
+                <select class="live-demo__sidebar-select" id="nav-header-demo-submenu">
+                    <option value="closed" selected>Closed</option>
+                    <option value="default">Open — Default</option>
+                    <option value="brand">Open — Dark green</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Sub-menu link style</label>
+                <select class="live-demo__sidebar-select" id="nav-header-demo-linkstyle">
+                    <option value="text">Text only</option>
+                    <option value="icon" selected>Simple icon</option>
+                    <option value="boxed">Boxed icon</option>
+                </select>
+            </div>
         </div>
+
     </div>
 
     <div class="live-demo__footer">
@@ -340,6 +440,103 @@
                         </svg><span>إجراء</span></a>
                 </div>
             </header>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================
+     BRAND SUB-MENU (NDS bg-brand)
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Brand Sub-menu</h2>
+        <p class="showcase-description">The NDS <code>bg-brand</code> panel: the deep flag green
+            (<code>--background-sa-flag</code>) with on-color links — white labels and helpers, alpha-white hover
+            and pressed fills, and the tinted icon container switching to a translucent white.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="background: var(--gray-50);">
+        <div class="header-sub-menu header-sub-menu--brand" style="position: static; display: flex; max-width: 680px;">
+            <div class="header-sub-menu-group">
+                <p class="header-sub-menu-group__label">For individuals</p>
+                <a href="#" class="header-sub-menu-item" onclick="return false;">
+                    <span class="header-sub-menu-item__icon header-sub-menu-item__icon--bg"><span
+                            class="dga-icon-user" aria-hidden="true"></span></span>
+                    <span class="header-sub-menu-item__body"><span
+                            class="header-sub-menu-item__label">Personal account</span><span
+                            class="header-sub-menu-item__helper">Manage your profile and requests</span></span>
+                </a>
+                <a href="#" class="header-sub-menu-item" onclick="return false;">
+                    <span class="header-sub-menu-item__icon header-sub-menu-item__icon--bg"><span
+                            class="dga-icon-file-01" aria-hidden="true"></span></span>
+                    <span class="header-sub-menu-item__body"><span
+                            class="header-sub-menu-item__label">Documents</span><span
+                            class="header-sub-menu-item__helper">Certificates and records</span></span>
+                </a>
+            </div>
+            <div class="header-sub-menu-group">
+                <p class="header-sub-menu-group__label">For business</p>
+                <a href="#" class="header-sub-menu-item" onclick="return false;">
+                    <span class="header-sub-menu-item__icon header-sub-menu-item__icon--bg"><span
+                            class="dga-icon-building-01" aria-hidden="true"></span></span>
+                    <span class="header-sub-menu-item__body"><span
+                            class="header-sub-menu-item__label">Organizations</span><span
+                            class="header-sub-menu-item__helper">Register and manage entities</span></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     RESPONSIVE (MOBILE)
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Responsive (Mobile)</h2>
+        <p class="showcase-description">Below 900px (the library's 56.25em breakpoint) the menu and outline actions
+            hide, a hamburger appears at the start, the branding centers, and the menu opens as a full-width panel
+            under the header — exactly the NDS <code>dga-header</code> behavior. The platform header above behaves
+            this way live; resize the window to try it.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch; background: var(--gray-50);">
+        <div>
+            <header class="navigation-header navigation-header--mobile-demo">
+                <button type="button" class="header-menu-btn" aria-expanded="true" aria-label="Open menu">
+                    <span class="icon dga-icon-menu-01" aria-hidden="true"></span>
+                </button>
+                <div class="navigation-header__left">
+                    <div class="logo-placeholder">
+                        <svg class="logo-placeholder__icon" width="40" height="40" viewBox="0 0 48 48" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect width="48" height="48" rx="4" fill="#F5F5F5" />
+                        </svg>
+                        <span class="logo-placeholder__text">Platform Logo</span>
+                    </div>
+                    <nav class="navigation-menu"></nav>
+                </div>
+                <div class="navigation-header__right">
+                    <a href="#" class="header-action header-action--primary"><span>عربي</span></a>
+                </div>
+            </header>
+            <div class="header-mobile-menu">
+                <a href="#" class="header-menu-item header-menu-item--selected" onclick="return false;">
+                    <span class="header-menu-item__text">Home</span>
+                </a>
+                <a href="#" class="header-menu-item" onclick="return false;">
+                    <span class="header-menu-item__text">Styles</span>
+                </a>
+                <a href="#" class="header-menu-item" onclick="return false;">
+                    <span class="header-menu-item__text">Components</span>
+                </a>
+                <div class="header-mobile-menu__actions">
+                    <a href="#" class="header-action header-action--outline" onclick="return false;"><span>About
+                            Team</span></a>
+                    <a href="#" class="header-action header-action--outline" onclick="return false;"><span>Search</span></a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

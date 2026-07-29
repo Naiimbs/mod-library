@@ -1,0 +1,393 @@
+<div class="content-header">
+    <h1 class="content-title">Inline Alert</h1>
+    <p class="content-description">Inline alerts surface page-level messages in the flow of content. Five semantic
+        types (neutral, info, error, warning, success) with an accent edge, an optional colored background, an
+        optional dismiss button, and optional action buttons. Ported from the DGA library's
+        <code>dga-inline-alert</code> component.</p>
+</div>
+
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <!-- Left: Preview canvas -->
+        <div class="live-demo__canvas" id="inline-alert-demo-preview">
+            <!-- Rendered dynamically by JS -->
+        </div>
+
+        <!-- Right: Controls sidebar -->
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Inline Alert</h3>
+                <p class="live-demo__sidebar-desc">Alerts communicate a state that affects the page or a section of
+                    it. Use the type that matches the severity of the message.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="inline-alert-demo-type">Type</label>
+                <select class="live-demo__sidebar-select" id="inline-alert-demo-type">
+                    <option value="neutral">Neutral</option>
+                    <option value="info" selected>Info</option>
+                    <option value="error">Error</option>
+                    <option value="warning">Warning</option>
+                    <option value="success">Success</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Colored background</label>
+                <button class="live-demo__switch" data-toggle="colored" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Helper text</label>
+                <button class="live-demo__switch active" data-toggle="helper" type="button" role="switch"
+                    aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Close button</label>
+                <button class="live-demo__switch" data-toggle="close" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Action buttons</label>
+                <button class="live-demo__switch" data-toggle="actions" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="live-demo__footer">
+        This live demo contains only a preview of functionality and styles available for this component. Dismissing
+        the alert with its close button re-renders it when any control changes.
+    </div>
+</div>
+
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">All available CSS classes for configuring inline alerts, mapped from the
+            library's <code>dga-inline-alert</code> API.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Type</th>
+                    <th>Library prop</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.inline-alert</code></td>
+                    <td>Base</td>
+                    <td>—</td>
+                    <td>Root container. Full-width, accent edge on the reading side.</td>
+                </tr>
+                <tr>
+                    <td><code>.inline-alert--neutral</code> / <code>--info</code> / <code>--error</code> /
+                        <code>--warning</code> / <code>--success</code></td>
+                    <td>Modifier</td>
+                    <td><code>type</code></td>
+                    <td>Semantic type. Sets the accent edge and the featured icon colors.</td>
+                </tr>
+                <tr>
+                    <td><code>.inline-alert--{type}-bg</code></td>
+                    <td>Modifier</td>
+                    <td><code>colored</code></td>
+                    <td>Colored background variant: 25-tint background with a 200-tint border.</td>
+                </tr>
+                <tr>
+                    <td><code>.inline-alert__header</code></td>
+                    <td>Element</td>
+                    <td>—</td>
+                    <td>Icon + text + close row. Add <code>--centered</code> when there is no helper text.</td>
+                </tr>
+                <tr>
+                    <td><code>.inline-alert__icon</code></td>
+                    <td>Element</td>
+                    <td>—</td>
+                    <td>40px featured icon circle, tinted by the alert type.</td>
+                </tr>
+                <tr>
+                    <td><code>.inline-alert__title</code></td>
+                    <td>Element</td>
+                    <td><code>lead-text</code></td>
+                    <td>Alert heading. Pair with <code>.text-md-semibold</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>.inline-alert__content</code></td>
+                    <td>Element</td>
+                    <td><code>helper-text</code></td>
+                    <td>Optional supporting copy. Pair with <code>.text-sm-regular</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>.inline-alert__close</code></td>
+                    <td>Element</td>
+                    <td><code>is-close-button</code></td>
+                    <td>Dismiss slot. Contains a transparent icon-only design-system button.</td>
+                </tr>
+                <tr>
+                    <td><code>.inline-alert__action</code> / <code>.inline-alert__action-mobile</code></td>
+                    <td>Element</td>
+                    <td><code>isaction-buttons</code>, <code>buttons-list</code></td>
+                    <td>Action row using design-system buttons. The mobile variant stacks full-width under 600px.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ============================================
+     TYPES
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Types</h2>
+        <p class="showcase-description">Five semantic types. The accent edge and the featured icon communicate
+            severity; the layout stays identical.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="inline-alert inline-alert--neutral">
+            <div class="inline-alert__header">
+                <div class="inline-alert__icon"><span class="icon dga-icon-help-circle"></span></div>
+                <div class="inline-alert__body">
+                    <h4 class="inline-alert__title text-md-semibold">Neutral alert</h4>
+                    <p class="inline-alert__content text-sm-regular">A general message that does not carry a semantic
+                        state.</p>
+                </div>
+            </div>
+        </div>
+        <div class="inline-alert inline-alert--info">
+            <div class="inline-alert__header">
+                <div class="inline-alert__icon"><span class="icon dga-icon-help-circle"></span></div>
+                <div class="inline-alert__body">
+                    <h4 class="inline-alert__title text-md-semibold">Info alert</h4>
+                    <p class="inline-alert__content text-sm-regular">Something the user should know before they
+                        continue.</p>
+                </div>
+            </div>
+        </div>
+        <div class="inline-alert inline-alert--success">
+            <div class="inline-alert__header">
+                <div class="inline-alert__icon"><span class="icon dga-icon-tick-02"></span></div>
+                <div class="inline-alert__body">
+                    <h4 class="inline-alert__title text-md-semibold">Success alert</h4>
+                    <p class="inline-alert__content text-sm-regular">The request was submitted successfully.</p>
+                </div>
+            </div>
+        </div>
+        <div class="inline-alert inline-alert--warning">
+            <div class="inline-alert__header">
+                <div class="inline-alert__icon"><span class="icon dga-icon-alert-02"></span></div>
+                <div class="inline-alert__body">
+                    <h4 class="inline-alert__title text-md-semibold">Warning alert</h4>
+                    <p class="inline-alert__content text-sm-regular">Review the highlighted fields before submitting.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="inline-alert inline-alert--error">
+            <div class="inline-alert__header">
+                <div class="inline-alert__icon"><span class="icon dga-icon-help-circle"></span></div>
+                <div class="inline-alert__body">
+                    <h4 class="inline-alert__title text-md-semibold">Error alert</h4>
+                    <p class="inline-alert__content text-sm-regular">The request could not be completed. Try again
+                        later.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     COLORED BACKGROUND
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Colored Background</h2>
+        <p class="showcase-description">The <code>colored</code> variant fills the alert with the type's 25-tint and
+            softens the border to the 200-tint.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="inline-alert inline-alert--info inline-alert--info-bg">
+            <div class="inline-alert__header">
+                <div class="inline-alert__icon"><span class="icon dga-icon-help-circle"></span></div>
+                <div class="inline-alert__body">
+                    <h4 class="inline-alert__title text-md-semibold">Info alert</h4>
+                    <p class="inline-alert__content text-sm-regular">Something the user should know before they
+                        continue.</p>
+                </div>
+            </div>
+        </div>
+        <div class="inline-alert inline-alert--success inline-alert--success-bg">
+            <div class="inline-alert__header">
+                <div class="inline-alert__icon"><span class="icon dga-icon-tick-02"></span></div>
+                <div class="inline-alert__body">
+                    <h4 class="inline-alert__title text-md-semibold">Success alert</h4>
+                    <p class="inline-alert__content text-sm-regular">The request was submitted successfully.</p>
+                </div>
+            </div>
+        </div>
+        <div class="inline-alert inline-alert--warning inline-alert--warning-bg">
+            <div class="inline-alert__header">
+                <div class="inline-alert__icon"><span class="icon dga-icon-alert-02"></span></div>
+                <div class="inline-alert__body">
+                    <h4 class="inline-alert__title text-md-semibold">Warning alert</h4>
+                    <p class="inline-alert__content text-sm-regular">Review the highlighted fields before submitting.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="inline-alert inline-alert--error inline-alert--error-bg">
+            <div class="inline-alert__header">
+                <div class="inline-alert__icon"><span class="icon dga-icon-help-circle"></span></div>
+                <div class="inline-alert__body">
+                    <h4 class="inline-alert__title text-md-semibold">Error alert</h4>
+                    <p class="inline-alert__content text-sm-regular">The request could not be completed. Try again
+                        later.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     WITH ACTION BUTTONS
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">With Action Buttons</h2>
+        <p class="showcase-description">Alerts can carry actions, indented to align with the text column. Under 600px
+            the actions stack full-width below the message.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="inline-alert inline-alert--warning">
+            <div class="inline-alert__header">
+                <div class="inline-alert__icon"><span class="icon dga-icon-alert-02"></span></div>
+                <div class="inline-alert__body">
+                    <h4 class="inline-alert__title text-md-semibold">Your session is about to expire</h4>
+                    <p class="inline-alert__content text-sm-regular">You will be signed out in 5 minutes. Extend the
+                        session to keep working.</p>
+                </div>
+            </div>
+            <div class="inline-alert__action">
+                <button type="button" class="btn btn-subtle btn-small">Extend session</button>
+                <button type="button" class="btn btn-transparent btn-small">Sign out</button>
+            </div>
+            <div class="inline-alert__action-mobile">
+                <button type="button" class="btn btn-secondary-outline">Extend session</button>
+                <button type="button" class="btn btn-transparent">Sign out</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     DISMISSIBLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Dismissible</h2>
+        <p class="showcase-description">An icon-only transparent button in the header dismisses the alert. On mobile
+            it anchors to the top corner.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="inline-alert inline-alert--success inline-alert--success-bg">
+            <div class="inline-alert__header">
+                <div class="inline-alert__icon"><span class="icon dga-icon-tick-02"></span></div>
+                <div class="inline-alert__body">
+                    <h4 class="inline-alert__title text-md-semibold">Profile updated</h4>
+                    <p class="inline-alert__content text-sm-regular">Your changes were saved.</p>
+                </div>
+                <div class="inline-alert__close">
+                    <button type="button" class="btn btn-transparent btn-icon-only btn-small" aria-label="Dismiss"
+                        onclick="this.closest('.inline-alert').remove()">
+                        <span class="icon dga-icon-multiplication-sign"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     TITLE ONLY
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Title Only</h2>
+        <p class="showcase-description">Without helper text the header centers the icon against the single line.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <div class="inline-alert inline-alert--info">
+            <div class="inline-alert__header inline-alert__header--centered">
+                <div class="inline-alert__icon"><span class="icon dga-icon-help-circle"></span></div>
+                <div class="inline-alert__body">
+                    <h4 class="inline-alert__title text-md-semibold" style="margin-bottom: 0;">A new version of this
+                        service is available.</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     RTL LAYOUT
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Layout</h2>
+        <p class="showcase-description">The accent edge, icon, and dismiss button mirror automatically in
+            right-to-left layouts.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;" dir="rtl">
+        <div class="inline-alert inline-alert--success inline-alert--success-bg">
+            <div class="inline-alert__header">
+                <div class="inline-alert__icon"><span class="icon dga-icon-tick-02"></span></div>
+                <div class="inline-alert__body">
+                    <h4 class="inline-alert__title text-md-semibold">تم إرسال الطلب بنجاح</h4>
+                    <p class="inline-alert__content text-sm-regular">سيتم إشعارك عند اكتمال المعالجة.</p>
+                </div>
+                <div class="inline-alert__close">
+                    <button type="button" class="btn btn-transparent btn-icon-only btn-small" aria-label="إغلاق">
+                        <span class="icon dga-icon-multiplication-sign"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

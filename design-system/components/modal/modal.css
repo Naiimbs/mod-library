@@ -10,12 +10,12 @@
      Model/modal-gap                      8
      Model/modal-content-bottom-padding   16
      Radius/radius-md                     8
-     Background/background-white          #ffffff
+     Background/background-white          var(--alpha-white)
      Shadows/shadow-3xl  0 32 64 -12 rgba(16,24,40,0.14)
-     Text/text-display                    #1f2a37  (title)
-     Text/text-primary-paragraph          #384250  (description)
-     Icon/icon-default                    #161616  (featured + close)
-     Border/border-neutral-primary        #d2d6db
+     Text/text-display                    var(--gray-800)  (title)
+     Text/text-primary-paragraph          var(--gray-700)  (description)
+     Icon/icon-default                    var(--text-default)  (featured + close)
+     Border/border-neutral-primary        var(--gray-300)
      Button/buttons-group-gap             8
    ============================================ */
 
@@ -27,7 +27,7 @@
     position: fixed;
     inset: 0;
     background-color: rgba(16, 24, 40, 0.5);
-    z-index: var(--z-modal-backdrop, 1000);
+    z-index: var(--z-modal-backdrop);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,8 +62,8 @@
     width: 600px;
     max-width: 100%;
     padding: var(--spacing-3xl);            /* modal-padding = 24 */
-    background-color: #ffffff;              /* background-white */
-    border-radius: var(--radius-md, 8px);
+    background-color: var(--alpha-white);              /* background-white */
+    border-radius: var(--radius-md);
     box-shadow: 0 32px 64px -12px rgba(16, 24, 40, 0.14);  /* shadow-3xl */
     box-sizing: border-box;
 }
@@ -104,10 +104,10 @@
     height: 40px;
     flex-shrink: 0;
     border-radius: var(--radius-full);
-    border: 1px solid var(--color-border-secondary, #e5e7eb);
-    background-color: #ffffff;
-    color: #161616;                         /* icon-default */
-    font-size: 20px;
+    border: 1px solid var(--gray-200);
+    background-color: var(--alpha-white);
+    color: var(--text-default);                         /* icon-default */
+    font-size: var(--font-size-xl);
     line-height: 1;
     box-sizing: border-box;
 }
@@ -120,12 +120,12 @@
 /* --- Featured-icon colour states ---------------------------------------
    Each colour declares a --fi-50 (tint), --fi-600 (solid/icon) pair; the
    variant modifiers then compose bg/border/color from those. */
-.modal-icon--brand   { --fi-50: var(--color-primary-light); --fi-600: var(--color-primary); }
-.modal-icon--gray    { --fi-50: var(--color-gray-50);       --fi-600: var(--color-gray-600); }
-.modal-icon--success { --fi-50: var(--color-success-50);    --fi-600: var(--color-success-600); }
-.modal-icon--error   { --fi-50: var(--color-error-50);      --fi-600: var(--color-error-600); }
-.modal-icon--warning { --fi-50: var(--color-warning-50);    --fi-600: var(--color-warning-600); }
-.modal-icon--info    { --fi-50: var(--color-info-50);       --fi-600: var(--color-info-600); }
+.modal-icon--brand   { --fi-50: var(--sa-50); --fi-600: var(--sa-600); }
+.modal-icon--gray    { --fi-50: var(--gray-50);       --fi-600: var(--gray-600); }
+.modal-icon--success { --fi-50: var(--success-50);    --fi-600: var(--success-600); }
+.modal-icon--error   { --fi-50: var(--error-50);      --fi-600: var(--error-600); }
+.modal-icon--warning { --fi-50: var(--warning-50);    --fi-600: var(--warning-600); }
+.modal-icon--info    { --fi-50: var(--info-50);       --fi-600: var(--info-600); }
 
 /* Variant: light — tinted background, coloured glyph, no border (default
    when a colour is set without an explicit variant). */
@@ -144,12 +144,12 @@
 .modal-icon--dark {
     background-color: var(--fi-600);
     border-color: transparent;
-    color: #ffffff;
+    color: var(--alpha-white);
 }
 
 /* Variant: outlined — white background, coloured border + glyph. */
 .modal-icon--outlined {
-    background-color: #ffffff;
+    background-color: var(--alpha-white);
     border-color: var(--fi-600);
     color: var(--fi-600);
 }
@@ -164,20 +164,20 @@
     margin-inline-start: auto;              /* push to trailing edge */
     border: 0;
     background: transparent;
-    border-radius: var(--radius-sm, 4px);
-    color: #161616;                         /* icon-default */
-    font-size: 20px;
+    border-radius: var(--radius-sm);
+    color: var(--text-default);                         /* icon-default */
+    font-size: var(--font-size-xl);
     line-height: 1;
     cursor: pointer;
     transition: background-color var(--transition-fast);
 }
 
 .modal-close:hover {
-    background-color: var(--color-gray-100, #f3f4f6);
+    background-color: var(--gray-100);
 }
 
 .modal-close:focus-visible {
-    outline: 2px solid var(--color-primary);
+    outline: 2px solid var(--sa-600);
     outline-offset: 2px;
 }
 
@@ -190,10 +190,10 @@
 .modal-title {
     margin: 0;
     font-family: var(--font-family-primary);
-    font-size: 18px;
+    font-size: var(--font-size-lg);
     line-height: 28px;
-    font-weight: 600;
-    color: #1f2a37;                         /* text-display */
+    font-weight: var(--font-weight-semibold);
+    color: var(--gray-800);                         /* text-display */
 }
 
 /* ============================================
@@ -212,10 +212,10 @@
 
 .modal-description {
     margin: 0;
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     line-height: 20px;
-    font-weight: 400;
-    color: #384250;                         /* text-primary-paragraph */
+    font-weight: var(--font-weight-regular);
+    color: var(--gray-700);                         /* text-primary-paragraph */
 }
 
 /* Swap-content slot — dashed primary placeholder (Figma 30150:55096),
@@ -223,28 +223,28 @@
 .modal-custom {
     width: 100%;
     padding: var(--spacing-xl);
-    background-color: #f3fcf6;              /* background-primary-50 */
-    border: 1px dashed #1b8354;            /* border-primary */
-    border-radius: var(--radius-md, 8px);
-    color: #1b8354;
+    background-color: var(--sa-50);              /* background-primary-50 */
+    border: 1px dashed var(--sa-600);            /* border-primary */
+    border-radius: var(--radius-md);
+    color: var(--sa-600);
     text-align: center;
     box-sizing: border-box;
 }
 
 .modal-custom__title {
     margin: 0;
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     line-height: 20px;
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     text-transform: uppercase;
     letter-spacing: 0.02em;
 }
 
 .modal-custom__body {
     margin: var(--spacing-xs) 0 0;
-    font-size: 12px;
+    font-size: var(--font-size-xs);
     line-height: 18px;
-    font-weight: 400;
+    font-weight: var(--font-weight-regular);
 }
 
 /* ============================================

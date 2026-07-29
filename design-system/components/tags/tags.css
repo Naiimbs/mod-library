@@ -11,8 +11,8 @@
     gap: var(--spacing-xs);
     font-family: var(--font-family-primary);
     /* Default (sm): Figma text-xs / medium — 12px / 18px / 500 */
-    font-size: 12px;
-    font-weight: 500;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
     line-height: 18px;
     text-align: center;
     border: 1px solid;
@@ -29,17 +29,17 @@
 .tag--md {
     height: 32px;
     padding: 0 var(--spacing-lg);
-    font-size: 16px;
+    font-size: var(--font-size-md);
     line-height: 24px;
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
 }
 
 .tag--sm {
     height: 24px;
     padding: 0 var(--spacing-md);
-    font-size: 12px;
+    font-size: var(--font-size-xs);
     line-height: 18px;
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
 }
 
 .tag--xs {
@@ -47,7 +47,7 @@
     padding: 0 var(--spacing-sm);
     font-size: 10px;
     line-height: 14px;
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
 }
 
 /* Default size is small */
@@ -75,16 +75,16 @@
 
 .tag--neutral,
 .tag:not(.tag--success):not(.tag--error):not(.tag--warning):not(.tag--info):not(.tag--on-color) {
-    background-color: var(--color-gray-50);
-    border-color: var(--color-border-secondary);
-    color: var(--color-gray-800);
+    background-color: var(--gray-50);
+    border-color: var(--gray-200);
+    color: var(--gray-800);
 }
 
 .tag--neutral.tag--outline,
 .tag:not(.tag--success):not(.tag--error):not(.tag--warning):not(.tag--info):not(.tag--on-color).tag--outline {
     background-color: transparent;
-    border-color: var(--color-border-secondary);
-    color: var(--color-gray-800);
+    border-color: var(--gray-200);
+    color: var(--gray-800);
 }
 
 /* ============================================
@@ -92,15 +92,15 @@
    ============================================ */
 
 .tag--success {
-    background-color: var(--color-success-50);
-    border-color: var(--color-success-200);
-    color: var(--color-success-800);
+    background-color: var(--success-50);
+    border-color: var(--success-200);
+    color: var(--success-800);
 }
 
 .tag--success.tag--outline {
     background-color: transparent;
-    border-color: var(--color-success-200);
-    color: var(--color-success-800);
+    border-color: var(--success-200);
+    color: var(--success-800);
 }
 
 /* ============================================
@@ -108,15 +108,15 @@
    ============================================ */
 
 .tag--error {
-    background-color: var(--color-error-50);
-    border-color: var(--color-error-200);
-    color: var(--color-error-800);
+    background-color: var(--error-50);
+    border-color: var(--error-200);
+    color: var(--error-800);
 }
 
 .tag--error.tag--outline {
     background-color: transparent;
-    border-color: var(--color-error-200);
-    color: var(--color-error-800);
+    border-color: var(--error-200);
+    color: var(--error-800);
 }
 
 /* ============================================
@@ -124,15 +124,15 @@
    ============================================ */
 
 .tag--warning {
-    background-color: var(--color-warning-50);
-    border-color: var(--color-warning-200);
-    color: var(--color-warning-800);
+    background-color: var(--warning-50);
+    border-color: var(--warning-200);
+    color: var(--warning-800);
 }
 
 .tag--warning.tag--outline {
     background-color: transparent;
-    border-color: var(--color-warning-200);
-    color: var(--color-warning-800);
+    border-color: var(--warning-200);
+    color: var(--warning-800);
 }
 
 /* ============================================
@@ -140,33 +140,33 @@
    ============================================ */
 
 .tag--info {
-    background-color: var(--color-info-50);
-    border-color: var(--color-info-200);
-    color: var(--color-info-800);
+    background-color: var(--info-50);
+    border-color: var(--info-200);
+    color: var(--info-800);
 }
 
 .tag--info.tag--outline {
     background-color: transparent;
-    border-color: var(--color-info-200);
-    color: var(--color-info-800);
+    border-color: var(--info-200);
+    color: var(--info-800);
 }
 
 /* ============================================
    Tag Styles - On-Color
    For use on dark or colored backgrounds.
-   Figma tokens: bg #ffffff33 (white 20%), border #ffffff99 (white 60%), text/icon #ffffff
+   Figma tokens: bg #ffffff33 (white 20%), border #ffffff99 (white 60%), text/icon var(--alpha-white)
    ============================================ */
 
 .tag--on-color {
     background-color: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.6);
-    color: #ffffff;
+    border-color: var(--alpha-white-60);
+    color: var(--alpha-white);
 }
 
 .tag--on-color.tag--outline {
     background-color: transparent;
-    border-color: rgba(255, 255, 255, 0.6);
-    color: #ffffff;
+    border-color: var(--alpha-white-60);
+    color: var(--alpha-white);
 }
 
 /* ============================================

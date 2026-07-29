@@ -1,0 +1,75 @@
+/* ============================================
+   RATING COMPONENT
+   DGA Design System — ported from @platformscode/core@0.0.50
+   dga-rating onto DGA theme tokens. Gold stars (brand variant in
+   Saudi green), three sizes, half-star fills, hover preview.
+   Stars come from the DGA icon font (stroke base + solid fill).
+   ============================================ */
+
+.rating {
+    display: inline-flex;
+    position: relative;
+    font-size: 32px;
+    color: var(--gold-600);
+    cursor: pointer;
+    width: min-content;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.rating--sm { font-size: var(--font-size-2xl); }
+.rating--md { font-size: 32px; }
+.rating--lg { font-size: 48px; }
+
+.rating--brand { color: var(--sa-600); }
+
+.rating--readonly {
+    cursor: default;
+    pointer-events: none;
+}
+
+.rating__star {
+    position: relative;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: 1;
+}
+
+.rating__star:active {
+    background-color: var(--gray-100);
+    border-radius: var(--radius-full);
+}
+
+.rating__star:focus-visible {
+    outline: 2px solid var(--sa-600);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+.rating__star .icon {
+    display: block;
+    font-size: inherit;
+    pointer-events: none;
+    transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* solid overlay clipped to 0 / 50% / 100% of the star width */
+.rating__star-fill {
+    position: absolute;
+    top: 0;
+    inset-inline-start: 0;
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.rating__star[data-fill="half"] .rating__star-fill { width: 50%; }
+.rating__star[data-fill="full"] .rating__star-fill { width: 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+    .rating__star .icon { transition: none; }
+}

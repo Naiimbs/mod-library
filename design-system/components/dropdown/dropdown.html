@@ -1,0 +1,402 @@
+<div class="content-header">
+    <h1 class="content-title">Dropdown</h1>
+    <p class="content-description">Dropdowns let people pick one or several options from a list. Two sizes, three
+        field variants, error and feedback states, single and multi select with checkboxes, and the library's
+        signature press line that grows across the field's bottom edge when open. Ported from the DGA library's
+        <code>dga-dropdown</code> component.</p>
+</div>
+
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <!-- Left: Preview canvas -->
+        <div class="live-demo__canvas" id="dropdown-demo-preview" style="align-items: flex-start; padding-top: var(--spacing-6xl); min-height: 380px;">
+            <!-- Rendered dynamically by JS -->
+        </div>
+
+        <!-- Right: Controls sidebar -->
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Dropdown</h3>
+                <p class="live-demo__sidebar-desc">Click the field to open the list. Single select closes on choice;
+                    multi select keeps the list open and joins the selections.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="dropdown-demo-size">Size</label>
+                <select class="live-demo__sidebar-select" id="dropdown-demo-size">
+                    <option value="lg" selected>Large (40px)</option>
+                    <option value="md">Medium (32px)</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="dropdown-demo-variant">Variant</label>
+                <select class="live-demo__sidebar-select" id="dropdown-demo-variant">
+                    <option value="default" selected>Default</option>
+                    <option value="lighter">Lighter</option>
+                    <option value="darker">Darker</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="dropdown-demo-state">State</label>
+                <select class="live-demo__sidebar-select" id="dropdown-demo-state">
+                    <option value="default" selected>Default</option>
+                    <option value="error">Error</option>
+                    <option value="readonly">Read-only</option>
+                    <option value="disabled">Disabled</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Multi select</label>
+                <button class="live-demo__switch" data-toggle="multi" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Field label</label>
+                <button class="live-demo__switch active" data-toggle="label" type="button" role="switch"
+                    aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="live-demo__footer">
+        This live demo contains only a preview of functionality and styles available for this component. Changing a
+        control re-renders the dropdown closed and clears the selection.
+    </div>
+</div>
+
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">All available CSS classes for configuring dropdowns, mapped from the
+            library's <code>dga-dropdown</code> API.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Type</th>
+                    <th>Library prop</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.dropdown</code></td>
+                    <td>Base</td>
+                    <td>—</td>
+                    <td>Positioning container for the trigger button and the options list.</td>
+                </tr>
+                <tr>
+                    <td><code>.dropdown--lg</code> / <code>--md</code></td>
+                    <td>Modifier</td>
+                    <td><code>size</code></td>
+                    <td>Field heights 40px / 32px; the list opens below the field accordingly.</td>
+                </tr>
+                <tr>
+                    <td><code>.dropdown--lighter</code> / <code>--darker</code></td>
+                    <td>Modifier</td>
+                    <td><code>variant</code></td>
+                    <td>Borderless variants: lighter is transparent, darker sits on a gray-100 fill. Both regain
+                        their border on hover and open.</td>
+                </tr>
+                <tr>
+                    <td><code>.dropdown--error</code> / <code>--readonly</code> / <code>--disabled</code></td>
+                    <td>State</td>
+                    <td><code>error</code>, <code>readonly</code>, <code>disabled</code></td>
+                    <td>Error recolors the border and press line; read-only and disabled mute the field and ignore
+                        interaction.</td>
+                </tr>
+                <tr>
+                    <td><code>.dropdown--multi-select</code></td>
+                    <td>Modifier</td>
+                    <td><code>multi-select</code></td>
+                    <td>Options render 24px checkboxes; the trigger joins selections with commas.</td>
+                </tr>
+                <tr>
+                    <td><code>.dropdown__btn</code> [+ <code>.open</code>, <code>.active</code>]</td>
+                    <td>Element</td>
+                    <td>—</td>
+                    <td>The trigger. Open rotates the chevron and grows the bottom press line to full width;
+                        active (pressed) shows it at 50%.</td>
+                </tr>
+                <tr>
+                    <td><code>.dropdown__label</code> / <code>__label-placeholder</code></td>
+                    <td>Element</td>
+                    <td><code>placeholder</code></td>
+                    <td>Adding <code>--selection</code> to the label shows it and hides the placeholder.</td>
+                </tr>
+                <tr>
+                    <td><code>.dropdown__list</code> / <code>__list-group</code> / <code>__list-group-label</code>
+                    </td>
+                    <td>Element</td>
+                    <td><code>option-list</code></td>
+                    <td>The floating listbox (max 376px, styled scrollbar) with optional grouped sections.</td>
+                </tr>
+                <tr>
+                    <td><code>.dropdown__option</code> [+ <code>.selected</code>, <code>--checkbox</code>]</td>
+                    <td>Element</td>
+                    <td>—</td>
+                    <td>Option row. Selected shows a trailing tick, or fills the leading checkbox in multi select.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>.dropdown__feedback-icon--success|--error|--warning</code></td>
+                    <td>Element</td>
+                    <td><code>feedback</code></td>
+                    <td>Status icon inside the field with a soft tinted halo.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ============================================
+     DEFAULT
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Default</h2>
+        <p class="showcase-description">Click the field to open it. Choosing an option fills the trigger label and
+            shows a tick next to the selection.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: flex-start; min-height: 300px;">
+        <div class="dropdown-field" style="max-width: 320px;">
+            <span class="dropdown-field__label">Region</span>
+            <div class="dropdown dropdown--lg">
+                <button type="button" class="dropdown__btn" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="dropdown__label"></span>
+                    <span class="dropdown__label-placeholder">Select a region</span>
+                    <span class="dropdown__chevron icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown__list" role="listbox">
+                    <li><button type="button" class="dropdown__option">
+                            <span class="dropdown__option-label">Riyadh</span>
+                            <span class="dropdown__option-icon icon dga-icon-tick-02"></span>
+                        </button></li>
+                    <li><button type="button" class="dropdown__option">
+                            <span class="dropdown__option-label">Makkah</span>
+                            <span class="dropdown__option-icon icon dga-icon-tick-02"></span>
+                        </button></li>
+                    <li><button type="button" class="dropdown__option">
+                            <span class="dropdown__option-label">Madinah</span>
+                            <span class="dropdown__option-icon icon dga-icon-tick-02"></span>
+                        </button></li>
+                    <li><button type="button" class="dropdown__option">
+                            <span class="dropdown__option-label">Eastern Province</span>
+                            <span class="dropdown__option-icon icon dga-icon-tick-02"></span>
+                        </button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     VARIANTS
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Variants</h2>
+        <p class="showcase-description">Lighter drops the border until interaction; darker sits on a gray fill. Both
+            regain the default border when hovered or open.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: flex-start; min-height: 240px;">
+        <div class="showcase-row" style="justify-content: flex-start; align-items: flex-start; width: 100%;">
+            <div class="dropdown dropdown--lg" style="max-width: 220px;">
+                <button type="button" class="dropdown__btn" aria-expanded="false">
+                    <span class="dropdown__label"></span>
+                    <span class="dropdown__label-placeholder">Default</span>
+                    <span class="dropdown__chevron icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown__list" role="listbox">
+                    <li><button type="button" class="dropdown__option"><span class="dropdown__option-label">Option
+                                A</span><span class="dropdown__option-icon icon dga-icon-tick-02"></span></button></li>
+                    <li><button type="button" class="dropdown__option"><span class="dropdown__option-label">Option
+                                B</span><span class="dropdown__option-icon icon dga-icon-tick-02"></span></button></li>
+                </ul>
+            </div>
+            <div class="dropdown dropdown--lg dropdown--lighter" style="max-width: 220px;">
+                <button type="button" class="dropdown__btn" aria-expanded="false">
+                    <span class="dropdown__label"></span>
+                    <span class="dropdown__label-placeholder">Lighter</span>
+                    <span class="dropdown__chevron icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown__list" role="listbox">
+                    <li><button type="button" class="dropdown__option"><span class="dropdown__option-label">Option
+                                A</span><span class="dropdown__option-icon icon dga-icon-tick-02"></span></button></li>
+                    <li><button type="button" class="dropdown__option"><span class="dropdown__option-label">Option
+                                B</span><span class="dropdown__option-icon icon dga-icon-tick-02"></span></button></li>
+                </ul>
+            </div>
+            <div class="dropdown dropdown--lg dropdown--darker" style="max-width: 220px;">
+                <button type="button" class="dropdown__btn" aria-expanded="false">
+                    <span class="dropdown__label"></span>
+                    <span class="dropdown__label-placeholder">Darker</span>
+                    <span class="dropdown__chevron icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown__list" role="listbox">
+                    <li><button type="button" class="dropdown__option"><span class="dropdown__option-label">Option
+                                A</span><span class="dropdown__option-icon icon dga-icon-tick-02"></span></button></li>
+                    <li><button type="button" class="dropdown__option"><span class="dropdown__option-label">Option
+                                B</span><span class="dropdown__option-icon icon dga-icon-tick-02"></span></button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     STATES
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Validation &amp; States</h2>
+        <p class="showcase-description">Error outlines the field and recolors the press line; a feedback icon with a
+            tinted halo can sit before the chevron. Read-only and disabled mute the field.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: flex-start;">
+        <div class="showcase-row" style="justify-content: flex-start; align-items: flex-start; width: 100%;">
+            <div class="dropdown dropdown--lg dropdown--error" style="max-width: 220px;">
+                <button type="button" class="dropdown__btn" aria-expanded="false">
+                    <span class="dropdown__label"></span>
+                    <span class="dropdown__label-placeholder">Error</span>
+                    <span class="dropdown__feedback-icon dropdown__feedback-icon--error"><span
+                            class="icon dga-icon-cancel-circle"></span></span>
+                    <span class="dropdown__chevron icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown__list" role="listbox">
+                    <li><button type="button" class="dropdown__option"><span class="dropdown__option-label">Option
+                                A</span><span class="dropdown__option-icon icon dga-icon-tick-02"></span></button></li>
+                </ul>
+            </div>
+            <div class="dropdown dropdown--lg" style="max-width: 220px;">
+                <button type="button" class="dropdown__btn" aria-expanded="false">
+                    <span class="dropdown__label dropdown__label--selection">Riyadh</span>
+                    <span class="dropdown__label-placeholder">Success</span>
+                    <span class="dropdown__feedback-icon dropdown__feedback-icon--success"><span
+                            class="icon dga-icon-checkmark-circle-02"></span></span>
+                    <span class="dropdown__chevron icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown__list" role="listbox">
+                    <li><button type="button" class="dropdown__option selected"><span
+                                class="dropdown__option-label">Riyadh</span><span
+                                class="dropdown__option-icon icon dga-icon-tick-02"></span></button></li>
+                </ul>
+            </div>
+            <div class="dropdown dropdown--lg dropdown--readonly" style="max-width: 220px;">
+                <button type="button" class="dropdown__btn" disabled>
+                    <span class="dropdown__label dropdown__label--selection">Read-only value</span>
+                    <span class="dropdown__label-placeholder"></span>
+                    <span class="dropdown__chevron icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown__list" role="listbox"></ul>
+            </div>
+            <div class="dropdown dropdown--lg dropdown--disabled" style="max-width: 220px;">
+                <button type="button" class="dropdown__btn" disabled>
+                    <span class="dropdown__label"></span>
+                    <span class="dropdown__label-placeholder">Disabled</span>
+                    <span class="dropdown__chevron icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown__list" role="listbox"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     MULTI SELECT
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Multi Select</h2>
+        <p class="showcase-description">Options carry 24px checkboxes and stay open while choosing; the trigger joins
+            the selections with commas.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: flex-start; min-height: 320px;">
+        <div class="dropdown dropdown--lg dropdown--multi-select" style="max-width: 320px;">
+            <button type="button" class="dropdown__btn" aria-haspopup="listbox" aria-expanded="false">
+                <span class="dropdown__label"></span>
+                <span class="dropdown__label-placeholder">Select services</span>
+                <span class="dropdown__chevron icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+            </button>
+            <ul class="dropdown__list" role="listbox" aria-multiselectable="true">
+                <li><button type="button" class="dropdown__option dropdown__option--checkbox">
+                        <span class="dropdown__option-icon-container"><span
+                                class="dropdown__option-icon icon dga-icon-tick-02"></span></span>
+                        <span class="dropdown__option-label">Digital certificates</span>
+                    </button></li>
+                <li><button type="button" class="dropdown__option dropdown__option--checkbox">
+                        <span class="dropdown__option-icon-container"><span
+                                class="dropdown__option-icon icon dga-icon-tick-02"></span></span>
+                        <span class="dropdown__option-label">E-payments</span>
+                    </button></li>
+                <li><button type="button" class="dropdown__option dropdown__option--checkbox">
+                        <span class="dropdown__option-icon-container"><span
+                                class="dropdown__option-icon icon dga-icon-tick-02"></span></span>
+                        <span class="dropdown__option-label">Document verification</span>
+                    </button></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     RTL LAYOUT
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Layout</h2>
+        <p class="showcase-description">The field, chevron, and options mirror in right-to-left layouts.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: flex-start; min-height: 280px;" dir="rtl">
+        <div class="dropdown-field" style="max-width: 320px;">
+            <span class="dropdown-field__label">المنطقة</span>
+            <div class="dropdown dropdown--lg">
+                <button type="button" class="dropdown__btn" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="dropdown__label"></span>
+                    <span class="dropdown__label-placeholder">اختر منطقة</span>
+                    <span class="dropdown__chevron icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown__list" role="listbox">
+                    <li><button type="button" class="dropdown__option"><span
+                                class="dropdown__option-label">الرياض</span><span
+                                class="dropdown__option-icon icon dga-icon-tick-02"></span></button></li>
+                    <li><button type="button" class="dropdown__option"><span class="dropdown__option-label">مكة
+                                المكرمة</span><span class="dropdown__option-icon icon dga-icon-tick-02"></span></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

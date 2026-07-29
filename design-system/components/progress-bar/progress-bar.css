@@ -1,0 +1,171 @@
+/* ============================================
+   PROGRESS BAR COMPONENT
+   DGA Design System — ported from @platformscode/core@0.0.50
+   dga-linear-progress-bar + dga-circular-progress-bar onto DGA tokens.
+   Linear: sm | md | lg × primary | neutral | error | success.
+   Circular: 200 160 120 80 64 px, variant primary | neutral | error | success.
+   ============================================ */
+
+/* --- Linear: wrapper with label + helper note --- */
+.progress-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    width: 100%;
+}
+
+.progress-wrapper .progress-bar__label {
+    margin: 0;
+    color: var(--text-default);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-regular);
+    line-height: 20px;
+}
+
+.progress-wrapper .progress-bar__note {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.progress-wrapper .progress-bar__note .progress-bar__note-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 16px;
+    width: 16px;
+    font-size: var(--font-size-md);
+    color: var(--gray-700);
+}
+
+.progress-wrapper .progress-bar__note .progress-bar__note-icon.success { color: var(--success-700); }
+.progress-wrapper .progress-bar__note .progress-bar__note-icon.error { color: var(--error-700); }
+
+.progress-wrapper .progress-bar__note p {
+    margin: 0;
+    color: var(--gray-700);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-regular);
+}
+
+.progress-wrapper .progress-bar__note p.error { color: var(--error-700); }
+.progress-wrapper .progress-bar__note p.success { color: var(--success-700); }
+
+/* --- Linear: track + fill --- */
+.progress-bar-container {
+    overflow: hidden;
+    width: 100%;
+    background: var(--gray-100);
+    border-radius: var(--radius-sm);
+    position: relative;
+}
+
+.progress-bar-container.sm { height: 4px; }
+.progress-bar-container.md { height: 8px; }
+
+.progress-bar-container.lg {
+    height: 16px;
+    border-radius: var(--radius-md);
+}
+
+.progress-bar-container.lg .progress-bar { border-radius: var(--radius-md); }
+
+.progress-bar-container .progress-bar {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-radius: var(--radius-sm);
+    transition: width 0.5s ease-in-out;
+}
+
+.progress-bar-container .progress-bar.primary { background: var(--sa-600); }
+.progress-bar-container .progress-bar.neutral { background: var(--gray-700); }
+.progress-bar-container .progress-bar.error { background: var(--error-600); }
+.progress-bar-container .progress-bar.success { background: var(--success-600); }
+
+.progress-bar-container .progress-bar .progress-bar-text {
+    color: var(--text-oncolor-primary, #FFFFFF);
+    /* stays white on the colored fill in both themes */
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-regular);
+    padding: 0 var(--spacing-md);
+    white-space: nowrap;
+}
+
+/* ============================================
+   CIRCULAR
+   ============================================ */
+.circular-progress-bar {
+    position: relative;
+    width: fit-content;
+}
+
+.circular-progress-bar svg { display: block; }
+
+.circular-progress-bar .track {
+    stroke: var(--gray-100);
+}
+
+.circular-progress-bar .tail {
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.circular-progress-bar .tail--primary,
+.circular-progress-bar .tail--success { stroke: var(--sa-600); }
+.circular-progress-bar .tail--error { stroke: var(--error-600); }
+.circular-progress-bar .tail--neutral { stroke: var(--gray-700); }
+
+.circular-progress-bar__label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: max-content;
+    text-align: center;
+}
+
+.circular-progress-bar__label--percentage {
+    margin: 0;
+    color: var(--gray-700);
+}
+
+.circular-progress-bar__label--text {
+    margin: 0;
+    color: var(--gray-700);
+    text-align: center;
+}
+
+.circular-progress-bar__label--text.success { color: var(--success-700); }
+.circular-progress-bar__label--text.error { color: var(--error-700); }
+
+.circular-progress-bar__label--icon.success { color: var(--success-700); }
+.circular-progress-bar__label--icon.error { color: var(--error-700); }
+
+/* --- Circular sizes: percentage/text typography + icon scale --- */
+.circular-progress-bar[data-size="200"] .circular-progress-bar__label--percentage { font: var(--font-weight-bold) 36px/44px var(--font-family-primary); }
+.circular-progress-bar[data-size="200"] .circular-progress-bar__label--text { font: var(--font-weight-regular) 20px/30px var(--font-family-primary); }
+.circular-progress-bar[data-size="200"] .circular-progress-bar__label--icon { font-size: 64px; }
+
+.circular-progress-bar[data-size="160"] .circular-progress-bar__label--percentage { font: var(--font-weight-bold) 30px/38px var(--font-family-primary); }
+.circular-progress-bar[data-size="160"] .circular-progress-bar__label--text { font: var(--font-weight-regular) 16px/24px var(--font-family-primary); }
+.circular-progress-bar[data-size="160"] .circular-progress-bar__label--icon { font-size: 48px; }
+
+.circular-progress-bar[data-size="120"] .circular-progress-bar__label--percentage { font: var(--font-weight-bold) 24px/32px var(--font-family-primary); }
+.circular-progress-bar[data-size="120"] .circular-progress-bar__label--text { font: var(--font-weight-regular) 14px/20px var(--font-family-primary); }
+.circular-progress-bar[data-size="120"] .circular-progress-bar__label--icon { font-size: 40px; }
+
+.circular-progress-bar[data-size="80"] .circular-progress-bar__label--percentage { font: var(--font-weight-regular) 18px/28px var(--font-family-primary); }
+.circular-progress-bar[data-size="80"] .circular-progress-bar__label--text { display: none; }
+.circular-progress-bar[data-size="80"] .circular-progress-bar__label--icon { font-size: 32px; }
+
+.circular-progress-bar[data-size="64"] .circular-progress-bar__label--percentage { font: var(--font-weight-bold) 14px/20px var(--font-family-primary); }
+.circular-progress-bar[data-size="64"] .circular-progress-bar__label--text { display: none; }
+.circular-progress-bar[data-size="64"] .circular-progress-bar__label--icon { font-size: var(--font-size-2xl); }
+
+@media (prefers-reduced-motion: reduce) {
+    .progress-bar-container .progress-bar,
+    .circular-progress-bar .tail {
+        transition: none;
+    }
+}

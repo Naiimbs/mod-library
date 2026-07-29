@@ -27,6 +27,9 @@ body {
 a {
     text-decoration: none;
     color: inherit;
+    /* the vendored theme targets bare <a> with a font name we never load
+       (IBMPlexSansArabic) — inherit keeps every link on the DGA IBM Plex stack */
+    font-family: inherit;
 }
 
 ul,
@@ -78,7 +81,8 @@ button {
     left: 0;
     right: 0;
     z-index: var(--z-fixed);
-    border-bottom: 1px solid var(--color-border-secondary);
+    border-bottom: 1px solid var(--gray-300);
+    /* NDS header--divider: --background-neutral-300 */
 }
 
 /* ============================================
@@ -109,18 +113,14 @@ button {
 .sidebar-link {
     display: flex;
     align-items: center;
-    padding: var(--spacing-lg) var(--spacing-3xl);
+    margin: 0 var(--spacing-md) var(--spacing-xxs);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-md);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-regular);
     color: var(--color-text-primary);
-    border-left: 3px solid transparent;
-    transition: all var(--transition-fast);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
     cursor: pointer;
-}
-
-[dir="rtl"] .sidebar-link {
-    border-left: none;
-    border-right: 3px solid transparent;
 }
 
 .sidebar-link__icon {
@@ -141,32 +141,61 @@ button {
 }
 
 .sidebar-link:hover {
-    background-color: var(--color-primary-light);
-    color: var(--color-primary);
+    background-color: var(--color-gray-50);
+    color: var(--color-gray-900);
 }
 
 .sidebar-link.active {
     background-color: var(--color-primary-light);
-    color: var(--color-primary);
+    color: var(--sa-800);
     font-weight: var(--font-weight-medium);
-    border-left-color: var(--color-primary);
 }
 
-[dir="rtl"] .sidebar-link.active {
-    border-left-color: transparent;
-    border-right-color: var(--color-primary);
+.sidebar-link:focus-visible {
+    outline: 2px solid var(--sa-600);
+    outline-offset: -2px;
+}
+
+/* The library theme styles bare <a> globally (font, colors, and a 3px
+   focus border + padding that makes links jump in shape after a click).
+   Docs-shell navigation opts out; component demos keep library behavior. */
+.sidebar-link,
+.sidebar-link:visited,
+.sidebar-link:hover,
+.sidebar-link:focus {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    border: 0;
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-decoration: none;
+}
+
+.sidebar-link:visited {
+    color: var(--color-text-primary);
+}
+
+.sidebar-link:hover,
+.sidebar-link:focus {
+    color: var(--color-gray-900);
+}
+
+.sidebar-link.active,
+.sidebar-link.active:visited,
+.sidebar-link.active:hover,
+.sidebar-link.active:focus {
+    color: var(--sa-800);
 }
 
 /* New approach badge */
 .sidebar-link__badge {
     margin-left: auto;
-    padding: 1px 6px;
+    padding: 1px var(--spacing-sm);
     font-size: 10px;
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     line-height: 16px;
-    color: #1b8354;
-    background-color: #f3fcf6;
-    border-radius: 4px;
+    color: var(--sa-600);
+    background-color: var(--sa-50);
+    border-radius: var(--radius-sm);
     flex-shrink: 0;
 }
 
@@ -191,6 +220,9 @@ button {
     padding: var(--spacing-4xl) var(--spacing-6xl);
     background-color: var(--color-bg-secondary);
     min-height: calc(100vh - 72px);
+    /* stop wide children (e.g. code snippets) from propagating min-content
+       width up the flex chain and overflowing the page horizontally */
+    min-width: 0;
 }
 
 #component-content {
@@ -303,7 +335,7 @@ button {
 }
 
 .showcase-preview--dark .showcase-label {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--alpha-white-70);
 }
 
 .showcase-preview--subtle {
@@ -348,6 +380,11 @@ button {
     padding: var(--spacing-5xl) var(--spacing-4xl);
     background: var(--color-bg-secondary);
     transition: background-color var(--transition-normal);
+    /* wide demos (e.g. the nav header) scroll inside the canvas instead of
+       pushing the controls sidebar off-screen — critical in RTL, where the
+       overflow side gets clipped */
+    min-width: 0;
+    overflow-x: auto;
 }
 
 .live-demo__canvas--dark {
@@ -404,29 +441,52 @@ button {
     white-space: nowrap;
 }
 
-/* --- Dropdown select in sidebar --- */
+/* --- Dropdown select in sidebar ---
+   Mirrors the Dropdown component trigger (.dropdown__btn) anatomy so the
+   props controls look like the design system's own dropdown. */
 .live-demo__sidebar-select {
     appearance: none;
     -webkit-appearance: none;
-    background: transparent;
-    border: 1px solid var(--color-border-secondary);
-    border-radius: var(--radius-md);
-    font-family: inherit;
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-medium);
-    color: var(--color-text-primary);
+    min-height: 40px;
+    min-width: 140px;
+    background-color: var(--alpha-white);
+    border: 1px solid var(--gray-400);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-regular);
+    color: var(--text-default);
     cursor: pointer;
-    padding: var(--spacing-xs) var(--spacing-3xl) var(--spacing-xs) var(--spacing-md);
-    min-width: 120px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236C737F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    padding-block: 0;
+    padding-inline-start: var(--spacing-xl);
+    padding-inline-end: var(--spacing-5xl);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23161616' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: right var(--spacing-xs) center;
+    background-position: right var(--spacing-xl) center;
     background-size: 16px;
+    transition: border-color 0.15s ease;
+}
+
+[dir="rtl"] .live-demo__sidebar-select {
+    background-position: left var(--spacing-xl) center;
+}
+
+.live-demo__sidebar-select:hover {
+    border-color: var(--gray-700);
 }
 
 .live-demo__sidebar-select:focus {
     outline: none;
-    border-color: var(--color-border-focus);
+}
+
+.live-demo__sidebar-select:focus-visible {
+    outline: 2px solid var(--border-black);
+    outline-offset: 1px;
+}
+
+.live-demo__sidebar-select:disabled {
+    opacity: 0.4;
+    cursor: default;
 }
 
 /* --- iOS-style toggle switch --- */
@@ -455,7 +515,7 @@ button {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: #FFFFFF;
+    background: var(--alpha-white);
     box-shadow: var(--shadow-xs);
     transition: transform var(--transition-fast);
     pointer-events: none;
@@ -519,7 +579,7 @@ button {
     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
     font-size: var(--font-size-xs);
     background: var(--color-bg-tertiary);
-    padding: 2px 6px;
+    padding: var(--spacing-xxs) var(--spacing-sm);
     border-radius: var(--radius-sm);
     color: var(--color-gray-700);
 }
@@ -552,41 +612,102 @@ button {
     color: var(--color-gray-500);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 12px;
+    margin-bottom: var(--spacing-lg);
 }
 
 .content-toc__list {
     list-style: none;
     padding: 0;
     margin: 0;
-    border-left: 1px solid var(--color-border-secondary);
 }
 
 .content-toc__item {
     display: block;
-    padding: 4px 0 4px 12px;
-    font-size: 12px;
-    color: var(--color-text-secondary);
-    border-left: 2px solid transparent;
-    margin-left: -1px;
-    transition: color 150ms, border-color 150ms;
+    margin-bottom: 1px;
+    border-radius: var(--radius-sm);
+    transition: background-color 150ms, color 150ms;
     cursor: pointer;
+}
+
+/* opt out of the library theme's global <a> styling (font, colors, and
+   the 3px focus border + padding that changes the link's shape on click) */
+.content-toc__item,
+.content-toc__item:visited,
+.content-toc__item:hover,
+.content-toc__item:focus {
+    font-family: var(--font-family-primary);
+    font-size: 12.5px;
+    color: var(--color-text-secondary);
+    border: 0;
+    padding: 5px 10px;
     text-decoration: none;
 }
 
-.content-toc__item:hover {
-    color: var(--color-text-primary);
+.content-toc__item:hover,
+.content-toc__item:focus {
+    background: var(--color-gray-50);
+    color: var(--color-gray-900);
 }
 
-.content-toc__item--active {
-    color: var(--color-primary);
-    border-left-color: var(--color-primary);
+.content-toc__item:focus-visible {
+    outline: 2px solid var(--sa-600);
+    outline-offset: -2px;
+}
+
+.content-toc__item--active,
+.content-toc__item--active:visited,
+.content-toc__item--active:hover,
+.content-toc__item--active:focus {
+    background: var(--color-primary-light);
+    color: var(--sa-800);
     font-weight: var(--font-weight-medium);
 }
 
 @media (max-width: 1200px) {
     .content-toc {
         display: none;
+    }
+}
+
+/* ============================================
+   RESPONSIVE — docs scaffolding only
+   ============================================ */
+@media (max-width: 960px) {
+    .content {
+        padding: var(--spacing-3xl) var(--spacing-3xl);
+    }
+
+    /* live demo: stack the preview canvas above the controls */
+    .live-demo__body {
+        flex-direction: column;
+    }
+
+    .live-demo__canvas {
+        padding: var(--spacing-4xl) var(--spacing-xl);
+        min-height: 200px;
+    }
+
+    .live-demo__sidebar {
+        width: 100%;
+        min-width: 0;
+        border-left: 0;
+        border-top: 1px solid var(--color-border-secondary);
+    }
+
+    [dir="rtl"] .live-demo__sidebar {
+        border-right: 0;
+    }
+
+    .showcase-preview {
+        padding: var(--spacing-3xl) var(--spacing-xl);
+    }
+
+    .showcase-header {
+        padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-lg);
+    }
+
+    .showcase-divider {
+        margin: 0 var(--spacing-xl);
     }
 }
 
@@ -599,10 +720,14 @@ button {
     }
 
     .content {
-        padding: var(--spacing-3xl) var(--spacing-xl);
+        padding: var(--spacing-xl) var(--spacing-lg);
     }
 
     .main-nav {
         display: none;
+    }
+
+    .content-title {
+        font-size: var(--font-size-xl);
     }
 }

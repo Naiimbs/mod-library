@@ -1,576 +1,163 @@
 <div class="content-header">
     <h1 class="content-title">Filters</h1>
-    <p class="content-description">A filtration component helps users refine content by selecting specific criteria, such as categories or attributes. It simplifies navigation by narrowing results, allowing users to quickly find relevant information. Based on Figma Nodes: 30150:36683, 30150:36417, 30150:36646</p>
+    <p class="content-description">A filtration component that helps users refine content by selecting criteria. A
+        neutral trigger button opens a floating panel of filter blocks (search, checkbox lists with show more,
+        chips, ranges); applied filters appear as primary buttons with a remove action. Rebuilt to match the DGA
+        library's <code>dga-filteration</code> anatomy, composed from the design-system button, checkbox, chip,
+        search box, and text input components.</p>
 </div>
 
-<!-- COMPREHENSIVE INTERACTIVE DEMO - All Variants -->
-<div class="component-preview">
-    <div class="component-preview-title">Complete Interactive Demo - Click to Explore All Variants</div>
-    <div class="filter-demo-container">
-        <p style="margin-bottom: var(--spacing-xl); color: var(--color-text-secondary); font-size: var(--font-size-sm);">
-            Click the filter button below to see the full-featured dropdown with search, multi-select checkboxes, show more/less, and action buttons. Selected filters appear as tags below.
-        </p>
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
 
-        <!-- Main Demo Area -->
-        <div class="filter-demo-row" style="align-items: flex-start; gap: var(--spacing-3xl);">
-            <!-- LTR Demo -->
-            <div class="filter-demo-item" style="flex: 1;">
-                <span class="filter-demo-label">English (LTR)</span>
-
-                <!-- Selected Tags Display -->
-                <div id="comprehensive-tags-ltr" class="filter-selected-tags" style="min-height: 32px; margin-bottom: var(--spacing-md);">
-                    <!-- Tags will be dynamically added here -->
-                </div>
-
-                <!-- Filter Dropdown -->
-                <div class="filter-dropdown" id="comprehensive-filter-ltr">
-                    <button class="filter-button filter-button--with-badge" type="button">
-                        <span class="filter-button__icon">
-                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
-                            </svg>
-                        </span>
-                        <span>Filter Products</span>
-                        <span class="filter-button__badge" style="display: none;">0</span>
-                        <span class="filter-button__arrow">
-                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M6 9l6 6 6-6"/>
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="filter-dropdown__content" style="min-width: 360px;">
-                        <!-- Category Section -->
-                        <div class="filter-section">
-                            <div class="filter-section__header">
-                                <span class="filter-section__title">Category</span>
-                                <button class="filter-section__clear comprehensive-clear-btn" type="button" data-section="category">Clear</button>
-                            </div>
-                            <div class="filter-search">
-                                <div class="filter-search__input-wrapper">
-                                    <span class="filter-search__icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <circle cx="11" cy="11" r="8"/>
-                                            <path d="M21 21l-4.35-4.35"/>
-                                        </svg>
-                                    </span>
-                                    <input type="text" class="filter-search__input" placeholder="Search categories...">
-                                </div>
-                            </div>
-                            <div class="filter-options">
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="electronics" data-label="Electronics">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">Electronics</span>
-                                    <span class="filter-option__count">(156)</span>
-                                </label>
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="clothing" data-label="Clothing">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">Clothing</span>
-                                    <span class="filter-option__count">(89)</span>
-                                </label>
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="books" data-label="Books">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">Books</span>
-                                    <span class="filter-option__count">(234)</span>
-                                </label>
-                                <label class="filter-option filter-option--hidden" tabindex="0" style="display: none;">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="home" data-label="Home & Garden">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">Home & Garden</span>
-                                    <span class="filter-option__count">(67)</span>
-                                </label>
-                                <label class="filter-option filter-option--hidden" tabindex="0" style="display: none;">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="sports" data-label="Sports">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">Sports</span>
-                                    <span class="filter-option__count">(45)</span>
-                                </label>
-                                <label class="filter-option filter-option--hidden" tabindex="0" style="display: none;">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="toys" data-label="Toys">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">Toys</span>
-                                    <span class="filter-option__count">(78)</span>
-                                </label>
-                            </div>
-                            <button class="filter-show-more" type="button">
-                                <span class="filter-show-more__text" data-show-text="Show 3 more" data-hide-text="Show less">Show 3 more</span>
-                                <span class="filter-show-more__icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M6 9l6 6 6-6"/>
-                                    </svg>
-                                </span>
-                            </button>
-                        </div>
-
-                        <!-- Price Range Section -->
-                        <div class="filter-section" style="margin-top: var(--spacing-xl); padding-top: var(--spacing-xl); border-top: 1px solid var(--color-border-secondary);">
-                            <div class="filter-section__header">
-                                <span class="filter-section__title">Price Range</span>
-                                <button class="filter-section__clear comprehensive-clear-btn" type="button" data-section="price">Clear</button>
-                            </div>
-                            <div class="filter-options">
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="0-50" data-label="Under $50">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">Under $50</span>
-                                    <span class="filter-option__count">(312)</span>
-                                </label>
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="50-100" data-label="$50 - $100">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">$50 - $100</span>
-                                    <span class="filter-option__count">(198)</span>
-                                </label>
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="100-200" data-label="$100 - $200">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">$100 - $200</span>
-                                    <span class="filter-option__count">(145)</span>
-                                </label>
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="200+" data-label="$200+">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">$200+</span>
-                                    <span class="filter-option__count">(89)</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Actions -->
-                        <div class="filter-actions">
-                            <button class="filter-actions__button filter-actions__button--secondary comprehensive-clear-all" type="button">Clear All</button>
-                            <button class="filter-actions__button filter-actions__button--primary comprehensive-apply" type="button">Apply Filters</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- RTL Demo -->
-            <div class="filter-demo-item" style="flex: 1;" dir="rtl">
-                <span class="filter-demo-label">Arabic (RTL)</span>
-
-                <!-- Selected Tags Display -->
-                <div id="comprehensive-tags-rtl" class="filter-selected-tags" style="min-height: 32px; margin-bottom: var(--spacing-md);">
-                    <!-- Tags will be dynamically added here -->
-                </div>
-
-                <!-- Filter Dropdown -->
-                <div class="filter-dropdown" id="comprehensive-filter-rtl">
-                    <button class="filter-button filter-button--with-badge" type="button">
-                        <span class="filter-button__arrow">
-                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M6 9l6 6 6-6"/>
-                            </svg>
-                        </span>
-                        <span>تصفية المنتجات</span>
-                        <span class="filter-button__badge" style="display: none;">0</span>
-                        <span class="filter-button__icon">
-                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="filter-dropdown__content" style="min-width: 360px;">
-                        <!-- Category Section -->
-                        <div class="filter-section">
-                            <div class="filter-section__header">
-                                <span class="filter-section__title">الفئة</span>
-                                <button class="filter-section__clear comprehensive-clear-btn" type="button" data-section="category-rtl">مسح</button>
-                            </div>
-                            <div class="filter-search">
-                                <div class="filter-search__input-wrapper">
-                                    <span class="filter-search__icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <circle cx="11" cy="11" r="8"/>
-                                            <path d="M21 21l-4.35-4.35"/>
-                                        </svg>
-                                    </span>
-                                    <input type="text" class="filter-search__input" placeholder="بحث في الفئات...">
-                                </div>
-                            </div>
-                            <div class="filter-options">
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="electronics" data-label="إلكترونيات">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">إلكترونيات</span>
-                                    <span class="filter-option__count">(١٥٦)</span>
-                                </label>
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="clothing" data-label="ملابس">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">ملابس</span>
-                                    <span class="filter-option__count">(٨٩)</span>
-                                </label>
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="books" data-label="كتب">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">كتب</span>
-                                    <span class="filter-option__count">(٢٣٤)</span>
-                                </label>
-                                <label class="filter-option filter-option--hidden" tabindex="0" style="display: none;">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="home" data-label="المنزل والحديقة">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">المنزل والحديقة</span>
-                                    <span class="filter-option__count">(٦٧)</span>
-                                </label>
-                                <label class="filter-option filter-option--hidden" tabindex="0" style="display: none;">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="sports" data-label="رياضة">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">رياضة</span>
-                                    <span class="filter-option__count">(٤٥)</span>
-                                </label>
-                                <label class="filter-option filter-option--hidden" tabindex="0" style="display: none;">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="toys" data-label="ألعاب">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">ألعاب</span>
-                                    <span class="filter-option__count">(٧٨)</span>
-                                </label>
-                            </div>
-                            <button class="filter-show-more" type="button">
-                                <span class="filter-show-more__text" data-show-text="عرض ٣ المزيد" data-hide-text="عرض أقل">عرض ٣ المزيد</span>
-                                <span class="filter-show-more__icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M6 9l6 6 6-6"/>
-                                    </svg>
-                                </span>
-                            </button>
-                        </div>
-
-                        <!-- Price Range Section -->
-                        <div class="filter-section" style="margin-top: var(--spacing-xl); padding-top: var(--spacing-xl); border-top: 1px solid var(--color-border-secondary);">
-                            <div class="filter-section__header">
-                                <span class="filter-section__title">نطاق السعر</span>
-                                <button class="filter-section__clear comprehensive-clear-btn" type="button" data-section="price-rtl">مسح</button>
-                            </div>
-                            <div class="filter-options">
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="0-50" data-label="أقل من ٥٠ ر.س">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">أقل من ٥٠ ر.س</span>
-                                    <span class="filter-option__count">(٣١٢)</span>
-                                </label>
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="50-100" data-label="٥٠ - ١٠٠ ر.س">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">٥٠ - ١٠٠ ر.س</span>
-                                    <span class="filter-option__count">(١٩٨)</span>
-                                </label>
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="100-200" data-label="١٠٠ - ٢٠٠ ر.س">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">١٠٠ - ٢٠٠ ر.س</span>
-                                    <span class="filter-option__count">(١٤٥)</span>
-                                </label>
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="200+" data-label="٢٠٠+ ر.س">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">٢٠٠+ ر.س</span>
-                                    <span class="filter-option__count">(٨٩)</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Actions -->
-                        <div class="filter-actions">
-                            <button class="filter-actions__button filter-actions__button--secondary comprehensive-clear-all" type="button">مسح الكل</button>
-                            <button class="filter-actions__button filter-actions__button--primary comprehensive-apply" type="button">تطبيق الفلاتر</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="live-demo">
+    <div class="live-demo__body">
+        <div class="live-demo__canvas" id="filters-demo-preview"
+            style="align-items: flex-start; justify-content: flex-start; min-height: 560px; padding: var(--spacing-4xl);">
+            <!-- Rendered dynamically -->
         </div>
-    </div>
-</div>
 
-<!-- Filter Button Variants -->
-<div class="component-preview">
-    <div class="component-preview-title">Filter Button - Trigger States</div>
-    <div class="filter-demo-container">
-        <div class="filter-demo-row">
-            <!-- Default Filter Button -->
-            <div class="filter-demo-item">
-                <span class="filter-demo-label">Default</span>
-                <button class="filter-button" type="button">
-                    <span class="filter-button__icon">
-                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
-                        </svg>
-                    </span>
-                    <span>Filter</span>
-                    <span class="filter-button__arrow">
-                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6 9l6 6 6-6"/>
-                        </svg>
-                    </span>
-                </button>
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Filters</h3>
+                <p class="live-demo__sidebar-desc">This demo really works — open the panel, search and tick options,
+                    apply them, then remove the applied filters one by one or clear all.</p>
             </div>
 
-            <!-- Filter Button with Badge -->
-            <div class="filter-demo-item">
-                <span class="filter-demo-label">With Selection Count</span>
-                <button class="filter-button filter-button--with-badge" type="button">
-                    <span class="filter-button__icon">
-                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
-                        </svg>
-                    </span>
-                    <span>Filter</span>
-                    <span class="filter-button__badge">3</span>
-                    <span class="filter-button__arrow">
-                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6 9l6 6 6-6"/>
-                        </svg>
-                    </span>
-                </button>
-            </div>
-
-            <!-- RTL Filter Button -->
-            <div class="filter-demo-item" dir="rtl">
-                <span class="filter-demo-label">RTL - Arabic</span>
-                <button class="filter-button" type="button">
-                    <span class="filter-button__arrow">
-                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6 9l6 6 6-6"/>
-                        </svg>
-                    </span>
-                    <span>تصفية</span>
-                    <span class="filter-button__icon">
-                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
-                        </svg>
-                    </span>
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
                 </button>
             </div>
         </div>
     </div>
+
+    <div class="live-demo__footer">
+        This live demo contains only a preview of functionality and styles available for this component. Selections
+        only take effect when Apply filters is pressed, exactly like the library.
+    </div>
 </div>
 
-<!-- Interactive Filter Dropdown - LTR -->
-<div class="component-preview">
-    <div class="component-preview-title">Interactive Filter Dropdown - LTR (Left Placement)</div>
-    <div class="filter-demo-container">
-        <div class="filter-dropdown" id="filter-dropdown-ltr">
-            <button class="filter-button" type="button">
-                <span class="filter-button__icon">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
-                    </svg>
-                </span>
-                <span>Filter</span>
-                <span class="filter-button__badge" style="display: none;">0</span>
-                <span class="filter-button__arrow">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M6 9l6 6 6-6"/>
-                    </svg>
-                </span>
-            </button>
-            <div class="filter-dropdown__content">
-                <div class="filter-section">
-                    <div class="filter-section__header">
-                        <span class="filter-section__title">Variant (2 selections)</span>
-                    </div>
-                    <div class="filter-search">
-                        <div class="filter-search__input-wrapper">
-                            <span class="filter-search__icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="11" cy="11" r="8"/>
-                                    <path d="M21 21l-4.35-4.35"/>
-                                </svg>
-                            </span>
-                            <input type="text" class="filter-search__input" placeholder="Search">
-                        </div>
-                    </div>
-                    <div class="filter-options">
-                        <label class="filter-option" tabindex="0">
-                            <span class="filter-option__checkbox">
-                                <input type="checkbox" value="option1">
-                                <span class="filter-option__checkbox-visual">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M20 6L9 17l-5-5"/>
-                                    </svg>
-                                </span>
-                            </span>
-                            <span class="filter-option__label">Option 1</span>
-                            <span class="filter-option__count">(22)</span>
-                        </label>
-                        <label class="filter-option" tabindex="0">
-                            <span class="filter-option__checkbox">
-                                <input type="checkbox" value="option2" checked>
-                                <span class="filter-option__checkbox-visual">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M20 6L9 17l-5-5"/>
-                                    </svg>
-                                </span>
-                            </span>
-                            <span class="filter-option__label">Option 2</span>
-                            <span class="filter-option__count">(18)</span>
-                        </label>
-                        <label class="filter-option" tabindex="0">
-                            <span class="filter-option__checkbox">
-                                <input type="checkbox" value="option3" checked>
-                                <span class="filter-option__checkbox-visual">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M20 6L9 17l-5-5"/>
-                                    </svg>
-                                </span>
-                            </span>
-                            <span class="filter-option__label">Option 3</span>
-                            <span class="filter-option__count">(15)</span>
-                        </label>
-                        <label class="filter-option filter-option--hidden" tabindex="0" style="display: none;">
-                            <span class="filter-option__checkbox">
-                                <input type="checkbox" value="option4">
-                                <span class="filter-option__checkbox-visual">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M20 6L9 17l-5-5"/>
-                                    </svg>
-                                </span>
-                            </span>
-                            <span class="filter-option__label">Option 4</span>
-                            <span class="filter-option__count">(12)</span>
-                        </label>
-                        <label class="filter-option filter-option--hidden" tabindex="0" style="display: none;">
-                            <span class="filter-option__checkbox">
-                                <input type="checkbox" value="option5">
-                                <span class="filter-option__checkbox-visual">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M20 6L9 17l-5-5"/>
-                                    </svg>
-                                </span>
-                            </span>
-                            <span class="filter-option__label">Option 5</span>
-                            <span class="filter-option__count">(9)</span>
-                        </label>
-                    </div>
-                    <button class="filter-show-more" type="button">
-                        <span class="filter-show-more__text" data-show-text="Show 2 more" data-hide-text="Show less">Show 2 more</span>
-                        <span class="filter-show-more__icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M6 9l6 6 6-6"/>
-                            </svg>
-                        </span>
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">All available CSS classes, mapped from the library's
+            <code>dga-filteration</code> API.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Type</th>
+                    <th>Library prop</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.filteration</code></td>
+                    <td>Base</td>
+                    <td>—</td>
+                    <td>Column container: trigger + applied-filters row, with the floating panel anchored to it.</td>
+                </tr>
+                <tr>
+                    <td>Trigger button</td>
+                    <td>Composition</td>
+                    <td><code>button-label</code></td>
+                    <td>A design-system <code>.btn.btn-neutral</code> (large) with a leading filter icon and a
+                        trailing chevron, both white.</td>
+                </tr>
+                <tr>
+                    <td><code>.filteration__selected-filters</code></td>
+                    <td>Element</td>
+                    <td><code>selected-filters</code></td>
+                    <td>Applied filters as primary <code>.btn.btn-primary</code> buttons with a trailing × that
+                        removes them. New entries fade in.</td>
+                </tr>
+                <tr>
+                    <td><code>.filteration__panel</code> [+ <code>.is-open</code>]</td>
+                    <td>Element</td>
+                    <td><code>is-filter-panel-open</code></td>
+                    <td>Floating 320px panel: 8px radius, gray-300 border, soft shadow, slide-down entrance,
+                        75vh scroll. On mobile it centers as a fixed sheet.</td>
+                </tr>
+                <tr>
+                    <td><code>.filteration__block</code> / <code>__block-title</code></td>
+                    <td>Element</td>
+                    <td><code>filter-blocks</code></td>
+                    <td>One filter group: 14px semibold title, gray-50 hover, 20px start indent, divider below.</td>
+                </tr>
+                <tr>
+                    <td><code>.filteration__block-content--checkbox|--radio|--chips|--select</code></td>
+                    <td>Modifier</td>
+                    <td><code>block.type</code></td>
+                    <td>Layout per block type; checkbox blocks show 3 options collapsed.</td>
+                </tr>
+                <tr>
+                    <td><code>.filteration__search</code></td>
+                    <td>Element</td>
+                    <td>—</td>
+                    <td>A design-system search box that filters the block's options as you type.</td>
+                </tr>
+                <tr>
+                    <td><code>.filteration__block-actions</code></td>
+                    <td>Element</td>
+                    <td>—</td>
+                    <td>"Show N more / Show less" — a transparent button with a chevron, shown when a checkbox block
+                        has more than 5 options.</td>
+                </tr>
+                <tr>
+                    <td><code>.filteration__range</code></td>
+                    <td>Element</td>
+                    <td><code>block.type="range"</code></td>
+                    <td>Two 125px text inputs joined by a dash.</td>
+                </tr>
+                <tr>
+                    <td><code>.filteration__actions</code></td>
+                    <td>Element</td>
+                    <td>—</td>
+                    <td>Apply filters (neutral) + Clear filters (secondary outline), end-aligned, min-width 120px,
+                        above a gray-200 top border.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ============================================
+     TRIGGER & APPLIED FILTERS
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Trigger &amp; Applied Filters</h2>
+        <p class="showcase-description">The neutral trigger with its filter icon and chevron, next to applied filters
+            rendered as primary buttons with a remove ×.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: flex-start;">
+        <div class="filteration" style="max-width: 640px;">
+            <div class="filteration__toolbar">
+                <button type="button" class="btn btn-neutral">
+                    <span class="icon dga-icon-filter"></span>
+                    Filter Products
+                    <span class="icon dga-icon-arrow-down-01"></span>
+                </button>
+                <div class="filteration__selected-filters">
+                    <button type="button" class="btn btn-primary">
+                        Electronics
+                        <span class="icon dga-icon-multiplication-sign"></span>
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        In stock
+                        <span class="icon dga-icon-multiplication-sign"></span>
                     </button>
                 </div>
             </div>
@@ -578,442 +165,147 @@
     </div>
 </div>
 
-<!-- Interactive Filter Dropdown - RTL -->
-<div class="component-preview">
-    <div class="component-preview-title">Interactive Filter Dropdown - RTL (Arabic)</div>
-    <div class="filter-demo-container" dir="rtl">
-        <div class="filter-dropdown" id="filter-dropdown-rtl">
-            <button class="filter-button" type="button">
-                <span class="filter-button__arrow">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M6 9l6 6 6-6"/>
-                    </svg>
-                </span>
-                <span>تصفية</span>
-                <span class="filter-button__badge" style="display: none;">0</span>
-                <span class="filter-button__icon">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
-                    </svg>
-                </span>
-            </button>
-            <div class="filter-dropdown__content">
-                <div class="filter-section">
-                    <div class="filter-section__header">
-                        <span class="filter-section__title">النوع (٢ من الاختيارات)</span>
+<!-- ============================================
+     PANEL
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Panel</h2>
+        <p class="showcase-description">The open panel: a search box, a checkbox block collapsed to three options
+            with a "Show more" action, a divider, and the Apply / Clear actions.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: flex-start;">
+        <div class="filteration__panel is-open" style="position: static; animation: none;">
+            <div class="filteration__block">
+                <h3 class="filteration__block-title">Category</h3>
+                <div class="filteration__search">
+                    <div class="search-box">
+                        <span class="search-box__icon"><span class="icon dga-icon-search-01"></span></span>
+                        <input type="text" class="search-box__field" placeholder="Search" aria-label="Search options">
                     </div>
-                    <div class="filter-search">
-                        <div class="filter-search__input-wrapper">
-                            <span class="filter-search__icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="11" cy="11" r="8"/>
-                                    <path d="M21 21l-4.35-4.35"/>
-                                </svg>
-                            </span>
-                            <input type="text" class="filter-search__input" placeholder="بحث">
+                </div>
+                <div class="filteration__block-content filteration__block-content--checkbox">
+                    <label class="checkbox">
+                        <div class="checkbox__row">
+                            <div class="checkbox__control">
+                                <input type="checkbox" class="checkbox__input" checked>
+                                <span class="checkbox__box"><svg class="checkbox__icon checkbox__icon--check"
+                                        viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67"
+                                            stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+                            </div>
+                            <span class="checkbox__label">Electronics</span>
                         </div>
-                    </div>
-                    <div class="filter-options">
-                        <label class="filter-option" tabindex="0">
-                            <span class="filter-option__checkbox">
-                                <input type="checkbox" value="option1">
-                                <span class="filter-option__checkbox-visual">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M20 6L9 17l-5-5"/>
-                                    </svg>
-                                </span>
-                            </span>
-                            <span class="filter-option__label">خيار (٢٢)</span>
-                        </label>
-                        <label class="filter-option" tabindex="0">
-                            <span class="filter-option__checkbox">
-                                <input type="checkbox" value="option2" checked>
-                                <span class="filter-option__checkbox-visual">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M20 6L9 17l-5-5"/>
-                                    </svg>
-                                </span>
-                            </span>
-                            <span class="filter-option__label">خيار (١٨)</span>
-                        </label>
-                        <label class="filter-option" tabindex="0">
-                            <span class="filter-option__checkbox">
-                                <input type="checkbox" value="option3" checked>
-                                <span class="filter-option__checkbox-visual">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M20 6L9 17l-5-5"/>
-                                    </svg>
-                                </span>
-                            </span>
-                            <span class="filter-option__label">خيار (١٥)</span>
-                        </label>
-                    </div>
-                    <button class="filter-show-more" type="button">
-                        <span class="filter-show-more__text" data-show-text="عرض المزيد ١٩" data-hide-text="عرض أقل">عرض المزيد ١٩</span>
-                        <span class="filter-show-more__icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M6 9l6 6 6-6"/>
-                            </svg>
-                        </span>
+                    </label>
+                    <label class="checkbox">
+                        <div class="checkbox__row">
+                            <div class="checkbox__control">
+                                <input type="checkbox" class="checkbox__input">
+                                <span class="checkbox__box"><svg class="checkbox__icon checkbox__icon--check"
+                                        viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67"
+                                            stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+                            </div>
+                            <span class="checkbox__label">Clothing</span>
+                        </div>
+                    </label>
+                    <label class="checkbox">
+                        <div class="checkbox__row">
+                            <div class="checkbox__control">
+                                <input type="checkbox" class="checkbox__input">
+                                <span class="checkbox__box"><svg class="checkbox__icon checkbox__icon--check"
+                                        viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.67"
+                                            stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+                            </div>
+                            <span class="checkbox__label">Books</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="filteration__block-actions">
+                    <button type="button" class="btn btn-transparent btn-medium">
+                        Show 3 more
+                        <span class="icon dga-icon-arrow-down-01"></span>
                     </button>
                 </div>
+                <div class="filteration__divider"></div>
+            </div>
+            <div class="filteration__actions">
+                <button type="button" class="btn btn-neutral">Apply filters</button>
+                <button type="button" class="btn btn-secondary-outline">Clear filters</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Filter Panel - Inline (No Overlay) -->
-<div class="component-preview">
-    <div class="component-preview-title">Filter Panel - Inline Variant (LTR)</div>
-    <div class="filter-demo-container">
-        <div class="filter-panel" id="filter-panel-ltr">
-            <div class="filter-section">
-                <div class="filter-section__header">
-                    <span class="filter-section__title">Category</span>
-                    <button class="filter-section__clear" type="button">Clear</button>
+<!-- ============================================
+     BLOCK TYPES
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Block Types</h2>
+        <p class="showcase-description">Beyond checkboxes: chips blocks wrap design-system chips at a 20px gap, and
+            range blocks join two 125px text inputs with a dash.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: flex-start;">
+        <div class="filteration__panel is-open" style="position: static; animation: none;">
+            <div class="filteration__block">
+                <h3 class="filteration__block-title">Size</h3>
+                <div class="filteration__block-content filteration__block-content--chips">
+                    <button type="button" class="chip chip-neutral chip-medium">Small</button>
+                    <button type="button" class="chip chip-neutral chip-medium selected">Medium</button>
+                    <button type="button" class="chip chip-neutral chip-medium">Large</button>
                 </div>
-                <div class="filter-options">
-                    <label class="filter-option" tabindex="0">
-                        <span class="filter-option__checkbox">
-                            <input type="checkbox" value="electronics">
-                            <span class="filter-option__checkbox-visual">
-                                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20 6L9 17l-5-5"/>
-                                </svg>
-                            </span>
-                        </span>
-                        <span class="filter-option__label">Electronics</span>
-                        <span class="filter-option__count">(156)</span>
-                    </label>
-                    <label class="filter-option" tabindex="0">
-                        <span class="filter-option__checkbox">
-                            <input type="checkbox" value="clothing" checked>
-                            <span class="filter-option__checkbox-visual">
-                                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20 6L9 17l-5-5"/>
-                                </svg>
-                            </span>
-                        </span>
-                        <span class="filter-option__label">Clothing</span>
-                        <span class="filter-option__count">(89)</span>
-                    </label>
-                    <label class="filter-option" tabindex="0">
-                        <span class="filter-option__checkbox">
-                            <input type="checkbox" value="books">
-                            <span class="filter-option__checkbox-visual">
-                                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20 6L9 17l-5-5"/>
-                                </svg>
-                            </span>
-                        </span>
-                        <span class="filter-option__label">Books</span>
-                        <span class="filter-option__count">(234)</span>
-                    </label>
-                    <label class="filter-option" tabindex="0">
-                        <span class="filter-option__checkbox">
-                            <input type="checkbox" value="home" checked>
-                            <span class="filter-option__checkbox-visual">
-                                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20 6L9 17l-5-5"/>
-                                </svg>
-                            </span>
-                        </span>
-                        <span class="filter-option__label">Home & Garden</span>
-                        <span class="filter-option__count">(67)</span>
-                    </label>
+                <div class="filteration__block-actions"></div>
+                <div class="filteration__divider"></div>
+            </div>
+            <div class="filteration__block">
+                <h3 class="filteration__block-title">Price range</h3>
+                <div class="filteration__block-content">
+                    <div class="filteration__range">
+                        <div class="text-input"><input type="text" class="text-input__field" placeholder="Min"
+                                aria-label="Minimum price"></div>
+                        <span>—</span>
+                        <div class="text-input"><input type="text" class="text-input__field" placeholder="Max"
+                                aria-label="Maximum price"></div>
+                    </div>
                 </div>
-                <div class="filter-actions">
-                    <button class="filter-actions__button filter-actions__button--secondary" type="button">Clear All</button>
-                    <button class="filter-actions__button filter-actions__button--primary" type="button">Apply Filters</button>
-                </div>
+                <div class="filteration__block-actions"></div>
+                <div class="filteration__divider"></div>
+            </div>
+            <div class="filteration__actions">
+                <button type="button" class="btn btn-neutral">Apply filters</button>
+                <button type="button" class="btn btn-secondary-outline">Clear filters</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Filter Panel - Inline RTL -->
-<div class="component-preview">
-    <div class="component-preview-title">Filter Panel - Inline Variant (RTL - Arabic)</div>
-    <div class="filter-demo-container" dir="rtl">
-        <div class="filter-panel" id="filter-panel-rtl">
-            <div class="filter-section">
-                <div class="filter-section__header">
-                    <span class="filter-section__title">الفئة</span>
-                    <button class="filter-section__clear" type="button">مسح</button>
-                </div>
-                <div class="filter-options">
-                    <label class="filter-option" tabindex="0">
-                        <span class="filter-option__checkbox">
-                            <input type="checkbox" value="electronics">
-                            <span class="filter-option__checkbox-visual">
-                                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20 6L9 17l-5-5"/>
-                                </svg>
-                            </span>
-                        </span>
-                        <span class="filter-option__label">إلكترونيات</span>
-                        <span class="filter-option__count">(١٥٦)</span>
-                    </label>
-                    <label class="filter-option" tabindex="0">
-                        <span class="filter-option__checkbox">
-                            <input type="checkbox" value="clothing" checked>
-                            <span class="filter-option__checkbox-visual">
-                                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20 6L9 17l-5-5"/>
-                                </svg>
-                            </span>
-                        </span>
-                        <span class="filter-option__label">ملابس</span>
-                        <span class="filter-option__count">(٨٩)</span>
-                    </label>
-                    <label class="filter-option" tabindex="0">
-                        <span class="filter-option__checkbox">
-                            <input type="checkbox" value="books">
-                            <span class="filter-option__checkbox-visual">
-                                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20 6L9 17l-5-5"/>
-                                </svg>
-                            </span>
-                        </span>
-                        <span class="filter-option__label">كتب</span>
-                        <span class="filter-option__count">(٢٣٤)</span>
-                    </label>
-                    <label class="filter-option" tabindex="0">
-                        <span class="filter-option__checkbox">
-                            <input type="checkbox" value="home" checked>
-                            <span class="filter-option__checkbox-visual">
-                                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20 6L9 17l-5-5"/>
-                                </svg>
-                            </span>
-                        </span>
-                        <span class="filter-option__label">المنزل والحديقة</span>
-                        <span class="filter-option__count">(٦٧)</span>
-                    </label>
-                </div>
-                <div class="filter-actions">
-                    <button class="filter-actions__button filter-actions__button--secondary" type="button">مسح الكل</button>
-                    <button class="filter-actions__button filter-actions__button--primary" type="button">تطبيق الفلاتر</button>
-                </div>
-            </div>
-        </div>
+<!-- ============================================
+     RTL LAYOUT
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Layout</h2>
+        <p class="showcase-description">The trigger, applied filters, and panel blocks mirror in right-to-left
+            layouts.</p>
     </div>
-</div>
-
-<!-- Selected Filter Tags -->
-<div class="component-preview">
-    <div class="component-preview-title">Selected Filter Tags</div>
-    <div class="filter-demo-container">
-        <div class="filter-demo-row">
-            <div class="filter-demo-item">
-                <span class="filter-demo-label">LTR</span>
-                <div class="filter-selected-tags">
-                    <span class="filter-tag">
-                        <span>Electronics</span>
-                        <button class="filter-tag__remove" type="button" aria-label="Remove filter">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 6L6 18M6 6l12 12"/>
-                            </svg>
-                        </button>
-                    </span>
-                    <span class="filter-tag">
-                        <span>Clothing</span>
-                        <button class="filter-tag__remove" type="button" aria-label="Remove filter">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 6L6 18M6 6l12 12"/>
-                            </svg>
-                        </button>
-                    </span>
-                    <span class="filter-tag">
-                        <span>Price: $50-$100</span>
-                        <button class="filter-tag__remove" type="button" aria-label="Remove filter">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 6L6 18M6 6l12 12"/>
-                            </svg>
-                        </button>
-                    </span>
-                </div>
-            </div>
-            <div class="filter-demo-item" dir="rtl">
-                <span class="filter-demo-label">RTL</span>
-                <div class="filter-selected-tags">
-                    <span class="filter-tag">
-                        <span>إلكترونيات</span>
-                        <button class="filter-tag__remove" type="button" aria-label="إزالة الفلتر">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 6L6 18M6 6l12 12"/>
-                            </svg>
-                        </button>
-                    </span>
-                    <span class="filter-tag">
-                        <span>ملابس</span>
-                        <button class="filter-tag__remove" type="button" aria-label="إزالة الفلتر">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 6L6 18M6 6l12 12"/>
-                            </svg>
-                        </button>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Dropdown Placement Variants -->
-<div class="component-preview">
-    <div class="component-preview-title">Dropdown Placement Variants</div>
-    <div class="filter-demo-container">
-        <div class="filter-demo-row" style="justify-content: space-between; width: 100%;">
-            <!-- Left Placement -->
-            <div class="filter-demo-item">
-                <span class="filter-demo-label">Left Placement</span>
-                <div class="filter-dropdown" id="filter-left-placement">
-                    <button class="filter-button" type="button">
-                        <span class="filter-button__icon">
-                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
-                            </svg>
-                        </span>
-                        <span>Left</span>
-                        <span class="filter-button__arrow">
-                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M6 9l6 6 6-6"/>
-                            </svg>
-                        </span>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: flex-start;" dir="rtl">
+        <div class="filteration" style="max-width: 640px;">
+            <div class="filteration__toolbar">
+                <button type="button" class="btn btn-neutral">
+                    <span class="icon dga-icon-filter"></span>
+                    تصفية المنتجات
+                    <span class="icon dga-icon-arrow-down-01"></span>
+                </button>
+                <div class="filteration__selected-filters">
+                    <button type="button" class="btn btn-primary">
+                        إلكترونيات
+                        <span class="icon dga-icon-multiplication-sign"></span>
                     </button>
-                    <div class="filter-dropdown__content">
-                        <div class="filter-section">
-                            <div class="filter-section__header">
-                                <span class="filter-section__title">Options</span>
-                            </div>
-                            <div class="filter-options">
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="a">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">Option A</span>
-                                </label>
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="b">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">Option B</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Center Placement -->
-            <div class="filter-demo-item">
-                <span class="filter-demo-label">Center Placement</span>
-                <div class="filter-dropdown filter-dropdown--center" id="filter-center-placement">
-                    <button class="filter-button" type="button">
-                        <span class="filter-button__icon">
-                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
-                            </svg>
-                        </span>
-                        <span>Center</span>
-                        <span class="filter-button__arrow">
-                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M6 9l6 6 6-6"/>
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="filter-dropdown__content">
-                        <div class="filter-section">
-                            <div class="filter-section__header">
-                                <span class="filter-section__title">Options</span>
-                            </div>
-                            <div class="filter-options">
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="a">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">Option A</span>
-                                </label>
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="b">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">Option B</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Placement -->
-            <div class="filter-demo-item">
-                <span class="filter-demo-label">Right Placement</span>
-                <div class="filter-dropdown filter-dropdown--right" id="filter-right-placement">
-                    <button class="filter-button" type="button">
-                        <span class="filter-button__icon">
-                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
-                            </svg>
-                        </span>
-                        <span>Right</span>
-                        <span class="filter-button__arrow">
-                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M6 9l6 6 6-6"/>
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="filter-dropdown__content">
-                        <div class="filter-section">
-                            <div class="filter-section__header">
-                                <span class="filter-section__title">Options</span>
-                            </div>
-                            <div class="filter-options">
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="a">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">Option A</span>
-                                </label>
-                                <label class="filter-option" tabindex="0">
-                                    <span class="filter-option__checkbox">
-                                        <input type="checkbox" value="b">
-                                        <span class="filter-option__checkbox-visual">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M20 6L9 17l-5-5"/>
-                                            </svg>
-                                        </span>
-                                    </span>
-                                    <span class="filter-option__label">Option B</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

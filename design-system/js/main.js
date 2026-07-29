@@ -59,6 +59,9 @@ class DGADesignSystem {
 
         // Initialize demo interactions for the shell (main app header)
         this.initNavigationHeaderDemo();
+        this.initLanguageToggle();
+        this.initThemeToggle();
+        this.initMobileMenu();
 
         this.initialized = true;
         console.log('DGA Design System initialized');
@@ -111,6 +114,20 @@ class DGADesignSystem {
         // Icons Showcase
         if (componentId === 'icons' && typeof IconsShowcase !== 'undefined') {
             this.register('icons', new IconsShowcase());
+        }
+        if (componentId === 'icons' && typeof LibraryIconsShowcase !== 'undefined') {
+            this.register('libraryIcons', new LibraryIconsShowcase());
+        }
+        if (componentId === 'service-page' && typeof ServicePageManager !== 'undefined') {
+            this.register('servicePage', new ServicePageManager());
+        }
+
+        // Token docs — Classes (utility classes) + Styles (CSS variables)
+        if (componentId === 'classes' && typeof TokenClassesPage !== 'undefined') {
+            this.register('classesPage', new TokenClassesPage());
+        }
+        if (componentId === 'styles' && typeof TokenStylesPage !== 'undefined') {
+            this.register('stylesPage', new TokenStylesPage());
         }
 
         // Digital Stamp (uses its own init function for static showcase
@@ -259,6 +276,41 @@ class DGADesignSystem {
             this.register('notificationToast', new NotificationToastDemoManager());
         }
 
+        // Inline Alert
+        if (componentId === 'inline-alert' && typeof InlineAlertDemoManager !== 'undefined') {
+            this.register('inlineAlert', new InlineAlertDemoManager());
+        }
+
+        // Avatar
+        if (componentId === 'avatar' && typeof AvatarDemoManager !== 'undefined') {
+            this.register('avatar', new AvatarDemoManager());
+        }
+
+        // Progress Bar (linear + circular)
+        if (componentId === 'progress-bar' && typeof ProgressBarDemoManager !== 'undefined') {
+            this.register('progressBar', new ProgressBarDemoManager());
+        }
+
+        // Accordion
+        if (componentId === 'accordion' && typeof AccordionManager !== 'undefined') {
+            this.register('accordion', new AccordionManager());
+        }
+
+        // Dropdown
+        if (componentId === 'dropdown' && typeof DropdownManager !== 'undefined') {
+            this.register('dropdown', new DropdownManager());
+        }
+
+        // Search Box
+        if (componentId === 'search-box' && typeof SearchBoxManager !== 'undefined') {
+            this.register('searchBox', new SearchBoxManager());
+        }
+
+        // Rating
+        if (componentId === 'rating' && typeof RatingManager !== 'undefined') {
+            this.register('rating', new RatingManager());
+        }
+
         // Second Nav Header
         if (componentId === 'second-nav-header' && typeof SecondNavHeaderDemoManager !== 'undefined') {
             this.register('secondNavHeader', new SecondNavHeaderDemoManager());
@@ -339,10 +391,14 @@ class DGADesignSystem {
         const content = document.getElementById('component-content');
         if (!toc || !content) return;
 
-        // Cleanup previous observer
+        // Cleanup previous observer / scroll spy
         if (this._tocObserver) {
             this._tocObserver.disconnect();
             this._tocObserver = null;
+        }
+        if (this._tocSpy) {
+            window.removeEventListener('scroll', this._tocSpy);
+            this._tocSpy = null;
         }
 
         // Collect sections: live-demo headings and showcase-section headings
@@ -397,7 +453,9 @@ class DGADesignSystem {
             });
         });
 
-        // Scroll spy with IntersectionObserver
+        // Scroll spy: the active section is the last one whose top has
+        // crossed a line just below the header (robust for short sections
+        // and the page bottom, unlike per-section intersection callbacks).
         const tocLinks = toc.querySelectorAll('.content-toc__item');
 
         const setActive = (id) => {
@@ -406,19 +464,166 @@ class DGADesignSystem {
             });
         };
 
-        this._tocObserver = new IntersectionObserver((entries) => {
-            for (const entry of entries) {
-                if (entry.isIntersecting) {
-                    setActive(entry.target.id);
+        let ticking = false;
+        this._tocSpy = () => {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(() => {
+                ticking = false;
+                const els = sections.map(s => document.getElementById(s.id)).filter(Boolean);
+                if (!els.length) return;
+                const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+                let current = els[0];
+                if (atBottom) {
+                    current = els[els.length - 1];
+                } else {
+                    for (const el of els) {
+                        if (el.getBoundingClientRect().top <= 140) current = el;
+                    }
                 }
+                setActive(current.id);
+            });
+        };
+        window.addEventListener('scroll', this._tocSpy, { passive: true });
+        this._tocSpy();
+    }
+
+    /**
+     * Global language / direction toggle (the عربي button in the header).
+     * Switches the whole app between English (LTR) and Arabic (RTL),
+     * translates the platform navigation labels, and remembers the choice.
+     */
+    initLanguageToggle() {
+        const toggle = document.querySelector('.layout > .navigation-header .lang-toggle');
+        if (!toggle) return;
+        const label = toggle.querySelector('span');
+
+        const dict = {
+            en: {
+                logo: 'Platform Logo', home: 'Home', styles: 'Styles', classes: 'Classes',
+                components: 'Components', screens: 'Screen Templates', icons: 'Icons',
+                aboutTeam: 'About Team', search: 'Search', themeToggle: 'Toggle dark mode',
+            },
+            ar: {
+                logo: 'شعار المنصة', home: 'الرئيسية', styles: 'الأنماط', classes: 'الفئات',
+                components: 'المكونات', screens: 'قوالب الشاشات', icons: 'الأيقونات',
+                aboutTeam: 'عن الفريق', search: 'بحث', themeToggle: 'تبديل الوضع الداكن',
+            },
+        };
+
+        const apply = (isArabic) => {
+            document.documentElement.setAttribute('dir', isArabic ? 'rtl' : 'ltr');
+            document.documentElement.setAttribute('lang', isArabic ? 'ar' : 'en');
+            if (label) label.textContent = isArabic ? 'English' : 'عربي';
+            const t = dict[isArabic ? 'ar' : 'en'];
+            document.querySelectorAll('.layout > .navigation-header [data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (t[key]) el.textContent = t[key];
+            });
+            document.querySelectorAll('.layout > .navigation-header [data-i18n-aria]').forEach(el => {
+                const key = el.dataset.i18nAria;
+                if (t[key]) el.setAttribute('aria-label', t[key]);
+            });
+        };
+
+        this._isArabic = false;
+        try { this._isArabic = localStorage.getItem('dga-lang') === 'ar'; } catch (_) { /* private mode */ }
+        apply(this._isArabic);
+
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            this._isArabic = !this._isArabic;
+            apply(this._isArabic);
+            try { localStorage.setItem('dga-lang', this._isArabic ? 'ar' : 'en'); } catch (_) { /* private mode */ }
+        });
+    }
+    /**
+     * Light / dark theme toggle. The saved choice is applied by an inline
+     * head script before styles load; this wires the header button and
+     * exposes toggleTheme() for the mobile panel's cloned action.
+     */
+    initThemeToggle() {
+        const btn = document.querySelector('.layout > .navigation-header .theme-toggle');
+
+        this.toggleTheme = () => {
+            const dark = document.documentElement.getAttribute('data-theme') !== 'dark';
+            if (dark) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
             }
-        }, {
-            rootMargin: '-96px 0px -60% 0px'
+            try { localStorage.setItem('dga-theme', dark ? 'dark' : 'light'); } catch (_) { /* private mode */ }
+        };
+
+        btn?.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.toggleTheme();
+        });
+    }
+
+
+    /**
+     * Hamburger for the platform header (NDS dga-header responsive
+     * behavior): below 900px the desktop menu hides and this button opens
+     * a full-width panel mirroring the menu plus the outline actions.
+     */
+    initMobileMenu() {
+        const btn = document.getElementById('header-menu-btn');
+        const panel = document.getElementById('header-mobile-menu');
+        const header = document.querySelector('.layout > .navigation-header');
+        if (!btn || !panel || !header) return;
+
+        const rebuild = () => {
+            const menu = header.querySelector('.navigation-menu');
+            // scope to the desktop actions area — the panel's own clones also
+            // live inside the header and must not be re-cloned
+            const actions = [...header.querySelectorAll('.navigation-header__right .header-action--outline')];
+            panel.innerHTML = menu ? menu.innerHTML : '';
+            if (actions.length) {
+                const row = document.createElement('div');
+                row.className = 'header-mobile-menu__actions';
+                actions.forEach(a => row.appendChild(a.cloneNode(true)));
+                panel.appendChild(row);
+            }
+        };
+
+        const close = () => {
+            panel.classList.remove('is-open');
+            btn.setAttribute('aria-expanded', 'false');
+        };
+
+        btn.addEventListener('click', () => {
+            const open = !panel.classList.contains('is-open');
+            if (open) rebuild();
+            panel.classList.toggle('is-open', open);
+            btn.setAttribute('aria-expanded', String(open));
         });
 
-        sections.forEach(s => {
-            const el = document.getElementById(s.id);
-            if (el) this._tocObserver.observe(el);
+        // navigating from the panel closes it (the cloned items keep their
+        // hash hrefs, so the router picks the navigation up as usual) and
+        // moves the selected state on the desktop menu to match
+        panel.addEventListener('click', (e) => {
+            const themeBtn = e.target.closest('.theme-toggle');
+            if (themeBtn) {
+                e.preventDefault();
+                this.toggleTheme();
+                return;
+            }
+            const item = e.target.closest('.header-menu-item');
+            if (!item) return;
+            const href = item.getAttribute('href');
+            header.querySelectorAll('.navigation-menu .header-menu-item').forEach(d => {
+                d.classList.toggle('header-menu-item--selected', d.getAttribute('href') === href);
+            });
+            close();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!header.contains(e.target)) close();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') close();
         });
     }
 

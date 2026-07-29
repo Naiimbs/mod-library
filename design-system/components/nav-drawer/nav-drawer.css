@@ -10,48 +10,50 @@
    ============================================ */
 
 .nav-drawer {
-    --nd-text-color: #161616;
-    --nd-text-color-secondary: #6C737F;
-    --nd-bg: #FFFFFF;
-    --nd-hover-bg: #F3F4F6;
-    --nd-pressed-bg: #E5E7EB;
-    --nd-selected-bg: #E5E7EB;
-    --nd-selected-text: #1B8354;
-    --nd-selected-indicator: #1B8354;
-    --nd-border-color: #D2D6DB;
-    --nd-divider-color: #D2D6DB;
-    --nd-header-bg: #F9FAFB;
-    --nd-header-divider: #D2D6DB;
+    --nd-text-color: var(--text-default);
+    --nd-text-color-secondary: var(--gray-500);
+    --nd-bg: var(--alpha-white);
+    --nd-hover-bg: var(--gray-100);
+    --nd-pressed-bg: var(--gray-200);
+    --nd-selected-bg: var(--gray-200);
+    --nd-selected-text: var(--sa-600);
+    --nd-selected-indicator: var(--sa-600);
+    --nd-border-color: var(--gray-300);
+    --nd-divider-color: var(--gray-300);
+    --nd-header-bg: var(--gray-50);
+    --nd-header-divider: var(--gray-300);
     --nd-icon-color: inherit;
-    --nd-badge-bg: #F9FAFB;
-    --nd-badge-text: #1F2A37;
-    --nd-badge-border: #E5E7EB;
+    --nd-badge-bg: var(--gray-50);
+    --nd-badge-text: var(--gray-800);
+    --nd-badge-border: var(--gray-200);
     --nd-disabled-opacity: 0.4;
-    --nd-focus-ring-color: #1B8354;
+    --nd-focus-ring-color: var(--sa-600);
 }
 
 .nav-drawer--bg-gray {
-    --nd-bg: #F9FAFB;
+    --nd-bg: var(--gray-50);
 }
 
+/* On-color variant: whites sit on the static sa-800 green and stay white in
+   both themes; translucent whites have no exact alpha-white token (kept). */
 .nav-drawer--bg-green {
-    --nd-text-color: #FFFFFF;
-    --nd-text-color-secondary: rgba(255, 255, 255, 0.7);
-    --nd-bg: #14573A;
+    --nd-text-color: var(--text-oncolor-primary, #FFFFFF);
+    --nd-text-color-secondary: var(--alpha-white-70);
+    --nd-bg: var(--sa-800);
     --nd-hover-bg: rgba(255, 255, 255, 0.1);
     --nd-pressed-bg: rgba(255, 255, 255, 0.15);
     --nd-selected-bg: rgba(255, 255, 255, 0.15);
-    --nd-selected-text: #FFFFFF;
-    --nd-selected-indicator: #FFFFFF;
+    --nd-selected-text: var(--text-oncolor-primary, #FFFFFF);
+    --nd-selected-indicator: var(--icon-oncolor, #FFFFFF);
     --nd-border-color: rgba(255, 255, 255, 0.1);
     --nd-divider-color: rgba(255, 255, 255, 0.3);
-    --nd-header-bg: #14573A;
+    --nd-header-bg: var(--sa-800);
     --nd-header-divider: rgba(255, 255, 255, 0.3);
-    --nd-icon-color: #FFFFFF;
+    --nd-icon-color: var(--icon-oncolor, #FFFFFF);
     --nd-badge-bg: rgba(255, 255, 255, 0.2);
-    --nd-badge-text: #FFFFFF;
+    --nd-badge-text: var(--text-oncolor-primary, #FFFFFF);
     --nd-badge-border: rgba(255, 255, 255, 0.3);
-    --nd-focus-ring-color: rgba(255, 255, 255, 0.6);
+    --nd-focus-ring-color: var(--alpha-white-60);
 }
 
 /* ============================================
@@ -87,7 +89,7 @@
     align-items: center;
     height: 72px;
     min-height: 72px;
-    padding: 0 var(--spacing-4xl, 32px);
+    padding: 0 var(--spacing-4xl);
     background-color: var(--nd-header-bg);
     position: sticky;
     top: 0;
@@ -95,11 +97,11 @@
 }
 
 .nav-drawer__header--bg-gray {
-    background-color: #F9FAFB;
+    background-color: var(--gray-50);
 }
 
 .nav-drawer__header--bg-green {
-    background-color: #14573A;
+    background-color: var(--sa-800);
 }
 
 .nav-drawer__header--divider {
@@ -119,10 +121,10 @@
 .nav-drawer__header-logo-wrapper {
     display: flex;
     align-items: center;
-    gap: var(--spacing-md, 8px);
-    padding: 5px var(--spacing-xs, 4px);
-    background-color: #FFFFFF;
-    border-radius: var(--radius-sm, 4px);
+    gap: var(--spacing-md);
+    padding: 5px var(--spacing-xs);
+    background-color: var(--alpha-white);
+    border-radius: var(--radius-sm);
 }
 
 .nav-drawer__header-logo {
@@ -140,7 +142,7 @@
 }
 
 .nav-drawer__header--bg-green .nav-drawer__header-text {
-    color: #6C737F;
+    color: var(--gray-500);
 }
 
 /* ============================================
@@ -165,7 +167,7 @@
 
 .nav-drawer__body::-webkit-scrollbar-thumb {
     background-color: var(--nd-divider-color);
-    border-radius: var(--radius-full, 9999px);
+    border-radius: var(--radius-full);
 }
 
 /* Custom scrollbar - Firefox */
@@ -175,7 +177,7 @@
 }
 
 .nav-drawer__body-inner {
-    padding: var(--spacing-xl, 16px) var(--spacing-xl, 16px) var(--spacing-8xl, 80px);
+    padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-8xl, 80px);
     display: flex;
     flex-direction: column;
 }
@@ -187,11 +189,11 @@
 .nav-drawer-item {
     display: flex;
     align-items: center;
-    gap: var(--spacing-md, 8px);
+    gap: var(--spacing-md);
     width: 100%;
     height: 36px;
-    padding: 0 var(--spacing-xl, 16px);
-    border-radius: var(--radius-sm, 4px);
+    padding: 0 var(--spacing-xl);
+    border-radius: var(--radius-sm);
     font-size: var(--font-size-sm, 14px);
     font-weight: var(--font-weight-semibold, 600);
     line-height: var(--line-height-sm, 20px);
@@ -250,7 +252,7 @@
     bottom: var(--spacing-sm, 6px);
     width: 6px;
     background-color: var(--nd-selected-indicator);
-    border-radius: var(--radius-full, 9999px);
+    border-radius: var(--radius-full);
 }
 
 [dir="rtl"] .nav-drawer-item--selected::before {
@@ -270,12 +272,12 @@
    ============================================ */
 
 .nav-drawer-item--level-2 {
-    padding: 0 var(--spacing-xl, 16px) 0 var(--spacing-5xl, 40px);
+    padding: 0 var(--spacing-xl) 0 var(--spacing-5xl);
     font-weight: var(--font-weight-regular, 400);
 }
 
 [dir="rtl"] .nav-drawer-item--level-2 {
-    padding: 0 var(--spacing-5xl, 40px) 0 var(--spacing-xl, 16px);
+    padding: 0 var(--spacing-5xl) 0 var(--spacing-xl);
 }
 
 /* Level 2 selected becomes semibold */
@@ -289,7 +291,7 @@
 
 /* Leading icon (16px) */
 .nav-drawer-item__icon {
-    font-size: 16px;
+    font-size: var(--font-size-md);
     width: 16px;
     height: 16px;
     display: inline-flex;
@@ -314,13 +316,13 @@
     align-items: center;
     justify-content: center;
     height: 20px;
-    padding: 0 var(--spacing-md, 8px);
+    padding: 0 var(--spacing-md);
     background-color: var(--nd-badge-bg);
     color: var(--nd-badge-text);
     font-size: 10px;
     font-weight: var(--font-weight-semibold, 600);
     line-height: 14px;
-    border-radius: var(--radius-full, 9999px);
+    border-radius: var(--radius-full);
     border: 1px solid var(--nd-badge-border);
     flex-shrink: 0;
     text-align: center;
@@ -344,7 +346,7 @@
 
 /* Chevron (expand/collapse arrow) */
 .nav-drawer-item__chevron {
-    font-size: 24px;
+    font-size: var(--font-size-2xl);
     width: 24px;
     height: 24px;
     display: inline-flex;
@@ -391,7 +393,7 @@
     display: flex;
     align-items: center;
     height: auto;
-    padding: var(--spacing-md, 8px) var(--spacing-xl, 16px);
+    padding: var(--spacing-md) var(--spacing-xl);
     cursor: default;
     pointer-events: none;
     background: none;
@@ -430,10 +432,10 @@
 
 .nav-drawer-states-row {
     display: flex;
-    gap: var(--spacing-xl, 16px);
+    gap: var(--spacing-xl);
     align-items: flex-start;
     flex-wrap: wrap;
-    margin-bottom: var(--spacing-xl, 16px);
+    margin-bottom: var(--spacing-xl);
 }
 
 .nav-drawer-states-row .nav-drawer-item {
@@ -444,14 +446,14 @@
 .nav-drawer-states-label {
     font-size: var(--font-size-xs, 12px);
     font-weight: var(--font-weight-medium, 500);
-    color: var(--color-text-secondary, #6C737F);
-    margin-bottom: var(--spacing-md, 8px);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
 .nav-drawer-oncolor-bg {
-    background-color: #14573A;
-    padding: var(--spacing-xl, 16px);
-    border-radius: var(--radius-md, 8px);
+    background-color: var(--sa-800);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-md);
 }

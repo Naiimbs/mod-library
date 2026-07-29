@@ -1,0 +1,327 @@
+<div class="content-header">
+    <h1 class="content-title">Progress Bar</h1>
+    <p class="content-description">Progress bars communicate how much of a process has completed. The linear bar
+        comes in three heights and four styles with an optional label and helper note; the circular bar comes in five
+        diameters with a percentage or state icon at its center. Ported from the DGA library's
+        <code>dga-linear-progress-bar</code> and <code>dga-circular-progress-bar</code> components.</p>
+</div>
+
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <!-- Left: Preview canvas -->
+        <div class="live-demo__canvas" id="progress-bar-demo-preview">
+            <!-- Rendered dynamically by JS -->
+        </div>
+
+        <!-- Right: Controls sidebar -->
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Progress Bar</h3>
+                <p class="live-demo__sidebar-desc">Use the linear bar inside forms and cards, and the circular bar
+                    for dashboards and confirmations.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="progress-bar-demo-kind">Kind</label>
+                <select class="live-demo__sidebar-select" id="progress-bar-demo-kind">
+                    <option value="linear" selected>Linear</option>
+                    <option value="circular">Circular</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="progress-bar-demo-style">Style</label>
+                <select class="live-demo__sidebar-select" id="progress-bar-demo-style">
+                    <option value="primary" selected>Primary</option>
+                    <option value="neutral">Neutral</option>
+                    <option value="error">Error</option>
+                    <option value="success">Success</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="progress-bar-demo-pct">Percentage</label>
+                <select class="live-demo__sidebar-select" id="progress-bar-demo-pct">
+                    <option value="0">0%</option>
+                    <option value="25">25%</option>
+                    <option value="50">50%</option>
+                    <option value="65" selected>65%</option>
+                    <option value="80">80%</option>
+                    <option value="100">100%</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row" id="progress-bar-demo-lin-size-row">
+                <label class="live-demo__sidebar-label" for="progress-bar-demo-lin-size">Size</label>
+                <select class="live-demo__sidebar-select" id="progress-bar-demo-lin-size">
+                    <option value="sm">Small (4px)</option>
+                    <option value="md" selected>Medium (8px)</option>
+                    <option value="lg">Large (16px)</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row" id="progress-bar-demo-circ-size-row" style="display:none;">
+                <label class="live-demo__sidebar-label" for="progress-bar-demo-circ-size">Diameter</label>
+                <select class="live-demo__sidebar-select" id="progress-bar-demo-circ-size">
+                    <option value="200">200px</option>
+                    <option value="160">160px</option>
+                    <option value="120" selected>120px</option>
+                    <option value="80">80px</option>
+                    <option value="64">64px</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row" id="progress-bar-demo-label-row">
+                <label class="live-demo__sidebar-label">Label</label>
+                <button class="live-demo__switch active" data-toggle="label" type="button" role="switch"
+                    aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row" id="progress-bar-demo-helper-row">
+                <label class="live-demo__sidebar-label">Helper text</label>
+                <button class="live-demo__switch active" data-toggle="helper" type="button" role="switch"
+                    aria-checked="true">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row" id="progress-bar-demo-text-row" style="display:none;">
+                <label class="live-demo__sidebar-label">Center text</label>
+                <button class="live-demo__switch" data-toggle="text" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="live-demo__footer">
+        This live demo contains only a preview of functionality and styles available for this component. The large
+        linear bar shows its percentage inside the fill once it passes 8%.
+    </div>
+</div>
+
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">All available CSS classes and data attributes, mapped from the library's
+            <code>dga-linear-progress-bar</code> and <code>dga-circular-progress-bar</code> APIs.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class / Attribute</th>
+                    <th>Type</th>
+                    <th>Library prop</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.progress-wrapper</code></td>
+                    <td>Base (linear)</td>
+                    <td>—</td>
+                    <td>Column layout holding the label, the track, and the helper note.</td>
+                </tr>
+                <tr>
+                    <td><code>.progress-bar-container.sm|.md|.lg</code></td>
+                    <td>Modifier</td>
+                    <td><code>size</code></td>
+                    <td>Track heights 4 / 8 / 16px. The large size rounds to 8px radius and can show the value inside
+                        the fill.</td>
+                </tr>
+                <tr>
+                    <td><code>.progress-bar.primary|.neutral|.error|.success</code></td>
+                    <td>Modifier</td>
+                    <td><code>progress-style</code>, <code>error</code>, <code>success</code></td>
+                    <td>Fill color. Width is set inline as a percentage; it animates over 0.5s.</td>
+                </tr>
+                <tr>
+                    <td><code>.progress-bar__label</code> / <code>.progress-bar__note</code></td>
+                    <td>Element</td>
+                    <td><code>label</code>, <code>helper-text</code></td>
+                    <td>Optional label above and icon + note below. The note tone follows error/success.</td>
+                </tr>
+                <tr>
+                    <td><code>.circular-progress-bar</code></td>
+                    <td>Base (circular)</td>
+                    <td>—</td>
+                    <td>Declarative: set <code>data-size</code>, <code>data-percentage</code>,
+                        <code>data-variant</code>, <code>data-text</code> and the page script renders the SVG ring
+                        (stroke = diameter / 10).</td>
+                </tr>
+                <tr>
+                    <td><code>data-size="200|160|120|80|64"</code></td>
+                    <td>Attribute</td>
+                    <td><code>size</code></td>
+                    <td>Ring diameter. Center typography and icon scale per size; the text label hides at 80 and 64.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>data-variant="primary|neutral|error|success"</code></td>
+                    <td>Attribute</td>
+                    <td><code>variant</code></td>
+                    <td>Ring color. Success and error swap the center percentage for a state icon.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ============================================
+     LINEAR SIZES
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Linear Sizes</h2>
+        <p class="showcase-description">Three track heights. The large bar carries its percentage inside the fill
+            once it passes 8%.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch; gap: var(--spacing-3xl);">
+        <div class="progress-wrapper">
+            <h3 class="progress-bar__label">Small (4px)</h3>
+            <div class="progress-bar-container sm"><div class="progress-bar primary" style="width:65%;"></div></div>
+        </div>
+        <div class="progress-wrapper">
+            <h3 class="progress-bar__label">Medium (8px)</h3>
+            <div class="progress-bar-container md"><div class="progress-bar primary" style="width:65%;"></div></div>
+        </div>
+        <div class="progress-wrapper">
+            <h3 class="progress-bar__label">Large (16px)</h3>
+            <div class="progress-bar-container lg">
+                <div class="progress-bar primary" style="width:65%;"><span class="progress-bar-text">65%</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     LINEAR STYLES & STATES
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Linear Styles &amp; States</h2>
+        <p class="showcase-description">Primary and neutral fills for running processes; error and success recolor
+            the fill and the helper note together.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch; gap: var(--spacing-3xl);">
+        <div class="progress-wrapper">
+            <h3 class="progress-bar__label">Uploading file</h3>
+            <div class="progress-bar-container md"><div class="progress-bar primary" style="width:65%;"></div></div>
+            <div class="progress-bar__note">
+                <span class="progress-bar__note-icon icon dga-icon-help-circle" aria-hidden="true"></span>
+                <p>Your file is being uploaded</p>
+            </div>
+        </div>
+        <div class="progress-wrapper">
+            <h3 class="progress-bar__label">Processing</h3>
+            <div class="progress-bar-container md"><div class="progress-bar neutral" style="width:40%;"></div></div>
+        </div>
+        <div class="progress-wrapper">
+            <h3 class="progress-bar__label">Uploading file</h3>
+            <div class="progress-bar-container md"><div class="progress-bar error" style="width:35%;"></div></div>
+            <div class="progress-bar__note">
+                <span class="progress-bar__note-icon error icon dga-icon-cancel-circle" aria-hidden="true"></span>
+                <p class="error">Upload failed. Try again.</p>
+            </div>
+        </div>
+        <div class="progress-wrapper">
+            <h3 class="progress-bar__label">Uploading file</h3>
+            <div class="progress-bar-container md"><div class="progress-bar success" style="width:100%;"></div></div>
+            <div class="progress-bar__note">
+                <span class="progress-bar__note-icon success icon dga-icon-checkmark-circle-02"
+                    aria-hidden="true"></span>
+                <p class="success">Upload complete</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     CIRCULAR SIZES
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Circular Sizes</h2>
+        <p class="showcase-description">Five diameters with a stroke of one tenth of the size. The center percentage
+            scales with the ring; the optional text label hides at 80px and below.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row" style="align-items: flex-end;">
+            <div class="circular-progress-bar" data-size="200" data-percentage="65" data-variant="primary"
+                data-text="Completed"></div>
+            <div class="circular-progress-bar" data-size="160" data-percentage="65" data-variant="primary"
+                data-text="Completed"></div>
+            <div class="circular-progress-bar" data-size="120" data-percentage="65" data-variant="primary"
+                data-text="Completed"></div>
+            <div class="circular-progress-bar" data-size="80" data-percentage="65" data-variant="primary"></div>
+            <div class="circular-progress-bar" data-size="64" data-percentage="65" data-variant="primary"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     CIRCULAR VARIANTS
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Circular Variants</h2>
+        <p class="showcase-description">Primary and neutral rings show the running percentage; success and error
+            complete the ring and swap the center for a state icon.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row" style="align-items: flex-end;">
+            <div class="circular-progress-bar" data-size="120" data-percentage="65" data-variant="primary"></div>
+            <div class="circular-progress-bar" data-size="120" data-percentage="65" data-variant="neutral"></div>
+            <div class="circular-progress-bar" data-size="120" data-percentage="100" data-variant="success"
+                data-text="Done"></div>
+            <div class="circular-progress-bar" data-size="120" data-percentage="100" data-variant="error"
+                data-text="Failed"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     RTL LAYOUT
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Layout</h2>
+        <p class="showcase-description">In right-to-left layouts the linear fill anchors to the right edge and the
+            note mirrors.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;" dir="rtl">
+        <div class="progress-wrapper">
+            <h3 class="progress-bar__label">جاري رفع الملف</h3>
+            <div class="progress-bar-container md"><div class="progress-bar primary" style="width:65%;"></div></div>
+            <div class="progress-bar__note">
+                <span class="progress-bar__note-icon icon dga-icon-help-circle" aria-hidden="true"></span>
+                <p>يتم رفع الملف الآن</p>
+            </div>
+        </div>
+    </div>
+</div>

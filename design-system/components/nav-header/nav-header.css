@@ -18,10 +18,10 @@
 .nav-header-preview {
     position: relative;
     width: 100%;
-    border: 1px solid var(--color-border-secondary, #e5e7eb);
-    border-radius: var(--radius-lg, 16px);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
     overflow: visible;
-    background: #ffffff;
+    background: var(--alpha-white);
 }
 
 /* A menu item that owns a sub-menu becomes the positioning anchor. */
@@ -32,20 +32,17 @@
 /* ============================================
    Menu item — disabled state (Figma 30150:148312)
    ============================================ */
-.header-menu-item--disabled,
-.header-menu-item[aria-disabled="true"] {
-    opacity: 0.4;
-    pointer-events: none;
-    cursor: not-allowed;
-}
+/* Disabled uses Figma tokens (gray-400 text, no pill) — see navigation.css */
 
 /* ============================================
    Header Action — icon-only + disabled (Figma 30150:148445)
    ============================================ */
+/* Figma 30150:148445 Icon only=True: a 72x72 square (full header height) */
 .header-action--icon-only {
-    padding: 0;
-    width: 40px;
-    height: 40px;
+    width: 72px;
+    min-width: 72px;
+    height: 72px;
+    padding: var(--spacing-md);
     justify-content: center;
 }
 
@@ -53,12 +50,7 @@
     display: none;
 }
 
-.header-action--disabled,
-.header-action[aria-disabled="true"] {
-    opacity: 0.4;
-    pointer-events: none;
-    cursor: not-allowed;
-}
+
 
 /* ============================================
    Header Sub-menu (dropdown panel)  Figma 30150:148877
@@ -69,14 +61,14 @@
     position: absolute;
     top: calc(100% - 8px);
     inset-inline-start: 0;
-    z-index: var(--z-dropdown, 600);
+    z-index: var(--z-dropdown);
     display: none;
     min-width: 280px;
     padding: var(--spacing-xl);
     gap: var(--spacing-4xl);
-    background-color: #ffffff;             /* background-menu */
-    border: 1px solid var(--color-border-secondary, #e5e7eb);
-    border-radius: var(--radius-md, 8px);
+    background-color: var(--alpha-white);             /* background-menu */
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
     box-shadow: 0 12px 24px -6px rgba(16, 24, 40, 0.12), 0 4px 8px -4px rgba(16, 24, 40, 0.08);
     box-sizing: border-box;
 }
@@ -93,25 +85,36 @@
 
 /* Brand-background variant (green panel, white text) */
 .header-sub-menu--brand {
-    background-color: var(--color-primary, #1b8354);
-    border-color: var(--color-primary, #1b8354);
+    /* NDS .header__sub-menu--bg-brand */
+    background-color: var(--background-sa-flag, #074C30);
+    border-color: var(--background-sa-flag, #074C30);
 }
 
 .header-sub-menu--brand .header-sub-menu-group__label,
 .header-sub-menu--brand .header-sub-menu-item__label {
-    color: #ffffff;
+    color: var(--text-oncolor-primary, #FFFFFF);
 }
 
 .header-sub-menu--brand .header-sub-menu-item__helper {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-oncolor-primary, #FFFFFF);
 }
 
 .header-sub-menu--brand .header-sub-menu-item:hover {
-    background-color: rgba(255, 255, 255, 0.12);
+    /* NDS on-color: --button-background-transparent-hovered */
+    background-color: var(--alpha-white-20, #FFFFFF33);
+}
+
+.header-sub-menu--brand .header-sub-menu-item:active {
+    background-color: var(--alpha-white-40, #FFFFFF66);
+}
+
+.header-sub-menu--brand .header-sub-menu-item__icon--bg {
+    color: var(--icon-oncolor, #FFFFFF);
+    background-color: var(--alpha-white-10, #FFFFFF1A);
 }
 
 .header-sub-menu--brand .header-sub-menu-item__icon {
-    color: #ffffff;
+    color: var(--icon-oncolor, #FFFFFF);
 }
 
 /* Column / group inside the panel */
@@ -123,15 +126,14 @@
 }
 
 .header-sub-menu-group__label {
+    /* Figma 30150:148877: Text lg/Bold, text-primary */
     font-family: var(--font-family-primary);
-    font-size: 12px;
-    line-height: 18px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--color-text-secondary, #6c737f);
-    padding: 0 var(--spacing-md);
-    margin: 0 0 var(--spacing-xs);
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 700;
+    color: var(--sa-600);
+    padding: 0 var(--spacing-xl);
+    margin: 0 0 12px;
 }
 
 /* ============================================
@@ -140,18 +142,42 @@
    ============================================ */
 
 .header-sub-menu-item {
+    /* NDS .sub-menu__link */
     display: flex;
     align-items: flex-start;
-    gap: var(--spacing-md);
-    padding: var(--spacing-md);
-    border-radius: var(--radius-sm, 4px);
+    /* Figma: icon aligns with the label line */
+    gap: var(--spacing-xl);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--radius-md);
+    min-width: 320px;
     text-decoration: none;
     cursor: pointer;
+    background-color: transparent;
     transition: background-color 0.15s ease;
 }
 
 .header-sub-menu-item:hover {
-    background-color: var(--color-gray-50, #f9fafb);
+    background-color: var(--gray-100);
+}
+
+.header-sub-menu-item:hover .header-sub-menu-item__label,
+.header-sub-menu-item:active .header-sub-menu-item__label,
+.header-sub-menu-item:focus-visible .header-sub-menu-item__label {
+    text-decoration: underline;
+}
+
+.header-sub-menu-item:focus-visible {
+    outline: 2px solid var(--border-black, #161616);
+    outline-offset: -2px;
+}
+
+.header-sub-menu--brand .header-sub-menu-item:focus-visible {
+    outline-color: var(--icon-oncolor, #FFFFFF);
+}
+
+.header-sub-menu-item:active {
+    background-color: var(--gray-200);
+    outline: none;
 }
 
 /* Item icon (Figma 30150:148742) — leading glyph */
@@ -163,7 +189,8 @@
     height: 20px;
     flex-shrink: 0;
     margin-top: 2px;
-    color: var(--color-primary, #1b8354);
+    color: var(--icon-default, #161616);
+    /* NDS: plain icons are default black */
     font-size: 20px;
     line-height: 1;
 }
@@ -171,6 +198,17 @@
 .header-sub-menu-item__icon svg {
     width: 20px;
     height: 20px;
+}
+
+/* NDS .sub-menu__link-icon--bg: tinted container (green on sa-50) */
+.header-sub-menu-item__icon--bg {
+    width: auto;
+    height: auto;
+    margin-top: 2px;
+    color: var(--sa-600);
+    background-color: var(--sa-50);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
 }
 
 .header-sub-menu-item__body {
@@ -181,18 +219,22 @@
 
 .header-sub-menu-item__label {
     font-family: var(--font-family-primary);
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 16px;
+    line-height: 24px;
+    /* Figma: Text md/Medium */
     font-weight: 500;
-    color: var(--color-text-primary, #161616);
+    color: var(--gray-800);
+    /* NDS .sub-menu__link-label: text-display */
 }
 
 .header-sub-menu-item__helper {
     font-family: var(--font-family-primary);
-    font-size: 12px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 20px;
+    /* Figma: Text sm/Regular */
     font-weight: 400;
-    color: var(--color-text-secondary, #6c737f);
+    color: var(--gray-700);
+    /* NDS .sub-menu__link-helper: text-primary-paragraph */
 }
 
 /* ============================================
@@ -207,18 +249,155 @@
     height: 40px;
     border: 0;
     background: transparent;
-    border-radius: var(--radius-sm, 4px);
-    color: #161616;
+    border-radius: var(--radius-sm);
+    color: var(--text-default);
     font-size: 22px;
     cursor: pointer;
 }
 
 .header-menu-toggle:hover {
-    background-color: var(--color-gray-100, #f3f4f6);
+    background-color: var(--gray-100);
 }
 
 /* RTL: dropdown anchors to the trailing edge naturally via
    inset-inline-start. Chevron rotation on open handled in JS/below. */
 .header-menu-item[aria-expanded="true"] .header-menu-item__arrow {
     transform: rotate(180deg);
+}
+
+/* ============================================
+   FORCED-MOBILE DEMO (nav-header page only)
+   Replays the NDS <=900px behavior inside a desktop-width showcase:
+   hamburger + centered branding + language action, with the mobile
+   panel rendered statically below.
+   ============================================ */
+.navigation-header--mobile-demo {
+    padding: 0 var(--spacing-xl);
+    position: relative;
+    max-width: 420px;
+    margin-inline: auto;
+}
+
+.navigation-header--mobile-demo .navigation-menu {
+    display: none;
+}
+
+.navigation-header--mobile-demo .navigation-header__left {
+    flex: 1;
+    justify-content: center;
+}
+
+.navigation-header--mobile-demo .header-menu-btn {
+    display: inline-flex;
+}
+
+.navigation-header--mobile-demo .navigation-header__right .header-action--outline {
+    display: none;
+}
+
+.navigation-header--mobile-demo + .header-mobile-menu {
+    display: flex;
+    position: static;
+    max-width: 420px;
+    margin-inline: auto;
+}
+
+/* ============================================
+   DEMO STATE CLASSES (live demo State controls)
+   Mirror the Figma states so the demo can pin them.
+   ============================================ */
+.header-menu-item.demo-hovered:not(.header-menu-item--selected) {
+    background: var(--button-background-neutral-hovered, #F3F4F6);
+}
+
+.header-menu-item.demo-hovered:not(.header-menu-item--selected)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    height: 6px;
+    border-radius: var(--radius-full);
+    background-color: var(--background-neutral-400, #9DA4AE);
+}
+
+.header-menu-item.demo-pressed:not(.header-menu-item--selected) {
+    background: var(--button-background-neutral-pressed, #E5E7EB);
+}
+
+.header-menu-item.demo-pressed:not(.header-menu-item--selected)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    height: 6px;
+    border-radius: var(--radius-full);
+    background-color: var(--gray-800);
+}
+
+.header-menu-item.demo-focused:not(.header-menu-item--selected) {
+    outline: 2px solid var(--border-black, #161616);
+    outline-offset: -2px;
+}
+
+.header-menu-item--selected.demo-hovered {
+    background: var(--button-background-primary-hovered, #166A45);
+}
+
+.header-menu-item--selected.demo-pressed {
+    background: var(--button-background-primary-pressed, #104631);
+}
+
+.header-menu-item--selected.demo-focused {
+    outline: 2px solid var(--border-white, #FFFFFF);
+    outline-offset: -3px;
+}
+
+.header-action.demo-hovered:not(.header-action--primary) {
+    background: var(--button-background-neutral-hovered, #F3F4F6);
+}
+
+.header-action.demo-hovered:not(.header-action--primary)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    height: 6px;
+    border-radius: var(--radius-full);
+    background-color: var(--background-neutral-400, #9DA4AE);
+}
+
+.header-action.demo-pressed:not(.header-action--primary) {
+    background: var(--button-background-neutral-pressed, #E5E7EB);
+}
+
+.header-action.demo-pressed:not(.header-action--primary)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    height: 6px;
+    border-radius: var(--radius-full);
+    background-color: var(--gray-800);
+}
+
+.header-action.demo-focused:not(.header-action--primary) {
+    outline: 2px solid var(--border-black, #161616);
+    outline-offset: -2px;
+}
+
+.header-action--primary.demo-hovered {
+    background: var(--button-background-primary-hovered, #166A45);
+}
+
+.header-action--primary.demo-pressed {
+    background: var(--button-background-primary-pressed, #104631);
+}
+
+.header-action--primary.demo-focused {
+    outline: 2px solid var(--border-white, #FFFFFF);
+    outline-offset: -3px;
 }

@@ -1,8 +1,9 @@
 /* ============================================
-   ICONS SHOWCASE MODULE (v3)
+   ICONS SHOWCASE MODULE (v4)
    DGA Design System - Icon Browser
-   Sidebar packs, grid view, detail modal
-   with style variants
+   Pack sidebar, smart multi-word search, chunked grid rendering
+   (infinite scroll), per-tile quick copy, detail modal with
+   style variants.
    ============================================ */
 
 const ICON_VARIANTS = [
@@ -14,6 +15,8 @@ const ICON_VARIANTS = [
     { label: 'Stroke Sharp', classes: 'stroke sharp' },
     { label: 'Solid Sharp', classes: 'solid sharp' }
 ];
+
+const ICONS_CHUNK_SIZE = 240;
 
 class IconsShowcase {
     constructor(config = {}) {
@@ -34,11 +37,19 @@ class IconsShowcase {
         this.activeIconPack = '';
         this.activeVariantIndex = 0;
 
-        // Build reverse lookup: iconClass -> category
+        /* chunked rendering state */
+        this._pending = [];
+        this._rendered = 0;
+        this._sentinelObserver = null;
+
+        // Build reverse lookup: iconClass -> category, plus a searchable
+        // name per icon ("dga-icon-arrow-left-01" -> "arrow left 01")
         this.iconToCategory = {};
+        this.searchName = {};
         this.registry.forEach(cat => {
             cat.icons.forEach(ic => {
                 this.iconToCategory[ic] = cat;
+                this.searchName[ic] = ic.replace('dga-icon-', '').replace(/[-_]+/g, ' ').toLowerCase();
             });
         });
 
@@ -80,6 +91,7 @@ class IconsShowcase {
 
     createPackItem(id, label, count, previewIconClass) {
         const btn = document.createElement('button');
+        btn.type = 'button';
         btn.className = 'icons-pack-item';
         btn.dataset.pack = id;
 
@@ -129,6 +141,7 @@ class IconsShowcase {
 
         ICON_VARIANTS.forEach((variant, i) => {
             const btn = document.createElement('button');
+            btn.type = 'button';
             btn.className = 'icons-type-filter-btn';
             if (i === this.currentVariantIndex) btn.classList.add('icons-type-filter-btn--active');
             btn.dataset.variantIndex = i;
@@ -144,63 +157,175 @@ class IconsShowcase {
     }
 
     /* ------------------------------------------
-       ICONS GRID
+       SEARCH MATCHING
+       Multi-word: every word of the query must appear in the icon's
+       normalized name ("arrow left" matches dga-icon-arrow-left-01).
+       ------------------------------------------ */
+    getQueryWords() {
+        return this.currentSearch.toLowerCase().replace(/[-_]+/g, ' ').split(/\s+/).filter(Boolean);
+    }
+
+    iconMatches(iconClass, words) {
+        if (!words.length) return true;
+        const name = this.searchName[iconClass] || iconClass;
+        return words.every(w => name.includes(w));
+    }
+
+    countMatchesAllPacks(words) {
+        let n = 0;
+        this.registry.forEach(cat => {
+            cat.icons.forEach(ic => { if (this.iconMatches(ic, words)) n++; });
+        });
+        return n;
+    }
+
+    /* ------------------------------------------
+       ICONS GRID — chunked rendering with infinite scroll
        ------------------------------------------ */
     renderIcons() {
         const container = document.getElementById(this.gridContainerId);
         if (!container) return;
         container.innerHTML = '';
+        if (this._sentinelObserver) {
+            this._sentinelObserver.disconnect();
+            this._sentinelObserver = null;
+        }
 
-        const searchTerm = this.currentSearch.toLowerCase().trim();
-        const fragment = document.createDocumentFragment();
-        let totalVisible = 0;
+        const words = this.getQueryWords();
 
+        // Flat render queue: group headers (when browsing all packs) + icons
+        this._pending = [];
         this.registry.forEach(cat => {
             if (this.currentPack !== 'all' && this.currentPack !== cat.id) return;
-
-            const matchingIcons = searchTerm
-                ? cat.icons.filter(ic => ic.toLowerCase().includes(searchTerm))
-                : cat.icons;
-
-            if (matchingIcons.length === 0) return;
-            totalVisible += matchingIcons.length;
-
-            const gridVariant = ICON_VARIANTS[this.currentVariantIndex] || ICON_VARIANTS[0];
-
-            matchingIcons.forEach(iconClass => {
-                const item = document.createElement('div');
-                item.className = 'icons-grid-item';
-                item.dataset.iconClass = iconClass;
-
-                const iconEl = document.createElement('span');
-                iconEl.className = 'icon ' + iconClass;
-                if (gridVariant.classes) {
-                    iconEl.className += ' ' + gridVariant.classes;
-                }
-                item.appendChild(iconEl);
-
-                const nameEl = document.createElement('span');
-                nameEl.className = 'icons-grid-item-name';
-                nameEl.textContent = this.formatIconName(iconClass);
-                item.appendChild(nameEl);
-
-                fragment.appendChild(item);
-            });
+            const matching = words.length ? cat.icons.filter(ic => this.iconMatches(ic, words)) : cat.icons;
+            if (!matching.length) return;
+            if (this.currentPack === 'all') {
+                this._pending.push({ header: this.formatPackLabel(cat.label), count: matching.length });
+            }
+            matching.forEach(ic => this._pending.push({ icon: ic }));
         });
+        this._rendered = 0;
 
+        const totalIcons = this._pending.filter(e => e.icon).length;
+        this.updateResultsBar(totalIcons, words);
+
+        if (totalIcons === 0) {
+            let html = '<div class="icons-no-results">' +
+                '<span class="icons-no-results-icon dga-icon-search-01" aria-hidden="true"></span>' +
+                '<p>No icons match "<strong>' + this.escapeHtml(this.currentSearch.trim()) + '</strong>"' +
+                (this.currentPack !== 'all' ? ' in this pack' : '') + '.</p>';
+            if (this.currentPack !== 'all') {
+                const allCount = this.countMatchesAllPacks(words);
+                if (allCount > 0) {
+                    html += '<button type="button" class="icons-no-results-all" id="icons-search-all-btn">' +
+                        'Search all packs (' + allCount + ' match' + (allCount === 1 ? '' : 'es') + ')</button>';
+                }
+            }
+            container.innerHTML = html + '</div>';
+            const allBtn = document.getElementById('icons-search-all-btn');
+            if (allBtn) allBtn.addEventListener('click', () => this.selectPack('all'));
+            return;
+        }
+
+        this.renderNextChunk(container);
+    }
+
+    renderNextChunk(container) {
+        const fragment = document.createDocumentFragment();
+        const gridVariant = ICON_VARIANTS[this.currentVariantIndex] || ICON_VARIANTS[0];
+        const end = Math.min(this._rendered + ICONS_CHUNK_SIZE, this._pending.length);
+
+        for (let i = this._rendered; i < end; i++) {
+            const entry = this._pending[i];
+            if (entry.header) {
+                const h = document.createElement('div');
+                h.className = 'icons-grid-group';
+                h.innerHTML = '<span class="icons-grid-group-name">' + this.escapeHtml(entry.header) + '</span>' +
+                    '<span class="icons-grid-group-count">' + entry.count + '</span>';
+                fragment.appendChild(h);
+            } else {
+                fragment.appendChild(this.createGridItem(entry.icon, gridVariant));
+            }
+        }
+        this._rendered = end;
+
+        // Remove old sentinel, append batch, re-arm sentinel if more remains
+        container.querySelector('.icons-grid-sentinel')?.remove();
         container.appendChild(fragment);
 
-        if (totalVisible === 0) {
-            container.innerHTML = '<div class="icons-no-results">' +
-                'No icons found matching "<strong>' + this.escapeHtml(searchTerm) + '</strong>"' +
-                '</div>';
+        if (this._rendered < this._pending.length) {
+            const sentinel = document.createElement('div');
+            sentinel.className = 'icons-grid-sentinel';
+            sentinel.setAttribute('aria-hidden', 'true');
+            container.appendChild(sentinel);
+            if (!this._sentinelObserver) {
+                this._sentinelObserver = new IntersectionObserver((entries) => {
+                    if (entries.some(e => e.isIntersecting)) this.renderNextChunk(container);
+                }, { rootMargin: '600px 0px' });
+            }
+            this._sentinelObserver.observe(sentinel);
         }
+    }
 
-        // Update search placeholder with count
-        const searchInput = document.getElementById(this.searchInputId);
-        if (searchInput && !searchTerm) {
-            searchInput.placeholder = 'Search ' + this.getTotalCount().toLocaleString() + ' icons...';
+    createGridItem(iconClass, gridVariant) {
+        const item = document.createElement('button');
+        item.type = 'button';
+        item.className = 'icons-grid-item';
+        item.dataset.iconClass = iconClass;
+        item.title = iconClass;
+
+        const iconEl = document.createElement('span');
+        iconEl.className = 'icon ' + iconClass + (gridVariant.classes ? ' ' + gridVariant.classes : '');
+        item.appendChild(iconEl);
+
+        const nameEl = document.createElement('span');
+        nameEl.className = 'icons-grid-item-name';
+        nameEl.textContent = this.formatIconName(iconClass);
+        item.appendChild(nameEl);
+
+        // Quick copy (class name) without opening the modal
+        const copyBtn = document.createElement('span');
+        copyBtn.className = 'icons-grid-item-copy';
+        copyBtn.setAttribute('role', 'button');
+        copyBtn.setAttribute('aria-label', 'Copy class name');
+        copyBtn.title = 'Copy class name';
+        copyBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+            'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+            '<rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>' +
+            '<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+        item.appendChild(copyBtn);
+
+        return item;
+    }
+
+    updateResultsBar(totalIcons, words) {
+        const bar = document.getElementById('icons-results-bar');
+        if (!bar) return;
+        const packLabel = this.currentPack === 'all'
+            ? 'all packs'
+            : this.formatPackLabel(this.registry.find(c => c.id === this.currentPack)?.label || this.currentPack);
+        let html = '<strong>' + totalIcons.toLocaleString() + '</strong> icon' + (totalIcons === 1 ? '' : 's') +
+            (words.length ? ' matching' : '') + ' in ' + this.escapeHtml(packLabel);
+
+        // Offer widening the search when a pack is selected
+        if (words.length && this.currentPack !== 'all') {
+            const allCount = this.countMatchesAllPacks(words);
+            if (allCount > totalIcons) {
+                html += ' &middot; <button type="button" class="icons-results-bar-all" id="icons-search-all-btn">' +
+                    allCount.toLocaleString() + ' in all packs</button>';
+            }
         }
+        bar.innerHTML = html;
+        const allBtn = document.getElementById('icons-search-all-btn');
+        if (allBtn) allBtn.addEventListener('click', () => this.selectPack('all'));
+    }
+
+    selectPack(packId) {
+        this.currentPack = packId;
+        const packsList = document.getElementById(this.packsListId);
+        packsList?.querySelectorAll('.icons-pack-item').forEach(i =>
+            i.classList.toggle('icons-pack-item--active', i.dataset.pack === packId));
+        this.renderIcons();
     }
 
     formatIconName(iconClass) {
@@ -227,8 +352,32 @@ class IconsShowcase {
                         searchClear.style.display = this.currentSearch ? 'block' : 'none';
                     }
                     this.renderIcons();
-                }, 250);
+                }, 200);
             });
+
+            // Esc inside the field clears the query
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && searchInput.value) {
+                    e.stopPropagation();
+                    searchInput.value = '';
+                    this.currentSearch = '';
+                    if (searchClear) searchClear.style.display = 'none';
+                    this.renderIcons();
+                }
+            });
+
+            // "/" focuses search, matching the other docs pages
+            this._slashKey = (e) => {
+                if (!searchInput.isConnected) {
+                    document.removeEventListener('keydown', this._slashKey);
+                    return;
+                }
+                if (e.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName)) {
+                    e.preventDefault();
+                    searchInput.focus();
+                }
+            };
+            document.addEventListener('keydown', this._slashKey);
         }
 
         // Clear search
@@ -247,11 +396,7 @@ class IconsShowcase {
             packsList.addEventListener('click', (e) => {
                 const item = e.target.closest('.icons-pack-item');
                 if (!item) return;
-                this.currentPack = item.dataset.pack;
-                packsList.querySelectorAll('.icons-pack-item').forEach(i =>
-                    i.classList.remove('icons-pack-item--active'));
-                item.classList.add('icons-pack-item--active');
-                this.renderIcons();
+                this.selectPack(item.dataset.pack);
             });
         }
 
@@ -269,14 +414,19 @@ class IconsShowcase {
             });
         }
 
-        // Grid icon click -> open modal
+        // Grid clicks: quick copy or open modal
         const gridContainer = document.getElementById(this.gridContainerId);
         if (gridContainer) {
             gridContainer.addEventListener('click', (e) => {
                 const item = e.target.closest('.icons-grid-item');
                 if (!item) return;
                 const iconClass = item.dataset.iconClass;
-                if (iconClass) this.openModal(iconClass);
+                if (!iconClass) return;
+                if (e.target.closest('.icons-grid-item-copy')) {
+                    this.copyText(iconClass);
+                    return;
+                }
+                this.openModal(iconClass);
             });
         }
 
@@ -304,10 +454,15 @@ class IconsShowcase {
             });
         }
 
-        // Escape key
-        document.addEventListener('keydown', (e) => {
+        // Escape key (self-cleaning when the page is swapped out)
+        this._escKey = (e) => {
+            if (overlay && !overlay.isConnected) {
+                document.removeEventListener('keydown', this._escKey);
+                return;
+            }
             if (e.key === 'Escape') this.closeModal();
-        });
+        };
+        document.addEventListener('keydown', this._escKey);
 
         // Tab switching
         const tabContainer = document.querySelector('.icons-modal-tabs');
@@ -448,6 +603,7 @@ class IconsShowcase {
 
         ICON_VARIANTS.forEach((variant, i) => {
             const btn = document.createElement('button');
+            btn.type = 'button';
             btn.className = 'icons-modal-variant-btn';
             if (i === this.activeVariantIndex) btn.classList.add('icons-modal-variant-btn--active');
             btn.dataset.variantIndex = i;
@@ -518,7 +674,7 @@ class IconsShowcase {
                     '    <foreignObject width="24" height="24">\n' +
                     '        <span xmlns="http://www.w3.org/1999/xhtml"\n' +
                     '              class="icon ' + fullClass + '"\n' +
-                    '              style="font-size:24px;line-height:1;">\n' +
+                    '              style="font-size: var(--font-size-2xl);line-height:1;">\n' +
                     '        </span>\n' +
                     '    </foreignObject>\n' +
                     '</svg>';
@@ -534,7 +690,7 @@ class IconsShowcase {
             '    <foreignObject width="24" height="24">\n' +
             '        <span xmlns="http://www.w3.org/1999/xhtml"\n' +
             '              class="icon ' + fullClass + '"\n' +
-            '              style="font-size:24px;line-height:1;">\n' +
+            '              style="font-size: var(--font-size-2xl);line-height:1;">\n' +
             '        </span>\n' +
             '    </foreignObject>\n' +
             '</svg>';
@@ -557,7 +713,7 @@ class IconsShowcase {
     copyText(text) {
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(text).then(() => {
-                this.showToast('Copied to clipboard!');
+                this.showToast('Copied ' + text);
             }).catch(() => this.fallbackCopy(text));
         } else {
             this.fallbackCopy(text);
@@ -573,7 +729,7 @@ class IconsShowcase {
         ta.select();
         document.execCommand('copy');
         document.body.removeChild(ta);
-        this.showToast('Copied to clipboard!');
+        this.showToast('Copied ' + text);
     }
 
     showToast(message) {

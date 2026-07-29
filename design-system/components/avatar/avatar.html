@@ -1,0 +1,293 @@
+<div class="content-header">
+    <h1 class="content-title">Avatar</h1>
+    <p class="content-description">Avatars represent a person or entity as an image, initials, or an icon. Seven
+        sizes, circular or square shape, an optional inner border ring, and avatar groups with spaced or stacked
+        layouts. Ported from the DGA library's <code>nds-avatar</code> and <code>dga-avatar-group</code>
+        components.</p>
+</div>
+
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <!-- Left: Preview canvas -->
+        <div class="live-demo__canvas" id="avatar-demo-preview">
+            <!-- Rendered dynamically by JS -->
+        </div>
+
+        <!-- Right: Controls sidebar -->
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Avatar</h3>
+                <p class="live-demo__sidebar-desc">Use the image type when a photo exists, initials as the fallback,
+                    and the icon type for anonymous or system entities.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="avatar-demo-type">Type</label>
+                <select class="live-demo__sidebar-select" id="avatar-demo-type">
+                    <option value="text" selected>Text (initials)</option>
+                    <option value="icon">Icon</option>
+                    <option value="image">Image</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="avatar-demo-size">Size</label>
+                <select class="live-demo__sidebar-select" id="avatar-demo-size">
+                    <option value="120">120</option>
+                    <option value="80">80</option>
+                    <option value="68">68</option>
+                    <option value="48" selected>48</option>
+                    <option value="40">40</option>
+                    <option value="32">32</option>
+                    <option value="24">24</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Square</label>
+                <button class="live-demo__switch" data-toggle="square" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Border ring</label>
+                <button class="live-demo__switch" data-toggle="border" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Group</label>
+                <button class="live-demo__switch" data-toggle="group" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Stacked group</label>
+                <button class="live-demo__switch" data-toggle="stacked" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="live-demo__footer">
+        This live demo contains only a preview of functionality and styles available for this component. Enabling
+        Stacked group also enables Group.
+    </div>
+</div>
+
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">All available CSS classes for configuring avatars, mapped from the library's
+            <code>nds-avatar</code> and <code>dga-avatar-group</code> APIs.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Type</th>
+                    <th>Library prop</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.avatar</code></td>
+                    <td>Base</td>
+                    <td>—</td>
+                    <td>Circular container with a white outer border and neutral background.</td>
+                </tr>
+                <tr>
+                    <td><code>.avatar--image</code> / <code>--text</code> / <code>--icon</code></td>
+                    <td>Modifier</td>
+                    <td><code>type</code></td>
+                    <td>Content type: a cover-fitted <code>&lt;img&gt;</code>, uppercase initials, or an icon glyph.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>.avatar--120</code> … <code>.avatar--24</code></td>
+                    <td>Modifier</td>
+                    <td><code>size</code></td>
+                    <td>Seven sizes: 120, 80, 68, 48, 40, 32, 24. Each pairs its own text and icon scale; 120 uses a
+                        4px outer border.</td>
+                </tr>
+                <tr>
+                    <td><code>.avatar--square</code></td>
+                    <td>Modifier</td>
+                    <td><code>square</code></td>
+                    <td>Rounded square (8px radius) instead of a circle.</td>
+                </tr>
+                <tr>
+                    <td><code>.avatar--border</code></td>
+                    <td>Modifier</td>
+                    <td><code>border</code></td>
+                    <td>Adds a subtle 1px inner ring (20% black) for avatars on light imagery.</td>
+                </tr>
+                <tr>
+                    <td><code>.avatar__text</code> / <code>.avatar__icon</code></td>
+                    <td>Element</td>
+                    <td>—</td>
+                    <td>Initials label / icon glyph, auto-scaled by the size modifier.</td>
+                </tr>
+                <tr>
+                    <td><code>.avatar-group</code></td>
+                    <td>Base</td>
+                    <td>—</td>
+                    <td>Row of avatars with a 4px gap.</td>
+                </tr>
+                <tr>
+                    <td><code>.avatar-group--stacked</code></td>
+                    <td>Modifier</td>
+                    <td><code>stacked</code></td>
+                    <td>Overlapping layout (-10px), RTL-aware.</td>
+                </tr>
+                <tr>
+                    <td><code>.avatar-group__more</code></td>
+                    <td>Element</td>
+                    <td>—</td>
+                    <td>"+N" overflow counter avatar at the end of a group.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ============================================
+     SIZES
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Sizes</h2>
+        <p class="showcase-description">Seven sizes from 120px to 24px. Initials and icons scale with the container;
+            the 120 size thickens its outer border to 4px.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row" style="align-items: flex-end;">
+            <span class="avatar avatar--text avatar--120"><span class="avatar__text">sa</span></span>
+            <span class="avatar avatar--text avatar--80"><span class="avatar__text">sa</span></span>
+            <span class="avatar avatar--text avatar--68"><span class="avatar__text">sa</span></span>
+            <span class="avatar avatar--text avatar--48"><span class="avatar__text">sa</span></span>
+            <span class="avatar avatar--text avatar--40"><span class="avatar__text">sa</span></span>
+            <span class="avatar avatar--text avatar--32"><span class="avatar__text">sa</span></span>
+            <span class="avatar avatar--text avatar--24"><span class="avatar__text">sa</span></span>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     TYPES
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Types</h2>
+        <p class="showcase-description">Image avatars cover-fit their photo; text avatars show uppercase initials;
+            icon avatars use a glyph for anonymous or system entities.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row" style="align-items: flex-end;">
+            <span class="avatar avatar--image avatar--68">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 68 68'%3E%3Crect width='68' height='68' fill='%2325935f'/%3E%3Ccircle cx='34' cy='26' r='12' fill='%23f3fcf6'/%3E%3Cellipse cx='34' cy='58' rx='21' ry='16' fill='%23f3fcf6'/%3E%3C/svg%3E"
+                    alt="Sample user photo">
+            </span>
+            <span class="avatar avatar--text avatar--68"><span class="avatar__text">am</span></span>
+            <span class="avatar avatar--icon avatar--68"><span class="avatar__icon"><span
+                        class="icon dga-icon-user"></span></span></span>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SHAPE & BORDER
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Shape &amp; Border Ring</h2>
+        <p class="showcase-description">The square modifier switches to an 8px radius. The border modifier adds a
+            subtle inner ring that keeps light photos separated from light backgrounds.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row" style="align-items: flex-end;">
+            <span class="avatar avatar--text avatar--68"><span class="avatar__text">am</span></span>
+            <span class="avatar avatar--text avatar--68 avatar--border"><span class="avatar__text">am</span></span>
+            <span class="avatar avatar--text avatar--68 avatar--square"><span class="avatar__text">am</span></span>
+            <span class="avatar avatar--text avatar--68 avatar--square avatar--border"><span
+                    class="avatar__text">am</span></span>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     AVATAR GROUP
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Avatar Group</h2>
+        <p class="showcase-description">Groups lay avatars in a row with a 4px gap, or stack them with a -10px
+            overlap. End the group with a "+N" counter for overflow.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row">
+            <span class="avatar-group">
+                <span class="avatar avatar--text avatar--40"><span class="avatar__text">am</span></span>
+                <span class="avatar avatar--text avatar--40"><span class="avatar__text">sk</span></span>
+                <span class="avatar avatar--icon avatar--40"><span class="avatar__icon"><span
+                            class="icon dga-icon-user"></span></span></span>
+            </span>
+            <span class="showcase-label" style="width:auto;margin:0;">Spaced</span>
+        </div>
+        <div class="showcase-row">
+            <span class="avatar-group avatar-group--stacked">
+                <span class="avatar avatar--text avatar--40"><span class="avatar__text">am</span></span>
+                <span class="avatar avatar--text avatar--40"><span class="avatar__text">sk</span></span>
+                <span class="avatar avatar--text avatar--40"><span class="avatar__text">rh</span></span>
+                <span class="avatar avatar--text avatar--40 avatar-group__more"><span
+                        class="avatar__text">+5</span></span>
+            </span>
+            <span class="showcase-label" style="width:auto;margin:0;">Stacked with overflow counter</span>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     RTL LAYOUT
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Layout</h2>
+        <p class="showcase-description">Stacked groups overlap toward the reading direction using logical margins.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" dir="rtl">
+        <div class="showcase-row">
+            <span class="avatar-group avatar-group--stacked">
+                <span class="avatar avatar--text avatar--40"><span class="avatar__text">أح</span></span>
+                <span class="avatar avatar--text avatar--40"><span class="avatar__text">مد</span></span>
+                <span class="avatar avatar--text avatar--40 avatar-group__more"><span
+                        class="avatar__text">+3</span></span>
+            </span>
+        </div>
+    </div>
+</div>

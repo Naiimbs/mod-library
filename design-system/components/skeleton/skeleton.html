@@ -1,0 +1,212 @@
+<div class="content-header">
+    <h1 class="content-title">Skeleton</h1>
+    <p class="content-description">Skeletons hold the layout while content loads. Four primitives (line, rectangle,
+        circle, square) with two gradient directions and a 2-second opacity pulse, composable into loading patterns
+        for cards, lists, and profiles. Ported from the DGA library's <code>dga-skeleton</code> family.</p>
+</div>
+
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">All available CSS classes, mapped from the library's
+            <code>dga-line-skeleton</code>, <code>dga-rectangle-skeleton</code>, <code>dga-circle-skeleton</code>,
+            and <code>dga-square-skeleton</code> APIs.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Type</th>
+                    <th>Library prop</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.skeleton</code></td>
+                    <td>Base</td>
+                    <td>—</td>
+                    <td>Gradient placeholder with the 2s opacity pulse. Combine with a shape modifier.</td>
+                </tr>
+                <tr>
+                    <td><code>.skeleton--type2</code></td>
+                    <td>Modifier</td>
+                    <td><code>type</code></td>
+                    <td>Reverses the gradient direction (dark-to-light). Default is light-to-dark.</td>
+                </tr>
+                <tr>
+                    <td><code>.skeleton--line</code> + <code>--sm|--lg</code></td>
+                    <td>Shape</td>
+                    <td><code>size</code></td>
+                    <td>Text-line placeholder, 277px wide, 14px or 22px tall, 8px radius.</td>
+                </tr>
+                <tr>
+                    <td><code>.skeleton--rectangle</code> + <code>--sm|--md|--lg</code> [+ <code>--short</code>]</td>
+                    <td>Shape</td>
+                    <td><code>size</code>, <code>width</code></td>
+                    <td>Block placeholder, 320px wide × 24/32/40px tall; <code>--short</code> shrinks to button width
+                        (59/75/90px).</td>
+                </tr>
+                <tr>
+                    <td><code>.skeleton--circle</code></td>
+                    <td>Shape</td>
+                    <td><code>width</code></td>
+                    <td>Avatar/icon placeholder. Size with inline <code>width/height</code> (default 48px).</td>
+                </tr>
+                <tr>
+                    <td><code>.skeleton--square</code> [+ <code>--rounded</code>]</td>
+                    <td>Shape</td>
+                    <td><code>width</code>, radius</td>
+                    <td>Image/chart placeholder. Size with inline <code>width/height</code> (default 80px).</td>
+                </tr>
+                <tr>
+                    <td><code>.skeleton-pattern*</code></td>
+                    <td>Layout</td>
+                    <td>—</td>
+                    <td>Composition wrappers: <code>__wrapper</code> (24px column), <code>__lines</code> (12px
+                        column), <code>__row</code>/<code>__col</code> (media + text), <code>__first</code>/
+                        <code>__last</code> (start-aligned rows).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ============================================
+     SHAPES
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Shapes</h2>
+        <p class="showcase-description">The four primitives. Lines hold text, rectangles hold fields and buttons,
+            circles hold avatars, squares hold imagery.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row" style="align-items: center; gap: var(--spacing-4xl);">
+            <div style="display:flex;flex-direction:column;gap: var(--spacing-lg);">
+                <span class="skeleton skeleton--line skeleton--lg"></span>
+                <span class="skeleton skeleton--line skeleton--sm"></span>
+            </div>
+            <span class="skeleton skeleton--rectangle skeleton--md"></span>
+        </div>
+        <div class="showcase-row" style="align-items: center; gap: var(--spacing-4xl);">
+            <span class="skeleton skeleton--circle"></span>
+            <span class="skeleton skeleton--circle" style="width:64px;height:64px;"></span>
+            <span class="skeleton skeleton--square"></span>
+            <span class="skeleton skeleton--square skeleton--rounded" style="width:120px;height:80px;"></span>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SIZES & WIDTHS
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Rectangle Sizes</h2>
+        <p class="showcase-description">Three heights at full width, and the short variant sized for buttons.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: flex-start;">
+        <span class="skeleton skeleton--rectangle skeleton--lg"></span>
+        <span class="skeleton skeleton--rectangle skeleton--md"></span>
+        <span class="skeleton skeleton--rectangle skeleton--sm"></span>
+        <div class="showcase-row" style="justify-content: flex-start;">
+            <span class="skeleton skeleton--rectangle skeleton--lg skeleton--short"></span>
+            <span class="skeleton skeleton--rectangle skeleton--md skeleton--short"></span>
+            <span class="skeleton skeleton--rectangle skeleton--sm skeleton--short"></span>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     GRADIENT DIRECTIONS
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Gradient Directions</h2>
+        <p class="showcase-description">Type 1 runs light-to-dark; type 2 reverses it. Alternate directions between
+            adjacent placeholders for a subtler texture.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: flex-start;">
+        <span class="skeleton skeleton--line skeleton--lg" style="width: 320px;"></span>
+        <span class="skeleton skeleton--type2 skeleton--line skeleton--lg" style="width: 320px;"></span>
+    </div>
+</div>
+
+<!-- ============================================
+     PATTERNS
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Patterns</h2>
+        <p class="showcase-description">Primitives composed into common loading layouts: a profile row, a media card,
+            and an icon list.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row" style="align-items: flex-start; gap: var(--spacing-6xl);">
+            <!-- Profile row -->
+            <div class="skeleton-pattern">
+                <div class="skeleton-pattern__row">
+                    <span class="skeleton skeleton--circle"></span>
+                    <div class="skeleton-pattern__col">
+                        <span class="skeleton skeleton--line skeleton--sm" style="width:160px;"></span>
+                        <span class="skeleton skeleton--type2 skeleton--line skeleton--sm" style="width:110px;"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- Media card -->
+            <div class="skeleton-pattern">
+                <div class="skeleton-pattern__wrapper">
+                    <span class="skeleton skeleton--square" style="width:220px;height:120px;"></span>
+                    <div class="skeleton-pattern__lines">
+                        <span class="skeleton skeleton--line skeleton--lg" style="width:220px;"></span>
+                        <span class="skeleton skeleton--type2 skeleton--line skeleton--sm" style="width:220px;"></span>
+                        <span class="skeleton skeleton--line skeleton--sm" style="width:150px;"></span>
+                    </div>
+                    <span class="skeleton skeleton--rectangle skeleton--md skeleton--short skeleton-pattern__last"></span>
+                </div>
+            </div>
+            <!-- Icon list -->
+            <div class="skeleton-pattern">
+                <div style="display:flex;flex-direction:column;gap: var(--spacing-xl);">
+                    <div class="skeleton-pattern__row">
+                        <span class="skeleton skeleton--circle" style="width:24px;height:24px;"></span>
+                        <span class="skeleton skeleton--line skeleton--sm" style="width:140px;"></span>
+                    </div>
+                    <div class="skeleton-pattern__row">
+                        <span class="skeleton skeleton--circle" style="width:24px;height:24px;"></span>
+                        <span class="skeleton skeleton--type2 skeleton--line skeleton--sm" style="width:120px;"></span>
+                    </div>
+                    <div class="skeleton-pattern__row">
+                        <span class="skeleton skeleton--circle" style="width:24px;height:24px;"></span>
+                        <span class="skeleton skeleton--line skeleton--sm" style="width:130px;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     REDUCED MOTION
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Reduced Motion</h2>
+        <p class="showcase-description">When the user prefers reduced motion, the pulse stops and skeletons render as
+            static placeholders. No extra classes needed.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: flex-start;">
+        <span class="skeleton skeleton--line skeleton--lg" style="animation: none; width: 320px;"></span>
+    </div>
+</div>

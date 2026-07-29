@@ -1,0 +1,425 @@
+<!-- ============================================
+     SERVICE PAGE TEMPLATE
+     Figma: Service Page Template (desktop 1:21371, mobile 1:21768)
+     Composed from design-system components: navigation header,
+     breadcrumb, tags, buttons, tabs, rating, footer + icon font.
+     ============================================ -->
+<div class="service-page">
+
+    <!-- Government top bar: digital-stamp component + page meta -->
+    <div class="sp-govbar">
+        <div class="sp-govbar__inner">
+            <div class="digital-stamp sp-govbar__stamp">
+                <div class="digital-stamp__content">
+                    <div class="digital-stamp__flag">
+                        <span class="dga-icon-flag-01" aria-hidden="true"></span>
+                    </div>
+                    <p class="digital-stamp__text">A government website registered with the Digital Government Authority.</p>
+                    <button type="button" class="digital-stamp__toggle" aria-expanded="false">
+                        <span>How you know?</span>
+                        <span class="digital-stamp__toggle-icon">
+                            <span class="dga-icon-arrow-down-01" aria-hidden="true"></span>
+                        </span>
+                    </button>
+                </div>
+
+                <div class="digital-stamp__extension">
+                    <div class="digital-stamp__verification-card">
+                        <div class="digital-stamp__verification-icon">
+                            <span class="dga-icon-link-01" aria-hidden="true"></span>
+                        </div>
+                        <div class="digital-stamp__verification-text">
+                            <p class="digital-stamp__verification-title">Official Saudi Government websites URL ends with
+                                <span class="highlight">.gov.sa</span></p>
+                            <p class="digital-stamp__verification-description">Website belongs to an official government
+                                organization in the Kingdom of Saudi Arabia always ends with .gov.sa.</p>
+                        </div>
+                    </div>
+                    <div class="digital-stamp__verification-card">
+                        <div class="digital-stamp__verification-icon">
+                            <span class="dga-icon-security-check" aria-hidden="true"></span>
+                        </div>
+                        <div class="digital-stamp__verification-text">
+                            <p class="digital-stamp__verification-title">Official Secure websites use <span
+                                    class="highlight">HTTPS</span></p>
+                            <p class="digital-stamp__verification-description">Ensure the website is using the HTTPS
+                                protocol.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="digital-stamp__registration">
+                    <div class="digital-stamp__registration-content">
+                        <div class="digital-stamp__dga-logo">
+                            <span class="dga-icon-checkmark-badge-01" aria-hidden="true"></span>
+                        </div>
+                        <div class="digital-stamp__registration-text">
+                            <p class="digital-stamp__registration-label">Registered on Digital Government Authority:</p>
+                            <a href="#service-page" class="digital-stamp__registration-link">20230103200</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sp-govbar__meta">
+                <span class="sp-govbar__meta-item"><span class="icon dga-icon-cloud" aria-hidden="true"></span> Cloudy</span>
+                <span class="sp-govbar__meta-item"><span class="icon dga-icon-calendar-03" aria-hidden="true"></span> 3-Sep-2024</span>
+                <span class="sp-govbar__meta-item"><span class="icon dga-icon-clock-01" aria-hidden="true"></span> 2:30 PM</span>
+                <span class="sp-govbar__meta-item"><span class="icon dga-icon-location-01" aria-hidden="true"></span> Al-Riyadh</span>
+                <span class="sp-govbar__tools">
+                    <button type="button" class="sp-govbar__tool" aria-label="Voice"><span class="icon dga-icon-mic-01" aria-hidden="true"></span></button>
+                    <button type="button" class="sp-govbar__tool" aria-label="Accessibility"><span class="icon dga-icon-view" aria-hidden="true"></span></button>
+                    <button type="button" class="sp-govbar__tool" aria-label="Text size"><span class="icon dga-icon-text-font" aria-hidden="true"></span></button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation header (navigation-header component classes) -->
+    <header class="sp-nav navigation-header">
+        <div class="navigation-header__left">
+            <a href="#service-page" class="navigation-header__logo navigation-header__logo--m" aria-label="Platform home">
+                <svg class="nav-logo-svg" width="28" height="34" viewBox="0 0 28 34" fill="none" aria-hidden="true">
+                    <rect x="12.5" y="0" width="3" height="34" rx="1.5" fill="#F5F5F5"/>
+                    <rect x="4" y="6" width="3" height="22" rx="1.5" fill="#F5F5F5"/>
+                    <rect x="21" y="6" width="3" height="22" rx="1.5" fill="#F5F5F5"/>
+                    <rect x="0" y="12" width="3" height="10" rx="1.5" fill="#9DA4AE"/>
+                    <rect x="25" y="12" width="3" height="10" rx="1.5" fill="#9DA4AE"/>
+                </svg>
+                <span class="navigation-header__logo-text">Platform Logo</span>
+            </a>
+            <nav class="navigation-header__menu sp-nav__menu" aria-label="Service sections">
+                <a href="#service-page" class="header-menu-item"><span class="header-menu-item__text">Item 1</span><span class="icon dga-icon-arrow-down-01 header-menu-item__chevron" aria-hidden="true"></span></a>
+                <a href="#service-page" class="header-menu-item"><span class="header-menu-item__text">Item 2</span><span class="icon dga-icon-arrow-down-01 header-menu-item__chevron" aria-hidden="true"></span></a>
+                <a href="#service-page" class="header-menu-item"><span class="header-menu-item__text">Item 3</span><span class="icon dga-icon-arrow-down-01 header-menu-item__chevron" aria-hidden="true"></span></a>
+                <a href="#service-page" class="header-menu-item"><span class="header-menu-item__text">Item 4</span><span class="icon dga-icon-arrow-down-01 header-menu-item__chevron" aria-hidden="true"></span></a>
+                <a href="#service-page" class="header-menu-item"><span class="header-menu-item__text">Item 5</span><span class="icon dga-icon-arrow-down-01 header-menu-item__chevron" aria-hidden="true"></span></a>
+                <a href="#service-page" class="header-menu-item"><span class="header-menu-item__text">Item 6</span><span class="icon dga-icon-arrow-down-01 header-menu-item__chevron" aria-hidden="true"></span></a>
+                <a href="#service-page" class="header-menu-item"><span class="header-menu-item__text">Item 7</span><span class="icon dga-icon-arrow-down-01 header-menu-item__chevron" aria-hidden="true"></span></a>
+            </nav>
+        </div>
+        <div class="navigation-header__right">
+            <button type="button" class="sp-nav__burger" aria-label="Open menu" aria-expanded="false">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                    <line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>
+                </svg>
+            </button>
+            <a href="#service-page" class="header-action header-action--transparent"><span class="icon dga-icon-search-01" aria-hidden="true"></span><span class="header-action__text">Search</span></a>
+            <a href="#service-page" class="header-action header-action--transparent sp-nav__lang"><span class="header-action__text">عربي</span></a>
+            <a href="#service-page" class="header-action header-action--outline"><span class="icon dga-icon-user" aria-hidden="true"></span><span class="header-action__text">Login</span></a>
+        </div>
+    </header>
+    <nav class="sp-nav__mobile-panel" aria-label="Service sections (mobile)" hidden>
+        <a href="#service-page" class="sp-nav__mobile-item">Item 1</a>
+        <a href="#service-page" class="sp-nav__mobile-item">Item 2</a>
+        <a href="#service-page" class="sp-nav__mobile-item">Item 3</a>
+        <a href="#service-page" class="sp-nav__mobile-item">Item 4</a>
+        <a href="#service-page" class="sp-nav__mobile-item">Item 5</a>
+        <a href="#service-page" class="sp-nav__mobile-item">Item 6</a>
+        <a href="#service-page" class="sp-nav__mobile-item">Item 7</a>
+    </nav>
+
+    <!-- Breadcrumb (breadcrumb component) -->
+    <div class="sp-breadcrumb-row">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <span class="breadcrumb-item"><a href="#service-page" class="breadcrumb-link">Link</a></span>
+            <span class="breadcrumb-separator" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l4 4-4 4"/></svg></span>
+            <span class="breadcrumb-item breadcrumb-item--current" aria-current="page">Link</span>
+        </nav>
+    </div>
+
+    <!-- Main: service details + info aside -->
+    <main class="sp-main">
+        <section class="sp-details">
+            <div class="sp-title-row">
+                <h1 class="sp-title">Building Permit</h1>
+                <button type="button" class="btn btn-primary sp-start-btn">Get Started</button>
+            </div>
+
+            <div class="sp-tags">
+                <span class="tag tag--success">Ministry</span>
+                <span class="tag tag--neutral">Life experience</span>
+                <span class="tag tag--info">Related platform</span>
+            </div>
+
+            <p class="sp-desc">Service description example: to buy a plot to build your house, this
+                requires documenting the sale and purchase process in the notarial offices or notary
+                services to register the property in your name.</p>
+
+            <a href="#service-page" class="link link--hover-underline sp-link">Service Level Agreement
+                <span class="icon dga-icon-link-square-02" aria-hidden="true"></span></a>
+
+            <!-- Tabs (tabs component) -->
+            <div class="tab-list sp-tabs" role="tablist" aria-label="Service information">
+                <button type="button" class="tab-item active" role="tab" aria-selected="true" data-sp-tab="steps">
+                    <span class="tab-item__title">Steps</span>
+                </button>
+                <button type="button" class="tab-item" role="tab" aria-selected="false" data-sp-tab="conditions">
+                    <span class="tab-item__title">Conditions</span>
+                </button>
+                <button type="button" class="tab-item" role="tab" aria-selected="false" data-sp-tab="documents">
+                    <span class="tab-item__title">Required Documents</span>
+                </button>
+            </div>
+
+            <div class="sp-tab-panel" data-sp-panel="steps">
+                <div class="sp-video" role="img" aria-label="Service walkthrough video placeholder">
+                    <button type="button" class="sp-video__play" aria-label="Play video">
+                        <span class="icon dga-icon-play solid rounded" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <ol class="sp-steps">
+                    <li>Login to the National Single Sign-on portal via the Balady platform.</li>
+                    <li>Select Construction License Services, then Issue Construction.</li>
+                    <li>License Services, then the required municipality.</li>
+                    <li>Select the engineering office, then enter the number and year of issuance of the building survey, and attach a copy of the deed.</li>
+                    <li>Submit the request to the identified engineering office, then complete the information and attachments in the engineering office and send it to the municipality.</li>
+                    <li>Verify the information of the request, attachments and approvals by the municipality.</li>
+                    <li>Approve the request and issue a SADAD payment. Pay the fees and print the license.</li>
+                </ol>
+            </div>
+
+            <div class="sp-tab-panel" data-sp-panel="conditions" hidden>
+                <ul class="sp-bullets">
+                    <li>The applicant must be the owner of the land or an authorised representative.</li>
+                    <li>The land deed must be electronic and up to date.</li>
+                    <li>A licensed engineering office must supervise the construction drawings.</li>
+                    <li>All municipal fees and violations must be settled before submission.</li>
+                </ul>
+            </div>
+
+            <div class="sp-tab-panel" data-sp-panel="documents" hidden>
+                <ul class="sp-bullets">
+                    <li>A copy of the electronic land deed.</li>
+                    <li>An approved building survey report.</li>
+                    <li>Engineering drawings approved by a licensed office.</li>
+                    <li>National ID of the applicant or the authorised representative.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Info aside -->
+        <aside class="sp-aside" aria-label="Service information">
+            <div class="sp-aside__card">
+                <div class="sp-info">
+                    <span class="icon dga-icon-user-multiple-02 sp-info__icon" aria-hidden="true"></span>
+                    <div class="sp-info__body">
+                        <span class="sp-info__label">Target audience</span>
+                        <span class="sp-info__value">Citizens, GCC countries nationalities, investors and foreigners</span>
+                    </div>
+                </div>
+                <div class="sp-info">
+                    <span class="icon dga-icon-clock-01 sp-info__icon" aria-hidden="true"></span>
+                    <div class="sp-info__body">
+                        <span class="sp-info__label">Service duration</span>
+                        <span class="sp-info__value">5.0 Day(s)</span>
+                    </div>
+                </div>
+                <div class="sp-info">
+                    <span class="icon dga-icon-computer-phone-sync sp-info__icon" aria-hidden="true"></span>
+                    <div class="sp-info__body">
+                        <span class="sp-info__label">Service channels</span>
+                        <span class="sp-info__value">Web and mobile app</span>
+                    </div>
+                </div>
+                <div class="sp-info">
+                    <span class="icon dga-icon-coins-01 sp-info__icon" aria-hidden="true"></span>
+                    <div class="sp-info__body">
+                        <span class="sp-info__label">Service cost</span>
+                        <span class="sp-info__value">Free</span>
+                    </div>
+                </div>
+
+                <div class="sp-aside__divider"></div>
+
+                <span class="sp-aside__label">Payment channels</span>
+                <div class="sp-pay">
+                    <span class="sp-pay__chip">sadad</span>
+                    <span class="sp-pay__chip sp-pay__chip--mada">mada</span>
+                </div>
+
+                <div class="sp-aside__divider"></div>
+
+                <span class="sp-aside__label">Frequently Asked Questions</span>
+                <a href="#service-page" class="link link--hover-underline sp-link sp-link--sm">Ministry-FAQ's-page
+                    <span class="icon dga-icon-link-square-02" aria-hidden="true"></span></a>
+
+                <div class="sp-contact">
+                    <span class="icon dga-icon-telephone sp-contact__icon" aria-hidden="true"></span>
+                    <div class="sp-contact__body">
+                        <span class="sp-info__label">Phone</span>
+                        <a href="tel:920034222" class="link link--hover-underline sp-link sp-link--sm">920034222
+                            <span class="icon dga-icon-link-square-02" aria-hidden="true"></span></a>
+                    </div>
+                </div>
+                <div class="sp-contact">
+                    <span class="icon dga-icon-mail-01 sp-contact__icon" aria-hidden="true"></span>
+                    <div class="sp-contact__body">
+                        <span class="sp-info__label">Email</span>
+                        <a href="mailto:help@company.sa" class="link link--hover-underline sp-link sp-link--sm">help@company.sa
+                            <span class="icon dga-icon-link-square-02" aria-hidden="true"></span></a>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-secondary-outline sp-manual-btn">
+                    <span class="icon dga-icon-download-04" aria-hidden="true"></span>
+                    Download user manual
+                </button>
+
+                <div class="sp-aside__divider"></div>
+
+                <span class="sp-aside__label">Mobile Application</span>
+                <div class="sp-stores">
+                    <a href="#service-page" class="sp-store" aria-label="Download on the App Store">
+                        <span class="icon dga-icon-apple" aria-hidden="true"></span>
+                        <span class="sp-store__text"><small>Download on the</small>App Store</span>
+                    </a>
+                    <a href="#service-page" class="sp-store" aria-label="Get it on Google Play">
+                        <span class="icon dga-icon-play-store" aria-hidden="true"></span>
+                        <span class="sp-store__text"><small>GET IT ON</small>Google Play</span>
+                    </a>
+                    <a href="#service-page" class="sp-store" aria-label="Explore it on AppGallery">
+                        <span class="icon dga-icon-smart-phone-01" aria-hidden="true"></span>
+                        <span class="sp-store__text"><small>EXPLORE IT ON</small>AppGallery</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Related services -->
+    <section class="sp-related" aria-label="Related services">
+        <div class="sp-related__inner">
+            <div class="sp-related__head">
+                <h2 class="sp-related__title">Related Services</h2>
+                <a href="#service-page" class="link link--hover-underline sp-link">View all</a>
+            </div>
+            <p class="sp-related__desc">Service description example: to buy a plot to build your house,
+                this requires documenting the sale and purchase process in the notarial offices or
+                notary services to register the property in your name.</p>
+
+            <div class="sp-cards" id="sp-cards-track">
+                <!-- 5 cards generated by service-page.js -->
+            </div>
+            <div class="sp-cards__dots" id="sp-cards-dots" role="tablist" aria-label="Related services pages"></div>
+        </div>
+    </section>
+
+    <!-- Comments & suggestions -->
+    <section class="sp-comments-wrap">
+        <div class="sp-comments">
+            <span class="icon dga-icon-checkmark-circle-02 sp-comments__icon" aria-hidden="true"></span>
+            <div class="sp-comments__body">
+                <h3 class="sp-comments__title">Comments &amp; suggestions</h3>
+                <p class="sp-comments__text">For any inquiry or feedback on Government Services, please fill the required information.</p>
+            </div>
+            <button type="button" class="btn btn-primary">Contact us</button>
+        </div>
+        <p class="sp-modified">Last Modified Date: 04/12/2020 - 3:13 PM Saudi Arabia Time</p>
+    </section>
+
+    <!-- Rating bar -->
+    <section class="sp-ratingbar" aria-label="Service rating">
+        <div class="sp-ratingbar__inner">
+            <span class="sp-ratingbar__text">This service is rated with an average of <strong>3.9</strong></span>
+            <div class="rating rating--md rating--brand rating--readonly" data-max="5" data-value="4"></div>
+            <a href="#service-page" class="link link--hover-underline sp-link sp-link--sm">1944 reviews</a>
+            <button type="button" class="btn btn-primary sp-ratingbar__btn">Rate this service</button>
+        </div>
+    </section>
+
+    <!-- Was this page useful -->
+    <section class="sp-useful" aria-label="Page feedback">
+        <div class="sp-useful__inner">
+            <span class="sp-useful__question">Was this page useful?</span>
+            <div class="sp-useful__actions">
+                <button type="button" class="btn btn-secondary-outline btn-small" data-sp-useful="yes">Yes</button>
+                <button type="button" class="btn btn-secondary-outline btn-small" data-sp-useful="no">No</button>
+            </div>
+            <span class="sp-useful__stats">60% of users said Yes from 2843 Feedbacks</span>
+        </div>
+    </section>
+
+    <!-- Footer (footer component, dark variant on the SA-flag green) -->
+    <footer class="footer footer--dark sp-footer" aria-label="Footer">
+        <div class="footer__content">
+            <div class="footer__nav-links">
+                <div class="footer__group">
+                    <h3 class="footer__group-label">Overview</h3>
+                    <div class="footer__link-group">
+                        <ul class="footer__link-list">
+                            <li><a href="#service-page" class="footer__link">About [name of the portal]</a></li>
+                            <li><a href="#service-page" class="footer__link">Privacy and terms of use</a></li>
+                            <li><a href="#service-page" class="footer__link">How to use [name of the portal]</a></li>
+                            <li><a href="#service-page" class="footer__link">News and events</a></li>
+                            <li><a href="#service-page" class="footer__link">Service level agreement statistics</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__group">
+                    <h3 class="footer__group-label">Important links</h3>
+                    <div class="footer__link-group">
+                        <ul class="footer__link-list">
+                            <li><a href="#service-page" class="footer__link">National service portal</a></li>
+                            <li><a href="#service-page" class="footer__link">Open government data</a></li>
+                            <li><a href="#service-page" class="footer__link">National strategy for data &amp; Artificial intelligence</a></li>
+                            <li><a href="#service-page" class="footer__link">Engage with us</a></li>
+                            <li><a href="#service-page" class="footer__link">Open data portal</a></li>
+                            <li><a href="#service-page" class="footer__link">E-Participation portal</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__group">
+                    <h3 class="footer__group-label">Contact &amp; support</h3>
+                    <div class="footer__link-group">
+                        <ul class="footer__link-list">
+                            <li><a href="#service-page" class="footer__link">Customer hub</a></li>
+                            <li><a href="#service-page" class="footer__link">Contact us</a></li>
+                            <li><a href="#service-page" class="footer__link">Submit complaint</a></li>
+                            <li><a href="#service-page" class="footer__link">Report corruption</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__group">
+                    <h3 class="footer__group-label">Social Media</h3>
+                    <div class="sp-footer__icons">
+                        <a href="#service-page" class="sp-footer__icon-btn" aria-label="X"><span class="icon dga-icon-new-twitter" aria-hidden="true"></span></a>
+                        <a href="#service-page" class="sp-footer__icon-btn" aria-label="LinkedIn"><span class="icon dga-icon-linkedin-01" aria-hidden="true"></span></a>
+                        <a href="#service-page" class="sp-footer__icon-btn" aria-label="YouTube"><span class="icon dga-icon-youtube" aria-hidden="true"></span></a>
+                    </div>
+                    <h3 class="footer__group-label sp-footer__group-label--gap">Accessibility Tools</h3>
+                    <div class="sp-footer__icons">
+                        <a href="#service-page" class="sp-footer__icon-btn" aria-label="Accessibility"><span class="icon dga-icon-view" aria-hidden="true"></span></a>
+                        <a href="#service-page" class="sp-footer__icon-btn" aria-label="Contrast"><span class="icon dga-icon-moon-02" aria-hidden="true"></span></a>
+                        <a href="#service-page" class="sp-footer__icon-btn" aria-label="Text size"><span class="icon dga-icon-text-font" aria-hidden="true"></span></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__legal">
+                <div class="footer__legal-content">
+                    <ul class="footer__legal-links">
+                        <li><a href="#service-page" class="footer__link footer__link--underline">Sitemap</a></li>
+                        <li><a href="#service-page" class="footer__link footer__link--underline">RSS</a></li>
+                        <li><a href="#service-page" class="footer__link footer__link--underline">Mobile App</a></li>
+                    </ul>
+                    <div class="footer__legal-info">
+                        <p class="footer__legal-caption">All Right Reserved For Digital Government Authority &copy; 2024</p>
+                        <p class="footer__legal-caption">Developed and Maintained by [insert the name of the entity]</p>
+                        <p class="footer__legal-caption">Last Modified Date: 04/12/2020</p>
+                    </div>
+                </div>
+                <div class="footer__logos">
+                    <div class="footer__logo">
+                        <svg class="footer__logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="4" fill="#F5F5F5"/><path d="M16 6C15.3 6 14.7 6.75 14.7 7.67V12L12 11.53C11.53 11.47 11.07 11.8 11 12.27C10.93 12.73 11.27 13.13 11.73 13.2L14.7 13.67V15.33L11.33 17C10.93 17.2 10.8 17.67 11 18.07C11.2 18.47 11.67 18.6 12.07 18.4L14.7 17.07V19.33L11.33 22.67C11.07 22.93 11.07 23.33 11.33 23.6C11.6 23.87 12 23.87 12.27 23.6L14.7 21.2V25.33C14.7 26.27 15.3 27 16 27C16.7 27 17.3 26.27 17.3 25.33V21.2L19.73 23.6C20 23.87 20.4 23.87 20.67 23.6C20.93 23.33 20.93 22.93 20.67 22.67L17.3 19.33V17.07L19.93 18.4C20.33 18.6 20.8 18.47 21 18.07C21.2 17.67 21.07 17.2 20.67 17L17.3 15.33V13.67L20.27 13.2C20.73 13.13 21.07 12.73 21 12.27C20.93 11.8 20.47 11.47 20 11.53L17.3 12V7.67C17.3 6.75 16.7 6 16 6Z" fill="#9DA4AE"/></svg>
+                        <span class="footer__logo-text">Platform Logo</span>
+                    </div>
+                    <div class="footer__logo">
+                        <svg class="footer__logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="4" fill="#F5F5F5"/><path d="M16 6C15.3 6 14.7 6.75 14.7 7.67V12L12 11.53C11.53 11.47 11.07 11.8 11 12.27C10.93 12.73 11.27 13.13 11.73 13.2L14.7 13.67V15.33L11.33 17C10.93 17.2 10.8 17.67 11 18.07C11.2 18.47 11.67 18.6 12.07 18.4L14.7 17.07V19.33L11.33 22.67C11.07 22.93 11.07 23.33 11.33 23.6C11.6 23.87 12 23.87 12.27 23.6L14.7 21.2V25.33C14.7 26.27 15.3 27 16 27C16.7 27 17.3 26.27 17.3 25.33V21.2L19.73 23.6C20 23.87 20.4 23.87 20.67 23.6C20.93 23.33 20.93 22.93 20.67 22.67L17.3 19.33V17.07L19.93 18.4C20.33 18.6 20.8 18.47 21 18.07C21.2 17.67 21.07 17.2 20.67 17L17.3 15.33V13.67L20.27 13.2C20.73 13.13 21.07 12.73 21 12.27C20.93 11.8 20.47 11.47 20 11.53L17.3 12V7.67C17.3 6.75 16.7 6 16 6Z" fill="#9DA4AE"/></svg>
+                        <span class="footer__logo-text">Platform Logo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>

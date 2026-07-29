@@ -1,0 +1,181 @@
+<div class="content-header">
+    <h1 class="content-title">Rating</h1>
+    <p class="content-description">Ratings collect or display a score out of five stars. Three sizes, half-star
+        precision, a hover preview, a brand-colored variant, and a read-only display mode. Ported from the DGA
+        library's <code>dga-rating</code> component; stars come from the DGA icon font.</p>
+</div>
+
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <!-- Left: Preview canvas -->
+        <div class="live-demo__canvas" id="rating-demo-preview">
+            <!-- Rendered dynamically by JS -->
+        </div>
+
+        <!-- Right: Controls sidebar -->
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Rating</h3>
+                <p class="live-demo__sidebar-desc">Click a star to rate it. Clicking the first half of a star gives a
+                    half rating; hovering previews the score.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="rating-demo-size">Size</label>
+                <select class="live-demo__sidebar-select" id="rating-demo-size">
+                    <option value="sm">Small (24px)</option>
+                    <option value="md" selected>Medium (32px)</option>
+                    <option value="lg">Large (48px)</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Brand color</label>
+                <button class="live-demo__switch" data-toggle="brand" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Read-only</label>
+                <button class="live-demo__switch" data-toggle="readonly" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="live-demo__footer">
+        This live demo contains only a preview of functionality and styles available for this component. Changing a
+        control resets the value to 3.5.
+    </div>
+</div>
+
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">All available CSS classes and data attributes, mapped from the library's
+            <code>dga-rating</code> API.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class / Attribute</th>
+                    <th>Type</th>
+                    <th>Library prop</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.rating</code></td>
+                    <td>Base</td>
+                    <td>—</td>
+                    <td>Declarative: set <code>data-max</code> and <code>data-value</code> and the page script builds
+                        the star buttons.</td>
+                </tr>
+                <tr>
+                    <td><code>.rating--sm|--md|--lg</code></td>
+                    <td>Modifier</td>
+                    <td><code>size</code></td>
+                    <td>Star sizes 24 / 32 / 48px.</td>
+                </tr>
+                <tr>
+                    <td><code>.rating--brand</code></td>
+                    <td>Modifier</td>
+                    <td><code>color</code></td>
+                    <td>Saudi green stars instead of the default gold.</td>
+                </tr>
+                <tr>
+                    <td><code>.rating--readonly</code></td>
+                    <td>Modifier</td>
+                    <td><code>readonly</code></td>
+                    <td>Display-only: no hover preview, clicks ignored.</td>
+                </tr>
+                <tr>
+                    <td><code>.rating__star</code> + <code>data-fill="none|half|full"</code></td>
+                    <td>Element</td>
+                    <td><code>rating</code></td>
+                    <td>A star button: stroke base with a solid overlay clipped to 0 / 50% / 100% width.</td>
+                </tr>
+                <tr>
+                    <td><code>data-value="3.5"</code></td>
+                    <td>Attribute</td>
+                    <td><code>rating</code></td>
+                    <td>The committed score, in half-star steps.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ============================================
+     SIZES
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Sizes</h2>
+        <p class="showcase-description">Three star sizes; the value here is 3.5 to show a half fill.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row" style="align-items: center; gap: var(--spacing-5xl);">
+            <div class="rating rating--sm" data-max="5" data-value="3.5"></div>
+            <div class="rating rating--md" data-max="5" data-value="3.5"></div>
+            <div class="rating rating--lg" data-max="5" data-value="3.5"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     COLORS & READ-ONLY
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Colors &amp; Read-only</h2>
+        <p class="showcase-description">Gold is the default; the brand variant uses Saudi green. Read-only ratings
+            display a fixed score.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview">
+        <div class="showcase-row" style="align-items: center; gap: var(--spacing-5xl);">
+            <div class="rating rating--md" data-max="5" data-value="4"></div>
+            <div class="rating rating--md rating--brand" data-max="5" data-value="4"></div>
+            <div class="rating rating--md rating--readonly" data-max="5" data-value="2.5"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     RTL LAYOUT
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Layout</h2>
+        <p class="showcase-description">Stars fill from the right and half-star clicks use the star's right half.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" dir="rtl">
+        <div class="rating rating--md" data-max="5" data-value="3.5"></div>
+    </div>
+</div>

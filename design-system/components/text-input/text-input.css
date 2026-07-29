@@ -12,7 +12,7 @@
 .text-input {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--spacing-md);
     width: 100%;
 }
 
@@ -54,7 +54,7 @@
 .text-input__field {
     width: 100%;
     height: 40px;
-    padding: 8px 16px 8px 8px;
+    padding: var(--spacing-md) var(--spacing-xl) var(--spacing-md) var(--spacing-md);
     font-family: var(--font-family-primary);
     font-size: var(--font-size-md);
     line-height: var(--line-height-md);
@@ -84,13 +84,13 @@
 /* Focus - shadow-md + bottom underline effect */
 .text-input__field:focus {
     border-color: var(--color-gray-400);
-    box-shadow: var(--shadow-md), inset 0 -2px 0 0 #0d121c;
+    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--gray-950);
 }
 
 /* Pressed (active) */
 .text-input__field:active:not(:disabled) {
     border-color: var(--color-gray-400);
-    box-shadow: inset 0 -2px 0 0 #0d121c;
+    box-shadow: inset 0 -2px 0 0 var(--gray-950);
 }
 
 /* Disabled */
@@ -162,7 +162,7 @@
 .text-input__field--filled-darker:focus {
     background-color: var(--color-gray-100);
     border-color: var(--color-gray-400);
-    box-shadow: var(--shadow-md), inset 0 -2px 0 0 #0d121c;
+    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--gray-950);
 }
 
 .text-input__field--filled-darker:disabled {
@@ -191,29 +191,29 @@
    ============================================ */
 
 .text-input__field--filled-lighter {
-    background-color: #FCFCFD;
-    border-color: #FCFCFD;
+    background-color: var(--gray-25);
+    border-color: var(--gray-25);
 }
 
 .text-input__field--filled-lighter:hover:not(:disabled):not(:focus):not(.text-input__field--error):not(.text-input__field--success) {
-    background-color: #FCFCFD;
+    background-color: var(--gray-25);
     border-color: var(--color-gray-700);
 }
 
 .text-input__field--filled-lighter:focus {
-    background-color: #FCFCFD;
+    background-color: var(--gray-25);
     border-color: var(--color-gray-400);
-    box-shadow: var(--shadow-md), inset 0 -2px 0 0 #0d121c;
+    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--gray-950);
 }
 
 .text-input__field--filled-lighter:disabled {
-    background-color: #FCFCFD;
-    border-color: #FCFCFD;
+    background-color: var(--gray-25);
+    border-color: var(--gray-25);
     color: var(--color-gray-400);
 }
 
 .text-input__field--filled-lighter.text-input__field--error {
-    background-color: #FCFCFD;
+    background-color: var(--gray-25);
     border-color: var(--color-error-700);
 }
 
@@ -237,8 +237,8 @@
     color: var(--color-gray-700);
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 4px 0;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xs) 0;
 }
 
 .text-input__helper--error {
@@ -271,7 +271,7 @@
 }
 
 [dir="rtl"] .text-input__field-wrapper--leading .text-input__field {
-    padding-left: 16px;
+    padding-left: var(--spacing-xl);
     padding-right: 36px;
 }
 
@@ -297,12 +297,12 @@
 
 /* Trailing icon */
 .text-input__field-wrapper--trailing .text-input__field {
-    padding-right: 40px;
+    padding-right: var(--spacing-5xl);
 }
 
 [dir="rtl"] .text-input__field-wrapper--trailing .text-input__field {
-    padding-right: 16px;
-    padding-left: 40px;
+    padding-right: var(--spacing-xl);
+    padding-left: var(--spacing-5xl);
 }
 
 .text-input__icon--trailing {
@@ -340,11 +340,11 @@
 /* Both leading and trailing */
 .text-input__field-wrapper--leading.text-input__field-wrapper--trailing .text-input__field {
     padding-left: 36px;
-    padding-right: 40px;
+    padding-right: var(--spacing-5xl);
 }
 
 [dir="rtl"] .text-input__field-wrapper--leading.text-input__field-wrapper--trailing .text-input__field {
-    padding-left: 40px;
+    padding-left: var(--spacing-5xl);
     padding-right: 36px;
 }
 
@@ -372,7 +372,7 @@
 /* Focus: underline on the input within the wrapper */
 .text-input__field-wrapper--prefix .text-input__field:focus,
 .text-input__field-wrapper--suffix .text-input__field:focus {
-    box-shadow: inset 0 -2px 0 0 #0d121c;
+    box-shadow: inset 0 -2px 0 0 var(--gray-950);
 }
 
 /* Hover on wrapper */
@@ -417,9 +417,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: var(--spacing-xs);
     height: 40px;
-    padding: 2px 16px;
+    padding: var(--spacing-xxs) var(--spacing-xl);
     font-family: var(--font-family-primary);
     font-size: var(--font-size-md);
     line-height: var(--line-height-md);
@@ -460,13 +460,13 @@
 /* Dropdown — Selected state */
 .text-input__prefix--selected,
 .text-input__suffix--selected {
-    background-color: #384250;
+    background-color: var(--gray-700);
     color: var(--color-white);
 }
 
 .text-input__prefix--selected:hover,
 .text-input__suffix--selected:hover {
-    background-color: #384250;
+    background-color: var(--gray-700);
 }
 
 /* Dropdown — Focused state */
@@ -502,7 +502,7 @@
 
 .text-input__prefix--disabled,
 .text-input__suffix--disabled {
-    background-color: #e5e7eb;
+    background-color: var(--gray-200);
     color: var(--color-gray-400);
     cursor: not-allowed;
     pointer-events: none;
@@ -519,7 +519,7 @@
 .text-input__prefix--md,
 .text-input__suffix--md {
     height: 32px;
-    padding: 2px 12px;
+    padding: var(--spacing-xxs) var(--spacing-lg);
     font-size: var(--font-size-sm);
     line-height: var(--line-height-sm);
 }
@@ -534,18 +534,18 @@
 /* Medium (default in Figma) */
 .text-input__field--md {
     height: 32px;
-    padding: 4px 16px 4px 8px;
+    padding: var(--spacing-xs) var(--spacing-xl) var(--spacing-xs) var(--spacing-md);
     font-size: var(--font-size-sm);
     line-height: var(--line-height-sm);
 }
 
 .text-input__field-wrapper--leading .text-input__field--md {
-    padding-left: 32px;
+    padding-left: var(--spacing-4xl);
 }
 
 [dir="rtl"] .text-input__field-wrapper--leading .text-input__field--md {
-    padding-left: 16px;
-    padding-right: 32px;
+    padding-left: var(--spacing-xl);
+    padding-right: var(--spacing-4xl);
 }
 
 .text-input__field-wrapper--trailing .text-input__field--md {
@@ -553,7 +553,7 @@
 }
 
 [dir="rtl"] .text-input__field-wrapper--trailing .text-input__field--md {
-    padding-right: 16px;
+    padding-right: var(--spacing-xl);
     padding-left: 36px;
 }
 
@@ -567,12 +567,12 @@
 /* Base .text-input__field is already Large: 40px */
 
 .text-input__field-wrapper--leading .text-input__field--lg {
-    padding-left: 40px;
+    padding-left: var(--spacing-5xl);
 }
 
 [dir="rtl"] .text-input__field-wrapper--leading .text-input__field--lg {
-    padding-left: 16px;
-    padding-right: 40px;
+    padding-left: var(--spacing-xl);
+    padding-right: var(--spacing-5xl);
 }
 
 .text-input__field-wrapper--trailing .text-input__field--lg {
@@ -580,7 +580,7 @@
 }
 
 [dir="rtl"] .text-input__field-wrapper--trailing .text-input__field--lg {
-    padding-right: 16px;
+    padding-right: var(--spacing-xl);
     padding-left: 44px;
 }
 

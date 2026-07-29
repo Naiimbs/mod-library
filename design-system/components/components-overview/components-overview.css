@@ -54,7 +54,7 @@
 .overview-search-input {
     width: 100%;
     height: 40px;
-    padding: 0 40px 0 40px;
+    padding: 0 var(--spacing-5xl) 0 var(--spacing-5xl);
     border: 1px solid var(--color-border-secondary);
     border-radius: var(--radius-md);
     font-size: var(--font-size-sm);
@@ -86,7 +86,7 @@
     justify-content: center;
     border-radius: var(--radius-full);
     color: var(--color-gray-400);
-    font-size: 18px;
+    font-size: var(--font-size-lg);
     cursor: pointer;
     transition: all var(--transition-fast);
 }
@@ -99,6 +99,57 @@
 .overview-search-clear:hover {
     color: var(--color-gray-600);
     background: var(--color-gray-100);
+}
+
+/* Category filter chips */
+.overview-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin: calc(-1 * var(--spacing-3xl)) 0 var(--spacing-5xl);
+}
+
+.overview-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) 14px;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-full);
+    background: var(--alpha-white);
+    font-family: var(--font-family-primary);
+    font-size: 13px;
+    font-weight: var(--font-weight-medium);
+    color: var(--gray-700);
+    cursor: pointer;
+    transition: border-color var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.overview-chip:hover {
+    border-color: var(--gray-400);
+    color: var(--gray-900);
+}
+
+.overview-chip.is-active {
+    border-color: var(--sa-600);
+    background: var(--sa-50);
+    color: var(--sa-800);
+}
+
+.overview-chip:focus-visible {
+    outline: 2px solid var(--sa-600);
+    outline-offset: 2px;
+}
+
+.overview-chip__count {
+    font-size: 11px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--gray-500);
+    font-variant-numeric: tabular-nums;
+}
+
+.overview-chip.is-active .overview-chip__count {
+    color: var(--sa-700);
 }
 
 /* Category Sections */
@@ -206,20 +257,124 @@
 
 /* Card Footer */
 .overview-card__footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xxs);
+    flex: 1;
     padding: var(--spacing-lg) var(--spacing-xl);
-    text-align: center;
+    text-align: start;
     background: var(--color-bg-primary);
 }
 
 .overview-card__name {
     font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-semibold);
     color: var(--color-text-primary);
     transition: color var(--transition-fast);
 }
 
+.overview-card__desc {
+    font-size: var(--font-size-xs);
+    line-height: 1.5;
+    color: var(--gray-600);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 .overview-card:hover .overview-card__name {
     color: var(--color-primary);
+}
+
+.overview-card:focus-visible,
+.foundation-card:focus-visible {
+    outline: 2px solid var(--sa-600);
+    outline-offset: 2px;
+}
+
+/* opt out of the library theme's global <a> styling (3px focus border +
+   padding that makes cards jump in shape after a click) */
+.overview-card,
+.overview-card:visited,
+.overview-card:hover,
+.overview-card:focus {
+    font-family: var(--font-family-primary);
+    border: 1px solid var(--color-border-secondary);
+    padding: 0;
+    color: inherit;
+    text-decoration: none;
+}
+
+.overview-card:hover,
+.overview-card:focus {
+    border-color: var(--color-primary);
+}
+
+/* ============================================
+   FOUNDATIONS (Styles / Classes / Icons quick links)
+   ============================================ */
+.overview-foundations {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.foundation-card__preview {
+    display: flex;
+    align-items: center;
+    height: 96px;
+    padding: var(--spacing-xl);
+    background: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border-secondary);
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.foundation-scale {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.foundation-scale span { flex: 1; }
+
+.foundation-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    align-content: center;
+}
+
+.foundation-chips code {
+    font-family: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+    font-size: 10.5px;
+    color: var(--gray-700);
+    background: var(--alpha-white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-xxs) var(--spacing-md);
+    white-space: nowrap;
+}
+
+.foundation-icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 22px;
+    color: var(--gray-600);
+}
+
+.foundation-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xxs);
+    flex: 1;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    background: var(--color-bg-primary);
 }
 
 /* No Results */
@@ -228,6 +383,41 @@
     padding: 80px var(--spacing-3xl);
     color: var(--color-text-secondary);
     font-size: var(--font-size-md);
+}
+
+.overview-no-results__icon {
+    display: block;
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-3xl);
+    color: var(--gray-300);
+}
+
+.overview-no-results__text {
+    margin: 0 0 var(--spacing-xl);
+    color: var(--gray-600);
+}
+
+.overview-no-results__clear {
+    padding: var(--spacing-md) 18px;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    background: var(--alpha-white);
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--gray-800);
+    cursor: pointer;
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.overview-no-results__clear:hover {
+    border-color: var(--gray-400);
+    background: var(--gray-50);
+}
+
+.overview-no-results__clear:focus-visible {
+    outline: 2px solid var(--sa-600);
+    outline-offset: 2px;
 }
 
 /* ============================================
@@ -251,5 +441,19 @@
    RTL SUPPORT
    ============================================ */
 [dir="rtl"] .overview-search-input {
-    padding: 0 40px 0 40px;
+    padding: 0 var(--spacing-5xl) 0 var(--spacing-5xl);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    .overview-card,
+    .foundation-card {
+        transition: none;
+    }
+
+    .overview-card:hover {
+        transform: none;
+    }
 }

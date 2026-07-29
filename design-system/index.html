@@ -7,6 +7,17 @@
     <meta name="description" content="Navigation Design System - DGA Saudi Arabia Guidelines">
     <title>Navigation Design System - DGA Components</title>
 
+    <!-- Apply the saved theme before styles load (no flash of light mode) -->
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('dga-theme');
+                if (!t && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) t = 'dark';
+                if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+            } catch (e) { /* private mode */ }
+        })();
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +25,12 @@
 
     <!-- Design System CSS -->
     <!-- Core Styles -->
+    <!-- Official DGA theme: full token scales (--sa-*, --gray-*, semantic colors,
+         --radius-*, --spacing-*) and utility classes (background-color-*, text-*,
+         border-color-*, border-radius-*, gap-*, shadow-*, gradient-*).
+         MUST load BEFORE css/tokens.css so project-specific overrides
+         (e.g. --radius-lg/-xl) keep final say on overlapping names. -->
+    <link rel="stylesheet" href="utilities/DGATheme.css">
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/base.css">
 
@@ -50,6 +67,14 @@
     <link rel="stylesheet" href="components/checkbox/checkbox.css">
     <link rel="stylesheet" href="components/notification/notification.css">
     <link rel="stylesheet" href="components/notification-toast/notification-toast.css">
+    <link rel="stylesheet" href="components/inline-alert/inline-alert.css">
+    <link rel="stylesheet" href="components/avatar/avatar.css">
+    <link rel="stylesheet" href="components/progress-bar/progress-bar.css">
+    <link rel="stylesheet" href="components/skeleton/skeleton.css">
+    <link rel="stylesheet" href="components/accordion/accordion.css">
+    <link rel="stylesheet" href="components/dropdown/dropdown.css">
+    <link rel="stylesheet" href="components/search-box/search-box.css">
+    <link rel="stylesheet" href="components/rating/rating.css">
     <link rel="stylesheet" href="components/second-nav-header/second-nav-header.css">
     <link rel="stylesheet" href="components/components-overview/components-overview.css">
     <link rel="stylesheet" href="css/context-menu.css">
@@ -57,12 +82,28 @@
     <!-- Icon Font Styles -->
     <link rel="stylesheet" href="css/icons-fonts.css">
     <link rel="stylesheet" href="components/icons/icons.css">
+    <link rel="stylesheet" href="components/service-page/service-page.css">
+
+    <!-- Token documentation pages (Classes + Styles) -->
+    <link rel="stylesheet" href="components/classes/token-docs.css">
+
+    <!-- Code snippet panels on component preview pages -->
+    <link rel="stylesheet" href="css/code-view.css">
+
+    <!-- Dark mode (html[data-theme="dark"]) — loads last so its component-scoped rules win -->
+    <link rel="stylesheet" href="css/dark-mode.css">
 </head>
 
 <body>
     <div class="layout">
         <!-- Top Header Navigation (DGA Navigation Component) -->
         <header class="navigation-header" role="banner">
+
+            <!-- Hamburger (mobile only, NDS dga-header behavior) -->
+            <button type="button" class="header-menu-btn" id="header-menu-btn" aria-expanded="false"
+                aria-controls="header-mobile-menu" aria-label="Open menu">
+                <span class="icon dga-icon-menu-01" aria-hidden="true"></span>
+            </button>
 
             <!-- Left Section: Logo + Navigation Links -->
             <div class="navigation-header__left">
@@ -76,7 +117,7 @@
                             d="M24 8C22.9 8 22 9.12 22 10.5V18L18 17.3C17.3 17.2 16.6 17.7 16.5 18.4C16.4 19.1 16.9 19.7 17.6 19.8L22 20.5V23L17 25.5C16.4 25.8 16.2 26.5 16.5 27.1C16.8 27.7 17.5 27.9 18.1 27.6L22 25.6V29L17 34C16.6 34.4 16.6 35 17 35.4C17.4 35.8 18 35.8 18.4 35.4L22 31.8V38C22 39.1 22.9 40 24 40C25.1 40 26 39.1 26 38V31.8L29.6 35.4C30 35.8 30.6 35.8 31 35.4C31.4 35 31.4 34.4 31 34L26 29V25.6L29.9 27.6C30.5 27.9 31.2 27.7 31.5 27.1C31.8 26.5 31.6 25.8 31 25.5L26 23V20.5L30.4 19.8C31.1 19.7 31.6 19.1 31.5 18.4C31.4 17.7 30.7 17.2 30 17.3L26 18V10.5C26 9.12 25.1 8 24 8Z"
                             fill="#9DA4AE" />
                     </svg>
-                    <span class="logo-placeholder__text">Platform Logo</span>
+                    <span class="logo-placeholder__text" data-i18n="logo">Platform Logo</span>
                 </div>
 
                 <!-- Navigation Menu -->
@@ -84,52 +125,32 @@
 
                     <!-- Home -->
                     <a href="#nav-header" class="header-menu-item main-nav-link" role="menuitem">
-                        <span class="header-menu-item__text">Home</span>
-                        <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6 9L12 15L18 9" />
-                        </svg>
+                        <span class="header-menu-item__text" data-i18n="home">Home</span>
                     </a>
 
                     <!-- Styles -->
-                    <a href="#" class="header-menu-item main-nav-link" role="menuitem">
-                        <span class="header-menu-item__text">Styles</span>
-                        <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6 9L12 15L18 9" />
-                        </svg>
+                    <a href="#styles" class="header-menu-item main-nav-link" role="menuitem">
+                        <span class="header-menu-item__text" data-i18n="styles">Styles</span>
                     </a>
 
                     <!-- Classes -->
-                    <a href="#" class="header-menu-item main-nav-link" role="menuitem">
-                        <span class="header-menu-item__text">Classes</span>
-                        <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6 9L12 15L18 9" />
-                        </svg>
+                    <a href="#classes" class="header-menu-item main-nav-link" role="menuitem">
+                        <span class="header-menu-item__text" data-i18n="classes">Classes</span>
                     </a>
 
                     <!-- Components (Selected) -->
                     <a href="#components-overview" class="header-menu-item header-menu-item--selected main-nav-link active" role="menuitem">
-                        <span class="header-menu-item__text">Components</span>
-                        <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6 9L12 15L18 9" />
-                        </svg>
+                        <span class="header-menu-item__text" data-i18n="components">Components</span>
                     </a>
 
                     <!-- Screen Templates -->
                     <a href="#screens" class="header-menu-item main-nav-link" role="menuitem">
-                        <span class="header-menu-item__text">Screen Templates</span>
-                        <svg class="header-menu-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6 9L12 15L18 9" />
-                        </svg>
+                        <span class="header-menu-item__text" data-i18n="screens">Screen Templates</span>
                     </a>
 
                     <!-- Icons -->
                     <a href="#icons" class="header-menu-item main-nav-link" role="menuitem">
-                        <span class="header-menu-item__text">Icons</span>
+                        <span class="header-menu-item__text" data-i18n="icons">Icons</span>
                     </a>
 
                 </nav>
@@ -145,7 +166,7 @@
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                         <circle cx="12" cy="7" r="4" />
                     </svg>
-                    <span>About Team</span>
+                    <span data-i18n="aboutTeam">About Team</span>
                 </a>
 
                 <!-- Search -->
@@ -155,8 +176,30 @@
                         <circle cx="11" cy="11" r="8" />
                         <line x1="21" y1="21" x2="16.65" y2="16.65" />
                     </svg>
-                    <span>Search</span>
+                    <span data-i18n="search">Search</span>
                 </a>
+
+                <!-- Theme Toggle (light / dark) -->
+
+                <a href="#" class="header-action header-action--outline header-action--icon-only theme-toggle" aria-label="Toggle dark mode" data-i18n-aria="themeToggle">
+
+                    <svg class="header-action__icon theme-toggle__moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+
+                    </svg>
+
+                    <svg class="header-action__icon theme-toggle__sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                        <circle cx="12" cy="12" r="5" />
+
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+
+                    </svg>
+
+                </a>
+
+                
 
                 <!-- Language Toggle (Primary) -->
                 <a href="#" class="header-action header-action--primary lang-toggle">
@@ -171,6 +214,11 @@
 
             </div>
 
+            <!-- Mobile menu panel (opened by the hamburger, NDS behavior) -->
+            <div class="header-mobile-menu" id="header-mobile-menu" role="menu" aria-label="Main menu">
+                <!-- Populated from the desktop menu on open -->
+            </div>
+
         </header>
 
         <!-- Main Content Area -->
@@ -181,15 +229,20 @@
                     <a href="#" class="sidebar-link" data-component="components-overview"><span class="icon sidebar-link__icon dga-icon-dashboard-square-01"></span>Overview</a>
                     <a href="#" class="sidebar-link" data-component="buttons"><span class="icon sidebar-link__icon dga-icon-cursor-pointer-01"></span>Buttons<span class="sidebar-link__badge">New</span></a>
                     <a href="#" class="sidebar-link" data-component="text-input"><span class="icon sidebar-link__icon dga-icon-type-cursor"></span>Text Input</a>
+                    <a href="#" class="sidebar-link" data-component="dropdown"><span class="icon sidebar-link__icon dga-icon-arrow-down-01"></span>Dropdown<span class="sidebar-link__badge">New</span></a>
+                    <a href="#" class="sidebar-link" data-component="search-box"><span class="icon sidebar-link__icon dga-icon-search-01"></span>Search Box<span class="sidebar-link__badge">New</span></a>
+                    <a href="#" class="sidebar-link" data-component="rating"><span class="icon sidebar-link__icon dga-icon-star"></span>Rating<span class="sidebar-link__badge">New</span></a>
                     <a href="#" class="sidebar-link" data-component="textarea"><span class="icon sidebar-link__icon dga-icon-note-01"></span>Textarea<span class="sidebar-link__badge">New</span></a>
                     <a href="#" class="sidebar-link" data-component="radio"><span class="icon sidebar-link__icon dga-icon-circle"></span>Radio Button<span class="sidebar-link__badge">New</span></a>
                     <a href="#" class="sidebar-link" data-component="checkbox"><span class="icon sidebar-link__icon dga-icon-checkmark-square-01"></span>Checkbox<span class="sidebar-link__badge">New</span></a>
                     <a href="#" class="sidebar-link" data-component="file-upload"><span class="icon sidebar-link__icon dga-icon-cloud-upload"></span>File Upload<span class="sidebar-link__badge">New</span></a>
                     <a href="#" class="sidebar-link" data-component="tags"><span class="icon sidebar-link__icon dga-icon-tag-01"></span>Tags</a>
                     <a href="#" class="sidebar-link" data-component="chips"><span class="icon sidebar-link__icon dga-icon-chip"></span>Chips<span class="sidebar-link__badge">New</span></a>
+                    <a href="#" class="sidebar-link" data-component="avatar"><span class="icon sidebar-link__icon dga-icon-user"></span>Avatar<span class="sidebar-link__badge">New</span></a>
                     <a href="#" class="sidebar-link" data-component="status-tag"><span class="icon sidebar-link__icon dga-icon-checkmark-badge-01"></span>Status Tag</a>
                     <a href="#" class="sidebar-link" data-component="pagination"><span class="icon sidebar-link__icon dga-icon-more-horizontal"></span>Pagination</a>
                     <a href="#" class="sidebar-link" data-component="tabs"><span class="icon sidebar-link__icon dga-icon-browser"></span>Tabs<span class="sidebar-link__badge">New</span></a>
+                    <a href="#" class="sidebar-link" data-component="accordion"><span class="icon sidebar-link__icon dga-icon-arrow-down-01"></span>Accordion<span class="sidebar-link__badge">New</span></a>
                     <a href="#" class="sidebar-link" data-component="tables"><span class="icon sidebar-link__icon dga-icon-grid-table"></span>Tables</a>
                     <a href="#" class="sidebar-link" data-component="screens"><span class="icon sidebar-link__icon dga-icon-computer"></span>Screens</a>
                     <a href="#" class="sidebar-link" data-component="breadcrumbs"><span class="icon sidebar-link__icon dga-icon-hierarchy"></span>Breadcrumbs</a>
@@ -204,6 +257,7 @@
                     <a href="#" class="sidebar-link" data-component="tooltip"><span class="icon sidebar-link__icon dga-icon-comment-01"></span>Tooltip</a>
                     <a href="#" class="sidebar-link" data-component="notification"><span class="icon sidebar-link__icon dga-icon-notification-01"></span>Notification<span class="sidebar-link__badge">New</span></a>
                     <a href="#" class="sidebar-link" data-component="notification-toast"><span class="icon sidebar-link__icon dga-icon-notification-01"></span>Notification Toast<span class="sidebar-link__badge">New</span></a>
+                    <a href="#" class="sidebar-link" data-component="inline-alert"><span class="icon sidebar-link__icon dga-icon-alert-02"></span>Inline Alert<span class="sidebar-link__badge">New</span></a>
                     <a href="#" class="sidebar-link" data-component="modal"><span class="icon sidebar-link__icon dga-icon-alert-02"></span>Modal</a>
                     <a href="#" class="sidebar-link" data-component="digital-stamp"><span class="icon sidebar-link__icon dga-icon-stamp-01"></span>Digital Stamp</a>
                     <a href="#" class="sidebar-link" data-component="form-template"><span class="icon sidebar-link__icon dga-icon-check-list"></span>Form Template</a>
@@ -211,6 +265,8 @@
                     <a href="#" class="sidebar-link" data-component="footer"><span class="icon sidebar-link__icon dga-icon-layout-bottom"></span>Footer</a>
                     <a href="#" class="sidebar-link" data-component="date-picker"><span class="icon sidebar-link__icon dga-icon-calendar-03"></span>Date Picker<span class="sidebar-link__badge">New</span></a>
                     <a href="#" class="sidebar-link" data-component="progress-indicator"><span class="icon sidebar-link__icon dga-icon-loading-01"></span>Progress Indicator<span class="sidebar-link__badge">New</span></a>
+                    <a href="#" class="sidebar-link" data-component="progress-bar"><span class="icon sidebar-link__icon dga-icon-loading-03"></span>Progress Bar<span class="sidebar-link__badge">New</span></a>
+                    <a href="#" class="sidebar-link" data-component="skeleton"><span class="icon sidebar-link__icon dga-icon-dashboard-square-01"></span>Skeleton<span class="sidebar-link__badge">New</span></a>
                 </nav>
             </aside>
 
@@ -252,10 +308,22 @@
     <script src="js/components/checkbox.js"></script>
     <script src="js/components/notification.js"></script>
     <script src="js/components/notification-toast.js"></script>
+    <script src="js/components/inline-alert.js"></script>
+    <script src="js/components/avatar.js"></script>
+    <script src="js/components/progress-bar.js"></script>
+    <script src="js/components/accordion.js"></script>
+    <script src="js/components/dropdown.js"></script>
+    <script src="js/components/search-box.js"></script>
+    <script src="js/components/rating.js"></script>
     <script src="js/components/second-nav-header.js"></script>
     <script src="js/components/footer.js"></script>
     <script src="js/icons-data.js"></script>
     <script src="js/components/icons.js"></script>
+    <script src="js/library-icons-data.js"></script>
+    <script src="js/components/library-icons.js"></script>
+    <script src="js/components/service-page.js"></script>
+    <script src="js/components/token-docs.js"></script>
+    <script src="js/components/code-view.js"></script>
     <script src="js/main.js"></script>
 </body>
 

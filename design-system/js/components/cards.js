@@ -418,7 +418,7 @@ ${chevron}`;
         // for the docs. We add a marker class and explicit inset-ring shadow
         // so reviewers can preview the focused appearance without tabbing in.
         if (state === 'focused' && card && (type === 'expandable' || type === 'selectable')) {
-            const inset = 'inset 0 0 0 2px #161616';
+            const inset = 'inset 0 0 0 2px var(--border-black)';
             const base = effect === 'with-shadow'
                 ? 'rgba(16, 24, 40, 0.1) 0px 4px 8px -2px, rgba(16, 24, 40, 0.06) 0px 2px 4px -2px'
                 : '';

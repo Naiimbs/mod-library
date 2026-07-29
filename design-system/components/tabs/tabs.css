@@ -27,8 +27,8 @@
     left: 0;
     right: 0;
     height: 3px;
-    background-color: #d2d6db;
-    border-radius: 9999px;
+    background-color: var(--gray-300);
+    border-radius: var(--radius-full);
     z-index: 0;
 }
 
@@ -49,9 +49,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: var(--spacing-xs);
     position: relative;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     background: transparent;
     border: none;
@@ -60,6 +60,12 @@
     flex-shrink: 0;
     padding: 0;
     outline: none;
+    /* explicit color so icons/text never inherit from the vendor layer */
+    color: var(--gray-700);
+}
+
+.tab-item.active {
+    color: var(--text-default);
 }
 
 /* ============================================
@@ -69,17 +75,17 @@
 /* Medium (Default) - 12px vertical, 16px horizontal */
 .tab-item,
 .tab-item--md {
-    padding: 12px 16px;
+    padding: var(--spacing-lg) var(--spacing-xl);
 }
 
 /* Large - 16px all sides */
 .tab-item--lg {
-    padding: 16px;
+    padding: var(--spacing-xl);
 }
 
 /* Small - 8px vertical, 12px horizontal */
 .tab-item--sm {
-    padding: 8px 12px;
+    padding: var(--spacing-md) var(--spacing-lg);
 }
 
 /* ============================================
@@ -88,18 +94,18 @@
 
 .tab-item__title {
     font-family: "IBMPlexSansArabicMedium", "IBM Plex Sans Arabic", sans-serif;
-    font-weight: 500;
-    font-size: 14px;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
     line-height: 20px;
-    color: #384250;
+    color: var(--gray-700);
     white-space: nowrap;
 }
 
 /* Selected tab text - bold and dark */
 .tab-item.active .tab-item__title {
     font-family: "IBMPlexSansArabicBold", "IBM Plex Sans Arabic", sans-serif;
-    font-weight: 700;
-    color: #161616;
+    font-weight: var(--font-weight-bold);
+    color: var(--text-default);
 }
 
 /* ============================================
@@ -134,15 +140,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0 16px;
+    padding: 0 var(--spacing-xl);
     z-index: 2;
 }
 
 .tab-item__indicator-bar {
     width: 100%;
     height: 3px;
-    background-color: #1b8354;
-    border-radius: 9999px;
+    background-color: var(--sa-600);
+    border-radius: var(--radius-full);
 }
 
 .tab-item.active .tab-item__indicator {
@@ -164,11 +170,11 @@
 
 /* Unselected hover - gray background, text darkens to #161616, black indicator */
 .tab-item:hover:not(.active):not(:disabled):not(.disabled) {
-    background-color: #f3f4f6;
+    background-color: var(--gray-100);
 }
 
 .tab-item:hover:not(.active):not(:disabled):not(.disabled) .tab-item__title {
-    color: #161616;
+    color: var(--text-default);
 }
 
 .tab-item:hover:not(.active):not(:disabled):not(.disabled) .tab-item__indicator {
@@ -176,7 +182,7 @@
 }
 
 .tab-item:hover:not(.active):not(:disabled):not(.disabled) .tab-item__indicator-bar {
-    background-color: #161616;
+    background-color: var(--text-default);
 }
 
 /* Selected hover - no background change (stays transparent) */
@@ -190,11 +196,11 @@
 
 /* Unselected pressed - darker gray background, black indicator */
 .tab-item:active:not(.active):not(:disabled):not(.disabled) {
-    background-color: #e5e7eb;
+    background-color: var(--gray-200);
 }
 
 .tab-item:active:not(.active):not(:disabled):not(.disabled) .tab-item__title {
-    color: #161616;
+    color: var(--text-default);
 }
 
 .tab-item:active:not(.active):not(:disabled):not(.disabled) .tab-item__indicator {
@@ -202,7 +208,7 @@
 }
 
 .tab-item:active:not(.active):not(:disabled):not(.disabled) .tab-item__indicator-bar {
-    background-color: #161616;
+    background-color: var(--text-default);
 }
 
 /* Selected pressed - no background change */
@@ -215,14 +221,14 @@
    ============================================ */
 
 .tab-item:focus-visible {
-    border: 3px solid #161616;
-    border-radius: 2px;
+    border: 3px solid var(--border-black);
+    border-radius: var(--radius-xs);
     outline: none;
-    box-shadow: inset 0 0 0 1px #ffffff;
+    box-shadow: inset 0 0 0 1px var(--alpha-white);
 }
 
 .tab-item:focus-visible .tab-item__title {
-    color: #161616;
+    color: var(--text-default);
 }
 
 /* ============================================
@@ -238,13 +244,13 @@
 
 .tab-item:disabled .tab-item__title,
 .tab-item.disabled .tab-item__title {
-    color: #9da4ae;
+    color: var(--gray-400);
 }
 
 /* Disabled + selected: indicator turns gray */
 .tab-item:disabled.active .tab-item__indicator-bar,
 .tab-item.disabled.active .tab-item__indicator-bar {
-    background-color: #9da4ae;
+    background-color: var(--gray-400);
 }
 
 /* Disabled icon opacity */
@@ -262,8 +268,8 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    padding: 12px 16px;
-    border-radius: 4px;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-radius: var(--radius-sm);
     cursor: pointer;
     background: transparent;
     border: none;
@@ -271,11 +277,11 @@
 }
 
 .tab-list__more:hover {
-    background-color: #f3f4f6;
+    background-color: var(--gray-100);
 }
 
 .tab-list__more:active {
-    background-color: #e5e7eb;
+    background-color: var(--gray-200);
 }
 
 .tab-list__more-icon {
@@ -284,7 +290,7 @@
     justify-content: center;
     width: 32px;
     height: 32px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
 }
 
 .tab-list__more-icon svg {
@@ -309,11 +315,11 @@
 
 /* When tab-list has a size class, all child tab-items inherit */
 .tab-list--sm .tab-item {
-    padding: 8px 12px;
+    padding: var(--spacing-md) var(--spacing-lg);
 }
 
 .tab-list--lg .tab-item {
-    padding: 16px;
+    padding: var(--spacing-xl);
 }
 
 /* ============================================
@@ -361,8 +367,8 @@
 
 .tab-item[aria-selected="true"] .tab-item__title {
     font-family: "IBMPlexSansArabicBold", "IBM Plex Sans Arabic", sans-serif;
-    font-weight: 700;
-    color: #161616;
+    font-weight: var(--font-weight-bold);
+    color: var(--text-default);
 }
 
 .tab-item[aria-selected="true"] .tab-item__indicator {

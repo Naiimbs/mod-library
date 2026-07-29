@@ -1,0 +1,358 @@
+<div class="content-header">
+    <h1 class="content-title">Accordion</h1>
+    <p class="content-description">Accordions collapse long content into scannable sections that expand on demand.
+        Three sizes, a leading or trailing chevron, a flush variant with inset separators, and disabled items. Ported
+        from the DGA library's <code>nds-accordion</code> component.</p>
+</div>
+
+<!-- ============================================
+     INTERACTIVE LIVE DEMO
+     ============================================ -->
+<h2 class="live-demo__heading">Live demo</h2>
+
+<div class="live-demo">
+    <div class="live-demo__body">
+        <!-- Left: Preview canvas -->
+        <div class="live-demo__canvas" id="accordion-demo-preview">
+            <!-- Rendered dynamically by JS -->
+        </div>
+
+        <!-- Right: Controls sidebar -->
+        <div class="live-demo__sidebar">
+            <div class="live-demo__sidebar-header">
+                <h3 class="live-demo__sidebar-title">Accordion</h3>
+                <p class="live-demo__sidebar-desc">Click a header to expand its content. The body animates to its
+                    measured height, exactly like the library behavior.</p>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">RTL</label>
+                <button class="live-demo__switch" data-toggle="rtl" type="button" role="switch" aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="accordion-demo-size">Size</label>
+                <select class="live-demo__sidebar-select" id="accordion-demo-size">
+                    <option value="lg" selected>Large</option>
+                    <option value="md">Medium</option>
+                    <option value="sm">Small</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label" for="accordion-demo-icon">Icon alignment</label>
+                <select class="live-demo__sidebar-select" id="accordion-demo-icon">
+                    <option value="trailing" selected>Trailing</option>
+                    <option value="leading">Leading</option>
+                </select>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Flush</label>
+                <button class="live-demo__switch" data-toggle="flush" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+
+            <div class="live-demo__sidebar-row">
+                <label class="live-demo__sidebar-label">Disabled</label>
+                <button class="live-demo__switch" data-toggle="disabled" type="button" role="switch"
+                    aria-checked="false">
+                    <span class="live-demo__switch-thumb"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="live-demo__footer">
+        This live demo contains only a preview of functionality and styles available for this component. Changing a
+        control re-renders the accordion collapsed.
+    </div>
+</div>
+
+<!-- ============================================
+     PROPS / CONFIGURATION TABLE
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Props / Configuration</h2>
+        <p class="showcase-description">All available CSS classes for configuring accordions, mapped from the
+            library's <code>nds-accordion</code> API.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
+        <table class="props-table">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Type</th>
+                    <th>Library prop</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.accordion</code></td>
+                    <td>Base</td>
+                    <td>—</td>
+                    <td>List container (<code>&lt;ul&gt;</code>). Draws the bottom border of the last item.</td>
+                </tr>
+                <tr>
+                    <td><code>.accordion-item</code></td>
+                    <td>Base</td>
+                    <td>—</td>
+                    <td>One section: a header button plus a collapsible body, separated by top borders.</td>
+                </tr>
+                <tr>
+                    <td><code>.accordion-item--lg|--md|--sm</code></td>
+                    <td>Modifier</td>
+                    <td><code>size</code></td>
+                    <td>Header padding density: 16px / 12×16px / 8×16px.</td>
+                </tr>
+                <tr>
+                    <td><code>.accordion-item--icon-leading</code></td>
+                    <td>Modifier</td>
+                    <td><code>icon-alignment</code></td>
+                    <td>Moves the chevron before the title and indents the body under it. Default is trailing.</td>
+                </tr>
+                <tr>
+                    <td><code>.accordion-item--flush</code></td>
+                    <td>Modifier</td>
+                    <td><code>flush</code></td>
+                    <td>Replaces full-width borders with an inset separator that stops 16px from each edge.</td>
+                </tr>
+                <tr>
+                    <td><code>.accordion-item.active</code></td>
+                    <td>State</td>
+                    <td><code>is-open</code></td>
+                    <td>Expanded: the chevron rotates 180° and the body animates to its measured height.</td>
+                </tr>
+                <tr>
+                    <td><code>.accordion-item.disabled</code></td>
+                    <td>State</td>
+                    <td><code>disabled</code></td>
+                    <td>Grays the item out and ignores interaction.</td>
+                </tr>
+                <tr>
+                    <td><code>.accordion-item__header</code> / <code>__title</code> / <code>__arrow</code> /
+                        <code>__body</code></td>
+                    <td>Element</td>
+                    <td><code>title</code>, <code>content</code></td>
+                    <td>Header is a real <code>&lt;button&gt;</code> with <code>aria-expanded</code>; the title is
+                        16px semibold, the body 16px regular.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ============================================
+     DEFAULT
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Default</h2>
+        <p class="showcase-description">Trailing chevron, large density. Click any header to expand it; items operate
+            independently.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <ul class="accordion">
+            <li class="accordion-item accordion-item--lg">
+                <button type="button" class="accordion-item__header" aria-expanded="false">
+                    <span class="accordion-item__title">What is the digital services portal?</span>
+                    <span class="accordion-item__arrow icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-item__body">
+                    <p>A unified portal for accessing government digital services in the Kingdom, built on the DGA
+                        design system.</p>
+                </div>
+            </li>
+            <li class="accordion-item accordion-item--lg">
+                <button type="button" class="accordion-item__header" aria-expanded="false">
+                    <span class="accordion-item__title">How do I create an account?</span>
+                    <span class="accordion-item__arrow icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-item__body">
+                    <p>You can register with the national single sign-on in a few minutes.</p>
+                </div>
+            </li>
+            <li class="accordion-item accordion-item--lg">
+                <button type="button" class="accordion-item__header" aria-expanded="false">
+                    <span class="accordion-item__title">Is the service free?</span>
+                    <span class="accordion-item__arrow icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-item__body">
+                    <p>Yes. All core services are available at no charge.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- ============================================
+     SIZES
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Sizes</h2>
+        <p class="showcase-description">Three header densities for different page rhythms.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch; gap: var(--spacing-4xl);">
+        <ul class="accordion">
+            <li class="accordion-item accordion-item--lg">
+                <button type="button" class="accordion-item__header" aria-expanded="false">
+                    <span class="accordion-item__title">Large (16px padding)</span>
+                    <span class="accordion-item__arrow icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-item__body"><p>Body content.</p></div>
+            </li>
+        </ul>
+        <ul class="accordion">
+            <li class="accordion-item accordion-item--md">
+                <button type="button" class="accordion-item__header" aria-expanded="false">
+                    <span class="accordion-item__title">Medium (12 × 16px padding)</span>
+                    <span class="accordion-item__arrow icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-item__body"><p>Body content.</p></div>
+            </li>
+        </ul>
+        <ul class="accordion">
+            <li class="accordion-item accordion-item--sm">
+                <button type="button" class="accordion-item__header" aria-expanded="false">
+                    <span class="accordion-item__title">Small (8 × 16px padding)</span>
+                    <span class="accordion-item__arrow icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-item__body"><p>Body content.</p></div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- ============================================
+     LEADING ICON
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Leading Icon</h2>
+        <p class="showcase-description">The chevron moves before the title and the expanded body indents under it.
+        </p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <ul class="accordion">
+            <li class="accordion-item accordion-item--lg accordion-item--icon-leading">
+                <button type="button" class="accordion-item__header" aria-expanded="false">
+                    <span class="accordion-item__arrow icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                    <span class="accordion-item__title">Leading chevron</span>
+                </button>
+                <div class="accordion-item__body">
+                    <p>The body aligns with the title, indented past the chevron column.</p>
+                </div>
+            </li>
+            <li class="accordion-item accordion-item--lg accordion-item--icon-leading">
+                <button type="button" class="accordion-item__header" aria-expanded="false">
+                    <span class="accordion-item__arrow icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                    <span class="accordion-item__title">Second section</span>
+                </button>
+                <div class="accordion-item__body"><p>More content.</p></div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- ============================================
+     FLUSH
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Flush</h2>
+        <p class="showcase-description">Separators stop 16px short of each edge for use inside cards and panels.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <ul class="accordion">
+            <li class="accordion-item accordion-item--lg accordion-item--flush">
+                <button type="button" class="accordion-item__header" aria-expanded="false">
+                    <span class="accordion-item__title">First flush section</span>
+                    <span class="accordion-item__arrow icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-item__body"><p>Body content.</p></div>
+            </li>
+            <li class="accordion-item accordion-item--lg accordion-item--flush">
+                <button type="button" class="accordion-item__header" aria-expanded="false">
+                    <span class="accordion-item__title">Second flush section</span>
+                    <span class="accordion-item__arrow icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-item__body"><p>Body content.</p></div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- ============================================
+     DISABLED
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">Disabled</h2>
+        <p class="showcase-description">Disabled items gray out and ignore hover, focus, and clicks.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;">
+        <ul class="accordion">
+            <li class="accordion-item accordion-item--lg disabled">
+                <button type="button" class="accordion-item__header" aria-expanded="false" disabled>
+                    <span class="accordion-item__title">Disabled section</span>
+                    <span class="accordion-item__arrow icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-item__body"><p>Not reachable.</p></div>
+            </li>
+            <li class="accordion-item accordion-item--lg">
+                <button type="button" class="accordion-item__header" aria-expanded="false">
+                    <span class="accordion-item__title">Enabled section</span>
+                    <span class="accordion-item__arrow icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-item__body"><p>Works as usual.</p></div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- ============================================
+     RTL LAYOUT
+     ============================================ -->
+<div class="showcase-section">
+    <div class="showcase-header">
+        <h2 class="showcase-title">RTL Layout</h2>
+        <p class="showcase-description">Header order and body indentation mirror in right-to-left layouts.</p>
+    </div>
+    <div class="showcase-divider"></div>
+    <div class="showcase-preview" style="align-items: stretch;" dir="rtl">
+        <ul class="accordion">
+            <li class="accordion-item accordion-item--lg">
+                <button type="button" class="accordion-item__header" aria-expanded="false">
+                    <span class="accordion-item__title">ما هي بوابة الخدمات الرقمية؟</span>
+                    <span class="accordion-item__arrow icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-item__body">
+                    <p>بوابة موحدة للوصول إلى الخدمات الحكومية الرقمية في المملكة.</p>
+                </div>
+            </li>
+            <li class="accordion-item accordion-item--lg">
+                <button type="button" class="accordion-item__header" aria-expanded="false">
+                    <span class="accordion-item__title">كيف يمكنني إنشاء حساب؟</span>
+                    <span class="accordion-item__arrow icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-item__body">
+                    <p>يمكنك التسجيل باستخدام النفاذ الوطني الموحد خلال دقائق.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

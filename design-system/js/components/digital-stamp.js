@@ -244,7 +244,7 @@ class DigitalStampDemoManager {
         if (isRTL) classes.push('digital-stamp--rtl');
 
         const bar = `<div class="digital-stamp__content">
-    <div class="digital-stamp__flag" style="background-color: #006923;">${DIGITAL_STAMP_FLAG_SVG}</div>
+    <div class="digital-stamp__flag">${DIGITAL_STAMP_FLAG_SVG}</div>
     <p class="digital-stamp__text">${t.promptShort}</p>
     <button type="button" class="digital-stamp__toggle" aria-expanded="${isOpened}">
         <span>${t.howYouKnow}</span>
@@ -284,7 +284,7 @@ class DigitalStampDemoManager {
         // the existing CSS contract.
         const mobileBar = `<div class="digital-stamp__content">
     <div class="digital-stamp__content">
-        <div class="digital-stamp__flag" style="background-color: #006923;">${DIGITAL_STAMP_FLAG_SVG}</div>
+        <div class="digital-stamp__flag">${DIGITAL_STAMP_FLAG_SVG}</div>
         <p class="digital-stamp__text">${t.promptShort}</p>
     </div>
     <button type="button" class="digital-stamp__toggle" aria-expanded="${isOpened}">

@@ -41,7 +41,7 @@
 /* Horizontal step: column layout (circle row on top, text below) */
 .progress-indicator--horizontal .progress-step {
     flex-direction: column;
-    gap: 8px;
+    gap: var(--spacing-md);
     align-items: flex-start;
     justify-content: center;
     flex: 1 1 0;
@@ -50,7 +50,7 @@
 /* Vertical step: row layout (circle column on left, text on right) */
 .progress-indicator--vertical .progress-step {
     flex-direction: row;
-    gap: 8px;
+    gap: var(--spacing-md);
     align-items: flex-start;
     justify-content: center;
 }
@@ -97,32 +97,32 @@
 
 /* Completed: solid green bg with checkmark */
 .progress-step--completed .progress-step__circle {
-    background-color: #1b8354;
+    background-color: var(--sa-600);
     border: none;
 }
 
 .progress-step--completed .progress-step__circle:hover {
-    background-color: #166a45;
+    background-color: var(--sa-700);
 }
 
 /* Current: green border with number */
 .progress-step--current .progress-step__circle {
     background-color: transparent;
-    border: 2px solid #1b8354;
+    border: 2px solid var(--sa-600);
 }
 
 .progress-step--current .progress-step__circle:hover {
-    border-color: #166a45;
+    border-color: var(--sa-700);
 }
 
 /* Upcoming: gray border with number */
 .progress-step--upcoming .progress-step__circle {
     background-color: transparent;
-    border: 2px solid #d2d6db;
+    border: 2px solid var(--gray-300);
 }
 
 .progress-step--upcoming .progress-step__circle:hover {
-    border-color: #9da4ae;
+    border-color: var(--gray-400);
 }
 
 /* ============================================
@@ -133,7 +133,7 @@
     display: none;
     width: 24px;
     height: 24px;
-    color: #ffffff;
+    color: var(--text-oncolor-primary, #FFFFFF);
 }
 
 .progress-step--completed .progress-step__check {
@@ -147,27 +147,27 @@
 .progress-step__number {
     display: none;
     font-family: "IBMPlexSansArabicMedium", "IBM Plex Sans Arabic", sans-serif;
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-md);
     line-height: 24px;
 }
 
 .progress-step--current .progress-step__number {
     display: block;
-    color: #1b8354;
+    color: var(--sa-600);
 }
 
 .progress-step--current .progress-step__circle:hover .progress-step__number {
-    color: #166a45;
+    color: var(--sa-700);
 }
 
 .progress-step--upcoming .progress-step__number {
     display: block;
-    color: #d2d6db;
+    color: var(--gray-300);
 }
 
 .progress-step--upcoming .progress-step__circle:hover .progress-step__number {
-    color: #9da4ae;
+    color: var(--gray-400);
 }
 
 /* ============================================
@@ -193,15 +193,15 @@
 
 /* Connector color by status */
 .progress-step--completed .progress-step__connector {
-    background-color: #1b8354;
+    background-color: var(--sa-600);
 }
 
 .progress-step--current .progress-step__connector {
-    background-color: #d2d6db;
+    background-color: var(--gray-300);
 }
 
 .progress-step--upcoming .progress-step__connector {
-    background-color: #d2d6db;
+    background-color: var(--gray-300);
 }
 
 /* Hide connector on last step */
@@ -216,40 +216,40 @@
 .progress-step__text {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: var(--spacing-xs);
     flex-shrink: 0;
     font-family: "IBM Plex Sans Arabic", sans-serif;
-    font-weight: 400;
+    font-weight: var(--font-weight-regular);
 }
 
 /* Horizontal: text has right padding to avoid overlap with next step */
 .progress-indicator--horizontal .progress-step__text {
-    padding-right: 16px;
+    padding-right: var(--spacing-xl);
 }
 
 /* Vertical: text has right padding */
 .progress-indicator--vertical .progress-step__text {
-    padding-right: 16px;
+    padding-right: var(--spacing-xl);
 }
 
 /* Step name */
 .progress-step__name {
-    font-size: 16px;
+    font-size: var(--font-size-md);
     line-height: 24px;
-    color: #1f2a37;
+    color: var(--gray-800);
 }
 
 /* Step description */
 .progress-step__desc {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     line-height: 20px;
-    color: #384250;
+    color: var(--gray-700);
 }
 
 /* Upcoming text: tertiary color */
 .progress-step--upcoming .progress-step__name,
 .progress-step--upcoming .progress-step__desc {
-    color: #6c737f;
+    color: var(--gray-500);
 }
 
 /* ============================================
@@ -270,32 +270,32 @@
 
 /* Completed dot: solid green fill */
 .progress-indicator--dot .progress-step--completed .progress-step__circle {
-    background-color: #1b8354;
+    background-color: var(--sa-600);
     border: none;
 }
 
 .progress-indicator--dot .progress-step--completed .progress-step__circle:hover {
-    background-color: #166a45;
+    background-color: var(--sa-700);
 }
 
 /* Current dot: solid green fill */
 .progress-indicator--dot .progress-step--current .progress-step__circle {
-    background-color: #1b8354;
+    background-color: var(--sa-600);
     border: none;
 }
 
 .progress-indicator--dot .progress-step--current .progress-step__circle:hover {
-    background-color: #166a45;
+    background-color: var(--sa-700);
 }
 
 /* Upcoming dot: gray ring */
 .progress-indicator--dot .progress-step--upcoming .progress-step__circle {
     background-color: transparent;
-    border: 2px solid #d2d6db;
+    border: 2px solid var(--gray-300);
 }
 
 .progress-indicator--dot .progress-step--upcoming .progress-step__circle:hover {
-    border-color: #9da4ae;
+    border-color: var(--gray-400);
 }
 
 /* ============================================
@@ -307,12 +307,12 @@
 
 [dir="rtl"] .progress-indicator--horizontal .progress-step__text {
     padding-right: 0;
-    padding-left: 16px;
+    padding-left: var(--spacing-xl);
 }
 
 [dir="rtl"] .progress-indicator--vertical .progress-step__text {
     padding-right: 0;
-    padding-left: 16px;
+    padding-left: var(--spacing-xl);
 }
 
 /* ============================================
@@ -322,12 +322,12 @@
    ============================================ */
 
 .progress-step--focused .progress-step__circle {
-    box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #161616;
+    box-shadow: 0 0 0 1px var(--alpha-white), 0 0 0 3px var(--text-default);
 }
 
 /* Keyboard focus uses the same ring */
 .progress-step__circle:focus-visible {
-    box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #161616;
+    box-shadow: 0 0 0 1px var(--alpha-white), 0 0 0 3px var(--text-default);
     outline: none;
 }
 

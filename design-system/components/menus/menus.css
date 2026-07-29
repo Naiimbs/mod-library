@@ -4,21 +4,21 @@
    Figma frames: 30195:22214 (Menu), 30195:21865 (Menu list item)
 
    Figma tokens:
-     Background/background-menu        #ffffff
-     Border/border-neutral-primary     #d2d6db
+     Background/background-menu        var(--alpha-white)
+     Border/border-neutral-primary     var(--gray-300)
      Shadows/shadow-2xl  0 24 48 -12 rgba(16,24,40,0.18)
      radius/8                          8   (menu corners)
      Radius/radius-sm                  4   (item corners)
      Button/button-menu-gap/h/v-pad    8
-     Text/text-display                 #1f2a37  (group label)
-     Text/text-default                 #161616  (item label)
-     Text/text-secondary-paragraph     #6c737f  (trail text)
-     Button/button-background-neutral-hovered  #f3f4f6
-     Button/button-background-neutral-pressed  #e5e7eb
-     Background/background-primary-50   #f3fcf6  (selected bg)
-     Text/text-primary                  #1b8354  (selected text/icon)
-     Border/border-black                #161616  (focus ring)
-     Controls/control-neutral-checked   #0d121c  (switch on)
+     Text/text-display                 var(--gray-800)  (group label)
+     Text/text-default                 var(--text-default)  (item label)
+     Text/text-secondary-paragraph     var(--gray-500)  (trail text)
+     Button/button-background-neutral-hovered  var(--gray-100)
+     Button/button-background-neutral-pressed  var(--gray-200)
+     Background/background-primary-50   var(--sa-50)  (selected bg)
+     Text/text-primary                  var(--sa-600)  (selected text/icon)
+     Border/border-black                var(--text-default)  (focus ring)
+     Controls/control-neutral-checked   var(--gray-950)  (switch on)
    ============================================ */
 
 /* ============================================
@@ -30,9 +30,9 @@
     flex-direction: column;
     min-width: 240px;
     padding: var(--spacing-md);             /* 8 */
-    background-color: #ffffff;              /* background-menu */
-    border: 1px solid #d2d6db;             /* border-neutral-primary */
-    border-radius: 8px;                     /* radius/8 */
+    background-color: var(--alpha-white);              /* background-menu */
+    border: 1px solid var(--gray-300);             /* border-neutral-primary */
+    border-radius: var(--radius-md);            /* radius/8 */
     box-shadow: 0 24px 48px -12px rgba(16, 24, 40, 0.18);  /* shadow-2xl */
     box-sizing: border-box;
     font-family: var(--font-family-primary);
@@ -59,25 +59,25 @@
 
 /* Divider between groups */
 .menu-group + .menu-group {
-    border-top: 1px solid var(--color-border-secondary, #e5e7eb);
+    border-top: 1px solid var(--gray-200);
 }
 
 .menu-divider {
     height: 1px;
     margin: var(--spacing-md) 0;
-    background-color: var(--color-border-secondary, #e5e7eb);
+    background-color: var(--gray-200);
     border: 0;
 }
 
 .menu-group__label {
     margin: 0;
     padding: var(--spacing-md);
-    font-size: 12px;
+    font-size: var(--font-size-xs);
     line-height: 18px;
-    font-weight: 700;                       /* text-xs/Bold */
+    font-weight: var(--font-weight-bold);                       /* text-xs/Bold */
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: #1f2a37;                         /* text-display */
+    color: var(--gray-800);                         /* text-display */
 }
 
 /* ============================================
@@ -91,10 +91,10 @@
     min-height: 40px;
     padding: var(--spacing-md);             /* 8 */
     border: 1px solid transparent;          /* reserve space for focus ring */
-    border-radius: var(--radius-sm, 4px);
+    border-radius: var(--radius-sm);
     background: none;
     text-decoration: none;
-    color: #161616;                         /* text-default */
+    color: var(--text-default);                         /* text-default */
     cursor: pointer;
     transition: background-color 0.12s ease;
     box-sizing: border-box;
@@ -111,8 +111,8 @@
     width: 16px;
     height: 16px;
     flex-shrink: 0;
-    color: #161616;                         /* icon-default */
-    font-size: 16px;
+    color: var(--text-default);                         /* icon-default */
+    font-size: var(--font-size-md);
     line-height: 1;
 }
 
@@ -124,9 +124,9 @@
 /* Label — fills available space */
 .menu-item__label {
     flex: 1 1 auto;
-    font-size: 16px;
+    font-size: var(--font-size-md);
     line-height: 24px;
-    font-weight: 400;                       /* text-md/Regular */
+    font-weight: var(--font-weight-regular);                       /* text-md/Regular */
     color: inherit;
     white-space: nowrap;
     overflow: hidden;
@@ -139,15 +139,15 @@
     align-items: center;
     flex-shrink: 0;
     margin-inline-start: auto;
-    color: var(--color-text-secondary, #6c737f);
-    font-size: 14px;
+    color: var(--gray-500);
+    font-size: var(--font-size-sm);
     line-height: 20px;
 }
 
 .menu-item__trail--text {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--color-text-secondary, #6c737f);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--gray-500);
 }
 
 .menu-item__trail-icon {
@@ -156,8 +156,8 @@
     justify-content: center;
     width: 20px;
     height: 20px;
-    color: #161616;
-    font-size: 20px;
+    color: var(--text-default);
+    font-size: var(--font-size-xl);
     line-height: 1;
 }
 
@@ -171,32 +171,32 @@
    ============================================ */
 
 .menu-item:hover:not(.menu-item--disabled):not(.menu-item--selected) {
-    background-color: #f3f4f6;              /* button-background-neutral-hovered */
+    background-color: var(--gray-100);              /* button-background-neutral-hovered */
 }
 
 .menu-item:active:not(.menu-item--disabled):not(.menu-item--selected) {
-    background-color: #e5e7eb;              /* button-background-neutral-pressed */
+    background-color: var(--gray-200);              /* button-background-neutral-pressed */
 }
 
 .menu-item:focus-visible {
     outline: none;
-    border-color: #161616;                  /* border-black focus ring */
+    border-color: var(--border-black);                  /* border-black focus ring */
 }
 
 /* Selected — green tint, primary text + icon */
 .menu-item--selected {
-    background-color: #f3fcf6;              /* background-primary-50 */
-    color: #1b8354;                         /* text-primary */
+    background-color: var(--sa-50);              /* background-primary-50 */
+    color: var(--sa-600);                         /* text-primary */
 }
 
 .menu-item--selected .menu-item__icon,
 .menu-item--selected .menu-item__trail-icon {
-    color: #1b8354;                         /* icon-primary */
+    color: var(--sa-600);                         /* icon-primary */
 }
 
 /* Disabled */
 .menu-item--disabled {
-    color: #9da4ae;                         /* text-default-disabled */
+    color: var(--gray-400);                         /* text-default-disabled */
     pointer-events: none;
     cursor: not-allowed;
 }
@@ -204,7 +204,7 @@
 .menu-item--disabled .menu-item__icon,
 .menu-item--disabled .menu-item__trail,
 .menu-item--disabled .menu-item__trail-icon {
-    color: #9da4ae;                         /* icon-default-disabled */
+    color: var(--gray-400);                         /* icon-default-disabled */
 }
 
 /* ============================================
@@ -217,8 +217,8 @@
     height: 20px;
     flex-shrink: 0;
     border: 0;
-    border-radius: var(--radius-full, 9999px);
-    background-color: var(--color-gray-300, #d2d6db);
+    border-radius: var(--radius-full);
+    background-color: var(--gray-300);
     cursor: pointer;
     padding: 0;
     transition: background-color 0.15s ease;
@@ -231,14 +231,14 @@
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #ffffff;
+    background-color: var(--alpha-white);
     box-shadow: var(--shadow-xs, 0 1px 2px rgba(16, 24, 40, 0.05));
     transition: transform 0.15s ease;
     pointer-events: none;
 }
 
 .menu-switch.is-on {
-    background-color: #0d121c;              /* control-neutral-checked */
+    background-color: var(--gray-950);              /* control-neutral-checked */
 }
 
 .menu-switch.is-on .menu-switch__thumb {
@@ -250,7 +250,7 @@
 }
 
 .menu-switch:focus-visible {
-    outline: 2px solid #161616;
+    outline: 2px solid var(--border-black);
     outline-offset: 2px;
 }
 
@@ -267,7 +267,7 @@
     position: absolute;
     top: calc(100% + var(--spacing-xs));
     inset-inline-start: 0;
-    z-index: var(--z-dropdown, 600);
+    z-index: var(--z-dropdown);
     display: none;
 }
 

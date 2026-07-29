@@ -29,17 +29,17 @@
 .chip {
     height: 32px;
     padding: 0 var(--spacing-lg);
-    font-size: 16px;
+    font-size: var(--font-size-md);
     font-weight: var(--font-weight-medium);
     line-height: 24px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
 }
 
 /* Medium — 24px */
 .chip-medium {
     height: 24px;
     padding: 0 var(--spacing-lg);
-    font-size: 12px;
+    font-size: var(--font-size-xs);
     font-weight: var(--font-weight-medium);
     line-height: 18px;
 }
@@ -66,39 +66,39 @@
    ============================================ */
 
 .chip-primary {
-    background-color: #f3fcf6;
-    color: #14573a;
+    background-color: var(--sa-50);
+    color: var(--sa-800);
 }
 
 .chip-primary:hover {
-    background-color: #e0f5e8;
-    color: #14573a;
+    background-color: var(--sa-100);
+    color: var(--sa-800);
 }
 
 .chip-primary:active {
-    background-color: #cceedd;
-    color: #14573a;
+    background-color: var(--sa-200);
+    color: var(--sa-800);
 }
 
 .chip-primary.selected {
-    background-color: #1b8354;
-    color: #FFFFFF;
+    background-color: var(--sa-600);
+    color: var(--text-oncolor-primary, #FFFFFF);
 }
 
 .chip-primary.selected:hover {
-    background-color: #166e46;
-    color: #FFFFFF;
+    background-color: var(--sa-700);
+    color: var(--text-oncolor-primary, #FFFFFF);
 }
 
 .chip-primary:focus-visible {
-    outline: 2px solid #1b8354;
+    outline: 2px solid var(--sa-600);
     outline-offset: 2px;
 }
 
 .chip-primary:disabled,
 .chip-primary.disabled {
-    background-color: #e5e7eb;
-    color: #9da4ae;
+    background-color: var(--gray-200);
+    color: var(--gray-400);
     cursor: not-allowed;
 }
 
@@ -107,39 +107,39 @@
    ============================================ */
 
 .chip-neutral {
-    background-color: #f3f4f6;
-    color: #161616;
+    background-color: var(--gray-100);
+    color: var(--text-default);
 }
 
 .chip-neutral:hover {
-    background-color: #e5e7eb;
-    color: #161616;
+    background-color: var(--gray-200);
+    color: var(--text-default);
 }
 
 .chip-neutral:active {
-    background-color: #d2d6db;
-    color: #161616;
+    background-color: var(--gray-300);
+    color: var(--text-default);
 }
 
 .chip-neutral.selected {
-    background-color: #384250;
-    color: #FFFFFF;
+    background-color: var(--gray-700);
+    color: var(--text-oncolor-primary, #FFFFFF);
 }
 
 .chip-neutral.selected:hover {
-    background-color: #2d3543;
-    color: #FFFFFF;
+    background-color: var(--gray-700);
+    color: var(--text-oncolor-primary, #FFFFFF);
 }
 
 .chip-neutral:focus-visible {
-    outline: 2px solid #384250;
+    outline: 2px solid var(--gray-700);
     outline-offset: 2px;
 }
 
 .chip-neutral:disabled,
 .chip-neutral.disabled {
-    background-color: #e5e7eb;
-    color: #9da4ae;
+    background-color: var(--gray-200);
+    color: var(--gray-400);
     cursor: not-allowed;
 }
 
@@ -149,40 +149,40 @@
 
 .chip-on-color.chip-primary,
 .chip-on-color.chip-neutral {
-    background-color: #FFFFFF;
-    color: #161616;
+    background-color: var(--alpha-white);
+    color: var(--text-default);
 }
 
 .chip-on-color.chip-primary:hover,
 .chip-on-color.chip-neutral:hover {
     background-color: rgba(255, 255, 255, 0.85);
-    color: #161616;
+    color: var(--text-default);
 }
 
 .chip-on-color.chip-primary:active,
 .chip-on-color.chip-neutral:active {
-    background-color: rgba(255, 255, 255, 0.7);
-    color: #161616;
+    background-color: var(--alpha-white-70);
+    color: var(--text-default);
 }
 
 .chip-on-color.chip-primary.selected {
-    background-color: #14573a;
-    color: #FFFFFF;
+    background-color: var(--sa-800);
+    color: var(--text-oncolor-primary, #FFFFFF);
 }
 
 .chip-on-color.chip-primary.selected:hover {
-    background-color: #0f4430;
-    color: #FFFFFF;
+    background-color: var(--sa-900);
+    color: var(--text-oncolor-primary, #FFFFFF);
 }
 
 .chip-on-color.chip-neutral.selected {
-    background-color: #384250;
-    color: #FFFFFF;
+    background-color: var(--gray-700);
+    color: var(--text-oncolor-primary, #FFFFFF);
 }
 
 .chip-on-color.chip-neutral.selected:hover {
-    background-color: #2d3543;
-    color: #FFFFFF;
+    background-color: var(--gray-700);
+    color: var(--text-oncolor-primary, #FFFFFF);
 }
 
 .chip-on-color.chip-primary:disabled,

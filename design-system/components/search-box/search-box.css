@@ -1,0 +1,190 @@
+/* ============================================
+   SEARCH BOX COMPONENT
+   DGA Design System — ported from @platformscode/core@0.0.50
+   dga-search-box onto DGA theme tokens. Leading search icon,
+   clear action with divider, the signature bottom press line,
+   and error / read-only / disabled states.
+   ============================================ */
+
+.search-box {
+    display: flex;
+    height: 40px;
+    width: 100%;
+    min-width: 200px;
+    justify-content: flex-start;
+    align-items: center;
+    padding: var(--spacing-none) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    gap: var(--spacing-md);
+    border: 1px solid var(--gray-400);
+    background: var(--alpha-white);
+    position: relative;
+}
+
+.search-box:hover {
+    border-color: var(--gray-700);
+}
+
+/* bottom press line, grows to full width while focused */
+.search-box::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0%;
+    height: 2px;
+    transform: translateX(-50%);
+    background-color: var(--gray-950);
+    transition: width 0.2s ease-in-out;
+}
+
+.search-box.focus::after { width: 100%; }
+.search-box.active::after { width: 50%; }
+
+.search-box__field {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    height: 100%;
+    width: 100%;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    color: var(--text-default);
+}
+
+.search-box__field::placeholder {
+    color: var(--gray-500);
+}
+
+.search-box__icon {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.search-box__icon span {
+    color: var(--gray-700);
+    font-size: var(--font-size-xl);
+}
+
+/* --- Actions (clear button + divider + optional trailing action) --- */
+.search-box__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.search-box__divider {
+    width: 1px;
+    height: 25px;
+    background-color: var(--gray-300);
+}
+
+.search-box__search-btn,
+.search-box__action-btn {
+    background: transparent;
+    outline: none;
+    border: none;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    color: var(--gray-700);
+    font-size: var(--font-size-xl);
+    padding: 0 var(--spacing-xs);
+}
+
+.search-box__action-btn:hover {
+    color: var(--gray-900);
+}
+
+.search-box__action-btn:focus-visible {
+    outline: 2px solid var(--sa-600);
+    outline-offset: 1px;
+    border-radius: var(--radius-xs);
+}
+
+/* --- Error --- */
+.search-box--error {
+    border-color: var(--error-700) !important;
+}
+
+.search-box--error::after {
+    background-color: var(--error-700) !important;
+}
+
+/* --- Feedback icons --- */
+.search-box__feedback-icon {
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.search-box__feedback-icon span {
+    font-size: var(--font-size-xl);
+    position: relative;
+    z-index: 0;
+}
+
+.search-box__feedback-icon span::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.16);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: var(--radius-full);
+    z-index: -1;
+}
+
+.search-box__feedback-icon--success { color: var(--success-700); }
+.search-box__feedback-icon--success span::after { background-color: var(--sa-100); }
+.search-box__feedback-icon--error { color: var(--error-700); }
+.search-box__feedback-icon--error span::after { background-color: var(--error-100); }
+.search-box__feedback-icon--warning { color: var(--warning-700); }
+.search-box__feedback-icon--warning span::after { background-color: var(--warning-100); }
+
+/* --- Read-only / disabled --- */
+.search-box--readonly,
+.search-box--readonly:hover,
+.search-box--disabled,
+.search-box--disabled:hover {
+    border-color: var(--gray-300);
+    box-shadow: none !important;
+}
+
+.search-box--readonly::after,
+.search-box--disabled::after {
+    display: none;
+}
+
+.search-box--readonly .search-box__field,
+.search-box--readonly .search-box__field::placeholder {
+    color: var(--gray-500);
+}
+
+.search-box--disabled {
+    border-color: var(--gray-400);
+}
+
+.search-box--disabled .search-box__field,
+.search-box--disabled .search-box__field::placeholder,
+.search-box--disabled .search-box__icon span,
+.search-box--disabled .search-box__action-btn {
+    color: var(--gray-400);
+}
+
+.search-box--disabled,
+.search-box--disabled .search-box__field,
+.search-box--disabled .search-box__action-btn {
+    cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .search-box::after { transition: none; }
+}

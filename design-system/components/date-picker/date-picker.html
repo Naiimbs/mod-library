@@ -89,7 +89,7 @@
     <div class="showcase-divider"></div>
     <div style="padding: var(--spacing-3xl) var(--spacing-4xl); overflow-x: auto;">
         <!-- Component Props (from DgaDatepicker library reference) -->
-        <h3 style="font-size: var(--font-size-base); font-weight: 600; color: var(--color-gray-900); margin: 0 0 var(--spacing-lg) 0;">Component Props</h3>
+        <h3 style="font-size: var(--font-size-base); font-weight: var(--font-weight-semibold); color: var(--color-gray-900); margin: 0 0 var(--spacing-lg) 0;">Component Props</h3>
         <p style="font-size: var(--font-size-sm); color: var(--color-gray-600); margin: 0 0 var(--spacing-xl) 0;">Boolean props from the <code>&lt;dga-datepicker&gt;</code> library component. These control which features are enabled.</p>
         <table class="props-table" style="margin-bottom: var(--spacing-3xl);">
             <thead>
@@ -152,7 +152,7 @@
             </tbody>
         </table>
 
-        <h3 style="font-size: var(--font-size-base); font-weight: 600; color: var(--color-gray-900); margin: 0 0 var(--spacing-lg) 0;">Callbacks</h3>
+        <h3 style="font-size: var(--font-size-base); font-weight: var(--font-weight-semibold); color: var(--color-gray-900); margin: 0 0 var(--spacing-lg) 0;">Callbacks</h3>
         <table class="props-table" style="margin-bottom: var(--spacing-3xl);">
             <thead>
                 <tr>
@@ -179,7 +179,7 @@
         </table>
 
         <!-- CSS Classes -->
-        <h3 style="font-size: var(--font-size-base); font-weight: 600; color: var(--color-gray-900); margin: 0 0 var(--spacing-lg) 0;">CSS Classes</h3>
+        <h3 style="font-size: var(--font-size-base); font-weight: var(--font-weight-semibold); color: var(--color-gray-900); margin: 0 0 var(--spacing-lg) 0;">CSS Classes</h3>
         <p style="font-size: var(--font-size-sm); color: var(--color-gray-600); margin: 0 0 var(--spacing-xl) 0;">Design system CSS classes used to build and style date picker sub-components.</p>
         <table class="props-table">
             <thead>
@@ -409,7 +409,7 @@
     </div>
     <div class="showcase-divider"></div>
     <div class="showcase-preview">
-        <div style="display: flex; align-items: center; gap: 0; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; gap: 0; margin-bottom: var(--spacing-lg);">
             <div class="date-cell date-cell--range-start">19</div>
             <div class="date-cell date-cell--range-mid">20</div>
             <div class="date-cell date-cell--range-mid">21</div>
@@ -445,7 +445,7 @@
     </div>
     <div class="showcase-divider"></div>
     <div class="showcase-preview">
-        <div style="display: flex; gap: 32px; flex-wrap: wrap;">
+        <div style="display: flex; gap: var(--spacing-4xl); flex-wrap: wrap;">
             <div class="date-field" style="max-width: 280px;">
                 <label class="date-field__label">Label</label>
                 <div class="date-field__wrapper">
@@ -494,7 +494,7 @@
     </div>
     <div class="showcase-divider"></div>
     <div class="showcase-preview">
-        <div style="display: flex; gap: 32px; flex-wrap: wrap;">
+        <div style="display: flex; gap: var(--spacing-4xl); flex-wrap: wrap;">
             <div class="date-field" style="max-width: 280px;">
                 <label class="date-field__label date-field__label--required">Label</label>
                 <div class="date-field__wrapper">
@@ -538,8 +538,8 @@
     </div>
     <div class="showcase-divider"></div>
     <div class="showcase-preview">
-        <div style="display: flex; gap: 48px; flex-wrap: wrap; align-items: flex-start;">
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <div style="display: flex; gap: var(--spacing-6xl); flex-wrap: wrap; align-items: flex-start;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: var(--spacing-md);">
                 <div class="year-dropdown">
                     <button class="year-dropdown__trigger" type="button">
                         2024
@@ -550,7 +550,7 @@
                 </div>
                 <span class="date-cell-showcase__label">Closed</span>
             </div>
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: var(--spacing-md);">
                 <div class="year-dropdown is-open" style="z-index: 5;">
                     <button class="year-dropdown__trigger" type="button">
                         2024
@@ -558,7 +558,7 @@
                             <path d="M6 9L12 15L18 9"/>
                         </svg>
                     </button>
-                    <div class="year-dropdown__menu" style="display: block; position: static; transform: none; margin-top: 4px;">
+                    <div class="year-dropdown__menu" style="display: block; position: static; transform: none; margin-top: var(--spacing-xs);">
                         <div class="year-dropdown__option">2023</div>
                         <div class="year-dropdown__option year-dropdown__option--selected">2024</div>
                         <div class="year-dropdown__option">2025</div>
@@ -568,7 +568,7 @@
                         <div class="year-dropdown__option">2027</div>
                     </div>
                 </div>
-                <span class="date-cell-showcase__label" style="margin-top: 8px;">Open</span>
+                <span class="date-cell-showcase__label" style="margin-top: var(--spacing-md);">Open</span>
             </div>
         </div>
     </div>
@@ -855,7 +855,7 @@
                     </div>
                 </div>
             </div>
-            <div class="date-picker__panel date-picker__panel--static" style="margin-top: 4px;">
+            <div class="date-picker__panel date-picker__panel--static" style="margin-top: var(--spacing-xs);">
                 <div class="date-picker__header">
                     <div class="date-picker__nav">
                         <span class="date-picker__month-label">January</span>
@@ -927,7 +927,7 @@
                     </div>
                 </div>
             </div>
-            <div class="date-picker__panel date-picker__panel--static" style="margin-top: 4px;">
+            <div class="date-picker__panel date-picker__panel--static" style="margin-top: var(--spacing-xs);">
                 <div class="date-picker__header">
                     <div class="date-picker__nav">
                         <span class="date-picker__month-label">January</span>
@@ -975,7 +975,7 @@
     </div>
     <div class="showcase-divider"></div>
     <div class="showcase-preview" style="align-items: flex-start;">
-        <div style="display: flex; gap: 48px; flex-wrap: wrap; align-items: flex-start;">
+        <div style="display: flex; gap: var(--spacing-6xl); flex-wrap: wrap; align-items: flex-start;">
             <!-- Interactive Single Date Picker -->
             <div class="date-picker" id="interactive-datepicker" style="max-width: 312px;">
                 <div class="date-field">
@@ -1081,7 +1081,7 @@
     </div>
     <div class="showcase-divider"></div>
     <div class="showcase-preview showcase-preview--subtle" dir="rtl">
-        <div style="display: flex; gap: 32px; flex-wrap: wrap;">
+        <div style="display: flex; gap: var(--spacing-4xl); flex-wrap: wrap;">
             <div class="date-field" style="max-width: 280px;">
                 <label class="date-field__label date-field__label--required">&#x062A;&#x0627;&#x0631;&#x064A;&#x062E; &#x0627;&#x0644;&#x0645;&#x064A;&#x0644;&#x0627;&#x062F;</label>
                 <div class="date-field__wrapper">

@@ -64,7 +64,7 @@ class Router {
         const hash = window.location.hash.slice(1) || this.defaultRoute;
 
         // Full-page views that hide the sidebar
-        const fullPageViews = ['icons'];
+        const fullPageViews = ['icons', 'classes', 'styles', 'service-page'];
         const isFullPage = fullPageViews.includes(hash);
 
         const mainContent = document.querySelector('.main-content');

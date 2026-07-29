@@ -11,7 +11,7 @@
     width: 360px;
     padding: var(--spacing-xl);
     gap: var(--spacing-3xl);
-    background-color: var(--color-bg-card);
+    background-color: var(--alpha-white);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-md);
     border: 1px solid transparent;
@@ -25,12 +25,12 @@
     width: 48px;
     height: 48px;
     border-radius: var(--radius-full);
-    background-color: var(--color-primary-light);
+    background-color: var(--sa-50);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-primary);
-    font-size: 24px;
+    color: var(--sa-600);
+    font-size: var(--font-size-2xl);
     flex-shrink: 0;
 }
 
@@ -56,7 +56,7 @@
     font-weight: var(--font-weight-bold);
     line-height: var(--line-height-lg);
     letter-spacing: 0;
-    color: var(--color-text-display);
+    color: var(--gray-800);
     margin: 0;
 }
 
@@ -65,7 +65,7 @@
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-regular);
     line-height: var(--line-height-md);
-    color: var(--color-text-display);
+    color: var(--gray-800);
     margin: 0;
 }
 
@@ -92,23 +92,23 @@
 }
 
 .card-footer .btn-primary {
-    background-color: var(--color-primary);
-    color: var(--color-white);
+    background-color: var(--sa-600);
+    color: var(--alpha-white);
     border: none;
 }
 
 .card-footer .btn-primary:hover {
-    background-color: var(--color-primary-hover);
+    background-color: var(--sa-700);
 }
 
 .card-footer .btn-secondary {
-    background-color: var(--color-white);
-    color: var(--color-text-primary);
-    border: 1px solid var(--color-border-primary);
+    background-color: var(--alpha-white);
+    color: var(--text-default);
+    border: 1px solid var(--gray-300);
 }
 
 .card-footer .btn-secondary:hover {
-    background-color: var(--color-gray-50);
+    background-color: var(--gray-50);
 }
 
 /* ============================================
@@ -117,12 +117,12 @@
 
 .card--no-shadow {
     box-shadow: none;
-    border-color: var(--color-border-primary);
+    border-color: var(--gray-300);
 }
 
 .card--stroke {
     box-shadow: none;
-    border-color: var(--color-text-primary);
+    border-color: var(--text-default);
 }
 
 /* ============================================
@@ -137,7 +137,7 @@
     position: relative;
     cursor: pointer;
     /* Add bottom padding to clear the absolutely positioned chevron */
-    padding-bottom: calc(var(--spacing-xl) + 24px + var(--spacing-md));
+    padding-bottom: calc(var(--spacing-xl) + var(--spacing-3xl) + var(--spacing-md));
 }
 
 .card-chevron {
@@ -152,7 +152,7 @@
     background: transparent;
     border: 0;
     padding: 0;
-    color: #161616;
+    color: var(--text-default);
     cursor: pointer;
     transition: transform 0.18s ease;
 }
@@ -189,18 +189,18 @@
     width: 20px;
     height: 20px;
     /* Square (not pill) — matches Figma checkbox */
-    border-radius: 4px;
-    /* Figma Controls/control-border = #6c737f */
-    border: 1px solid #6c737f;
-    background-color: var(--color-bg-card);
+    border-radius: var(--radius-sm);
+    /* Figma Controls/control-border = var(--gray-500) */
+    border: 1px solid var(--gray-500);
+    background-color: var(--alpha-white);
     box-sizing: border-box;
     transition: all var(--transition-fast);
 }
 
 .card--selected .card-select-indicator {
-    /* Figma Controls/control-primary-checked = #1b8354 */
-    border-color: #1b8354;
-    background-color: #1b8354;
+    /* Figma Controls/control-primary-checked = var(--sa-600) */
+    border-color: var(--sa-600);
+    background-color: var(--sa-600);
 }
 
 .card--selected .card-select-indicator::after {
@@ -210,7 +210,7 @@
     top: 2px;
     width: 5px;
     height: 10px;
-    border: solid #ffffff;
+    border: solid var(--alpha-white);
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
 }
@@ -235,7 +235,7 @@
 .card--stroke.card--expandable:hover:not(.card--disabled),
 .card--stroke.card--selectable:hover:not(.card--disabled) {
     box-shadow: none;
-    border-color: #161616;
+    border-color: var(--border-black);
 }
 
 /* ============================================
@@ -250,7 +250,7 @@
     outline: none;
     /* Inner ring matches Figma "Focused" state with Border/border-black */
     box-shadow:
-        inset 0 0 0 2px #161616,
+        inset 0 0 0 2px var(--text-default),
         var(--shadow-md);
 }
 
@@ -258,23 +258,23 @@
 .card--no-shadow.card--selectable:focus-visible,
 .card--stroke.card--expandable:focus-visible,
 .card--stroke.card--selectable:focus-visible {
-    box-shadow: inset 0 0 0 2px #161616;
+    box-shadow: inset 0 0 0 2px var(--text-default);
     border-color: transparent;
 }
 
 /* ============================================
    Disabled Card — Figma tokens
-   Global/background-disabled        #e5e7eb
-   Global/border-disabled            #9da4ae
-   Global/text-default-disabled      #9da4ae
-   Global/background-inverse-disabled #f3f4f6 (icon bg)
-   Icon/icon-default-400             #9da4ae (icon color)
+   Global/background-disabled        var(--gray-200)
+   Global/border-disabled            var(--gray-400)
+   Global/text-default-disabled      var(--gray-400)
+   Global/background-inverse-disabled var(--gray-100) (icon bg)
+   Icon/icon-default-400             var(--gray-400) (icon color)
    ============================================ */
 
 .card--disabled {
-    background-color: #e5e7eb;
-    border-color: #9da4ae;
-    color: #9da4ae;
+    background-color: var(--gray-200);
+    border-color: var(--gray-400);
+    color: var(--gray-400);
     box-shadow: none;
     pointer-events: none;
     user-select: none;
@@ -282,19 +282,19 @@
 
 .card--disabled .card-title,
 .card--disabled .card-body {
-    color: #9da4ae;
+    color: var(--gray-400);
 }
 
 .card--disabled .card-icon {
-    background-color: #f3f4f6;
-    color: #9da4ae;
+    background-color: var(--gray-100);
+    color: var(--gray-400);
 }
 
 /* Disabled buttons inside a disabled card sit visually quiet. */
 .card--disabled .card-footer .btn {
-    background-color: #f3f4f6;
-    color: #9da4ae;
-    border-color: #9da4ae;
+    background-color: var(--gray-100);
+    color: var(--gray-400);
+    border-color: var(--gray-400);
     cursor: not-allowed;
 }
 
@@ -302,17 +302,17 @@
    .card--selected is also present, hide the inner checkmark so we don't
    show a "checked but disabled" state with the primary green fill. */
 .card--disabled .card-select-indicator {
-    border-color: #9da4ae;
+    border-color: var(--gray-400);
     background-color: transparent;
 }
 
 .card--disabled.card--selected .card-select-indicator {
-    background-color: #9da4ae;
-    border-color: #9da4ae;
+    background-color: var(--gray-400);
+    border-color: var(--gray-400);
 }
 
 .card--disabled .card-select-indicator::after {
-    border-color: #ffffff;
+    border-color: var(--alpha-white);
 }
 
 /* ============================================
@@ -331,8 +331,8 @@
     width: 100%;
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    border-radius: var(--radius-md, 8px);
-    background-color: var(--color-gray-100, #f3f4f6);
+    border-radius: var(--radius-md);
+    background-color: var(--gray-100);
 }
 
 .card-image > img {
@@ -348,10 +348,10 @@
 .card-custom {
     width: 100%;
     padding: var(--spacing-xl);
-    background-color: #f3fcf6;             /* Background/background-primary-50 */
-    border: 1px dashed #1b8354;            /* Border/border-primary */
-    border-radius: var(--radius-md, 8px);
-    color: #1b8354;
+    background-color: var(--sa-50);             /* Background/background-primary-50 */
+    border: 1px dashed var(--sa-600);            /* Border/border-primary */
+    border-radius: var(--radius-md);
+    color: var(--sa-600);
     text-align: center;
     box-sizing: border-box;
 }
@@ -359,9 +359,9 @@
 .card-custom__title {
     margin: 0;
     font-family: var(--font-family-primary);
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     line-height: 20px;
-    font-weight: 600;                       /* Text sm/Semibold */
+    font-weight: var(--font-weight-semibold);                       /* Text sm/Semibold */
     text-transform: uppercase;
     letter-spacing: 0.02em;
 }
@@ -369,9 +369,9 @@
 .card-custom__body {
     margin: var(--spacing-xs) 0 0;
     font-family: var(--font-family-primary);
-    font-size: 12px;
+    font-size: var(--font-size-xs);
     line-height: 18px;
-    font-weight: 400;
+    font-weight: var(--font-weight-regular);
 }
 
 /* --- Tags row -----------------------------------------------------------
@@ -410,7 +410,7 @@
     display: inline-block;
     width: 20px;
     height: 20px;
-    color: #e5e7eb;                         /* Background/background-neutral-200 */
+    color: var(--gray-200);                         /* Background/background-neutral-200 */
 }
 
 .card-rating__star svg {
@@ -420,20 +420,20 @@
 }
 
 .card-rating__star--filled {
-    color: #dba102;                         /* Background/background-secondary */
+    color: var(--gold-600);                         /* Background/background-secondary */
 }
 
 /* Half-fill: render the empty star, then overlay a clipped filled version
    covering the leading half via clip-path. */
 .card-rating__star--half {
-    color: #e5e7eb;
+    color: var(--gray-200);
 }
 
 .card-rating__star--half::after {
     content: "";
     position: absolute;
     inset: 0;
-    color: #dba102;
+    color: var(--gold-600);
     background-color: currentColor;
     /* SVG mask of the star shape, clipped to the leading half */
     -webkit-mask: var(--card-star-mask);
@@ -456,10 +456,10 @@
 
 .card-rating__count {
     font-family: var(--font-family-primary);
-    font-size: 12px;
+    font-size: var(--font-size-xs);
     line-height: 18px;
-    font-weight: 400;
-    color: #4d5761;                         /* Text 2/text-tertiary */
+    font-weight: var(--font-weight-regular);
+    color: var(--gray-600);                         /* Text 2/text-tertiary */
     margin: 0;
 }
 
