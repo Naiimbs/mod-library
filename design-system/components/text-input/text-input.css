@@ -63,8 +63,15 @@
     border: 1px solid var(--color-gray-400);
     border-radius: var(--radius-sm);
     outline: none;
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast), background-size 0.2s ease-in-out;
     box-sizing: border-box;
+    /* animated bottom press-line (same behavior as search box / dropdown):
+       a bottom-anchored gradient bar grows from the center on focus —
+       inputs cannot host ::after, so the bar is a background image */
+    background-image: linear-gradient(var(--gray-950), var(--gray-950));
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+    background-size: 0% 2px;
 }
 
 .text-input__field::placeholder {
@@ -81,16 +88,17 @@
     border-color: var(--color-gray-700);
 }
 
-/* Focus - shadow-md + bottom underline effect */
+/* Focus - shadow-md + animated bottom press-line */
 .text-input__field:focus {
     border-color: var(--color-gray-400);
-    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--gray-950);
+    box-shadow: var(--shadow-md);
+    background-size: 100% 2px;
 }
 
-/* Pressed (active) */
+/* Pressed (active) — half-width bar, like the search box */
 .text-input__field:active:not(:disabled) {
     border-color: var(--color-gray-400);
-    box-shadow: inset 0 -2px 0 0 var(--gray-950);
+    background-size: 50% 2px;
 }
 
 /* Disabled */
@@ -114,11 +122,13 @@
 .text-input__field:read-only:not(:disabled):focus {
     border-color: var(--color-gray-400);
     box-shadow: none; /* No shadow or underline for read-only */
+    background-size: 0% 2px;
 }
 
 /* Error */
 .text-input__field--error {
     border-color: var(--color-error-700);
+    background-image: linear-gradient(var(--color-error-700), var(--color-error-700));
 }
 
 .text-input__field--error:hover:not(:disabled):not(:focus) {
@@ -127,12 +137,14 @@
 
 .text-input__field--error:focus {
     border-color: var(--color-error-700);
-    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--color-error-700);
+    box-shadow: var(--shadow-md);
+    background-size: 100% 2px;
 }
 
 /* Success */
 .text-input__field--success {
     border-color: var(--color-success-500);
+    background-image: linear-gradient(var(--color-success-500), var(--color-success-500));
 }
 
 .text-input__field--success:hover:not(:disabled):not(:focus) {
@@ -141,7 +153,8 @@
 
 .text-input__field--success:focus {
     border-color: var(--color-success-500);
-    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--color-success-500);
+    box-shadow: var(--shadow-md);
+    background-size: 100% 2px;
 }
 
 /* ============================================
@@ -162,7 +175,8 @@
 .text-input__field--filled-darker:focus {
     background-color: var(--color-gray-100);
     border-color: var(--color-gray-400);
-    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--gray-950);
+    box-shadow: var(--shadow-md);
+    background-size: 100% 2px;
 }
 
 .text-input__field--filled-darker:disabled {
@@ -182,7 +196,8 @@
 
 .text-input__field--filled-darker.text-input__field--error:focus {
     border-color: var(--color-error-700);
-    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--color-error-700);
+    box-shadow: var(--shadow-md);
+    background-size: 100% 2px;
 }
 
 /* ============================================
@@ -203,7 +218,8 @@
 .text-input__field--filled-lighter:focus {
     background-color: var(--gray-25);
     border-color: var(--color-gray-400);
-    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--gray-950);
+    box-shadow: var(--shadow-md);
+    background-size: 100% 2px;
 }
 
 .text-input__field--filled-lighter:disabled {
@@ -223,7 +239,8 @@
 
 .text-input__field--filled-lighter.text-input__field--error:focus {
     border-color: var(--color-error-700);
-    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--color-error-700);
+    box-shadow: var(--shadow-md);
+    background-size: 100% 2px;
 }
 
 /* ============================================
@@ -372,7 +389,7 @@
 /* Focus: underline on the input within the wrapper */
 .text-input__field-wrapper--prefix .text-input__field:focus,
 .text-input__field-wrapper--suffix .text-input__field:focus {
-    box-shadow: inset 0 -2px 0 0 var(--gray-950);
+    background-size: 100% 2px;
 }
 
 /* Hover on wrapper */
@@ -401,7 +418,7 @@
 
 .text-input__field-wrapper--prefix:has(.text-input__field--error) .text-input__field:focus,
 .text-input__field-wrapper--suffix:has(.text-input__field--error) .text-input__field:focus {
-    box-shadow: inset 0 -2px 0 0 var(--color-error-700);
+    background-size: 100% 2px;
 }
 
 /* Disabled wrapper */

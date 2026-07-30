@@ -56,8 +56,15 @@
     border-radius: var(--radius-sm);
     outline: none;
     resize: vertical;
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast), background-size 0.2s ease-in-out;
     box-sizing: border-box;
+    /* animated bottom press-line (same behavior as search box / dropdown):
+       a bottom-anchored gradient bar grows from the center on focus —
+       textareas cannot host ::after, so the bar is a background image */
+    background-image: linear-gradient(var(--gray-950), var(--gray-950));
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+    background-size: 0% 2px;
 }
 
 .textarea__field::placeholder {
@@ -79,16 +86,17 @@
     border-color: var(--color-gray-700);
 }
 
-/* Focus — shadow-md + bottom underline */
+/* Focus — shadow-md + animated bottom press-line */
 .textarea__field:focus:not(:read-only) {
     border-color: var(--gray-400);
-    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--gray-950);
+    box-shadow: var(--shadow-md);
+    background-size: 100% 2px;
 }
 
-/* Pressed (active) */
+/* Pressed (active) — half-width bar, like the search box */
 .textarea__field:active:not(:disabled):not(:read-only) {
     border-color: var(--gray-400);
-    box-shadow: inset 0 -2px 0 0 var(--gray-950);
+    background-size: 50% 2px;
 }
 
 /* Read-only */
@@ -100,6 +108,7 @@
 .textarea__field:read-only:not(:disabled):focus {
     border-color: var(--gray-300);
     box-shadow: none;
+    background-size: 0% 2px;
 }
 
 /* Disabled */
@@ -120,6 +129,7 @@
 
 .textarea__field--error {
     border-color: var(--color-error-700);
+    background-image: linear-gradient(var(--color-error-700), var(--color-error-700));
 }
 
 .textarea__field--error:hover:not(:disabled):not(:focus) {
@@ -128,7 +138,8 @@
 
 .textarea__field--error:focus:not(:read-only) {
     border-color: var(--color-error-700);
-    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--color-error-700);
+    box-shadow: var(--shadow-md);
+    background-size: 100% 2px;
 }
 
 /* ============================================
@@ -149,7 +160,8 @@
 .textarea__field--filled-darker:focus:not(:read-only) {
     background-color: var(--gray-100);
     border-color: var(--gray-400);
-    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--gray-950);
+    box-shadow: var(--shadow-md);
+    background-size: 100% 2px;
 }
 
 .textarea__field--filled-darker:disabled {
@@ -169,7 +181,8 @@
 
 .textarea__field--filled-darker.textarea__field--error:focus:not(:read-only) {
     border-color: var(--color-error-700);
-    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--color-error-700);
+    box-shadow: var(--shadow-md);
+    background-size: 100% 2px;
 }
 
 /* ============================================
@@ -190,7 +203,8 @@
 .textarea__field--filled-lighter:focus:not(:read-only) {
     background-color: var(--gray-25);
     border-color: var(--gray-400);
-    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--gray-950);
+    box-shadow: var(--shadow-md);
+    background-size: 100% 2px;
 }
 
 .textarea__field--filled-lighter:disabled {
@@ -210,7 +224,8 @@
 
 .textarea__field--filled-lighter.textarea__field--error:focus:not(:read-only) {
     border-color: var(--color-error-700);
-    box-shadow: var(--shadow-md), inset 0 -2px 0 0 var(--color-error-700);
+    box-shadow: var(--shadow-md);
+    background-size: 100% 2px;
 }
 
 /* ============================================
