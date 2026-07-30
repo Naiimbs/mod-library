@@ -10,11 +10,15 @@ class RatingManager {
     constructor() {
         this.content = document.getElementById('component-content');
         if (!this.content) return;
+        /* #component-content persists across routes — anchor the stale-instance
+           guard to this page's root so old document listeners self-remove
+           instead of stacking (see DropdownManager). */
+        this.pageRoot = this.content.firstElementChild;
 
         this.content.querySelectorAll('.rating[data-max]').forEach(el => this.hydrate(el));
 
         this._onClick = (e) => {
-            if (!this.content.isConnected) {
+            if (!this.pageRoot || !this.pageRoot.isConnected) {
                 document.removeEventListener('click', this._onClick, true);
                 return;
             }

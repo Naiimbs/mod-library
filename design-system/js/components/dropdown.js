@@ -10,10 +10,16 @@ class DropdownManager {
     constructor() {
         this.content = document.getElementById('component-content');
         if (!this.content) return;
+        /* the router swaps the markup INSIDE #component-content — the container
+           itself never disconnects. Anchor the stale-instance guard to this
+           page's root node so listeners from earlier visits self-remove instead
+           of stacking (stacked listeners re-toggle the same click, which made
+           the dropdown need several clicks to open). */
+        this.pageRoot = this.content.firstElementChild;
 
         this._onClick = (e) => {
-            /* the router swaps pages; drop the listener once this instance is gone */
-            if (!this.content.isConnected) {
+            /* the router swapped pages; drop the listener once this instance is gone */
+            if (!this.pageRoot || !this.pageRoot.isConnected) {
                 document.removeEventListener('click', this._onClick);
                 return;
             }
@@ -39,7 +45,7 @@ class DropdownManager {
         document.addEventListener('click', this._onClick);
 
         this._onKey = (e) => {
-            if (!this.content.isConnected) {
+            if (!this.pageRoot || !this.pageRoot.isConnected) {
                 document.removeEventListener('click', this._onClick);
                 document.removeEventListener('keydown', this._onKey);
                 return;
@@ -63,7 +69,7 @@ class DropdownManager {
     }
 
     closeAll() {
-        if (!this.content.isConnected) return;
+        if (!this.pageRoot || !this.pageRoot.isConnected) return;
         this.content.querySelectorAll('.dropdown__btn.open').forEach(b => {
             b.classList.remove('open');
             b.setAttribute('aria-expanded', 'false');
