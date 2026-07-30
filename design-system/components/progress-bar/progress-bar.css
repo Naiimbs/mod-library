@@ -1,6 +1,6 @@
 /* ============================================
    PROGRESS BAR COMPONENT
-   DGA Design System — ported from @platformscode/core@0.0.50
+   DGA Design System — ported from the DGA reference library
    dga-linear-progress-bar + dga-circular-progress-bar onto DGA tokens.
    Linear: sm | md | lg × primary | neutral | error | success.
    Circular: 200 160 120 80 64 px, variant primary | neutral | error | success.

@@ -1,6 +1,6 @@
 /* ============================================
    INLINE ALERT COMPONENT
-   DGA Design System — ported from @platformscode/core@0.0.50
+   DGA Design System — ported from the DGA reference library
    dga-inline-alert (.alert) onto DGA theme tokens.
    Types: neutral | info | error | warning | success,
    each with an optional colored-background variant.

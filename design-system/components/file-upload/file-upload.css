@@ -1,6 +1,6 @@
 /* ============================================
    FILE UPLOAD COMPONENT
-   DGA Design System — rebuilt to match @platformscode/core@0.0.50
+   DGA Design System — rebuilt to match the DGA reference library
    dga-file-upload exactly: dashed drop area (SVG border), browse
    button, and a list of flat gray file rows with a status icon,
    name, and close action. Errors wrap the row with a red border

@@ -1,6 +1,6 @@
-# PlatformsCode Component API Reference
+# DGA Component API Reference
 
-> Source: `@platformscode/core@0.0.35` | `platformscode-new-react@0.1.29`
+> Source: the DGA reference component library and its React wrapper
 > **Reference only** — NOT imported into this project. Used as documentation to guide design system development.
 
 ## How to Read This File

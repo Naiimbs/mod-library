@@ -1,6 +1,6 @@
 /* ============================================
    LIBRARY ICONS MODULE (v2)
-   DGA Design System - full @platformscode/icons set.
+   DGA Design System - the full DGA icon set.
    Second tab on the Icons page: pack-category sidebar (same
    categories as the icon font, derived from DGA_ICON_REGISTRY),
    nine styles (SVG stroke/solid + the seven icon-font styles),

@@ -1,6 +1,6 @@
 /* ============================================
    DROPDOWN COMPONENT
-   DGA Design System — ported from @platformscode/core@0.0.50
+   DGA Design System — ported from the DGA reference library
    dga-dropdown onto DGA theme tokens.
    Sizes: lg | md. Variants: default | lighter | darker.
    States: error | disabled | readonly. Single + multi select.
