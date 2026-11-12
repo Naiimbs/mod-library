@@ -377,7 +377,7 @@ ${parts.slots}
     }
 
     .sign-up__rules li.met .icon {
-      color: var(--sa-600);
+      color: var(--mod-primary-text);
     }
 
     .sign-up__sr {

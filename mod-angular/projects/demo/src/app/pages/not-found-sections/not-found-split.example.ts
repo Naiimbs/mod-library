@@ -60,7 +60,7 @@ const TEXT = {
       border: 1px solid var(--gray-300);
       border-radius: 50%;
       background: var(--alpha-white);
-      color: var(--sa-600);
+      color: var(--mod-primary-text);
       font-size: 40px;
     }
   `,
@@ -119,7 +119,7 @@ import { ModButton, ModErrorMedia, ModErrorPage, ModIcon } from '@mod-internal/u
       border: 1px solid var(--gray-300);
       border-radius: 50%;
       background: var(--alpha-white);
-      color: var(--sa-600);
+      color: var(--mod-primary-text);
       font-size: 40px;
     }
     .nf-ill__window { fill: var(--alpha-white); stroke: var(--gray-300); stroke-width: 2; }

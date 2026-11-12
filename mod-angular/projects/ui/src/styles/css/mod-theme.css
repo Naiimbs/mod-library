@@ -10,9 +10,10 @@
      Grey         #B2BEC4  (Pantone 7542C, R178 G190 B196)
      White        #FFFFFF
 
-   The exact brand values sit at: --sa-600 (light green), --sa-700 and
-   --sad-500 (dark green), --gray-300 (grey). The other steps are tints and
-   shades derived from them.
+   The dark green is the PRIMARY colour: it sits at --sa-600 and the whole
+   --sa-* scale is generated from it (tints 25-500, shades 700-950). The
+   light green is kept as an accent (--mod-light-green). The grey sits at
+   --gray-300.
    ============================================ */
 
 /* --- Typeface: Saudi MOD --- */
@@ -85,31 +86,69 @@
   --font-family-primary: 'Saudi MOD', -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, sans-serif;
   --font-family-text: 'Saudi MOD', sans-serif;
 
-  /* --- Primary scale ---
-     600 is the brand light green: default fill of primary buttons, the header
-     selection, links, checked controls. 700 is the brand dark green: the hover
-     state of those fills and the colour of dark surfaces (dark footer, text on
-     light-green tints). 800-950 are darker shades of the dark green for
-     pressed states and deep surfaces. */
-  --sa-25: #f5fdf9;
-  --sa-50: #ebfaf3;
-  --sa-100: #d0f3e2;
-  --sa-200: #a3e6c6;
-  --sa-300: #66d3a1;
-  --sa-400: #2dbd7c;
-  --sa-500: #0fad68;
-  --sa-600: #00a05a; /* brand light green */
-  --sa-700: #29504d; /* brand dark green: hover, dark surfaces */
-  --sa-800: #1f3f3d;
-  --sa-900: #183230;
-  --sa-950: #0f2221;
+  /* --- Primary scale, generated from the brand dark green ---
+     One hue (the dark green's), from near-white to near-black.
+       25-200   tints: selected rows, hover fills of quiet controls, tags
+       300      light step that stays readable ON the dark green (4.6:1) and
+                on dark-mode surfaces: text, icons and lines on dark areas
+       400-500  mid steps: decorative marks, the dark-mode primary
+       600      THE BRAND DARK GREEN: default fill of primary buttons,
+                links, checked controls, selection. White on it is 8.9:1.
+       700      hover of a primary fill
+       800      pressed (active) state of a primary fill
+       900-950  deepest shades: dark surfaces, text on tints */
+  --sa-25: #f6faf9;
+  --sa-50: #eef4f4;
+  --sa-100: #dde9e8;
+  --sa-200: #c2d8d6;
+  --sa-300: #a0c1bd;
+  --sa-400: #6f9f9a;
+  --sa-500: #46807a;
+  --sa-600: #29504d; /* brand dark green: primary */
+  --sa-700: #214341; /* hover */
+  --sa-800: #1a3634; /* pressed */
+  --sa-900: #132a28;
+  --sa-950: #0c1c1b;
 
-  /* --- Dark green tints --- */
+  /* --- Dark green tints (text and marks on a dark-green surface) --- */
   --sad-100: #d4dcdb;
   --sad-200: #a9b9b8;
   --sad-300: #7f9694;
   --sad-400: #547371;
   --sad-500: #29504d; /* brand dark green */
+
+  /* --- Primary state tokens ---
+     The states of a primary control by name, for your own styles. They
+     point at the scale above, so they follow dark mode with it.
+
+       filled control (button, checked box, selected tab)
+         default   --mod-primary            hover    --mod-primary-hover
+         pressed   --mod-primary-pressed    text on it  --mod-on-primary
+       quiet control (text button, row, chip) on a surface
+         text      --mod-primary-text       hover fill  --mod-primary-subtle-hover
+         selected  --mod-primary-subtle     pressed fill --mod-primary-subtle-pressed
+       focus       a 2px --mod-focus outline, 2px away from the control;
+                   text fields also get the soft --mod-focus-ring halo
+       disabled    --mod-disabled-bg, --mod-disabled-text, --mod-disabled-border
+                   (never a faded green: disabled is neutral) */
+  --mod-primary: var(--sa-600);
+  --mod-primary-hover: var(--sa-700);
+  --mod-primary-pressed: var(--sa-800);
+  --mod-on-primary: #ffffff;
+
+  --mod-primary-text: var(--sa-600);
+  --mod-primary-text-hover: var(--sa-700);
+  --mod-primary-subtle: var(--sa-50);
+  --mod-primary-subtle-hover: var(--sa-100);
+  --mod-primary-subtle-pressed: var(--sa-200);
+  --mod-primary-border: var(--sa-600);
+
+  --mod-focus: var(--sa-600);
+  --mod-focus-ring: 0 0 0 3px rgba(41, 80, 77, 0.24);
+
+  --mod-disabled-bg: var(--gray-200);
+  --mod-disabled-text: var(--gray-400);
+  --mod-disabled-border: var(--gray-300);
 
   /* --- Neutral scale, tinted to the brand grey ---
      The brand grey sits at 300 (borders, dividers, disabled fills). 400 is a

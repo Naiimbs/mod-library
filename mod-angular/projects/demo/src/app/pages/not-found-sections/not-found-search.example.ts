@@ -112,7 +112,7 @@ const TEXT = {
       height: 40px;
       border-radius: var(--radius-md);
       background: var(--sa-50);
-      color: var(--sa-600);
+      color: var(--mod-primary-text);
       font-size: 20px;
     }
 
@@ -251,7 +251,7 @@ interface HelpfulLink {
       height: 40px;
       border-radius: var(--radius-md);
       background: var(--sa-50);
-      color: var(--sa-600);
+      color: var(--mod-primary-text);
       font-size: 20px;
     }
     .nf-link__title {

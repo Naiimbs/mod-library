@@ -67,7 +67,7 @@
 
 .overview-search-input:focus {
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(0, 160, 90, 0.1);
+    box-shadow: 0 0 0 3px rgba(41, 80, 77, 0.16);
 }
 
 .overview-search-input::placeholder {
@@ -133,7 +133,7 @@
 .overview-chip.is-active {
     border-color: var(--sa-600);
     background: var(--sa-50);
-    color: var(--sa-800);
+    color: var(--mod-primary-text-hover);
 }
 
 .overview-chip:focus-visible {
@@ -149,7 +149,7 @@
 }
 
 .overview-chip.is-active .overview-chip__count {
-    color: var(--sa-700);
+    color: var(--mod-primary-text-hover);
 }
 
 /* Category Sections */
@@ -284,7 +284,7 @@
 }
 
 .overview-card:hover .overview-card__name {
-    color: var(--color-primary);
+    color: var(--mod-primary-text);
 }
 
 .overview-card:focus-visible,

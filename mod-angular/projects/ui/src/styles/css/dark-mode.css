@@ -8,7 +8,8 @@
    the deep neutrals, and the brand/status ramps flip only their
    tint ends (25/50/100/200 → the family's own 950/900/800/700
    values) plus the text ends (700/800 → the family's 300/200) so
-   solid 300–600 fills keep their exact brand hues.
+   solid 300–500 fills keep their exact brand hues; the primary
+   600–800 is lifted (see the brand block).
 
    Elevation model:
      page        #0c1317  (gray-950 value)
@@ -43,11 +44,25 @@ html[data-theme="dark"] {
     --text-default: #f8fafb;
     --border-black: #f8fafb;     /* focus rings read light on dark */
 
-    /* --- Brand tints deep (sa-300+ solids untouched) --- */
-    --sa-25: #0F2221;
-    --sa-50: #183230;
-    --sa-100: #1f3f3d;
+    /* --- Brand: tints go deep; the primary and its states are lifted.
+           The light-mode primary (#29504d) has under 2:1 against the dark
+           surfaces, so 600 takes the scale's 500 value: 3.8:1 on the
+           surface and 4.5:1 for white text on it. 700/800 (hover, pressed)
+           step darker from there. Text in the primary colour is lifted to
+           sa-300 by the generated rules in the component styles. --- */
+    --sa-25: #0c1c1b;
+    --sa-50: #132a28;
+    --sa-100: #1a3634;
     --sa-200: #29504d;
+    --sa-600: #46807a;
+    --sa-700: #3b6e69;
+    --sa-800: #325d59;
+
+    /* Quiet controls and focus read light on dark. */
+    --mod-primary-text: var(--sa-300);
+    --mod-primary-text-hover: #c2d8d6;
+    --mod-focus: var(--sa-300);
+    --mod-focus-ring: 0 0 0 3px rgba(160, 193, 189, 0.32);
 
     /* --- Success --- */
     --success-25: #053321;
@@ -152,7 +167,7 @@ html[data-theme="dark"] .content-toc__item--active,
 html[data-theme="dark"] .content-toc__item--active:visited,
 html[data-theme="dark"] .content-toc__item--active:hover,
 html[data-theme="dark"] .content-toc__item--active:focus {
-    color: #a3e6c6;
+    color: #c2d8d6;
 }
 
 /* Props-panel selects mirror .dropdown__btn: chevron follows the flipped text color */

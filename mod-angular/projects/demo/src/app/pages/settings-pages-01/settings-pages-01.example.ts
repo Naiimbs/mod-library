@@ -739,7 +739,7 @@ function hasError(errors: Record<string, string>): boolean {
     }
 
     .set01-rule.is-met mod-icon {
-      color: var(--sa-600);
+      color: var(--mod-primary-text);
     }
 
     .set01-switch {

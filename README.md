@@ -21,8 +21,8 @@ demo app that shows every component live.
 
 | Colour | Value | CSS variable | Where the library uses it |
 | --- | --- | --- | --- |
-| Light green | `#00A05A` | `--mod-light-green` | Primary buttons, selected items, links, checked controls |
-| Dark green | `#29504D` | `--mod-dark-green` | Hover of primary fills, dark surfaces such as the dark footer |
+| Dark green | `#29504D` | `--mod-dark-green`, `--mod-primary` | **Primary colour**: buttons, selected items, links, checked controls, dark surfaces |
+| Light green | `#00A05A` | `--mod-light-green` | Accent only: small marks and rules |
 | Grey | `#B2BEC4` | `--mod-grey` | Borders and dividers |
 | White | `#FFFFFF` | `--mod-white` | Surfaces, text on green |
 
@@ -116,7 +116,7 @@ export class App {
 }
 ```
 
-Run `ng serve`. You should see a light green button that turns dark green on hover, a
+Run `ng serve`. You should see a dark green button that turns darker on hover, a
 labelled text field, and all text in the Saudi MOD typeface.
 
 ## Run the demo
@@ -173,8 +173,7 @@ Run these in `mod-angular/`.
 
 ## Known limitations
 
-- White text on the light green is about 3.4:1 contrast, below the 4.5:1 WCAG AA level for
-  normal-size text. The brand colour is kept exact.
+- The light green is an accent only: white text on it is about 3.4:1, below WCAG AA.
 - The library has no automated tests yet.
 - Version 0.1.0: input names may still change between versions.
 - Icon classes keep the `dga-icon-*` names of the icon font they come from.

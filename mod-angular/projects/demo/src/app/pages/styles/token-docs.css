@@ -75,7 +75,7 @@
 
 .td-search__input:focus {
     border-color: var(--sa-600);
-    box-shadow: 0 0 0 3px rgba(0, 160, 90, 0.12);
+    box-shadow: 0 0 0 3px rgba(41, 80, 77, 0.16);
 }
 
 .td-search__count {
@@ -127,7 +127,7 @@
 
 .td-nav__item.is-active {
     background-color: var(--sa-50);
-    color: var(--sa-800);
+    color: var(--mod-primary-text-hover);
     font-weight: var(--font-weight-semibold);
 }
 

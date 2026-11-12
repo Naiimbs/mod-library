@@ -11,9 +11,9 @@
     /* Colors */
     --background-white: #FFFFFF;
     --background-menu: #FFFFFF;
-    --background-primary-400: #2DBD7C;
+    --background-primary-400: var(--sa-600);
     --background-neutral-400: #8E9CA3;
-    --button-background-primary-default: #00A05A;
+    --button-background-primary-default: var(--sa-600);
     --text-default: #161616;
     --text-secondary-paragraph: #6A7880;
     --text-oncolor-primary: #FFFFFF;
@@ -268,7 +268,7 @@
     right: var(--spacing-md);
     height: 6px;
     background-color: var(--background-primary-400);
-    /* #2DBD7C lighter green */
+    /* the primary colour */
     border-radius: var(--radius-full);
     /* Fully rounded pill */
 }
@@ -422,7 +422,7 @@
     right: var(--spacing-md);
     height: 6px;
     background-color: var(--background-primary-400);
-    /* #2DBD7C lighter green */
+    /* the primary colour */
     border-radius: var(--radius-full);
     /* Fully rounded pill */
 }

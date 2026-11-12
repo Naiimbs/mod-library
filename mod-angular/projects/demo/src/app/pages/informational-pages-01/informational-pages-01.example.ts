@@ -788,7 +788,7 @@ function dateTime(iso: string, lang: AppLang, withTime = true): string {
 
     .info01-file mod-icon {
       font-size: 18px;
-      color: var(--sa-600);
+      color: var(--mod-primary-text);
     }
 
     .info01-person {

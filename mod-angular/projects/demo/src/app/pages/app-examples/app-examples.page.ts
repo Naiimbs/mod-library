@@ -311,7 +311,7 @@ interface BuildingBlock {
       height: 22px;
       border-radius: var(--radius-full);
       background: var(--sa-50);
-      color: var(--sa-600);
+      color: var(--mod-primary-text);
       font-size: 13px;
     }
 
@@ -354,7 +354,7 @@ interface BuildingBlock {
     .ax-blocks mod-icon {
       margin-block-start: 2px;
       font-size: 20px;
-      color: var(--sa-600);
+      color: var(--mod-primary-text);
     }
 
     .ax-blocks strong,
@@ -395,7 +395,7 @@ interface BuildingBlock {
       margin-block-end: var(--spacing-lg);
       border-radius: var(--radius-full);
       background: var(--sa-50);
-      color: var(--sa-600);
+      color: var(--mod-primary-text);
       font-weight: var(--font-weight-semibold);
     }
 

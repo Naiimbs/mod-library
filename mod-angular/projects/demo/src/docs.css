@@ -90,7 +90,7 @@
 
 .sidebar-link.active {
     background-color: var(--color-primary-light);
-    color: var(--sa-800);
+    color: var(--mod-primary-text-hover);
     font-weight: var(--font-weight-medium);
 }
 
@@ -126,7 +126,7 @@
 .sidebar-link.active:visited,
 .sidebar-link.active:hover,
 .sidebar-link.active:focus {
-    color: var(--sa-800);
+    color: var(--mod-primary-text-hover);
 }
 
 /* New approach badge */
@@ -136,7 +136,7 @@
     font-size: 10px;
     font-weight: var(--font-weight-semibold);
     line-height: 16px;
-    color: var(--sa-600);
+    color: var(--mod-primary-text);
     background-color: var(--sa-50);
     border-radius: var(--radius-sm);
     flex-shrink: 0;
@@ -480,7 +480,7 @@
 }
 
 .live-demo__footer a {
-    color: var(--color-primary);
+    color: var(--mod-primary-text);
     font-weight: var(--font-weight-medium);
 }
 
@@ -602,7 +602,7 @@
 .content-toc__item--active:hover,
 .content-toc__item--active:focus {
     background: var(--color-primary-light);
-    color: var(--sa-800);
+    color: var(--mod-primary-text-hover);
     font-weight: var(--font-weight-medium);
 }
 

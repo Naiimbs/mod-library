@@ -90,7 +90,7 @@ export function passwordRulesValidator(control: AbstractControl): ValidationErro
     }
 
     .pw-rules__item--met .icon {
-      color: var(--sa-600);
+      color: var(--mod-primary-text);
     }
 
     /* The met / not met state is read by screen readers; sighted users get the icon. */

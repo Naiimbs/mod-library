@@ -191,7 +191,7 @@ interface ExampleCard {
       margin: 0 auto var(--spacing-xs);
       border-radius: var(--radius-full);
       background: var(--sa-50);
-      color: var(--sa-600);
+      color: var(--mod-primary-text);
       font-size: 16px;
     }
 
@@ -211,7 +211,7 @@ interface ExampleCard {
       border: 1px solid var(--gray-300);
       border-radius: var(--radius-md);
       background: var(--alpha-white);
-      color: var(--sa-600);
+      color: var(--mod-primary-text);
       font-size: 36px;
     }
 
@@ -255,7 +255,7 @@ interface ExampleCard {
       margin-block-end: var(--spacing-lg);
       border-radius: var(--radius-full);
       background: var(--sa-50);
-      color: var(--sa-600);
+      color: var(--mod-primary-text);
       font-weight: var(--font-weight-semibold);
     }
 

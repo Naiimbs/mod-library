@@ -49,10 +49,31 @@ colours and the Saudi MOD typeface.
 
 | Colour | Value | CSS variable | Where the library uses it |
 | --- | --- | --- | --- |
-| Light green | `#00A05A` | `--mod-light-green` | Primary buttons, selected items, links, checked controls |
-| Dark green | `#29504D` | `--mod-dark-green` | Hover of primary fills, dark surfaces such as the dark footer |
+| Dark green | `#29504D` | `--mod-dark-green`, `--mod-primary` | **Primary colour**: buttons, selected items, links, checked controls, dark surfaces |
+| Light green | `#00A05A` | `--mod-light-green` | Accent only: small marks and rules |
 | Grey | `#B2BEC4` | `--mod-grey` | Borders and dividers |
 | White | `#FFFFFF` | `--mod-white` | Surfaces, text on green |
+
+### Primary colour and its states
+
+The whole `--sa-*` scale is generated from the dark green, and each state of a primary
+control has a named token:
+
+| State | Token | Value (light mode) |
+| --- | --- | --- |
+| Default fill | `--mod-primary` | `--sa-600` `#29504D` |
+| Hover | `--mod-primary-hover` | `--sa-700` `#214341` |
+| Pressed | `--mod-primary-pressed` | `--sa-800` `#1A3634` |
+| Text on a primary fill | `--mod-on-primary` | `#FFFFFF` (8.9:1) |
+| Text / link on a surface | `--mod-primary-text`, `--mod-primary-text-hover` | `--sa-600`, `--sa-700` |
+| Selected / quiet fill | `--mod-primary-subtle` | `--sa-50` `#EEF4F4` |
+| Quiet hover, quiet pressed | `--mod-primary-subtle-hover`, `--mod-primary-subtle-pressed` | `--sa-100`, `--sa-200` |
+| Focus outline (2px, 2px away) | `--mod-focus` | `--sa-600` |
+| Focus halo of text fields | `--mod-focus-ring` | 3px, dark green at 24% |
+| Disabled | `--mod-disabled-bg`, `--mod-disabled-text`, `--mod-disabled-border` | neutral greys |
+
+In dark mode the primary is lifted to `#46807A` (the scale's 500) so it stays visible on
+dark surfaces, and primary-coloured text uses `--sa-300` `#A0C1BD`.
 
 **Typeface:** Saudi MOD, in seven weights (Thin to Heavy). It ships inside the package and
 loads automatically — you do not add any font link.
@@ -247,7 +268,7 @@ export class App {
 
 Run `ng serve` and open the page. You should see:
 
-- a **light green button** with a plus icon, which turns **dark green** when you hover it;
+- a **dark green button** with a plus icon, which turns a darker green when you hover it;
 - a labelled text field; typing in it updates the "Hello …" line;
 - all text in the **Saudi MOD** typeface.
 
@@ -542,10 +563,10 @@ dark mode automatically. Avoid hard-coding colour values.
 
 Two notes on the scales:
 
-- `--sa-600` is the light green and `--sa-700` is the dark green. Steps 800–950 are darker
-  shades of the dark green.
-- The dark greens are for **fills**. As a **text** colour they are unreadable in dark
-  mode; for green text use `--sa-600`, or `--sa-300` on dark surfaces.
+- `--sa-600` is the brand dark green (the primary). 700 is its hover and 800 its pressed
+  state; 25–500 are tints of the same hue.
+- For green **text** use `--mod-primary-text`, which follows dark mode. On a dark-green
+  surface use `--sa-300`.
 
 The demo app's **Styles** and **Classes** pages show every token and utility class with
 its live value and copy it on click.
@@ -693,8 +714,7 @@ Where things are:
 
 **Known limitations**
 
-- White text on the light green is about 3.4:1 contrast, below the 4.5:1 WCAG AA level for
-  normal-size text. The brand colour is kept exact; for long or small text on green,
-  prefer the dark green.
+- The light green is an accent only: white text on it is about 3.4:1, below WCAG AA, so do
+  not use it as a fill behind text.
 - The library has no automated tests yet.
 - Version 0.1.0: input names may still change between versions.

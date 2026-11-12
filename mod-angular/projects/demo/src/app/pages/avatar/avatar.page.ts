@@ -3,7 +3,7 @@ import { ModAvatar, ModAvatarGroup, ModAvatarSize, ModAvatarType } from '@mod-in
 import { DEMO_KIT, DemoOption, DemoProp } from '../../shared/demo-kit';
 
 const DEMO_IMG =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 68 68'%3E%3Crect width='68' height='68' fill='%230fad68'/%3E%3Ccircle cx='34' cy='26' r='12' fill='%23ebfaf3'/%3E%3Cellipse cx='34' cy='58' rx='21' ry='16' fill='%23ebfaf3'/%3E%3C/svg%3E";
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 68 68'%3E%3Crect width='68' height='68' fill='%2346807a'/%3E%3Ccircle cx='34' cy='26' r='12' fill='%23ebfaf3'/%3E%3Cellipse cx='34' cy='58' rx='21' ry='16' fill='%23ebfaf3'/%3E%3C/svg%3E";
 
 @Component({
   selector: 'demo-avatar-page',
