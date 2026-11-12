@@ -42,7 +42,23 @@
         </span>
       }
       <ng-container [ngTemplateOutlet]="field" />
-      @if (trailingIcon()) {
+      @if (hasToggle()) {
+        <button
+          type="button"
+          class="text-input__icon--trailing text-input__toggle"
+          [disabled]="isDisabled()"
+          [attr.aria-pressed]="revealed()"
+          [attr.aria-controls]="fieldId()"
+          [attr.aria-label]="revealed() ? hidePasswordLabel() : showPasswordLabel()"
+          (click)="revealed.set(!revealed())"
+        >
+          <span
+            [class]="'icon dga-icon-' + (revealed() ? 'view-off' : 'view')"
+            style="font-size: 20px"
+            aria-hidden="true"
+          ></span>
+        </button>
+      } @else if (trailingIcon()) {
         <span class="text-input__icon--trailing">
           <span [class]="'icon dga-icon-' + trailingIcon()" style="font-size: 20px" aria-hidden="true"></span>
         </span>
@@ -87,7 +103,7 @@
     #input
     [class]="fieldClasses()"
     [id]="fieldId()"
-    [type]="type()"
+    [type]="nativeType()"
     [value]="value()"
     [disabled]="isDisabled()"
     [readOnly]="readonly()"

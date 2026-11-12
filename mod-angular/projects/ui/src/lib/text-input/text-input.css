@@ -641,3 +641,28 @@ mod-text-input {
     display: block;
     width: 100%;
 }
+
+/* Password reveal button (passwordToggle): the trailing icon slot as a real button. */
+.text-input__toggle {
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: none;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.text-input__toggle:hover {
+    color: var(--color-gray-700);
+}
+
+.text-input__toggle:focus-visible {
+    outline: 2px solid var(--border-black);
+    outline-offset: 2px;
+}
+
+.text-input__toggle:disabled {
+    cursor: not-allowed;
+}

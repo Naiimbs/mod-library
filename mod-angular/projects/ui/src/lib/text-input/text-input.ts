@@ -86,6 +86,16 @@ export class ModTextInput implements ControlValueAccessor {
   /** Font icon name shown inside a dropdown-type prefix. */
   readonly prefixIcon = input<string>('');
 
+  /**
+   * With `type="password"`: shows an eye button at the end of the field that
+   * reveals or hides the typed password. The button uses the trailing-icon
+   * slot, so `trailingIcon` is not shown while the toggle is active.
+   */
+  readonly passwordToggle = input(false, { transform: booleanAttribute });
+  /** Accessible labels of the reveal button. */
+  readonly showPasswordLabel = input<string>('Show password');
+  readonly hidePasswordLabel = input<string>('Hide password');
+
   /** Maximum number of characters (sets the native `maxlength`). */
   readonly maxLength = input<number | undefined>(undefined);
   /** Shows the character counter under the field. */
@@ -111,14 +121,23 @@ export class ModTextInput implements ControlValueAccessor {
   private readonly formDisabled = signal(false);
   protected readonly isDisabled = computed(() => this.disabled() || this.formDisabled());
 
+  /** Whether the password is currently shown as plain text. */
+  protected readonly revealed = signal(false);
+  protected readonly hasToggle = computed(() => this.passwordToggle() && this.type() === 'password');
+  /** Native input type: a revealed password is rendered as text. */
+  protected readonly nativeType = computed(() =>
+    this.hasToggle() && this.revealed() ? 'text' : this.type(),
+  );
+
   protected readonly hasWrapper = computed(
-    () => !!(this.prefix() || this.suffix() || this.leadingIcon() || this.trailingIcon()),
+    () =>
+      !!(this.prefix() || this.suffix() || this.leadingIcon() || this.trailingIcon() || this.hasToggle()),
   );
 
   protected readonly wrapperClasses = computed(() => {
     const list = ['text-input__field-wrapper'];
     if (this.leadingIcon()) list.push('text-input__field-wrapper--leading');
-    if (this.trailingIcon()) list.push('text-input__field-wrapper--trailing');
+    if (this.trailingIcon() || this.hasToggle()) list.push('text-input__field-wrapper--trailing');
     if (this.prefix()) list.push('text-input__field-wrapper--prefix');
     if (this.suffix()) list.push('text-input__field-wrapper--suffix');
     return list.join(' ');

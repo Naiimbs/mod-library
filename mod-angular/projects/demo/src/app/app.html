@@ -46,27 +46,55 @@
 
     <!-- Language toggle (primary) -->
     <a mod-header-action variant="primary" href="#" (click)="toggleRtl($event)">
-      <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10" />
-        <line x1="2" y1="12" x2="22" y2="12" />
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-      </svg>
+      <span class="icon header-action__icon dga-icon-language-square" aria-hidden="true"></span>
       <span>{{ text().language }}</span>
     </a>
   </mod-nav-header>
 
   <div class="main-content" [class.main-content--no-sidebar]="fullPage()">
     <aside class="sidebar">
-      <nav class="sidebar-nav" aria-label="Components">
-        @for (item of nav; track item.id) {
-          <a class="sidebar-link" [routerLink]="'/' + item.id" routerLinkActive="active">
-            <span class="icon sidebar-link__icon" [class]="'dga-icon-' + item.icon" aria-hidden="true"></span>
-            {{ item.label }}
-            @if (item.badge) {
-              <span class="sidebar-link__badge">{{ item.badge }}</span>
-            }
-          </a>
-        }
+      <nav class="sidebar-nav" aria-label="Documentation">
+        <button
+          type="button"
+          class="sidebar-group"
+          aria-controls="sidebar-page-examples"
+          [attr.aria-expanded]="examplesOpen()"
+          (click)="examplesOpen.set(!examplesOpen())"
+        >
+          <span>Shared page examples</span>
+          <span class="sidebar-link__badge">New</span>
+          <span class="icon sidebar-group__chevron dga-icon-arrow-up-01" aria-hidden="true"></span>
+        </button>
+        <div id="sidebar-page-examples" class="sidebar-group__items" [hidden]="!examplesOpen()">
+          @for (item of pageExamples; track item.id) {
+            <a class="sidebar-link" [routerLink]="'/' + item.id" routerLinkActive="active">
+              <span class="icon sidebar-link__icon" [class]="'dga-icon-' + item.icon" aria-hidden="true"></span>
+              {{ item.label }}
+            </a>
+          }
+        </div>
+
+        <button
+          type="button"
+          class="sidebar-group"
+          aria-controls="sidebar-components"
+          [attr.aria-expanded]="componentsOpen()"
+          (click)="componentsOpen.set(!componentsOpen())"
+        >
+          <span>Components</span>
+          <span class="icon sidebar-group__chevron dga-icon-arrow-up-01" aria-hidden="true"></span>
+        </button>
+        <div id="sidebar-components" class="sidebar-group__items" [hidden]="!componentsOpen()">
+          @for (item of nav; track item.id) {
+            <a class="sidebar-link" [routerLink]="'/' + item.id" routerLinkActive="active">
+              <span class="icon sidebar-link__icon" [class]="'dga-icon-' + item.icon" aria-hidden="true"></span>
+              {{ item.label }}
+              @if (item.badge) {
+                <span class="sidebar-link__badge">{{ item.badge }}</span>
+              }
+            </a>
+          }
+        </div>
       </nav>
     </aside>
 

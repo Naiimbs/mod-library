@@ -43,4 +43,6 @@ export * from './lib/tables/index';
 export * from './lib/form-template/index';
 export * from './lib/service-page/index';
 export * from './lib/screens/index';
-
+export * from './lib/auth-layout/index';
+export * from './lib/otp-input/index';
+export * from './lib/error-page/index';

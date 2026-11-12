@@ -1,0 +1,104 @@
+/* ============================================
+   OTP INPUT
+   MOD Internal - one-time code input, one box per character.
+   ============================================ */
+
+mod-otp-input {
+    display: inline-block;
+    max-width: 100%;
+}
+
+.otp-input {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.otp-input__box {
+    width: 48px;
+    /* Lets the boxes narrow instead of overflowing when the container (a card,
+       a preview frame) is narrower than the row but the viewport is wide. */
+    min-width: 0;
+    height: 56px;
+    padding: 0;
+    border: 1px solid var(--gray-400);
+    border-radius: var(--radius-sm);
+    background: var(--alpha-white);
+    color: var(--gray-900);
+    font-family: var(--font-family-primary);
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: var(--font-weight-semibold);
+    text-align: center;
+    caret-color: var(--sa-600);
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.otp-input--lg .otp-input__box {
+    width: 64px;
+    height: 72px;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.otp-input__box:hover {
+    border-color: var(--gray-600);
+}
+
+.otp-input__box--filled {
+    border-color: var(--gray-700);
+}
+
+.otp-input__box:focus {
+    outline: none;
+    border-color: var(--sa-600);
+    box-shadow: 0 0 0 3px var(--sa-100);
+}
+
+.otp-input__box:focus-visible {
+    outline: 2px solid var(--border-black);
+    outline-offset: 2px;
+}
+
+.otp-input--error .otp-input__box {
+    border-color: var(--error-600);
+}
+
+.otp-input--error .otp-input__box:focus {
+    box-shadow: 0 0 0 3px var(--error-100);
+}
+
+.otp-input--disabled .otp-input__box {
+    border-color: var(--gray-300);
+    background: var(--gray-100);
+    color: var(--gray-400);
+    cursor: not-allowed;
+}
+
+.otp-input__separator {
+    width: 12px;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--gray-400);
+    flex-shrink: 0;
+}
+
+@media (max-width: 420px) {
+    .otp-input {
+        gap: var(--spacing-sm);
+    }
+
+    .otp-input__box,
+    .otp-input--lg .otp-input__box {
+        width: 40px;
+        height: 48px;
+        font-size: 20px;
+        line-height: 28px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .otp-input__box {
+        transition: none;
+    }
+}

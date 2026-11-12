@@ -1,0 +1,46 @@
+<div [class]="classes()">
+  @if (variant() === 'split') {
+    <section class="auth-layout__panel">
+      @if (panelImage()) {
+        <img
+          class="auth-layout__photo"
+          [src]="panelImage()"
+          [style.object-position]="panelImagePosition()"
+          alt=""
+        />
+      }
+      <div class="auth-layout__tint" aria-hidden="true"></div>
+      @if (nodes().length) {
+        <div class="auth-layout__ring" aria-hidden="true">
+          @for (node of nodes(); track $index) {
+            <span class="auth-layout__node" [style.--a]="node.angle">
+              <mod-icon [name]="node.icon" />
+            </span>
+          }
+          @for (dot of dots; track $index) {
+            <i class="auth-layout__dot" [style.--a]="dot"></i>
+          }
+        </div>
+      }
+      <div class="auth-layout__brand">
+        @if (panelTitle()) {
+          <p class="auth-layout__brand-title">{{ panelTitle() }}</p>
+          <span class="auth-layout__rule" aria-hidden="true"></span>
+        }
+        @if (panelText()) {
+          <p class="auth-layout__brand-text">{{ panelText() }}</p>
+        }
+        <ng-content select="[modAuthPanel]" />
+      </div>
+    </section>
+  }
+
+  <main class="auth-layout__main">
+    <header class="auth-layout__top">
+      <div class="auth-layout__logo"><ng-content select="[modAuthLogo]" /></div>
+      <div class="auth-layout__actions"><ng-content select="[modAuthActions]" /></div>
+    </header>
+    <div class="auth-layout__content"><ng-content /></div>
+    <footer class="auth-layout__footer"><ng-content select="[modAuthFooter]" /></footer>
+  </main>
+</div>

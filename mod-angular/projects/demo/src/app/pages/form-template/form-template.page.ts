@@ -123,7 +123,7 @@ const ARABIC: FormTemplateCopy = {
   closeMenu: 'إغلاق القائمة',
   actions: [
     { id: 'search', label: 'البحث', icon: 'search-01' },
-    { id: 'language', label: 'English', icon: 'globe-02' },
+    { id: 'language', label: 'English', icon: 'language-square' },
     { id: 'login', label: 'تسجيل الدخول', icon: 'user' },
   ],
   tabsLabel: 'أقسام الخدمة',
@@ -241,7 +241,7 @@ const ENGLISH: FormTemplateCopy = {
   closeMenu: 'Close menu',
   actions: [
     { id: 'search', label: 'Search', icon: 'search-01' },
-    { id: 'language', label: 'عربي', icon: 'globe-02' },
+    { id: 'language', label: 'عربي', icon: 'language-square' },
     { id: 'login', label: 'Login', icon: 'user' },
   ],
   tabsLabel: 'Service sections',

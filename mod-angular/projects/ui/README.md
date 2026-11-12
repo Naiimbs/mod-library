@@ -576,14 +576,21 @@ PascalCase: `mod-text-input` → `ModTextInput`.
 | Group | Selectors |
 | --- | --- |
 | Actions | `button[mod-button]`, `a[mod-button]`, `a[mod-link]`, `button[mod-chip]`, `mod-icon` |
-| Form inputs | `mod-text-input`, `mod-textarea`, `mod-search-box`, `mod-dropdown`, `mod-checkbox`, `mod-checkbox-group`, `mod-radio`, `mod-radio-group`, `mod-rating`, `mod-file-upload` |
+| Form inputs | `mod-text-input`, `mod-textarea`, `mod-search-box`, `mod-dropdown`, `mod-checkbox`, `mod-checkbox-group`, `mod-radio`, `mod-radio-group`, `mod-rating`, `mod-file-upload`, `mod-otp-input` |
 | Dates | `mod-date-picker`, `mod-date-range-picker`, `mod-calendar`, `mod-date-field` |
 | Navigation | `mod-nav-header`, `[mod-header-action]`, `mod-second-nav-header`, `mod-nav-drawer`, `mod-sidebar`, `mod-sidebar-nav`, `mod-slideout-menu`, `mod-footer`, `mod-breadcrumbs`, `mod-tabs` + `mod-tab`, `mod-pagination` |
 | Menus | `mod-menu`, `mod-menu-item`, `mod-menu-group`, `mod-menu-divider`, `mod-menu-switch`, `mod-menu-anchor` + `[modMenuTrigger]` |
 | Feedback | `mod-modal` + `mod-modal-actions`, `[modTooltip]`, `mod-tooltip`, `mod-notification`, `mod-toast` + `mod-toast-container` + `ModToastService`, `mod-inline-alert`, `mod-progress-bar`, `mod-circular-progress`, `mod-progress-indicator`, `mod-skeleton` |
 | Data display | `mod-card`, `mod-table`, `mod-tag`, `mod-status-tag`, `mod-avatar`, `mod-avatar-group`, `mod-accordion` + `mod-accordion-item`, `mod-filters` |
 | Government | `mod-digital-stamp` |
-| Page templates | `mod-form-template` (+ `mod-form-row`, `mod-form-feedback`, `mod-service-tabs`), `mod-service-page`, `mod-screen` (+ `mod-screen-grid`, `mod-screen-placeholder`) |
+| Page templates | `mod-auth-layout` + `mod-auth-header` (sign-in, sign-up, verification and password pages), `mod-error-page` (404 / 403 / 500), `mod-form-template` (+ `mod-form-row`, `mod-form-feedback`, `mod-service-tabs`), `mod-service-page`, `mod-screen` (+ `mod-screen-grid`, `mod-screen-placeholder`) |
+
+**Ready-made pages**
+
+The demo app has a **Shared page examples** section with complete pages built from these
+components, each in English and Arabic and with a Code tab to copy from: log in (the MOD
+default sign-in first), sign up, verification, forgot password, 404 / 403 / 500 sections,
+and HTML email templates.
 
 **Where to find each component's inputs and outputs**
 

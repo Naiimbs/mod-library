@@ -208,7 +208,7 @@ export class LibraryIconsView {
     switch (this.modalTab()) {
       case 'component': {
         const variantAttr = variant.kind === 'svg' ? variant.variant : variant.classes.includes('solid') ? 'solid' : 'stroke';
-        return '<mod-icon name="' + name + '" variant="' + variantAttr + '" size="24"></mod-icon>';
+        return '<mod-icon name="' + name + '" variant="' + variantAttr + '" size="24" />';
       }
       case 'font':
         return FONT_NAMES.has(name)

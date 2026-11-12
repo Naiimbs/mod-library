@@ -50,3 +50,14 @@ export const DEMO_NAV: DemoNavItem[] = [
   { id: 'progress-bar', label: 'Progress Bar', icon: 'loading-03', badge: 'New' },
   { id: 'skeleton', label: 'Skeleton', icon: 'dashboard-square-01', badge: 'New' },
 ];
+
+/** "Shared page examples": complete pages built from the library components. */
+export const DEMO_PAGE_EXAMPLES: DemoNavItem[] = [
+  { id: 'page-examples', label: 'Overview', icon: 'dashboard-square-01', badge: 'New' },
+  { id: 'login-pages', label: 'Log in pages', icon: 'login-01', badge: 'New' },
+  { id: 'signup-pages', label: 'Sign up pages', icon: 'user-add-01', badge: 'New' },
+  { id: 'verification-pages', label: 'Verification pages', icon: 'mail-validation-01', badge: 'New' },
+  { id: 'forgot-password-pages', label: 'Forgot password pages', icon: 'lock-key', badge: 'New' },
+  { id: 'not-found-sections', label: '404 sections', icon: 'file-not-found', badge: 'New' },
+  { id: 'email-templates', label: 'Email templates', icon: 'mail-01', badge: 'New' },
+];

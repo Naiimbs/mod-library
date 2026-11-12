@@ -63,6 +63,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/dropdown/dropdown.page').then((m) => m.DropdownPage),
   },
   {
+    path: 'email-templates',
+    title: 'Email templates',
+    loadComponent: () => import('./pages/email-templates/email-templates.page').then((m) => m.EmailTemplatesPage),
+  },
+  {
     path: 'file-upload',
     title: 'File upload',
     loadComponent: () => import('./pages/file-upload/file-upload.page').then((m) => m.FileUploadPage),
@@ -76,6 +81,11 @@ export const routes: Routes = [
     path: 'footer',
     title: 'Footer',
     loadComponent: () => import('./pages/footer/footer.page').then((m) => m.FooterPage),
+  },
+  {
+    path: 'forgot-password-pages',
+    title: 'Forgot password pages',
+    loadComponent: () => import('./pages/forgot-password-pages/forgot-password-pages.page').then((m) => m.ForgotPasswordPagesPage),
   },
   {
     path: 'form-template',
@@ -98,6 +108,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/links/links.page').then((m) => m.LinksPage),
   },
   {
+    path: 'login-pages',
+    title: 'Login pages',
+    loadComponent: () => import('./pages/login-pages/login-pages.page').then((m) => m.LoginPagesPage),
+  },
+  {
     path: 'menus',
     title: 'Menus',
     loadComponent: () => import('./pages/menus/menus.page').then((m) => m.MenusPage),
@@ -118,6 +133,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/nav-header/nav-header.page').then((m) => m.NavHeaderPage),
   },
   {
+    path: 'not-found-sections',
+    title: 'Not found sections',
+    loadComponent: () => import('./pages/not-found-sections/not-found-sections.page').then((m) => m.NotFoundSectionsPage),
+  },
+  {
     path: 'notification',
     title: 'Notification',
     loadComponent: () => import('./pages/notification/notification.page').then((m) => m.NotificationPage),
@@ -126,6 +146,11 @@ export const routes: Routes = [
     path: 'notification-toast',
     title: 'Notification toast',
     loadComponent: () => import('./pages/notification-toast/notification-toast.page').then((m) => m.NotificationToastPage),
+  },
+  {
+    path: 'page-examples',
+    title: 'Page examples',
+    loadComponent: () => import('./pages/page-examples/page-examples.page').then((m) => m.PageExamplesPage),
   },
   {
     path: 'pagination',
@@ -178,6 +203,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/sidebar/sidebar.page').then((m) => m.SidebarPage),
   },
   {
+    path: 'signup-pages',
+    title: 'Signup pages',
+    loadComponent: () => import('./pages/signup-pages/signup-pages.page').then((m) => m.SignupPagesPage),
+  },
+  {
     path: 'skeleton',
     title: 'Skeleton',
     loadComponent: () => import('./pages/skeleton/skeleton.page').then((m) => m.SkeletonPage),
@@ -226,6 +256,11 @@ export const routes: Routes = [
     path: 'tooltip',
     title: 'Tooltip',
     loadComponent: () => import('./pages/tooltip/tooltip.page').then((m) => m.TooltipPage),
+  },
+  {
+    path: 'verification-pages',
+    title: 'Verification pages',
+    loadComponent: () => import('./pages/verification-pages/verification-pages.page').then((m) => m.VerificationPagesPage),
   },
   { path: '', pathMatch: 'full', redirectTo: 'components-overview' },
   { path: '**', redirectTo: 'components-overview' },

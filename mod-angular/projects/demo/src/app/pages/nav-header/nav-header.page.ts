@@ -235,7 +235,7 @@ export class NavHeaderPage {
     { label: 'Components' },
   ];
   protected readonly mobileActions: ModNavHeaderAction[] = [
-    { label: 'عربي', icon: 'globe-02', variant: 'primary' },
+    { label: 'عربي', icon: 'language-square', variant: 'primary' },
     { label: 'About Team', icon: 'user' },
     { label: 'Search', icon: 'search-01' },
   ];

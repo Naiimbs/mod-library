@@ -1,0 +1,173 @@
+/* ============================================
+   ERROR PAGE
+   MOD Internal - 404 / 403 / 500 sections: status code, title, text,
+   actions, optional helpful links and illustration.
+   ============================================ */
+
+/* The section responds to its own width, so it also works inside a narrower
+   container (a preview frame, a panel). */
+mod-error-page {
+    display: block;
+    container-type: inline-size;
+    container-name: mod-error;
+}
+
+.error-page {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    gap: var(--spacing-6xl);
+    padding: var(--spacing-9xl) var(--spacing-4xl);
+    background: var(--alpha-white);
+    color: var(--text-default);
+    font-family: var(--font-family-primary);
+}
+
+.error-page--full {
+    min-height: var(--mod-error-min-height, 100vh);
+}
+
+.error-page__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xl);
+    max-width: 640px;
+    margin-inline: auto;
+    text-align: center;
+}
+
+.error-page--start .error-page__body,
+.error-page--split .error-page__body {
+    align-items: flex-start;
+    margin-inline: 0;
+    text-align: start;
+}
+
+.error-page__code {
+    margin: 0;
+    font-size: var(--font-size-md, 16px);
+    line-height: 24px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--sa-600);
+}
+
+.error-page--large-code .error-page__code {
+    font-size: clamp(96px, 22cqw, 200px);
+    line-height: 1;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.02em;
+    /* Brand green: the code is real information, so it keeps at least 3:1
+       contrast (large text) instead of being a pale watermark. */
+    color: var(--sa-600);
+}
+
+.error-page__title {
+    margin: 0;
+    font-size: clamp(30px, 6cqw, 48px);
+    line-height: 1.25;
+    font-weight: var(--font-weight-bold);
+    color: var(--gray-900);
+}
+
+.error-page__text {
+    margin: 0;
+    max-width: 48ch;
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--gray-600);
+}
+
+.error-page__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    margin-block-start: var(--spacing-xl);
+}
+
+.error-page--start .error-page__actions,
+.error-page--split .error-page__actions {
+    justify-content: flex-start;
+}
+
+.error-page__actions:empty,
+.error-page__media:empty {
+    display: none;
+}
+
+.error-page__links {
+    display: grid;
+    gap: 0;
+    width: 100%;
+    margin-block-start: var(--spacing-3xl);
+    border-block-start: 1px solid var(--gray-200);
+    text-align: start;
+}
+
+.error-page__media {
+    display: grid;
+    place-items: center;
+}
+
+.error-page__media img,
+.error-page__media svg {
+    display: block;
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+}
+
+/* --- Split: text beside the media --- */
+.error-page--split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    max-width: 1280px;
+    margin-inline: auto;
+}
+
+/* --- Dark --- */
+.error-page--dark {
+    background: var(--mod-dark-green);
+    color: var(--mod-white);
+}
+
+.error-page--dark .error-page__title {
+    color: var(--mod-white);
+}
+
+.error-page--dark .error-page__text {
+    color: var(--sad-100);
+}
+
+.error-page--dark .error-page__code {
+    color: var(--sa-300);
+}
+
+.error-page--dark.error-page--large-code .error-page__code {
+    color: var(--sa-300);
+}
+
+.error-page--dark .error-page__links {
+    border-block-start-color: color-mix(in srgb, var(--mod-white) 20%, transparent);
+}
+
+@container mod-error (max-width: 760px) {
+    .error-page__text {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .error-page {
+        padding: var(--spacing-7xl) var(--spacing-xl);
+        gap: var(--spacing-4xl);
+    }
+
+    .error-page--split {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .error-page__actions {
+        flex-direction: column;
+        align-self: stretch;
+    }
+}

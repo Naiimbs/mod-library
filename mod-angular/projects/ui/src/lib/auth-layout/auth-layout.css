@@ -1,0 +1,360 @@
+/* ============================================
+   AUTH LAYOUT
+   MOD Internal - layout of sign-in, sign-up, verification and password
+   pages: the form area, and (split variant) a brand panel with a photo
+   under a dark-green tint, a ring of process icons and one line of text.
+   ============================================ */
+
+mod-auth-layout {
+    display: block;
+    /* The layout responds to its own width, so it also works inside a
+       narrower container (a preview frame, a dialog). */
+    container-type: inline-size;
+    container-name: mod-auth;
+}
+
+.auth-layout {
+    --auth-edge-gap: 120px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    min-height: var(--mod-auth-min-height, 100vh);
+    background: var(--gray-50);
+    color: var(--text-default);
+    font-family: var(--font-family-primary);
+}
+
+.auth-layout--split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+}
+
+.auth-layout--split.auth-layout--panel-start {
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+}
+
+/* --- Form side: logo and actions on top, content in the middle, footer below --- */
+.auth-layout__main {
+    order: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--auth-edge-gap) var(--spacing-6xl);
+    background: linear-gradient(180deg, var(--alpha-white), var(--gray-50));
+}
+
+.auth-layout__top {
+    position: absolute;
+    inset-block-start: 28px;
+    inset-inline: var(--spacing-4xl);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--spacing-xl);
+}
+
+.auth-layout__logo img,
+.auth-layout__logo svg {
+    display: block;
+    width: 96px;
+    height: auto;
+}
+
+.auth-layout__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.auth-layout__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3xl);
+    width: 100%;
+    max-width: 464px;
+}
+
+.auth-layout--centered .auth-layout__content {
+    max-width: 400px;
+}
+
+.auth-layout--card .auth-layout__content {
+    max-width: 480px;
+    padding: var(--spacing-5xl) var(--spacing-5xl) var(--spacing-6xl);
+    background: var(--alpha-white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+}
+
+/* Flat gray page behind the form area (so a white card stands out). */
+.auth-layout--muted .auth-layout__main {
+    background: var(--gray-100);
+}
+
+.auth-layout__footer {
+    position: absolute;
+    inset-block-end: var(--spacing-3xl);
+    inset-inline: var(--spacing-5xl);
+    font-size: 13px;
+    line-height: 20px;
+    color: var(--gray-500);
+}
+
+.auth-layout--centered .auth-layout__footer {
+    text-align: center;
+}
+
+/* --- Brand panel: photo, tint, ring, text --- */
+.auth-layout__panel {
+    order: 2;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    container-type: size;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--auth-edge-gap) var(--spacing-7xl);
+    background: var(--mod-dark-green);
+    color: var(--sad-100);
+}
+
+.auth-layout--panel-start .auth-layout__panel {
+    order: 0;
+}
+
+.auth-layout__photo {
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+}
+
+/* Darkest at the bottom and on the start side, where the text sits. */
+.auth-layout__tint {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    /* Fallback for browsers without color-mix(): a flat dark-green veil. */
+    background: rgba(41, 80, 77, 0.72);
+    background:
+        linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--mod-dark-green) 25%, transparent) 0%,
+            color-mix(in srgb, var(--mod-dark-green) 55%, transparent) 45%,
+            var(--mod-dark-green) 92%
+        ),
+        linear-gradient(
+            90deg,
+            color-mix(in srgb, var(--mod-dark-green) 82%, transparent) 0%,
+            color-mix(in srgb, var(--mod-dark-green) 20%, transparent) 70%
+        );
+}
+
+[dir="rtl"] .auth-layout__tint {
+    transform: scaleX(-1);
+}
+
+/* A circle of 66.5% of the panel width, centred beyond the end edge; each
+   node and dot sits on it by its angle (--a). */
+.auth-layout__ring {
+    position: absolute;
+    z-index: -1;
+    inset-inline-end: -70.5cqw;
+    inset-block-start: calc(80cqh - 54.5cqw);
+    width: 133cqw;
+    aspect-ratio: 1;
+    border: 1px solid color-mix(in srgb, var(--sa-300) 45%, transparent);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.auth-layout__node {
+    --a: -43deg;
+    --size: 56px;
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: var(--size);
+    height: var(--size);
+    inset-inline-end: calc(66.5cqw + 66.5cqw * cos(var(--a)) - var(--size) / 2);
+    inset-block-start: calc(66.5cqw + 66.5cqw * sin(var(--a)) - var(--size) / 2);
+    border: 1px solid color-mix(in srgb, var(--sa-300) 60%, transparent);
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--mod-dark-green) 70%, transparent);
+    backdrop-filter: blur(2px);
+    color: var(--sa-300);
+    font-size: 28px;
+}
+
+.auth-layout__dot {
+    --a: -52deg;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    inset-inline-end: calc(66.5cqw + 66.5cqw * cos(var(--a)) - 4px);
+    inset-block-start: calc(66.5cqw + 66.5cqw * sin(var(--a)) - 4px);
+    border-radius: 50%;
+    background: var(--sa-300);
+}
+
+.auth-layout__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: min(30em, 42cqw);
+}
+
+.auth-layout__brand-title {
+    margin: 0;
+    font-size: clamp(26px, 4.4cqw, 38px);
+    line-height: 1.5;
+    font-weight: var(--font-weight-bold);
+    color: var(--mod-white);
+}
+
+.auth-layout__rule {
+    display: block;
+    width: 64px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--mod-light-green);
+}
+
+.auth-layout__brand-text {
+    margin: 0;
+    font-size: clamp(15px, 2.1cqw, 17px);
+    line-height: 1.9;
+    color: var(--sad-100);
+}
+
+/* The ring is placed with trigonometric functions and container units. Where
+   those are not supported the nodes would pile up in a corner, so the ring is
+   left out and the panel keeps its photo, tint and text. */
+@supports not (inset-block-start: calc(1cqw * cos(10deg))) {
+    .auth-layout__ring {
+        display: none;
+    }
+}
+
+/* --- Auth header: featured icon, title, supporting text --- */
+.auth-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    text-align: center;
+}
+
+.auth-header--start {
+    align-items: flex-start;
+    text-align: start;
+}
+
+.auth-header__icon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    margin-block-end: var(--spacing-md);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    background: var(--alpha-white);
+    color: var(--sa-600);
+    font-size: 28px;
+}
+
+.auth-header__title {
+    margin: 0;
+    font-size: 28px;
+    line-height: 38px;
+    font-weight: var(--font-weight-bold);
+    color: var(--gray-900);
+}
+
+.auth-header__title--underline::after {
+    content: "";
+    display: block;
+    width: 72px;
+    height: 3px;
+    margin: var(--spacing-lg) auto 0;
+    border-radius: 2px;
+    background: var(--sa-600);
+}
+
+.auth-header--start .auth-header__title--underline::after {
+    margin-inline: 0;
+}
+
+.auth-header__text {
+    margin: 0;
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--gray-500);
+}
+
+/* --- Narrow containers: one column, the panel becomes a banner above the form --- */
+@container mod-auth (max-width: 899px) {
+    .auth-layout--split,
+    .auth-layout--split.auth-layout--panel-start {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto 1fr;
+    }
+
+    .auth-layout__panel,
+    .auth-layout--panel-start .auth-layout__panel {
+        order: -1;
+        min-height: 190px;
+        padding: var(--spacing-3xl) var(--spacing-2xl);
+        justify-content: flex-end;
+    }
+
+    .auth-layout__ring {
+        display: none;
+    }
+
+    .auth-layout__brand {
+        gap: 10px;
+        max-width: none;
+    }
+
+    .auth-layout__brand-title {
+        font-size: 22px;
+    }
+
+    .auth-layout__rule {
+        width: 48px;
+    }
+
+    .auth-layout__brand-text {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .auth-layout__main {
+        padding: 96px var(--spacing-2xl) var(--spacing-7xl);
+        justify-content: flex-start;
+    }
+
+    .auth-layout__top {
+        inset-block-start: var(--spacing-xl);
+        inset-inline: var(--spacing-2xl);
+    }
+
+    .auth-layout__logo img,
+    .auth-layout__logo svg {
+        width: 64px;
+    }
+
+    .auth-layout--card .auth-layout__content {
+        padding: 28px var(--spacing-2xl) var(--spacing-4xl);
+    }
+
+    .auth-layout__footer {
+        inset-inline: var(--spacing-2xl);
+        inset-block-end: var(--spacing-xl);
+    }
+}
