@@ -1,0 +1,120 @@
+/* ============================================
+   PAGE HEADER
+   MOD Internal - heading block of an application page: breadcrumbs,
+   title with tags, description, actions and tabs.
+   ============================================ */
+
+mod-page-header {
+    display: block;
+    container-type: inline-size;
+    container-name: mod-page-header;
+}
+
+.page-header {
+    margin-block-end: var(--spacing-3xl);
+    font-family: var(--font-family-primary);
+    color: var(--gray-900);
+}
+
+.page-header--divider {
+    padding-block-end: var(--spacing-2xl);
+    border-block-end: 1px solid var(--gray-200);
+}
+
+.page-header__crumb {
+    margin-block-end: var(--spacing-lg);
+}
+
+.page-header__crumb:empty,
+.page-header__meta:empty,
+.page-header__actions:empty,
+.page-header__tabs:empty {
+    display: none;
+}
+
+.page-header__row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--spacing-xl) var(--spacing-3xl);
+}
+
+.page-header__text {
+    flex: 1;
+    min-width: 0;
+}
+
+.page-header__title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-md) var(--spacing-lg);
+}
+
+.page-header__title {
+    margin: 0;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: var(--font-weight-bold);
+    color: var(--gray-900);
+}
+
+h2.page-header__title {
+    font-size: 20px;
+    line-height: 28px;
+}
+
+h3.page-header__title {
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: var(--font-weight-semibold);
+}
+
+.page-header__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.page-header__description {
+    margin: var(--spacing-xs) 0 0;
+    max-width: 80ch;
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--gray-500);
+}
+
+.page-header__actions {
+    flex: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--spacing-md);
+}
+
+.page-header__tabs {
+    margin-block-start: var(--spacing-xl);
+}
+
+/* With tabs the divider is the tab line itself. */
+.page-header--divider:has(.page-header__tabs:not(:empty)) {
+    padding-block-end: 0;
+}
+
+@container mod-page-header (max-width: 639px) {
+    .page-header__row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .page-header__title {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .page-header__actions {
+        justify-content: flex-start;
+    }
+}

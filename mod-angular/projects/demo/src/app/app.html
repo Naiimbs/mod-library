@@ -77,6 +77,26 @@
         <button
           type="button"
           class="sidebar-group"
+          aria-controls="sidebar-app-examples"
+          [attr.aria-expanded]="appExamplesOpen()"
+          (click)="appExamplesOpen.set(!appExamplesOpen())"
+        >
+          <span>Application UI examples</span>
+          <span class="sidebar-link__badge">New</span>
+          <span class="icon sidebar-group__chevron dga-icon-arrow-up-01" aria-hidden="true"></span>
+        </button>
+        <div id="sidebar-app-examples" class="sidebar-group__items" [hidden]="!appExamplesOpen()">
+          @for (item of appExamples; track item.id) {
+            <a class="sidebar-link" [routerLink]="'/' + item.id" routerLinkActive="active">
+              <span class="icon sidebar-link__icon" [class]="'dga-icon-' + item.icon" aria-hidden="true"></span>
+              {{ item.label }}
+            </a>
+          }
+        </div>
+
+        <button
+          type="button"
+          class="sidebar-group"
           aria-controls="sidebar-components"
           [attr.aria-expanded]="componentsOpen()"
           (click)="componentsOpen.set(!componentsOpen())"

@@ -3,7 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { filter, map } from 'rxjs';
 import { ModHeaderAction, ModNavHeader, ModNavHeaderItem } from '@mod-internal/ui';
-import { DEMO_NAV, DEMO_PAGE_EXAMPLES } from './nav';
+import { DEMO_APP_EXAMPLES, DEMO_NAV, DEMO_PAGE_EXAMPLES } from './nav';
 
 /** Pages that hide the sidebar, as in the original router.js. */
 const FULL_PAGE_VIEWS = ['icons', 'classes', 'styles', 'service-page'];
@@ -22,6 +22,8 @@ export class App {
 
   protected readonly nav = DEMO_NAV;
   protected readonly pageExamples = DEMO_PAGE_EXAMPLES;
+  protected readonly appExamples = DEMO_APP_EXAMPLES;
+  protected readonly appExamplesOpen = signal(true);
   /** Collapsed state of the two sidebar groups. */
   protected readonly examplesOpen = signal(true);
   protected readonly componentsOpen = signal(true);

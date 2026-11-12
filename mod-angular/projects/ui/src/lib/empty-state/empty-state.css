@@ -1,0 +1,87 @@
+/* ============================================
+   EMPTY STATE
+   MOD Internal - placeholder for a list, table or panel with no content.
+   ============================================ */
+
+mod-empty-state {
+    display: flex;
+}
+
+.empty-state {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-6xl) var(--spacing-3xl);
+    font-family: var(--font-family-primary);
+    color: var(--gray-900);
+    text-align: center;
+}
+
+.empty-state--bordered {
+    border: 1px dashed var(--gray-300);
+    border-radius: var(--radius-md);
+    background: var(--gray-50);
+}
+
+.empty-state__icon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    margin-block-end: var(--spacing-md);
+    border-radius: var(--radius-full);
+    background: var(--gray-100);
+    color: var(--gray-600);
+    font-size: 28px;
+}
+
+.empty-state__title {
+    margin: 0;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--gray-900);
+}
+
+.empty-state__text {
+    margin: 0;
+    max-width: 48ch;
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--gray-500);
+}
+
+.empty-state__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-block-start: var(--spacing-lg);
+}
+
+.empty-state__actions:empty {
+    display: none;
+}
+
+/* --- Compact: small panels and table bodies --- */
+.empty-state--compact {
+    gap: var(--spacing-xs);
+    padding: var(--spacing-3xl) var(--spacing-xl);
+}
+
+.empty-state--compact .empty-state__icon {
+    width: 40px;
+    height: 40px;
+    margin-block-end: var(--spacing-sm);
+    font-size: 20px;
+}
+
+.empty-state--compact .empty-state__title {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.empty-state--compact .empty-state__text {
+    font-size: 13px;
+    line-height: 20px;
+}

@@ -61,3 +61,14 @@ export const DEMO_PAGE_EXAMPLES: DemoNavItem[] = [
   { id: 'not-found-sections', label: '404 sections', icon: 'file-not-found', badge: 'New' },
   { id: 'email-templates', label: 'Email templates', icon: 'mail-01', badge: 'New' },
 ];
+
+/** "Application UI examples": full application screens adapted from the MODHS Referral Portal. */
+export const DEMO_APP_EXAMPLES: DemoNavItem[] = [
+  { id: 'app-examples', label: 'Overview', icon: 'dashboard-square-01', badge: 'New' },
+  { id: 'dashboards-01', label: 'Dashboards 01', icon: 'analytics-01', badge: 'New' },
+  { id: 'dashboards-02', label: 'Dashboards 02', icon: 'analytics-01', badge: 'New' },
+  { id: 'settings-pages-01', label: 'Settings pages 01', icon: 'settings-01', badge: 'New' },
+  { id: 'settings-pages-02', label: 'Settings pages 02', icon: 'settings-01', badge: 'New' },
+  { id: 'informational-pages-01', label: 'Informational pages 01', icon: 'information-circle', badge: 'New' },
+  { id: 'informational-pages-02', label: 'Informational pages 02', icon: 'information-circle', badge: 'New' },
+];

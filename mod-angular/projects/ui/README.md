@@ -582,6 +582,7 @@ PascalCase: `mod-text-input` → `ModTextInput`.
 | Menus | `mod-menu`, `mod-menu-item`, `mod-menu-group`, `mod-menu-divider`, `mod-menu-switch`, `mod-menu-anchor` + `[modMenuTrigger]` |
 | Feedback | `mod-modal` + `mod-modal-actions`, `[modTooltip]`, `mod-tooltip`, `mod-notification`, `mod-toast` + `mod-toast-container` + `ModToastService`, `mod-inline-alert`, `mod-progress-bar`, `mod-circular-progress`, `mod-progress-indicator`, `mod-skeleton` |
 | Data display | `mod-card`, `mod-table`, `mod-tag`, `mod-status-tag`, `mod-avatar`, `mod-avatar-group`, `mod-accordion` + `mod-accordion-item`, `mod-filters` |
+| Application UI | `mod-app-shell` (side bar, top bar and main area; slots `[modAppShellLogo]`, `[modAppShellLogoMark]`, `[modAppShellFooter]`, `[modAppShellTitle]`, `[modAppShellSearch]`, `[modAppShellActions]`), `mod-page-header`, `mod-stat-card`, `mod-bar-list`, `mod-column-chart`, `mod-description-list` + `mod-description-item`, `mod-timeline` + `mod-timeline-item`, `mod-empty-state` |
 | Government | `mod-digital-stamp` |
 | Page templates | `mod-auth-layout` + `mod-auth-header` (sign-in, sign-up, verification and password pages), `mod-error-page` (404 / 403 / 500), `mod-form-template` (+ `mod-form-row`, `mod-form-feedback`, `mod-service-tabs`), `mod-service-page`, `mod-screen` (+ `mod-screen-grid`, `mod-screen-placeholder`) |
 

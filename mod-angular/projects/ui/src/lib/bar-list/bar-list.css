@@ -1,0 +1,141 @@
+/* ============================================
+   BAR LIST
+   MOD Internal - ranked list of labelled horizontal bars.
+   ============================================ */
+
+mod-bar-list {
+    display: block;
+}
+
+.bar-list {
+    font-family: var(--font-family-primary);
+    color: var(--gray-900);
+}
+
+.bar-list__list {
+    display: grid;
+    gap: var(--spacing-xl);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.bar-list--compact .bar-list__list {
+    gap: var(--spacing-lg);
+}
+
+.bar-list__row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+    min-width: 0;
+}
+
+.bar-list__rank {
+    flex: none;
+    min-width: 20px;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: var(--font-weight-semibold);
+    font-variant-numeric: tabular-nums;
+    color: var(--gray-500);
+    text-align: center;
+}
+
+.bar-list__body {
+    flex: 1;
+    min-width: 0;
+}
+
+.bar-list__line {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--spacing-lg);
+    margin-block-end: var(--spacing-sm);
+}
+
+.bar-list__label {
+    min-width: 0;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--gray-700);
+    overflow-wrap: anywhere;
+}
+
+.bar-list__link {
+    text-decoration: underline;
+    text-decoration-color: var(--gray-300);
+    text-underline-offset: 3px;
+}
+
+.bar-list__link:hover {
+    color: var(--gray-900);
+    text-decoration-color: currentColor;
+}
+
+.bar-list__link:focus-visible {
+    outline: 2px solid var(--border-black);
+    outline-offset: 2px;
+    border-radius: var(--radius-xs);
+}
+
+.bar-list__value {
+    flex: none;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: var(--font-weight-semibold);
+    font-variant-numeric: tabular-nums;
+    color: var(--gray-900);
+    white-space: nowrap;
+}
+
+.bar-list__track {
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: var(--gray-100);
+    overflow: hidden;
+}
+
+.bar-list--compact .bar-list__track {
+    height: 6px;
+}
+
+.bar-list__fill {
+    display: block;
+    height: 100%;
+    min-width: 2px;
+    border-radius: var(--radius-full);
+    background: var(--sa-600);
+}
+
+.bar-list__fill--neutral {
+    background: var(--gray-400);
+}
+
+.bar-list__fill--warning {
+    background: var(--warning-500);
+}
+
+.bar-list__fill--critical {
+    background: var(--error-600);
+}
+
+.bar-list__empty {
+    margin: 0;
+    padding: var(--spacing-xl) 0;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--gray-500);
+    text-align: center;
+}
+
+@media (forced-colors: active) {
+    .bar-list__track {
+        border: 1px solid CanvasText;
+    }
+
+    .bar-list__fill {
+        background: Highlight;
+    }
+}

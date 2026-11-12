@@ -8,6 +8,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/accordion/accordion.page').then((m) => m.AccordionPage),
   },
   {
+    path: 'app-examples',
+    title: 'App examples',
+    loadComponent: () => import('./pages/app-examples/app-examples.page').then((m) => m.AppExamplesPage),
+  },
+  {
     path: 'avatar',
     title: 'Avatar',
     loadComponent: () => import('./pages/avatar/avatar.page').then((m) => m.AvatarPage),
@@ -46,6 +51,16 @@ export const routes: Routes = [
     path: 'components-overview',
     title: 'Components overview',
     loadComponent: () => import('./pages/components-overview/components-overview.page').then((m) => m.ComponentsOverviewPage),
+  },
+  {
+    path: 'dashboards-01',
+    title: 'Dashboards 01',
+    loadComponent: () => import('./pages/dashboards-01/dashboards-01.page').then((m) => m.Dashboards01Page),
+  },
+  {
+    path: 'dashboards-02',
+    title: 'Dashboards 02',
+    loadComponent: () => import('./pages/dashboards-02/dashboards-02.page').then((m) => m.Dashboards02Page),
   },
   {
     path: 'date-picker',
@@ -96,6 +111,16 @@ export const routes: Routes = [
     path: 'icons',
     title: 'Icons',
     loadComponent: () => import('./pages/icons/icons.page').then((m) => m.IconsPage),
+  },
+  {
+    path: 'informational-pages-01',
+    title: 'Informational pages 01',
+    loadComponent: () => import('./pages/informational-pages-01/informational-pages-01.page').then((m) => m.InformationalPages01Page),
+  },
+  {
+    path: 'informational-pages-02',
+    title: 'Informational pages 02',
+    loadComponent: () => import('./pages/informational-pages-02/informational-pages-02.page').then((m) => m.InformationalPages02Page),
   },
   {
     path: 'inline-alert',
@@ -196,6 +221,16 @@ export const routes: Routes = [
     path: 'service-page',
     title: 'Service page',
     loadComponent: () => import('./pages/service-page/service-page.page').then((m) => m.ServicePagePage),
+  },
+  {
+    path: 'settings-pages-01',
+    title: 'Settings pages 01',
+    loadComponent: () => import('./pages/settings-pages-01/settings-pages-01.page').then((m) => m.SettingsPages01Page),
+  },
+  {
+    path: 'settings-pages-02',
+    title: 'Settings pages 02',
+    loadComponent: () => import('./pages/settings-pages-02/settings-pages-02.page').then((m) => m.SettingsPages02Page),
   },
   {
     path: 'sidebar',

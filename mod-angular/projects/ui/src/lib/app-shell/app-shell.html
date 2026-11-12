@@ -1,0 +1,134 @@
+<div
+  class="app-shell"
+  [class.app-shell--collapsed]="collapsed()"
+  [class.app-shell--drawer-open]="drawerOpen()"
+  [class.app-shell--has-mark]="hasLogoMark()"
+>
+  <a class="app-shell__skip" [href]="'#' + mainId" (click)="skipToMain($event)">{{ skipLabel() }}</a>
+
+  @if (drawerActive()) {
+    <div class="app-shell__backdrop" (click)="closeDrawer()"></div>
+  }
+
+  <div
+    #side
+    class="app-shell__side"
+    tabindex="-1"
+    [id]="sideId"
+    [attr.role]="drawerActive() ? 'dialog' : null"
+    [attr.aria-modal]="drawerActive() ? 'true' : null"
+    [attr.aria-label]="drawerActive() ? navLabel() : null"
+    [attr.inert]="narrow() && !drawerOpen() ? '' : null"
+    (keydown)="onSideKeydown($event)"
+  >
+    <div class="app-shell__side-top">
+      <div class="app-shell__logo"><ng-content select="[modAppShellLogo]" /></div>
+      <div class="app-shell__logo-mark"><ng-content select="[modAppShellLogoMark]" /></div>
+      @if (collapsible()) {
+        <button
+          type="button"
+          class="app-shell__icon-btn app-shell__collapse"
+          [attr.aria-controls]="sideId"
+          [attr.aria-expanded]="!collapsed()"
+          [attr.aria-label]="collapsed() ? expandLabel() : collapseLabel()"
+          [attr.title]="collapsed() ? expandLabel() : collapseLabel()"
+          (click)="toggleCollapsed()"
+        >
+          <mod-icon class="app-shell__flip" [name]="collapsed() ? 'sidebar-right' : 'sidebar-left'" />
+        </button>
+      }
+      <button
+        type="button"
+        class="app-shell__icon-btn app-shell__close"
+        [attr.aria-label]="closeMenuLabel()"
+        (click)="closeDrawer()"
+      >
+        <mod-icon name="cancel-01" />
+      </button>
+    </div>
+
+    <nav class="app-shell__nav" [attr.aria-label]="navLabel()">
+      @for (group of groups(); track group.id ?? $index; let groupIndex = $index) {
+        <div
+          class="app-shell__group"
+          role="group"
+          [attr.aria-labelledby]="group.label ? uid + '-group-' + groupIndex : null"
+        >
+          @if (group.label) {
+            <span class="app-shell__group-title" [id]="uid + '-group-' + groupIndex">{{ group.label }}</span>
+          }
+          <ul class="app-shell__list" role="list">
+            @for (item of group.items; track item.id) {
+              <li>
+                @if (item.href && !item.disabled) {
+                  <a
+                    class="app-shell__item"
+                    [class.is-active]="item.id === activeId()"
+                    [href]="item.href"
+                    [attr.aria-current]="item.id === activeId() ? 'page' : null"
+                    [attr.title]="rail() ? item.label : null"
+                    (click)="select(item, $event)"
+                  >
+                    <ng-container [ngTemplateOutlet]="itemBody" [ngTemplateOutletContext]="{ $implicit: item }" />
+                  </a>
+                } @else {
+                  <button
+                    type="button"
+                    class="app-shell__item"
+                    [class.is-active]="item.id === activeId()"
+                    [disabled]="item.disabled"
+                    [attr.aria-current]="item.id === activeId() ? 'page' : null"
+                    [attr.title]="rail() ? item.label : null"
+                    (click)="select(item, $event)"
+                  >
+                    <ng-container [ngTemplateOutlet]="itemBody" [ngTemplateOutletContext]="{ $implicit: item }" />
+                  </button>
+                }
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </nav>
+
+    <div class="app-shell__side-footer"><ng-content select="[modAppShellFooter]" /></div>
+  </div>
+
+  <div class="app-shell__col" [attr.inert]="drawerActive() ? '' : null">
+    <header class="app-shell__top">
+      <button
+        type="button"
+        class="app-shell__icon-btn app-shell__menu"
+        aria-haspopup="dialog"
+        [attr.aria-controls]="sideId"
+        [attr.aria-expanded]="drawerOpen()"
+        [attr.aria-label]="openMenuLabel()"
+        (click)="openDrawer()"
+      >
+        <mod-icon name="menu-01" />
+      </button>
+      <div class="app-shell__title"><ng-content select="[modAppShellTitle]" /></div>
+      <div class="app-shell__search"><ng-content select="[modAppShellSearch]" /></div>
+      <div class="app-shell__actions"><ng-content select="[modAppShellActions]" /></div>
+    </header>
+
+    <main #main class="app-shell__main" tabindex="-1" [id]="mainId">
+      <ng-content />
+    </main>
+  </div>
+</div>
+
+<ng-template #itemBody let-item>
+  @if (item.icon) {
+    <mod-icon class="app-shell__item-icon" [name]="item.icon" />
+  } @else {
+    <span class="app-shell__item-icon app-shell__item-initial" aria-hidden="true">{{ item.label.charAt(0) }}</span>
+  }
+  <span class="app-shell__item-label">{{ item.label }}</span>
+  @if (item.badge !== undefined && item.badge !== '') {
+    <span class="app-shell__badge">
+      <span aria-hidden="true">{{ item.badge }}</span>
+      <span class="app-shell__sr">{{ badgeText(item) }}</span>
+    </span>
+  }
+</ng-template>
