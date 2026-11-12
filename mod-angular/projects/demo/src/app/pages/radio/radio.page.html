@@ -1,0 +1,180 @@
+<div class="content-header">
+  <h1 class="content-title">Radio Button</h1>
+  <p class="content-description">
+    A radio button lets users choose one option from a group of options. When they pick one, any previously
+    selected option is deselected. Radio buttons are commonly used in forms and surveys when users need to pick
+    just one choice from a list.
+  </p>
+</div>
+
+<demo-live
+  heading="Radio Button"
+  description="Select a single option from a group. Only one option can be active at a time."
+  align="center"
+  [rtl]="rtl()"
+>
+  <mod-radio-group
+    style="width: 100%; max-width: 400px"
+    name="demo-group"
+    [(value)]="selection"
+    [variant]="variant()"
+    [disabled]="state() === 'disabled'"
+    [readonly]="state() === 'readonly'"
+  >
+    @for (option of t().options; track $index) {
+      <mod-radio
+        [value]="$index"
+        [label]="option"
+        [helperText]="helperText() ? t().helpers[$index] : ''"
+        [alertText]="alertMessage() && $index === 0 ? t().alert : ''"
+      />
+    }
+  </mod-radio-group>
+
+  <demo-switch label="RTL" [(checked)]="rtl" />
+  <demo-select label="State" [options]="states" [(value)]="state" />
+  <demo-select label="Style" [options]="variants" [(value)]="variant" />
+  <demo-switch label="Selected" [checked]="selected()" (checkedChange)="setSelected($event)" />
+  <demo-switch label="Helper Text" [(checked)]="helperText" />
+  <demo-switch label="Alert Message" [(checked)]="alertMessage" />
+</demo-live>
+
+<demo-props heading="Props" description="Inputs and models of mod-radio." [props]="props" />
+<demo-props
+  heading="Radio group props"
+  description="Inputs and models of mod-radio-group, which owns the selected value of its radios."
+  [props]="groupProps"
+/>
+
+<demo-showcase
+  heading="States"
+  description="All interactive states — default, hover (move mouse over), disabled, and read-only."
+  align="stretch"
+>
+  <div class="showcase-row" style="gap: var(--spacing-6xl); align-items: flex-start;">
+    <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+      <p [style]="groupLabel">Unselected</p>
+      <mod-radio name="states-unselected" label="Default" />
+      <mod-radio name="states-disabled-un" label="Disabled" disabled />
+      <mod-radio name="states-readonly-un" label="Read-only" readonly />
+    </div>
+    <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+      <p [style]="groupLabel">Selected (Primary)</p>
+      <mod-radio name="states-selected" label="Default" [checked]="true" />
+      <mod-radio name="states-disabled-sel" label="Disabled" [checked]="true" disabled />
+      <mod-radio name="states-readonly-sel" label="Read-only" [checked]="true" readonly />
+    </div>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Styles"
+  description="Primary style uses a green indicator dot, while Neutral uses a black dot."
+  align="stretch"
+>
+  <div class="showcase-row" style="gap: var(--spacing-6xl); align-items: flex-start;">
+    <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+      <p [style]="groupLabel">Primary</p>
+      <mod-radio-group
+        style="gap: var(--spacing-md)"
+        name="style-primary"
+        ariaLabel="Primary"
+        [(value)]="stylePrimary"
+      >
+        <mod-radio value="a" label="Option A" />
+        <mod-radio value="b" label="Option B" />
+        <mod-radio value="c" label="Option C" />
+      </mod-radio-group>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+      <p [style]="groupLabel">Neutral</p>
+      <mod-radio-group
+        style="gap: var(--spacing-md)"
+        name="style-neutral"
+        variant="neutral"
+        ariaLabel="Neutral"
+        [(value)]="styleNeutral"
+      >
+        <mod-radio value="a" label="Option A" />
+        <mod-radio value="b" label="Option B" />
+        <mod-radio value="c" label="Option C" />
+      </mod-radio-group>
+    </div>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="With Helper Text"
+  description="Descriptive text below the label provides additional context for each option."
+  align="stretch"
+>
+  <mod-radio-group style="max-width: 400px" name="helper-group" ariaLabel="Delivery" [(value)]="delivery">
+    <mod-radio value="standard" label="Standard delivery" helperText="Free shipping. Arrives in 5-7 business days." />
+    <mod-radio value="express" label="Express delivery" helperText="SAR 25.00. Arrives in 1-2 business days." />
+    <mod-radio value="same-day" label="Same-day delivery" helperText="SAR 50.00. Available in select cities only." />
+  </mod-radio-group>
+</demo-showcase>
+
+<demo-showcase
+  heading="With Alert Message"
+  description="Error or warning feedback displayed below a radio option."
+  align="stretch"
+>
+  <mod-radio-group style="max-width: 400px" name="alert-group" ariaLabel="Options" [(value)]="alertChoice">
+    <mod-radio
+      value="a"
+      label="Option A"
+      helperText="When a selection needs a further detailed explanation, it goes here."
+      alertText="Error/Warning message"
+    />
+    <mod-radio value="b" label="Option B" helperText="Additional context for option B." />
+  </mod-radio-group>
+</demo-showcase>
+
+<demo-showcase
+  heading="Radio Group"
+  description="A group of radio buttons where only one option can be selected. Available in vertical (default) and horizontal layouts."
+  align="stretch"
+>
+  <div class="showcase-row" style="gap: 64px; align-items: flex-start;">
+    <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+      <p [style]="groupLabel">Vertical</p>
+      <mod-radio-group name="group-vertical" ariaLabel="Vertical" [(value)]="vertical">
+        <mod-radio value="small" label="Small" />
+        <mod-radio value="medium" label="Medium" />
+        <mod-radio value="large" label="Large" />
+      </mod-radio-group>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+      <p [style]="groupLabel">Horizontal</p>
+      <mod-radio-group
+        name="group-horizontal"
+        orientation="horizontal"
+        ariaLabel="Horizontal"
+        [(value)]="horizontal"
+      >
+        <mod-radio value="left" label="Left" />
+        <mod-radio value="center" label="Center" />
+        <mod-radio value="right" label="Right" />
+      </mod-radio-group>
+    </div>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="RTL Layout"
+  description="Right-to-left support for Arabic and other RTL languages."
+  align="stretch"
+>
+  <div dir="rtl" style="width: 100%;">
+    <mod-radio-group style="max-width: 400px; margin-left: auto;" name="rtl-group" [(value)]="rtlChoice">
+      <mod-radio
+        value="a"
+        label="عنوان اختيار مفرد"
+        helperText="يكتب المحتوى الإضافي هنا في حال ان عنوان الاختيار يحتاج الى شرح أو تفصيل."
+      />
+      <mod-radio value="b" label="خيار ثاني" helperText="وصف إضافي للخيار الثاني." />
+      <mod-radio value="c" label="خيار ثالث" helperText="وصف إضافي للخيار الثالث." alertText="رسالة خطأ أو تحذير" />
+    </mod-radio-group>
+  </div>
+</demo-showcase>

@@ -1,0 +1,1209 @@
+<div class="content-header">
+    <h1 class="content-title">Components Overview</h1>
+    <p class="content-description">The MOD Internal design system provides high-quality components in the MOD brand colours and typeface.
+        Browse all available components below.</p>
+</div>
+
+<!-- Search -->
+<div class="overview-header">
+    <div class="overview-search-wrapper">
+        <svg class="overview-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+        <input #search type="text" id="overview-search" class="overview-search-input" placeholder="Search components..."
+            autocomplete="off" [value]="inputValue()" (input)="onInput(search.value)">
+        <button type="button" id="overview-search-clear" class="overview-search-clear"
+            [style.display]="filter.query() ? 'flex' : 'none'" aria-label="Clear search"
+            (click)="clearSearch()">&times;</button>
+    </div>
+</div>
+
+<!-- Category filter chips -->
+<div class="overview-chips" id="overview-chips">
+    @for (chip of chips; track chip.id) {
+        <button type="button" class="overview-chip" [class.is-active]="filter.category() === chip.id"
+            (click)="filter.category.set(chip.id)">
+            {{ chip.label }} <span class="overview-chip__count">{{ chip.count }}</span>
+        </button>
+    }
+</div>
+
+<!-- ============================================
+     FOUNDATIONS (3)
+     ============================================ -->
+<section class="overview-category overview-category--foundations" data-category="foundations" data-total-count="3">
+    <div class="overview-category-header">
+        <h2 class="overview-category-title">Foundations</h2>
+        <span class="overview-category-count">3</span>
+    </div>
+    <div class="overview-foundations">
+
+        <a href="#/styles" class="foundation-card overview-card" data-component="styles" data-name="Styles Design Tokens Variables Colors Spacing Radius">
+            <div class="foundation-card__preview" aria-hidden="true">
+                <div class="foundation-scale">
+                    <span class="background-color-sa-100"></span>
+                    <span class="background-color-sa-200"></span>
+                    <span class="background-color-sa-300"></span>
+                    <span class="background-color-sa-400"></span>
+                    <span class="background-color-sa-500"></span>
+                    <span class="background-color-sa-600"></span>
+                    <span class="background-color-sa-700"></span>
+                    <span class="background-color-sa-800"></span>
+                    <span class="background-color-sa-900"></span>
+                </div>
+            </div>
+            <div class="foundation-card__body">
+                <span class="overview-card__name">Styles</span>
+                <span class="overview-card__desc">Design token variables: color scales, spacing, radius, and type, with live values.</span>
+            </div>
+        </a>
+
+        <a href="#/classes" class="foundation-card overview-card" data-component="classes" data-name="Classes Utility Classes Background Text Border Shadow Gap">
+            <div class="foundation-card__preview" aria-hidden="true">
+                <div class="foundation-chips">
+                    <code>background-color-sa-600</code>
+                    <code>text-sm-regular</code>
+                    <code>shadow-md</code>
+                    <code>border-radius-md</code>
+                </div>
+            </div>
+            <div class="foundation-card__body">
+                <span class="overview-card__name">Classes</span>
+                <span class="overview-card__desc">Utility classes from the base theme: backgrounds, text, borders, shadows, and layout.</span>
+            </div>
+        </a>
+
+        <a href="#/icons" class="foundation-card overview-card" data-component="icons" data-name="Icons Icon Font Glyphs">
+            <div class="foundation-card__preview" aria-hidden="true">
+                <div class="foundation-icons">
+                    <span class="dga-icon-home-01"></span>
+                    <span class="dga-icon-search-01"></span>
+                    <span class="dga-icon-settings-01"></span>
+                    <span class="dga-icon-user"></span>
+                    <span class="dga-icon-calendar-03"></span>
+                    <span class="dga-icon-checkmark-circle-02"></span>
+                </div>
+            </div>
+            <div class="foundation-card__body">
+                <span class="overview-card__name">Icons</span>
+                <span class="overview-card__desc">The DGA icon font, searchable and copyable.</span>
+            </div>
+        </a>
+
+    </div>
+</section>
+
+<!-- ============================================
+     GENERAL (5)
+     ============================================ -->
+<section class="overview-category" data-category="general" data-total-count="6">
+    <div class="overview-category-header">
+        <h2 class="overview-category-title">General</h2>
+        <span class="overview-category-count">6</span>
+    </div>
+    <div class="overview-grid">
+
+        <!-- Buttons -->
+        <a href="#/button" class="overview-card" data-component="buttons" data-name="Buttons">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner">
+                    <button class="btn btn-primary btn-small">Primary</button>
+                    <button class="btn btn-secondary-outline btn-small">Secondary</button>
+                    <button class="btn btn-neutral btn-small">Neutral</button>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Buttons</span>
+                <span class="overview-card__desc">Primary, secondary, and neutral actions in every size and state.</span>
+            </div>
+        </a>
+
+        <!-- Links -->
+        <a href="#/links" class="overview-card" data-component="links" data-name="Links">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner"
+                    style="flex-direction: column; gap: var(--spacing-md); align-items: flex-start;">
+                    <span style="color: var(--color-primary); font-size: 13px;">Primary Link</span>
+                    <span style="color: var(--color-primary); text-decoration: underline; font-size: 13px;">Underlined
+                        Link</span>
+                    <span style="color: var(--color-text-secondary); font-size: 13px;">Secondary Link</span>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Links</span>
+                <span class="overview-card__desc">Inline text links with hover, underline, and secondary styles.</span>
+            </div>
+        </a>
+
+        <!-- Tags -->
+        <a href="#/tags" class="overview-card" data-component="tags" data-name="Tags">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner">
+                    <span class="tag tag--md">Default</span>
+                    <span class="tag tag--sm">Small</span>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Tags</span>
+                <span class="overview-card__desc">Compact labels for categorizing and annotating content.</span>
+            </div>
+        </a>
+
+        <!-- Status Tag -->
+        <a href="#/status-tag" class="overview-card" data-component="status-tag" data-name="Status Tag">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner" style="flex-direction: column; gap: var(--spacing-sm);">
+                    <span class="status-tag status-tag--sm status-tag--subtle status-tag--success">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Success</span>
+                    </span>
+                    <span class="status-tag status-tag--sm status-tag--subtle status-tag--warning">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Warning</span>
+                    </span>
+                    <span class="status-tag status-tag--sm status-tag--subtle status-tag--error">
+                        <span class="status-tag__dot"></span>
+                        <span class="status-tag__label">Error</span>
+                    </span>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Status Tag</span>
+                <span class="overview-card__desc">Colored indicators for success, warning, and error states.</span>
+            </div>
+        </a>
+
+        <!-- Icons -->
+        <a href="#/icons" class="overview-card" data-component="icons" data-name="Icons">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner" style="gap: var(--spacing-xl);">
+                    <span class="icon" style="font-size: var(--font-size-2xl); color: var(--color-gray-600);">
+                        <span class="dga-icon-home-01"></span>
+                    </span>
+                    <span class="icon" style="font-size: var(--font-size-2xl); color: var(--color-gray-600);">
+                        <span class="dga-icon-search-01"></span>
+                    </span>
+                    <span class="icon" style="font-size: var(--font-size-2xl); color: var(--color-gray-600);">
+                        <span class="dga-icon-settings-01"></span>
+                    </span>
+                    <span class="icon" style="font-size: var(--font-size-2xl); color: var(--color-gray-600);">
+                        <span class="dga-icon-user"></span>
+                    </span>
+                    <span class="icon" style="font-size: var(--font-size-2xl); color: var(--color-gray-600);">
+                        <span class="dga-icon-calendar-03"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Icons</span>
+                <span class="overview-card__desc">The DGA icon font, searchable and copyable.</span>
+            </div>
+        </a>
+        <!-- Chips -->
+        <a href="#/chips" class="overview-card" data-component="chips" data-name="Chips">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner">
+
+                    <span style="display:inline-flex;align-items:center;gap: var(--spacing-sm);padding: var(--spacing-xs) 10px;border:1px solid var(--gray-300);border-radius:var(--radius-full);font-size:11px;color:var(--gray-800);background:var(--alpha-white);">Filter <b style="font-weight: var(--font-weight-regular);color:var(--gray-400);">&times;</b></span>
+                    <span style="display:inline-flex;align-items:center;gap: var(--spacing-sm);padding: var(--spacing-xs) 10px;border:1px solid var(--sa-600);border-radius:var(--radius-full);font-size:11px;color:var(--sa-700);background:var(--sa-50);">Selected <b style="font-weight: var(--font-weight-regular);">&times;</b></span>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Chips</span>
+                <span class="overview-card__desc">Removable input chips for selections and filters.</span>
+            </div>
+        </a>
+
+
+    </div>
+</section>
+
+<!-- ============================================
+     NAVIGATION (7)
+     ============================================ -->
+<section class="overview-category" data-category="navigation" data-total-count="9">
+    <div class="overview-category-header">
+        <h2 class="overview-category-title">Navigation</h2>
+        <span class="overview-category-count">9</span>
+    </div>
+    <div class="overview-grid">
+
+        <!-- Nav Header -->
+        <a href="#/nav-header" class="overview-card" data-component="nav-header" data-name="Nav Header">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner overview-card__preview-inner--compact"
+                    style="flex-direction: column; align-items: stretch;">
+                    <div
+                        style="background: white; border: 1px solid var(--color-border-secondary); border-radius: 6px; padding: var(--spacing-md) var(--spacing-lg); display: flex; align-items: center; justify-content: space-between;">
+                        <div style="display: flex; align-items: center; gap: var(--spacing-md);">
+                            <div
+                                style="width: 20px; height: 20px; background: var(--color-gray-200); border-radius: 3px;">
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <div
+                                    style="width: 28px; height: 6px; background: var(--color-gray-300); border-radius: var(--radius-xs);">
+                                </div>
+                                <div
+                                    style="width: 28px; height: 6px; background: var(--color-primary); border-radius: var(--radius-xs);">
+                                </div>
+                                <div
+                                    style="width: 28px; height: 6px; background: var(--color-gray-300); border-radius: var(--radius-xs);">
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: var(--spacing-sm);">
+                            <div
+                                style="width: 40px; height: 16px; background: var(--color-gray-200); border-radius: 3px;">
+                            </div>
+                            <div
+                                style="width: 40px; height: 16px; background: var(--color-primary); border-radius: 3px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Nav Header</span>
+                <span class="overview-card__desc">Top-level site navigation with menus and actions.</span>
+            </div>
+        </a>
+
+        <!-- Nav Drawer -->
+        <a href="#/nav-drawer" class="overview-card" data-component="nav-drawer" data-name="Nav Drawer">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner overview-card__preview-inner--compact">
+                    <div
+                        style="width: 140px; background: var(--alpha-white); border: 1px solid var(--color-border-secondary); border-radius: 6px; padding: 10px;">
+                        <div
+                            style="display: flex; align-items: center; gap: var(--spacing-sm); padding-bottom: var(--spacing-md); border-bottom: 1px solid var(--color-border-secondary); margin-bottom: var(--spacing-md);">
+                            <div
+                                style="width: 16px; height: 16px; background: var(--color-primary); border-radius: 3px;">
+                            </div>
+                            <div
+                                style="width: 50px; height: 6px; background: var(--color-gray-300); border-radius: var(--radius-xs);">
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: var(--spacing-xs);">
+                            <div
+                                style="padding: var(--spacing-xs) var(--spacing-sm); background: var(--color-primary-light); border-radius: var(--radius-sm); width: 60px; height: 6px;">
+                            </div>
+                            <div
+                                style="padding: var(--spacing-xs) var(--spacing-sm); width: 50px; height: 6px; background: var(--color-gray-200); border-radius: var(--radius-xs);">
+                            </div>
+                            <div
+                                style="padding: var(--spacing-xs) var(--spacing-sm); width: 45px; height: 6px; background: var(--color-gray-200); border-radius: var(--radius-xs);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Nav Drawer</span>
+                <span class="overview-card__desc">Collapsible navigation panel for app sections.</span>
+            </div>
+        </a>
+
+        <!-- Sidebar -->
+        <a href="#/sidebar" class="overview-card" data-component="sidebar" data-name="Sidebar">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner overview-card__preview-inner--compact">
+                    <div
+                        style="width: 120px; background: var(--alpha-white); border: 1px solid var(--color-border-secondary); border-radius: 6px; padding: var(--spacing-md) 0;">
+                        <div
+                            style="padding: 5px 10px; background: var(--color-primary-light); border-left: 2px solid var(--color-primary); display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-xxs);">
+                            <div
+                                style="width: 10px; height: 10px; background: var(--color-primary); border-radius: var(--radius-xs); opacity: 0.4;">
+                            </div>
+                            <div
+                                style="width: 45px; height: 5px; background: var(--color-primary); border-radius: var(--radius-xs); opacity: 0.6;">
+                            </div>
+                        </div>
+                        <div
+                            style="padding: 5px 10px; display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-xxs);">
+                            <div
+                                style="width: 10px; height: 10px; background: var(--color-gray-300); border-radius: var(--radius-xs);">
+                            </div>
+                            <div
+                                style="width: 40px; height: 5px; background: var(--color-gray-300); border-radius: var(--radius-xs);">
+                            </div>
+                        </div>
+                        <div style="padding: 5px 10px; display: flex; align-items: center; gap: var(--spacing-sm);">
+                            <div
+                                style="width: 10px; height: 10px; background: var(--color-gray-300); border-radius: var(--radius-xs);">
+                            </div>
+                            <div
+                                style="width: 35px; height: 5px; background: var(--color-gray-300); border-radius: var(--radius-xs);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Sidebar</span>
+                <span class="overview-card__desc">Vertical section navigation with active states.</span>
+            </div>
+        </a>
+
+        <!-- Breadcrumbs -->
+        <a href="#/breadcrumbs" class="overview-card" data-component="breadcrumbs" data-name="Breadcrumbs">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner">
+                    <nav class="breadcrumb" aria-label="Breadcrumb preview" style="font-size: var(--font-size-xs);">
+                        <span class="breadcrumb-link" style="color: var(--color-primary);">Home</span>
+                        <span class="breadcrumb-separator">&rsaquo;</span>
+                        <span class="breadcrumb-link" style="color: var(--color-primary);">Services</span>
+                        <span class="breadcrumb-separator">&rsaquo;</span>
+                        <span class="breadcrumb-current">Current</span>
+                    </nav>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Breadcrumbs</span>
+                <span class="overview-card__desc">Path trail showing the current page location.</span>
+            </div>
+        </a>
+
+        <!-- Tabs -->
+        <a href="#/tabs" class="overview-card" data-component="tabs" data-name="Tabs">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner overview-card__preview-inner--compact"
+                    style="flex-direction: column; align-items: stretch;">
+                    <div style="display: flex; border-bottom: 2px solid var(--color-border-secondary);">
+                        <div
+                            style="padding: var(--spacing-sm) var(--spacing-lg); font-size: 11px; font-weight: var(--font-weight-medium); color: var(--color-primary); border-bottom: 2px solid var(--color-primary); margin-bottom: -2px;">
+                            Tab 1</div>
+                        <div style="padding: var(--spacing-sm) var(--spacing-lg); font-size: 11px; color: var(--color-text-secondary);">Tab 2</div>
+                        <div style="padding: var(--spacing-sm) var(--spacing-lg); font-size: 11px; color: var(--color-text-secondary);">Tab 3</div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Tabs</span>
+                <span class="overview-card__desc">Switch between related views within a page.</span>
+            </div>
+        </a>
+
+        <!-- Pagination -->
+        <a href="#/pagination" class="overview-card" data-component="pagination" data-name="Pagination">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner" style="transform: scale(0.7);">
+                    <nav class="pagination" aria-label="Pagination preview">
+                        <span class="pagination-item" style="pointer-events: none;">
+                            <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="m15 18-6-6 6-6" />
+                            </svg>
+                        </span>
+                        <span class="pagination-item" style="pointer-events: none;">1</span>
+                        <span class="pagination-item active" style="pointer-events: none;">2</span>
+                        <span class="pagination-item" style="pointer-events: none;">3</span>
+                        <span class="pagination-item disabled">...</span>
+                        <span class="pagination-item" style="pointer-events: none;">10</span>
+                        <span class="pagination-item" style="pointer-events: none;">
+                            <svg class="pagination-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="m9 18 6-6-6-6" />
+                            </svg>
+                        </span>
+                    </nav>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Pagination</span>
+                <span class="overview-card__desc">Navigate long lists page by page.</span>
+            </div>
+        </a>
+
+        <!-- Menus -->
+        <a href="#/menus" class="overview-card" data-component="menus" data-name="Menus">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner overview-card__preview-inner--compact">
+                    <div
+                        style="width: 130px; background: var(--alpha-white); border: 1px solid var(--color-border-secondary); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: var(--spacing-xs);">
+                        <div
+                            style="padding: var(--spacing-sm) 10px; font-size: 11px; color: var(--color-text-primary); border-radius: var(--radius-sm); background: var(--color-gray-50);">
+                            View Details</div>
+                        <div style="padding: var(--spacing-sm) 10px; font-size: 11px; color: var(--color-text-primary);">Edit</div>
+                        <div style="padding: var(--spacing-sm) 10px; font-size: 11px; color: var(--color-text-primary);">Duplicate
+                        </div>
+                        <div style="height: 1px; background: var(--color-border-secondary); margin: var(--spacing-xs) 0;"></div>
+                        <div style="padding: var(--spacing-sm) 10px; font-size: 11px; color: var(--color-error-600);">Delete</div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Menus</span>
+                <span class="overview-card__desc">Dropdown action lists with icons and dividers.</span>
+            </div>
+        </a>
+        <!-- Slideout Menu -->
+        <a href="#/slideout-menu" class="overview-card" data-component="slideout-menu" data-name="Slideout Menu">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner">
+
+                    <div style="width:150px;height:90px;background:var(--gray-100);border:1px solid var(--gray-200);border-radius:6px;position:relative;overflow:hidden;">
+                        <div style="position:absolute;inset:0;background:rgba(22,22,22,0.35);"></div>
+                        <div style="position:absolute;top:0;right:0;bottom:0;width:64px;background:var(--alpha-white);padding: var(--spacing-md) var(--spacing-sm);display:flex;flex-direction:column;gap:5px;">
+                            <div style="width:36px;height:5px;background:var(--gray-700);border-radius: var(--radius-xs);margin-bottom:3px;"></div>
+                            <div style="width:44px;height:4px;background:var(--sa-600);border-radius: var(--radius-xs);"></div>
+                            <div style="width:40px;height:4px;background:var(--gray-300);border-radius: var(--radius-xs);"></div>
+                            <div style="width:42px;height:4px;background:var(--gray-300);border-radius: var(--radius-xs);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Slideout Menu</span>
+                <span class="overview-card__desc">Side panel that slides in over the page.</span>
+            </div>
+        </a>
+
+        <!-- Second Nav Header -->
+        <a href="#/second-nav-header" class="overview-card" data-component="second-nav-header" data-name="Second Nav Header">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner">
+
+                    <div style="width:170px;background:var(--alpha-white);border:1px solid var(--gray-200);border-radius:6px;padding: var(--spacing-md) var(--spacing-lg);display:flex;align-items:center;gap: var(--spacing-lg);">
+                        <div style="width:26px;height:5px;background:var(--sa-600);border-radius: var(--radius-xs);box-shadow:0 6px 0 -4px var(--sa-600);"></div>
+                        <div style="width:26px;height:5px;background:var(--gray-300);border-radius: var(--radius-xs);"></div>
+                        <div style="width:26px;height:5px;background:var(--gray-300);border-radius: var(--radius-xs);"></div>
+                        <div style="width:20px;height:5px;background:var(--gray-300);border-radius: var(--radius-xs);margin-left:auto;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Second Nav Header</span>
+                <span class="overview-card__desc">Secondary navigation bar with section links.</span>
+            </div>
+        </a>
+
+
+    </div>
+</section>
+
+<!-- ============================================
+     DATA ENTRY (4)
+     ============================================ -->
+<section class="overview-category" data-category="data-entry" data-total-count="10">
+    <div class="overview-category-header">
+        <h2 class="overview-category-title">Data Entry</h2>
+        <span class="overview-category-count">10</span>
+    </div>
+    <div class="overview-grid">
+
+        <!-- Text Input -->
+        <a href="#/text-input" class="overview-card" data-component="text-input" data-name="Text Input">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner overview-card__preview-inner--compact"
+                    style="flex-direction: column; align-items: stretch; padding: 0 var(--spacing-md);">
+                    <div class="text-input" style="max-width: 100%;">
+                        <label class="text-input__label" style="font-size: 11px;">Label</label>
+                        <input type="text" class="text-input__field" placeholder="Placeholder"
+                            style="height: 30px; font-size: 11px;" tabindex="-1">
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Text Input</span>
+                <span class="overview-card__desc">Single-line fields with labels, hints, and errors.</span>
+            </div>
+        </a>
+
+        <!-- Filters -->
+        <a href="#/filters" class="overview-card" data-component="filters" data-name="Filters">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: var(--spacing-md);">
+                        <div
+                            style="display: flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-sm) var(--spacing-lg); border: 1px solid var(--color-border-secondary); border-radius: var(--radius-md); background: white; font-size: var(--font-size-xs); color: var(--color-text-primary);">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+                            </svg>
+                            Filter
+                        </div>
+                        <div style="display: flex; gap: var(--spacing-xs);">
+                            <span
+                                style="font-size: 10px; padding: var(--spacing-xxs) var(--spacing-md); background: var(--color-primary-light); color: var(--color-primary); border-radius: var(--radius-full);">Option
+                                A</span>
+                            <span
+                                style="font-size: 10px; padding: var(--spacing-xxs) var(--spacing-md); background: var(--color-primary-light); color: var(--color-primary); border-radius: var(--radius-full);">Option
+                                B</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Filters</span>
+                <span class="overview-card__desc">Filter triggers and applied filter chips.</span>
+            </div>
+        </a>
+
+        <!-- Date Picker -->
+        <a href="#/date-picker" class="overview-card" data-component="date-picker" data-name="Date Picker">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner overview-card__preview-inner--compact">
+                    <div
+                        style="background: white; border: 1px solid var(--color-border-secondary); border-radius: var(--radius-md); padding: var(--spacing-md); width: 160px;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-sm);">
+                            <span style="font-size: 10px; font-weight: var(--font-weight-semibold); color: var(--color-gray-900);">Feb
+                                2026</span>
+                            <div style="display: flex; gap: var(--spacing-xs);">
+                                <span style="font-size: 10px; color: var(--color-gray-400);">&lsaquo;</span>
+                                <span style="font-size: 10px; color: var(--color-gray-400);">&rsaquo;</span>
+                            </div>
+                        </div>
+                        <div
+                            style="display: grid; grid-template-columns: repeat(7, 1fr); gap: var(--spacing-xxs); text-align: center;">
+                            <span style="font-size: 8px; color: var(--color-gray-400);">S</span>
+                            <span style="font-size: 8px; color: var(--color-gray-400);">M</span>
+                            <span style="font-size: 8px; color: var(--color-gray-400);">T</span>
+                            <span style="font-size: 8px; color: var(--color-gray-400);">W</span>
+                            <span style="font-size: 8px; color: var(--color-gray-400);">T</span>
+                            <span style="font-size: 8px; color: var(--color-gray-400);">F</span>
+                            <span style="font-size: 8px; color: var(--color-gray-400);">S</span>
+                            <span style="font-size: 8px; color: var(--color-gray-300);">28</span>
+                            <span style="font-size: 8px;">1</span>
+                            <span style="font-size: 8px;">2</span>
+                            <span style="font-size: 8px;">3</span>
+                            <span style="font-size: 8px;">4</span>
+                            <span style="font-size: 8px;">5</span>
+                            <span style="font-size: 8px;">6</span>
+                            <span style="font-size: 8px;">7</span>
+                            <span style="font-size: 8px;">8</span>
+                            <span style="font-size: 8px;">9</span>
+                            <span style="font-size: 8px;">10</span>
+                            <span style="font-size: 8px;">11</span>
+                            <span style="font-size: 8px;">12</span>
+                            <span style="font-size: 8px;">13</span>
+                            <span style="font-size: 8px;">14</span>
+                            <span style="font-size: 8px;">15</span>
+                            <span style="font-size: 8px;">16</span>
+                            <span style="font-size: 8px;">17</span>
+                            <span style="font-size: 8px;">18</span>
+                            <span
+                                style="font-size: 8px; background: var(--color-primary); color: white; border-radius: 50%; width: 14px; height: 14px; display: inline-flex; align-items: center; justify-content: center;">19</span>
+                            <span style="font-size: 8px;">20</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Date Picker</span>
+                <span class="overview-card__desc">Calendar input for choosing dates and ranges.</span>
+            </div>
+        </a>
+
+        <!-- Form Template -->
+        <a href="#/form-template" class="overview-card" data-component="form-template" data-name="Form Template">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner overview-card__preview-inner--compact"
+                    style="flex-direction: column; align-items: stretch; padding: 0 var(--spacing-sm);">
+                    <div
+                        style="background: white; border: 1px solid var(--color-border-secondary); border-radius: 6px; padding: var(--spacing-md);">
+                        <div
+                            style="width: 50px; height: 5px; background: var(--color-gray-300); border-radius: var(--radius-xs); margin-bottom: var(--spacing-sm);">
+                        </div>
+                        <div
+                            style="width: 100%; height: 18px; border: 1px solid var(--color-border-secondary); border-radius: var(--radius-sm); margin-bottom: var(--spacing-sm);">
+                        </div>
+                        <div
+                            style="width: 50px; height: 5px; background: var(--color-gray-300); border-radius: var(--radius-xs); margin-bottom: var(--spacing-sm);">
+                        </div>
+                        <div
+                            style="width: 100%; height: 18px; border: 1px solid var(--color-border-secondary); border-radius: var(--radius-sm); margin-bottom: var(--spacing-md);">
+                        </div>
+                        <div style="display: flex; gap: var(--spacing-sm); justify-content: flex-end;">
+                            <div
+                                style="width: 40px; height: 16px; background: var(--color-gray-200); border-radius: var(--radius-sm);">
+                            </div>
+                            <div
+                                style="width: 40px; height: 16px; background: var(--color-primary); border-radius: var(--radius-sm);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Form Template</span>
+                <span class="overview-card__desc">A complete form layout with fields and actions.</span>
+            </div>
+        </a>
+        <!-- Textarea -->
+        <a href="#/textarea" class="overview-card" data-component="textarea" data-name="Textarea">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner">
+
+                    <div style="width:150px;">
+                        <div style="width:40px;height:5px;background:var(--gray-500);border-radius: var(--radius-xs);margin-bottom: var(--spacing-sm);"></div>
+                        <div style="width:100%;height:52px;border:1px solid var(--gray-300);border-radius:6px;background:var(--alpha-white);padding: var(--spacing-sm);">
+                            <div style="width:80%;height:4px;background:var(--gray-200);border-radius: var(--radius-xs);margin-bottom: var(--spacing-xs);"></div>
+                            <div style="width:60%;height:4px;background:var(--gray-200);border-radius: var(--radius-xs);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Textarea</span>
+                <span class="overview-card__desc">Multi-line text fields with labels and helper text.</span>
+            </div>
+        </a>
+
+        <!-- Checkbox -->
+        <a href="#/checkbox" class="overview-card" data-component="checkbox" data-name="Checkbox">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner">
+
+                    <div style="display:flex;flex-direction:column;gap: var(--spacing-md);align-items:flex-start;">
+                        <div style="display:flex;align-items:center;gap: var(--spacing-md);"><span style="width:14px;height:14px;background:var(--sa-600);border-radius:3px;display:inline-flex;align-items:center;justify-content:center;color:var(--alpha-white);font-size:9px;font-weight: var(--font-weight-bold);">&#10003;</span><span style="width:52px;height:5px;background:var(--gray-400);border-radius: var(--radius-xs);"></span></div>
+                        <div style="display:flex;align-items:center;gap: var(--spacing-md);"><span style="width:14px;height:14px;background:var(--sa-600);border-radius:3px;display:inline-flex;align-items:center;justify-content:center;color:var(--alpha-white);font-size:9px;font-weight: var(--font-weight-bold);">&#8211;</span><span style="width:44px;height:5px;background:var(--gray-400);border-radius: var(--radius-xs);"></span></div>
+                        <div style="display:flex;align-items:center;gap: var(--spacing-md);"><span style="width:14px;height:14px;border:1.5px solid var(--gray-300);border-radius:3px;background:var(--alpha-white);"></span><span style="width:48px;height:5px;background:var(--gray-300);border-radius: var(--radius-xs);"></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Checkbox</span>
+                <span class="overview-card__desc">Binary and indeterminate selection controls.</span>
+            </div>
+        </a>
+
+        <!-- Radio Button -->
+        <a href="#/radio" class="overview-card" data-component="radio" data-name="Radio Button">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner">
+
+                    <div style="display:flex;flex-direction:column;gap: var(--spacing-md);align-items:flex-start;">
+                        <div style="display:flex;align-items:center;gap: var(--spacing-md);"><span style="width:14px;height:14px;border:4px solid var(--sa-600);border-radius:50%;background:var(--alpha-white);"></span><span style="width:52px;height:5px;background:var(--gray-400);border-radius: var(--radius-xs);"></span></div>
+                        <div style="display:flex;align-items:center;gap: var(--spacing-md);"><span style="width:14px;height:14px;border:1.5px solid var(--gray-300);border-radius:50%;background:var(--alpha-white);"></span><span style="width:44px;height:5px;background:var(--gray-300);border-radius: var(--radius-xs);"></span></div>
+                        <div style="display:flex;align-items:center;gap: var(--spacing-md);"><span style="width:14px;height:14px;border:1.5px solid var(--gray-300);border-radius:50%;background:var(--alpha-white);"></span><span style="width:48px;height:5px;background:var(--gray-300);border-radius: var(--radius-xs);"></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Radio Button</span>
+                <span class="overview-card__desc">Single-choice selection from a set of options.</span>
+            </div>
+        </a>
+
+        <!-- File Upload -->
+        <a href="#/file-upload" class="overview-card" data-component="file-upload" data-name="File Upload">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner">
+
+                    <div style="width:150px;border:1.5px dashed var(--gray-300);border-radius: var(--radius-md);background:var(--gray-50);padding: var(--spacing-lg);display:flex;flex-direction:column;align-items:center;gap: var(--spacing-sm);">
+                        <span class="dga-icon-upload-01" style="font-size: var(--font-size-md);color:var(--gray-500);"></span>
+                        <div style="width:70px;height:4px;background:var(--gray-400);border-radius: var(--radius-xs);"></div>
+                        <div style="width:50px;height:4px;background:var(--gray-200);border-radius: var(--radius-xs);"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">File Upload</span>
+                <span class="overview-card__desc">Drag-and-drop zone with file list and progress.</span>
+            </div>
+        </a>
+        <!-- Dropdown -->
+        <a href="#/dropdown" class="overview-card" data-component="dropdown" data-name="Dropdown Select Options Multi Select">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner" style="flex-direction:column;gap: var(--spacing-xs);">
+                    <div style="width:160px;background:var(--alpha-white);border:1px solid var(--gray-400);border-radius: var(--radius-sm);padding:7px 10px;display:flex;justify-content:space-between;align-items:center;">
+                        <span style="width:60px;height:5px;background:var(--gray-500);border-radius: var(--radius-xs);"></span>
+                        <span style="font-size:8px;color:var(--gray-600);transform:rotate(180deg);">&#9650;</span>
+                    </div>
+                    <div style="width:160px;background:var(--alpha-white);border:1px solid var(--gray-300);border-radius: var(--radius-sm);padding:5px;display:flex;flex-direction:column;gap: var(--spacing-xxs);box-shadow:var(--shadow-sm);">
+                        <div style="display:flex;justify-content:space-between;align-items:center;padding: 5px var(--spacing-sm);background:var(--gray-100);border-radius:3px;">
+                            <span style="width:52px;height:4px;background:var(--gray-700);border-radius: var(--radius-xs);"></span>
+                            <span style="font-size:8px;color:var(--gray-800);">&#10003;</span>
+                        </div>
+                        <div style="padding: 5px var(--spacing-sm);"><span style="display:block;width:60px;height:4px;background:var(--gray-400);border-radius: var(--radius-xs);"></span></div>
+                        <div style="padding: 5px var(--spacing-sm);"><span style="display:block;width:44px;height:4px;background:var(--gray-400);border-radius: var(--radius-xs);"></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Dropdown</span>
+                <span class="overview-card__desc">Single and multi select fields with option lists.</span>
+            </div>
+        </a>
+        <!-- Search Box -->
+        <a href="#/search-box" class="overview-card" data-component="search-box" data-name="Search Box Input Query">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner">
+                    <div style="width:170px;background:var(--alpha-white);border:1px solid var(--gray-400);border-radius: var(--radius-sm);padding: var(--spacing-md) 10px;display:flex;align-items:center;gap: var(--spacing-md);position:relative;overflow:hidden;">
+                        <span style="font-size:11px;color:var(--gray-600);">&#128269;</span>
+                        <span style="width:80px;height:5px;background:var(--gray-400);border-radius: var(--radius-xs);"></span>
+                        <span style="position:absolute;bottom:0;left:15%;width:70%;height:2px;background:var(--gray-950);"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Search Box</span>
+                <span class="overview-card__desc">Search field with clear action and press line.</span>
+            </div>
+        </a>
+
+
+
+
+    </div>
+</section>
+
+<!-- ============================================
+     DATA DISPLAY (4)
+     ============================================ -->
+<section class="overview-category" data-category="data-display" data-total-count="7">
+    <div class="overview-category-header">
+        <h2 class="overview-category-title">Data Display</h2>
+        <span class="overview-category-count">7</span>
+    </div>
+    <div class="overview-grid">
+
+        <!-- Cards -->
+        <a href="#/cards" class="overview-card" data-component="cards" data-name="Cards">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner overview-card__preview-inner--compact">
+                    <div
+                        style="width: 160px; background: white; border: 1px solid var(--color-border-secondary); border-radius: var(--radius-md); padding: var(--spacing-lg); box-shadow: var(--shadow-xs);">
+                        <div
+                            style="width: 24px; height: 24px; background: var(--color-primary-light); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: var(--spacing-md);">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)"
+                                stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                <polyline points="22 4 12 14.01 9 11.01" />
+                            </svg>
+                        </div>
+                        <div
+                            style="width: 60px; height: 6px; background: var(--color-gray-800); border-radius: var(--radius-xs); margin-bottom: var(--spacing-xs);">
+                        </div>
+                        <div
+                            style="width: 100px; height: 4px; background: var(--color-gray-200); border-radius: var(--radius-xs); margin-bottom: 10px;">
+                        </div>
+                        <div style="display: flex; gap: var(--spacing-xs);">
+                            <div
+                                style="padding: 3px var(--spacing-md); font-size: 9px; background: var(--color-primary); color: white; border-radius: var(--radius-sm);">
+                                Action</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Cards</span>
+                <span class="overview-card__desc">Content containers with media, actions, and states.</span>
+            </div>
+        </a>
+
+        <!-- Tables -->
+        <a href="#/tables" class="overview-card" data-component="tables" data-name="Tables">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner overview-card__preview-inner--compact"
+                    style="align-items: stretch;">
+                    <div
+                        style="border: 1px solid var(--color-border-secondary); border-radius: 6px; overflow: hidden; width: 100%;">
+                        <div
+                            style="display: grid; grid-template-columns: 1fr 1fr 1fr; background: var(--color-gray-50); border-bottom: 1px solid var(--color-border-secondary);">
+                            <div
+                                style="padding: var(--spacing-xs) var(--spacing-md); font-size: 9px; font-weight: var(--font-weight-semibold); color: var(--color-gray-500);">
+                                Name</div>
+                            <div
+                                style="padding: var(--spacing-xs) var(--spacing-md); font-size: 9px; font-weight: var(--font-weight-semibold); color: var(--color-gray-500);">
+                                Role</div>
+                            <div
+                                style="padding: var(--spacing-xs) var(--spacing-md); font-size: 9px; font-weight: var(--font-weight-semibold); color: var(--color-gray-500);">
+                                Status</div>
+                        </div>
+                        <div
+                            style="display: grid; grid-template-columns: 1fr 1fr 1fr; border-bottom: 1px solid var(--color-border-secondary); background: white;">
+                            <div style="padding: var(--spacing-xs) var(--spacing-md); font-size: 9px; color: var(--color-gray-900);">John</div>
+                            <div style="padding: var(--spacing-xs) var(--spacing-md); font-size: 9px; color: var(--color-gray-500);">Admin</div>
+                            <div style="padding: var(--spacing-xs) var(--spacing-md);"><span
+                                    style="font-size: 8px; background: var(--color-success-50); color: var(--color-success-700); padding: 1px 5px; border-radius: var(--radius-full);">Active</span>
+                            </div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; background: white;">
+                            <div style="padding: var(--spacing-xs) var(--spacing-md); font-size: 9px; color: var(--color-gray-900);">Jane</div>
+                            <div style="padding: var(--spacing-xs) var(--spacing-md); font-size: 9px; color: var(--color-gray-500);">User</div>
+                            <div style="padding: var(--spacing-xs) var(--spacing-md);"><span
+                                    style="font-size: 8px; background: var(--color-warning-50); color: var(--color-warning-700); padding: 1px 5px; border-radius: var(--radius-full);">Pending</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Tables</span>
+                <span class="overview-card__desc">Data grids with sorting, selection, and status.</span>
+            </div>
+        </a>
+
+        <!-- Digital Stamp -->
+        <a href="#/digital-stamp" class="overview-card" data-component="digital-stamp" data-name="Digital Stamp">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner overview-card__preview-inner--compact"
+                    style="align-items: stretch;">
+                    <div
+                        style="background: var(--color-gray-50); border: 1px solid var(--color-border-secondary); border-radius: 6px; padding: var(--spacing-sm) 10px; display: flex; align-items: center; gap: var(--spacing-sm);">
+                        <div
+                            style="width: 14px; height: 10px; background: #006923; border-radius: 1px; flex-shrink: 0;">
+                        </div>
+                        <span style="font-size: 9px; color: var(--color-text-secondary); flex: 1;">A government website
+                            registered with DGA.</span>
+                        <span style="font-size: 9px; color: var(--color-primary); white-space: nowrap;">How you
+                            know?</span>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Digital Stamp</span>
+                <span class="overview-card__desc">Official verification banner for Saudi government sites.</span>
+            </div>
+        </a>
+
+        <!-- Tooltip -->
+        <a href="#/tooltip" class="overview-card" data-component="tooltip" data-name="Tooltip">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner" style="flex-direction: column; align-items: center; gap: 0;">
+                    <div
+                        style="background: var(--color-gray-900); color: white; font-size: 10px; padding: var(--spacing-xs) 10px; border-radius: var(--radius-sm); position: relative; margin-bottom: var(--spacing-sm);">
+                        Tooltip text
+                        <div
+                            style="position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px solid var(--color-gray-900);">
+                        </div>
+                    </div>
+                    <div
+                        style="padding: var(--spacing-xs) var(--spacing-lg); font-size: 10px; background: white; border: 1px solid var(--color-border-secondary); border-radius: var(--radius-sm); color: var(--color-text-primary);">
+                        Hover me</div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Tooltip</span>
+                <span class="overview-card__desc">Short contextual hints on hover or focus.</span>
+            </div>
+        </a>
+        <!-- Avatar -->
+        <a href="#/avatar" class="overview-card" data-component="avatar" data-name="Avatar Avatar Group">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner">
+                    <div style="display:flex;">
+                        <span style="width:32px;height:32px;border-radius:50%;background:var(--sa-600);color:var(--alpha-white);display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight: var(--font-weight-semibold);border:2px solid var(--alpha-white);">AM</span>
+                        <span style="width:32px;height:32px;border-radius:50%;background:var(--gray-100);color:var(--gray-600);display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight: var(--font-weight-semibold);border:2px solid var(--alpha-white);margin-left:-8px;">SK</span>
+                        <span style="width:32px;height:32px;border-radius:50%;background:var(--gray-200);color:var(--gray-700);display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight: var(--font-weight-semibold);border:2px solid var(--alpha-white);margin-left:-8px;">+3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Avatar</span>
+                <span class="overview-card__desc">People and entities as image, initials, or icon, with groups.</span>
+            </div>
+        </a>
+        <!-- Accordion -->
+        <a href="#/accordion" class="overview-card" data-component="accordion" data-name="Accordion Collapse Expand FAQ">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner" style="flex-direction:column;align-items:stretch;">
+                    <div style="width:170px;background:var(--alpha-white);border:1px solid var(--gray-200);border-radius:6px;overflow:hidden;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;border-bottom:1px solid var(--gray-200);">
+                            <span style="width:70px;height:5px;background:var(--gray-700);border-radius: var(--radius-xs);"></span>
+                            <span style="font-size:8px;color:var(--gray-500);transform:rotate(180deg);">&#9660;</span>
+                        </div>
+                        <div style="padding:7px 10px;border-bottom:1px solid var(--gray-200);background:var(--gray-25);">
+                            <span style="display:block;width:120px;height:4px;background:var(--gray-300);border-radius: var(--radius-xs);margin-bottom: var(--spacing-xs);"></span>
+                            <span style="display:block;width:90px;height:4px;background:var(--gray-300);border-radius: var(--radius-xs);"></span>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;">
+                            <span style="width:60px;height:5px;background:var(--gray-700);border-radius: var(--radius-xs);"></span>
+                            <span style="font-size:8px;color:var(--gray-500);">&#9660;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Accordion</span>
+                <span class="overview-card__desc">Collapsible sections for FAQs and long content.</span>
+            </div>
+        </a>
+        <!-- Rating -->
+        <a href="#/rating" class="overview-card" data-component="rating" data-name="Rating Stars Score">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner">
+                    <div style="display:flex;gap: var(--spacing-xxs);font-size: var(--font-size-lg);color:var(--gold-600);">
+                        <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span style="position:relative;"><span style="position:absolute;left:0;top:0;width:50%;overflow:hidden;">&#9733;</span><span style="color:var(--gray-300);">&#9733;</span></span><span style="color:var(--gray-300);">&#9733;</span>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Rating</span>
+                <span class="overview-card__desc">Star scores with half-star precision and hover preview.</span>
+            </div>
+        </a>
+
+
+
+
+    </div>
+</section>
+
+<!-- ============================================
+     LAYOUT (2)
+     ============================================ -->
+<section class="overview-category" data-category="layout" data-total-count="2">
+    <div class="overview-category-header">
+        <h2 class="overview-category-title">Layout</h2>
+        <span class="overview-category-count">2</span>
+    </div>
+    <div class="overview-grid">
+
+        <!-- Footer -->
+        <a href="#/footer" class="overview-card" data-component="footer" data-name="Footer">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner overview-card__preview-inner--compact"
+                    style="align-items: stretch;">
+                    <div style="background: var(--color-gray-900); border-radius: 6px; padding: 10px var(--spacing-lg);">
+                        <div style="display: flex; gap: var(--spacing-xl); margin-bottom: var(--spacing-md);">
+                            <div style="display: flex; flex-direction: column; gap: 3px;">
+                                <div
+                                    style="width: 35px; height: 5px; background: rgba(255,255,255,0.5); border-radius: var(--radius-xs); margin-bottom: var(--spacing-xxs);">
+                                </div>
+                                <div
+                                    style="width: 28px; height: 3px; background: rgba(255,255,255,0.25); border-radius: var(--radius-xs);">
+                                </div>
+                                <div
+                                    style="width: 30px; height: 3px; background: rgba(255,255,255,0.25); border-radius: var(--radius-xs);">
+                                </div>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 3px;">
+                                <div
+                                    style="width: 35px; height: 5px; background: rgba(255,255,255,0.5); border-radius: var(--radius-xs); margin-bottom: var(--spacing-xxs);">
+                                </div>
+                                <div
+                                    style="width: 25px; height: 3px; background: rgba(255,255,255,0.25); border-radius: var(--radius-xs);">
+                                </div>
+                                <div
+                                    style="width: 32px; height: 3px; background: rgba(255,255,255,0.25); border-radius: var(--radius-xs);">
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border-top: 1px solid rgba(255,255,255,0.15); padding-top: var(--spacing-sm);">
+                            <div
+                                style="width: 80px; height: 3px; background: rgba(255,255,255,0.2); border-radius: var(--radius-xs);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Footer</span>
+                <span class="overview-card__desc">Site-wide footer with link groups and legal text.</span>
+            </div>
+        </a>
+
+        <!-- Screens -->
+        <a href="#/screens" class="overview-card" data-component="screens" data-name="Screens">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner overview-card__preview-inner--compact"
+                    style="align-items: stretch;">
+                    <div
+                        style="background: var(--color-gray-50); border: 1px solid var(--color-border-secondary); border-radius: 6px; overflow: hidden;">
+                        <div
+                            style="background: white; border-bottom: 1px solid var(--color-border-secondary); padding: var(--spacing-xs) var(--spacing-md); display: flex; align-items: center; justify-content: space-between;">
+                            <div
+                                style="width: 40px; height: 5px; background: var(--color-gray-200); border-radius: var(--radius-xs);">
+                            </div>
+                            <div
+                                style="width: 14px; height: 14px; background: var(--color-gray-200); border-radius: 50%;">
+                            </div>
+                        </div>
+                        <div style="padding: var(--spacing-md); display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-xs);">
+                            <div
+                                style="background: white; border: 1px solid var(--color-border-secondary); border-radius: var(--radius-sm); height: 25px;">
+                            </div>
+                            <div
+                                style="background: white; border: 1px solid var(--color-border-secondary); border-radius: var(--radius-sm); height: 25px;">
+                            </div>
+                            <div
+                                style="background: white; border: 1px solid var(--color-border-secondary); border-radius: var(--radius-sm); height: 30px; grid-column: span 2;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Screens</span>
+                <span class="overview-card__desc">Full-page layout compositions.</span>
+            </div>
+        </a>
+
+    </div>
+</section>
+
+<!-- ============================================
+     FEEDBACK (1)
+     ============================================ -->
+<section class="overview-category" data-category="feedback" data-total-count="7">
+    <div class="overview-category-header">
+        <h2 class="overview-category-title">Feedback</h2>
+        <span class="overview-category-count">7</span>
+    </div>
+    <div class="overview-grid">
+
+        <!-- Modal -->
+        <a href="#/modal" class="overview-card" data-component="modal" data-name="Modal">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner overview-card__preview-inner--compact">
+                    <div
+                        style="width: 160px; background: white; border: 1px solid var(--color-border-secondary); border-radius: var(--radius-md); padding: 10px; box-shadow: var(--shadow-lg);">
+                        <div
+                            style="width: 60px; height: 6px; background: var(--color-gray-800); border-radius: var(--radius-xs); margin-bottom: var(--spacing-xs);">
+                        </div>
+                        <div
+                            style="width: 100px; height: 4px; background: var(--color-gray-200); border-radius: var(--radius-xs); margin-bottom: var(--spacing-xs);">
+                        </div>
+                        <div
+                            style="width: 80px; height: 4px; background: var(--color-gray-200); border-radius: var(--radius-xs); margin-bottom: 10px;">
+                        </div>
+                        <div style="display: flex; gap: var(--spacing-xs); justify-content: flex-end;">
+                            <div
+                                style="padding: 3px var(--spacing-md); font-size: 9px; border: 1px solid var(--color-border-secondary); border-radius: var(--radius-sm); color: var(--color-text-secondary);">
+                                Cancel</div>
+                            <div
+                                style="padding: 3px var(--spacing-md); font-size: 9px; background: var(--color-primary); color: white; border-radius: var(--radius-sm);">
+                                Confirm</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Modal</span>
+                <span class="overview-card__desc">Focused dialogs for confirmation and input.</span>
+            </div>
+        </a>
+        <!-- Notification -->
+        <a href="#/notification" class="overview-card" data-component="notification" data-name="Notification">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner">
+
+                    <div style="width:170px;background:var(--info-50);border:1px solid var(--info-200);border-radius: var(--radius-md);padding:10px;display:flex;gap: var(--spacing-md);align-items:flex-start;">
+                        <span style="width:12px;height:12px;border-radius:50%;background:var(--info-600);flex-shrink:0;margin-top:1px;"></span>
+                        <div style="flex:1;">
+                            <div style="width:60px;height:5px;background:var(--gray-800);border-radius: var(--radius-xs);margin-bottom:5px;"></div>
+                            <div style="width:100px;height:4px;background:var(--gray-400);border-radius: var(--radius-xs);"></div>
+                        </div>
+                        <span style="font-size:10px;color:var(--gray-400);line-height:1;">&times;</span>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Notification</span>
+                <span class="overview-card__desc">Inline alerts for page-level messages.</span>
+            </div>
+        </a>
+
+        <!-- Notification Toast -->
+        <a href="#/notification-toast" class="overview-card" data-component="notification-toast" data-name="Notification Toast">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner">
+
+                    <div style="width:160px;background:var(--gray-900);border-radius: var(--radius-md);padding: 10px var(--spacing-lg);display:flex;gap: var(--spacing-md);align-items:center;box-shadow:var(--shadow-lg);">
+                        <span style="width:12px;height:12px;border-radius:50%;background:var(--success-500);flex-shrink:0;"></span>
+                        <div style="flex:1;">
+                            <div style="width:64px;height:5px;background:rgba(255,255,255,0.85);border-radius: var(--radius-xs);margin-bottom: var(--spacing-xs);"></div>
+                            <div style="width:90px;height:4px;background:rgba(255,255,255,0.35);border-radius: var(--radius-xs);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Notification Toast</span>
+                <span class="overview-card__desc">Transient messages that confirm actions.</span>
+            </div>
+        </a>
+
+        <!-- Progress Indicator -->
+        <a href="#/progress-indicator" class="overview-card" data-component="progress-indicator" data-name="Progress Indicator">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner">
+
+                    <div style="display:flex;align-items:center;gap:0;">
+                        <span style="width:16px;height:16px;border-radius:50%;background:var(--sa-600);display:inline-flex;align-items:center;justify-content:center;color:var(--alpha-white);font-size:9px;font-weight: var(--font-weight-bold);">&#10003;</span>
+                        <span style="width:28px;height:2px;background:var(--sa-600);"></span>
+                        <span style="width:16px;height:16px;border-radius:50%;border:4px solid var(--sa-600);background:var(--alpha-white);"></span>
+                        <span style="width:28px;height:2px;background:var(--gray-200);"></span>
+                        <span style="width:16px;height:16px;border-radius:50%;border:1.5px solid var(--gray-300);background:var(--alpha-white);"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Progress Indicator</span>
+                <span class="overview-card__desc">Step progress for multi-stage flows.</span>
+            </div>
+        </a>
+        <!-- Inline Alert -->
+        <a href="#/inline-alert" class="overview-card" data-component="inline-alert" data-name="Inline Alert">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner">
+                    <div style="width:180px;background:var(--success-25);border:1px solid var(--success-200);border-radius: var(--radius-md);padding: 10px var(--spacing-lg);position:relative;overflow:hidden;display:flex;gap: var(--spacing-md);align-items:flex-start;">
+                        <span style="position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--success-400);"></span>
+                        <span style="width:18px;height:18px;border-radius:50%;background:var(--success-100);color:var(--success-600);display:inline-flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;">&#10003;</span>
+                        <div style="flex:1;">
+                            <div style="width:64px;height:5px;background:var(--gray-800);border-radius: var(--radius-xs);margin-bottom:5px;"></div>
+                            <div style="width:100px;height:4px;background:var(--gray-400);border-radius: var(--radius-xs);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Inline Alert</span>
+                <span class="overview-card__desc">Semantic page-level alerts with actions and dismiss.</span>
+            </div>
+        </a>
+        <!-- Progress Bar -->
+        <a href="#/progress-bar" class="overview-card" data-component="progress-bar" data-name="Progress Bar Linear Circular">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner" style="flex-direction:column;gap: var(--spacing-lg);">
+                    <div style="width:150px;height:8px;background:var(--gray-100);border-radius: var(--radius-sm);overflow:hidden;">
+                        <div style="width:65%;height:100%;background:var(--sa-600);border-radius: var(--radius-sm);"></div>
+                    </div>
+                    <div style="width:44px;height:44px;border-radius:50%;background:conic-gradient(var(--sa-600) 0 65%, var(--gray-100) 65% 100%);display:flex;align-items:center;justify-content:center;">
+                        <span style="width:34px;height:34px;border-radius:50%;background:var(--alpha-white);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight: var(--font-weight-bold);color:var(--gray-700);">65%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Progress Bar</span>
+                <span class="overview-card__desc">Linear and circular completion indicators with states.</span>
+            </div>
+        </a>
+        <!-- Skeleton -->
+        <a href="#/skeleton" class="overview-card" data-component="skeleton" data-name="Skeleton Loading Placeholder">
+            <div class="overview-card__preview">
+                <div class="overview-card__preview-inner">
+                    <div style="display:flex;gap:10px;align-items:center;">
+                        <span style="width:36px;height:36px;border-radius:50%;background:linear-gradient(90deg,rgba(229,231,235,0.6),rgba(157,164,174,0.4));"></span>
+                        <div style="display:flex;flex-direction:column;gap: var(--spacing-md);">
+                            <span style="width:110px;height:10px;border-radius:5px;background:linear-gradient(90deg,rgba(229,231,235,0.7),rgba(157,164,174,0.45));"></span>
+                            <span style="width:80px;height:10px;border-radius:5px;background:linear-gradient(90deg,rgba(157,164,174,0.45),rgba(229,231,235,0.7));"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-card__footer">
+                <span class="overview-card__name">Skeleton</span>
+                <span class="overview-card__desc">Pulsing placeholders that hold layout while content loads.</span>
+            </div>
+        </a>
+
+
+
+
+
+    </div>
+</section>
+
+<!-- No Results -->
+<div id="overview-no-results" class="overview-no-results" [style.display]="noResults() ? 'block' : 'none'">
+    <span class="overview-no-results__icon dga-icon-search-01" aria-hidden="true"></span>
+    <p class="overview-no-results__text">No components match your search.</p>
+    <button type="button" class="overview-no-results__clear" id="overview-no-results-clear"
+        (click)="resetFilters()">Clear search</button>
+</div>

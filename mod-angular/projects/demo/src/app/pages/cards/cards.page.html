@@ -1,0 +1,422 @@
+<div class="content-header">
+  <h1 class="content-title">Cards</h1>
+  <p class="content-description">
+    Surface containers for grouping related content with a featured icon, title, body copy, and optional action
+    footer. Three effect styles (With Shadow, No Shadow, Stroke), three states (Default, Selected, Disabled), three
+    card types (Default, Expandable, Selectable), and full RTL support. Modeled on Figma frame 30195:10358.
+  </p>
+</div>
+
+<demo-live
+  heading="Card"
+  description="Cards group a featured icon, headline, body text, and actions into a tappable surface. Use the controls to explore every supported state."
+  align="flex-start"
+  [rtl]="rtl()"
+>
+  <mod-card
+    [effect]="effect()"
+    [type]="type()"
+    [disabled]="state() === 'disabled'"
+    [selected]="state() === 'selected'"
+    (selectedChange)="state.set($event ? 'selected' : 'default')"
+    [(expanded)]="expanded"
+    [heading]="showTitle() ? t().title : ''"
+    [description]="showDescription() ? t().body : ''"
+    [icon]="showIcon() ? 'checkmark-circle-02' : ''"
+    [image]="showImage() ? placeholder : ''"
+    [rating]="showRating() ? 3.5 : null"
+    [ratingCount]="t().ratingCount"
+    [style.box-shadow]="focusShadow()"
+    [style.border-color]="focusBorder()"
+  >
+    @if (showCustom()) {
+      <div modCardCustom>
+        <h4 class="card-custom__title">{{ t().customTitle }}</h4>
+        <p class="card-custom__body">{{ t().customBody }}</p>
+      </div>
+    }
+    @if (showTags()) {
+      <div modCardTags>
+        <mod-tag>{{ t().tag }}</mod-tag>
+        <mod-tag>{{ t().tag }}</mod-tag>
+        <mod-tag>{{ t().tag }}</mod-tag>
+      </div>
+    }
+    @if (showFooter()) {
+      <div modCardActions>
+        @if (secondaryAction()) {
+          <button mod-button variant="secondary-outline">{{ t().secondary }}</button>
+        }
+        @if (primaryAction()) {
+          <button mod-button>{{ t().primary }}</button>
+        }
+      </div>
+    }
+  </mod-card>
+
+  <demo-switch label="RTL" [(checked)]="rtl" />
+  <demo-select label="Effect" [options]="effects" [(value)]="effect" />
+  <demo-select label="Card type" [options]="types" [(value)]="type" />
+  <demo-select label="State" [options]="states" [(value)]="state" />
+  <demo-switch label="Show title" [(checked)]="showTitle" />
+  <demo-switch label="Show description" [(checked)]="showDescription" />
+  <demo-switch label="Featured icon" [(checked)]="showIcon" />
+  <demo-switch label="Image" [(checked)]="showImage" />
+  <demo-switch label="Custom component" [(checked)]="showCustom" />
+  <demo-switch label="Show tags" [(checked)]="showTags" />
+  <demo-switch label="Show rating" [(checked)]="showRating" />
+  <demo-switch label="Primary action" [(checked)]="primaryAction" />
+  <demo-switch label="Secondary action" [(checked)]="secondaryAction" />
+  <demo-switch label="Expanded (expandable)" [(checked)]="expanded" />
+</demo-live>
+
+<demo-props
+  description="Inputs, models and content slots of mod-card. The host element is the card surface."
+  [props]="props"
+/>
+
+<demo-showcase
+  heading="Anatomy"
+  description="A complete card with all four parts: featured icon, title, body copy, and action footer. Inner gap is 24px (Card/card-lg-gap); padding is 16px (spacing-xl)."
+>
+  <div class="showcase-row">
+    <mod-card icon="checkmark-circle-02" heading="Card Title" description="Card content placeholder text goes here">
+      <div modCardActions>
+        <button mod-button variant="secondary-outline">Action</button>
+        <button mod-button>Action</button>
+      </div>
+    </mod-card>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Effects"
+  description="Three border treatments for different visual emphasis. With Shadow is the default (Figma shadow-md, two-layer drop shadow). No Shadow replaces the shadow with a neutral border. Stroke uses a 1px black border for maximum contrast."
+>
+  @for (e of effectExamples; track e.value) {
+    <span class="showcase-label">{{ e.label }}</span>
+    <div class="showcase-row">
+      <mod-card
+        [effect]="e.value"
+        icon="checkmark-circle-02"
+        heading="Card Title"
+        description="Card content placeholder text goes here"
+      >
+        <div modCardActions>
+          <button mod-button variant="secondary-outline">Action</button>
+          <button mod-button>Action</button>
+        </div>
+      </mod-card>
+    </div>
+  }
+</demo-showcase>
+
+<demo-showcase
+  heading="States"
+  description="Per Figma, the interactive card types (Expandable and Selectable) ship four states: Default, Hover, Focused, and Disabled. The Focused state uses a 2px black inset border ring (Border/border-black). The Disabled state uses the Global/background-disabled, border-disabled, and text-default-disabled tokens."
+>
+  <span class="showcase-label">Default</span>
+  <div class="showcase-row">
+    <mod-card
+      type="selectable"
+      icon="checkmark-circle-02"
+      heading="Default"
+      description="Standard card, ready for interaction."
+    />
+  </div>
+  <span class="showcase-label">Hover (try hovering)</span>
+  <div class="showcase-row">
+    <mod-card
+      type="selectable"
+      icon="checkmark-circle-02"
+      heading="Hover"
+      description="Shadow tightens; no color change."
+    />
+  </div>
+  <span class="showcase-label">Focused (simulated for the docs)</span>
+  <div class="showcase-row">
+    <mod-card
+      type="selectable"
+      icon="checkmark-circle-02"
+      heading="Focused"
+      style="box-shadow: inset 0 0 0 2px var(--border-black), rgba(16,24,40,0.1) 0px 4px 8px -2px, rgba(16,24,40,0.06) 0px 2px 4px -2px;"
+    >
+      <p class="card-body">2px black inset border (Figma <code>Border/border-black</code>).</p>
+    </mod-card>
+  </div>
+  <span class="showcase-label">Selected (Selectable card only)</span>
+  <div class="showcase-row">
+    <mod-card
+      type="selectable"
+      [selected]="true"
+      icon="checkmark-circle-02"
+      heading="Selected"
+      description="Only the checkbox changes — the card border stays neutral."
+    />
+  </div>
+  <span class="showcase-label">Disabled</span>
+  <div class="showcase-row">
+    <mod-card
+      type="selectable"
+      disabled
+      icon="checkmark-circle-02"
+      heading="Disabled"
+      description="Pointer events off; full disabled palette applied."
+    />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Default Card"
+  description="A static surface for grouping information. Compose with the icon, content, and footer parts in any combination — all are optional except the base card wrapper."
+>
+  <span class="showcase-label">Full composition</span>
+  <div class="showcase-row">
+    <mod-card icon="checkmark-circle-02" heading="Card Title" description="Card content placeholder text goes here">
+      <div modCardActions>
+        <button mod-button variant="secondary-outline">Action</button>
+        <button mod-button>Action</button>
+      </div>
+    </mod-card>
+  </div>
+  <span class="showcase-label">No footer</span>
+  <div class="showcase-row">
+    <mod-card
+      icon="checkmark-circle-02"
+      heading="Card Title"
+      description="Without a footer the card sits quieter — handy for display-only summaries."
+    />
+  </div>
+  <span class="showcase-label">No icon</span>
+  <div class="showcase-row">
+    <mod-card heading="Card Title" description="Without the featured icon, the title takes the top slot.">
+      <div modCardActions>
+        <button mod-button variant="secondary-outline">Action</button>
+        <button mod-button>Action</button>
+      </div>
+    </mod-card>
+  </div>
+  <span class="showcase-label">Title and body only</span>
+  <div class="showcase-row">
+    <mod-card effect="no-shadow" heading="Card Title">
+      <p class="card-body">
+        Pair with <code>effect="no-shadow"</code> for an even quieter surface appropriate to dense layouts.
+      </p>
+    </mod-card>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Expandable Card"
+  description="Same vertical stack as the Default card, with a small chevron at the bottom-trailing corner that indicates the expand direction. Click anywhere on the card or the chevron to toggle the expanded state. Add real expanded content by projecting markup and showing/hiding it as needed."
+>
+  <span class="showcase-label">Collapsed (default) — Expanded</span>
+  <div class="showcase-row">
+    <mod-card
+      type="expandable"
+      icon="checkmark-circle-02"
+      heading="Card Title"
+      description="Card content placeholder text goes here"
+    />
+    <mod-card
+      type="expandable"
+      [expanded]="true"
+      icon="checkmark-circle-02"
+      heading="Card Title"
+      description="Card content placeholder text goes here"
+    />
+  </div>
+  <span class="showcase-label">Effects (collapsed)</span>
+  <div class="showcase-row">
+    <mod-card
+      type="expandable"
+      effect="no-shadow"
+      icon="checkmark-circle-02"
+      heading="No shadow"
+      description="Border-only expandable."
+    />
+    <mod-card
+      type="expandable"
+      effect="stroke"
+      icon="checkmark-circle-02"
+      heading="Stroke"
+      description="Black-bordered expandable."
+    />
+  </div>
+  <span class="showcase-label">Disabled</span>
+  <div class="showcase-row">
+    <mod-card
+      type="expandable"
+      disabled
+      icon="checkmark-circle-02"
+      heading="Disabled"
+      description="Cannot be expanded."
+    />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Selectable Card"
+  description="A toggleable card with a square checkbox at the top-trailing corner. Default shows an empty box; selected fills the box with the primary token and a white check. The card border itself does not change on selection — only the checkbox. No footer in this variant per Figma. Click either card to toggle."
+>
+  <span class="showcase-label">Default + Selected</span>
+  <div class="showcase-row">
+    <mod-card
+      type="selectable"
+      icon="checkmark-circle-02"
+      heading="Card Title"
+      description="Card content placeholder text goes here"
+    />
+    <mod-card
+      type="selectable"
+      [selected]="true"
+      icon="checkmark-circle-02"
+      heading="Card Title"
+      description="Card content placeholder text goes here"
+    />
+  </div>
+  <span class="showcase-label">Effects (default + selected)</span>
+  <div class="showcase-row">
+    <mod-card
+      type="selectable"
+      effect="no-shadow"
+      icon="checkmark-circle-02"
+      heading="No shadow"
+      description="Border-only selectable."
+    />
+    <mod-card
+      type="selectable"
+      effect="stroke"
+      [selected]="true"
+      icon="checkmark-circle-02"
+      heading="Stroke + selected"
+      description="Border stays black; only checkbox fills."
+    />
+  </div>
+  <span class="showcase-label">Disabled + Disabled-selected</span>
+  <div class="showcase-row">
+    <mod-card
+      type="selectable"
+      disabled
+      icon="checkmark-circle-02"
+      heading="Disabled"
+      description="Pointer events off; checkbox stays empty."
+    />
+    <mod-card
+      type="selectable"
+      disabled
+      [selected]="true"
+      icon="checkmark-circle-02"
+      heading="Disabled + selected"
+      description="Locked-in selection (read-only)."
+    />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Rich Card"
+  description="The Default card composed with every optional slot per Figma instance 11853:20826: full-width image at the top with the featured icon overlapping its bottom-leading corner, title + description, a custom-component drop zone, a tags row, a star rating with review count, and primary + secondary action buttons."
+>
+  <div class="showcase-row">
+    <mod-card
+      [image]="placeholder"
+      icon="checkmark-circle-02"
+      heading="Card Title"
+      description="Additional text content for the card"
+      [rating]="3.5"
+      ratingCount="12 reviews"
+    >
+      <div modCardCustom>
+        <h4 class="card-custom__title">Swap with content component</h4>
+        <p class="card-custom__body">Replace this slot with any component</p>
+      </div>
+      <div modCardTags>
+        <mod-tag>Tag</mod-tag>
+        <mod-tag>Tag</mod-tag>
+        <mod-tag>Tag</mod-tag>
+      </div>
+      <div modCardActions>
+        <button mod-button variant="secondary-outline">Action</button>
+        <button mod-button>Action</button>
+      </div>
+    </mod-card>
+
+    <mod-card
+      dir="rtl"
+      [image]="placeholder"
+      icon="checkmark-circle-02"
+      heading="عنوان البطاقة"
+      description="نص إضافي لمحتوى البطاقة"
+      [rating]="3.5"
+      ratingLabel="3.5 من 5"
+      ratingCount="12 تقييم"
+    >
+      <div modCardCustom>
+        <h4 class="card-custom__title">استبدل هذا العنصر بأي عنصر آخر</h4>
+        <p class="card-custom__body">يمكن استبدال هذه المنطقة بأي مكون</p>
+      </div>
+      <div modCardTags>
+        <mod-tag>وسم</mod-tag>
+        <mod-tag>وسم</mod-tag>
+        <mod-tag>وسم</mod-tag>
+      </div>
+      <div modCardActions>
+        <button mod-button variant="secondary-outline">إجراء</button>
+        <button mod-button>إجراء</button>
+      </div>
+    </mod-card>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Card Grid"
+  description="Cards work cleanly in a responsive grid using their natural width and CSS grid for the layout. The fixed 360px card width keeps every card the same size; flex-wrap is what makes them flow to the next row at narrower viewports."
+>
+  <div class="showcase-row">
+    <mod-card
+      icon="checkmark-circle-02"
+      heading="First"
+      description="A repeating layout works well for paginated content or a small dashboard."
+    >
+      <div modCardActions><button mod-button>Open</button></div>
+    </mod-card>
+    <mod-card
+      effect="no-shadow"
+      icon="checkmark-circle-02"
+      heading="Second"
+      description="Mix effect styles within a grid for visual rhythm."
+    >
+      <div modCardActions><button mod-button variant="secondary-outline">Open</button></div>
+    </mod-card>
+    <mod-card
+      effect="stroke"
+      icon="checkmark-circle-02"
+      heading="Third"
+      description="The Stroke variant gives a more editorial feel in a quiet grid."
+    >
+      <div modCardActions><button mod-button>Open</button></div>
+    </mod-card>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="RTL Support"
+  description="All card variants flip cleanly for Arabic. Icon, content, and footer mirror their alignment, and the Selectable indicator moves to the trailing (left) corner because of inset-inline-end."
+  subtle
+>
+  <div class="showcase-row" dir="rtl">
+    <mod-card icon="checkmark-circle-02" heading="عنوان البطاقة" description="نص محتوى البطاقة يظهر هنا">
+      <div modCardActions>
+        <button mod-button variant="secondary-outline">إجراء</button>
+        <button mod-button>إجراء</button>
+      </div>
+    </mod-card>
+    <mod-card
+      type="selectable"
+      [selected]="true"
+      icon="checkmark-circle-02"
+      heading="بطاقة محددة"
+      description="حالة محددة مع المؤشر"
+    />
+  </div>
+</demo-showcase>

@@ -1,0 +1,761 @@
+/* ============================================
+   Navigation Header - Precise Figma Clone
+   Node: 30150:148752
+   ============================================ */
+
+/* ============================================
+   FIGMA DESIGN TOKENS (Exact values)
+   ============================================ */
+
+:root {
+    /* Colors */
+    --background-white: #FFFFFF;
+    --background-menu: #FFFFFF;
+    --background-primary-400: #2DBD7C;
+    --background-neutral-400: #8E9CA3;
+    --button-background-primary-default: #00A05A;
+    --text-default: #161616;
+    --text-secondary-paragraph: #6A7880;
+    --text-oncolor-primary: #FFFFFF;
+    --icon-default: #161616;
+    --icon-oncolor: #FFFFFF;
+
+    /* Typography */
+    --font-family-text: 'Saudi MOD', sans-serif;
+    --font-weight-medium: 500;
+    --typo-size-text-sm: 14px;
+    --typo-size-text-md: 16px;
+    --line-heights-text-sm: 20px;
+    --line-heights-text-md: 24px;
+
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-md: 8px;
+    --spacing-xl: 16px;
+    --spacing-4xl: 32px;
+
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-full: 9999px;
+}
+
+/* ============================================
+   NAVIGATION HEADER CONTAINER
+   Width: 1728px (full), Height: 72px
+   ============================================ */
+
+.navigation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 72px;
+    padding: 0 var(--spacing-4xl);
+    background-color: var(--background-white);
+    font-family: var(--font-family-text);
+}
+
+/* ============================================
+   LOGO PLACEHOLDER
+   Size: 48px (Medium) / 64px (Large)
+   Gap: 8px
+   ============================================ */
+
+.logo-placeholder {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: 5px var(--spacing-xs);
+    background-color: var(--background-white);
+}
+
+/* Logo Icon - Medium (48x48) */
+.logo-placeholder__icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+}
+
+/* Sizes (Figma): Small 32 / Medium 48 (default) / Large 64 */
+.logo-placeholder--small .logo-placeholder__icon {
+    width: 32px;
+    height: 32px;
+}
+
+.logo-placeholder--small .logo-placeholder__text {
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.logo-placeholder--large .logo-placeholder__icon {
+    width: 64px;
+    height: 64px;
+}
+
+.logo-placeholder--large .logo-placeholder__text {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+/* Position=Top (Figma): stacked, centered */
+.logo-placeholder--top {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Logo Text */
+.logo-placeholder__text {
+    font-family: var(--font-family-text);
+    font-size: var(--typo-size-text-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-heights-text-sm);
+    color: var(--text-secondary-paragraph);
+    white-space: nowrap;
+}
+
+/* ============================================
+   LEFT SECTION (Logo + Navigation Links)
+   Gap: 32px (spacing-4xl)
+   ============================================ */
+
+.navigation-header__left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4xl);
+}
+
+/* ============================================
+   NAVIGATION MENU LINKS
+   Gap: 0 (items touch each other)
+   ============================================ */
+
+.navigation-menu {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+/* ============================================
+   HEADER MENU ITEM (Navigation Link)
+   Full nav height for hover/selection
+   Content stays vertically centered
+   ============================================ */
+
+.header-menu-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 72px;
+    /* Full nav height for hover area */
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md) var(--spacing-xl);
+    /* NDS mod-header-menu-item: 8px 16px */
+    border-radius: var(--radius-sm);
+    /* NDS: 4px radius on the item itself */
+    text-decoration: none;
+    color: var(--text-default);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Menu Item Text */
+.header-menu-item__text {
+    font-family: var(--font-family-text);
+    font-size: var(--typo-size-text-md);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-heights-text-md);
+    color: var(--text-default);
+}
+
+/* Menu Item leading icon (Figma 30150:148312 anatomy: icon + label + chevron) */
+.header-menu-item__icon {
+    display: flex;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    flex-shrink: 0;
+    color: var(--icon-default);
+}
+
+.header-menu-item--selected .header-menu-item__icon {
+    color: var(--icon-oncolor);
+}
+
+/* Menu Item Dropdown Arrow */
+.header-menu-item__arrow {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--icon-default);
+}
+
+/* Hover State - Gray background with selection indicator */
+.header-menu-item:hover {
+    background-color: var(--button-background-neutral-hovered, #F1F4F5);
+    /* button-background-neutral-hovered */
+    border-radius: var(--radius-sm);
+    /* 4px rounded corners */
+}
+
+/* NDS: the arrow does not change size on hover — color only. */
+
+/* Hover/Pressed indicator — UNSELECTED items only. Scoped with
+   :not(--selected) so it never overrides the selected item's green
+   indicator (which must stay green in every state per Figma).
+   Figma 30150:148312: indicator container top:66px in a 72px item =
+   bottom:0, height 6px, 8px horizontal inset. */
+.header-menu-item:not(.header-menu-item--selected):hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing-md);
+    /* 8px inset */
+    right: var(--spacing-md);
+    height: 6px;
+    background-color: var(--background-neutral-400, #8E9CA3);
+    /* #8E9CA3 gray */
+    border-radius: var(--radius-full);
+    /* Fully rounded pill */
+}
+
+/* Pressed pill darkens to gray-800 (NDS --background-neutral-800) */
+.header-menu-item:not(.header-menu-item--selected):active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    height: 6px;
+    background-color: var(--gray-800);
+    border-radius: var(--radius-full);
+}
+
+/* Pressed State (unselected) - darker neutral fill */
+.header-menu-item:not(.header-menu-item--selected):active {
+    background-color: var(--button-background-neutral-pressed, #E3E8EB);
+    border-radius: var(--radius-sm);
+}
+
+/* Focused State (unselected) - 2px black ring inside the item radius */
+.header-menu-item:focus-visible {
+    outline: 2px solid var(--border-black, #161616);
+    outline-offset: -2px;
+    border-radius: var(--radius-sm);
+}
+
+
+/* Selected State - Full height green background with rounded selection indicator */
+.header-menu-item--selected {
+    background-color: var(--button-background-primary-default);
+    color: var(--text-oncolor-primary);
+    border-radius: var(--radius-sm);
+    /* 4px rounded corners */
+    /* padding stays 8px 16px in every state (NDS) */
+}
+
+/* Selection Indicator - 6px rounded pill flush at the bottom edge
+   (Figma top:66px in 72px item = bottom:0). */
+.header-menu-item--selected::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing-md);
+    /* 8px inset */
+    right: var(--spacing-md);
+    height: 6px;
+    background-color: var(--background-primary-400);
+    /* #2DBD7C lighter green */
+    border-radius: var(--radius-full);
+    /* Fully rounded pill */
+}
+
+/* Selected — Hover / Pressed / Focused states (Figma tokens) */
+.header-menu-item--selected:hover {
+    background-color: var(--button-background-primary-hovered, var(--color-primary-hover));
+}
+
+.header-menu-item--selected:active {
+    background-color: var(--button-background-primary-pressed, var(--color-primary-active));
+}
+
+.header-menu-item--selected:focus-visible {
+    outline: 2px solid var(--border-white, #FFFFFF);
+    outline-offset: -3px;
+}
+
+
+.header-menu-item--selected .header-menu-item__text {
+    color: var(--text-oncolor-primary);
+    font-weight: 600;
+    /* SemiBold */
+}
+
+.header-menu-item--selected .header-menu-item__arrow {
+    color: var(--icon-oncolor);
+    /* NDS: no size change when selected — color only */
+}
+
+
+/* ============================================
+   RIGHT SECTION (Action Buttons)
+   Gap: 8px (spacing-md)
+   ============================================ */
+
+.navigation-header__right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+/* ============================================
+   HEADER ACTION BUTTON
+   Exactly like header-menu-item:
+   - Full nav height (72px) for hover area
+   - No borders
+   - Border-radius on hover/selected
+   - Selection indicator pill
+   ============================================ */
+
+.header-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 72px;
+    /* Full nav height for hover area */
+    gap: var(--spacing-xs);
+    /* NDS mod-header-action: 4px */
+    min-width: 72px;
+    padding: var(--spacing-md) var(--spacing-xl);
+    /* NDS: 8px 16px */
+    border-radius: var(--radius-xs);
+    /* NDS: actions use the 2px radius */
+    font-family: var(--font-family-text);
+    font-size: var(--typo-size-text-md);
+    /* 16px */
+    font-weight: var(--font-weight-medium);
+    /* 500 */
+    line-height: var(--line-heights-text-md);
+    /* 24px */
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    border: none;
+    /* No borders */
+    position: relative;
+    box-sizing: border-box;
+    background-color: transparent;
+    color: var(--text-default);
+}
+
+/* NDS --top variant: icon stacked above the label */
+.header-action--top {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+/* Action Icon */
+.header-action__icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    stroke: var(--icon-default);
+}
+
+/* ============================================
+   OUTLINE ACTION BUTTON (default style)
+   No borders, transparent background
+   ============================================ */
+
+.header-action--outline {
+    background-color: transparent;
+    color: var(--text-default);
+}
+
+/* Hover - same as menu item: gray bg with selection indicator */
+.header-action--outline:hover {
+    background-color: var(--button-background-neutral-hovered, #F1F4F5);
+    /* button-background-neutral-hovered */
+    border-radius: var(--radius-xs);
+    /* 4px rounded corners */
+}
+
+/* Hover State - Gray selection indicator at bottom */
+.header-action--outline:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing-md);
+    /* 8px inset */
+    right: var(--spacing-md);
+    height: 6px;
+    background-color: var(--background-neutral-400);
+    /* #8E9CA3 gray */
+    border-radius: var(--radius-full);
+    /* Fully rounded pill */
+}
+
+
+/* Selected State - same as menu item */
+.header-action--outline.header-action--selected {
+    background-color: var(--button-background-primary-default);
+    color: var(--text-oncolor-primary);
+    border-radius: var(--radius-sm);
+    /* 4px rounded corners */
+}
+
+.header-action--outline.header-action--selected .header-action__icon {
+    stroke: var(--icon-oncolor);
+}
+
+/* Selection Indicator - 6px rounded pill at bottom */
+.header-action--outline.header-action--selected::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    /* 8px from bottom of the full-height box */
+    left: var(--spacing-md);
+    /* 8px inset */
+    right: var(--spacing-md);
+    height: 6px;
+    background-color: var(--background-primary-400);
+    /* #2DBD7C lighter green */
+    border-radius: var(--radius-full);
+    /* Fully rounded pill */
+}
+
+/* Pressed (NDS): darker neutral fill with the gray-800 pill */
+.header-action--outline:active {
+    background-color: var(--button-background-neutral-pressed, #E3E8EB);
+    border-radius: var(--radius-xs);
+}
+
+.header-action--outline:active .header-action__icon {
+    stroke: var(--icon-default);
+}
+
+.header-action--outline:active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    height: 6px;
+    background-color: var(--gray-800);
+    border-radius: var(--radius-full);
+}
+
+/* ============================================
+   PRIMARY ACTION BUTTON
+   Same full-height behavior, green background
+   ============================================ */
+
+/* NDS active action: primary green with the persistent sa-400 pill */
+.header-action--primary {
+    background-color: var(--button-background-primary-default);
+    color: var(--text-oncolor-primary);
+    border-radius: var(--radius-xs);
+}
+
+.header-action--primary::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    height: 6px;
+    background-color: var(--background-primary-400);
+    border-radius: var(--radius-full);
+}
+
+.header-action--primary .header-action__icon {
+    stroke: var(--icon-oncolor);
+}
+
+/* Hover (NDS active:hover) */
+.header-action--primary:hover {
+    background-color: var(--button-background-primary-hovered, var(--color-primary-hover));
+}
+
+/* Pressed (NDS active:active) */
+.header-action--primary:active {
+    background-color: var(--button-background-primary-pressed, var(--color-primary-active));
+}
+
+/* Primary action selection pill only on hover/press (not selected by default) */
+.header-action--primary:hover::after,
+.header-action--primary:active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    height: 6px;
+    background-color: var(--background-primary-400);
+    border-radius: var(--radius-full);
+}
+
+.header-action--primary:hover .header-action__icon,
+.header-action--primary:active .header-action__icon {
+    stroke: var(--icon-oncolor);
+}
+
+
+/* ============================================
+   RTL SUPPORT
+   ============================================ */
+
+[dir="rtl"] .navigation-header {
+    direction: rtl;
+}
+
+/* Disabled (Figma tokens — not opacity): text/icon gray-400, no pill */
+.header-menu-item--disabled,
+.header-menu-item[aria-disabled="true"] {
+    pointer-events: none;
+    cursor: not-allowed;
+    background-color: transparent;
+}
+
+.header-menu-item--disabled .header-menu-item__text,
+.header-menu-item--disabled .header-menu-item__icon,
+.header-menu-item--disabled .header-menu-item__arrow,
+.header-menu-item[aria-disabled="true"] .header-menu-item__text,
+.header-menu-item[aria-disabled="true"] .header-menu-item__icon,
+.header-menu-item[aria-disabled="true"] .header-menu-item__arrow {
+    color: var(--gray-400);
+}
+
+.header-menu-item--disabled::after {
+    display: none;
+}
+
+/* selected + disabled keeps a gray pill (Figma background-disabled) */
+.header-menu-item--selected.header-menu-item--disabled {
+    background-color: transparent;
+}
+
+.header-menu-item--selected.header-menu-item--disabled::after {
+    display: block;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    height: 6px;
+    border-radius: var(--radius-full);
+    background-color: var(--gray-200);
+}
+
+/* Action: icon-only prop (Figma 72x72 square) */
+.header-action--icon-only {
+    width: 72px;
+    min-width: 72px;
+    justify-content: center;
+}
+
+/* Disabled action mirrors the menu item */
+.header-action--disabled,
+.header-action[aria-disabled="true"] {
+    pointer-events: none;
+    cursor: not-allowed;
+    background-color: transparent !important;
+    color: var(--gray-400) !important;
+}
+
+.header-action--disabled::after {
+    display: none !important;
+}
+
+.header-action--disabled .header-action__icon {
+    stroke: var(--gray-400);
+}
+
+[dir="rtl"] .logo-placeholder__text {
+    text-align: start;
+}
+
+/* No row-reverse overrides: flex rows mirror automatically under dir=rtl;
+   reversing them again would un-mirror icons and labels. */
+
+/* ============================================
+   HAMBURGER + MOBILE MENU
+   NDS mod-header behavior: below 900px (56.25em) the menu and
+   outline actions hide, the hamburger appears, branding centers,
+   and the menu opens as a full-width panel under the header.
+   ============================================ */
+
+.header-menu-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--text-default);
+    font-size: 24px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.header-menu-btn:hover {
+    background-color: var(--button-background-neutral-hovered, #F1F4F5);
+}
+
+.header-menu-btn:active {
+    background-color: var(--button-background-neutral-pressed, #E3E8EB);
+}
+
+.header-menu-btn:focus-visible {
+    outline: 2px solid var(--border-black, #161616);
+    outline-offset: -2px;
+}
+
+.header-mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    padding: var(--spacing-md);
+    gap: 2px;
+    background: var(--background-menu, #FFFFFF);
+    border-top: 1px solid var(--background-neutral-300, #B2BEC4);
+    /* NDS Shadows/shadow-lg */
+    box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.08), 0px 4px 6px -2px rgba(16, 24, 40, 0.03);
+    z-index: var(--z-dropdown, 100);
+}
+
+.header-mobile-menu.is-open {
+    display: flex;
+}
+
+.header-mobile-menu .header-menu-item {
+    height: 56px;
+    width: 100%;
+    justify-content: flex-start;
+    border-radius: var(--radius-sm);
+}
+
+.header-mobile-menu .header-menu-item--selected {
+    height: 56px;
+}
+
+.header-mobile-menu__actions {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-xl) var(--spacing-lg);
+    border-top: 1px solid var(--background-neutral-300, #B2BEC4);
+    margin-top: var(--spacing-md);
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS (NDS: 56.25em = 900px)
+   ============================================ */
+
+/* Tablet 600–960 (Figma): menu hidden, hamburger at start, branding
+   centered, actions collapse to icon-only */
+@media (max-width: 960px) {
+    .navigation-header--responsive {
+        padding: 0 var(--spacing-xl);
+        position: relative;
+    }
+
+    .navigation-header--responsive .navigation-menu {
+        display: none;
+    }
+
+    .navigation-header--responsive .navigation-header__left {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .navigation-header--responsive .header-menu-btn {
+        display: inline-flex;
+    }
+
+    .navigation-header--responsive .navigation-header__right .header-action span {
+        display: none;
+    }
+
+    .navigation-header--responsive .navigation-header__right .header-action {
+        width: 56px;
+        min-width: 56px;
+        justify-content: center;
+    }
+}
+
+/* Mobile <600 (Figma): outline actions fold into the panel, the language
+   action leads, and the hamburger sits at the inline end */
+@media (max-width: 600px) {
+    .navigation-header--responsive .navigation-header__right .header-action--outline {
+        display: none;
+    }
+
+    .navigation-header--responsive .navigation-header__right {
+        order: -1;
+    }
+
+    .navigation-header--responsive .header-menu-btn {
+        order: 10;
+    }
+}
+
+/* ============================================
+   ANCHOR OPT-OUT
+   DGATheme styles bare <a> globally (green link colors and a 3px
+   focus border + padding that resizes the element after a click).
+   Header menu items and actions are anchors, so they opt out with
+   explicit pseudo-class rules; components keep library behavior.
+   ============================================ */
+.header-menu-item,
+.header-menu-item:visited,
+.header-menu-item:hover,
+.header-menu-item:focus {
+    font-family: var(--font-family-text);
+    font-size: var(--typo-size-text-md);
+    color: var(--text-default);
+    border: 0;
+    padding: var(--spacing-md) var(--spacing-xl);
+    text-decoration: none;
+}
+
+.header-menu-item--selected,
+.header-menu-item--selected:visited,
+.header-menu-item--selected:hover,
+.header-menu-item--selected:focus {
+    color: var(--text-oncolor-primary);
+}
+
+.header-action,
+.header-action:visited,
+.header-action:hover,
+.header-action:focus {
+    font-family: var(--font-family-text);
+    font-size: var(--typo-size-text-md);
+    color: var(--text-default);
+    border: 0;
+    padding: var(--spacing-md) var(--spacing-xl);
+    text-decoration: none;
+}
+
+.header-action--primary,
+.header-action--primary:visited,
+.header-action--primary:hover,
+.header-action--primary:focus {
+    color: var(--text-oncolor-primary);
+}
+
+/* icon-only keeps its square padding in every pseudo state */
+.header-action--icon-only,
+.header-action--icon-only:visited,
+.header-action--icon-only:hover,
+.header-action--icon-only:focus {
+    padding: var(--spacing-md);
+}

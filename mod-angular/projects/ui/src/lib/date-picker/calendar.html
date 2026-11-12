@@ -1,0 +1,151 @@
+<div class="date-picker__header">
+  <div class="date-picker__nav">
+    <span class="date-picker__month-label" [id]="monthLabelId" aria-live="polite">{{
+      monthLabel()
+    }}</span>
+    <div #yearDropdown class="year-dropdown" [class.is-open]="yearOpen()">
+      <button
+        #yearTrigger
+        class="year-dropdown__trigger"
+        type="button"
+        aria-haspopup="listbox"
+        [attr.aria-expanded]="yearOpen()"
+        [attr.aria-label]="yearLabel() + ' ' + view().year"
+        (click)="toggleYear()"
+      >
+        <span>{{ view().year }}</span>
+        <svg
+          class="year-dropdown__arrow"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M6 9L12 15L18 9" />
+        </svg>
+      </button>
+      <div #yearMenu class="year-dropdown__menu" role="listbox" [attr.aria-label]="yearLabel()">
+        @for (year of years(); track year) {
+          <div
+            class="year-dropdown__option"
+            role="option"
+            tabindex="0"
+            [class.year-dropdown__option--selected]="year === view().year"
+            [attr.aria-selected]="year === view().year"
+            (click)="pickYear(year, $event)"
+            (keydown.enter)="pickYear(year, $event)"
+            (keydown.space)="pickYear(year, $event)"
+          >
+            {{ year }}
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+  <div class="date-picker__arrows">
+    <button
+      class="date-picker__nav-btn"
+      type="button"
+      [attr.aria-label]="previousMonthLabel()"
+      (click)="navigate(-1)"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M19 12H5M5 12L12 19M5 12L12 5" />
+      </svg>
+    </button>
+    <button
+      class="date-picker__nav-btn"
+      type="button"
+      [attr.aria-label]="nextMonthLabel()"
+      (click)="navigate(1)"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M5 12h14M12 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+</div>
+
+<div class="date-picker__weekdays" aria-hidden="true">
+  @for (weekday of weekdayLabels(); track $index) {
+    <span class="date-picker__weekday">{{ weekday }}</span>
+  }
+</div>
+
+<div
+  class="date-picker__grid"
+  role="group"
+  [attr.aria-labelledby]="monthLabelId"
+  (keydown)="onGridKeydown($event)"
+>
+  @for (cell of cells(); track cell.key) {
+    <div
+      class="date-cell"
+      [class.date-cell--outside]="cell.outside"
+      [class.date-cell--disabled]="cell.disabled"
+      [class.date-cell--today]="cell.today"
+      [class.date-cell--selected]="cell.selected"
+      [class.date-cell--range-start]="cell.rangeStart"
+      [class.date-cell--range-mid]="cell.rangeMid"
+      [class.date-cell--range-end]="cell.rangeEnd"
+      [attr.role]="cell.outside ? null : 'button'"
+      [attr.tabindex]="cell.outside ? null : cell.focusable ? 0 : -1"
+      [attr.aria-label]="cell.outside ? null : cell.label"
+      [attr.aria-pressed]="cell.outside ? null : cell.selected || cell.rangeStart || cell.rangeEnd"
+      [attr.aria-current]="cell.today ? 'date' : null"
+      [attr.aria-disabled]="!cell.outside && cell.disabled ? 'true' : null"
+      [attr.aria-hidden]="cell.outside ? 'true' : null"
+      (click)="pick(cell)"
+    >
+      {{ cell.day }}
+    </div>
+  }
+</div>
+
+@if (showFooter()) {
+  <div class="date-picker__footer">
+    <button
+      class="date-picker__footer-btn date-picker__footer-btn--clear"
+      type="button"
+      (click)="clear()"
+    >
+      {{ clearLabel() }}
+    </button>
+    @if (footerAction() === 'apply') {
+      <button
+        class="date-picker__footer-btn date-picker__footer-btn--today"
+        type="button"
+        (click)="apply()"
+      >
+        {{ applyLabel() }}
+      </button>
+    } @else {
+      <button
+        class="date-picker__footer-btn date-picker__footer-btn--today"
+        type="button"
+        (click)="selectToday()"
+      >
+        {{ todayLabel() }}
+      </button>
+    }
+  </div>
+}

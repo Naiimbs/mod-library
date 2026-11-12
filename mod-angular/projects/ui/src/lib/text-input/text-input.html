@@ -1,0 +1,130 @@
+<div class="text-input" [class.text-input--disabled]="isDisabled()">
+  @if (label()) {
+    <label
+      class="text-input__label"
+      [class.text-input__label--required]="required()"
+      [class.text-input__label--optional]="optional()"
+      [attr.for]="fieldId()"
+      >{{ label() }}</label
+    >
+  }
+
+  @if (hasWrapper()) {
+    <div [class]="wrapperClasses()">
+      @if (prefix()) {
+        @if (prefixDropdown()) {
+          <button
+            type="button"
+            [class]="addonClasses('prefix')"
+            [disabled]="isDisabled()"
+            [attr.aria-pressed]="prefixSelected() ? 'true' : null"
+            (click)="prefixClick.emit()"
+          >
+            @if (prefixIcon()) {
+              <span class="text-input__addon-icon">
+                <span [class]="'icon dga-icon-' + prefixIcon()" style="font-size: 20px" aria-hidden="true"></span>
+              </span>
+            }
+            {{ prefix() }}
+            <span class="text-input__addon-chevron">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </button>
+        } @else {
+          <span [class]="addonClasses('prefix')">{{ prefix() }}</span>
+        }
+      }
+      @if (leadingIcon()) {
+        <span class="text-input__icon--leading">
+          <span [class]="'icon dga-icon-' + leadingIcon()" style="font-size: 20px" aria-hidden="true"></span>
+        </span>
+      }
+      <ng-container [ngTemplateOutlet]="field" />
+      @if (trailingIcon()) {
+        <span class="text-input__icon--trailing">
+          <span [class]="'icon dga-icon-' + trailingIcon()" style="font-size: 20px" aria-hidden="true"></span>
+        </span>
+      }
+      @if (suffix()) {
+        @if (suffixDropdown()) {
+          <button
+            type="button"
+            [class]="addonClasses('suffix')"
+            [disabled]="isDisabled()"
+            [attr.aria-pressed]="suffixSelected() ? 'true' : null"
+            (click)="suffixClick.emit()"
+          >
+            {{ suffix() }}
+            <span class="text-input__addon-chevron">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </button>
+        } @else {
+          <span [class]="addonClasses('suffix')">{{ suffix() }}</span>
+        }
+      }
+    </div>
+  } @else {
+    <ng-container [ngTemplateOutlet]="field" />
+  }
+
+  @if (showCount()) {
+    <div class="text-input__footer">
+      <ng-container [ngTemplateOutlet]="helper" />
+      <span class="text-input__char-count" [class.text-input__char-count--error]="overLimit()">{{ countText() }}</span>
+    </div>
+  } @else {
+    <ng-container [ngTemplateOutlet]="helper" />
+  }
+</div>
+
+<ng-template #field>
+  <input
+    #input
+    [class]="fieldClasses()"
+    [id]="fieldId()"
+    [type]="type()"
+    [value]="value()"
+    [disabled]="isDisabled()"
+    [readOnly]="readonly()"
+    [required]="required()"
+    [attr.name]="name() || null"
+    [attr.placeholder]="placeholder() || null"
+    [attr.maxlength]="maxLength() ?? null"
+    [attr.autocomplete]="autocomplete() || null"
+    [attr.inputmode]="inputMode() || null"
+    [attr.aria-label]="ariaLabel() || null"
+    [attr.aria-invalid]="error() ? 'true' : null"
+    [attr.aria-describedby]="helperText() ? helperId : null"
+    (input)="onInput(input.value)"
+    (blur)="onBlur()"
+  />
+</ng-template>
+
+<ng-template #helper>
+  @if (helperText()) {
+    <span
+      class="text-input__helper"
+      [class.text-input__helper--error]="error()"
+      [class.text-input__helper--success]="!error() && success()"
+      [id]="helperId"
+    >
+      @if (helperIcon()) {
+      <svg class="text-input__helper-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        @if (error()) {
+          <path d="M8 5.333V8m0 2.667h.007M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round" />
+        } @else if (success()) {
+          <path d="M5.333 8L7.333 10l3.334-4M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round" />
+        } @else {
+          <path d="M8 7.333V10.667M8 5.333h.007M14.667 8A6.667 6.667 0 1 1 1.333 8a6.667 6.667 0 0 1 13.334 0Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round" />
+        }
+      </svg>
+      }
+      {{ helperText() }}
+    </span>
+  }
+</ng-template>

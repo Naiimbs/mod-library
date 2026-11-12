@@ -1,0 +1,102 @@
+<div class="dropdown-field">
+  @if (label()) {
+    <span class="dropdown-field__label" [id]="labelId">{{ label() }}</span>
+  }
+  <div [class]="classes()">
+    <button
+      #trigger
+      type="button"
+      class="dropdown__btn"
+      [class.open]="isOpen()"
+      [id]="triggerId"
+      [disabled]="isDisabled() || readonly()"
+      aria-haspopup="listbox"
+      [attr.aria-expanded]="isOpen()"
+      [attr.aria-controls]="listId"
+      [attr.aria-label]="ariaLabel() || null"
+      [attr.aria-labelledby]="label() && !ariaLabel() ? labelId + ' ' + triggerId : null"
+      [attr.aria-invalid]="hasError() ? 'true' : null"
+      (click)="toggle()"
+      (keydown)="onTriggerKeydown($event)"
+    >
+      <span class="dropdown__label" [class.dropdown__label--selection]="hasSelection()">{{ displayText() }}</span>
+      <span class="dropdown__label-placeholder">{{ placeholder() }}</span>
+      @switch (feedback()) {
+        @case ('error') {
+          <span class="dropdown__feedback-icon dropdown__feedback-icon--error"
+            ><span class="icon dga-icon-cancel-circle" aria-hidden="true"></span
+          ></span>
+        }
+        @case ('success') {
+          <span class="dropdown__feedback-icon dropdown__feedback-icon--success"
+            ><span class="icon dga-icon-checkmark-circle-02" aria-hidden="true"></span
+          ></span>
+        }
+        @case ('warning') {
+          <span class="dropdown__feedback-icon dropdown__feedback-icon--warning"
+            ><span class="icon dga-icon-alert-02" aria-hidden="true"></span
+          ></span>
+        }
+      }
+      <span class="dropdown__chevron icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+    </button>
+    <ul
+      #list
+      class="dropdown__list"
+      role="listbox"
+      [id]="listId"
+      [attr.aria-multiselectable]="multiple() ? 'true' : null"
+      [attr.aria-labelledby]="label() ? labelId : null"
+      [attr.aria-label]="label() ? null : ariaLabel() || placeholder() || null"
+      [attr.inert]="isOpen() ? null : ''"
+      (keydown)="onListKeydown($event)"
+    >
+      @for (group of groups(); track group.key) {
+        @if (group.label) {
+          <li role="presentation">
+            <span class="dropdown__list-group-label" [id]="listId + '-g' + $index">{{ group.label }}</span>
+            <ul class="dropdown__list-group" role="group" [attr.aria-labelledby]="listId + '-g' + $index">
+              @for (option of group.options; track option.value) {
+                <li role="presentation">
+                  <ng-container [ngTemplateOutlet]="optionTpl" [ngTemplateOutletContext]="{ $implicit: option }" />
+                </li>
+              }
+            </ul>
+          </li>
+        } @else {
+          @for (option of group.options; track option.value) {
+            <li role="presentation">
+              <ng-container [ngTemplateOutlet]="optionTpl" [ngTemplateOutletContext]="{ $implicit: option }" />
+            </li>
+          }
+        }
+      }
+    </ul>
+  </div>
+</div>
+
+<ng-template #optionTpl let-option>
+  <button
+    type="button"
+    role="option"
+    tabindex="-1"
+    class="dropdown__option"
+    [class.dropdown__option--checkbox]="multiple()"
+    [class.selected]="isSelected(option)"
+    [disabled]="!!option.disabled"
+    [style.opacity]="option.disabled ? 0.5 : null"
+    [style.cursor]="option.disabled ? 'not-allowed' : null"
+    [attr.aria-selected]="isSelected(option)"
+    (click)="select(option)"
+  >
+    @if (multiple()) {
+      <span class="dropdown__option-icon-container"
+        ><span class="dropdown__option-icon icon dga-icon-tick-02" aria-hidden="true"></span
+      ></span>
+      <span class="dropdown__option-label">{{ option.label }}</span>
+    } @else {
+      <span class="dropdown__option-label">{{ option.label }}</span>
+      <span class="dropdown__option-icon icon dga-icon-tick-02" aria-hidden="true"></span>
+    }
+  </button>
+</ng-template>

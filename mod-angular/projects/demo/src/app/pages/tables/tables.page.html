@@ -1,0 +1,273 @@
+<ng-template #statusTag let-status>
+  <mod-status-tag size="sm" [variant]="statusVariant(status)">{{ status }}</mod-status-tag>
+</ng-template>
+
+<div class="content-header">
+  <h1 class="content-title">Tables</h1>
+  <p class="content-description">
+    Structured rows and columns for displaying and interacting with data. Includes sortable and filterable header
+    cells, row selection (with select-all + indeterminate state), six body cell types (text, link, status, tag,
+    action, checkbox), striped and bordered variants, three densities, and full RTL support. Modeled on Figma frames
+    5698:40875 (Table), 5898:27389 (Header), 5698:40844 (Row).
+  </p>
+</div>
+
+<demo-live
+  heading="Table"
+  description="A composition of header and body cells. Toggle behaviors below to see the data table re-render in place."
+  align="stretch"
+  [rtl]="rtl()"
+>
+  <mod-table
+    style="width: 100%"
+    [columns]="liveColumns()"
+    [rows]="liveRows()"
+    [density]="density()"
+    [striped]="striped()"
+    [bordered]="bordered()"
+    [selectable]="selection()"
+    [(selected)]="liveSelected"
+    [sort]="liveSort()"
+    (sortChange)="onLiveSort($event)"
+    [filterable]="filter()"
+    [rowAction]="filter()"
+  >
+    <ng-template modTableCell="role" let-value="value">
+      @switch (cellType()) {
+        @case ('tag') {
+          <mod-tag>{{ value }}</mod-tag>
+        }
+        @case ('status') {
+          <mod-status-tag size="sm" [variant]="roleVariant(value)">{{ value }}</mod-status-tag>
+        }
+        @case ('action') {
+          <button type="button" class="table__action" [attr.aria-label]="value">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3 8h10M9 4l4 4-4 4" />
+            </svg>
+          </button>
+        }
+        @case ('checkbox') {
+          <input type="checkbox" class="table__checkbox" [attr.aria-label]="value" />
+        }
+        @default {
+          {{ value }}
+        }
+      }
+    </ng-template>
+    <ng-template modTableCell="status" let-value="value">
+      <ng-container [ngTemplateOutlet]="statusTag" [ngTemplateOutletContext]="{ $implicit: value }" />
+    </ng-template>
+  </mod-table>
+
+  <demo-switch label="RTL" [(checked)]="rtl" />
+  <demo-select label="Density" [options]="densities" [(value)]="density" />
+  <demo-switch label="Striped" [(checked)]="striped" />
+  <demo-switch label="Bordered" [(checked)]="bordered" />
+  <demo-switch label="Selection" [(checked)]="selection" />
+  <demo-switch label="Sortable" [(checked)]="sortable" />
+  <demo-switch label="Filter + Row actions" [(checked)]="filter" />
+  <demo-select label="Sort column" [options]="sortColumns" [value]="sortKey()" (valueChange)="setSortColumn($event)" />
+  <demo-select label="Role cell" [options]="cellTypes" [(value)]="cellType" />
+</demo-live>
+
+<demo-props
+  description="Inputs, outputs and models of mod-table. Cells are customised per column with <ng-template modTableCell=&quot;key&quot; let-row let-value=&quot;value&quot;>."
+  [props]="props"
+/>
+
+<demo-showcase
+  heading="Basic Table"
+  description="The minimum composition: typed columns and rows, rendered as a .table-wrapper around a <table class=&quot;table&quot;> with a header row and body rows."
+>
+  <div style="width: 100%;">
+    <mod-table [columns]="basicColumns" [rows]="basicRows">
+      <ng-template modTableCell="status" let-value="value">
+        <ng-container [ngTemplateOutlet]="statusTag" [ngTemplateOutletContext]="{ $implicit: value }" />
+      </ng-template>
+    </mod-table>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Header Cell Types"
+  description="The four header cell flavors: plain text, sortable (click to cycle), filter (toggleable funnel), and select-all checkbox."
+>
+  <div style="width: 100%;">
+    <mod-table
+      [columns]="headerColumns"
+      [rows]="headerRows"
+      selectable
+      filterable
+      selectAllLabel="Select all"
+      [(selected)]="headerSelected"
+      [(sort)]="headerSort"
+    />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Body Cell Types"
+  description="The body cell variants modeled on Figma frame 5698:40125: plain text, link, status tag, neutral tag, action arrow, and checkbox."
+>
+  <div style="width: 100%;">
+    <mod-table [columns]="cellColumns" [rows]="cellRows">
+      <ng-template modTableCell="type" let-row>
+        @switch (row.kind) {
+          @case ('text') {
+            <code>type: 'text'</code> (default)
+          }
+          @case ('link') {
+            <code>type: 'link'</code>
+          }
+          @default {
+            {{ row.type }}
+          }
+        }
+      </ng-template>
+      <ng-template modTableCell="example" let-row>
+        @switch (row.kind) {
+          @case ('text') {
+            Plain body text
+          }
+          @case ('link') {
+            Open record
+          }
+          @case ('status') {
+            <mod-status-tag size="sm" variant="success">Active</mod-status-tag>
+          }
+          @case ('tag') {
+            <mod-tag>Beta</mod-tag>
+          }
+          @case ('action') {
+            <button type="button" class="table__action" aria-label="Open">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </button>
+          }
+          @case ('checkbox') {
+            <input type="checkbox" class="table__checkbox" aria-label="Select" checked />
+          }
+        }
+      </ng-template>
+    </mod-table>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Row States"
+  description="Default, hover (tinted with table-background-row), and selected (uses --color-primary-light, the Saudi-green-50 token)."
+>
+  <div style="width: 100%;">
+    <mod-table [columns]="stateColumns" [rows]="stateRows" [selected]="stateSelected">
+      <ng-template modTableCell="status" let-value="value">
+        <ng-container [ngTemplateOutlet]="statusTag" [ngTemplateOutletContext]="{ $implicit: value }" />
+      </ng-template>
+    </mod-table>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="With Selection"
+  description="Per-row checkboxes plus a select-all in the header. Checking some but not all rows puts the header checkbox into the indeterminate state. Selected rows highlight automatically."
+>
+  <div style="width: 100%;">
+    <mod-table
+      [columns]="teamColumns"
+      [rows]="basicRows"
+      selectable
+      selectAllLabel="Select all"
+      [(selected)]="selectionSelected"
+    />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="With Sorting"
+  description="Click a sortable header to cycle ascending → descending. The active column's arrow highlights to indicate the current sort direction."
+>
+  <div style="width: 100%;">
+    <mod-table [columns]="sortingColumns" [rows]="sortingRows" [(sort)]="sortingSort" />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Striped and Bordered"
+  description="Two visual modifiers for emphasizing row separation. Striped tints every other row; bordered adds full column dividers."
+>
+  <span class="showcase-label">Striped</span>
+  <div style="width: 100%;">
+    <mod-table [columns]="stripedColumns" [rows]="allRows" striped>
+      <ng-template modTableCell="status" let-value="value">
+        <ng-container [ngTemplateOutlet]="statusTag" [ngTemplateOutletContext]="{ $implicit: value }" />
+      </ng-template>
+    </mod-table>
+  </div>
+  <span class="showcase-label">Bordered</span>
+  <div style="width: 100%;">
+    <mod-table [columns]="teamColumns" [rows]="basicRows" bordered />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Density"
+  description="Three densities for different contexts. Compact (4×12 padding) for data-dense screens, Regular (8×16) for the default, Relaxed (16×24) for marketing-style or low-density tables."
+>
+  <span class="showcase-label">Compact</span>
+  <div style="width: 100%;">
+    <mod-table [columns]="teamColumns" [rows]="basicRows" density="compact" />
+  </div>
+  <span class="showcase-label">Regular (default)</span>
+  <div style="width: 100%;">
+    <mod-table [columns]="teamColumns" [rows]="basicRows" />
+  </div>
+  <span class="showcase-label">Relaxed</span>
+  <div style="width: 100%;">
+    <mod-table [columns]="teamColumns" [rows]="basicRows" density="relaxed" />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="RTL Support"
+  description="Tables flip cleanly for Arabic and other RTL languages. The selection checkbox column moves to the trailing edge and the action arrow auto-mirrors."
+  subtle
+>
+  <div style="width: 100%;" dir="rtl">
+    <mod-table
+      [columns]="arabicColumns"
+      [rows]="arabicRows"
+      selectable
+      filterable
+      rowAction
+      selectAllLabel="تحديد الكل"
+      selectRowLabel="تحديد الصف"
+      filterLabel="تصفية"
+      rowActionLabel="فتح"
+      [(selected)]="arabicSelected"
+      [(sort)]="arabicSort"
+    >
+      <ng-template modTableCell="status" let-value="value">
+        <ng-container [ngTemplateOutlet]="statusTag" [ngTemplateOutletContext]="{ $implicit: value }" />
+      </ng-template>
+    </mod-table>
+  </div>
+</demo-showcase>

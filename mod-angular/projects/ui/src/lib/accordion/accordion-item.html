@@ -1,0 +1,27 @@
+<button
+  type="button"
+  class="accordion-item__header"
+  [id]="headerId"
+  [disabled]="disabled()"
+  [attr.aria-expanded]="expanded()"
+  [attr.aria-controls]="bodyId"
+  (click)="toggle()"
+>
+  @if (leading()) {
+    <span class="accordion-item__arrow icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+  }
+  <span class="accordion-item__title">{{ heading() }}<ng-content select="[modAccordionHeading]" /></span>
+  @if (!leading()) {
+    <span class="accordion-item__arrow icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+  }
+</button>
+<div
+  #body
+  class="accordion-item__body"
+  role="region"
+  [id]="bodyId"
+  [attr.aria-labelledby]="headerId"
+  [attr.inert]="expanded() ? null : ''"
+>
+  <div><ng-content /></div>
+</div>

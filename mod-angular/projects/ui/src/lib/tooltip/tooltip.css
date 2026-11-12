@@ -1,0 +1,176 @@
+/* ============================================
+   COMPONENT: TOOLTIP
+   DGA Design System - Tooltip Components
+   ============================================ */
+
+.tooltip-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip {
+    position: absolute;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background-color: var(--color-gray-900);
+    color: var(--color-white);
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    z-index: var(--z-tooltip);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-fast), visibility var(--transition-fast);
+}
+
+.tooltip-wrapper:hover .tooltip,
+.tooltip--visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ============================================
+   Tooltip Positions
+   ============================================ */
+
+/* Top (default) */
+.tooltip--top,
+.tooltip:not(.tooltip--bottom):not(.tooltip--left):not(.tooltip--right) {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: var(--spacing-md);
+}
+
+.tooltip--top::after,
+.tooltip:not(.tooltip--bottom):not(.tooltip--left):not(.tooltip--right)::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--color-gray-900);
+}
+
+/* Bottom */
+.tooltip--bottom {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: var(--spacing-md);
+}
+
+.tooltip--bottom::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-bottom-color: var(--color-gray-900);
+}
+
+/* Left */
+.tooltip--left {
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: var(--spacing-md);
+}
+
+.tooltip--left::after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-left-color: var(--color-gray-900);
+}
+
+/* Right */
+.tooltip--right {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: var(--spacing-md);
+}
+
+.tooltip--right::after {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-right-color: var(--color-gray-900);
+}
+
+/* ============================================
+   Tooltip Variants
+   ============================================ */
+
+/* Light tooltip */
+.tooltip--light {
+    background-color: var(--color-white);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-secondary);
+    box-shadow: var(--shadow-md);
+}
+
+.tooltip--light.tooltip--top::after,
+.tooltip--light:not(.tooltip--bottom):not(.tooltip--left):not(.tooltip--right)::after {
+    border-top-color: var(--color-white);
+}
+
+.tooltip--light.tooltip--bottom::after {
+    border-bottom-color: var(--color-white);
+}
+
+.tooltip--light.tooltip--left::after {
+    border-left-color: var(--color-white);
+}
+
+.tooltip--light.tooltip--right::after {
+    border-right-color: var(--color-white);
+}
+
+/* ============================================
+   Multiline Tooltip
+   ============================================ */
+
+.tooltip--multiline {
+    white-space: normal;
+    max-width: 200px;
+    text-align: center;
+}
+
+/* ============================================
+   RTL Support
+   ============================================ */
+
+[dir="rtl"] .tooltip {
+    direction: rtl;
+}
+
+/* ============================================
+   Angular host
+   <mod-tooltip> carries the .tooltip class itself (position: absolute).
+   The [modTooltip] directive renders it inside a fixed-position
+   .tooltip-wrapper that mirrors the trigger rectangle, so the source
+   position rules above apply unchanged.
+   ============================================ */
+
+mod-tooltip {
+    display: block;
+}
+
+.tooltip-wrapper--overlay {
+    position: fixed;
+    display: block;
+    pointer-events: none;
+    z-index: var(--z-tooltip);
+}

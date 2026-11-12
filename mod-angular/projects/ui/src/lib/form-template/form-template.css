@@ -1,0 +1,353 @@
+/* ============================================
+   COMPONENT: FORM TEMPLATE
+   DGA Design System - Form Template Components
+   Based on Figma: 2-17874
+   ============================================ */
+
+/* ============================================
+   Form Template Layout
+   ============================================ */
+
+.form-template {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    background-color: var(--color-white);
+}
+
+.form-template__main {
+    display: flex;
+    flex: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+    padding: var(--spacing-4xl) 80px;
+    gap: var(--spacing-6xl);
+}
+
+[dir="rtl"] .form-template__main {
+    flex-direction: row-reverse;
+}
+
+/* ============================================
+   Stepper / Progress Indicator
+   ============================================ */
+
+.form-template__stepper {
+    width: 200px;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   Form Content Area
+   ============================================ */
+
+.form-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3xl);
+}
+
+.form-content__header {
+    margin-bottom: var(--spacing-md);
+}
+
+[dir="rtl"] .form-content__header {
+    text-align: right;
+}
+
+.form-content__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-xl);
+    font-family: "Saudi MOD", sans-serif;
+    font-size: var(--font-size-sm);
+    color: var(--gray-500);
+}
+
+[dir="rtl"] .form-content__breadcrumb {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.form-content__breadcrumb a {
+    color: var(--gray-700);
+    text-decoration: none;
+}
+
+.form-content__breadcrumb a:hover {
+    color: var(--sa-600);
+    text-decoration: underline;
+}
+
+.form-content__breadcrumb-separator {
+    color: var(--gray-400);
+}
+
+.form-content__title {
+    font-family: "Saudi MOD", sans-serif;
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    line-height: 32px;
+    color: var(--text-default);
+    margin: 0 0 var(--spacing-md) 0;
+}
+
+.form-content__description {
+    font-family: "Saudi MOD", sans-serif;
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-regular);
+    line-height: 24px;
+    color: var(--gray-700);
+    margin: 0 0 var(--spacing-xl) 0;
+}
+
+.form-content__required-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-family: "Saudi MOD", sans-serif;
+    font-size: var(--font-size-sm);
+    color: var(--sa-600);
+}
+
+[dir="rtl"] .form-content__required-info {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+/* ============================================
+   Form Fields Section
+   ============================================ */
+
+.form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3xl);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+}
+
+.form-row--single {
+    grid-template-columns: 1fr;
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   Form Actions / Navigation
+   ============================================ */
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-3xl);
+    padding-top: var(--spacing-3xl);
+    border-top: 1px solid var(--gray-200);
+}
+
+[dir="rtl"] .form-actions {
+    flex-direction: row-reverse;
+}
+
+/* ============================================
+   Feedback Section
+   ============================================ */
+
+.feedback-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-3xl) 80px;
+    background-color: var(--alpha-white);
+    border-top: 2px solid var(--sa-600);
+}
+
+[dir="rtl"] .feedback-section {
+    flex-direction: row-reverse;
+}
+
+.feedback-section__content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3xl);
+}
+
+[dir="rtl"] .feedback-section__content {
+    flex-direction: row-reverse;
+}
+
+.feedback-section__question {
+    font-family: "Saudi MOD", sans-serif;
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-regular);
+    line-height: 24px;
+    color: var(--text-default);
+}
+
+.feedback-section__actions {
+    display: flex;
+    gap: var(--spacing-xl);
+}
+
+[dir="rtl"] .feedback-section__actions {
+    flex-direction: row-reverse;
+}
+
+.feedback-section__stats {
+    font-family: "Saudi MOD", sans-serif;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-regular);
+    line-height: 20px;
+    color: var(--text-default);
+}
+
+
+/* ============================================
+   Navigation Tabs (Service Tabs)
+   ============================================ */
+
+.service-tabs {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border-bottom: 2px solid var(--sa-600);
+    padding: 0 80px;
+    background-color: var(--alpha-white);
+}
+
+[dir="rtl"] .service-tabs {
+    flex-direction: row-reverse;
+}
+
+.service-tab {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl) var(--spacing-3xl);
+    font-family: "Saudi MOD", sans-serif;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: 20px;
+    color: var(--gray-700);
+    text-decoration: none;
+    position: relative;
+    transition: color 150ms ease;
+}
+
+[dir="rtl"] .service-tab {
+    flex-direction: row-reverse;
+}
+
+.service-tab:hover {
+    color: var(--sa-600);
+}
+
+.service-tab--active {
+    color: var(--sa-600);
+}
+
+.service-tab--active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--sa-600);
+}
+
+.service-tab__icon {
+    width: 20px;
+    height: 20px;
+}
+
+.service-tab__icon--check {
+    color: var(--sa-600);
+}
+
+/* ============================================
+   Responsive Adjustments
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .form-template__main {
+        padding: var(--spacing-3xl) var(--spacing-5xl);
+        gap: var(--spacing-4xl);
+    }
+
+    .feedback-section {
+        padding: var(--spacing-3xl) var(--spacing-5xl);
+    }
+
+    .service-tabs {
+        padding: 0 var(--spacing-5xl);
+    }
+
+}
+
+@media (max-width: 768px) {
+    .form-template__main {
+        flex-direction: column;
+        padding: var(--spacing-3xl) var(--spacing-2xl);
+    }
+
+    [dir="rtl"] .form-template__main {
+        flex-direction: column;
+    }
+
+    .form-template__stepper {
+        width: 100%;
+    }
+
+    .feedback-section {
+        flex-direction: column;
+        gap: var(--spacing-xl);
+        padding: var(--spacing-2xl);
+    }
+
+    [dir="rtl"] .feedback-section {
+        flex-direction: column;
+    }
+
+    .feedback-section__content {
+        flex-direction: column;
+        gap: var(--spacing-xl);
+    }
+
+    .service-tabs {
+        padding: 0 var(--spacing-2xl);
+        overflow-x: auto;
+    }
+}
+
+/* ============================================
+   Angular hosts
+   ============================================ */
+
+mod-form-template {
+    display: flex;
+}
+
+mod-form-row {
+    display: grid;
+}
+
+mod-form-feedback {
+    display: flex;
+}
+
+mod-service-tabs {
+    display: block;
+}

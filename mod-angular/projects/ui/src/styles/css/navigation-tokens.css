@@ -1,0 +1,32 @@
+/* Shared tokens the source declares in components/navigation.css, which the vanilla site loads globally. Several components (footer, chips, nav-drawer, progress, service-page) read them, so they live in the core stylesheet here. */
+:root {
+    /* Colors */
+    --background-white: #FFFFFF;
+    --background-menu: #FFFFFF;
+    --background-primary-400: #2DBD7C;
+    --background-neutral-400: #8E9CA3;
+    --button-background-primary-default: #00A05A;
+    --text-default: #161616;
+    --text-secondary-paragraph: #6A7880;
+    --text-oncolor-primary: #FFFFFF;
+    --icon-default: #161616;
+    --icon-oncolor: #FFFFFF;
+
+    /* Typography */
+    --font-family-text: 'Saudi MOD', sans-serif;
+    --font-weight-medium: 500;
+    --typo-size-text-sm: 14px;
+    --typo-size-text-md: 16px;
+    --line-heights-text-sm: 20px;
+    --line-heights-text-md: 24px;
+
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-md: 8px;
+    --spacing-xl: 16px;
+    --spacing-4xl: 32px;
+
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-full: 9999px;
+}

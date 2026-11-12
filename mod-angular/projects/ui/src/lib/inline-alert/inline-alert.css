@@ -1,0 +1,193 @@
+/* ============================================
+   INLINE ALERT COMPONENT
+   DGA Design System — ported from the DGA reference library
+   mod-inline-alert (.alert) onto DGA theme tokens.
+   Types: neutral | info | error | warning | success,
+   each with an optional colored-background variant.
+   ============================================ */
+
+.inline-alert {
+    display: flex;
+    width: 100%;
+    padding: var(--spacing-xl) var(--spacing-3xl);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xl);
+    border-radius: var(--radius-md);
+    background: var(--alpha-white);
+    border: 1px solid var(--gray-300);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Accent edge (library renders it as an 8px strip on the reading edge) */
+.inline-alert::after {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 8px;
+    inset-inline-start: 0;
+    top: 0;
+    background-color: var(--gray-200);
+    position: absolute;
+}
+
+/* --- Type accents --- */
+.inline-alert--neutral::after { background-color: var(--gray-200); }
+.inline-alert--info::after { background-color: var(--info-600); }
+.inline-alert--error::after { background-color: var(--error-600); }
+.inline-alert--warning::after { background-color: var(--warning-600); }
+.inline-alert--success::after { background-color: var(--success-600); }
+
+/* --- Colored background variants --- */
+.inline-alert--neutral-bg {
+    background-color: var(--alpha-white);
+    border-color: var(--gray-300);
+}
+
+.inline-alert--neutral-bg::after { background-color: var(--alpha-white); }
+
+.inline-alert--info-bg {
+    background-color: var(--info-25);
+    border-color: var(--info-200);
+}
+
+.inline-alert--info-bg::after { background-color: var(--info-400); }
+
+.inline-alert--error-bg {
+    background-color: var(--error-25);
+    border-color: var(--error-200);
+}
+
+.inline-alert--error-bg::after { background-color: var(--error-400); }
+
+.inline-alert--warning-bg {
+    background-color: var(--warning-25);
+    border-color: var(--warning-200);
+}
+
+.inline-alert--warning-bg::after { background-color: var(--warning-600); }
+
+.inline-alert--success-bg {
+    background-color: var(--success-25);
+    border-color: var(--success-200);
+}
+
+.inline-alert--success-bg::after { background-color: var(--success-400); }
+
+/* --- Header row: icon + text + close --- */
+.inline-alert__header {
+    display: flex;
+    padding: var(--spacing-none);
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+    width: 100%;
+}
+
+.inline-alert__header--centered {
+    align-items: center;
+}
+
+/* Featured icon circle (library: featured-icon--circle --md --light-{type}) */
+.inline-alert__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+    font-size: var(--font-size-xl);
+}
+
+.inline-alert--neutral .inline-alert__icon { background-color: var(--gray-100); color: var(--gray-600); }
+.inline-alert--info .inline-alert__icon { background-color: var(--info-100); color: var(--info-600); }
+.inline-alert--error .inline-alert__icon { background-color: var(--error-100); color: var(--error-600); }
+.inline-alert--warning .inline-alert__icon { background-color: var(--warning-100); color: var(--warning-600); }
+.inline-alert--success .inline-alert__icon { background-color: var(--success-100); color: var(--success-600); }
+
+.inline-alert__body {
+    flex: 1;
+    min-width: 0;
+}
+
+.inline-alert__title {
+    margin: 0 0 var(--spacing-xs);
+    color: var(--text-default);
+}
+
+.inline-alert__content {
+    margin: 0;
+    color: var(--text-default);
+}
+
+.inline-alert__close {
+    flex-shrink: 0;
+}
+
+/* --- Action buttons row (uses the design-system button component) --- */
+.inline-alert__action {
+    display: flex;
+    padding: var(--spacing-none) var(--spacing-5xl);
+    gap: var(--spacing-md);
+}
+
+.inline-alert__action-mobile {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: var(--spacing-md);
+}
+
+/* --- Mobile (library breakpoint: 37.5em / 600px) --- */
+@media only screen and (max-width: 37.5em) {
+    .inline-alert {
+        width: 100%;
+        padding: var(--spacing-xl);
+    }
+
+    .inline-alert::after {
+        width: 100%;
+        height: 8px;
+    }
+
+    .inline-alert__header {
+        flex-direction: column;
+        gap: var(--spacing-xl);
+    }
+
+    .inline-alert__close {
+        position: absolute;
+        top: var(--spacing-xl);
+        inset-inline-end: var(--spacing-xl);
+    }
+
+    .inline-alert__action {
+        display: none;
+    }
+
+    .inline-alert__action-mobile {
+        display: flex;
+    }
+}
+
+/* ============================================
+   Angular host (the host element carries the .inline-alert class)
+   ============================================ */
+
+mod-inline-alert {
+    box-sizing: border-box;
+}
+
+/* Angular addition: when no separate mobile actions are projected, the
+   single actions row stays visible on mobile and takes the mobile layout. */
+@media only screen and (max-width: 37.5em) {
+    .inline-alert__action.inline-alert__action--responsive {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        padding: var(--spacing-none);
+    }
+}

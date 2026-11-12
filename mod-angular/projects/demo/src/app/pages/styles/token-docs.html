@@ -1,0 +1,166 @@
+<header class="td-header">
+  <div class="td-header__text">
+    <h1 class="td-title">{{ config().title }}</h1>
+    <p class="td-subtitle">{{ config().subtitle }}</p>
+  </div>
+  <div class="td-search">
+    <span class="td-search__icon dga-icon-search-01" aria-hidden="true"></span>
+    <input
+      #search
+      type="search"
+      class="td-search__input"
+      [placeholder]="config().searchPlaceholder"
+      [attr.aria-label]="config().searchPlaceholder"
+      autocomplete="off"
+      spellcheck="false"
+      (input)="onSearch(search.value)"
+    />
+    <span class="td-search__count" aria-live="polite">{{ searchCount() }}</span>
+  </div>
+</header>
+
+<div class="td-body">
+  <nav class="td-nav" [attr.aria-label]="config().title + ' sections'">
+    @for (section of sections(); track section.id) {
+      <button
+        type="button"
+        class="td-nav__item"
+        [class.is-active]="activeId() === section.id"
+        [class.is-dimmed]="!sectionShown(section)"
+        (click)="goTo(section.id)"
+      >
+        {{ section.title }}
+      </button>
+    }
+  </nav>
+
+  <main class="td-content">
+    @for (section of sections(); track section.id) {
+      <section
+        #sectionEl
+        class="td-section"
+        [id]="'td-' + section.id"
+        [attr.data-section]="section.id"
+        [hidden]="!sectionShown(section)"
+      >
+        <h2 class="td-section__title">{{ section.title }}</h2>
+        @if (section.note) {
+          <p class="td-section__note">{{ section.note }}</p>
+        }
+
+        @for (block of section.blocks; track $index) {
+          @if (block.title) {
+            <h3 class="td-group-title" [hidden]="!blockShown(block)">{{ block.title }}</h3>
+          }
+
+          @switch (block.kind) {
+            @case ('family') {
+              <div class="td-family td-group" [hidden]="!blockShown(block)">
+                <div class="td-family__head">
+                  <span class="td-family__label">{{ block.label }}</span>
+                  <span class="td-family__key">{{ block.key }}</span>
+                </div>
+                <div class="td-scale">
+                  @for (item of block.items; track item.name) {
+                    <button
+                      type="button"
+                      class="td-cell td-item"
+                      [title]="item.name"
+                      [hidden]="!itemShown(item)"
+                      [class.is-copied]="copied().has(item.name)"
+                      (click)="copy(item.name)"
+                    >
+                      <demo-td-preview [preview]="item.preview" />
+                      <span class="td-cell__shade">{{ item.label }}</span>
+                      <span class="td-cell__value">{{ item.value }}</span>
+                    </button>
+                  }
+                </div>
+              </div>
+            }
+
+            @case ('table') {
+              <div class="td-table td-group" [hidden]="!blockShown(block)">
+                <div class="td-table__head"><span>Name</span><span>Value</span><span>Preview</span></div>
+                @for (item of block.items; track item.name) {
+                  <div class="td-row td-item" [hidden]="!itemShown(item)">
+                    <button
+                      type="button"
+                      class="td-row__name"
+                      [title]="'Copy ' + item.name"
+                      [class.is-copied]="copied().has(item.name)"
+                      (click)="copy(item.name)"
+                    >
+                      {{ item.name }}
+                    </button>
+                    <span class="td-row__value">{{ item.value }}</span>
+                    <div class="td-row__demo"><demo-td-preview [preview]="item.preview" /></div>
+                  </div>
+                }
+              </div>
+            }
+
+            @case ('types') {
+              <div [class.td-group]="!block.ungrouped" [hidden]="!blockShown(block)">
+                @for (item of block.items; track item.name) {
+                  <div class="td-type td-item" [hidden]="!itemShown(item)">
+                    <div class="td-type__meta">
+                      <button
+                        type="button"
+                        class="td-type__name"
+                        [title]="'Copy ' + item.name"
+                        [class.is-copied]="copied().has(item.name)"
+                        (click)="copy(item.name)"
+                      >
+                        {{ item.name }}
+                      </button>
+                      <span class="td-type__value">{{ item.value }}</span>
+                    </div>
+                    <div class="td-type__sample"><demo-td-preview [preview]="item.preview" /></div>
+                  </div>
+                }
+              </div>
+            }
+
+            @default {
+              <!-- 'cards' and 'shadow': card entries in a grid / on the tinted shadow canvas -->
+              <div
+                class="td-group"
+                [class.td-cards]="block.kind === 'cards'"
+                [class.td-cards--wide]="block.kind === 'cards' && block.wide"
+                [class.td-shadow-canvas]="block.kind === 'shadow'"
+                [hidden]="!blockShown(block)"
+              >
+                @for (item of block.items; track item.name) {
+                  <button
+                    type="button"
+                    class="td-card td-item"
+                    [title]="item.name"
+                    [hidden]="!itemShown(item)"
+                    [class.is-copied]="copied().has(item.name)"
+                    (click)="copy(item.name)"
+                  >
+                    <demo-td-preview [preview]="item.preview" />
+                    <span class="td-card__name">{{ item.label }}</span>
+                    @if (item.value) {
+                      <span class="td-card__value">{{ item.value }}</span>
+                    }
+                  </button>
+                }
+              </div>
+            }
+          }
+        }
+      </section>
+    }
+
+    <div class="td-empty" [hidden]="!isEmpty()">
+      <span class="td-empty__icon dga-icon-search-01" aria-hidden="true"></span>
+      <p>No tokens match your search.</p>
+    </div>
+  </main>
+</div>
+
+<div class="td-toast" role="status" aria-live="polite" [class.is-visible]="toastVisible()" [hidden]="toastHidden()">
+  <span class="dga-icon-checkmark-circle-02" aria-hidden="true"></span> Copied <code>{{ toastText() }}</code>
+</div>

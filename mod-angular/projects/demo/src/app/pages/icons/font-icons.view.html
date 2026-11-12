@@ -1,0 +1,229 @@
+<!-- Left: Icon Packs Sidebar -->
+<aside class="icons-sidebar">
+  <h2 class="icons-sidebar-title">ICON PACKS</h2>
+  <div id="icons-packs-list" class="icons-packs-list">
+    @for (p of packs; track p.id) {
+      <button
+        type="button"
+        class="icons-pack-item"
+        [class.icons-pack-item--active]="pack() === p.id"
+        (click)="selectPack(p.id)"
+      >
+        <span class="icons-pack-icon">
+          @if (p.preview) {
+            <span [class]="'icon ' + p.preview"></span>
+          }
+        </span>
+        <span class="icons-pack-name">{{ p.label }}</span>
+        <span class="icons-pack-count">{{ p.count }}</span>
+      </button>
+    }
+  </div>
+</aside>
+
+<!-- Right: Main Content -->
+<div class="icons-main">
+  <!-- Header -->
+  <div class="icons-header">
+    <div class="icons-header-text">
+      <h1 class="icons-title">Icons</h1>
+      <p class="icons-subtitle">
+        The DGA icon font in seven styles. Click an icon for code, or use the quick-copy button on any tile.
+      </p>
+    </div>
+    <div class="icons-search-wrapper">
+      <svg class="icons-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      </svg>
+      <input
+        #searchEl
+        type="search"
+        id="icons-search"
+        class="icons-search-input"
+        placeholder="Search icons..."
+        autocomplete="off"
+        spellcheck="false"
+        [value]="inputValue()"
+        (input)="onInput(searchEl.value)"
+        (keydown.escape)="onSearchEscape($event)"
+      />
+      <span class="icons-search-kbd" aria-hidden="true">/</span>
+      <button
+        type="button"
+        id="icons-search-clear"
+        class="icons-search-clear"
+        [style.display]="search() ? 'block' : 'none'"
+        aria-label="Clear search"
+        (click)="clearSearch()"
+      >
+        &times;
+      </button>
+    </div>
+  </div>
+
+  <!-- Icon Type Filters -->
+  <div id="icons-type-filters" class="icons-type-filters">
+    <span class="icons-type-filters-label">Style:</span>
+    <div class="icons-type-filters-list">
+      @for (variant of variants; track variant.label; let i = $index) {
+        <button
+          type="button"
+          class="icons-type-filter-btn"
+          [class.icons-type-filter-btn--active]="variantIndex() === i"
+          (click)="variantIndex.set(i)"
+        >
+          <span>{{ variant.label }}</span>
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- Results bar -->
+  <div id="icons-results-bar" class="icons-results-bar" aria-live="polite">
+    <strong>{{ totalLabel() }}</strong> icon{{ total() === 1 ? '' : 's' }}{{ words().length ? ' matching' : '' }} in
+    {{ packLabel() }}
+    @if (allPacksCount() > total()) {
+      &middot;
+      <button type="button" class="icons-results-bar-all" (click)="selectPack('all')">
+        {{ allPacksLabel() }} in all packs
+      </button>
+    }
+  </div>
+
+  <!-- Icons Grid -->
+  <div id="icons-grid-container" class="icons-grid">
+    @if (total() === 0) {
+      <div class="icons-no-results">
+        <span class="icons-no-results-icon dga-icon-search-01" aria-hidden="true"></span>
+        <p>
+          No icons match "<strong>{{ search().trim() }}</strong>"{{ pack() !== 'all' ? ' in this pack' : '' }}.
+        </p>
+        @if (allPacksCount() > 0) {
+          <button type="button" class="icons-no-results-all" (click)="selectPack('all')">
+            Search all packs ({{ allPacksCount() }} match{{ allPacksCount() === 1 ? '' : 'es' }})
+          </button>
+        }
+      </div>
+    } @else {
+      @for (entry of visible(); track entry.key) {
+        @if (entry.kind === 'header') {
+          <div class="icons-grid-group">
+            <span class="icons-grid-group-name">{{ entry.label }}</span>
+            <span class="icons-grid-group-count">{{ entry.count }}</span>
+          </div>
+        } @else {
+          <button type="button" class="icons-grid-item" [title]="entry.cls" (click)="openModal(entry.cls)">
+            <span [class]="iconClass(entry.cls, gridVariant())"></span>
+            <span class="icons-grid-item-name">{{ iconName(entry.cls) }}</span>
+            <span
+              class="icons-grid-item-copy"
+              role="button"
+              aria-label="Copy class name"
+              title="Copy class name"
+              (click)="quickCopy(entry.cls, $event)"
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+            </span>
+          </button>
+        }
+      }
+      @if (hasMore()) {
+        @for (key of sentinelKey(); track key) {
+          <div class="icons-grid-sentinel" aria-hidden="true" rootMargin="600px 0px" (demoInView)="loadMore()"></div>
+        }
+      }
+    }
+  </div>
+</div>
+
+<!-- Icon Detail Modal -->
+@if (activeIcon(); as icon) {
+  <div id="icons-modal-overlay" class="icons-modal-overlay" (click)="onOverlayClick($event)">
+    <div class="icons-modal">
+      <button type="button" id="icons-modal-close" class="icons-modal-close" aria-label="Close" (click)="closeModal()">
+        &times;
+      </button>
+
+      <h2 id="icons-modal-title" class="icons-modal-title">{{ iconName(icon) }}</h2>
+      <p id="icons-modal-subtitle" class="icons-modal-subtitle">{{ modalSubtitle() }}</p>
+
+      <div class="icons-modal-body">
+        <!-- Preview Column -->
+        <div class="icons-modal-preview">
+          <div id="icons-modal-icon" class="icons-modal-icon-display">
+            <span [class]="iconClass(icon, activeVariant())"></span>
+          </div>
+          <span id="icons-modal-preview-label" class="icons-modal-preview-label">{{ activeVariant().label }}</span>
+        </div>
+
+        <!-- Details Column -->
+        <div class="icons-modal-details">
+          <!-- Style Variants -->
+          <div id="icons-modal-variants" class="icons-modal-variants">
+            @for (variant of variants; track variant.label; let i = $index) {
+              <button
+                type="button"
+                class="icons-modal-variant-btn"
+                [class.icons-modal-variant-btn--active]="activeVariantIndex() === i"
+                [title]="variant.label"
+                (click)="activeVariantIndex.set(i)"
+              >
+                <span [class]="iconClass(icon, variant)"></span>
+              </button>
+            }
+          </div>
+
+          <!-- Code Tabs -->
+          <div class="icons-modal-tabs">
+            @for (tab of tabs; track tab.id) {
+              <button
+                type="button"
+                class="icons-modal-tab"
+                [class.icons-modal-tab--active]="activeTab() === tab.id"
+                (click)="activeTab.set(tab.id)"
+              >
+                {{ tab.label }}
+              </button>
+            }
+          </div>
+
+          <!-- Code Block -->
+          <div class="icons-modal-code">
+            <pre><code id="icons-modal-code-content">{{ code() }}</code></pre>
+            <div class="icons-modal-code-actions">
+              <button type="button" id="icons-modal-copy" class="icons-modal-action-btn" title="Copy code" (click)="copy(code())">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </svg>
+              </button>
+              <button type="button" id="icons-modal-download" class="icons-modal-action-btn" title="Download SVG" (click)="downloadSvg()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Style Classes -->
+          <div class="icons-modal-classes">
+            <span class="icons-modal-classes-label">Style Classes:</span>
+            <code id="icons-modal-class-name">{{ fullClass() }}</code>
+            <button type="button" id="icons-modal-copy-class" class="icons-modal-copy-class-btn" title="Copy class name" (click)="copy(fullClass())">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}

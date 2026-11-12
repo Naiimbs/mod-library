@@ -1,0 +1,363 @@
+<!-- Service page template (Figma: desktop 1:21371, mobile 1:21768), composed from the library components:
+     digital stamp, header actions, breadcrumbs, tags, buttons, links, tabs, cards, rating and footer. -->
+<mod-service-page>
+  <!-- Government top bar: digital stamp + page meta -->
+  <ng-container modServicePageGovbar>
+    <mod-digital-stamp class="sp-govbar__stamp" registrationNumber="20230103200" [registrationHref]="home" />
+    <div class="sp-govbar__meta">
+      <span class="sp-govbar__meta-item"><mod-icon name="cloud" /> Cloudy</span>
+      <span class="sp-govbar__meta-item"><mod-icon name="calendar-03" /> 3-Sep-2024</span>
+      <span class="sp-govbar__meta-item"><mod-icon name="clock-01" /> 2:30 PM</span>
+      <span class="sp-govbar__meta-item"><mod-icon name="location-01" /> Al-Riyadh</span>
+      <span class="sp-govbar__tools">
+        <button type="button" class="sp-govbar__tool" aria-label="Voice"><mod-icon name="mic-01" /></button>
+        <button type="button" class="sp-govbar__tool" aria-label="Accessibility"><mod-icon name="view" /></button>
+        <button type="button" class="sp-govbar__tool" aria-label="Text size"><mod-icon name="text-font" /></button>
+      </span>
+    </div>
+  </ng-container>
+
+  <!-- Navigation header (the template's embedded header layout + header action components) -->
+  <ng-container modServicePageHeader>
+    <header class="sp-nav navigation-header">
+      <div class="navigation-header__left">
+        <a [href]="home" class="navigation-header__logo navigation-header__logo--m" aria-label="Platform home">
+          <svg class="nav-logo-svg" width="28" height="34" viewBox="0 0 28 34" fill="none" aria-hidden="true">
+            <rect x="12.5" y="0" width="3" height="34" rx="1.5" fill="#F5F5F5" />
+            <rect x="4" y="6" width="3" height="22" rx="1.5" fill="#F5F5F5" />
+            <rect x="21" y="6" width="3" height="22" rx="1.5" fill="#F5F5F5" />
+            <rect x="0" y="12" width="3" height="10" rx="1.5" fill="#8E9CA3" />
+            <rect x="25" y="12" width="3" height="10" rx="1.5" fill="#8E9CA3" />
+          </svg>
+          <span class="navigation-header__logo-text">Platform Logo</span>
+        </a>
+        <nav class="navigation-header__menu sp-nav__menu" aria-label="Service sections">
+          @for (item of menu; track item) {
+            <a [href]="home" class="header-menu-item">
+              <span class="header-menu-item__text">{{ item }}</span>
+              <span class="icon dga-icon-arrow-down-01 header-menu-item__chevron" aria-hidden="true"></span>
+            </a>
+          }
+        </nav>
+      </div>
+      <div class="navigation-header__right">
+        <button
+          type="button"
+          class="sp-nav__burger"
+          aria-label="Open menu"
+          [attr.aria-expanded]="menuOpen()"
+          (click)="menuOpen.set(!menuOpen())"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <line x1="4" y1="7" x2="20" y2="7" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="17" x2="20" y2="17" />
+          </svg>
+        </button>
+        <a mod-header-action [href]="home">
+          <mod-icon class="header-action__icon" name="search-01" />
+          <span class="header-action__text">Search</span>
+        </a>
+        <a mod-header-action class="sp-nav__lang" [href]="home"><span class="header-action__text">عربي</span></a>
+        <a mod-header-action [href]="home">
+          <mod-icon class="header-action__icon" name="user" />
+          <span class="header-action__text">Login</span>
+        </a>
+      </div>
+    </header>
+    <nav class="sp-nav__mobile-panel" aria-label="Service sections (mobile)" [hidden]="!menuOpen()">
+      @for (item of menu; track item) {
+        <a [href]="home" class="sp-nav__mobile-item">{{ item }}</a>
+      }
+    </nav>
+  </ng-container>
+
+  <!-- Breadcrumb -->
+  <mod-breadcrumbs modServicePageBreadcrumb [items]="breadcrumb" />
+
+  <!-- Service details (default slot) -->
+  <div class="sp-title-row">
+    <h1 class="sp-title">Building Permit</h1>
+    <button
+      mod-button
+      type="button"
+      class="sp-start-btn"
+      (click)="toast('This is a demo — the service flow would start here.')"
+    >
+      Get Started
+    </button>
+  </div>
+
+  <div class="sp-tags">
+    <mod-tag variant="success">Ministry</mod-tag>
+    <mod-tag variant="neutral">Life experience</mod-tag>
+    <mod-tag variant="info">Related platform</mod-tag>
+  </div>
+
+  <p class="sp-desc">
+    Service description example: to buy a plot to build your house, this requires documenting the sale and purchase
+    process in the notarial offices or notary services to register the property in your name.
+  </p>
+
+  <a mod-link underline="hover" class="sp-link" [href]="home">
+    Service Level Agreement
+    <mod-icon name="link-square-02" />
+  </a>
+
+  <!-- Tabs -->
+  <mod-tabs class="sp-tabs" aria-label="Service information" [(selectedIndex)]="tab">
+    <mod-tab label="Steps" value="steps">
+      <div class="sp-tab-panel">
+        <div class="sp-video" role="img" aria-label="Service walkthrough video placeholder">
+          <button
+            type="button"
+            class="sp-video__play"
+            aria-label="Play video"
+            (click)="toast('This is a demo — the walkthrough video would play here.')"
+          >
+            <span class="icon dga-icon-play solid rounded" aria-hidden="true"></span>
+          </button>
+        </div>
+        <ol class="sp-steps">
+          <li>Login to the National Single Sign-on portal via the Balady platform.</li>
+          <li>Select Construction License Services, then Issue Construction.</li>
+          <li>License Services, then the required municipality.</li>
+          <li>
+            Select the engineering office, then enter the number and year of issuance of the building survey, and
+            attach a copy of the deed.
+          </li>
+          <li>
+            Submit the request to the identified engineering office, then complete the information and attachments in
+            the engineering office and send it to the municipality.
+          </li>
+          <li>Verify the information of the request, attachments and approvals by the municipality.</li>
+          <li>Approve the request and issue a SADAD payment. Pay the fees and print the license.</li>
+        </ol>
+      </div>
+    </mod-tab>
+    <mod-tab label="Conditions" value="conditions">
+      <div class="sp-tab-panel">
+        <ul class="sp-bullets">
+          <li>The applicant must be the owner of the land or an authorised representative.</li>
+          <li>The land deed must be electronic and up to date.</li>
+          <li>A licensed engineering office must supervise the construction drawings.</li>
+          <li>All municipal fees and violations must be settled before submission.</li>
+        </ul>
+      </div>
+    </mod-tab>
+    <mod-tab label="Required Documents" value="documents">
+      <div class="sp-tab-panel">
+        <ul class="sp-bullets">
+          <li>A copy of the electronic land deed.</li>
+          <li>An approved building survey report.</li>
+          <li>Engineering drawings approved by a licensed office.</li>
+          <li>National ID of the applicant or the authorised representative.</li>
+        </ul>
+      </div>
+    </mod-tab>
+  </mod-tabs>
+
+  <!-- Info aside -->
+  <ng-container modServicePageAside>
+    @for (item of info; track item.label) {
+      <div class="sp-info">
+        <span [class]="'icon dga-icon-' + item.icon + ' sp-info__icon'" aria-hidden="true"></span>
+        <div class="sp-info__body">
+          <span class="sp-info__label">{{ item.label }}</span>
+          <span class="sp-info__value">{{ item.value }}</span>
+        </div>
+      </div>
+    }
+
+    <div class="sp-aside__divider"></div>
+
+    <span class="sp-aside__label">Payment channels</span>
+    <div class="sp-pay">
+      <span class="sp-pay__chip">sadad</span>
+      <span class="sp-pay__chip sp-pay__chip--mada">mada</span>
+    </div>
+
+    <div class="sp-aside__divider"></div>
+
+    <span class="sp-aside__label">Frequently Asked Questions</span>
+    <a mod-link underline="hover" class="sp-link sp-link--sm" [href]="home">
+      Ministry-FAQ's-page
+      <mod-icon name="link-square-02" />
+    </a>
+
+    <div class="sp-contact">
+      <span class="icon dga-icon-telephone sp-contact__icon" aria-hidden="true"></span>
+      <div class="sp-contact__body">
+        <span class="sp-info__label">Phone</span>
+        <a mod-link underline="hover" class="sp-link sp-link--sm" href="tel:920034222">
+          920034222
+          <mod-icon name="link-square-02" />
+        </a>
+      </div>
+    </div>
+    <div class="sp-contact">
+      <span class="icon dga-icon-mail-01 sp-contact__icon" aria-hidden="true"></span>
+      <div class="sp-contact__body">
+        <span class="sp-info__label">Email</span>
+        <a mod-link underline="hover" class="sp-link sp-link--sm" href="mailto:help@company.sa">
+          help&#64;company.sa
+          <mod-icon name="link-square-02" />
+        </a>
+      </div>
+    </div>
+
+    <button
+      mod-button
+      type="button"
+      variant="secondary-outline"
+      class="sp-manual-btn"
+      (click)="toast('This is a demo — the user manual would download here.')"
+    >
+      <mod-icon name="download-04" />
+      Download user manual
+    </button>
+
+    <div class="sp-aside__divider"></div>
+
+    <span class="sp-aside__label">Mobile Application</span>
+    <div class="sp-stores">
+      <a [href]="home" class="sp-store" aria-label="Download on the App Store">
+        <mod-icon name="apple" />
+        <span class="sp-store__text"><small>Download on the</small>App Store</span>
+      </a>
+      <a [href]="home" class="sp-store" aria-label="Get it on Google Play">
+        <mod-icon name="play-store" />
+        <span class="sp-store__text"><small>GET IT ON</small>Google Play</span>
+      </a>
+      <a [href]="home" class="sp-store" aria-label="Explore it on AppGallery">
+        <mod-icon name="smart-phone-01" />
+        <span class="sp-store__text"><small>EXPLORE IT ON</small>AppGallery</span>
+      </a>
+    </div>
+  </ng-container>
+
+  <!-- Related services -->
+  <ng-container modServicePageRelated>
+    <div class="sp-related__head">
+      <h2 class="sp-related__title">Related Services</h2>
+      <a mod-link underline="hover" class="sp-link" [href]="home">View all</a>
+    </div>
+    <p class="sp-related__desc">
+      Service description example: to buy a plot to build your house, this requires documenting the sale and purchase
+      process in the notarial offices or notary services to register the property in your name.
+    </p>
+
+    <mod-service-page-carousel>
+      @for (card of related; track card) {
+        <mod-card
+          class="sp-card"
+          icon="checkmark-circle-02"
+          heading="Card Title"
+          description="Card content placeholder text goes here."
+        >
+          <div modCardTags class="sp-card__tags">
+            <mod-tag variant="success">Tag 1</mod-tag>
+            <mod-tag variant="success">Tag 2</mod-tag>
+            <mod-tag variant="success">Tag 3</mod-tag>
+          </div>
+          <div modCardActions>
+            <button mod-button type="button" variant="secondary-outline" size="small">Action</button>
+            <button mod-button type="button" size="small">Action</button>
+          </div>
+        </mod-card>
+      }
+    </mod-service-page-carousel>
+  </ng-container>
+
+  <!-- Comments & suggestions -->
+  <ng-container modServicePageComments>
+    <div class="sp-comments">
+      <span class="icon dga-icon-checkmark-circle-02 sp-comments__icon" aria-hidden="true"></span>
+      <div class="sp-comments__body">
+        <h3 class="sp-comments__title">Comments &amp; suggestions</h3>
+        <p class="sp-comments__text">
+          For any inquiry or feedback on Government Services, please fill the required information.
+        </p>
+      </div>
+      <button mod-button type="button" (click)="toast('This is a demo — the contact form would open here.')">
+        Contact us
+      </button>
+    </div>
+    <p class="sp-modified">Last Modified Date: 04/12/2020 - 3:13 PM Saudi Arabia Time</p>
+  </ng-container>
+
+  <!-- Rating bar -->
+  <ng-container modServicePageRating>
+    <span class="sp-ratingbar__text">This service is rated with an average of <strong>3.9</strong></span>
+    <mod-rating [value]="4" size="md" brand readonly />
+    <a mod-link underline="hover" class="sp-link sp-link--sm" [href]="home">1944 reviews</a>
+    <button
+      mod-button
+      type="button"
+      class="sp-ratingbar__btn"
+      (click)="toast('This is a demo — the rating dialog would open here.')"
+    >
+      Rate this service
+    </button>
+  </ng-container>
+
+  <!-- Was this page useful -->
+  <ng-container modServicePageUseful>
+    <span class="sp-useful__question">Was this page useful?</span>
+    <div class="sp-useful__actions">
+      <button
+        mod-button
+        type="button"
+        size="small"
+        [variant]="useful() === 'yes' ? 'primary' : 'secondary-outline'"
+        (click)="answer('yes')"
+      >
+        Yes
+      </button>
+      <button
+        mod-button
+        type="button"
+        size="small"
+        [variant]="useful() === 'no' ? 'primary' : 'secondary-outline'"
+        (click)="answer('no')"
+      >
+        No
+      </button>
+    </div>
+    <span class="sp-useful__stats">60% of users said Yes from 2843 Feedbacks</span>
+  </ng-container>
+
+  <!-- Footer (dark variant on the SA-flag green) -->
+  <mod-footer
+    modServicePageFooter
+    class="sp-footer"
+    dark
+    ariaLabel="Footer"
+    [groups]="footerGroups"
+    socialTitle="Social Media"
+    [socialLinks]="footerSocial"
+    accessibilityTitle="Accessibility Tools"
+    [accessibilityTools]="footerTools"
+    [legalLinks]="footerLegal"
+    [legalCaption]="footerCaption"
+    [logos]="footerLogos"
+  />
+</mod-service-page>
+
+<!-- Demo feedback toast, as in the original template script -->
+<div
+  aria-live="polite"
+  style="position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--gray-900); color: var(--gray-25); padding: 10px 20px; border-radius: var(--radius-md); font-size: var(--font-size-sm); z-index: 1000; transition: opacity .2s ease; pointer-events: none; max-width: 90vw; text-align: center;"
+  [style.opacity]="toastVisible() ? 1 : 0"
+>
+  {{ toastMessage() }}
+</div>

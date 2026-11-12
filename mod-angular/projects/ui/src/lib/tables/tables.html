@@ -1,0 +1,138 @@
+<div class="table-wrapper" [class.table-wrapper--sharp]="sharp()">
+  <table [class]="tableClasses()" [attr.aria-label]="label() || null">
+    <thead>
+      <tr>
+        @if (selectable()) {
+          <th class="table__cell--checkbox" scope="col">
+            <input
+              type="checkbox"
+              class="table__checkbox"
+              [checked]="allSelected()"
+              [indeterminate]="someSelected()"
+              [disabled]="rows().length === 0"
+              [attr.aria-label]="selectAllLabel()"
+              (change)="toggleAll($event)"
+            />
+          </th>
+        }
+        @for (column of columns(); track column.key) {
+          <th scope="col" [class]="column.headerClass || ''" [attr.aria-sort]="ariaSort(column)">
+            @if (column.sortable) {
+              <button
+                type="button"
+                class="table__sort"
+                [attr.data-sort]="sortDirection(column)"
+                (click)="toggleSort(column)"
+              >
+                <span>{{ column.header }}</span>
+                <span class="table__sort-icon" aria-hidden="true"></span>
+              </button>
+            } @else {
+              {{ column.header }}
+            }
+          </th>
+        }
+        @if (hasTrailingColumn()) {
+          <th class="table__cell--action" scope="col">
+            @if (filterable()) {
+              <button
+                type="button"
+                class="table__filter"
+                [class.is-active]="filterActive()"
+                [attr.aria-pressed]="filterActive()"
+                [attr.aria-label]="filterLabel()"
+                (click)="filterActive.set(!filterActive())"
+              >
+                <span class="table__filter-icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M2 3h12L9.5 9v4.5L6.5 12V9L2 3z" /></svg
+                ></span>
+              </button>
+            }
+          </th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of sortedRows(); track trackRow(row); let index = $index) {
+        <tr
+          [class.is-selected]="isSelected(row)"
+          [attr.aria-selected]="selectable() || isSelected(row) ? isSelected(row) : null"
+        >
+          @if (selectable()) {
+            <td class="table__cell--checkbox">
+              <input
+                type="checkbox"
+                class="table__checkbox"
+                [checked]="isSelected(row)"
+                [attr.aria-label]="selectRowLabel()"
+                (change)="toggleRow(row, $event)"
+              />
+            </td>
+          }
+          @for (column of columns(); track column.key) {
+            <td
+              [class]="cellClassOf(column, row)"
+              [class.table__cell--link]="column.type === 'link'"
+              [class.table__cell--action]="column.type === 'action'"
+              (click)="onCellClick(column, row)"
+            >
+              @if (templateMap().get(column.key); as template) {
+                <ng-container
+                  [ngTemplateOutlet]="template"
+                  [ngTemplateOutletContext]="{
+                    $implicit: row,
+                    row: row,
+                    value: cellValue(column, row),
+                    column: column,
+                    index: index,
+                  }"
+                />
+              } @else {
+                {{ cellValue(column, row) }}
+              }
+            </td>
+          }
+          @if (hasTrailingColumn()) {
+            <td class="table__cell--action">
+              @if (rowAction()) {
+                <button
+                  type="button"
+                  class="table__action"
+                  [attr.aria-label]="rowActionLabel()"
+                  (click)="rowActionClick.emit(row)"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M3 8h10M9 4l4 4-4 4" />
+                  </svg>
+                </button>
+              }
+            </td>
+          }
+        </tr>
+      } @empty {
+        <tr>
+          <td class="table__cell--empty" [attr.colspan]="columnCount()">{{ emptyText() }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

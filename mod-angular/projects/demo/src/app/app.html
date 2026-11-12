@@ -1,0 +1,79 @@
+<div class="layout">
+  <mod-nav-header
+    class="demo-header"
+    [items]="headerItems()"
+    [activeId]="activeHeaderItem()"
+    [logoText]="text().logo"
+    divider
+  >
+    <!-- About Team -->
+    <a mod-header-action href="#" (click)="prevent($event)">
+      <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+        <circle cx="12" cy="7" r="4" />
+      </svg>
+      <span>{{ text().about }}</span>
+    </a>
+
+    <!-- Search -->
+    <a mod-header-action href="#" (click)="prevent($event)">
+      <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      </svg>
+      <span>{{ text().search }}</span>
+    </a>
+
+    <!-- Theme toggle (light / dark) -->
+    <a
+      mod-header-action
+      iconOnly
+      href="#"
+      [attr.aria-label]="dark() ? 'Switch to light mode' : 'Switch to dark mode'"
+      (click)="toggleDark($event)"
+    >
+      @if (dark()) {
+        <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5" />
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+        </svg>
+      } @else {
+        <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      }
+    </a>
+
+    <!-- Language toggle (primary) -->
+    <a mod-header-action variant="primary" href="#" (click)="toggleRtl($event)">
+      <svg class="header-action__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" />
+        <line x1="2" y1="12" x2="22" y2="12" />
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+      </svg>
+      <span>{{ text().language }}</span>
+    </a>
+  </mod-nav-header>
+
+  <div class="main-content" [class.main-content--no-sidebar]="fullPage()">
+    <aside class="sidebar">
+      <nav class="sidebar-nav" aria-label="Components">
+        @for (item of nav; track item.id) {
+          <a class="sidebar-link" [routerLink]="'/' + item.id" routerLinkActive="active">
+            <span class="icon sidebar-link__icon" [class]="'dga-icon-' + item.icon" aria-hidden="true"></span>
+            {{ item.label }}
+            @if (item.badge) {
+              <span class="sidebar-link__badge">{{ item.badge }}</span>
+            }
+          </a>
+        }
+      </nav>
+    </aside>
+
+    <main class="content" role="main">
+      <div id="component-content">
+        <router-outlet />
+      </div>
+    </main>
+  </div>
+</div>

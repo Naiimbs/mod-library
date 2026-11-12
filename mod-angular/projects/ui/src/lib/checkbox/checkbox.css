@@ -1,0 +1,332 @@
+/* ============================================
+   COMPONENT: CHECKBOX
+   DGA Design System - Checkbox Component
+   A checkbox allows users to make a single
+   selection or indicate a binary choice.
+   ============================================ */
+
+/* ============================================
+   Checkbox Group Container
+   ============================================ */
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.checkbox-group--horizontal {
+    flex-direction: row;
+    gap: var(--spacing-3xl);
+}
+
+/* ============================================
+   Checkbox Item (label + helper + alert wrapper)
+   ============================================ */
+
+.checkbox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+
+.checkbox--disabled {
+    cursor: not-allowed;
+}
+
+/* ============================================
+   Focus Ring (on the whole checkbox item)
+   ============================================ */
+
+.checkbox:has(.checkbox__input:focus-visible) {
+    outline: 2px solid var(--color-text-primary);
+    outline-offset: -2px;
+}
+
+/* ============================================
+   Checkbox + Label row
+   ============================================ */
+
+.checkbox__row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+}
+
+/* ============================================
+   Checkbox Control (hitbox + visual box)
+   ============================================ */
+
+/* Medium (default) — 24px hitbox */
+.checkbox__control {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Small — 20px hitbox */
+.checkbox__control--sm {
+    width: 20px;
+    height: 20px;
+}
+
+/* x Small — 16px hitbox (base only) */
+.checkbox__control--xs {
+    width: 16px;
+    height: 16px;
+}
+
+/* Hidden native input */
+.checkbox__input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.checkbox--disabled .checkbox__input {
+    cursor: not-allowed;
+}
+
+/* Visual checkbox box */
+.checkbox__box {
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--color-text-primary);
+    border-radius: var(--radius-xs);
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+/* Icons inside the box (check and minus) */
+.checkbox__icon {
+    width: 12px;
+    height: 12px;
+    color: var(--color-white);
+    opacity: 0;
+    position: absolute;
+    transition: opacity var(--transition-fast);
+}
+
+/* ============================================
+   Ripple effect (hover/press)
+   ============================================ */
+
+.checkbox__ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-gray-100);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    pointer-events: none;
+}
+
+/* Small ripple */
+.checkbox__control--sm .checkbox__ripple {
+    width: 32px;
+    height: 32px;
+}
+
+/* xSmall ripple */
+.checkbox__control--xs .checkbox__ripple {
+    width: 28px;
+    height: 28px;
+}
+
+/* Hover: show ripple */
+.checkbox:hover:not(.checkbox--disabled):not(.checkbox--readonly) .checkbox__ripple {
+    opacity: 1;
+}
+
+/* ============================================
+   Checked State
+   ============================================ */
+
+/* Primary style (default) — green fill */
+.checkbox__input:checked ~ .checkbox__box {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.checkbox__input:checked ~ .checkbox__box .checkbox__icon--check {
+    opacity: 1;
+}
+
+/* Neutral style — black fill */
+.checkbox--neutral .checkbox__input:checked ~ .checkbox__box {
+    background-color: var(--color-text-primary);
+    border-color: var(--color-text-primary);
+}
+
+/* ============================================
+   Indeterminate State
+   ============================================ */
+
+/* Via :indeterminate pseudo-class (set via JS) */
+.checkbox__input:indeterminate ~ .checkbox__box {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.checkbox__input:indeterminate ~ .checkbox__box .checkbox__icon--check {
+    opacity: 0;
+}
+
+.checkbox__input:indeterminate ~ .checkbox__box .checkbox__icon--minus {
+    opacity: 1;
+}
+
+/* Neutral indeterminate */
+.checkbox--neutral .checkbox__input:indeterminate ~ .checkbox__box {
+    background-color: var(--color-text-primary);
+    border-color: var(--color-text-primary);
+}
+
+/* Class-based indeterminate (for static HTML showcases) */
+.checkbox--indeterminate .checkbox__box {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.checkbox--indeterminate .checkbox__icon--check {
+    opacity: 0 !important;
+}
+
+.checkbox--indeterminate .checkbox__icon--minus {
+    opacity: 1 !important;
+}
+
+.checkbox--neutral.checkbox--indeterminate .checkbox__box {
+    background-color: var(--color-text-primary);
+    border-color: var(--color-text-primary);
+}
+
+/* ============================================
+   Disabled State
+   ============================================ */
+
+.checkbox--disabled .checkbox__box {
+    border-color: var(--color-gray-400);
+}
+
+.checkbox--disabled .checkbox__input:checked ~ .checkbox__box,
+.checkbox--disabled .checkbox__input:indeterminate ~ .checkbox__box,
+.checkbox--disabled.checkbox--indeterminate .checkbox__box {
+    background-color: var(--color-gray-400);
+    border-color: var(--color-gray-400);
+}
+
+.checkbox--disabled .checkbox__label {
+    color: var(--color-gray-400);
+}
+
+.checkbox--disabled .checkbox__helper {
+    color: var(--color-gray-400);
+}
+
+/* ============================================
+   Read-only State
+   ============================================ */
+
+.checkbox--readonly {
+    cursor: default;
+}
+
+.checkbox--readonly .checkbox__input {
+    cursor: default;
+    pointer-events: none;
+}
+
+/* ============================================
+   Label
+   ============================================ */
+
+.checkbox__label {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-md);
+    color: var(--gray-800);
+    min-width: 0;
+}
+
+[dir="rtl"] .checkbox__label {
+    text-align: right;
+}
+
+/* ============================================
+   Helper Text
+   ============================================ */
+
+.checkbox__helper {
+    padding-left: var(--spacing-5xl);
+    padding-top: var(--spacing-xs);
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-sm);
+    color: var(--gray-700);
+}
+
+[dir="rtl"] .checkbox__helper {
+    padding-left: 0;
+    padding-right: var(--spacing-5xl);
+    text-align: right;
+}
+
+/* ============================================
+   Alert / Error Message
+   ============================================ */
+
+.checkbox__alert {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-xs) 0;
+}
+
+.checkbox__alert-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--color-error-700);
+    margin-top: var(--spacing-xxs);
+}
+
+.checkbox__alert-text {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-sm);
+    color: var(--color-error-700);
+    flex: 1;
+}
+
+[dir="rtl"] .checkbox__alert-text {
+    text-align: right;
+}
+
+/* Angular host elements (mod-checkbox-group carries .checkbox-group itself) */
+mod-checkbox {
+    display: block;
+}

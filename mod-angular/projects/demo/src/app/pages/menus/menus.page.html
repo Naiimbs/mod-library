@@ -1,0 +1,183 @@
+<div class="content-header">
+  <h1 class="content-title">Menu</h1>
+  <p class="content-description">
+    A floating list of actions or options, opened from a trigger (button, icon, or nav item) or used as a context
+    menu. Items can group under labels, carry a leading icon, and show a trailing element (count text, icon, tag, or
+    switch). Six item states — default, hover, pressed, selected, focused, disabled — plus full RTL. Modeled on Figma
+    frames 30195:22214 (Menu) and 30195:21865 (Menu list item).
+  </p>
+</div>
+
+<demo-live
+  heading="Menu"
+  description="A group of menu items inside the popover container. Switch the trailing element and item state to explore the variants."
+  [rtl]="rtl()"
+>
+  <mod-menu [rtl]="rtl()" [attr.dir]="rtl() ? 'rtl' : null" [aria-label]="labels().group">
+    <mod-menu-group [label]="labels().group" selectable [(value)]="liveValue">
+      @for (i of liveItems; track i) {
+        <mod-menu-item icon="file-01" [value]="i" [checkmark]="false" [trailText]="trail() === 'text' ? '+99' : ''" [disabled]="state() === 'disabled' && i === 2">
+          {{ labels().item }}
+          @if (trail() === 'icon') {
+            <span modMenuTrailIcon>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 10h10M11 6l4 4-4 4" />
+              </svg>
+            </span>
+          }
+          @if (trail() === 'check') {
+            <span modMenuTrailIcon>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 10l4 4 8-8" />
+              </svg>
+            </span>
+          }
+          @if (trail() === 'tag') {
+            <span modMenuTrail><mod-tag variant="neutral" size="sm">{{ labels().tag }}</mod-tag></span>
+          }
+          @if (trail() === 'switch') {
+            <mod-menu-switch [checked]="true" [aria-label]="labels().item" />
+          }
+        </mod-menu-item>
+      }
+    </mod-menu-group>
+  </mod-menu>
+
+  <demo-switch label="RTL" [(checked)]="rtl" />
+  <demo-select label="Trailing" [options]="trails" [value]="trail()" (valueChange)="setTrail($event)" />
+  <demo-select label="State" [options]="states" [value]="state()" (valueChange)="setState($event)" />
+</demo-live>
+
+<demo-props
+  description="Inputs, outputs and models of the menu components: mod-menu, mod-menu-anchor, mod-menu-group, mod-menu-item, mod-menu-divider and mod-menu-switch."
+  [props]="menuProps"
+/>
+
+<demo-showcase
+  heading="Anatomy"
+  description="The popover container holding a group label and a set of menu items, each with a leading icon and a label."
+>
+  <mod-menu aria-label="Anatomy">
+    <mod-menu-group label="Group label">
+      <mod-menu-item icon="file-01">Item Label</mod-menu-item>
+      <mod-menu-item icon="file-01">Item Label</mod-menu-item>
+      <mod-menu-item icon="file-01">Item Label</mod-menu-item>
+    </mod-menu-group>
+  </mod-menu>
+</demo-showcase>
+
+<demo-showcase
+  heading="Item States"
+  description="Per Figma 30195:21865: default, hover (gray fill), pressed (darker gray), selected (green tint + primary text/icon), focused (black ring), and disabled."
+>
+  <mod-menu aria-label="Item states" style="min-width: 280px;">
+    <mod-menu-group>
+      <mod-menu-item icon="file-01">Default</mod-menu-item>
+      <mod-menu-item icon="file-01" style="background-color: var(--gray-100);">Hover</mod-menu-item>
+      <mod-menu-item icon="file-01" style="background-color: var(--gray-200);">Pressed</mod-menu-item>
+      <mod-menu-item icon="file-01" selected>Selected</mod-menu-item>
+      <mod-menu-item icon="file-01" style="border-color: var(--border-black);">Focused</mod-menu-item>
+      <mod-menu-item icon="file-01" disabled>Disabled</mod-menu-item>
+    </mod-menu-group>
+  </mod-menu>
+</demo-showcase>
+
+<demo-showcase
+  heading="Trailing Elements"
+  description="Items can carry a trailing count text, icon, tag, or switch — reusing the existing Tag component for the tag variant."
+>
+  <mod-menu aria-label="Trailing elements" style="min-width: 300px;">
+    <mod-menu-group>
+      <mod-menu-item icon="inbox" trailText="+99">Count text</mod-menu-item>
+      <mod-menu-item icon="folder-01">
+        Submenu arrow
+        <span modMenuTrailIcon>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 10h10M11 6l4 4-4 4" />
+          </svg>
+        </span>
+      </mod-menu-item>
+      <mod-menu-item icon="tag-01">
+        With a tag
+        <span modMenuTrail><mod-tag variant="success" size="sm">New</mod-tag></span>
+      </mod-menu-item>
+      <mod-menu-item icon="notification-01">
+        With a switch
+        <mod-menu-switch aria-label="With a switch" [(checked)]="trailSwitch" />
+      </mod-menu-item>
+    </mod-menu-group>
+  </mod-menu>
+</demo-showcase>
+
+<demo-showcase
+  heading="Grouped Menu"
+  description="Multiple groups, each with its own label, separated by dividers — the full composition from the Figma Menu frame."
+>
+  <mod-menu aria-label="Grouped menu" style="min-width: 280px;">
+    <mod-menu-group label="Group label" selectable [(value)]="groupedValue">
+      <mod-menu-item icon="file-01" value="a">Item Label</mod-menu-item>
+      <mod-menu-item icon="file-01" value="b">Item Label</mod-menu-item>
+    </mod-menu-group>
+    <mod-menu-group label="Group label">
+      <mod-menu-item icon="notification-01">
+        Notifications
+        <mod-menu-switch aria-label="Notifications" [(checked)]="notifications" />
+      </mod-menu-item>
+      <mod-menu-item icon="moon-02">
+        Dark mode
+        <mod-menu-switch aria-label="Dark mode" [(checked)]="darkMode" />
+      </mod-menu-item>
+    </mod-menu-group>
+  </mod-menu>
+</demo-showcase>
+
+<demo-showcase
+  heading="Open on Click"
+  description="The real behavior: a trigger opens the menu as a dropdown. Click the trigger to toggle; click outside or press Esc to close."
+  align="flex-start"
+>
+  <div style="min-height: 232px;">
+    <mod-menu-anchor [(open)]="open">
+      <button mod-button variant="secondary-outline" type="button" modMenuTrigger>
+        Options
+        <span class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 8l5 5 5-5" />
+          </svg>
+        </span>
+      </button>
+      <mod-menu aria-label="Options">
+        <mod-menu-group>
+          <mod-menu-item icon="view">View details</mod-menu-item>
+          <mod-menu-item icon="edit-01">Edit</mod-menu-item>
+          <mod-menu-item icon="copy-01" trailText="⌘D">Duplicate</mod-menu-item>
+        </mod-menu-group>
+        <mod-menu-group>
+          <mod-menu-item icon="delete-02">Delete</mod-menu-item>
+        </mod-menu-group>
+      </mod-menu>
+    </mod-menu-anchor>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="RTL Support"
+  description="Arabic and other right-to-left layouts mirror the menu: the leading icon moves to the right, the label aligns right, and trailing elements move to the left."
+  subtle
+>
+  <div dir="rtl">
+    <mod-menu rtl dir="rtl" aria-label="قائمة" style="min-width: 280px;">
+      <mod-menu-group label="عنوان مجموعة" selectable [(value)]="rtlValue">
+        <mod-menu-item icon="file-01" value="a">نص العنصر</mod-menu-item>
+        <mod-menu-item icon="file-01" value="b">
+          نص العنصر
+          <span modMenuTrail><mod-tag variant="neutral" size="sm">وسم</mod-tag></span>
+        </mod-menu-item>
+        <mod-menu-item icon="notification-01" value="c">
+          نص العنصر
+          <mod-menu-switch aria-label="نص العنصر" [(checked)]="rtlSwitch" />
+        </mod-menu-item>
+      </mod-menu-group>
+    </mod-menu>
+  </div>
+</demo-showcase>

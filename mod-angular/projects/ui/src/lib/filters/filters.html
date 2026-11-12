@@ -1,0 +1,179 @@
+<div class="filteration">
+  @if (!hideToolbar()) {
+    <div class="filteration__toolbar">
+      <button
+        #trigger
+        mod-button
+        type="button"
+        variant="neutral"
+        [attr.aria-expanded]="open()"
+        [attr.aria-controls]="panelId"
+        (click)="toggle()"
+      >
+        <span class="icon dga-icon-filter" aria-hidden="true"></span>
+        {{ triggerLabel() }}
+        <span class="icon dga-icon-arrow-down-01" aria-hidden="true"></span>
+      </button>
+      <div class="filteration__selected-filters">
+        @for (filter of appliedFilters(); track filter.blockId + ':' + filter.optionId) {
+          <button
+            mod-button
+            type="button"
+            variant="primary"
+            [attr.aria-label]="removeLabel() + ' ' + filter.label"
+            (click)="removeFilter(filter)"
+          >
+            {{ filter.label }}
+            <span class="icon dga-icon-multiplication-sign" aria-hidden="true"></span>
+          </button>
+        }
+      </div>
+    </div>
+  }
+
+  <div
+    class="filteration__panel"
+    role="group"
+    [id]="panelId"
+    [class.is-open]="open() || inline()"
+    [style.position]="inline() ? 'static' : null"
+    [style.animation]="inline() ? 'none' : null"
+    [attr.aria-label]="triggerLabel()"
+  >
+    @for (view of blockViews(); track view.block.id) {
+      <div class="filteration__block" role="group" [attr.aria-labelledby]="panelId + '-' + view.block.id">
+        <h3 class="filteration__block-title" [id]="panelId + '-' + view.block.id">
+          {{ view.block.title }}
+        </h3>
+
+        @switch (view.block.type) {
+          @case ('checkbox') {
+            @if (view.block.searchable) {
+              <div class="filteration__search">
+                <div class="search-box">
+                  <span class="search-box__icon">
+                    <span class="icon dga-icon-search-01" aria-hidden="true"></span>
+                  </span>
+                  <input
+                    type="text"
+                    class="search-box__field"
+                    [placeholder]="searchLabel()"
+                    [attr.aria-label]="searchLabel() + ' ' + view.block.title"
+                    [value]="view.query"
+                    (input)="setQuery(view.block.id, $event)"
+                  />
+                </div>
+              </div>
+            }
+            <div class="filteration__block-content filteration__block-content--checkbox">
+              @for (option of view.options; track option.id) {
+                <label class="checkbox">
+                  <div class="checkbox__row">
+                    <div class="checkbox__control">
+                      <input
+                        type="checkbox"
+                        class="checkbox__input"
+                        [checked]="view.selected.has(option.id)"
+                        (change)="toggleOption(view.block.id, option.id)"
+                      />
+                      <span class="checkbox__box">
+                        <svg
+                          class="checkbox__icon checkbox__icon--check"
+                          viewBox="0 0 12 12"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M10 3L4.5 8.5L2 6"
+                            stroke="currentColor"
+                            stroke-width="1.67"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                    <span class="checkbox__label">{{ option.label }}</span>
+                  </div>
+                </label>
+              }
+            </div>
+            <div class="filteration__block-actions">
+              @if (view.hiddenCount > 0) {
+                <button
+                  mod-button
+                  type="button"
+                  variant="transparent"
+                  size="medium"
+                  [attr.aria-expanded]="view.expanded"
+                  (click)="toggleExpanded(view.block.id)"
+                >
+                  {{ view.expanded ? showLessLabel() : showMoreLabel()(view.hiddenCount) }}
+                  <span
+                    class="icon"
+                    [class.dga-icon-arrow-up-01]="view.expanded"
+                    [class.dga-icon-arrow-down-01]="!view.expanded"
+                    aria-hidden="true"
+                  ></span>
+                </button>
+              }
+            </div>
+          }
+          @case ('chips') {
+            <div class="filteration__block-content filteration__block-content--chips">
+              @for (option of view.options; track option.id) {
+                <button
+                  mod-chip
+                  variant="neutral"
+                  size="medium"
+                  [selected]="view.selected.has(option.id)"
+                  [attr.aria-pressed]="view.selected.has(option.id)"
+                  (click)="toggleOption(view.block.id, option.id)"
+                >
+                  {{ option.label }}
+                </button>
+              }
+            </div>
+            <div class="filteration__block-actions"></div>
+          }
+          @case ('range') {
+            <div class="filteration__block-content">
+              <div class="filteration__range">
+                <div class="text-input">
+                  <input
+                    type="text"
+                    class="text-input__field"
+                    [placeholder]="view.block.minPlaceholder ?? 'Min'"
+                    [attr.aria-label]="view.block.minLabel ?? view.block.title + ' min'"
+                    [value]="view.range.min"
+                    (input)="setRange(view.block.id, 'min', $event)"
+                  />
+                </div>
+                <span aria-hidden="true">{{ rangeSeparator() }}</span>
+                <div class="text-input">
+                  <input
+                    type="text"
+                    class="text-input__field"
+                    [placeholder]="view.block.maxPlaceholder ?? 'Max'"
+                    [attr.aria-label]="view.block.maxLabel ?? view.block.title + ' max'"
+                    [value]="view.range.max"
+                    (input)="setRange(view.block.id, 'max', $event)"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="filteration__block-actions"></div>
+          }
+        }
+        <div class="filteration__divider"></div>
+      </div>
+    }
+    <div class="filteration__actions">
+      <button mod-button type="button" variant="neutral" (click)="apply()">{{ applyLabel() }}</button>
+      <button mod-button type="button" variant="secondary-outline" (click)="clear()">
+        {{ clearLabel() }}
+      </button>
+    </div>
+  </div>
+</div>

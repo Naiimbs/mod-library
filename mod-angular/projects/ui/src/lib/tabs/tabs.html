@@ -1,0 +1,45 @@
+<div [class]="listClasses()">
+  @if (divider()) {
+    <div class="tab-list__divider"></div>
+  }
+  <div class="tab-list__tabs" role="tablist" [attr.aria-label]="ariaLabel() || null">
+    @for (tab of tabs(); track tab; let i = $index) {
+      <button
+        #tabButton
+        type="button"
+        class="tab-item"
+        role="tab"
+        [class.tab-item--sm]="size() === 'sm'"
+        [class.tab-item--lg]="size() === 'lg'"
+        [class.active]="i === activeIndex()"
+        [id]="tab.tabId"
+        [attr.aria-selected]="i === activeIndex()"
+        [attr.aria-controls]="tab.panelId"
+        [attr.tabindex]="i === activeIndex() ? 0 : -1"
+        [disabled]="tab.disabled()"
+        (click)="select(i)"
+        (keydown)="onKeydown($event, i)"
+      >
+        @if (tab.icon(); as name) {
+          <span class="tab-item__icon"><span [class]="'icon dga-icon-' + name" aria-hidden="true"></span></span>
+        }
+        <span class="tab-item__title">{{ tab.label() }}</span>
+        <span class="tab-item__indicator"><span class="tab-item__indicator-bar"></span></span>
+      </button>
+    }
+  </div>
+</div>
+@for (tab of tabs(); track tab; let i = $index) {
+  <div
+    class="mod-tabs__panel"
+    role="tabpanel"
+    tabindex="0"
+    [id]="tab.panelId"
+    [attr.aria-labelledby]="tab.tabId"
+    [hidden]="i !== activeIndex()"
+  >
+    @if (i === activeIndex()) {
+      <ng-container [ngTemplateOutlet]="tab.content()" />
+    }
+  </div>
+}

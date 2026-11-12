@@ -1,0 +1,219 @@
+/* ============================================
+   FILE UPLOAD COMPONENT
+   DGA Design System — rebuilt to match the DGA reference library
+   mod-file-upload exactly: dashed drop area (SVG border), browse
+   button, and a list of flat gray file rows with a status icon,
+   name, and close action. Errors wrap the row with a red border
+   and attach a message strip below it.
+   ============================================ */
+
+.file-upload {
+    display: flex;
+    width: 100%;
+    max-width: 334px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+}
+
+/* visually hidden native input */
+.file-upload__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* --- Drop area: gray fill + dashed SVG border (12 / 6.5 dashes) --- */
+.file-upload__drop-area {
+    display: flex;
+    padding: var(--spacing-3xl);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-xl);
+    width: 100%;
+    border-radius: var(--radius-sm);
+    background: var(--gray-100);
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='4' ry='4' stroke='%23B2BEC4FF' stroke-width='2' stroke-dasharray='12%2c6.5' stroke-dashoffset='5' stroke-linecap='square'/%3e%3c/svg%3e");
+    cursor: pointer;
+}
+
+.file-upload__icon {
+    font-size: 32px;
+    color: var(--gray-800);
+    display: flex;
+    align-items: center;
+}
+
+.file-upload__content {
+    text-align: center;
+}
+
+.file-upload__instructions {
+    margin: 0;
+    font-size: var(--font-size-md);
+    line-height: 24px;
+    font-weight: var(--font-weight-medium);
+    color: var(--gray-800);
+}
+
+.file-upload__formats {
+    margin: 0;
+    font-size: var(--font-size-xs);
+    line-height: 18px;
+    color: var(--gray-700);
+}
+
+/* --- Hover: darker fill + darker dashes (not in the vanilla source, which has
+       no pointer feedback on the drop area) --- */
+.file-upload__drop-area {
+    transition: background-color 150ms ease;
+}
+
+.file-upload:not(.file-upload--disabled):not(.file-upload--drag-over) .file-upload__drop-area:hover {
+    background-color: var(--gray-200);
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='4' ry='4' stroke='%236A7880FF' stroke-width='2' stroke-dasharray='12%2c6.5' stroke-dashoffset='5' stroke-linecap='square'/%3e%3c/svg%3e");
+}
+
+/* Keyboard focus on the browse button outlines the whole drop area too. */
+.file-upload:not(.file-upload--disabled) .file-upload__drop-area:has(.btn:focus-visible) {
+    background-color: var(--gray-200);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .file-upload__drop-area { transition: none; }
+}
+
+/* --- Drag-over: brand tint + green dashed border --- */
+.file-upload--drag-over .file-upload__drop-area {
+    background-color: var(--sa-50);
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='4' ry='4' stroke='%2300A05AFF' stroke-width='2' stroke-dasharray='12%2c6.5' stroke-dashoffset='5' stroke-linecap='square'/%3e%3c/svg%3e");
+}
+
+.file-upload--drag-over .file-upload__icon,
+.file-upload--drag-over .file-upload__instructions,
+.file-upload--drag-over .file-upload__formats {
+    color: var(--success-700);
+}
+
+/* --- Disabled --- */
+.file-upload--disabled .file-upload__drop-area {
+    background-color: var(--gray-200);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.file-upload--disabled .file-upload__icon,
+.file-upload--disabled .file-upload__instructions,
+.file-upload--disabled .file-upload__formats {
+    color: var(--gray-400);
+}
+
+/* ============================================
+   Files list
+   ============================================ */
+.file-upload__files-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+}
+
+/* one flat file row */
+.file-upload__file-item {
+    display: flex;
+    align-items: center;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--gray-300);
+    background: var(--gray-100);
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+    width: 100%;
+}
+
+.file-upload__file-status {
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.file-upload__file-status--complete { color: var(--success-700); }
+.file-upload__file-status--error { color: var(--error-700); }
+
+.file-upload__file-status .icon { font-size: var(--font-size-xl); }
+
+/* tiny neutral spinner for the uploading state (library: mod-loading tiny) */
+.file-upload__spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--gray-300);
+    border-top-color: var(--gray-700);
+    border-radius: var(--radius-full);
+    animation: file-upload-spin 0.8s linear infinite;
+}
+
+@keyframes file-upload-spin {
+    to { transform: rotate(360deg); }
+}
+
+.file-upload__file-name {
+    color: var(--text-default);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex: 1;
+    font-size: var(--font-size-sm);
+    line-height: 20px;
+    font-weight: var(--font-weight-medium);
+    /* keep Latin file names readable in RTL */
+    unicode-bidi: plaintext;
+    text-align: start;
+}
+
+/* --- Error item: red-bordered wrapper with a message strip below --- */
+.file-upload__file-item--error {
+    display: flex;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--error-700);
+    background: var(--gray-100);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    overflow: hidden;
+    gap: 0;
+    width: 100%;
+}
+
+.file-upload__file-item--error .file-upload__file-item {
+    border-radius: 0;
+    border: 0;
+    border-bottom: 1px solid var(--gray-300);
+}
+
+.file-upload__file-item-msg {
+    display: flex;
+    width: 100%;
+    color: var(--error-700);
+    padding: var(--spacing-md);
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    font-size: var(--font-size-sm);
+    line-height: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .file-upload__spinner { animation-duration: 2s; }
+}
+
+/* Host element */
+mod-file-upload {
+    display: block;
+    width: 100%;
+    max-width: 334px;
+}

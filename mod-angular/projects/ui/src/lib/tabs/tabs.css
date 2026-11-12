@@ -1,0 +1,390 @@
+/* ============================================
+   COMPONENT: TABS
+   DGA Design System - Tab Components
+   Based on Figma: 30150:125017 (Horizontal Tab)
+                    30150:125364 (Horizontal Tab List)
+
+   Sizes: Small, Medium (default), Large
+   States: Default, Hover, Pressed, Focused, Disabled
+   Modifiers: Selected, Icon, Flush, RTL
+   ============================================ */
+
+/* ============================================
+   Horizontal Tab List (Container)
+   ============================================ */
+
+.tab-list {
+    display: flex;
+    align-items: center;
+    position: relative;
+    isolation: isolate;
+}
+
+/* Divider - full-width bottom line */
+.tab-list__divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--gray-300);
+    border-radius: var(--radius-full);
+    z-index: 0;
+}
+
+/* Tabs wrapper */
+.tab-list__tabs {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+/* ============================================
+   Horizontal Tab Item (Individual Tab)
+   ============================================ */
+
+.tab-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    position: relative;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    transition: background-color 150ms ease, color 150ms ease;
+    text-decoration: none;
+    flex-shrink: 0;
+    padding: 0;
+    outline: none;
+    /* explicit color so icons/text never inherit from the vendor layer */
+    color: var(--gray-700);
+}
+
+.tab-item.active {
+    color: var(--text-default);
+}
+
+/* ============================================
+   Tab Sizes
+   ============================================ */
+
+/* Medium (Default) - 12px vertical, 16px horizontal */
+.tab-item,
+.tab-item--md {
+    padding: var(--spacing-lg) var(--spacing-xl);
+}
+
+/* Large - 16px all sides */
+.tab-item--lg {
+    padding: var(--spacing-xl);
+}
+
+/* Small - 8px vertical, 12px horizontal */
+.tab-item--sm {
+    padding: var(--spacing-md) var(--spacing-lg);
+}
+
+/* ============================================
+   Tab Title Text
+   ============================================ */
+
+.tab-item__title {
+    font-family: "IBMPlexSansArabicMedium", "Saudi MOD", sans-serif;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+    line-height: 20px;
+    color: var(--gray-700);
+    white-space: nowrap;
+}
+
+/* Selected tab text - bold and dark */
+.tab-item.active .tab-item__title {
+    font-family: "IBMPlexSansArabicBold", "Saudi MOD", sans-serif;
+    font-weight: var(--font-weight-bold);
+    color: var(--text-default);
+}
+
+/* ============================================
+   Tab Icon
+   ============================================ */
+
+.tab-item__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+}
+
+.tab-item__icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* ============================================
+   Selection Indicator (Bottom Bar)
+   ============================================ */
+
+/* Indicator: z-index: 2 ensures green bar layers ABOVE the gray divider (z-index: 0) */
+.tab-item__indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--spacing-xl);
+    z-index: 2;
+}
+
+.tab-item__indicator-bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--sa-600);
+    border-radius: var(--radius-full);
+}
+
+.tab-item.active .tab-item__indicator {
+    display: flex;
+}
+
+/* ============================================
+   Tab States - Default
+   ============================================ */
+
+/* Unselected default - transparent bg, medium text #37454D */
+.tab-item {
+    background-color: transparent;
+}
+
+/* ============================================
+   Tab States - Hover
+   ============================================ */
+
+/* Unselected hover - gray background, text darkens to #161616, black indicator */
+.tab-item:hover:not(.active):not(:disabled):not(.disabled) {
+    background-color: var(--gray-100);
+}
+
+.tab-item:hover:not(.active):not(:disabled):not(.disabled) .tab-item__title {
+    color: var(--text-default);
+}
+
+.tab-item:hover:not(.active):not(:disabled):not(.disabled) .tab-item__indicator {
+    display: flex;
+}
+
+.tab-item:hover:not(.active):not(:disabled):not(.disabled) .tab-item__indicator-bar {
+    background-color: var(--text-default);
+}
+
+/* Selected hover - no background change (stays transparent) */
+.tab-item.active:hover {
+    background-color: transparent;
+}
+
+/* ============================================
+   Tab States - Pressed / Active
+   ============================================ */
+
+/* Unselected pressed - darker gray background, black indicator */
+.tab-item:active:not(.active):not(:disabled):not(.disabled) {
+    background-color: var(--gray-200);
+}
+
+.tab-item:active:not(.active):not(:disabled):not(.disabled) .tab-item__title {
+    color: var(--text-default);
+}
+
+.tab-item:active:not(.active):not(:disabled):not(.disabled) .tab-item__indicator {
+    display: flex;
+}
+
+.tab-item:active:not(.active):not(:disabled):not(.disabled) .tab-item__indicator-bar {
+    background-color: var(--text-default);
+}
+
+/* Selected pressed - no background change */
+.tab-item.active:active {
+    background-color: transparent;
+}
+
+/* ============================================
+   Tab States - Focused
+   ============================================ */
+
+.tab-item:focus-visible {
+    border: 3px solid var(--border-black);
+    border-radius: var(--radius-xs);
+    outline: none;
+    box-shadow: inset 0 0 0 1px var(--alpha-white);
+}
+
+.tab-item:focus-visible .tab-item__title {
+    color: var(--text-default);
+}
+
+/* ============================================
+   Tab States - Disabled
+   ============================================ */
+
+.tab-item:disabled,
+.tab-item.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: transparent;
+}
+
+.tab-item:disabled .tab-item__title,
+.tab-item.disabled .tab-item__title {
+    color: var(--gray-400);
+}
+
+/* Disabled + selected: indicator turns gray */
+.tab-item:disabled.active .tab-item__indicator-bar,
+.tab-item.disabled.active .tab-item__indicator-bar {
+    background-color: var(--gray-400);
+}
+
+/* Disabled icon opacity */
+.tab-item:disabled .tab-item__icon,
+.tab-item.disabled .tab-item__icon {
+    opacity: 0.4;
+}
+
+/* ============================================
+   Overflow / More Button
+   ============================================ */
+
+.tab-list__more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    transition: background-color 150ms ease;
+}
+
+.tab-list__more:hover {
+    background-color: var(--gray-100);
+}
+
+.tab-list__more:active {
+    background-color: var(--gray-200);
+}
+
+.tab-list__more-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+}
+
+.tab-list__more-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* ============================================
+   Flush Variant (No container padding)
+   ============================================ */
+
+.tab-list--flush .tab-list__tabs {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -16px;
+}
+
+/* ============================================
+   Size Modifiers on Tab List
+   ============================================ */
+
+/* When tab-list has a size class, all child tab-items inherit */
+.tab-list--sm .tab-item {
+    padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.tab-list--lg .tab-item {
+    padding: var(--spacing-xl);
+}
+
+/* ============================================
+   RTL Support
+   ============================================ */
+
+[dir="rtl"] .tab-list {
+    direction: rtl;
+}
+
+[dir="rtl"] .tab-list__tabs {
+    justify-content: flex-start;
+}
+
+[dir="rtl"] .tab-list--flush .tab-list__tabs {
+    left: auto;
+    right: -16px;
+}
+
+[dir="rtl"] .tab-item {
+    direction: ltr;
+}
+
+[dir="rtl"] .tab-item__icon {
+    order: 1;
+}
+
+[dir="rtl"] .tab-item__title {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .tab-item__indicator {
+    order: 2;
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+.tab-item[role="tab"] {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.tab-item[aria-selected="true"] .tab-item__title {
+    font-family: "IBMPlexSansArabicBold", "Saudi MOD", sans-serif;
+    font-weight: var(--font-weight-bold);
+    color: var(--text-default);
+}
+
+.tab-item[aria-selected="true"] .tab-item__indicator {
+    display: flex;
+}
+
+/* ============================================
+   Angular host
+   ============================================ */
+
+mod-tabs {
+    display: block;
+}
+
+/* Font icons inside the 24px icon slot (the source uses inline SVGs) */
+.tab-item__icon .icon {
+    font-size: 24px;
+    line-height: 1;
+}

@@ -1,0 +1,434 @@
+/* ============================================
+   COMPONENT: NAV DRAWER
+   DGA Design System - Navigation Drawer
+   Figma Nodes: 30150:160274, 30150:161144, 30150:160799
+   ============================================ */
+
+/* ============================================
+   SCOPED CUSTOM PROPERTIES
+   Override on .nav-drawer--bg-green for dark variant
+   ============================================ */
+
+.nav-drawer {
+    --nd-text-color: var(--text-default);
+    --nd-text-color-secondary: var(--gray-500);
+    --nd-bg: var(--alpha-white);
+    --nd-hover-bg: var(--gray-100);
+    --nd-pressed-bg: var(--gray-200);
+    --nd-selected-bg: var(--gray-200);
+    --nd-selected-text: var(--sa-600);
+    --nd-selected-indicator: var(--sa-600);
+    --nd-border-color: var(--gray-300);
+    --nd-divider-color: var(--gray-300);
+    --nd-header-bg: var(--gray-50);
+    --nd-header-divider: var(--gray-300);
+    --nd-icon-color: inherit;
+    --nd-badge-bg: var(--gray-50);
+    --nd-badge-text: var(--gray-800);
+    --nd-badge-border: var(--gray-200);
+    --nd-disabled-opacity: 0.4;
+    --nd-focus-ring-color: var(--sa-600);
+}
+
+.nav-drawer--bg-gray {
+    --nd-bg: var(--gray-50);
+}
+
+/* On-color variant: whites sit on the static sa-800 green and stay white in
+   both themes; translucent whites have no exact alpha-white token (kept). */
+.nav-drawer--bg-green {
+    --nd-text-color: var(--text-oncolor-primary, #FFFFFF);
+    --nd-text-color-secondary: var(--alpha-white-70);
+    --nd-bg: var(--sa-800);
+    --nd-hover-bg: rgba(255, 255, 255, 0.1);
+    --nd-pressed-bg: rgba(255, 255, 255, 0.15);
+    --nd-selected-bg: rgba(255, 255, 255, 0.15);
+    --nd-selected-text: var(--text-oncolor-primary, #FFFFFF);
+    --nd-selected-indicator: var(--icon-oncolor, #FFFFFF);
+    --nd-border-color: rgba(255, 255, 255, 0.1);
+    --nd-divider-color: rgba(255, 255, 255, 0.3);
+    --nd-header-bg: var(--sa-800);
+    --nd-header-divider: rgba(255, 255, 255, 0.3);
+    --nd-icon-color: var(--icon-oncolor, #FFFFFF);
+    --nd-badge-bg: rgba(255, 255, 255, 0.2);
+    --nd-badge-text: var(--text-oncolor-primary, #FFFFFF);
+    --nd-badge-border: rgba(255, 255, 255, 0.3);
+    --nd-focus-ring-color: var(--alpha-white-60);
+}
+
+/* ============================================
+   NAV DRAWER CONTAINER
+   Width: 256px, full height, flex column
+   ============================================ */
+
+.nav-drawer {
+    width: 256px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--nd-bg);
+    border-right: 1px solid var(--nd-border-color);
+    font-family: var(--font-family-primary, 'Saudi MOD', sans-serif);
+    position: relative;
+    overflow: hidden;
+    color: var(--nd-text-color);
+}
+
+[dir="rtl"] .nav-drawer {
+    border-right: none;
+    border-left: 1px solid var(--nd-border-color);
+}
+
+/* ============================================
+   NAV DRAWER HEADER
+   Height: 72px, sticky, logo placeholder
+   ============================================ */
+
+.nav-drawer__header {
+    display: flex;
+    align-items: center;
+    height: 72px;
+    min-height: 72px;
+    padding: 0 var(--spacing-4xl);
+    background-color: var(--nd-header-bg);
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.nav-drawer__header--bg-gray {
+    background-color: var(--gray-50);
+}
+
+.nav-drawer__header--bg-green {
+    background-color: var(--sa-800);
+}
+
+.nav-drawer__header--divider {
+    position: relative;
+}
+
+.nav-drawer__header--divider::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: var(--nd-header-divider);
+}
+
+.nav-drawer__header-logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: 5px var(--spacing-xs);
+    background-color: var(--alpha-white);
+    border-radius: var(--radius-sm);
+}
+
+.nav-drawer__header-logo {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.nav-drawer__header-text {
+    font-size: var(--font-size-xs, 12px);
+    font-weight: var(--font-weight-medium, 500);
+    line-height: var(--line-height-xs, 18px);
+    color: var(--nd-text-color-secondary);
+    white-space: nowrap;
+}
+
+.nav-drawer__header--bg-green .nav-drawer__header-text {
+    color: var(--gray-500);
+}
+
+/* ============================================
+   NAV DRAWER BODY (scrollable area)
+   ============================================ */
+
+.nav-drawer__body {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1;
+}
+
+/* Custom scrollbar - WebKit */
+.nav-drawer__body::-webkit-scrollbar {
+    width: 4px;
+}
+
+.nav-drawer__body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.nav-drawer__body::-webkit-scrollbar-thumb {
+    background-color: var(--nd-divider-color);
+    border-radius: var(--radius-full);
+}
+
+/* Custom scrollbar - Firefox */
+.nav-drawer__body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--nd-divider-color) transparent;
+}
+
+.nav-drawer__body-inner {
+    padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-8xl, 80px);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============================================
+   NAV DRAWER ITEM - BASE (Level 1 Link)
+   ============================================ */
+
+.nav-drawer-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    width: 100%;
+    height: 36px;
+    padding: 0 var(--spacing-xl);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm, 14px);
+    font-weight: var(--font-weight-semibold, 600);
+    line-height: var(--line-height-sm, 20px);
+    color: var(--nd-text-color);
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    background: none;
+    box-sizing: border-box;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    position: relative;
+    font-family: inherit;
+    text-align: left;
+}
+
+[dir="rtl"] .nav-drawer-item {
+    text-align: right;
+}
+
+/* ============================================
+   ITEM STATES
+   ============================================ */
+
+/* Hover */
+.nav-drawer-item:hover:not(.nav-drawer-item--disabled):not(.nav-drawer-item--divider) {
+    background-color: var(--nd-hover-bg);
+}
+
+/* Pressed */
+.nav-drawer-item:active:not(.nav-drawer-item--disabled):not(.nav-drawer-item--divider) {
+    background-color: var(--nd-pressed-bg);
+}
+
+/* Focus (keyboard) */
+.nav-drawer-item:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--nd-focus-ring-color);
+}
+
+/* Selected */
+.nav-drawer-item--selected {
+    background-color: var(--nd-selected-bg);
+    color: var(--nd-selected-text);
+}
+
+.nav-drawer-item--selected:hover {
+    background-color: var(--nd-selected-bg);
+}
+
+/* Selection indicator - 6px wide green vertical bar */
+.nav-drawer-item--selected::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: var(--spacing-sm, 6px);
+    bottom: var(--spacing-sm, 6px);
+    width: 6px;
+    background-color: var(--nd-selected-indicator);
+    border-radius: var(--radius-full);
+}
+
+[dir="rtl"] .nav-drawer-item--selected::before {
+    left: auto;
+    right: 0;
+}
+
+/* Disabled */
+.nav-drawer-item--disabled {
+    opacity: var(--nd-disabled-opacity);
+    pointer-events: none;
+    cursor: default;
+}
+
+/* ============================================
+   LEVEL 2 ITEMS (children)
+   ============================================ */
+
+.nav-drawer-item--level-2 {
+    padding: 0 var(--spacing-xl) 0 var(--spacing-5xl);
+    font-weight: var(--font-weight-regular, 400);
+}
+
+[dir="rtl"] .nav-drawer-item--level-2 {
+    padding: 0 var(--spacing-5xl) 0 var(--spacing-xl);
+}
+
+/* Level 2 selected becomes semibold */
+.nav-drawer-item--level-2.nav-drawer-item--selected {
+    font-weight: var(--font-weight-semibold, 600);
+}
+
+/* ============================================
+   ITEM SUB-ELEMENTS
+   ============================================ */
+
+/* Leading icon (16px) */
+.nav-drawer-item__icon {
+    font-size: var(--font-size-md);
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+/* Label text */
+.nav-drawer-item__label {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Badge pill */
+.nav-drawer-item__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    padding: 0 var(--spacing-md);
+    background-color: var(--nd-badge-bg);
+    color: var(--nd-badge-text);
+    font-size: 10px;
+    font-weight: var(--font-weight-semibold, 600);
+    line-height: 14px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--nd-badge-border);
+    flex-shrink: 0;
+    text-align: center;
+}
+
+/* External link icon */
+.nav-drawer-item__external-icon {
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: clip;
+}
+
+.nav-drawer-item__external-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Chevron (expand/collapse arrow) */
+.nav-drawer-item__chevron {
+    font-size: var(--font-size-2xl);
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 1;
+    transition: transform 0.2s ease;
+}
+
+/* Rotate chevron when expanded */
+.nav-drawer-item--expanded .nav-drawer-item__chevron {
+    transform: rotate(180deg);
+}
+
+/* ============================================
+   PARENT ITEM + COLLAPSIBLE CHILDREN
+   ============================================ */
+
+.nav-drawer-item--group {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-drawer-item--parent {
+    /* Inherits base .nav-drawer-item styles */
+}
+
+.nav-drawer-item__children {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.nav-drawer-item__children--open {
+    max-height: 600px;
+}
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+
+.nav-drawer-item--divider {
+    display: flex;
+    align-items: center;
+    height: auto;
+    padding: var(--spacing-md) var(--spacing-xl);
+    cursor: default;
+    pointer-events: none;
+    background: none;
+}
+
+.nav-drawer-item--divider::before {
+    display: none;
+}
+
+.nav-drawer-item__divider-line {
+    flex: 1;
+    height: 1px;
+    background-color: var(--nd-divider-color);
+}
+
+/* ============================================
+   RTL SUPPORT
+   ============================================ */
+
+[dir="rtl"] .nav-drawer__header {
+    direction: rtl;
+}
+
+[dir="rtl"] .nav-drawer__header-logo-wrapper {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-drawer__header-text {
+    text-align: right;
+}
+
+
+/* Angular host (not in source). The drawer is height: 100%, so the host
+   must stretch with its container. */
+mod-nav-drawer {
+    display: block;
+    height: 100%;
+}

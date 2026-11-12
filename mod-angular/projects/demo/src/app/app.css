@@ -1,0 +1,14 @@
+/* The original fixes the header with `.layout > .navigation-header`; here the
+   header is inside the <mod-nav-header> host, so the host is fixed instead. */
+.demo-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-fixed);
+}
+
+/* Route components are unknown elements (inline by default). */
+#component-content > * {
+  display: block;
+}

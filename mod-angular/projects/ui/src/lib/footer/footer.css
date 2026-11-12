@@ -1,0 +1,475 @@
+/* ============================================
+   COMPONENT: FOOTER
+   DGA Design System - Footer Component
+   Figma Node: 30150:165937
+   ============================================ */
+
+/* ============================================
+   FOOTER CONTAINER
+   Background: neutral-100 (#F1F4F5)
+   Padding: 32px horizontal
+   ============================================ */
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 var(--spacing-4xl);
+    background-color: var(--gray-100);
+    font-family: var(--font-family-text, 'Saudi MOD', sans-serif);
+}
+
+/* Dark Green Variant */
+.footer--dark {
+    background-color: var(--sa-700);
+}
+
+.footer--dark .footer__group-label {
+    color: var(--alpha-white);
+    border-color: var(--alpha-white-30, rgba(255, 255, 255, 0.3));
+}
+
+.footer--dark .footer__link {
+    color: var(--alpha-white-80);
+}
+
+.footer--dark .footer__link:hover {
+    color: var(--alpha-white);
+}
+
+.footer--dark .footer__legal-caption {
+    color: var(--alpha-white);
+}
+
+/* Dark variant social buttons use btn-on-color class instead */
+
+/* ============================================
+   FOOTER CONTENT
+   Max-width: 1280px
+   Padding: 40px top, 24px bottom
+   Gap: 48px between sections
+   ============================================ */
+
+.footer__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-6xl);
+    width: 100%;
+    max-width: 1280px;
+    min-height: 1px;
+    padding-top: var(--spacing-5xl);
+    padding-bottom: var(--spacing-3xl);
+}
+
+/* ============================================
+   NAV LINKS SECTION
+   Gap: 24px between groups
+   Padding: 16px top, 40px bottom
+   ============================================ */
+
+.footer__nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--spacing-3xl);
+    width: 100%;
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-5xl);
+}
+
+/* ============================================
+   FOOTER GROUP
+   Flex: 1, min-width: 180px
+   Gap: 8px
+   ============================================ */
+
+.footer__group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 0 0;
+    min-width: 180px;
+    min-height: 1px;
+    gap: var(--spacing-md);
+}
+
+/* Group with extra sections (social + accessibility) */
+.footer__group--extra {
+    gap: var(--spacing-4xl);
+}
+
+/* ============================================
+   GROUP LABEL
+   Border bottom, padding bottom: 8px
+   Font: 16px Medium
+   ============================================ */
+
+.footer__group-label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--gray-300);
+    margin: 0;
+    font-family: var(--font-family-text, 'Saudi MOD', sans-serif);
+    font-size: var(--typo-size-text-md, 16px);
+    font-weight: var(--font-weight-medium, 500);
+    line-height: var(--line-heights-text-md, 24px);
+    color: var(--text-default);
+}
+
+/* ============================================
+   LINK GROUP & LINK LIST
+   ============================================ */
+
+.footer__link-group {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.footer__link-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 0 0;
+    min-height: 1px;
+    min-width: 1px;
+    gap: var(--spacing-md);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ============================================
+   FOOTER LINK
+   Font: 14px Regular
+   Color: neutral link (#37454D)
+   ============================================ */
+
+.footer__link {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: 0;
+    font-family: var(--font-family-text, 'Saudi MOD', sans-serif);
+    font-size: var(--typo-size-text-sm, 14px);
+    font-weight: var(--font-weight-regular, 400);
+    line-height: var(--line-heights-text-sm, 20px);
+    color: var(--gray-700);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.15s ease;
+}
+
+.footer__link:hover {
+    color: var(--sa-600);
+}
+
+/* Underlined variant for legal links */
+.footer__link--underline {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+}
+
+/* ============================================
+   SOCIAL MEDIA SECTION
+   ============================================ */
+
+.footer__social-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: var(--spacing-md);
+}
+
+.footer__social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    width: 100%;
+}
+
+/* Social/Accessibility icon buttons use the reusable
+   btn btn-secondary-outline btn-medium btn-icon-only classes.
+   Dark variant adds btn-on-color. No custom styles needed. */
+
+/* ============================================
+   LEGAL SECTION
+   Gap: 24px
+   Padding: 16px vertical
+   ============================================ */
+
+.footer__legal {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3xl);
+    width: 100%;
+    padding: var(--spacing-xl) 0;
+}
+
+[dir="rtl"] .footer__legal {
+    flex-direction: row-reverse;
+}
+
+/* Links & Legal Info Container */
+.footer__legal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 0 0;
+    min-height: 1px;
+    min-width: 1px;
+    gap: var(--spacing-5xl);
+}
+
+[dir="rtl"] .footer__legal-content {
+    gap: var(--spacing-3xl);
+}
+
+/* Legal Links Row */
+.footer__legal-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--spacing-xl);
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Legal Info Section */
+.footer__legal-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    width: 100%;
+}
+
+/* Legal Caption */
+.footer__legal-caption {
+    font-family: var(--font-family-text, 'Saudi MOD', sans-serif);
+    font-size: var(--typo-size-text-sm, 14px);
+    font-weight: var(--font-weight-semibold, 600);
+    line-height: var(--line-heights-text-sm, 20px);
+    color: var(--text-default);
+    margin: 0;
+}
+
+/* Extra Link List (Terms, Privacy) */
+.footer__extra-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--spacing-xl);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ============================================
+   LOGOS SECTION
+   Gap: 16px
+   Opacity: 70%
+   ============================================ */
+
+.footer__logos {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+    opacity: 0.7;
+    flex-shrink: 0;
+}
+
+/* Logo Placeholder */
+.footer__logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: 5px var(--spacing-xs);
+    background-color: var(--alpha-white);
+}
+
+[dir="rtl"] .footer__logo {
+    flex-direction: row-reverse;
+}
+
+.footer__logo-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.footer__logo-text {
+    font-family: var(--font-family-text, 'Saudi MOD', sans-serif);
+    font-size: var(--typo-size-text-xs, 12px);
+    font-weight: var(--font-weight-medium, 500);
+    line-height: var(--line-heights-text-xs, 18px);
+    color: var(--text-secondary-paragraph, var(--gray-500));
+    white-space: nowrap;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE (< 600px)
+   Figma: 2-column grid for nav groups,
+   side-by-side social/accessibility,
+   centered legal, space-between logos
+   ============================================ */
+
+@media (max-width: 599px) {
+    .footer__content {
+        padding-top: var(--spacing-3xl);
+    }
+
+    /* 2-column grid for nav link groups */
+    .footer__nav-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-3xl);
+        padding-bottom: var(--spacing-3xl);
+    }
+
+    .footer__group {
+        min-width: 0;
+        flex: none;
+    }
+
+    /* Social/Accessibility group spans full width, side-by-side sections */
+    .footer__group--extra {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-3xl);
+    }
+
+    /* Legal section stacks vertically */
+    .footer__legal {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-3xl);
+    }
+
+    [dir="rtl"] .footer__legal {
+        flex-direction: column;
+    }
+
+    .footer__legal-content {
+        align-items: center;
+        gap: var(--spacing-3xl);
+    }
+
+    [dir="rtl"] .footer__legal-content {
+        align-items: center;
+    }
+
+    .footer__legal-links {
+        justify-content: center;
+    }
+
+    [dir="rtl"] .footer__legal-links {
+        justify-content: center;
+    }
+
+    .footer__legal-info {
+        align-items: center;
+        text-align: center;
+    }
+
+    [dir="rtl"] .footer__legal-info {
+        align-items: center;
+    }
+
+    .footer__extra-links {
+        justify-content: center;
+    }
+
+    [dir="rtl"] .footer__extra-links {
+        justify-content: center;
+    }
+
+    /* Logos at opposite ends */
+    .footer__logos {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    [dir="rtl"] .footer__logos {
+        justify-content: space-between;
+    }
+}
+
+/* ============================================
+   FORCED MOBILE PREVIEW
+   Applies mobile layout regardless of viewport
+   ============================================ */
+
+.footer--mobile-preview .footer__content {
+    padding-top: var(--spacing-3xl);
+}
+
+.footer--mobile-preview .footer__nav-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+    padding-bottom: var(--spacing-3xl);
+}
+
+.footer--mobile-preview .footer__group {
+    min-width: 0;
+    flex: none;
+}
+
+.footer--mobile-preview .footer__group--extra {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+}
+
+.footer--mobile-preview .footer__legal {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-3xl);
+}
+
+.footer--mobile-preview .footer__legal-content {
+    align-items: center;
+    gap: var(--spacing-3xl);
+}
+
+.footer--mobile-preview .footer__legal-links {
+    justify-content: center;
+}
+
+.footer--mobile-preview .footer__legal-info {
+    align-items: center;
+    text-align: center;
+}
+
+.footer--mobile-preview .footer__extra-links {
+    justify-content: center;
+}
+
+.footer--mobile-preview .footer__logos {
+    width: 100%;
+    justify-content: space-between;
+}
+
+
+/* Angular host (not in source) */
+mod-footer {
+    display: block;
+}
+
+/* Hide the link-group row when it has no groups, icon rows or projected content. */
+.footer__nav-links:empty,
+.footer__logos:empty {
+    display: none;
+}

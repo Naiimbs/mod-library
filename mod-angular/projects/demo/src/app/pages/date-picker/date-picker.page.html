@@ -1,0 +1,385 @@
+<div class="content-header">
+  <h1 class="content-title">Date Picker</h1>
+  <p class="content-description">
+    A Date Picker enables users to select dates via a pop-up calendar dropdown. It is triggered by clicking a calendar
+    icon or input field and is used in forms for scheduling events, booking appointments, or entering birthdates.
+  </p>
+</div>
+
+<!-- Field(s) + always-visible calendar of the live demo -->
+<ng-template #demoBody>
+  <div style="max-width: 312px;" [class.date-picker--attached]="inputField() && !range()">
+    @if (inputField()) {
+      @if (range()) {
+        <div class="date-picker__dual-fields">
+          <mod-date-field
+            [label]="t().startLabel"
+            [value]="startText()"
+            [placeholder]="t().placeholder"
+            [disabled]="state() === 'disabled'"
+            [error]="state() === 'error' ? t().errorMsg : ''"
+          />
+          <mod-date-field
+            [label]="t().endLabel"
+            [value]="endText()"
+            [placeholder]="t().placeholder"
+            [disabled]="state() === 'disabled'"
+            [invalid]="state() === 'error'"
+          />
+        </div>
+      } @else {
+        <mod-date-field
+          [label]="t().label"
+          [value]="singleText()"
+          [placeholder]="t().placeholder"
+          [disabled]="state() === 'disabled'"
+          [error]="state() === 'error' ? t().errorMsg : ''"
+        />
+      }
+    }
+    @if (state() !== 'disabled') {
+      <mod-calendar
+        style="margin-top: var(--spacing-xs);"
+        footerAction="apply"
+        [mode]="range() ? 'range' : 'single'"
+        [today]="today"
+        [showFooter]="submitButton()"
+        [monthNames]="t().months"
+        [weekdayLabels]="t().weekdays"
+        [previousMonthLabel]="t().previous"
+        [nextMonthLabel]="t().next"
+        [yearLabel]="t().year"
+        [clearLabel]="t().clear"
+        [applyLabel]="t().apply"
+        [value]="date()"
+        (valueChange)="onDate($event)"
+        [range]="dateRange()"
+        (rangeChange)="onRange($event)"
+      />
+    }
+  </div>
+</ng-template>
+
+<demo-live
+  heading="Date Picker"
+  description="A Date Picker enables users to select dates via a pop-up calendar dropdown for scheduling, booking, or entering dates."
+  align="flex-start"
+  [rtl]="rtl()"
+>
+  <div style="min-height: 356px;">
+    @if (quickOptions()) {
+      <div class="date-picker--with-presets">
+        <div class="date-picker__presets" role="group" [attr.aria-label]="t().quickOption">
+          <span class="date-picker__presets-title">{{ t().quickOption }}</span>
+          @for (preset of t().presets; track preset.id) {
+            <button
+              class="date-picker__preset-option"
+              type="button"
+              [class.date-picker__preset-option--active]="preset.id === activePreset()"
+              [attr.aria-pressed]="preset.id === activePreset()"
+              [disabled]="state() === 'disabled'"
+              (click)="applyPreset(preset.id)"
+            >
+              {{ preset.label }}
+            </button>
+          }
+        </div>
+        <div>
+          <ng-container [ngTemplateOutlet]="demoBody" />
+        </div>
+      </div>
+    } @else {
+      <ng-container [ngTemplateOutlet]="demoBody" />
+    }
+  </div>
+
+  <demo-switch label="RTL" [(checked)]="rtl" />
+  <demo-select label="State" [options]="states" [value]="state()" (valueChange)="setState($event)" />
+  <demo-switch label="Input Field" [(checked)]="inputField" />
+  <demo-switch label="Range" [(checked)]="range" />
+  <demo-switch label="Quick Options" [(checked)]="quickOptions" />
+  <demo-switch label="Submit Button" [(checked)]="submitButton" />
+</demo-live>
+
+<demo-props
+  description="Inputs and models of mod-date-picker: a date field that opens a calendar popup. Form control (ControlValueAccessor) with Date | null as its value."
+  [props]="pickerProps"
+/>
+<demo-props
+  heading="Props / Configuration — mod-date-range-picker"
+  description="Start and end date fields sharing one calendar popup, with optional quick-option presets. Form control with { start, end } as its value. Inputs not listed here are the same as mod-date-picker."
+  [props]="rangeProps"
+/>
+<demo-props
+  heading="Props / Configuration — mod-calendar"
+  description="The calendar panel on its own: always visible, single or range selection. The pickers use it as their popup."
+  [props]="calendarProps"
+/>
+<demo-props
+  heading="Props / Configuration — mod-date-field"
+  description="The presentational read-only field with the calendar icon. Compose it with mod-calendar for attached or custom layouts."
+  [props]="fieldProps"
+/>
+
+<demo-showcase
+  heading="Sub-component: Date Cell"
+  description="The atomic building block of the calendar grid. Each cell represents a single day with various interaction states including default, hover, today, selected, disabled, and outside month."
+>
+  <div class="date-cell-showcase">
+    <div class="date-cell-showcase__item">
+      <div class="date-cell">15</div>
+      <span class="date-cell-showcase__label">Default</span>
+    </div>
+    <div class="date-cell-showcase__item">
+      <div class="date-cell" style="background-color: var(--color-gray-100); color: var(--color-gray-900);">16</div>
+      <span class="date-cell-showcase__label">Hover</span>
+    </div>
+    <div class="date-cell-showcase__item">
+      <div class="date-cell date-cell--today">3</div>
+      <span class="date-cell-showcase__label">Today</span>
+    </div>
+    <div class="date-cell-showcase__item">
+      <div class="date-cell date-cell--selected">19</div>
+      <span class="date-cell-showcase__label">Selected</span>
+    </div>
+    <div class="date-cell-showcase__item">
+      <div class="date-cell date-cell--disabled">5</div>
+      <span class="date-cell-showcase__label">Disabled</span>
+    </div>
+    <div class="date-cell-showcase__item">
+      <div class="date-cell date-cell--outside">29</div>
+      <span class="date-cell-showcase__label">Outside</span>
+    </div>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Sub-component: Date Cell - Range Selection"
+  description="Range states used when selecting a date range. The start and end dates have full green fill while intermediate days have a light green background band."
+>
+  <div style="display: flex; align-items: center; gap: 0; margin-bottom: var(--spacing-lg);">
+    <div class="date-cell date-cell--range-start">19</div>
+    <div class="date-cell date-cell--range-mid">20</div>
+    <div class="date-cell date-cell--range-mid">21</div>
+    <div class="date-cell date-cell--range-mid">22</div>
+    <div class="date-cell date-cell--range-mid">23</div>
+    <div class="date-cell date-cell--range-end">24</div>
+  </div>
+  <div class="date-cell-showcase">
+    <div class="date-cell-showcase__item">
+      <div class="date-cell date-cell--range-start">19</div>
+      <span class="date-cell-showcase__label">Range Start</span>
+    </div>
+    <div class="date-cell-showcase__item">
+      <div class="date-cell date-cell--range-mid">21</div>
+      <span class="date-cell-showcase__label">Range Mid</span>
+    </div>
+    <div class="date-cell-showcase__item">
+      <div class="date-cell date-cell--range-end">24</div>
+      <span class="date-cell-showcase__label">Range End</span>
+    </div>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Sub-component: Date Field"
+  description="The input field that triggers the calendar panel. Includes a trailing calendar icon. Shown in empty, filled, and required states."
+>
+  <div style="display: flex; gap: var(--spacing-4xl); flex-wrap: wrap;">
+    <mod-date-field style="max-width: 280px;" label="Label" />
+    <mod-date-field style="max-width: 280px;" label="Label" value="January 19, 2024" />
+    <mod-date-field style="max-width: 280px;" label="Label" required />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Sub-component: Date Field - States"
+  description="Error and disabled field states. Error shows a red border with a validation message below. Disabled grays out the entire field and prevents interaction."
+>
+  <div style="display: flex; gap: var(--spacing-4xl); flex-wrap: wrap;">
+    <mod-date-field
+      style="max-width: 280px;"
+      label="Label"
+      required
+      value="Invalid date"
+      error="Please enter a valid date."
+    />
+    <mod-date-field style="max-width: 280px;" label="Disabled" disabled />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Sub-component: Year Dropdown"
+  description="A compact dropdown embedded in the calendar header for quick year selection with scroll. The selected year shows a checkmark indicator."
+>
+  <div style="display: flex; gap: var(--spacing-6xl); flex-wrap: wrap; align-items: flex-start;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: var(--spacing-md);">
+      <div class="year-dropdown">
+        <button class="year-dropdown__trigger" type="button">
+          2024
+          <svg
+            class="year-dropdown__arrow"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M6 9L12 15L18 9" />
+          </svg>
+        </button>
+      </div>
+      <span class="date-cell-showcase__label">Closed</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: var(--spacing-md);">
+      <div class="year-dropdown is-open" style="z-index: 5;">
+        <button class="year-dropdown__trigger" type="button" aria-expanded="true">
+          2024
+          <svg
+            class="year-dropdown__arrow"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M6 9L12 15L18 9" />
+          </svg>
+        </button>
+        <div
+          class="year-dropdown__menu"
+          style="display: block; position: static; transform: none; margin-top: var(--spacing-xs);"
+        >
+          @for (year of years; track year) {
+            <div class="year-dropdown__option" [class.year-dropdown__option--selected]="year === 2024">{{ year }}</div>
+          }
+        </div>
+      </div>
+      <span class="date-cell-showcase__label" style="margin-top: var(--spacing-md);">Open</span>
+    </div>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Use Case: Calendar with Year Dropdown Open"
+  description="The year dropdown overlays the calendar grid when opened, allowing users to quickly jump to a different year without leaving the calendar view."
+>
+  <mod-calendar [today]="today" [yearSpan]="3" [(yearOpen)]="yearOpen" [(value)]="yearDemoDate" />
+</demo-showcase>
+
+<demo-showcase
+  heading="Use Case: Standard Calendar"
+  description="Standard calendar panel with month/year on the left and navigation arrows on the right. Day 3 shows as today (green border), day 19 as selected (green fill). Click any day to select it."
+>
+  <mod-calendar [today]="today" [(value)]="standardDate" />
+</demo-showcase>
+
+<demo-showcase
+  heading="Use Case: Quick Option Presets"
+  description="A sidebar of quick-select presets (Today, This week, Last 7 days, etc.) paired with the calendar for flexible date selection. Clicking a preset highlights the corresponding range on the calendar."
+>
+  <div class="date-picker--with-presets">
+    <div class="date-picker__presets" role="group" aria-label="Quick Option">
+      <span class="date-picker__presets-title">Quick Option</span>
+      @for (preset of allPresets; track preset.id) {
+        <button
+          class="date-picker__preset-option"
+          type="button"
+          [class.date-picker__preset-option--active]="preset.id === presetsActive()"
+          [attr.aria-pressed]="preset.id === presetsActive()"
+          (click)="pickPreset(preset)"
+        >
+          {{ preset.label }}
+        </button>
+      }
+    </div>
+    <mod-calendar
+      mode="range"
+      [today]="today"
+      [range]="presetsRange()"
+      (rangeChange)="presetsRange.set($event); presetsActive.set(null)"
+    />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Use Case: Single Date Picker with Attached Calendar"
+  description="Input field with the calendar panel visually connected below it. Clicking the field opens the calendar. The attached layout eliminates the gap between field and panel."
+>
+  <div class="date-picker--attached">
+    <mod-date-field label="Label" [value]="format(attachedDate())" />
+    <mod-calendar [today]="today" [(value)]="attachedDate" />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Use Case: Date Range Picker (with selection)"
+  description="Two date fields for start and end date, with the calendar showing a range selection (Jan 19 - Jan 28). Range start and end have green fill, days in between have light green background."
+>
+  <div style="max-width: 312px;">
+    <div class="date-picker__dual-fields">
+      <mod-date-field label="Label" [value]="format(selectedRange().start)" />
+      <mod-date-field label="Label" [value]="format(selectedRange().end)" />
+    </div>
+    <mod-calendar style="margin-top: var(--spacing-xs);" mode="range" [today]="today" [(range)]="selectedRange" />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Use Case: Date Range Picker (empty)"
+  description="Two side-by-side date fields with the calendar below, before any range has been selected. This is the initial state of the range picker."
+>
+  <div style="max-width: 312px;">
+    <div class="date-picker__dual-fields">
+      <mod-date-field label="Label" [value]="format(emptyRange().start)" />
+      <mod-date-field label="Label" [value]="format(emptyRange().end)" />
+    </div>
+    <mod-calendar style="margin-top: var(--spacing-xs);" mode="range" [today]="today" [(range)]="emptyRange" />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Interactive Date Picker - Full Use Case"
+  description="A fully interactive Date Picker with all sub-components connected: click the field to open the calendar, navigate months, select a year from the dropdown, and pick a date. The selected date populates the input field."
+  align="flex-start"
+>
+  <div style="display: flex; gap: var(--spacing-6xl); flex-wrap: wrap; align-items: flex-start; min-height: 440px;">
+    <mod-date-picker
+      style="max-width: 312px;"
+      label="Appointment Date"
+      required
+      helper="Click the field to select a date."
+      [(value)]="appointment"
+    />
+    <mod-date-picker style="max-width: 312px;" label="End Date" [(value)]="endDate" />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="RTL Support"
+  description="Right-to-left layout support for Arabic and other RTL languages. The date field, calendar navigation, and weekday headers are all automatically mirrored."
+  subtle
+>
+  <div dir="rtl" style="display: flex; gap: var(--spacing-4xl); flex-wrap: wrap;">
+    <mod-date-field
+      style="max-width: 280px;"
+      label="تاريخ الميلاد"
+      required
+      value="18/02/2026"
+      helper="اختر تاريخ ميلادك."
+    />
+    <mod-calendar
+      previousMonthLabel="الشهر السابق"
+      nextMonthLabel="الشهر التالي"
+      yearLabel="السنة"
+      [today]="today"
+      [monthNames]="monthsAr"
+      [weekdayLabels]="weekdaysAr"
+      [(value)]="rtlDate"
+    />
+  </div>
+</demo-showcase>

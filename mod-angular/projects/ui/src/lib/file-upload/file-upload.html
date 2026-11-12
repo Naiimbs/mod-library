@@ -1,0 +1,105 @@
+<div
+  class="file-upload"
+  [class.file-upload--single]="!multiple()"
+  [class.file-upload--multiple]="multiple()"
+  [class.file-upload--drag-over]="dragOver()"
+  [class.file-upload--disabled]="isDisabled()"
+>
+  @if (!hideDropArea()) {
+    <input
+      #fileInput
+      type="file"
+      class="file-upload__input"
+      tabindex="-1"
+      [id]="inputId"
+      [multiple]="multiple()"
+      [disabled]="isDisabled()"
+      [attr.accept]="accept() || null"
+      (change)="onInputChange()"
+    />
+    <label
+      class="file-upload__drop-area"
+      [attr.for]="inputId"
+      (dragenter)="onDragOver($event)"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onDrop($event)"
+    >
+      <span class="file-upload__icon">
+        <span class="icon dga-icon-file-upload" aria-hidden="true"></span>
+      </span>
+      <div class="file-upload__content">
+        <p class="file-upload__instructions">{{ instructionsText() }}</p>
+        @if (formats()) {
+          <p class="file-upload__formats">{{ formats() }}</p>
+        }
+      </div>
+      <button
+        mod-button
+        type="button"
+        variant="secondary-solid"
+        size="medium"
+        [disabled]="isDisabled()"
+        (click)="browse($event)"
+      >
+        {{ browseText() }}
+      </button>
+    </label>
+  }
+
+  <div class="file-upload__files-list" role="list" [attr.aria-label]="filesListLabel()">
+    @for (item of items(); track item.id) {
+      @if (errorOf(item); as error) {
+        <div class="file-upload__file-item--error" role="listitem">
+          <div class="file-upload__file-item">
+            <span class="file-upload__file-status file-upload__file-status--error">
+              <span class="icon dga-icon-checkmark-circle-04 solid rounded" aria-hidden="true"></span>
+            </span>
+            <span class="file-upload__file-name">{{ item.file.name }}</span>
+            <button
+              mod-button
+              type="button"
+              variant="transparent"
+              size="small"
+              iconOnly
+              [attr.aria-label]="removeLabel() + ' ' + item.file.name"
+              (click)="remove(item)"
+            >
+              <span class="icon dga-icon-multiplication-sign" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="file-upload__file-item-msg" role="alert">{{ error }}</div>
+        </div>
+      } @else {
+        <div class="file-upload__file-item" role="listitem">
+          @if (isUploading(item.file)) {
+            <span class="file-upload__file-status">
+              <span
+                class="file-upload__spinner"
+                role="status"
+                [attr.aria-label]="uploadingLabel()"
+              ></span>
+            </span>
+          } @else {
+            <span class="file-upload__file-status file-upload__file-status--complete">
+              <span class="icon dga-icon-checkmark-circle-02 solid rounded" aria-hidden="true"></span>
+            </span>
+          }
+          <span class="file-upload__file-name">{{ item.file.name }}</span>
+          <button
+            mod-button
+            type="button"
+            variant="transparent"
+            size="small"
+            iconOnly
+            [disabled]="isDisabled()"
+            [attr.aria-label]="removeLabel() + ' ' + item.file.name"
+            (click)="remove(item)"
+          >
+            <span class="icon dga-icon-multiplication-sign" aria-hidden="true"></span>
+          </button>
+        </div>
+      }
+    }
+  </div>
+</div>

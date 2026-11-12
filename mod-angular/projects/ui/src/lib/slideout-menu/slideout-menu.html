@@ -1,0 +1,97 @@
+@if (!inline()) {
+  <div class="slideout-backdrop" [class.is-open]="open()" (click)="onBackdropClick()"></div>
+}
+<div
+  #panel
+  [class]="panelClasses()"
+  tabindex="-1"
+  [attr.role]="inline() ? null : 'dialog'"
+  [attr.aria-modal]="inline() ? null : 'true'"
+  [attr.aria-labelledby]="heading() ? titleId : null"
+  [attr.aria-label]="heading() ? null : ariaLabel() || null"
+  [attr.aria-hidden]="hidden() ? 'true' : null"
+  [attr.inert]="hidden() ? '' : null"
+  (keydown)="onPanelKeydown($event)"
+>
+  @if (hasHeader()) {
+    <div class="slideout__header">
+      @if (icon()) {
+        <span class="slideout__icon"
+          ><span class="dga-icon-{{ icon() }}" aria-hidden="true"></span
+        ></span>
+      }
+      <div class="slideout__heading">
+        @if (heading()) {
+          <h3 class="slideout__title" [id]="titleId">{{ heading() }}</h3>
+        }
+        @if (description()) {
+          <p class="slideout__description">{{ description() }}</p>
+        }
+      </div>
+      @if (showClose()) {
+        <button
+          type="button"
+          class="slideout__close"
+          [attr.aria-label]="closeLabel()"
+          (click)="close()"
+        >
+          <span class="dga-icon-cancel-01" aria-hidden="true"></span>
+        </button>
+      }
+    </div>
+  }
+
+  <div class="slideout__body">
+    @if (groups().length) {
+      <div class="menu" role="menu">
+        @for (group of groups(); track $index) {
+          <div class="menu-group">
+            @if (group.label) {
+              <p class="menu-group__label">{{ group.label }}</p>
+            }
+            @for (item of group.items; track item.id ?? item.label) {
+              <div
+                class="menu-item"
+                role="menuitem"
+                [class.menu-item--selected]="item.selected"
+                [class.menu-item--disabled]="item.disabled"
+                [attr.tabindex]="item.disabled ? -1 : 0"
+                [attr.aria-disabled]="item.disabled ? 'true' : null"
+                [attr.aria-current]="item.selected ? 'true' : null"
+                (click)="selectItem(item)"
+                (keydown.enter)="selectItem(item)"
+                (keydown.space)="$event.preventDefault(); selectItem(item)"
+              >
+                @if (item.icon) {
+                  <span class="menu-item__icon"
+                    ><span class="dga-icon-{{ item.icon }}" aria-hidden="true"></span
+                  ></span>
+                }
+                <span class="menu-item__label">{{ item.label }}</span>
+                @if (item.selected) {
+                  <span class="menu-item__trail-icon"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M4 10l4 4 8-8" />
+                    </svg>
+                  </span>
+                }
+              </div>
+            }
+          </div>
+        }
+      </div>
+    }
+    <ng-content />
+  </div>
+
+  <ng-content select="[modSlideoutFooter]" />
+</div>

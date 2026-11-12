@@ -1,0 +1,439 @@
+/* ============================================
+   COMPONENT: NAV HEADER (component-page additions)
+   DGA Design System - Navigation Header
+
+   NOTE: The base .navigation-header / .header-menu-item / .header-action
+   styles live in components/navigation.css (shared with the live app
+   shell). This file ONLY adds the pieces the shared file is missing —
+   the sub-menu dropdown panel, disabled states, the icon-only action,
+   and a relative-positioned preview wrapper — so the shell is untouched.
+
+   Figma frames: 30150:148751 (Nav Header), 148312 (Menu Item),
+   148445 (Action), 148860 (Menu), 148877 (Sub-menu),
+   148183 (Sub-menu Item), 148742 (Item Icon)
+   ============================================ */
+
+/* A menu item that owns a sub-menu becomes the positioning anchor. */
+.header-menu-item {
+    position: relative;
+}
+
+/* ============================================
+   Menu item — disabled state (Figma 30150:148312)
+   ============================================ */
+/* Disabled uses Figma tokens (gray-400 text, no pill) — see navigation.css */
+
+/* ============================================
+   Header Action — icon-only + disabled (Figma 30150:148445)
+   ============================================ */
+/* Figma 30150:148445 Icon only=True: a 72x72 square (full header height) */
+.header-action--icon-only {
+    width: 72px;
+    min-width: 72px;
+    height: 72px;
+    padding: var(--spacing-md);
+    justify-content: center;
+}
+
+.header-action--icon-only span:not(.header-action__icon) {
+    display: none;
+}
+
+
+
+/* ============================================
+   Header Sub-menu (dropdown panel)  Figma 30150:148877
+   Opens beneath a menu item; holds one or more groups of sub-menu items.
+   ============================================ */
+
+.header-sub-menu {
+    position: absolute;
+    top: calc(100% - 8px);
+    inset-inline-start: 0;
+    z-index: var(--z-dropdown);
+    display: none;
+    min-width: 280px;
+    padding: var(--spacing-xl);
+    gap: var(--spacing-4xl);
+    background-color: var(--alpha-white);             /* background-menu */
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    box-shadow: 0 12px 24px -6px rgba(16, 24, 40, 0.12), 0 4px 8px -4px rgba(16, 24, 40, 0.08);
+    box-sizing: border-box;
+}
+
+.header-sub-menu.is-open {
+    display: flex;
+}
+
+/* Full-width mega-menu spanning the header */
+.header-sub-menu--full {
+    inset-inline: 0;
+    min-width: 0;
+}
+
+/* Brand-background variant (green panel, white text) */
+.header-sub-menu--brand {
+    /* NDS .header__sub-menu--bg-brand */
+    background-color: var(--background-sa-flag, #074C30);
+    border-color: var(--background-sa-flag, #074C30);
+}
+
+.header-sub-menu--brand .header-sub-menu-group__label,
+.header-sub-menu--brand .header-sub-menu-item__label {
+    color: var(--text-oncolor-primary, #FFFFFF);
+}
+
+.header-sub-menu--brand .header-sub-menu-item__helper {
+    color: var(--text-oncolor-primary, #FFFFFF);
+}
+
+.header-sub-menu--brand .header-sub-menu-item:hover {
+    /* NDS on-color: --button-background-transparent-hovered */
+    background-color: var(--alpha-white-20, #FFFFFF33);
+}
+
+.header-sub-menu--brand .header-sub-menu-item:active {
+    background-color: var(--alpha-white-40, #FFFFFF66);
+}
+
+.header-sub-menu--brand .header-sub-menu-item__icon--bg {
+    color: var(--icon-oncolor, #FFFFFF);
+    background-color: var(--alpha-white-10, #FFFFFF1A);
+}
+
+.header-sub-menu--brand .header-sub-menu-item__icon {
+    color: var(--icon-oncolor, #FFFFFF);
+}
+
+/* Column / group inside the panel */
+.header-sub-menu-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    min-width: 220px;
+}
+
+.header-sub-menu-group__label {
+    /* Figma 30150:148877: Text lg/Bold, text-primary */
+    font-family: var(--font-family-primary);
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 700;
+    color: var(--sa-600);
+    padding: 0 var(--spacing-xl);
+    margin: 0 0 12px;
+}
+
+/* ============================================
+   Header Sub-menu Item  Figma 30150:148183
+   icon + (label + optional helper text)
+   ============================================ */
+
+.header-sub-menu-item {
+    /* NDS .sub-menu__link */
+    display: flex;
+    align-items: flex-start;
+    /* Figma: icon aligns with the label line */
+    gap: var(--spacing-xl);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--radius-md);
+    min-width: 320px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.15s ease;
+}
+
+.header-sub-menu-item:hover {
+    background-color: var(--gray-100);
+}
+
+.header-sub-menu-item:hover .header-sub-menu-item__label,
+.header-sub-menu-item:active .header-sub-menu-item__label,
+.header-sub-menu-item:focus-visible .header-sub-menu-item__label {
+    text-decoration: underline;
+}
+
+.header-sub-menu-item:focus-visible {
+    outline: 2px solid var(--border-black, #161616);
+    outline-offset: -2px;
+}
+
+.header-sub-menu--brand .header-sub-menu-item:focus-visible {
+    outline-color: var(--icon-oncolor, #FFFFFF);
+}
+
+.header-sub-menu-item:active {
+    background-color: var(--gray-200);
+    outline: none;
+}
+
+/* Item icon (Figma 30150:148742) — leading glyph */
+.header-sub-menu-item__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--icon-default, #161616);
+    /* NDS: plain icons are default black */
+    font-size: 20px;
+    line-height: 1;
+}
+
+.header-sub-menu-item__icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* NDS .sub-menu__link-icon--bg: tinted container (green on sa-50) */
+.header-sub-menu-item__icon--bg {
+    width: auto;
+    height: auto;
+    margin-top: 2px;
+    color: var(--sa-600);
+    background-color: var(--sa-50);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+}
+
+.header-sub-menu-item__body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.header-sub-menu-item__label {
+    font-family: var(--font-family-primary);
+    font-size: 16px;
+    line-height: 24px;
+    /* Figma: Text md/Medium */
+    font-weight: 500;
+    color: var(--gray-800);
+    /* NDS .sub-menu__link-label: text-display */
+}
+
+.header-sub-menu-item__helper {
+    font-family: var(--font-family-primary);
+    font-size: 14px;
+    line-height: 20px;
+    /* Figma: Text sm/Regular */
+    font-weight: 400;
+    color: var(--gray-700);
+    /* NDS .sub-menu__link-helper: text-primary-paragraph */
+}
+
+/* ============================================
+   Mobile / hamburger trigger (Figma <600 breakpoint)
+   ============================================ */
+
+.header-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    background: transparent;
+    border-radius: var(--radius-sm);
+    color: var(--text-default);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.header-menu-toggle:hover {
+    background-color: var(--gray-100);
+}
+
+/* RTL: dropdown anchors to the trailing edge naturally via
+   inset-inline-start. Chevron rotation on open handled in JS/below. */
+.header-menu-item[aria-expanded="true"] .header-menu-item__arrow {
+    transform: rotate(180deg);
+}
+
+/* ============================================
+   Angular host (not in source)
+   ============================================ */
+mod-nav-header {
+    display: block;
+    position: relative;
+}
+
+/* The header anchors the mobile panel (source: .layout > .navigation-header
+   is positioned by the docs shell). */
+mod-nav-header .navigation-header {
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Source applies this border from the docs shell (base.css,
+   .layout > .navigation-header). Exposed here as an opt-in modifier. */
+.navigation-header--divider {
+    border-bottom: 1px solid var(--gray-300);
+}
+
+/* Font icon inside an action (source uses inline SVG). */
+mod-icon.header-action__icon {
+    font-size: 20px;
+}
+
+/* Centered container when fullWidth is off (source demo: inline max-width). */
+.navigation-header--contained {
+    max-width: 1280px;
+    margin-inline: auto;
+}
+
+/* Sub-menu rendered in flow under the header (expandedSubmenuId). */
+.header-sub-menu--static {
+    position: static;
+}
+
+/* Forced layouts (layout input): the same rules as the responsive media
+   queries in navigation.css, without depending on the viewport. */
+.navigation-header--tablet {
+    padding: 0 var(--spacing-xl);
+    position: relative;
+}
+
+.navigation-header--tablet .navigation-menu {
+    display: none;
+}
+
+.navigation-header--tablet .navigation-header__left {
+    flex: 1;
+    justify-content: center;
+}
+
+.navigation-header--tablet .header-menu-btn {
+    display: inline-flex;
+}
+
+.navigation-header--tablet .navigation-header__right .header-action span {
+    display: none;
+}
+
+.navigation-header--tablet .navigation-header__right .header-action {
+    width: 56px;
+    min-width: 56px;
+    justify-content: center;
+}
+
+.navigation-header--tablet .navigation-header__right .header-action--icon-only {
+    width: 72px;
+    min-width: 72px;
+}
+
+.navigation-header--mobile .navigation-header__right .header-action--outline {
+    display: none;
+}
+
+.navigation-header--mobile .navigation-header__right {
+    order: -1;
+}
+
+.navigation-header--mobile .header-menu-btn {
+    order: 10;
+}
+
+/* ============================================
+   DEMO STATE CLASSES (live demo State controls)
+   Mirror the Figma states so the demo can pin them.
+   ============================================ */
+.header-menu-item.demo-hovered:not(.header-menu-item--selected) {
+    background: var(--button-background-neutral-hovered, #F1F4F5);
+}
+
+.header-menu-item.demo-hovered:not(.header-menu-item--selected)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    height: 6px;
+    border-radius: var(--radius-full);
+    background-color: var(--background-neutral-400, #8E9CA3);
+}
+
+.header-menu-item.demo-pressed:not(.header-menu-item--selected) {
+    background: var(--button-background-neutral-pressed, #E3E8EB);
+}
+
+.header-menu-item.demo-pressed:not(.header-menu-item--selected)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    height: 6px;
+    border-radius: var(--radius-full);
+    background-color: var(--gray-800);
+}
+
+.header-menu-item.demo-focused:not(.header-menu-item--selected) {
+    outline: 2px solid var(--border-black, #161616);
+    outline-offset: -2px;
+}
+
+.header-menu-item--selected.demo-hovered {
+    background: var(--button-background-primary-hovered, var(--color-primary-hover));
+}
+
+.header-menu-item--selected.demo-pressed {
+    background: var(--button-background-primary-pressed, var(--color-primary-active));
+}
+
+.header-menu-item--selected.demo-focused {
+    outline: 2px solid var(--border-white, #FFFFFF);
+    outline-offset: -3px;
+}
+
+.header-action.demo-hovered:not(.header-action--primary) {
+    background: var(--button-background-neutral-hovered, #F1F4F5);
+}
+
+.header-action.demo-hovered:not(.header-action--primary)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    height: 6px;
+    border-radius: var(--radius-full);
+    background-color: var(--background-neutral-400, #8E9CA3);
+}
+
+.header-action.demo-pressed:not(.header-action--primary) {
+    background: var(--button-background-neutral-pressed, #E3E8EB);
+}
+
+.header-action.demo-pressed:not(.header-action--primary)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    height: 6px;
+    border-radius: var(--radius-full);
+    background-color: var(--gray-800);
+}
+
+.header-action.demo-focused:not(.header-action--primary) {
+    outline: 2px solid var(--border-black, #161616);
+    outline-offset: -2px;
+}
+
+.header-action--primary.demo-hovered {
+    background: var(--button-background-primary-hovered, var(--color-primary-hover));
+}
+
+.header-action--primary.demo-pressed {
+    background: var(--button-background-primary-pressed, var(--color-primary-active));
+}
+
+.header-action--primary.demo-focused {
+    outline: 2px solid var(--border-white, #FFFFFF);
+    outline-offset: -3px;
+}

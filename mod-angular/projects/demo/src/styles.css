@@ -1,0 +1,11 @@
+/* Demo app global styles. The design system itself is loaded from the library
+   (see "styles" in angular.json); docs.css holds the original docs-site layout:
+   .layout, .sidebar, .content, .showcase-*, .live-demo*, .props-table. */
+@import url('./docs.css');
+
+/* Small caption showing a bound value under an example. */
+.demo-value {
+  font-family: ui-monospace, 'Cascadia Code', Consolas, monospace;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}

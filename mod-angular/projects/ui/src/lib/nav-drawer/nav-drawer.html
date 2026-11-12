@@ -1,0 +1,146 @@
+<nav [class]="drawerClasses()" [attr.aria-label]="ariaLabel()" (keydown)="onKeydown($event)">
+  @if (header()) {
+    <div [class]="headerClasses()">
+      <ng-content select="[modNavDrawerLogo]">
+        <div class="nav-drawer__header-logo-wrapper">
+          <svg
+            class="nav-drawer__header-logo"
+            width="32"
+            height="32"
+            viewBox="0 0 48 48"
+            fill="none"
+            aria-hidden="true"
+          >
+            <rect width="48" height="48" rx="4" fill="#F5F5F5" />
+            <path
+              d="M24 8C22.9 8 22 9.12 22 10.5V18L18 17.3C17.3 17.2 16.6 17.7 16.5 18.4C16.4 19.1 16.9 19.7 17.6 19.8L22 20.5V23L17 25.5C16.4 25.8 16.2 26.5 16.5 27.1C16.8 27.7 17.5 27.9 18.1 27.6L22 25.6V29L17 34C16.6 34.4 16.6 35 17 35.4C17.4 35.8 18 35.8 18.4 35.4L22 31.8V38C22 39.1 22.9 40 24 40C25.1 40 26 39.1 26 38V31.8L29.6 35.4C30 35.8 30.6 35.8 31 35.4C31.4 35 31.4 34.4 31 34L26 29V25.6L29.9 27.6C30.5 27.9 31.2 27.7 31.5 27.1C31.8 26.5 31.6 25.8 31 25.5L26 23V20.5L30.4 19.8C31.1 19.7 31.6 19.1 31.5 18.4C31.4 17.7 30.7 17.2 30 17.3L26 18V10.5C26 9.12 25.1 8 24 8Z"
+              fill="#8E9CA3"
+            />
+          </svg>
+          <span class="nav-drawer__header-text">{{ logoText() }}</span>
+        </div>
+      </ng-content>
+    </div>
+  }
+
+  <div class="nav-drawer__body">
+    <div class="nav-drawer__body-inner">
+      @for (item of items(); track itemKey(item, $index); let i = $index) {
+        @if (item.divider) {
+          <div class="nav-drawer-item nav-drawer-item--divider" role="separator">
+            <div class="nav-drawer-item__divider-line"></div>
+          </div>
+        } @else if (item.children) {
+          <div class="nav-drawer-item--group">
+            <button
+              type="button"
+              class="nav-drawer-item nav-drawer-item--parent"
+              [class.nav-drawer-item--expanded]="isExpanded(item, i)"
+              [class.nav-drawer-item--disabled]="item.disabled"
+              [attr.aria-expanded]="isExpanded(item, i)"
+              [disabled]="!!item.disabled"
+              (click)="toggleParent(item, i)"
+            >
+              @if (item.icon) {
+                <span
+                  class="nav-drawer-item__icon icon dga-icon-{{ item.icon }}"
+                  aria-hidden="true"
+                ></span>
+              }
+              <span class="nav-drawer-item__label">{{ item.label }}</span>
+              @if (item.badge) {
+                <span class="nav-drawer-item__badge">{{ item.badge }}</span>
+              }
+              <span
+                class="nav-drawer-item__chevron icon dga-icon-arrow-down-01"
+                aria-hidden="true"
+              ></span>
+            </button>
+            <div
+              class="nav-drawer-item__children"
+              [class.nav-drawer-item__children--open]="isExpanded(item, i)"
+              [attr.inert]="isExpanded(item, i) ? null : ''"
+            >
+              @for (child of item.children; track itemKey(child, $index); let j = $index) {
+                <a
+                  class="nav-drawer-item nav-drawer-item--level-2"
+                  [class.nav-drawer-item--selected]="isSelected(child, j)"
+                  [class.nav-drawer-item--disabled]="child.disabled"
+                  [attr.href]="child.href || '#'"
+                  [attr.target]="child.external && child.href ? '_blank' : null"
+                  [attr.rel]="child.external && child.href ? 'noopener noreferrer' : null"
+                  [attr.tabindex]="child.disabled ? -1 : null"
+                  [attr.aria-disabled]="child.disabled ? 'true' : null"
+                  [attr.aria-current]="isSelected(child, j) ? 'page' : null"
+                  (click)="selectItem(child, j, $event)"
+                >
+                  <span class="nav-drawer-item__label">{{ child.label }}</span>
+                  @if (child.badge) {
+                    <span class="nav-drawer-item__badge">{{ child.badge }}</span>
+                  }
+                  @if (child.external) {
+                    <span class="nav-drawer-item__external-icon" aria-hidden="true">
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                        <polyline points="15 3 21 3 21 9" />
+                        <line x1="10" y1="14" x2="21" y2="3" />
+                      </svg>
+                    </span>
+                  }
+                </a>
+              }
+            </div>
+          </div>
+        } @else {
+          <a
+            class="nav-drawer-item"
+            [class.nav-drawer-item--selected]="isSelected(item, i)"
+            [class.nav-drawer-item--disabled]="item.disabled"
+            [attr.href]="item.href || '#'"
+            [attr.target]="item.external && item.href ? '_blank' : null"
+            [attr.rel]="item.external && item.href ? 'noopener noreferrer' : null"
+            [attr.tabindex]="item.disabled ? -1 : null"
+            [attr.aria-disabled]="item.disabled ? 'true' : null"
+            [attr.aria-current]="isSelected(item, i) ? 'page' : null"
+            (click)="selectItem(item, i, $event)"
+          >
+            @if (item.icon) {
+              <span
+                class="nav-drawer-item__icon icon dga-icon-{{ item.icon }}"
+                aria-hidden="true"
+              ></span>
+            }
+            <span class="nav-drawer-item__label">{{ item.label }}</span>
+            @if (item.badge) {
+              <span class="nav-drawer-item__badge">{{ item.badge }}</span>
+            }
+            @if (item.external) {
+              <span class="nav-drawer-item__external-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </span>
+            }
+          </a>
+        }
+      }
+    </div>
+  </div>
+  <ng-content />
+</nav>

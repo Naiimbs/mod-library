@@ -1,0 +1,85 @@
+<div [class]="classes()">
+  <ng-template #toggleButton>
+    <button
+      type="button"
+      class="digital-stamp__toggle"
+      [attr.aria-expanded]="opened()"
+      [attr.aria-controls]="detailsId"
+      (click)="toggle()"
+    >
+      <span>{{ toggleLabel() }}</span>
+      <span class="digital-stamp__toggle-icon">
+        <span class="dga-icon-arrow-down-01" aria-hidden="true"></span>
+      </span>
+    </button>
+  </ng-template>
+
+  @if (mobile()) {
+    <!-- The mobile bar nests the flag + text in an inner content wrapper. -->
+    <div class="digital-stamp__content">
+      <div class="digital-stamp__content">
+        <div class="digital-stamp__flag">
+          <span class="dga-icon-flag-01" aria-hidden="true"></span>
+        </div>
+        <p class="digital-stamp__text">{{ text() }}</p>
+      </div>
+      <ng-container [ngTemplateOutlet]="toggleButton" />
+    </div>
+  } @else {
+    <div class="digital-stamp__content">
+      <div class="digital-stamp__flag">
+        <span class="dga-icon-flag-01" aria-hidden="true"></span>
+      </div>
+      <p class="digital-stamp__text">{{ text() }}</p>
+      <ng-container [ngTemplateOutlet]="toggleButton" />
+    </div>
+  }
+
+  <div [id]="detailsId" style="display: contents">
+    @if (opened()) {
+      <div class="digital-stamp__extension">
+        <div class="digital-stamp__verification-card">
+          <div class="digital-stamp__verification-icon">
+            <span class="dga-icon-link-01" aria-hidden="true"></span>
+          </div>
+          <div class="digital-stamp__verification-text">
+            <p class="digital-stamp__verification-title">
+              {{ resolvedDomainTitle() }} <span class="highlight">{{ extension() }}</span>
+            </p>
+            <p class="digital-stamp__verification-description">{{ resolvedDomainDescription() }}</p>
+          </div>
+        </div>
+        <div class="digital-stamp__verification-card">
+          <div class="digital-stamp__verification-icon">
+            <span class="dga-icon-security-check" aria-hidden="true"></span>
+          </div>
+          <div class="digital-stamp__verification-text">
+            <p class="digital-stamp__verification-title">
+              {{ httpsTitle() }} <span class="highlight">{{ httpsTag() }}</span>
+            </p>
+            <p class="digital-stamp__verification-description">{{ httpsDescription() }}</p>
+          </div>
+        </div>
+      </div>
+      @if (registrationNumber()) {
+        <div class="digital-stamp__registration">
+          <div class="digital-stamp__registration-content">
+            <div class="digital-stamp__dga-logo">
+              <span class="dga-icon-checkmark-badge-01" aria-hidden="true"></span>
+            </div>
+            <div class="digital-stamp__registration-text">
+              <p class="digital-stamp__registration-label">{{ registrationLabel() }}</p>
+              @if (registrationHref()) {
+                <a [href]="registrationHref()" class="digital-stamp__registration-link">{{
+                  registrationNumber()
+                }}</a>
+              } @else {
+                <span class="digital-stamp__registration-label">{{ registrationNumber() }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    }
+  </div>
+</div>

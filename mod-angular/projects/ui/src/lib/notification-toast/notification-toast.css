@@ -1,0 +1,283 @@
+/* ============================================
+   COMPONENT: NOTIFICATION TOAST
+   DGA Design System - Notification Toast Component
+   Transient, non-modal messages that appear at
+   the top of the screen to provide brief alerts.
+   ============================================ */
+
+/* ============================================
+   Toast Container
+   ============================================ */
+
+.notification-toast {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: white;
+    border-radius: var(--radius-md);
+    box-shadow: 0 32px 64px -12px rgba(16, 24, 40, 0.14);
+    overflow: hidden;
+    padding: var(--spacing-xl) var(--spacing-3xl);
+    gap: var(--spacing-xl);
+    width: 484px;
+    font-family: var(--font-family-primary);
+}
+
+.notification-toast--mobile {
+    width: 343px;
+    padding: var(--spacing-xl);
+}
+
+/* ============================================
+   Header Row (icon + text + close)
+   ============================================ */
+
+.notification-toast__header {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: flex-start;
+    width: 100%;
+}
+
+.notification-toast--mobile .notification-toast__header {
+    align-items: center;
+}
+
+/* ============================================
+   Featured Icon (40×40 circle)
+   ============================================ */
+
+.notification-toast__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification-toast__icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.notification-toast--neutral .notification-toast__icon {
+    background-color: var(--color-gray-50);
+}
+
+.notification-toast--info .notification-toast__icon {
+    background-color: var(--color-info-50);
+}
+
+.notification-toast--critical .notification-toast__icon {
+    background-color: var(--color-error-50);
+}
+
+.notification-toast--warning .notification-toast__icon {
+    background-color: var(--color-warning-50);
+}
+
+.notification-toast--success .notification-toast__icon {
+    background-color: var(--color-success-50);
+}
+
+/* ============================================
+   Text Area (title + helper)
+   ============================================ */
+
+.notification-toast__text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    min-width: 0;
+    min-height: 40px;
+    justify-content: center;
+}
+
+.notification-toast--mobile .notification-toast__text {
+    width: 100%;
+    min-height: 0;
+    flex: none;
+}
+
+.notification-toast__title {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-md);
+    color: var(--color-text-display);
+}
+
+.notification-toast__helper {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-sm);
+    color: var(--color-gray-700);
+}
+
+/* ============================================
+   Close / Dismiss Button
+   ============================================ */
+
+.notification-toast__close {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+    color: var(--color-gray-700);
+    padding: 0;
+}
+
+.notification-toast__close:hover {
+    opacity: 0.7;
+}
+
+.notification-toast--mobile .notification-toast__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+.notification-toast__close-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* ============================================
+   Actions Row
+   ============================================ */
+
+.notification-toast__actions {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: flex-start;
+    padding-left: 52px;
+    width: 100%;
+}
+
+.notification-toast--mobile .notification-toast__actions {
+    flex-direction: column;
+    padding-left: 0;
+}
+
+/* ============================================
+   Accent Line
+   ============================================ */
+
+.notification-toast__line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 8px;
+    opacity: 0.7;
+}
+
+.notification-toast--mobile .notification-toast__line {
+    top: 0;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 8px;
+}
+
+.notification-toast--neutral .notification-toast__line {
+    background-color: var(--color-gray-200);
+}
+
+.notification-toast--info .notification-toast__line {
+    background-color: var(--color-info-600);
+}
+
+.notification-toast--critical .notification-toast__line {
+    background-color: var(--color-error-600);
+}
+
+.notification-toast--warning .notification-toast__line {
+    background-color: var(--color-warning-600);
+}
+
+.notification-toast--success .notification-toast__line {
+    background-color: var(--color-success-600);
+}
+
+/* ============================================
+   RTL Support
+   ============================================ */
+
+[dir="rtl"] .notification-toast__actions {
+    padding-left: 0;
+    padding-right: 52px;
+}
+
+[dir="rtl"] .notification-toast--mobile .notification-toast__actions {
+    padding-right: 0;
+}
+
+[dir="rtl"] .notification-toast__line {
+    left: auto;
+    right: 0;
+}
+
+[dir="rtl"] .notification-toast--mobile .notification-toast__line {
+    left: 0;
+    right: 0;
+}
+
+[dir="rtl"] .notification-toast--mobile .notification-toast__close {
+    right: auto;
+    left: 16px;
+}
+
+[dir="rtl"] .notification-toast__title {
+    text-align: right;
+}
+
+[dir="rtl"] .notification-toast__helper {
+    text-align: right;
+}
+
+/* ============================================
+   Angular host (the host element carries the .notification-toast class)
+   ============================================ */
+
+mod-toast {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+/* ============================================
+   Toast container (Angular addition — the source has no stacking host)
+   ============================================ */
+
+mod-toast-container {
+    position: fixed;
+    z-index: var(--z-tooltip);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl);
+    max-width: 100%;
+    max-height: 100%;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+mod-toast-container > * {
+    pointer-events: auto;
+}
+
+.toast-container--top-start { top: 0; inset-inline-start: 0; align-items: flex-start; }
+.toast-container--top-center { top: 0; left: 50%; transform: translateX(-50%); align-items: center; }
+.toast-container--top-end { top: 0; inset-inline-end: 0; align-items: flex-end; }
+.toast-container--bottom-start { bottom: 0; inset-inline-start: 0; align-items: flex-start; flex-direction: column-reverse; }
+.toast-container--bottom-center { bottom: 0; left: 50%; transform: translateX(-50%); align-items: center; flex-direction: column-reverse; }
+.toast-container--bottom-end { bottom: 0; inset-inline-end: 0; align-items: flex-end; flex-direction: column-reverse; }

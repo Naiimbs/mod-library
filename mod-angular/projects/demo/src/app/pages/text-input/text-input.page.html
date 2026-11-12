@@ -1,0 +1,297 @@
+<div class="content-header">
+  <h1 class="content-title">Text Input</h1>
+  <p class="content-description">
+    An input allows people to enter short, free form text data. If you need to collect more than one line of
+    information, try a textarea.
+  </p>
+</div>
+
+<demo-live
+  heading="Text Input"
+  description="A single-line text field for short form input like names, emails, and search queries."
+  align="center"
+  [rtl]="rtl()"
+>
+  <div style="width: 100%; max-width: 360px">
+    <mod-text-input
+      [label]="showLabel() ? t().label : ''"
+      [ariaLabel]="showLabel() ? '' : t().label"
+      [placeholder]="t().placeholder"
+      [(value)]="value"
+      [size]="size()"
+      [appearance]="appearance()"
+      [disabled]="state() === 'disabled'"
+      [readonly]="state() === 'readonly'"
+      [error]="error()"
+      [required]="required()"
+      [helperText]="helperText() ? (error() ? t().errorHelper : t().helper) : ''"
+      [leadingIcon]="leadingIcon() ? 'search-01' : ''"
+      [trailingIcon]="trailingIcon() ? 'tick-02' : ''"
+      [prefix]="prefix() ? (addonType() === 'dropdown' ? t().dropdownPrefix : t().prefix) : ''"
+      [suffix]="suffix() ? (addonType() === 'dropdown' ? t().dropdownSuffix : t().suffix) : ''"
+      [prefixDropdown]="addonType() === 'dropdown'"
+      [suffixDropdown]="addonType() === 'dropdown'"
+      prefixIcon="globe-02"
+      [addonStyle]="addonStyle()"
+    />
+  </div>
+
+  <demo-switch label="RTL" [checked]="rtl()" (checkedChange)="setRtl($event)" />
+  <demo-select label="State" [options]="states" [(value)]="state" />
+  <demo-select label="Style" [options]="appearances" [(value)]="appearance" />
+  <demo-select label="Size" [options]="sizes" [(value)]="size" />
+  <demo-switch label="Filled" [checked]="filled()" (checkedChange)="setFilled($event)" />
+  <demo-switch label="Error" [(checked)]="error" />
+  <demo-switch label="Show Label" [(checked)]="showLabel" />
+  <demo-switch label="Required" [(checked)]="required" />
+  <demo-switch label="Helper Text" [(checked)]="helperText" />
+  <demo-switch label="Leading Icon" [(checked)]="leadingIcon" />
+  <demo-switch label="Trailing Icon" [(checked)]="trailingIcon" />
+  <demo-switch label="Prefix" [(checked)]="prefix" />
+  <demo-switch label="Suffix" [(checked)]="suffix" />
+  <demo-select label="Addon Type" [options]="addonTypes" [(value)]="addonType" />
+  <demo-select label="Addon Style" [options]="addonStyles" [(value)]="addonStyle" />
+</demo-live>
+
+<demo-props heading="Props" [props]="props" />
+
+<demo-showcase
+  heading="States"
+  description="All interactive states — default, filled, disabled, read-only, and focus (click to see)."
+  align="stretch"
+>
+  <div class="showcase-row" style="gap: var(--spacing-4xl); align-items: flex-start;">
+    <mod-text-input style="max-width: 280px" label="Default" placeholder="Placeholder" />
+    <mod-text-input style="max-width: 280px" label="Filled" value="Input text" />
+    <mod-text-input style="max-width: 280px" label="Disabled" placeholder="Placeholder" disabled />
+  </div>
+  <div class="showcase-row" style="gap: var(--spacing-4xl); align-items: flex-start; margin-top: var(--spacing-xl);">
+    <mod-text-input style="max-width: 280px" label="Disabled filled" value="Input text" disabled />
+    <mod-text-input style="max-width: 280px" label="Read-only" value="Read-only value" readonly />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Validation"
+  description="Error and success validation states with helper text feedback."
+  align="stretch"
+>
+  <div class="showcase-row" style="gap: var(--spacing-4xl); align-items: flex-start;">
+    <mod-text-input
+      style="max-width: 320px"
+      label="Email"
+      type="email"
+      required
+      error
+      value="invalid-email"
+      helperText="Please enter a valid email address."
+    />
+    <mod-text-input
+      style="max-width: 320px"
+      label="Email"
+      type="email"
+      required
+      success
+      value="user@example.com"
+      helperText="Email address is valid."
+    />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Filled Darker Style"
+  description="A subtle gray background variant for use on white surfaces."
+  align="stretch"
+>
+  <div class="showcase-row" style="gap: var(--spacing-4xl); align-items: flex-start;">
+    <mod-text-input style="max-width: 280px" appearance="filled-darker" label="Default" placeholder="Placeholder" />
+    <mod-text-input style="max-width: 280px" appearance="filled-darker" label="Filled" value="Entered text" />
+    <mod-text-input style="max-width: 280px" appearance="filled-darker" label="Disabled" placeholder="Placeholder" disabled />
+  </div>
+  <div class="showcase-row" style="gap: var(--spacing-4xl); align-items: flex-start; margin-top: var(--spacing-xl);">
+    <mod-text-input
+      style="max-width: 280px"
+      appearance="filled-darker"
+      label="Error"
+      value="Invalid value"
+      error
+      helperText="This field has an error."
+    />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Filled Lighter Style"
+  description="A near-white background variant for use on gray surfaces."
+  align="stretch"
+  subtle
+>
+  <div class="showcase-row" style="gap: var(--spacing-4xl); align-items: flex-start;">
+    <mod-text-input style="max-width: 280px" appearance="filled-lighter" label="Default" placeholder="Placeholder" />
+    <mod-text-input style="max-width: 280px" appearance="filled-lighter" label="Filled" value="Entered text" />
+    <mod-text-input style="max-width: 280px" appearance="filled-lighter" label="Disabled" placeholder="Placeholder" disabled />
+  </div>
+  <div class="showcase-row" style="gap: var(--spacing-4xl); align-items: flex-start; margin-top: var(--spacing-xl);">
+    <mod-text-input
+      style="max-width: 280px"
+      appearance="filled-lighter"
+      label="Error"
+      value="Invalid value"
+      error
+      helperText="This field has an error."
+    />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="With Icons"
+  description="Leading and trailing icons provide visual cues about the input's purpose."
+  align="stretch"
+>
+  <div class="showcase-row" style="gap: var(--spacing-4xl); align-items: flex-start;">
+    <mod-text-input style="max-width: 320px" label="Leading icon" leadingIcon="search-01" placeholder="Search..." />
+    <mod-text-input
+      style="max-width: 320px"
+      label="Trailing icon"
+      type="email"
+      trailingIcon="mail-01"
+      placeholder="you@example.com"
+    />
+    <mod-text-input
+      style="max-width: 320px"
+      label="Both icons"
+      type="url"
+      leadingIcon="globe-02"
+      trailingIcon="computer"
+      placeholder="www.example.com"
+    />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Prefix & Suffix"
+  description="Information added before (prefix) or after (suffix) the input to provide contextual information. Available in Solid and Subtle styles, with Text or Dropdown types."
+  align="stretch"
+>
+  <p [style]="groupLabel">Solid — Text type</p>
+  <div class="showcase-row" style="gap: var(--spacing-4xl); align-items: flex-start;">
+    <mod-text-input style="max-width: 320px" label="Website" prefix="https://" placeholder="www.example.com" />
+    <mod-text-input style="max-width: 320px" label="Email" suffix="@domain.com" placeholder="username" />
+    <mod-text-input style="max-width: 320px" label="Price" type="number" prefix="SAR" suffix=".00" placeholder="0.00" />
+  </div>
+
+  <p [style]="groupLabel" style="margin-top: var(--spacing-3xl)">Subtle — Text type</p>
+  <div class="showcase-row" style="gap: var(--spacing-4xl); align-items: flex-start;">
+    <mod-text-input
+      style="max-width: 320px"
+      label="Website"
+      prefix="https://"
+      addonStyle="subtle"
+      placeholder="www.example.com"
+    />
+    <mod-text-input
+      style="max-width: 320px"
+      label="Email"
+      suffix="@domain.com"
+      addonStyle="subtle"
+      placeholder="username"
+    />
+  </div>
+
+  <p [style]="groupLabel" style="margin-top: var(--spacing-3xl)">Solid — Dropdown type</p>
+  <div class="showcase-row" style="gap: var(--spacing-4xl); align-items: flex-start;">
+    <mod-text-input
+      style="max-width: 360px"
+      label="Phone"
+      type="tel"
+      prefix="+966"
+      prefixDropdown
+      prefixIcon="globe-02"
+      placeholder="5X XXX XXXX"
+    />
+    <mod-text-input
+      style="max-width: 360px"
+      label="Currency"
+      type="number"
+      suffix="SAR"
+      suffixDropdown
+      placeholder="0.00"
+    />
+  </div>
+
+  <p [style]="groupLabel" style="margin-top: var(--spacing-3xl)">Dropdown — Selected state</p>
+  <div class="showcase-row" style="gap: var(--spacing-4xl); align-items: flex-start;">
+    <mod-text-input
+      style="max-width: 360px"
+      label="Country code"
+      type="tel"
+      prefix="+966"
+      prefixDropdown
+      prefixSelected
+      prefixIcon="globe-02"
+      value="512 345 678"
+    />
+  </div>
+
+  <p [style]="groupLabel" style="margin-top: var(--spacing-3xl)">Disabled &amp; Medium size</p>
+  <div class="showcase-row" style="gap: var(--spacing-4xl); align-items: flex-start;">
+    <mod-text-input style="max-width: 320px" label="Disabled" prefix="https://" placeholder="www.example.com" disabled />
+    <mod-text-input
+      style="max-width: 320px"
+      label="Medium prefix"
+      size="medium"
+      prefix="https://"
+      placeholder="www.example.com"
+    />
+    <mod-text-input
+      style="max-width: 360px"
+      label="Medium dropdown"
+      type="tel"
+      size="medium"
+      prefix="+966"
+      prefixDropdown
+      prefixIcon="globe-02"
+      placeholder="5X XXX XXXX"
+    />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Sizes"
+  description="Two size options — medium (32px) for compact layouts and large (40px, default) for standard forms."
+  align="stretch"
+>
+  <div class="showcase-row" style="gap: var(--spacing-4xl); align-items: flex-end;">
+    <mod-text-input style="max-width: 280px" label="Medium (32px)" size="medium" placeholder="Medium input" />
+    <mod-text-input style="max-width: 280px" label="Large (40px) — Default" placeholder="Large input" />
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="RTL Layout"
+  description="Right-to-left support for Arabic and other RTL languages."
+  align="stretch"
+>
+  <div dir="rtl" class="showcase-row" style="gap: var(--spacing-4xl); align-items: flex-start; width: 100%;">
+    <mod-text-input
+      style="max-width: 320px"
+      label="البريد الإلكتروني"
+      type="email"
+      required
+      leadingIcon="mail-01"
+      placeholder="أدخل بريدك الإلكتروني"
+      helperText="يرجى إدخال بريد إلكتروني صالح."
+      [helperIcon]="false"
+    />
+    <mod-text-input
+      style="max-width: 320px"
+      label="رقم الهاتف"
+      type="tel"
+      required
+      leadingIcon="call"
+      placeholder="٩٦٦ ٥X XXX XXXX+"
+      helperText="أدخل رقم الهاتف مع رمز الدولة."
+      [helperIcon]="false"
+    />
+  </div>
+</demo-showcase>

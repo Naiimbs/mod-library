@@ -1,0 +1,125 @@
+/* ============================================
+   AVATAR COMPONENT
+   DGA Design System — ported from the DGA reference library
+   nds-avatar (.mod-avatar) + mod-avatar-group onto DGA theme tokens.
+   Types: image | text | icon. Sizes: 120 80 68 48 40 32 24.
+   ============================================ */
+
+.avatar {
+    position: relative;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--alpha-white);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gray-100);
+    overflow: hidden;
+    flex-shrink: 0;
+    color: var(--text-default);
+}
+
+.avatar--image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar--square {
+    border-radius: var(--radius-md);
+}
+
+/* subtle inner ring (library: --border modifier, 1px alpha-black-20) */
+.avatar--border::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(22, 22, 22, 0.2);
+}
+
+.avatar--square.avatar--border::after {
+    border-radius: var(--radius-md);
+}
+
+.avatar__text {
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.avatar__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-600);
+}
+
+/* --- Sizes (avatar px / icon px / text style, from the library) --- */
+.avatar--120 {
+    width: 120px;
+    height: 120px;
+    border-width: 4px;
+}
+
+.avatar--120.avatar--border::after { border-width: 2px; }
+.avatar--120 .avatar__text { font: var(--font-weight-regular) 36px/44px var(--font-family-primary); }
+.avatar--120 .avatar__icon { font-size: 80px; }
+
+.avatar--80 { width: 80px; height: 80px; }
+.avatar--80 .avatar__text { font: var(--font-weight-regular) 30px/38px var(--font-family-primary); }
+.avatar--80 .avatar__icon { font-size: 56px; }
+
+.avatar--68 { width: 68px; height: 68px; }
+.avatar--68 .avatar__text { font: var(--font-weight-medium) 20px/30px var(--font-family-primary); }
+.avatar--68 .avatar__icon { font-size: 40px; }
+
+.avatar--48 { width: 48px; height: 48px; }
+.avatar--48 .avatar__text { font: var(--font-weight-medium) 16px/24px var(--font-family-primary); }
+.avatar--48 .avatar__icon { font-size: 32px; }
+
+.avatar--40 { width: 40px; height: 40px; }
+.avatar--40 .avatar__text { font: var(--font-weight-semibold) 14px/20px var(--font-family-primary); }
+.avatar--40 .avatar__icon { font-size: 32px; }
+
+.avatar--32 { width: 32px; height: 32px; }
+.avatar--32 .avatar__text { font: var(--font-weight-semibold) 12px/18px var(--font-family-primary); }
+.avatar--32 .avatar__icon { font-size: var(--font-size-2xl); }
+
+.avatar--24 { width: 24px; height: 24px; }
+.avatar--24 .avatar__text { font: var(--font-weight-bold) 10px/14px var(--font-family-primary); }
+.avatar--24 .avatar__icon { font-size: var(--font-size-md); }
+
+/* ============================================
+   AVATAR GROUP (mod-avatar-group)
+   ============================================ */
+.avatar-group {
+    display: inline-flex;
+    gap: var(--spacing-xs);
+}
+
+.avatar-group--stacked {
+    gap: 0;
+}
+
+.avatar-group--stacked > .avatar {
+    margin-inline-start: -10px;
+}
+
+.avatar-group--stacked > .avatar:first-child {
+    margin-inline-start: 0;
+}
+
+/* Overflow counter chip inside a group ("+N") */
+.avatar-group__more {
+    background: var(--gray-200);
+    color: var(--gray-700);
+}
+
+/* ============================================
+   Angular hosts (the host elements carry .avatar / .avatar-group,
+   which set display: inline-flex)
+   ============================================ */
+
+mod-avatar,
+mod-avatar-group {
+    box-sizing: border-box;
+}

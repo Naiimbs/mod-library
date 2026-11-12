@@ -1,0 +1,161 @@
+<div class="content-header">
+  <h1 class="content-title">Slideout Menu</h1>
+  <p class="content-description">
+    A panel that slides in from the side of the screen, triggered by a button. It surfaces navigation, options,
+    or extra content without cluttering the main view. Composed of a header (featured icon + title + description
+    + close), a scrollable body (a menu-items list or a custom content slot), and an actions footer. Anchors left
+    or right, ships gray or white, and mirrors fully for RTL. Modeled on Figma frames 23360:17219 (Slideout Menu)
+    and 23521:31454 (Slideout Menu Header); the body reuses the Menu component.
+  </p>
+</div>
+
+<demo-live
+  heading="Slideout"
+  description="Shown inline here for preview. Use the controls to switch the body, background, anchor, and direction."
+  align="stretch"
+  justify="flex-start"
+  [rtl]="rtl()"
+>
+  <mod-slideout-menu
+    inline
+    icon="add-01"
+    [heading]="t().title"
+    [description]="t().desc"
+    [closeLabel]="t().close"
+    [gray]="gray()"
+    [side]="right() ? 'right' : 'left'"
+    [groups]="liveGroups()"
+  >
+    @if (body() === 'custom') {
+      <div class="slideout-custom">
+        <h4 class="slideout-custom__title">{{ t().customTitle }}</h4>
+        <p class="slideout-custom__body">{{ t().customBody }}</p>
+      </div>
+    }
+    <div modSlideoutFooter>
+      <button mod-button variant="secondary-outline">{{ t().cancel }}</button>
+      <button mod-button>{{ t().confirm }}</button>
+    </div>
+  </mod-slideout-menu>
+
+  <demo-switch label="RTL" [(checked)]="rtl" />
+  <demo-select label="Body" [options]="bodies" [(value)]="body" />
+  <demo-switch label="Gray background" [(checked)]="gray" />
+  <demo-switch label="Anchor right" [(checked)]="right" />
+</demo-live>
+
+<demo-props
+  description="Inputs, outputs and content slots of mod-slideout-menu. Mark the actions row with modSlideoutFooter."
+  [props]="props"
+/>
+
+<demo-showcase
+  heading="Anatomy"
+  description="Header (featured icon + title + description + close), a scrollable body — here a grouped menu list — and an actions footer."
+>
+  <mod-slideout-menu
+    inline
+    icon="add-01"
+    heading="Title"
+    description="Description goes here."
+    [groups]="anatomyGroups()"
+    (itemSelect)="onAnatomySelect($event)"
+  >
+    <div modSlideoutFooter>
+      <button mod-button variant="secondary-outline">Action</button>
+      <button mod-button>Action</button>
+    </div>
+  </mod-slideout-menu>
+</demo-showcase>
+
+<demo-showcase
+  heading="Backgrounds & Custom Content"
+  description="Gray vs white background, and the custom-content body slot (a dashed primary drop-zone for any component — a form, table, illustration, etc.)."
+>
+  <div class="showcase-row" style="align-items: flex-start;">
+    <mod-slideout-menu inline gray icon="add-01" heading="Gray background" description="Description goes here.">
+      <div class="slideout-custom">
+        <h4 class="slideout-custom__title">Swap with content component</h4>
+        <p class="slideout-custom__body">Replace this slot with any component</p>
+      </div>
+      <div modSlideoutFooter>
+        <button mod-button variant="secondary-outline">Action</button>
+        <button mod-button>Action</button>
+      </div>
+    </mod-slideout-menu>
+    <mod-slideout-menu inline icon="add-01" heading="White background" description="Description goes here.">
+      <div class="slideout-custom">
+        <h4 class="slideout-custom__title">Swap with content component</h4>
+        <p class="slideout-custom__body">Replace this slot with any component</p>
+      </div>
+      <div modSlideoutFooter>
+        <button mod-button variant="secondary-outline">Action</button>
+        <button mod-button>Action</button>
+      </div>
+    </mod-slideout-menu>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Open as Overlay"
+  description="The real behavior — a trigger slides the panel in over a dimmed backdrop. Use the left or right trigger; close via the X, the backdrop, or Esc."
+>
+  <div class="showcase-row">
+    <button mod-button (click)="leftOpen.set(true)">Open from left</button>
+    <button mod-button variant="secondary-outline" (click)="rightOpen.set(true)">Open from right</button>
+  </div>
+</demo-showcase>
+
+<mod-slideout-menu
+  icon="add-01"
+  heading="Navigation"
+  description="Slides in from the left."
+  [groups]="navGroups"
+  [(open)]="leftOpen"
+>
+  <div modSlideoutFooter>
+    <button mod-button variant="secondary-outline" (click)="leftOpen.set(false)">Cancel</button>
+    <button mod-button (click)="leftOpen.set(false)">Confirm</button>
+  </div>
+</mod-slideout-menu>
+
+<mod-slideout-menu
+  side="right"
+  gray
+  icon="add-01"
+  heading="Filters"
+  description="Slides in from the right."
+  [(open)]="rightOpen"
+>
+  <div class="slideout-custom">
+    <h4 class="slideout-custom__title">Swap with content component</h4>
+    <p class="slideout-custom__body">Replace this slot with any component</p>
+  </div>
+  <div modSlideoutFooter>
+    <button mod-button variant="secondary-outline" (click)="rightOpen.set(false)">Reset</button>
+    <button mod-button (click)="rightOpen.set(false)">Apply</button>
+  </div>
+</mod-slideout-menu>
+
+<demo-showcase
+  heading="RTL Support"
+  description="For Arabic, the header mirrors (featured icon on the right, close on the left), the menu items read right-to-left, and the panel slides from the opposite edge."
+  subtle
+>
+  <div dir="rtl" lang="ar">
+    <mod-slideout-menu
+      inline
+      icon="add-01"
+      heading="عنوان"
+      description="هنا يوضع الوصف."
+      closeLabel="إغلاق"
+      [groups]="rtlGroups()"
+      (itemSelect)="onRtlSelect($event)"
+    >
+      <div modSlideoutFooter>
+        <button mod-button variant="secondary-outline">إجراء</button>
+        <button mod-button>إجراء</button>
+      </div>
+    </mod-slideout-menu>
+  </div>
+</demo-showcase>

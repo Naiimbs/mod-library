@@ -1,0 +1,172 @@
+<!-- Digital Stamp Banner -->
+<mod-digital-stamp
+  [text]="c().stamp.text"
+  [toggleLabel]="c().stamp.toggle"
+  [domainTitle]="c().stamp.domainTitle"
+  [domainDescription]="c().stamp.domainDescription"
+  [httpsTitle]="c().stamp.httpsTitle"
+  [httpsDescription]="c().stamp.httpsDescription"
+  [registrationLabel]="c().stamp.registrationLabel"
+/>
+
+<!-- Navigation Header -->
+<mod-nav-header
+  [actions]="c().actions"
+  [logoText]="c().logo"
+  [menuLabel]="c().menuLabel"
+  [openMenuLabel]="c().openMenu"
+  [closeMenuLabel]="c().closeMenu"
+/>
+
+<!-- Service Tabs -->
+<mod-service-tabs [tabs]="c().tabs" [(active)]="activeTab" [label]="c().tabsLabel" />
+
+<!-- Main Content -->
+<mod-form-template [heading]="c().title" [description]="c().description" [requiredInfo]="c().requiredInfo">
+  <!-- Progress Indicator (Vertical) -->
+  <mod-progress-indicator
+    modFormTemplateSteps
+    orientation="vertical"
+    [steps]="c().steps"
+    [(current)]="step"
+    [ariaLabel]="c().stepsLabel"
+    [stepLabel]="c().stepLabel"
+  />
+
+  <mod-breadcrumbs modFormTemplateBreadcrumb [items]="c().breadcrumb" [aria-label]="c().breadcrumbLabel" />
+
+  <!-- Plain inputs -->
+  <mod-form-row>
+    <mod-text-input [label]="c().requiredLabel" [placeholder]="c().placeholder" required />
+    <mod-text-input [label]="c().optionalLabel" [placeholder]="c().placeholder" />
+  </mod-form-row>
+
+  <!-- With search icon -->
+  <mod-form-row>
+    <mod-text-input [label]="c().requiredLabel" [placeholder]="c().placeholder" required trailingIcon="search-01" />
+    <mod-text-input [label]="c().optionalLabel" [placeholder]="c().placeholder" trailingIcon="search-01" />
+  </mod-form-row>
+
+  @if (full()) {
+    <!-- With dropdown -->
+    <mod-form-row>
+      <mod-dropdown
+        [label]="c().requiredLabel"
+        [placeholder]="c().placeholder"
+        [options]="c().options"
+        [(value)]="dropdownA"
+      />
+      <mod-dropdown
+        [label]="c().optionalLabel"
+        [placeholder]="c().placeholder"
+        [options]="c().options"
+        [(value)]="dropdownB"
+      />
+    </mod-form-row>
+
+    <mod-form-row>
+      <mod-text-input [label]="c().requiredLabel" [placeholder]="c().placeholder" required />
+      <mod-text-input [label]="c().optionalLabel" [placeholder]="c().placeholder" />
+    </mod-form-row>
+
+    <!-- With helper text -->
+    <mod-form-row>
+      <mod-text-input [label]="c().requiredLabel" [placeholder]="c().placeholder" required [helperText]="c().helper" />
+      <mod-text-input [label]="c().optionalLabel" [placeholder]="c().placeholder" [helperText]="c().helper" />
+    </mod-form-row>
+  }
+
+  <!-- Error state -->
+  <mod-form-row>
+    <mod-text-input
+      [label]="c().requiredLabel"
+      [placeholder]="c().placeholder"
+      required
+      error
+      [helperText]="c().helper"
+    />
+    <mod-text-input [label]="c().optionalLabel" [placeholder]="c().placeholder" error [helperText]="c().helper" />
+  </mod-form-row>
+
+  @if (full()) {
+    <mod-form-row>
+      <mod-text-input [label]="c().requiredLabel" [placeholder]="c().placeholder" required />
+      <mod-text-input [label]="c().optionalLabel" [placeholder]="c().placeholder" />
+    </mod-form-row>
+  }
+
+  <!-- Textarea -->
+  <mod-form-row>
+    <mod-textarea
+      [label]="c().descriptionLabel"
+      [placeholder]="c().descriptionPlaceholder"
+      [rows]="4"
+      required
+      [helperText]="c().descriptionHelper"
+      [helperIcon]="false"
+    />
+    <mod-textarea [label]="c().notesLabel" [placeholder]="c().notesPlaceholder" [rows]="4" />
+  </mod-form-row>
+
+  <!-- Radio group -->
+  <mod-form-row>
+    <div>
+      <p
+        class="text-input__label text-input__label--required"
+        style="margin: 0 0 var(--spacing-xs) 0;"
+        [id]="uid + '-request'"
+      >
+        {{ c().requestLabel }}
+      </p>
+      <mod-radio-group [(value)]="request" [ariaLabelledby]="uid + '-request'" [name]="uid + '-request-type'" required>
+        @for (option of c().requestOptions; track option.value) {
+          <mod-radio [value]="option.value" [label]="option.label" [helperText]="option.helper ?? ''" />
+        }
+      </mod-radio-group>
+    </div>
+  </mod-form-row>
+
+  <!-- Checkbox group -->
+  <mod-form-row>
+    <div>
+      <p class="text-input__label" style="margin: 0 0 var(--spacing-xs) 0;" [id]="uid + '-docs'">
+        {{ c().docsLabel }}
+      </p>
+      <mod-checkbox-group [(value)]="docs" [ariaLabelledby]="uid + '-docs'" [name]="uid + '-docs'">
+        @for (option of c().docOptions; track option.value) {
+          <mod-checkbox [value]="option.value" [label]="option.label" />
+        }
+      </mod-checkbox-group>
+    </div>
+  </mod-form-row>
+
+  <!-- Terms checkbox -->
+  <mod-form-row>
+    <mod-checkbox [(checked)]="terms" [label]="c().termsLabel" [helperText]="c().termsHelper" [name]="uid + '-terms'" />
+  </mod-form-row>
+
+  <!-- Form Actions -->
+  <ng-container modFormTemplateActions>
+    <button mod-button type="button" variant="secondary-outline" (click)="back()">{{ c().back }}</button>
+    <button mod-button type="button" (click)="next()">{{ c().next }}</button>
+  </ng-container>
+</mod-form-template>
+
+<!-- Feedback Section -->
+<mod-form-feedback [question]="c().feedbackQuestion" [stats]="c().feedbackStats">
+  <button mod-button type="button">{{ c().yes }}</button>
+  <button mod-button type="button">{{ c().no }}</button>
+</mod-form-feedback>
+
+<!-- Footer -->
+<mod-footer
+  [groups]="c().footer.groups"
+  [socialTitle]="c().footer.socialTitle"
+  [socialLinks]="c().footer.social"
+  [accessibilityTitle]="c().footer.accessibilityTitle"
+  [accessibilityTools]="c().footer.tools"
+  [legalLinks]="c().footer.legalLinks"
+  [legalCaption]="c().footer.caption"
+  [extraLinks]="c().footer.extraLinks"
+  [logos]="c().footer.logos"
+/>

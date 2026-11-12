@@ -1,0 +1,249 @@
+/* ============================================
+   COMPONENT: NOTIFICATION
+   DGA Design System - Notification Component
+   Notifications convey important information
+   about updates or changes within the system.
+   ============================================ */
+
+/* ============================================
+   Notification Container
+   ============================================ */
+
+.notification {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: var(--radius-xs);
+    overflow: hidden;
+    padding: var(--spacing-md) var(--spacing-3xl);
+    gap: var(--spacing-xl);
+    width: 100%;
+    font-family: var(--font-family-primary);
+}
+
+/* ============================================
+   Style Variants
+   ============================================ */
+
+.notification--critical {
+    background-color: var(--color-error-50);
+    color: var(--color-error-700);
+}
+
+.notification--warning {
+    background-color: var(--color-warning-50);
+    color: var(--color-warning-700);
+}
+
+.notification--success {
+    background-color: var(--color-success-50);
+    color: var(--color-success-700);
+}
+
+.notification--info {
+    background-color: var(--color-info-50);
+    color: var(--color-info-700);
+}
+
+.notification--neutral {
+    background-color: var(--color-gray-50);
+    color: var(--color-gray-700);
+}
+
+/* ============================================
+   Body Row (icon + content + actions + close)
+   ============================================ */
+
+.notification__body {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-3xl);
+    width: 100%;
+    min-height: 40px;
+    position: relative;
+}
+
+/* ============================================
+   Content Wrapper (lead text + helper text)
+   ============================================ */
+
+.notification__content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex: 1;
+    min-width: 0;
+    min-height: 1px;
+}
+
+/* ============================================
+   Feedback Icon
+   ============================================ */
+
+.notification__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification__icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* ============================================
+   Lead Text (bold heading)
+   ============================================ */
+
+.notification__lead-text {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-md);
+    color: inherit;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   Helper / Body Text
+   ============================================ */
+
+.notification__text {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-md);
+    color: inherit;
+    flex: 1;
+    min-width: 1px;
+    min-height: 1px;
+}
+
+/* ============================================
+   Actions (link + button)
+   ============================================ */
+
+.notification__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.notification__link {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-md);
+    color: var(--color-gray-700);
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.notification__link:hover {
+    color: var(--color-text-primary);
+}
+
+
+/* ============================================
+   Close / Dismiss Button
+   ============================================ */
+
+.notification__close {
+    position: absolute;
+    top: 4px;
+    right: -8px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    color: inherit;
+    padding: 0;
+}
+
+.notification__close:hover {
+    opacity: 0.7;
+}
+
+.notification__close-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* ============================================
+   Bottom Line
+   ============================================ */
+
+.notification__line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+}
+
+.notification--critical .notification__line {
+    background-color: var(--color-error-600);
+    opacity: 0.7;
+}
+
+.notification--warning .notification__line {
+    background-color: var(--color-warning-600);
+    opacity: 0.6;
+}
+
+.notification--success .notification__line {
+    background-color: var(--color-success-600);
+    opacity: 0.6;
+}
+
+.notification--info .notification__line {
+    background-color: var(--color-info-600);
+    opacity: 0.6;
+}
+
+.notification--neutral .notification__line {
+    background-color: var(--color-text-primary);
+    opacity: 0.6;
+}
+
+/* ============================================
+   RTL Support
+   ============================================ */
+
+[dir="rtl"] .notification__close {
+    right: auto;
+    left: -8px;
+}
+
+[dir="rtl"] .notification__text {
+    text-align: right;
+}
+
+[dir="rtl"] .notification__lead-text {
+    text-align: right;
+}
+
+[dir="rtl"] .notification__link {
+    text-align: right;
+}
+
+/* ============================================
+   Angular host (the host element carries the .notification class)
+   ============================================ */
+
+mod-notification {
+    box-sizing: border-box;
+}

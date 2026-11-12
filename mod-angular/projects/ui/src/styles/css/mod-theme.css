@@ -1,0 +1,135 @@
+/* ============================================
+   MOD INTERNAL THEME
+   Brand colours and typeface for the MOD Internal design system. Loaded
+   after the base theme and tokens, so these values replace the base scales
+   everywhere they are read through var().
+
+   Brand palette (from the MOD brand guidelines):
+     Dark green   #29504D  (Pantone 2466C, R41 G80 B77)
+     Light green  #00A05A  (Pantone 2250C, R0 G160 B90)
+     Grey         #B2BEC4  (Pantone 7542C, R178 G190 B196)
+     White        #FFFFFF
+
+   The exact brand values sit at: --sa-600 (light green), --sa-700 and
+   --sad-500 (dark green), --gray-300 (grey). The other steps are tints and
+   shades derived from them.
+   ============================================ */
+
+/* --- Typeface: Saudi MOD --- */
+@font-face {
+  font-family: 'Saudi MOD';
+  src: url('../assets/fonts-mod/SaudiMOD-Thin.otf') format('opentype');
+  font-weight: 100 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Saudi MOD';
+  src: url('../assets/fonts-mod/SaudiMOD-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Saudi MOD';
+  src: url('../assets/fonts-mod/SaudiMOD-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Saudi MOD';
+  src: url('../assets/fonts-mod/SaudiMOD-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Saudi MOD';
+  src: url('../assets/fonts-mod/SaudiMOD-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Saudi MOD';
+  src: url('../assets/fonts-mod/SaudiMOD-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Saudi MOD';
+  src: url('../assets/fonts-mod/SaudiMOD-Heavy.otf') format('opentype');
+  font-weight: 800 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* The base theme's typography utility classes (.text-md-semibold,
+   .display-lg-bold, ...) name one font family per weight (IBMPlexSansArabic,
+   IBMPlexSansArabicMedium, ...). Those @font-face rules live in
+   utilities/DGATheme.css and are pointed at the Saudi MOD files there. */
+
+:root {
+  /* --- Brand colours, exact --- */
+  --mod-dark-green: #29504d;
+  --mod-light-green: #00a05a;
+  --mod-grey: #b2bec4;
+  --mod-white: #ffffff;
+
+  /* Deep-green surfaces (service page footer) use the brand dark green. */
+  --background-sa-flag: #29504d;
+
+  /* --- Typeface --- */
+  --font-family-primary: 'Saudi MOD', -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, sans-serif;
+  --font-family-text: 'Saudi MOD', sans-serif;
+
+  /* --- Primary scale ---
+     600 is the brand light green: default fill of primary buttons, the header
+     selection, links, checked controls. 700 is the brand dark green: the hover
+     state of those fills and the colour of dark surfaces (dark footer, text on
+     light-green tints). 800-950 are darker shades of the dark green for
+     pressed states and deep surfaces. */
+  --sa-25: #f5fdf9;
+  --sa-50: #ebfaf3;
+  --sa-100: #d0f3e2;
+  --sa-200: #a3e6c6;
+  --sa-300: #66d3a1;
+  --sa-400: #2dbd7c;
+  --sa-500: #0fad68;
+  --sa-600: #00a05a; /* brand light green */
+  --sa-700: #29504d; /* brand dark green: hover, dark surfaces */
+  --sa-800: #1f3f3d;
+  --sa-900: #183230;
+  --sa-950: #0f2221;
+
+  /* --- Dark green tints --- */
+  --sad-100: #d4dcdb;
+  --sad-200: #a9b9b8;
+  --sad-300: #7f9694;
+  --sad-400: #547371;
+  --sad-500: #29504d; /* brand dark green */
+
+  /* --- Neutral scale, tinted to the brand grey ---
+     The brand grey sits at 300 (borders, dividers, disabled fills). 400 is a
+     darker shade because components use it for placeholder and secondary
+     text, which needs more contrast than the brand grey gives on white. */
+  --gray-25: #fbfcfd;
+  --gray-50: #f8fafb;
+  --gray-100: #f1f4f5;
+  --gray-200: #e3e8eb;
+  --gray-300: #b2bec4; /* brand grey */
+  --gray-400: #8e9ca3;
+  --gray-500: #6a7880;
+  --gray-600: #4c5a61;
+  --gray-700: #37454d;
+  --gray-800: #1f2c33;
+  --gray-900: #111b21;
+  --gray-950: #0c1317;
+}
+
+html,
+body {
+  font-family: var(--font-family-primary);
+}

@@ -1,0 +1,289 @@
+/* ============================================
+   COMPONENT: STATUS TAG
+   DGA Design System - Status Tag Components
+   Figma Node: 5698-52957
+   ============================================ */
+
+/* ============================================
+   STATUS TAG BASE STYLES
+   ============================================ */
+
+.status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-full);
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+/* ============================================
+   STATUS TAG SIZES
+   ============================================ */
+
+/* Figma typography tokens (Tag frame 5698:52957)
+   Medium  : text-md/medium  — 16/24/500
+   Small   : text-sm/medium  — 14/20/500
+   X-Small : text-2xs/medium — 10/14/500
+*/
+
+/* Medium - 32px height, 16px horizontal padding */
+.status-tag--md {
+    height: 32px;
+    padding: 0 var(--spacing-xl);
+    font-size: var(--font-size-md);
+    line-height: 24px;
+    font-weight: var(--font-weight-medium);
+}
+
+/* Small - 24px height, 8px horizontal padding */
+.status-tag--sm {
+    height: 24px;
+    padding: 0 var(--spacing-md);
+    font-size: var(--font-size-sm);
+    line-height: 20px;
+    font-weight: var(--font-weight-medium);
+}
+
+/* Extra Small - 20px height, 8px horizontal padding */
+.status-tag--xs {
+    height: 20px;
+    padding: 0 var(--spacing-md);
+    font-size: 10px;
+    line-height: 14px;
+    font-weight: var(--font-weight-medium);
+}
+
+/* Default size is medium */
+.status-tag:not(.status-tag--sm):not(.status-tag--xs) {
+    height: 32px;
+    padding: 0 var(--spacing-xl);
+    font-size: var(--font-size-md);
+    line-height: 24px;
+    font-weight: var(--font-weight-medium);
+}
+
+/* ============================================
+   STATUS DOT INDICATOR
+   ============================================ */
+
+.status-tag__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+}
+
+/* Smaller dot for xs size */
+.status-tag--xs .status-tag__dot {
+    width: 6px;
+    height: 6px;
+}
+
+/* ============================================
+   STATUS TAG LABEL
+   ============================================ */
+
+.status-tag__label {
+    color: inherit;
+}
+
+/* ============================================
+   STYLE: SUBTLE (Light Background)
+   Default style with light colored backgrounds
+   ============================================ */
+
+/* Neutral - Subtle */
+.status-tag--neutral.status-tag--subtle,
+.status-tag--subtle:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) {
+    background-color: var(--status-tag-neutral-bg-light);
+    color: var(--status-tag-neutral-text);
+}
+
+.status-tag--neutral.status-tag--subtle .status-tag__dot,
+.status-tag--subtle:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) .status-tag__dot {
+    background-color: var(--status-tag-neutral-dot);
+}
+
+/* Success - Subtle */
+.status-tag--success.status-tag--subtle {
+    background-color: var(--status-tag-success-bg-light);
+    color: var(--status-tag-success-text);
+}
+
+.status-tag--success.status-tag--subtle .status-tag__dot {
+    background-color: var(--status-tag-success-dot);
+}
+
+/* Error - Subtle */
+.status-tag--error.status-tag--subtle {
+    background-color: var(--status-tag-error-bg-light);
+    color: var(--status-tag-error-text);
+}
+
+.status-tag--error.status-tag--subtle .status-tag__dot {
+    background-color: var(--status-tag-error-dot);
+}
+
+/* Warning - Subtle */
+.status-tag--warning.status-tag--subtle {
+    background-color: var(--status-tag-warning-bg-light);
+    color: var(--status-tag-warning-text);
+}
+
+.status-tag--warning.status-tag--subtle .status-tag__dot {
+    background-color: var(--status-tag-warning-dot);
+}
+
+/* Info - Subtle */
+.status-tag--info.status-tag--subtle {
+    background-color: var(--status-tag-info-bg-light);
+    color: var(--status-tag-info-text);
+}
+
+.status-tag--info.status-tag--subtle .status-tag__dot {
+    background-color: var(--status-tag-info-dot);
+}
+
+/* ============================================
+   STYLE: INVERTED (Solid Background)
+   Dark/solid colored backgrounds with white text
+   ============================================ */
+
+/* Neutral - Inverted */
+.status-tag--neutral.status-tag--inverted,
+.status-tag--inverted:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) {
+    background-color: var(--status-tag-neutral-bg);
+    color: var(--alpha-white);
+}
+
+.status-tag--neutral.status-tag--inverted .status-tag__dot,
+.status-tag--inverted:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) .status-tag__dot {
+    background-color: var(--alpha-white-60);
+}
+
+/* Success - Inverted */
+.status-tag--success.status-tag--inverted {
+    background-color: var(--status-tag-success-bg);
+    color: var(--alpha-white);
+}
+
+.status-tag--success.status-tag--inverted .status-tag__dot {
+    background-color: var(--alpha-white-60);
+}
+
+/* Error - Inverted */
+.status-tag--error.status-tag--inverted {
+    background-color: var(--status-tag-error-bg);
+    color: var(--alpha-white);
+}
+
+.status-tag--error.status-tag--inverted .status-tag__dot {
+    background-color: var(--alpha-white-60);
+}
+
+/* Warning - Inverted */
+.status-tag--warning.status-tag--inverted {
+    background-color: var(--status-tag-warning-bg);
+    color: var(--alpha-white);
+}
+
+.status-tag--warning.status-tag--inverted .status-tag__dot {
+    background-color: var(--alpha-white-60);
+}
+
+/* Info - Inverted */
+.status-tag--info.status-tag--inverted {
+    background-color: var(--status-tag-info-bg);
+    color: var(--alpha-white);
+}
+
+.status-tag--info.status-tag--inverted .status-tag__dot {
+    background-color: var(--alpha-white-60);
+}
+
+/* ============================================
+   STYLE: GHOST (No Background)
+   Transparent background, just dot and text
+   ============================================ */
+
+.status-tag--ghost {
+    background-color: transparent;
+    padding: 0;
+}
+
+/* Neutral - Ghost */
+.status-tag--neutral.status-tag--ghost,
+.status-tag--ghost:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) {
+    color: var(--status-tag-neutral-text);
+}
+
+.status-tag--neutral.status-tag--ghost .status-tag__dot,
+.status-tag--ghost:not(.status-tag--success):not(.status-tag--error):not(.status-tag--warning):not(.status-tag--info) .status-tag__dot {
+    background-color: var(--status-tag-neutral-dot);
+}
+
+/* Success - Ghost */
+.status-tag--success.status-tag--ghost {
+    color: var(--status-tag-success-text);
+}
+
+.status-tag--success.status-tag--ghost .status-tag__dot {
+    background-color: var(--status-tag-success-dot);
+}
+
+/* Error - Ghost */
+.status-tag--error.status-tag--ghost {
+    color: var(--status-tag-error-text);
+}
+
+.status-tag--error.status-tag--ghost .status-tag__dot {
+    background-color: var(--status-tag-error-dot);
+}
+
+/* Warning - Ghost */
+.status-tag--warning.status-tag--ghost {
+    color: var(--status-tag-warning-text);
+}
+
+.status-tag--warning.status-tag--ghost .status-tag__dot {
+    background-color: var(--status-tag-warning-dot);
+}
+
+/* Info - Ghost */
+.status-tag--info.status-tag--ghost {
+    color: var(--status-tag-info-text);
+}
+
+.status-tag--info.status-tag--ghost .status-tag__dot {
+    background-color: var(--status-tag-info-dot);
+}
+
+/* ============================================
+   RTL SUPPORT
+   ============================================ */
+
+/* No [dir="rtl"] override needed: the flex row (dot, label) mirrors
+   automatically in RTL. A row-reverse here double-reverses and pushes
+   the dot to the wrong side. */
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Screen reader only text for status */
+.status-tag__sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Host: <mod-status-tag> carries .status-tag (inline-flex above). */

@@ -1,0 +1,219 @@
+<!-- Left: Icon Packs Sidebar (same categories as the font) -->
+<aside class="icons-sidebar">
+  <h2 class="icons-sidebar-title">ICON PACKS</h2>
+  <div id="libicons-packs-list" class="icons-packs-list">
+    @for (p of packs; track p.id) {
+      <button
+        type="button"
+        class="icons-pack-item"
+        [class.icons-pack-item--active]="pack() === p.id"
+        (click)="pack.set(p.id)"
+      >
+        <span class="icons-pack-icon">
+          @if (p.preview) {
+            <span [class]="'icon dga-icon-' + p.preview"></span>
+          }
+        </span>
+        <span class="icons-pack-name">{{ p.label }}</span>
+        <span class="icons-pack-count">{{ p.count }}</span>
+      </button>
+    }
+  </div>
+</aside>
+
+<div class="icons-main">
+  <div class="icons-header">
+    <div class="icons-header-text">
+      <h1 class="icons-title">Icon Library</h1>
+      <p class="icons-subtitle">
+        Every icon from the DGA icon library — SVG stroke &amp; solid plus the seven icon-font styles, organised in the
+        same packs as the font. Icons follow the current theme color. Click a tile for full details and code.
+      </p>
+    </div>
+    <div class="icons-search-wrapper">
+      <svg class="icons-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      </svg>
+      <input
+        #search
+        type="search"
+        id="libicons-search"
+        class="icons-search-input"
+        placeholder="Search library icons..."
+        autocomplete="off"
+        spellcheck="false"
+        [value]="inputValue()"
+        (input)="onInput(search.value)"
+      />
+      <button
+        type="button"
+        id="libicons-search-clear"
+        class="icons-search-clear"
+        [style.display]="inputValue() ? null : 'none'"
+        aria-label="Clear search"
+        (click)="clearSearch()"
+      >
+        &times;
+      </button>
+    </div>
+  </div>
+
+  <div class="icons-type-filters">
+    <span class="icons-type-filters-label">Style:</span>
+    <div class="icons-type-filters-list" id="libicons-variant-list">
+      @for (v of variants; track v.id; let i = $index) {
+        <button type="button" class="libicons-variant-btn" [class.active]="variantIndex() === i" (click)="variantIndex.set(i)">
+          {{ v.label }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <div id="libicons-results-bar" class="icons-results-bar" aria-live="polite">{{ resultsText() }}</div>
+
+  <div id="libicons-grid" class="icons-grid">
+    @for (name of visible(); track name) {
+      <button type="button" class="icons-grid-item" [title]="name" (click)="openModal(name)">
+        @let v = variant();
+        @if (v.kind === 'font') {
+          <span [class]="fontClass(name, v.classes)"></span>
+        } @else {
+          <span class="libicons-svg" [demoLibSvg]="svgFile(name, v.variant)" lazy></span>
+        }
+        <span class="icons-grid-item-name">{{ spaced(name) }}</span>
+        <span
+          class="icons-grid-item-copy"
+          role="button"
+          aria-label="Copy icon name"
+          title="Copy icon name"
+          (click)="quickCopy(name, $event)"
+        >
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+          </svg>
+        </span>
+      </button>
+    }
+  </div>
+  @if (hasMore()) {
+    @for (key of sentinelKey(); track key) {
+      <div id="libicons-sentinel" class="icons-grid-sentinel" aria-hidden="true" rootMargin="600px" (demoInView)="loadMore()"></div>
+    }
+  }
+</div>
+
+<!-- Library Icon Detail Modal -->
+@if (modalName(); as name) {
+  <div id="libicons-modal-overlay" class="icons-modal-overlay" (click)="onOverlayClick($event)">
+    <div class="icons-modal">
+      <button type="button" id="libicons-modal-close" class="icons-modal-close" aria-label="Close" (click)="closeModal()">
+        &times;
+      </button>
+
+      <h2 id="libicons-modal-title" class="icons-modal-title">{{ spaced(name) }}</h2>
+      <p id="libicons-modal-subtitle" class="icons-modal-subtitle">{{ modalSubtitle() }}</p>
+
+      <div class="icons-modal-body">
+        <!-- Preview Column -->
+        <div class="icons-modal-preview">
+          @let current = modalVariant();
+          @if (current.kind === 'font') {
+            <div id="libicons-modal-icon" class="icons-modal-icon-display">
+              <span [class]="fontClass(name, current.classes)"></span>
+            </div>
+          } @else {
+            <div id="libicons-modal-icon" class="icons-modal-icon-display" [demoLibSvg]="svgFile(name, current.variant)"></div>
+          }
+          <span id="libicons-modal-preview-label" class="icons-modal-preview-label">{{ current.label }}</span>
+        </div>
+
+        <!-- Details Column -->
+        <div class="icons-modal-details">
+          <!-- Style Variants (SVG + font styles) -->
+          <div id="libicons-modal-variants" class="icons-modal-variants">
+            @for (v of variants; track v.id; let i = $index) {
+              @if (v.kind === 'svg') {
+                <button
+                  type="button"
+                  class="icons-modal-variant-btn"
+                  [class.icons-modal-variant-btn--active]="modalVariantIndex() === i"
+                  [title]="v.label"
+                  (click)="modalVariantIndex.set(i)"
+                >
+                  <span class="libicons-modal-variant-icon" [demoLibSvg]="svgFile(name, v.variant)"></span>
+                </button>
+              } @else if (inFont(name)) {
+                <button
+                  type="button"
+                  class="icons-modal-variant-btn"
+                  [class.icons-modal-variant-btn--active]="modalVariantIndex() === i"
+                  [title]="v.label"
+                  (click)="modalVariantIndex.set(i)"
+                >
+                  <span class="libicons-modal-variant-icon"><span [class]="fontClass(name, v.classes)"></span></span>
+                </button>
+              } @else {
+                <button
+                  type="button"
+                  class="icons-modal-variant-btn"
+                  [title]="v.label + ' — not available in the icon font'"
+                  disabled
+                >
+                  <span class="libicons-modal-variant-icon"></span>
+                </button>
+              }
+            }
+          </div>
+
+          <!-- Code Tabs -->
+          <div class="icons-modal-tabs" id="libicons-modal-tabs">
+            @for (tab of tabs; track tab.id) {
+              <button
+                type="button"
+                class="icons-modal-tab"
+                [class.icons-modal-tab--active]="modalTab() === tab.id"
+                (click)="modalTab.set(tab.id)"
+              >
+                {{ tab.label }}
+              </button>
+            }
+          </div>
+
+          <!-- Code Block -->
+          <div class="icons-modal-code">
+            <pre><code id="libicons-modal-code-content">{{ code() }}</code></pre>
+            <div class="icons-modal-code-actions">
+              <button type="button" id="libicons-modal-copy" class="icons-modal-action-btn" title="Copy code" (click)="copy(code(), 'Code copied')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </svg>
+              </button>
+              <button type="button" id="libicons-modal-download" class="icons-modal-action-btn" title="Download SVG" (click)="downloadSvg()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Icon name quick copy -->
+          <div class="icons-modal-classes">
+            <span class="icons-modal-classes-label">Icon Name:</span>
+            <code id="libicons-modal-name">{{ name }}</code>
+            <button type="button" id="libicons-modal-copy-name" class="icons-modal-copy-class-btn" title="Copy icon name" (click)="copyName(name)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}

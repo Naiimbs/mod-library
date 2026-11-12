@@ -1,0 +1,142 @@
+/* ============================================
+   COMPONENT: SCREENS
+   DGA Design System - Screen Template Components
+   ============================================ */
+
+.screen-preview {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-secondary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+/* ============================================
+   Screen Header
+   ============================================ */
+
+.screen-header {
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border-secondary);
+    padding: var(--spacing-lg) var(--spacing-3xl);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.screen-header__logo {
+    width: 100px;
+    height: 12px;
+    background: var(--color-border-secondary);
+    border-radius: var(--radius-sm);
+}
+
+.screen-header__actions {
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+.screen-header__avatar {
+    width: 32px;
+    height: 32px;
+    background: var(--color-border-secondary);
+    border-radius: var(--radius-full);
+}
+
+/* ============================================
+   Screen Content
+   ============================================ */
+
+.screen-content {
+    padding: var(--spacing-3xl);
+}
+
+.screen-grid {
+    display: grid;
+    gap: var(--spacing-xl);
+}
+
+.screen-grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.screen-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.screen-grid--4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* ============================================
+   Screen Placeholders
+   ============================================ */
+
+.screen-placeholder {
+    background: var(--color-white);
+    border: 1px solid var(--color-border-secondary);
+    border-radius: var(--radius-md);
+}
+
+.screen-placeholder--sm {
+    height: 100px;
+}
+
+.screen-placeholder--md {
+    height: 150px;
+}
+
+.screen-placeholder--lg {
+    height: 200px;
+}
+
+.screen-placeholder--full {
+    grid-column: 1 / -1;
+}
+
+/* ============================================
+   Dashboard Layout
+   ============================================ */
+
+.screen-dashboard {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+}
+
+.screen-dashboard .screen-header {
+    flex-shrink: 0;
+}
+
+.screen-dashboard .screen-content {
+    flex: 1;
+    overflow: hidden;
+}
+
+/* ============================================
+   Responsive Screens
+   ============================================ */
+
+@media (max-width: 768px) {
+    .screen-grid--2,
+    .screen-grid--3,
+    .screen-grid--4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   Angular hosts
+   ============================================ */
+
+mod-screen,
+mod-screen-placeholder {
+    display: block;
+}
+
+mod-screen.screen-dashboard {
+    display: flex;
+}
+
+mod-screen-grid {
+    display: grid;
+}

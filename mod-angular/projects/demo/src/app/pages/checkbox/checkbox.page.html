@@ -1,0 +1,212 @@
+<div class="content-header">
+  <h1 class="content-title">Checkbox</h1>
+  <p class="content-description">
+    A checkbox allows users to make a single selection or indicate a binary choice. Checkboxes enable users to
+    interact with options within an interface. They can be toggled individually for specific selections or grouped
+    together to allow multiple choices.
+  </p>
+</div>
+
+<demo-live
+  heading="Checkbox"
+  description="Toggle individual selections or group checkboxes for multiple choices."
+  align="center"
+  [rtl]="rtl()"
+>
+  <mod-checkbox-group
+    style="width: 100%; max-width: 400px"
+    name="demo-group"
+    [(value)]="selection"
+    [disabled]="state() === 'disabled'"
+    [readonly]="state() === 'readonly'"
+  >
+    @for (option of t().options; track $index) {
+      <mod-checkbox
+        [value]="$index"
+        [label]="option"
+        [variant]="variant()"
+        [size]="size()"
+        [indeterminate]="indeterminate()"
+        (indeterminateChange)="indeterminate.set($event)"
+        [helperText]="helperText() ? t().helpers[$index] : ''"
+        [alertText]="alertMessage() && $index === 0 ? t().alert : ''"
+      />
+    }
+  </mod-checkbox-group>
+
+  <demo-switch label="RTL" [(checked)]="rtl" />
+  <demo-select label="State" [options]="states" [(value)]="state" />
+  <demo-select label="Style" [options]="variants" [(value)]="variant" />
+  <demo-select label="Size" [options]="sizes" [(value)]="size" />
+  <demo-switch label="Checked" [checked]="checked()" (checkedChange)="setChecked($event)" />
+  <demo-switch label="Indeterminate" [(checked)]="indeterminate" />
+  <demo-switch label="Helper Text" [(checked)]="helperText" />
+  <demo-switch label="Alert Message" [(checked)]="alertMessage" />
+</demo-live>
+
+<demo-props heading="Props" description="Inputs and models of mod-checkbox." [props]="props" />
+<demo-props
+  heading="Checkbox group props"
+  description="Inputs and models of mod-checkbox-group, which owns the list of checked values of its checkboxes."
+  [props]="groupProps"
+/>
+
+<demo-showcase
+  heading="States"
+  description="All interactive states — default, hover (move mouse over), disabled, and read-only."
+  align="stretch"
+>
+  <div class="showcase-row" style="gap: var(--spacing-6xl); align-items: flex-start;">
+    <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+      <p [style]="groupLabel">Unchecked</p>
+      <mod-checkbox label="Default" />
+      <mod-checkbox label="Disabled" disabled />
+      <mod-checkbox label="Read-only" readonly />
+    </div>
+    <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+      <p [style]="groupLabel">Checked (Primary)</p>
+      <mod-checkbox label="Default" [checked]="true" />
+      <mod-checkbox label="Disabled" [checked]="true" disabled />
+      <mod-checkbox label="Read-only" [checked]="true" readonly />
+    </div>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Styles"
+  description="Primary style uses a green fill, while Neutral uses a black fill."
+  align="stretch"
+>
+  <div class="showcase-row" style="gap: var(--spacing-6xl); align-items: flex-start;">
+    <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+      <p [style]="groupLabel">Primary</p>
+      <mod-checkbox label="Selected option" [checked]="true" />
+      <mod-checkbox label="Indeterminate" [indeterminate]="true" />
+    </div>
+    <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+      <p [style]="groupLabel">Neutral</p>
+      <mod-checkbox variant="neutral" label="Selected option" [checked]="true" />
+      <mod-checkbox variant="neutral" label="Indeterminate" [indeterminate]="true" />
+    </div>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Sizes"
+  description="Three hitbox sizes — medium (24px, default), small (20px), and x-small (16px). The checkbox base remains 16px."
+  align="stretch"
+>
+  <div class="showcase-row" style="gap: var(--spacing-6xl); align-items: flex-start;">
+    <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+      <p [style]="groupLabel">Medium (24px)</p>
+      <mod-checkbox label="Medium checkbox" [checked]="true" />
+    </div>
+    <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+      <p [style]="groupLabel">Small (20px)</p>
+      <mod-checkbox size="small" label="Small checkbox" [checked]="true" />
+    </div>
+    <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+      <p [style]="groupLabel">x Small (16px)</p>
+      <mod-checkbox size="xsmall" label="Extra small checkbox" [checked]="true" />
+    </div>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="Indeterminate"
+  description="A partial selection state shown with a minus icon. Commonly used for &quot;select all&quot; when only some items are checked."
+  align="stretch"
+>
+  <div style="display: flex; flex-direction: column; gap: var(--spacing-md); max-width: 300px;">
+    <mod-checkbox
+      label="Select all"
+      [checked]="allSelected()"
+      [indeterminate]="someSelected()"
+      (checkedChange)="toggleAll($event)"
+    />
+    <mod-checkbox-group
+      style="padding-inline-start: var(--spacing-5xl); gap: var(--spacing-xs);"
+      ariaLabel="Options"
+      [(value)]="selectAll"
+    >
+      @for (option of selectAllOptions; track option.value) {
+        <mod-checkbox [value]="option.value" [label]="option.label" />
+      }
+    </mod-checkbox-group>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="With Helper Text"
+  description="Descriptive text below the label provides additional context for each option."
+  align="stretch"
+>
+  <mod-checkbox-group style="max-width: 400px" ariaLabel="Notifications" [(value)]="notifications">
+    <mod-checkbox value="email" label="Email notifications" helperText="Receive updates about your account via email." />
+    <mod-checkbox value="sms" label="SMS notifications" helperText="Get text messages for important alerts." />
+    <mod-checkbox value="push" label="Push notifications" helperText="Receive real-time alerts on your device." />
+  </mod-checkbox-group>
+</demo-showcase>
+
+<demo-showcase
+  heading="With Alert Message"
+  description="Error or warning feedback displayed below a checkbox option."
+  align="stretch"
+>
+  <mod-checkbox-group style="max-width: 400px" ariaLabel="Terms">
+    <mod-checkbox
+      value="terms"
+      label="I agree to the terms and conditions"
+      helperText="Please read the terms before proceeding."
+      alertText="You must accept the terms to continue."
+    />
+  </mod-checkbox-group>
+</demo-showcase>
+
+<demo-showcase
+  heading="Checkbox Group"
+  description="A group of checkboxes where multiple options can be selected. Available in vertical (default) and horizontal layouts."
+  align="stretch"
+>
+  <div class="showcase-row" style="gap: 64px; align-items: flex-start;">
+    <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+      <p [style]="groupLabel">Vertical</p>
+      <mod-checkbox-group name="group-v" ariaLabel="Vertical" [(value)]="vertical">
+        <mod-checkbox value="a" label="Option A" />
+        <mod-checkbox value="b" label="Option B" />
+        <mod-checkbox value="c" label="Option C" />
+      </mod-checkbox-group>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+      <p [style]="groupLabel">Horizontal</p>
+      <mod-checkbox-group name="group-h" orientation="horizontal" ariaLabel="Horizontal" [(value)]="horizontal">
+        <mod-checkbox value="left" label="Left" />
+        <mod-checkbox value="center" label="Center" />
+        <mod-checkbox value="right" label="Right" />
+      </mod-checkbox-group>
+    </div>
+  </div>
+</demo-showcase>
+
+<demo-showcase
+  heading="RTL Layout"
+  description="Right-to-left support for Arabic and other RTL languages."
+  align="stretch"
+>
+  <div dir="rtl" style="width: 100%;">
+    <mod-checkbox-group style="max-width: 400px; margin-left: auto;" [(value)]="rtlSelection">
+      <mod-checkbox
+        value="a"
+        label="عنوان اختيار متعدد"
+        helperText="يكتب المحتوى الإضافي هنا في حال ان عنوان الاختيار يحتاج الى شرح أو تفصيل."
+      />
+      <mod-checkbox value="b" label="خيار ثاني" helperText="وصف إضافي للخيار الثاني." />
+      <mod-checkbox
+        value="c"
+        label="خيار ثالث"
+        helperText="وصف إضافي للخيار الثالث."
+        alertText="رسالة خطأ أو تحذير"
+      />
+    </mod-checkbox-group>
+  </div>
+</demo-showcase>

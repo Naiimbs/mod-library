@@ -1,0 +1,52 @@
+@if (govbarSlot()) {
+  <div class="sp-govbar">
+    <div class="sp-govbar__inner">
+      <ng-content select="[modServicePageGovbar]" />
+    </div>
+  </div>
+}
+<ng-content select="[modServicePageHeader]" />
+@if (breadcrumbSlot()) {
+  <div class="sp-breadcrumb-row">
+    <ng-content select="[modServicePageBreadcrumb]" />
+  </div>
+}
+<main class="sp-main">
+  <section class="sp-details">
+    <ng-content />
+  </section>
+  @if (asideSlot()) {
+    <aside class="sp-aside" [attr.aria-label]="asideLabel() || null">
+      <div class="sp-aside__card">
+        <ng-content select="[modServicePageAside]" />
+      </div>
+    </aside>
+  }
+</main>
+@if (relatedSlot()) {
+  <section class="sp-related" [attr.aria-label]="relatedLabel() || null">
+    <div class="sp-related__inner">
+      <ng-content select="[modServicePageRelated]" />
+    </div>
+  </section>
+}
+@if (commentsSlot()) {
+  <section class="sp-comments-wrap">
+    <ng-content select="[modServicePageComments]" />
+  </section>
+}
+@if (ratingSlot()) {
+  <section class="sp-ratingbar" [attr.aria-label]="ratingLabel() || null">
+    <div class="sp-ratingbar__inner">
+      <ng-content select="[modServicePageRating]" />
+    </div>
+  </section>
+}
+@if (usefulSlot()) {
+  <section class="sp-useful" [attr.aria-label]="usefulLabel() || null">
+    <div class="sp-useful__inner">
+      <ng-content select="[modServicePageUseful]" />
+    </div>
+  </section>
+}
+<ng-content select="[modServicePageFooter]" />
