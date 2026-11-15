@@ -53,7 +53,7 @@ interface EmailExample {
     <div class="content-header">
       <h1 class="content-title">Email templates</h1>
       <p class="content-description">
-        Transactional emails in the MOD identity, in English and Arabic. Each template is a function that returns a
+        Transactional emails in the brand identity, in English and Arabic. Each template is a function that returns a
         complete HTML document, so it can be sent from any back end. Copy the HTML from the Code tab.
       </p>
     </div>

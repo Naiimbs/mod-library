@@ -11,11 +11,11 @@ import {
 } from '@mod-internal/ui';
 import { injectCountdown } from './countdown';
 
-const MASKED_EMAIL = 'm•••••••d@mod.gov.sa';
+const MASKED_EMAIL = 'm•••••••d@example.org';
 
 const TEXT = {
   en: {
-    logoAlt: 'Ministry of Defense',
+    logoAlt: 'Organization name',
     language: 'عربي',
     switchLabel: 'Page state',
     switchSent: 'Link sent',
@@ -32,10 +32,10 @@ const TEXT = {
     verifiedTitle: 'Email verified',
     verifiedText: 'Your email address has been confirmed. You can now continue to the system.',
     continue: 'Continue',
-    copyright: '© Ministry of Defense 2026 — All rights reserved',
+    copyright: '© Organization name 2026 — All rights reserved',
   },
   ar: {
-    logoAlt: 'وزارة الدفاع',
+    logoAlt: 'اسم الجهة',
     language: 'English',
     switchLabel: 'حالة الصفحة',
     switchSent: 'تم إرسال الرابط',
@@ -52,7 +52,7 @@ const TEXT = {
     verifiedTitle: 'تم التحقق من البريد الإلكتروني',
     verifiedText: 'تم تأكيد بريدك الإلكتروني. يمكنك الآن المتابعة إلى النظام.',
     continue: 'متابعة',
-    copyright: '© وزارة الدفاع 2026 — جميع الحقوق محفوظة',
+    copyright: '© اسم الجهة 2026 — جميع الحقوق محفوظة',
   },
 } as const;
 
@@ -94,8 +94,7 @@ const TEXT = {
     <mod-auth-layout variant="centered">
       <img
         modAuthLogo
-        src="examples/mod-logo-full.png"
-        srcset="examples/mod-logo-full.png 1x, examples/mod-logo-full@2x.png 2x"
+        src="examples/logo-placeholder.svg"
         width="132"
         height="136"
         [alt]="t().logoAlt"
@@ -252,7 +251,7 @@ const RESEND_SECONDS = 30;
   imports: [ModAuthLayout, ModAuthHeader, ModAuthLogo, ModAuthFooter, ModButton, ModLink],
   template: \`
     <mod-auth-layout variant="centered">
-      <img modAuthLogo src="assets/img/mod-logo-full.png" width="132" height="136" alt="Ministry of Defense" />
+      <img modAuthLogo src="assets/img/logo.svg" width="132" height="136" alt="Organization name" />
 
       <mod-auth-header icon="mail-open-01" heading="We sent a verification link">
         <p class="auth-header__text">
@@ -280,7 +279,7 @@ const RESEND_SECONDS = 30;
         <a mod-link variant="secondary" href="/login">Back to log in</a>
       </p>
 
-      <span modAuthFooter>© Ministry of Defense 2026 — All rights reserved</span>
+      <span modAuthFooter>© Organization name 2026 — All rights reserved</span>
     </mod-auth-layout>
   \`,
 })
@@ -289,7 +288,7 @@ export class VerifyLinkSent {
   private interval: ReturnType<typeof setInterval> | undefined;
 
   // Mask the address on the server; never send the full address to this page.
-  protected readonly maskedEmail = 'm•••••••d@mod.gov.sa';
+  protected readonly maskedEmail = 'm•••••••d@example.org';
   protected readonly resent = signal(false);
   protected readonly remaining = signal(0);
   protected readonly waiting = computed(() => this.remaining() > 0);
@@ -323,7 +322,7 @@ export class VerifyLinkSent {
   imports: [ModAuthLayout, ModAuthHeader, ModAuthLogo, ModAuthFooter, ModButton],
   template: \`
     <mod-auth-layout variant="centered">
-      <img modAuthLogo src="assets/img/mod-logo-full.png" width="132" height="136" alt="Ministry of Defense" />
+      <img modAuthLogo src="assets/img/logo.svg" width="132" height="136" alt="Organization name" />
 
       <mod-auth-header
         icon="checkmark-circle-02"
@@ -333,7 +332,7 @@ export class VerifyLinkSent {
 
       <a mod-button href="/" style="width: 100%;">Continue</a>
 
-      <span modAuthFooter>© Ministry of Defense 2026 — All rights reserved</span>
+      <span modAuthFooter>© Organization name 2026 — All rights reserved</span>
     </mod-auth-layout>
   \`,
 })

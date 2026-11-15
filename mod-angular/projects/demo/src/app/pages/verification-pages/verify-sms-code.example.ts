@@ -16,7 +16,7 @@ const MASKED_MOBILE = '+966 5• ••• ••12';
 
 const TEXT = {
   en: {
-    logoAlt: 'Ministry of Defense',
+    logoAlt: 'Organization name',
     language: 'عربي',
     title: 'Verify your mobile number',
     sentTo: 'Enter the 4-digit code sent by SMS to',
@@ -31,10 +31,10 @@ const TEXT = {
     noCode: 'Didn’t receive the code?',
     resend: 'Resend',
     wait: (seconds: number) => `(available in ${seconds} s)`,
-    copyright: '© Ministry of Defense 2026 — All rights reserved',
+    copyright: '© Organization name 2026 — All rights reserved',
   },
   ar: {
-    logoAlt: 'وزارة الدفاع',
+    logoAlt: 'اسم الجهة',
     language: 'English',
     title: 'تحقق من رقم جوالك',
     sentTo: 'أدخل الرمز المكوّن من 4 أرقام المرسل برسالة نصية إلى',
@@ -49,7 +49,7 @@ const TEXT = {
     noCode: 'لم يصلك الرمز؟',
     resend: 'إعادة الإرسال',
     wait: (seconds: number) => `(متاحة بعد ${seconds} ثانية)`,
-    copyright: '© وزارة الدفاع 2026 — جميع الحقوق محفوظة',
+    copyright: '© اسم الجهة 2026 — جميع الحقوق محفوظة',
   },
 } as const;
 
@@ -78,8 +78,7 @@ const TEXT = {
     <mod-auth-layout variant="centered" card muted>
       <img
         modAuthLogo
-        src="examples/mod-logo-full.png"
-        srcset="examples/mod-logo-full.png 1x, examples/mod-logo-full@2x.png 2x"
+        src="examples/logo-placeholder.svg"
         width="132"
         height="136"
         [alt]="t().logoAlt"
@@ -226,7 +225,7 @@ const RESEND_SECONDS = 30;
   imports: [ModAuthLayout, ModAuthHeader, ModAuthLogo, ModAuthFooter, ModLink, ModOtpInput],
   template: \`
     <mod-auth-layout variant="centered" card muted>
-      <img modAuthLogo src="assets/img/mod-logo-full.png" width="132" height="136" alt="Ministry of Defense" />
+      <img modAuthLogo src="assets/img/logo.svg" width="132" height="136" alt="Organization name" />
 
       <mod-auth-header icon="smart-phone-01" heading="Verify your mobile number">
         <p class="auth-header__text">
@@ -262,7 +261,7 @@ const RESEND_SECONDS = 30;
         }
       </p>
 
-      <span modAuthFooter>© Ministry of Defense 2026 — All rights reserved</span>
+      <span modAuthFooter>© Organization name 2026 — All rights reserved</span>
     </mod-auth-layout>
   \`,
 })

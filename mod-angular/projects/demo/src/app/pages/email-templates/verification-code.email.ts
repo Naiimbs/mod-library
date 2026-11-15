@@ -32,7 +32,7 @@ export function verificationCodeEmail(lang: EmailLang, data: Partial<Verificatio
           intro: 'استخدم الرمز التالي لإكمال تسجيل الدخول إلى نظام إدارة الإحالات الطبية وتحويل المرضى:',
           codeLabel: 'رمز التحقق',
           expiry: `هذا الرمز صالح لمدة <strong>${expiresInMinutes} دقائق</strong> ويُستخدم مرة واحدة فقط.`,
-          warning: 'لا تشارك هذا الرمز مع أي شخص. لن يطلب منك موظفو الوزارة هذا الرمز أبدًا.',
+          warning: 'لا تشارك هذا الرمز مع أي شخص. لن يطلب منك موظفو الجهة هذا الرمز أبدًا.',
           ignore: 'إذا لم تطلب هذا الرمز، يمكنك تجاهل هذه الرسالة.',
         }
       : {
@@ -42,7 +42,7 @@ export function verificationCodeEmail(lang: EmailLang, data: Partial<Verificatio
           intro: 'Use the following code to complete your sign-in to the Medical Referrals and Patient Transfer System:',
           codeLabel: 'Verification code',
           expiry: `This code is valid for <strong>${expiresInMinutes} minutes</strong> and can be used only once.`,
-          warning: 'Do not share this code with anyone. Ministry staff will never ask you for it.',
+          warning: 'Do not share this code with anyone. Our staff will never ask you for it.',
           ignore: 'If you did not request this code, you can ignore this message.',
         };
 

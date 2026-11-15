@@ -31,7 +31,7 @@ if (/^\s*display:\s*flex\s+-ms-flex-wrap/m.test(css)) {
 }
 
 if (problems.length) {
-  console.error('DGATheme.css is missing required MOD edits:\n- ' + problems.join('\n- '));
+  console.error('DGATheme.css is missing required brand edits:\n- ' + problems.join('\n- '));
   process.exit(1);
 }
-console.log('DGATheme.css: MOD edits present');
+console.log('DGATheme.css: brand edits present');

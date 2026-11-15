@@ -4,17 +4,17 @@ import { LoginForm, loginCode } from './login-form';
 
 const TEXT = {
   en: {
-    emblemAlt: 'Ministry of Defense',
+    emblemAlt: 'Organization name',
     title: 'Sign in to your account',
     subtitle: 'Welcome back. Enter your details to continue.',
-    copyright: '© Ministry of Defense 2026 — All rights reserved',
+    copyright: '© Organization name 2026 — All rights reserved',
     language: 'عربي',
   },
   ar: {
-    emblemAlt: 'وزارة الدفاع',
+    emblemAlt: 'اسم الجهة',
     title: 'تسجيل الدخول إلى حسابك',
     subtitle: 'مرحبًا بعودتك. أدخل بياناتك للمتابعة.',
-    copyright: '© وزارة الدفاع 2026 — جميع الحقوق محفوظة',
+    copyright: '© اسم الجهة 2026 — جميع الحقوق محفوظة',
     language: 'English',
   },
 } as const;
@@ -33,7 +33,7 @@ const TEXT = {
         <mod-icon name="language-square" /> {{ t().language }}
       </button>
 
-      <img class="login-emblem" src="examples/mod-emblem@2x.png" width="64" height="66" [alt]="t().emblemAlt" />
+      <img class="login-emblem" src="examples/emblem-placeholder.svg" width="64" height="66" [alt]="t().emblemAlt" />
       <mod-auth-header [heading]="t().title" [description]="t().subtitle" />
 
       <demo-login-form [lang]="lang()" />
@@ -63,7 +63,7 @@ export const LOGIN_CENTERED_CODE = loginCode({
         <mod-icon name="language-square" /> عربي
       </button>
 
-      <img class="sign-in__emblem" src="assets/img/mod-emblem@2x.png" width="64" height="66" alt="Ministry of Defense" />
+      <img class="sign-in__emblem" src="assets/img/emblem-placeholder.svg" width="64" height="66" alt="Organization name" />
       <mod-auth-header
         heading="Sign in to your account"
         description="Welcome back. Enter your details to continue."

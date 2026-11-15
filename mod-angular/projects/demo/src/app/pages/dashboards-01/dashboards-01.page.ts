@@ -12,7 +12,7 @@ import { DASHBOARDS_01_CODE, Dashboards01Example } from './dashboards-01.example
       <p class="content-description">
         A reporting dashboard inside the application shell: KPI tiles with their change against the previous
         period, a column chart, ranked breakdowns and a table of the latest records. Adapted from the dashboard
-        of the General Directorate of Medical Services in the MODHS Referral Portal, and built only from library
+        of the General Directorate of Medical Services in a hospital referral portal, and built only from library
         components. It works in English and Arabic, adapts from desktop to mobile, and can be copied from the
         Code tab.
       </p>

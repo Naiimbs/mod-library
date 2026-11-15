@@ -1,7 +1,7 @@
 /**
  * Shared sample data of the "Application UI" examples (dashboards, settings,
  * informational pages). The vocabulary, menu, hospitals, specialties and
- * statuses follow the MODHS Referral Portal ("Medical Referrals and Patient
+ * statuses follow a hospital referral portal ("Medical Referrals and Patient
  * Transfer System"); people, file numbers and referral numbers are invented.
  *
  * Everything is bilingual: `{ en, ar }` pairs read with `pick(pair, lang)`.
@@ -114,7 +114,7 @@ export const APP_TEXT = {
   en: {
     appName: 'Medical Referral and Patient Transfer Management System',
     appShort: 'Medical Referrals',
-    logoAlt: 'Ministry logo',
+    logoAlt: 'Organization logo',
     navLabel: 'Main navigation',
     collapse: 'Collapse the side menu',
     expand: 'Expand the side menu',
@@ -137,7 +137,7 @@ export const APP_TEXT = {
   ar: {
     appName: 'النظام الخاص بإدارة الإحالات الطبية وتحويل المرضى',
     appShort: 'الإحالات الطبية',
-    logoAlt: 'شعار الوزارة',
+    logoAlt: 'شعار الجهة',
     navLabel: 'القائمة الرئيسية',
     collapse: 'طيّ القائمة الجانبية',
     expand: 'توسيع القائمة الجانبية',
@@ -161,15 +161,15 @@ export const APP_TEXT = {
 
 /** Hospitals of the real system's reference data (a subset). */
 export const HOSPITALS = {
-  PSMMC: { en: 'Prince Sultan Military Medical City in Riyadh', ar: 'مدينة الأمير سلطان الطبية العسكرية' },
-  KFAFH: { en: 'King Fahad Armed Forces Hospital Jeddah', ar: 'مستشفى الملك فهد للقوات المسلحة بجدة' },
-  KFMMC: { en: 'King Fahad Military Medical Complex', ar: 'مجمع الملك فهد الطبي العسكري بالظهران' },
-  MAFH: { en: 'Armed Forces Hospital Madinah', ar: 'مستشفى القوات المسلحة بالمدينة المنورة' },
-  KAFH: { en: 'Al Kharj Armed Forces Hospital', ar: 'مستشفى القوات المسلحة بالخرج' },
-  WDAFH: { en: 'Wadi Aldawaser Military Hospital', ar: 'مستشفى القوات المسلحة بوادي الدواسر' },
-  HADAFH: { en: 'Al Hada Armed Forces Hospital Taif', ar: 'مستشفى الهدا للقوات المسلحة بالطائف' },
-  JH: { en: 'Jubail Hospital', ar: 'مستشفى القوات المسلحة بالجبيل' },
-  AAFH: { en: 'Al Ahsa Armed Forces Hospital', ar: 'مستشفى القوات المسلحة بالأحساء' },
+  RCH: { en: 'Riyadh Central Hospital', ar: 'مستشفى الرياض المركزي' },
+  JGH: { en: 'Jeddah General Hospital', ar: 'مستشفى جدة العام' },
+  DMC: { en: 'Dhahran Medical Complex', ar: 'مجمع الظهران الطبي' },
+  MGH: { en: 'Madinah General Hospital', ar: 'مستشفى المدينة المنورة العام' },
+  KGH: { en: 'Al Kharj General Hospital', ar: 'مستشفى الخرج العام' },
+  WGH: { en: 'Wadi Aldawaser General Hospital', ar: 'مستشفى وادي الدواسر العام' },
+  TGH: { en: 'Taif General Hospital', ar: 'مستشفى الطائف العام' },
+  JH: { en: 'Jubail Hospital', ar: 'مستشفى الجبيل العام' },
+  AGH: { en: 'Al Ahsa General Hospital', ar: 'مستشفى الأحساء العام' },
 } as const satisfies Record<string, Bi>;
 
 export type HospitalCode = keyof typeof HOSPITALS;
@@ -239,7 +239,7 @@ export const APP_USERS: Record<
     short: { en: 'Noura', ar: 'نورة' },
     initials: { en: 'NQ', ar: 'ن ق' },
     role: { en: 'Medical coordinator', ar: 'المنسق الطبي' },
-    hospital: 'PSMMC',
+    hospital: 'RCH',
   },
   admin: {
     name: { en: 'Saad Al-Mutairi', ar: 'سعد المطيري' },

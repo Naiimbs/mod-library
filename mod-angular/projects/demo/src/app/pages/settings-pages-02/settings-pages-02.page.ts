@@ -13,7 +13,7 @@ import { SETTINGS_PAGES_02_CODE, SettingsPages02Example } from './settings-pages
         System setup for an administrator inside the application shell: a secondary navigation of sections on
         the start side and the section on the end side. It holds the hospital data with a read-only view and
         an edit mode, the specialties, an editable table of expenses rates, the lookup lists and a danger zone.
-        Adapted from the hospital, specialties, expenses rates and lookup screens of the MODHS Referral Portal,
+        Adapted from the hospital, specialties, expenses rates and lookup screens of a hospital referral portal,
         and built only from library components. It works in English and Arabic, adapts from desktop to mobile,
         and can be copied from the Code tab.
       </p>

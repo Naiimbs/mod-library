@@ -1,6 +1,6 @@
 /* @mod-internal/ui - core stylesheet. Add to your app's global styles:
    "styles": ["node_modules/@mod-internal/ui/styles/mod.css"]
-   Order matters: base theme scales, semantic tokens, MOD brand theme (colours
+   Order matters: base theme scales, semantic tokens, brand theme (colours
    and typeface), reset, then dark mode. */
 @import url("./utilities/DGATheme.css");
 @import url("./css/tokens.css");

@@ -39,7 +39,7 @@ import { VERIFY_SPLIT_CODE, VerifySplitExample } from './verify-split.example';
 
     <demo-example
       heading="Split with image"
-      description="The second step of the default MOD sign-in: the 6-digit code, grouped three and three, next to the facility photo panel. Try 000000 to see the error state."
+      description="The second step of the default sign-in: the 6-digit code, grouped three and three, next to the image panel. Try 000000 to see the error state."
       [code]="splitCode"
       [(rtl)]="splitRtl"
     >

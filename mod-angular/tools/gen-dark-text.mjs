@@ -1,6 +1,6 @@
 // Adds dark-mode text rules to the component stylesheets.
 //
-// In the MOD theme the primary (--sa-600) and its hover / pressed steps
+// In the brand theme the primary (--sa-600) and its hover / pressed steps
 // (--sa-700 / --sa-800) are dark greens. They are right as fills, but as a
 // TEXT colour they are too dark on dark-mode surfaces. For every component
 // rule that uses one of them (or the tokens that alias them) as `color`,

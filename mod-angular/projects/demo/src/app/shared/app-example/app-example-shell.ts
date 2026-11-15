@@ -1,6 +1,6 @@
 /**
- * Shared frame of the "Application UI" examples: the MODHS-like application
- * shell (`mod-app-shell`) with the real menu groups, the MOD emblem, the
+ * Shared frame of the "Application UI" examples: the referral-portal-like application
+ * shell (`mod-app-shell`) with the real menu groups, the emblem placeholder, the
  * system name, the data-scope tag, the language button, the notification bell
  * and the user menu. The page content goes in the default slot.
  *
@@ -106,10 +106,10 @@ import { APP_NOTICES, APP_TEXT, APP_USERS, AppLang, AppRole, HOSPITALS, appMenu 
       (itemSelect)="itemSelect.emit($event)"
     >
       <span modAppShellLogo class="app-ex-brand">
-        <img src="examples/mod-emblem.png" srcset="examples/mod-emblem.png 1x, examples/mod-emblem@2x.png 2x" width="40" height="41" [alt]="t().logoAlt" />
+        <img src="examples/emblem-placeholder.svg" width="40" height="41" [alt]="t().logoAlt" />
         <span class="app-ex-brand__name">{{ t().appShort }}</span>
       </span>
-      <img modAppShellLogoMark src="examples/mod-emblem.png" srcset="examples/mod-emblem.png 1x, examples/mod-emblem@2x.png 2x" width="36" height="37" [alt]="t().logoAlt" />
+      <img modAppShellLogoMark src="examples/emblem-placeholder.svg" width="36" height="37" [alt]="t().logoAlt" />
       <span modAppShellFooter>{{ t().version }}</span>
 
       <span modAppShellTitle class="app-ex-title">

@@ -12,7 +12,7 @@ import { INFORMATIONAL_PAGES_01_CODE, InformationalPages01Example } from './info
       <p class="content-description">
         A record page inside the application shell: breadcrumb, page header with status and actions, a progress
         indicator of the case steps, read-only details in description lists, an attachments table and a side rail
-        with the key facts and the activity timeline. Adapted from the referral page of the MODHS Referral Portal,
+        with the key facts and the activity timeline. Adapted from the referral page of a hospital referral portal,
         and built only from library components. It works in English and Arabic, adapts from desktop to mobile,
         and can be copied from the Code tab.
       </p>

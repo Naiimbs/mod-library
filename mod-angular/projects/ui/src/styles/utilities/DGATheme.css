@@ -1,4 +1,4 @@
-/* MOD Internal: the five IBMPlexSansArabic* @font-face rules below load the Saudi MOD files (styles/assets/fonts-mod), so the theme's typography utility classes render in the MOD typeface. */
+/* Design System: the five IBMPlexSansArabic* @font-face rules below load the Saudi MOD files (styles/assets/fonts-mod), so the theme's typography utility classes render in the brand typeface. */
 /* Vendored from the DGA theme. Change for @dga/ui: url() references to ../img/* files that are not part of the design system repo were replaced with 'none' so application bundlers can resolve this file. */
 /* Vendored package sheet demoted to a cascade layer: its component rules
    (.btn, .tab-item, .dga-datepicker, ...) must never outrank the design

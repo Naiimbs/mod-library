@@ -12,28 +12,28 @@ import { SignupForm, signupCode } from './signup-form';
 
 const TEXT = {
   en: {
-    logoAlt: 'Ministry of Defense',
+    logoAlt: 'Organization name',
     system: 'Medical Referrals and Patient Transfer System',
     tagline: 'Create your account to submit and follow referral requests between hospitals.',
     title: 'Create an account',
     subtitle: 'Enter your details to start using the system',
-    copyright: '© Ministry of Defense 2026 — All rights reserved',
+    copyright: '© Organization name 2026 — All rights reserved',
     language: 'عربي',
   },
   ar: {
-    logoAlt: 'وزارة الدفاع',
+    logoAlt: 'اسم الجهة',
     system: 'النظام الخاص بإدارة الإحالات الطبية وتحويل المرضى',
     tagline: 'أنشئ حسابك لتقديم طلبات الإحالة ومتابعتها بين المستشفيات.',
     title: 'إنشاء حساب',
     subtitle: 'أدخل بياناتك للبدء في استخدام النظام',
-    copyright: '© وزارة الدفاع 2026 — جميع الحقوق محفوظة',
+    copyright: '© اسم الجهة 2026 — جميع الحقوق محفوظة',
     language: 'English',
   },
 } as const;
 
 /**
  * Split sign-up: the same form as the centered example next to the brand
- * panel with the facility photo, matching the default MOD sign-in page.
+ * panel with the image, matching the default sign-in page.
  */
 @Component({
   selector: 'demo-signup-split',
@@ -41,7 +41,7 @@ const TEXT = {
   imports: [ModAuthLayout, ModAuthHeader, ModAuthLogo, ModAuthActions, ModAuthFooter, ModButton, SignupForm, ModIcon],
   template: `
     <mod-auth-layout
-      panelImage="examples/medical_facility_official_assets.jpg"
+      panelImage="examples/panel-placeholder.svg"
       panelImagePosition="52% 40%"
       [panelTitle]="t().system"
       [panelText]="t().tagline"
@@ -49,8 +49,7 @@ const TEXT = {
     >
       <img
         modAuthLogo
-        src="examples/mod-logo-full.png"
-        srcset="examples/mod-logo-full.png 1x, examples/mod-logo-full@2x.png 2x"
+        src="examples/logo-placeholder.svg"
         width="132"
         height="136"
         [alt]="t().logoAlt"
@@ -76,13 +75,13 @@ export class SignupSplitExample {
 export const SIGNUP_SPLIT_CODE = signupCode({
   authImports: 'ModAuthActions, ModAuthFooter, ModAuthHeader, ModAuthLayout, ModAuthLogo',
   open: `    <mod-auth-layout
-      panelImage="assets/img/medical_facility_official_assets.jpg"
+      panelImage="assets/img/panel-placeholder.svg"
       panelImagePosition="52% 40%"
       panelTitle="Medical Referrals and Patient Transfer System"
       panelText="Create your account to submit and follow referral requests between hospitals."
       [panelIcons]="['medical-file', 'hospital-bed-01', 'patient']"
     >`,
-  slots: `      <img modAuthLogo src="assets/img/mod-logo-full.png" width="132" height="136" alt="Ministry of Defense" />
+  slots: `      <img modAuthLogo src="assets/img/logo.svg" width="132" height="136" alt="Organization name" />
       <button modAuthActions mod-button variant="secondary-outline" size="medium" type="button" (click)="toggleLanguage()">
         <mod-icon name="language-square" /> عربي
       </button>

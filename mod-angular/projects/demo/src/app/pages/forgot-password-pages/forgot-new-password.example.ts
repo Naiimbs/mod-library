@@ -18,7 +18,7 @@ const STRENGTH_VARIANTS: readonly ModProgressVariant[] = ['neutral', 'error', 'e
 
 const TEXT = {
   en: {
-    logoAlt: 'Ministry of Defense',
+    logoAlt: 'Organization name',
     language: 'عربي',
     title: 'Set a new password',
     subtitle: 'Choose a password you have not used before in this system.',
@@ -41,10 +41,10 @@ const TEXT = {
     submit: 'Change password',
     submitting: 'Saving...',
     success: 'Password changed. (This is a demo: nothing was sent.)',
-    copyright: '© Ministry of Defense 2026 — All rights reserved',
+    copyright: '© Organization name 2026 — All rights reserved',
   },
   ar: {
-    logoAlt: 'وزارة الدفاع',
+    logoAlt: 'اسم الجهة',
     language: 'English',
     title: 'تعيين كلمة مرور جديدة',
     subtitle: 'اختر كلمة مرور لم يسبق لك استخدامها في هذا النظام.',
@@ -67,7 +67,7 @@ const TEXT = {
     submit: 'تغيير كلمة المرور',
     submitting: 'جارٍ الحفظ...',
     success: 'تم تغيير كلمة المرور. (هذا عرض تجريبي: لم يُرسل أي شيء.)',
-    copyright: '© وزارة الدفاع 2026 — جميع الحقوق محفوظة',
+    copyright: '© اسم الجهة 2026 — جميع الحقوق محفوظة',
   },
 } as const;
 
@@ -96,8 +96,7 @@ const TEXT = {
     <mod-auth-layout variant="centered" card muted>
       <img
         modAuthLogo
-        src="examples/mod-logo-full.png"
-        srcset="examples/mod-logo-full.png 1x, examples/mod-logo-full@2x.png 2x"
+        src="examples/logo-placeholder.svg"
         width="132"
         height="136"
         [alt]="t().logoAlt"
@@ -357,7 +356,7 @@ const STRENGTH_VARIANTS: readonly ModProgressVariant[] = ['neutral', 'error', 'e
   ],
   template: \`
     <mod-auth-layout variant="centered" card muted>
-      <img modAuthLogo src="assets/img/mod-logo-full.png" width="132" height="136" alt="Ministry of Defense" />
+      <img modAuthLogo src="assets/img/logo.svg" width="132" height="136" alt="Organization name" />
 
       <mod-auth-header
         icon="key-01"
@@ -426,7 +425,7 @@ const STRENGTH_VARIANTS: readonly ModProgressVariant[] = ['neutral', 'error', 'e
         </button>
       </form>
 
-      <span modAuthFooter>© Ministry of Defense 2026 — All rights reserved</span>
+      <span modAuthFooter>© Organization name 2026 — All rights reserved</span>
     </mod-auth-layout>
   \`,
   styles: \`

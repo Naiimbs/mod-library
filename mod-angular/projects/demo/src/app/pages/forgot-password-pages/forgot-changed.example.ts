@@ -11,22 +11,22 @@ import {
 
 const TEXT = {
   en: {
-    logoAlt: 'Ministry of Defense',
+    logoAlt: 'Organization name',
     language: 'عربي',
     title: 'Password changed',
     text: 'Your password has been updated. Use the new password the next time you log in.',
     note: 'For your security, you have been signed out of all other devices.',
     continue: 'Continue to log in',
-    copyright: '© Ministry of Defense 2026 — All rights reserved',
+    copyright: '© Organization name 2026 — All rights reserved',
   },
   ar: {
-    logoAlt: 'وزارة الدفاع',
+    logoAlt: 'اسم الجهة',
     language: 'English',
     title: 'تم تغيير كلمة المرور',
     text: 'تم تحديث كلمة المرور. استخدم كلمة المرور الجديدة عند تسجيل الدخول في المرة القادمة.',
     note: 'حفاظًا على أمان حسابك، تم تسجيل خروجك من جميع الأجهزة الأخرى.',
     continue: 'المتابعة إلى تسجيل الدخول',
-    copyright: '© وزارة الدفاع 2026 — جميع الحقوق محفوظة',
+    copyright: '© اسم الجهة 2026 — جميع الحقوق محفوظة',
   },
 } as const;
 
@@ -39,8 +39,7 @@ const TEXT = {
     <mod-auth-layout variant="centered">
       <img
         modAuthLogo
-        src="examples/mod-logo-full.png"
-        srcset="examples/mod-logo-full.png 1x, examples/mod-logo-full@2x.png 2x"
+        src="examples/logo-placeholder.svg"
         width="132"
         height="136"
         [alt]="t().logoAlt"
@@ -73,7 +72,7 @@ import { ModAuthFooter, ModAuthHeader, ModAuthLayout, ModAuthLogo, ModButton } f
   imports: [ModAuthLayout, ModAuthHeader, ModAuthLogo, ModAuthFooter, ModButton],
   template: \`
     <mod-auth-layout variant="centered">
-      <img modAuthLogo src="assets/img/mod-logo-full.png" width="132" height="136" alt="Ministry of Defense" />
+      <img modAuthLogo src="assets/img/logo.svg" width="132" height="136" alt="Organization name" />
 
       <mod-auth-header
         icon="checkmark-circle-02"
@@ -85,7 +84,7 @@ import { ModAuthFooter, ModAuthHeader, ModAuthLayout, ModAuthLogo, ModButton } f
 
       <a mod-button href="/login" style="width: 100%;">Continue to log in</a>
 
-      <span modAuthFooter>© Ministry of Defense 2026 — All rights reserved</span>
+      <span modAuthFooter>© Organization name 2026 — All rights reserved</span>
     </mod-auth-layout>
   \`,
 })

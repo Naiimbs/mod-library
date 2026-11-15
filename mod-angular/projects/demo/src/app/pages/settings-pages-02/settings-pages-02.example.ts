@@ -300,16 +300,16 @@ interface Details {
 
 /** The hospital is one of the real system's reference data; the contact details and the capacity are invented. */
 const DETAILS: Details = {
-  nameAr: HOSPITALS.PSMMC.ar,
-  nameEn: HOSPITALS.PSMMC.en,
+  nameAr: HOSPITALS.RCH.ar,
+  nameEn: HOSPITALS.RCH.en,
   type: 'REFERRAL',
   region: 'RIYADH',
   city: 'RUH',
   beds: '1192',
   phone: '0115550100',
   fax: '',
-  email: 'referrals@psmmc.example',
-  website: 'https://psmmc.example',
+  email: 'referrals@hospital.example',
+  website: 'https://hospital.example',
 };
 
 const DETAIL_KEYS = Object.keys(DETAILS) as (keyof Details)[];
@@ -427,8 +427,8 @@ function hasError(errors: Record<string, string>): boolean {
 }
 
 /**
- * Settings pages 02: the setup of the general admin, adapted from the MODHS
- * Referral Portal: the hospital data (hospital detail / form), the specialties
+ * Settings pages 02: the setup of the general admin, adapted from a hospital referral
+ * portal: the hospital data (hospital detail / form), the specialties
  * with their availability for referral, the expenses rates and the lookup
  * lists, behind one secondary navigation inside the page.
  *
@@ -636,7 +636,7 @@ function hasError(errors: Record<string, string>): boolean {
                     <div class="app-ex-panel__body set02-form">
                       <mod-description-list columns="3" [aria-label]="t().secDetails">
                         <mod-description-item [label]="t().number" value="1" />
-                        <mod-description-item [label]="t().code" value="PSMMC" />
+                        <mod-description-item [label]="t().code" value="RCH" />
                         <mod-description-item [label]="t().type" [value]="typeLabel()" />
                         <mod-description-item [label]="t().nameAr"><bdi dir="rtl">{{ details().nameAr }}</bdi></mod-description-item>
                         <mod-description-item [label]="t().nameEn"><bdi dir="ltr">{{ details().nameEn }}</bdi></mod-description-item>
@@ -1677,7 +1677,7 @@ const AMOUNT = /^\\d{1,13}(\\.\\d{1,2})?$/;
   ],
   template: \`
     <mod-app-shell [groups]="menu" [(activeId)]="section">
-      <img modAppShellLogo src="assets/img/mod-emblem.png" width="40" height="41" alt="Ministry logo" />
+      <img modAppShellLogo src="assets/img/emblem-placeholder.svg" width="40" height="41" alt="Organization logo" />
       <span modAppShellTitle>Medical Referral and Patient Transfer Management System</span>
       <mod-avatar modAppShellActions size="32" initials="SM" label="Saad Al-Mutairi" />
 
@@ -1742,7 +1742,7 @@ const AMOUNT = /^\\d{1,13}(\\.\\d{1,2})?$/;
                   </div>
                 } @else {
                   <mod-description-list columns="3" aria-label="Hospital data">
-                    <mod-description-item label="Code" value="PSMMC" />
+                    <mod-description-item label="Code" value="RCH" />
                     <mod-description-item label="Type" [value]="hospital().type" />
                     <mod-description-item label="Arabic name" [value]="hospital().nameAr" />
                     <mod-description-item label="English name" [value]="hospital().nameEn" />
@@ -1931,8 +1931,8 @@ export class Setup {
 
   // Hospital data: the stored record and the draft of the edit mode.
   protected readonly hospital = signal<Hospital>({
-    nameAr: 'مدينة الأمير سلطان الطبية العسكرية', nameEn: 'Prince Sultan Military Medical City in Riyadh',
-    type: 'Referral hospital', region: 'Riyadh Region', city: 'Riyadh', beds: '1192', phone: '0115550100', email: 'referrals@psmmc.example',
+    nameAr: 'مستشفى الرياض المركزي', nameEn: 'Riyadh Central Hospital',
+    type: 'Referral hospital', region: 'Riyadh Region', city: 'Riyadh', beds: '1192', phone: '0115550100', email: 'referrals@hospital.example',
   });
   protected readonly draft = signal<Hospital>(this.hospital());
   protected readonly editing = signal(false);

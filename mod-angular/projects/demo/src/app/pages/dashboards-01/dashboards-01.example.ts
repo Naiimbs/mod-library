@@ -196,7 +196,7 @@ const DATA: Record<Period, PeriodData> = {
     within48: 91,
     daysToBooking: { value: 3.4, delta: -0.5 },
     outcomes: { accepted: 129, rejected: 40, notEligible: 10, running: 47 },
-    hospitals: [['KAFH', 39], ['WDAFH', 31], ['HADAFH', 30], ['JH', 24], ['AAFH', 21]],
+    hospitals: [['KGH', 39], ['WGH', 31], ['TGH', 30], ['JH', 24], ['AGH', 21]],
     specialties: [['CARD', 47], ['ORTHO', 36], ['ONC', 29], ['NSURG', 26], ['NEURO', 20]],
   },
   90: {
@@ -208,7 +208,7 @@ const DATA: Record<Period, PeriodData> = {
     within48: 88,
     daysToBooking: { value: 3.8, delta: -0.7 },
     outcomes: { accepted: 482, rejected: 137, notEligible: 28, running: 58 },
-    hospitals: [['KAFH', 118], ['WDAFH', 101], ['HADAFH', 92], ['JH', 77], ['AAFH', 63]],
+    hospitals: [['KGH', 118], ['WGH', 101], ['TGH', 92], ['JH', 77], ['AGH', 63]],
     specialties: [['CARD', 149], ['ORTHO', 108], ['ONC', 96], ['NSURG', 75], ['NEURO', 66]],
   },
   180: {
@@ -220,7 +220,7 @@ const DATA: Record<Period, PeriodData> = {
     within48: 86,
     daysToBooking: { value: 4.1, delta: null },
     outcomes: { accepted: 912, rejected: 251, notEligible: 61, running: 64 },
-    hospitals: [['KAFH', 214], ['WDAFH', 187], ['HADAFH', 163], ['JH', 141], ['AAFH', 118]],
+    hospitals: [['KGH', 214], ['WGH', 187], ['TGH', 163], ['JH', 141], ['AGH', 118]],
     specialties: [['CARD', 268], ['ORTHO', 201], ['ONC', 173], ['NSURG', 142], ['NEURO', 117]],
   },
 };
@@ -240,14 +240,14 @@ interface Referral {
 
 /** Invented patients; hospitals, specialties and statuses are those of the real system. */
 const REFERRALS: readonly Referral[] = [
-  { number: '2026-000184', patient: { en: 'Fahad Al-Otaibi', ar: 'فهد العتيبي' }, specialty: 'CARD', origin: 'KAFH', priority: 'URGENT', status: 'MEDICAL_REVIEW', created: '2026-11-12' },
-  { number: '2026-000183', patient: { en: 'Maha Al-Shehri', ar: 'مها الشهري' }, specialty: 'ONC', origin: 'HADAFH', priority: 'NORMAL', status: 'IN_RECEIVING_REVIEW', created: '2026-11-12' },
-  { number: '2026-000182', patient: { en: 'Abdullah Al-Dossari', ar: 'عبدالله الدوسري' }, specialty: 'NSURG', origin: 'WDAFH', priority: 'EMERGENCY', status: 'ACCEPTED', created: '2026-11-11' },
+  { number: '2026-000184', patient: { en: 'Fahad Al-Otaibi', ar: 'فهد العتيبي' }, specialty: 'CARD', origin: 'KGH', priority: 'URGENT', status: 'MEDICAL_REVIEW', created: '2026-11-12' },
+  { number: '2026-000183', patient: { en: 'Maha Al-Shehri', ar: 'مها الشهري' }, specialty: 'ONC', origin: 'TGH', priority: 'NORMAL', status: 'IN_RECEIVING_REVIEW', created: '2026-11-12' },
+  { number: '2026-000182', patient: { en: 'Abdullah Al-Dossari', ar: 'عبدالله الدوسري' }, specialty: 'NSURG', origin: 'WGH', priority: 'EMERGENCY', status: 'ACCEPTED', created: '2026-11-11' },
   { number: '2026-000181', patient: { en: 'Reem Al-Ghamdi', ar: 'ريم الغامدي' }, specialty: 'ORTHO', origin: 'JH', priority: 'NORMAL', status: 'BOOKED', created: '2026-11-11' },
-  { number: '2026-000180', patient: { en: 'Sultan Al-Zahrani', ar: 'سلطان الزهراني' }, specialty: 'CARD', origin: 'AAFH', priority: 'NORMAL', status: 'ELIGIBILITY_REVIEW', created: '2026-11-10' },
-  { number: '2026-000179', patient: { en: 'Huda Al-Anazi', ar: 'هدى العنزي' }, specialty: 'NEURO', origin: 'KAFH', priority: 'URGENT', status: 'REJECTED', created: '2026-11-10' },
-  { number: '2026-000178', patient: { en: 'Turki Al-Subaie', ar: 'تركي السبيعي' }, specialty: 'ORTHO', origin: 'WDAFH', priority: 'NORMAL', status: 'BOOKED', created: '2026-11-09' },
-  { number: '2026-000177', patient: { en: 'Lama Al-Harthi', ar: 'لمى الحارثي' }, specialty: 'ONC', origin: 'HADAFH', priority: 'NORMAL', status: 'SUBMITTED', created: '2026-11-09' },
+  { number: '2026-000180', patient: { en: 'Sultan Al-Zahrani', ar: 'سلطان الزهراني' }, specialty: 'CARD', origin: 'AGH', priority: 'NORMAL', status: 'ELIGIBILITY_REVIEW', created: '2026-11-10' },
+  { number: '2026-000179', patient: { en: 'Huda Al-Anazi', ar: 'هدى العنزي' }, specialty: 'NEURO', origin: 'KGH', priority: 'URGENT', status: 'REJECTED', created: '2026-11-10' },
+  { number: '2026-000178', patient: { en: 'Turki Al-Subaie', ar: 'تركي السبيعي' }, specialty: 'ORTHO', origin: 'WGH', priority: 'NORMAL', status: 'BOOKED', created: '2026-11-09' },
+  { number: '2026-000177', patient: { en: 'Lama Al-Harthi', ar: 'لمى الحارثي' }, specialty: 'ONC', origin: 'TGH', priority: 'NORMAL', status: 'SUBMITTED', created: '2026-11-09' },
 ];
 
 /** A table row: the referral with its texts in the current language. */
@@ -308,7 +308,7 @@ function trendOf(
 
 /**
  * Dashboards 01: the dashboard of the General Directorate of Medical Services
- * in the MODHS Referral Portal (report-dashboard): the application shell, the
+ * in a hospital referral portal (report-dashboard): the application shell, the
  * page header with the period filter, the KPI tiles with their change against
  * the previous period, the monthly referrals chart, the outcome and "top"
  * breakdowns and the latest referrals.
@@ -681,8 +681,8 @@ interface Referral {
   ],
   template: \`
     <mod-app-shell [groups]="menu" [(activeId)]="page" [(collapsed)]="collapsed" (itemSelect)="open($event.id)">
-      <img modAppShellLogo src="assets/img/mod-emblem.png" width="40" height="41" alt="Ministry logo" />
-      <img modAppShellLogoMark src="assets/img/mod-emblem.png" width="36" height="37" alt="Ministry logo" />
+      <img modAppShellLogo src="assets/img/emblem-placeholder.svg" width="40" height="41" alt="Organization logo" />
+      <img modAppShellLogoMark src="assets/img/emblem-placeholder.svg" width="36" height="37" alt="Organization logo" />
 
       <span modAppShellTitle>Medical Referral and Patient Transfer Management System</span>
 
@@ -840,9 +840,9 @@ export class Dashboard {
         { label: 'Running now', value: 47, tone: 'warning' },
       ],
       hospitals: [
-        { label: 'Al Kharj Armed Forces Hospital', value: 39 },
-        { label: 'Wadi Aldawaser Military Hospital', value: 31 },
-        { label: 'Al Hada Armed Forces Hospital Taif', value: 30 },
+        { label: 'Al Kharj General Hospital', value: 39 },
+        { label: 'Wadi Aldawaser General Hospital', value: 31 },
+        { label: 'Taif General Hospital', value: 30 },
       ],
       specialties: [
         { label: 'Cardiology', value: 47 },
@@ -859,9 +859,9 @@ export class Dashboard {
         { label: 'Running now', value: 58, tone: 'warning' },
       ],
       hospitals: [
-        { label: 'Al Kharj Armed Forces Hospital', value: 118 },
-        { label: 'Wadi Aldawaser Military Hospital', value: 101 },
-        { label: 'Al Hada Armed Forces Hospital Taif', value: 92 },
+        { label: 'Al Kharj General Hospital', value: 118 },
+        { label: 'Wadi Aldawaser General Hospital', value: 101 },
+        { label: 'Taif General Hospital', value: 92 },
       ],
       specialties: [
         { label: 'Cardiology', value: 149 },
@@ -878,9 +878,9 @@ export class Dashboard {
         { label: 'Running now', value: 64, tone: 'warning' },
       ],
       hospitals: [
-        { label: 'Al Kharj Armed Forces Hospital', value: 214 },
-        { label: 'Wadi Aldawaser Military Hospital', value: 187 },
-        { label: 'Al Hada Armed Forces Hospital Taif', value: 163 },
+        { label: 'Al Kharj General Hospital', value: 214 },
+        { label: 'Wadi Aldawaser General Hospital', value: 187 },
+        { label: 'Taif General Hospital', value: 163 },
       ],
       specialties: [
         { label: 'Cardiology', value: 268 },
@@ -913,11 +913,11 @@ export class Dashboard {
   ];
 
   protected readonly referrals: Referral[] = [
-    { number: '2026-000184', patient: 'Fahad Al-Otaibi', specialty: 'Cardiology', origin: 'Al Kharj Armed Forces Hospital', priority: 'Urgent', status: 'Medical review', statusVariant: 'info', created: '2026-11-12' },
-    { number: '2026-000183', patient: 'Maha Al-Shehri', specialty: 'Oncology', origin: 'Al Hada Armed Forces Hospital Taif', priority: 'Normal', status: 'Receiving hospital review', statusVariant: 'warning', created: '2026-11-12' },
-    { number: '2026-000182', patient: 'Abdullah Al-Dossari', specialty: 'Neurosurgery', origin: 'Wadi Aldawaser Military Hospital', priority: 'Emergency', status: 'Accepted', statusVariant: 'success', created: '2026-11-11' },
+    { number: '2026-000184', patient: 'Fahad Al-Otaibi', specialty: 'Cardiology', origin: 'Al Kharj General Hospital', priority: 'Urgent', status: 'Medical review', statusVariant: 'info', created: '2026-11-12' },
+    { number: '2026-000183', patient: 'Maha Al-Shehri', specialty: 'Oncology', origin: 'Taif General Hospital', priority: 'Normal', status: 'Receiving hospital review', statusVariant: 'warning', created: '2026-11-12' },
+    { number: '2026-000182', patient: 'Abdullah Al-Dossari', specialty: 'Neurosurgery', origin: 'Wadi Aldawaser General Hospital', priority: 'Emergency', status: 'Accepted', statusVariant: 'success', created: '2026-11-11' },
     { number: '2026-000181', patient: 'Reem Al-Ghamdi', specialty: 'Orthopedic Surgery', origin: 'Jubail Hospital', priority: 'Normal', status: 'Booked', statusVariant: 'success', created: '2026-11-11' },
-    { number: '2026-000179', patient: 'Huda Al-Anazi', specialty: 'Neurology', origin: 'Al Kharj Armed Forces Hospital', priority: 'Urgent', status: 'Rejected', statusVariant: 'error', created: '2026-11-10' },
+    { number: '2026-000179', patient: 'Huda Al-Anazi', specialty: 'Neurology', origin: 'Al Kharj General Hospital', priority: 'Urgent', status: 'Rejected', statusVariant: 'error', created: '2026-11-10' },
   ];
 
   protected open(id: string): void {

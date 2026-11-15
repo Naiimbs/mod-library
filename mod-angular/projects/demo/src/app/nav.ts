@@ -62,7 +62,7 @@ export const DEMO_PAGE_EXAMPLES: DemoNavItem[] = [
   { id: 'email-templates', label: 'Email templates', icon: 'mail-01', badge: 'New' },
 ];
 
-/** "Application UI examples": full application screens adapted from the MODHS Referral Portal. */
+/** "Application UI examples": full application screens adapted from a hospital referral portal. */
 export const DEMO_APP_EXAMPLES: DemoNavItem[] = [
   { id: 'app-examples', label: 'Overview', icon: 'dashboard-square-01', badge: 'New' },
   { id: 'dashboards-01', label: 'Dashboards 01', icon: 'analytics-01', badge: 'New' },

@@ -75,7 +75,7 @@ const ROLES = [
 
 const TEXT = {
   en: {
-    logoAlt: 'Ministry of Defense',
+    logoAlt: 'Organization name',
     title: 'Create your account',
     subtitle: 'Three short steps. You can go back at any time before submitting.',
     steps: ['Account', 'Organisation', 'Review'],
@@ -119,11 +119,11 @@ const TEXT = {
     goSignIn: 'Go to sign in',
     haveAccount: 'Already have an account?',
     signIn: 'Sign in',
-    copyright: '© Ministry of Defense 2026 — All rights reserved',
+    copyright: '© Organization name 2026 — All rights reserved',
     language: 'عربي',
   },
   ar: {
-    logoAlt: 'وزارة الدفاع',
+    logoAlt: 'اسم الجهة',
     title: 'إنشاء حسابك',
     subtitle: 'ثلاث خطوات قصيرة. يمكنك الرجوع في أي وقت قبل الإرسال.',
     steps: ['الحساب', 'جهة العمل', 'المراجعة'],
@@ -167,7 +167,7 @@ const TEXT = {
     goSignIn: 'الانتقال إلى تسجيل الدخول',
     haveAccount: 'لديك حساب بالفعل؟',
     signIn: 'تسجيل الدخول',
-    copyright: '© وزارة الدفاع 2026 — جميع الحقوق محفوظة',
+    copyright: '© اسم الجهة 2026 — جميع الحقوق محفوظة',
     language: 'English',
   },
 } as const;
@@ -205,8 +205,7 @@ type OrganisationField = 'region' | 'unit' | 'role';
     <mod-auth-layout variant="centered" card muted>
       <img
         modAuthLogo
-        src="examples/mod-logo-full.png"
-        srcset="examples/mod-logo-full.png 1x, examples/mod-logo-full@2x.png 2x"
+        src="examples/logo-placeholder.svg"
         width="132"
         height="136"
         [alt]="t().logoAlt"
@@ -580,7 +579,7 @@ const PASSWORD = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[^A-Za-z0-9 ]).{8,}$/;
   ],
   template: \`
     <mod-auth-layout variant="centered" card muted>
-      <img modAuthLogo src="assets/img/mod-logo-full.png" width="132" height="136" alt="Ministry of Defense" />
+      <img modAuthLogo src="assets/img/logo.svg" width="132" height="136" alt="Organization name" />
       <button modAuthActions mod-button variant="secondary-outline" size="medium" type="button" (click)="toggleLanguage()">
         <mod-icon name="language-square" /> عربي
       </button>
@@ -686,7 +685,7 @@ const PASSWORD = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[^A-Za-z0-9 ]).{8,}$/;
         </div>
       </form>
 
-      <span modAuthFooter>© Ministry of Defense 2026 — All rights reserved</span>
+      <span modAuthFooter>© Organization name 2026 — All rights reserved</span>
     </mod-auth-layout>
   \`,
   styles: \`

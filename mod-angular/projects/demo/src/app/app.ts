@@ -65,7 +65,7 @@ export class App {
   protected readonly text = computed(() =>
     this.rtl()
       ? { about: 'عن الفريق', search: 'بحث', language: 'English', logo: 'شعار المنصة' }
-      : { about: 'About Team', search: 'Search', language: 'عربي', logo: 'MOD Internal' },
+      : { about: 'About Team', search: 'Search', language: 'عربي', logo: 'Design System' },
   );
 
   constructor() {

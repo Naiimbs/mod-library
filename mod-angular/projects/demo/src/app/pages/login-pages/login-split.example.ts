@@ -17,7 +17,7 @@ const TEXT = {
     system: 'Medical Referrals and Patient Transfer System',
     tagline:
       'Referral request and review, appointment or bed booking, attendance and expenses, in one path between hospitals.',
-    logoAlt: 'Ministry of Defense',
+    logoAlt: 'Organization name',
     title: 'Sign in to the system',
     subtitle: 'Enter your user name and password to access the system',
     userName: 'User name',
@@ -29,13 +29,13 @@ const TEXT = {
     required: 'This field is required',
     invalid: 'The user name or password is incorrect.',
     success: 'Signed in. (This is a demo: nothing was sent.)',
-    copyright: '© Ministry of Defense 2026 — All rights reserved',
+    copyright: '© Organization name 2026 — All rights reserved',
     language: 'عربي',
   },
   ar: {
     system: 'النظام الخاص بإدارة الإحالات الطبية وتحويل المرضى',
     tagline: 'طلب الإحالة ومراجعته، وحجز الموعد أو السرير، والحضور والمصروفات، في مسار واحد بين المستشفيات.',
-    logoAlt: 'وزارة الدفاع',
+    logoAlt: 'اسم الجهة',
     title: 'تسجيل الدخول للنظام',
     subtitle: 'أدخل اسم المستخدم وكلمة المرور للدخول إلى النظام',
     userName: 'اسم المستخدم',
@@ -47,15 +47,15 @@ const TEXT = {
     required: 'هذا الحقل مطلوب',
     invalid: 'اسم المستخدم أو كلمة المرور غير صحيحة.',
     success: 'تم تسجيل الدخول. (هذا عرض تجريبي: لم يُرسل أي شيء.)',
-    copyright: '© وزارة الدفاع 2026 — جميع الحقوق محفوظة',
+    copyright: '© اسم الجهة 2026 — جميع الحقوق محفوظة',
     language: 'English',
   },
 } as const;
 
 /**
- * Default MOD sign-in page: the two-column layout of the MODHS Referral
+ * Default sign-in page: the two-column layout of the hospital referral
  * Portal. Form on the start side (logo, language switch, user name, password
- * with reveal, submit), brand panel on the end side (facility photo under a
+ * with reveal, submit), brand panel on the end side (image under a
  * dark-green tint, ring of three process icons, system name and tagline).
  *
  * Demo behaviour: empty fields show "required"; the password `wrong` shows
@@ -78,7 +78,7 @@ const TEXT = {
   ],
   template: `
     <mod-auth-layout
-      panelImage="examples/medical_facility_official_assets.jpg"
+      panelImage="examples/panel-placeholder.svg"
       panelImagePosition="52% 40%"
       [panelTitle]="t().system"
       [panelText]="t().tagline"
@@ -86,8 +86,7 @@ const TEXT = {
     >
       <img
         modAuthLogo
-        src="examples/mod-logo-full.png"
-        srcset="examples/mod-logo-full.png 1x, examples/mod-logo-full@2x.png 2x"
+        src="examples/logo-placeholder.svg"
         width="132"
         height="136"
         [alt]="t().logoAlt"
@@ -198,13 +197,13 @@ import {
   ],
   template: \`
     <mod-auth-layout
-      panelImage="assets/img/medical_facility_official_assets.jpg"
+      panelImage="assets/img/panel-placeholder.svg"
       panelImagePosition="52% 40%"
       panelTitle="Medical Referrals and Patient Transfer System"
       panelText="Referral request and review, appointment or bed booking, attendance and expenses, in one path between hospitals."
       [panelIcons]="['medical-file', 'hospital-bed-01', 'patient']"
     >
-      <img modAuthLogo src="assets/img/mod-logo-full.png" width="132" height="136" alt="Ministry of Defense" />
+      <img modAuthLogo src="assets/img/logo.svg" width="132" height="136" alt="Organization name" />
       <button modAuthActions mod-button variant="secondary-outline" size="medium" type="button" (click)="toggleLanguage()">
         <mod-icon name="language-square" /> عربي
       </button>
@@ -244,7 +243,7 @@ import {
         </button>
       </form>
 
-      <span modAuthFooter>© Ministry of Defense 2026 — All rights reserved</span>
+      <span modAuthFooter>© Organization name 2026 — All rights reserved</span>
     </mod-auth-layout>
   \`,
 })

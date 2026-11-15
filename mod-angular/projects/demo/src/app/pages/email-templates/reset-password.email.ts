@@ -18,7 +18,7 @@ export interface ResetPasswordEmailData {
 }
 
 const DEFAULTS: ResetPasswordEmailData = {
-  resetUrl: 'https://referrals.example.mod.gov.sa/reset-password?token=EXAMPLE-TOKEN',
+  resetUrl: 'https://referrals.example.org/reset-password?token=EXAMPLE-TOKEN',
   expiresInMinutes: 30,
 };
 

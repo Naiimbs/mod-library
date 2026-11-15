@@ -29,7 +29,7 @@ import { LOGIN_SSO_CODE, LoginSsoExample } from './login-sso.example';
     <demo-example
       heading="Split with image"
       badge="Default"
-      description="The MOD default: the sign-in of the MODHS Referral Portal. Form on the start side, brand panel with the facility photo, process icons and system name on the end side. Try an empty submit, or the password “wrong”."
+      description="The default: the sign-in of a hospital referral portal. Form on the start side, brand panel with the image, process icons and system name on the end side. Try an empty submit, or the password “wrong”."
       [code]="splitCode"
       [(rtl)]="splitRtl"
     >

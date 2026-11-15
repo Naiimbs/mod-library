@@ -17,8 +17,8 @@ export interface WelcomeEmailData {
 }
 
 const DEFAULTS: Record<EmailLang, WelcomeEmailData> = {
-  en: { userName: 'Fahad Al-Otaibi', signInUrl: 'https://referrals.example.mod.gov.sa/sign-in' },
-  ar: { userName: 'فهد العتيبي', signInUrl: 'https://referrals.example.mod.gov.sa/sign-in' },
+  en: { userName: 'Fahad Al-Otaibi', signInUrl: 'https://referrals.example.org/sign-in' },
+  ar: { userName: 'فهد العتيبي', signInUrl: 'https://referrals.example.org/sign-in' },
 };
 
 /** Welcome / account created email: greeting by name, three short next steps and a button. */

@@ -12,7 +12,7 @@ import { DASHBOARDS_02_CODE, Dashboards02Example } from './dashboards-02.example
       <p class="content-description">
         A working dashboard for one user: what is waiting for them, what happens today and what happened
         recently. Adapted from the home page, the pending actions and the attendance screens of a hospital's
-        medical coordinator in the MODHS Referral Portal, and built only from library components. It works in
+        medical coordinator in a hospital referral portal, and built only from library components. It works in
         English and Arabic, adapts from desktop to mobile, and can be copied from the Code tab.
       </p>
     </div>

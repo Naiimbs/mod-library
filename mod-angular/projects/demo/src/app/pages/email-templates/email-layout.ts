@@ -1,5 +1,5 @@
 /**
- * Shared building blocks of the MOD email templates.
+ * Shared building blocks of the email templates.
  *
  * Emails are not Angular components: every function here returns a string of
  * HTML written for email clients — table layout, inline styles only, literal
@@ -18,14 +18,14 @@ export const EMAIL_FONT = "'Saudi MOD', 'Segoe UI', Tahoma, Arial, sans-serif";
 
 const SHELL = {
   en: {
-    sender: 'This message was sent by the Medical Referrals and Patient Transfer System, Ministry of Defense.',
+    sender: 'This message was sent by the Medical Referrals and Patient Transfer System, Organization name.',
     noReply: 'This is an automated message. Please do not reply to it.',
-    copyright: '© Ministry of Defense 2026. All rights reserved.',
+    copyright: '© Organization name 2026. All rights reserved.',
   },
   ar: {
-    sender: 'أُرسلت هذه الرسالة من نظام إدارة الإحالات الطبية وتحويل المرضى، وزارة الدفاع.',
+    sender: 'أُرسلت هذه الرسالة من نظام إدارة الإحالات الطبية وتحويل المرضى، اسم الجهة.',
     noReply: 'هذه رسالة آلية، يُرجى عدم الرد عليها.',
-    copyright: '© وزارة الدفاع 2026. جميع الحقوق محفوظة.',
+    copyright: '© اسم الجهة 2026. جميع الحقوق محفوظة.',
   },
 } as const;
 
@@ -131,9 +131,9 @@ export function emailDocument({ lang, title, preheader, body }: EmailDocument): 
           <!-- Header band: text wordmark, no image -->
           <tr>
             <td align="${start}" bgcolor="#29504D" style="padding:20px 32px; background-color:#29504D; border-bottom:4px solid #00A05A; font-family:${EMAIL_FONT}; font-size:18px; line-height:26px; font-weight:700; color:#FFFFFF; text-align:${start};">
-              <span lang="en" dir="ltr">Ministry of Defense</span>
+              <span lang="en" dir="ltr">Organization name</span>
               <span style="color:#B2BEC4; font-weight:400;">&nbsp;/&nbsp;</span>
-              <span lang="ar" dir="rtl">وزارة الدفاع</span>
+              <span lang="ar" dir="rtl">اسم الجهة</span>
             </td>
           </tr>
           <!-- Body -->

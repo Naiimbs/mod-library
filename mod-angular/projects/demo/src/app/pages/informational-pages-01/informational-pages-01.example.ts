@@ -47,7 +47,7 @@ import {
 } from '../../shared/app-example/app-example-data';
 import { AppExampleShell } from '../../shared/app-example/app-example-shell';
 
-/** Texts of the page. Wording follows the referral page of the MODHS Referral Portal (en.json / ar.json). */
+/** Texts of the page. Wording follows the referral page of a hospital referral portal (en.json / ar.json). */
 const TEXT = {
   en: {
     crumb: 'Breadcrumb',
@@ -251,7 +251,7 @@ const CASE = {
   age: 42,
   mobile: '+966 5• ••• ••14',
   nationality: { en: 'Saudi', ar: 'سعودي' } as Bi,
-  eligibility: { en: 'Military personnel', ar: 'منسوب عسكري' } as Bi,
+  eligibility: { en: 'Employee', ar: 'موظف' } as Bi,
   subSpecialty: { en: 'Interventional cardiology', ar: 'قسطرة القلب' } as Bi,
   submittedAt: '2026-11-12T08:10:00',
   appointmentAt: '2026-11-19T09:30:00',
@@ -469,7 +469,7 @@ function dateTime(iso: string, lang: AppLang, withTime = true): string {
 }
 
 /**
- * Informational pages 01: the referral (case) page of the MODHS Referral
+ * Informational pages 01: the referral (case) page of the hospital referral
  * Portal (referral-detail with referral-rail, case-attachments and
  * referral-timeline): breadcrumb, page header with the number, status,
  * priority and actions, the referral path as a progress indicator, the
@@ -863,8 +863,8 @@ export class InformationalPages01Example {
   protected readonly statusLabel = computed(() => REFERRAL_STATUS[STATUS_AT[this.step()]][this.lang()]);
   protected readonly statusVariant = computed(() => REFERRAL_STATUS[STATUS_AT[this.step()]].variant);
 
-  protected readonly origin = computed(() => HOSPITALS.KAFH[this.lang()]);
-  protected readonly receiving = computed(() => HOSPITALS.PSMMC[this.lang()]);
+  protected readonly origin = computed(() => HOSPITALS.KGH[this.lang()]);
+  protected readonly receiving = computed(() => HOSPITALS.RCH[this.lang()]);
   protected readonly specialty = computed(() => SPECIALTIES.CARD[this.lang()]);
   protected readonly service = computed(() => SERVICES.OUTPATIENT_CLINIC[this.lang()]);
   protected readonly birthDate = computed(() => dateTime(CASE.birthDate, this.lang(), false));
@@ -1071,14 +1071,14 @@ const STEP_ACTIONS: Record<number, { action: string; event: string; icon: string
   ],
   template: \`
     <mod-app-shell [groups]="menu" [(activeId)]="page" [(collapsed)]="collapsed">
-      <img modAppShellLogo src="assets/img/mod-emblem.png" width="40" height="41" alt="Ministry logo" />
-      <img modAppShellLogoMark src="assets/img/mod-emblem.png" width="36" height="37" alt="Ministry logo" />
+      <img modAppShellLogo src="assets/img/emblem-placeholder.svg" width="40" height="41" alt="Organization logo" />
+      <img modAppShellLogoMark src="assets/img/emblem-placeholder.svg" width="36" height="37" alt="Organization logo" />
       <span modAppShellTitle>Medical Referral and Patient Transfer Management System</span>
       <mod-avatar modAppShellActions size="32" initials="NQ" label="Noura Al-Qahtani" />
 
       <mod-page-header
         heading="Referral 2026-000184"
-        description="Fahad Al-Otaibi · From: Al Kharj Armed Forces Hospital · Cardiology · Outpatient clinic"
+        description="Fahad Al-Otaibi · From: Al Kharj General Hospital · Cardiology · Outpatient clinic"
       >
         <mod-breadcrumbs modPageHeaderBreadcrumb [items]="crumbs" (itemSelected)="openCrumb($event)" />
         <mod-status-tag modPageHeaderMeta [variant]="status().variant" statusLabel="Status:">{{ status().label }}</mod-status-tag>
@@ -1124,8 +1124,8 @@ const STEP_ACTIONS: Record<number, { action: string; event: string; icon: string
                 <mod-description-item label="Priority"><mod-tag size="xs" variant="warning">Urgent</mod-tag></mod-description-item>
                 <mod-description-item label="Case type" value="Outpatient" />
                 <mod-description-item label="Patient condition" value="Stable" />
-                <mod-description-item label="Referring hospital" value="Al Kharj Armed Forces Hospital" />
-                <mod-description-item label="Receiving hospital" value="Prince Sultan Military Medical City in Riyadh" />
+                <mod-description-item label="Referring hospital" value="Al Kharj General Hospital" />
+                <mod-description-item label="Receiving hospital" value="Riyadh Central Hospital" />
                 <mod-description-item
                   label="Preliminary diagnosis"
                   value="Unstable angina with suspected multi-vessel coronary artery disease."

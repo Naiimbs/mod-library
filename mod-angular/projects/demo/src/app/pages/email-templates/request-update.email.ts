@@ -24,13 +24,13 @@ const DEFAULTS: Record<EmailLang, RequestUpdateEmailData> = {
     userName: 'Fahad Al-Otaibi',
     requestNumber: 'REF-2026-004518',
     date: '12 November 2026',
-    requestUrl: 'https://referrals.example.mod.gov.sa/requests/REF-2026-004518',
+    requestUrl: 'https://referrals.example.org/requests/REF-2026-004518',
   },
   ar: {
     userName: 'فهد العتيبي',
     requestNumber: 'REF-2026-004518',
     date: '12 نوفمبر 2026',
-    requestUrl: 'https://referrals.example.mod.gov.sa/requests/REF-2026-004518',
+    requestUrl: 'https://referrals.example.org/requests/REF-2026-004518',
   },
 };
 

@@ -31,7 +31,7 @@ import { SIGNUP_STEPS_CODE, SignupStepsExample } from './signup-steps.example';
 
     <demo-example
       heading="Split with image"
-      description="The same form next to the brand panel with the facility photo, so sign-up matches the default MOD sign-in page."
+      description="The same form next to the brand panel with the image, so sign-up matches the default sign-in page."
       minHeight="980px"
       [code]="splitCode"
       [(rtl)]="splitRtl"

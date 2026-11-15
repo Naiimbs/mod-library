@@ -13,11 +13,11 @@ import {
 } from '@mod-internal/ui';
 import { injectCodeFlow } from './code-flow';
 
-const MASKED_EMAIL = 'm•••••••d@mod.gov.sa';
+const MASKED_EMAIL = 'm•••••••d@example.org';
 
 const TEXT = {
   en: {
-    logoAlt: 'Ministry of Defense',
+    logoAlt: 'Organization name',
     language: 'عربي',
     title: 'Check your email',
     sentTo: 'Enter the 6-digit code we sent to',
@@ -32,10 +32,10 @@ const TEXT = {
     resend: 'Resend',
     wait: (seconds: number) => `(available in ${seconds} s)`,
     back: 'Back to log in',
-    copyright: '© Ministry of Defense 2026 — All rights reserved',
+    copyright: '© Organization name 2026 — All rights reserved',
   },
   ar: {
-    logoAlt: 'وزارة الدفاع',
+    logoAlt: 'اسم الجهة',
     language: 'English',
     title: 'تحقق من بريدك الإلكتروني',
     sentTo: 'أدخل الرمز المكوّن من 6 أرقام المرسل إلى',
@@ -50,7 +50,7 @@ const TEXT = {
     resend: 'إعادة الإرسال',
     wait: (seconds: number) => `(متاحة بعد ${seconds} ثانية)`,
     back: 'العودة إلى تسجيل الدخول',
-    copyright: '© وزارة الدفاع 2026 — جميع الحقوق محفوظة',
+    copyright: '© اسم الجهة 2026 — جميع الحقوق محفوظة',
   },
 } as const;
 
@@ -80,8 +80,7 @@ const TEXT = {
     <mod-auth-layout variant="centered">
       <img
         modAuthLogo
-        src="examples/mod-logo-full.png"
-        srcset="examples/mod-logo-full.png 1x, examples/mod-logo-full@2x.png 2x"
+        src="examples/logo-placeholder.svg"
         width="132"
         height="136"
         [alt]="t().logoAlt"
@@ -234,7 +233,7 @@ const RESEND_SECONDS = 30;
   imports: [ModAuthLayout, ModAuthHeader, ModAuthLogo, ModAuthFooter, ModButton, ModLink, ModOtpInput],
   template: \`
     <mod-auth-layout variant="centered">
-      <img modAuthLogo src="assets/img/mod-logo-full.png" width="132" height="136" alt="Ministry of Defense" />
+      <img modAuthLogo src="assets/img/logo.svg" width="132" height="136" alt="Organization name" />
 
       <mod-auth-header icon="mail-01" heading="Check your email">
         <p class="auth-header__text">
@@ -269,7 +268,7 @@ const RESEND_SECONDS = 30;
         <a mod-link variant="secondary" href="/login">Back to log in</a>
       </p>
 
-      <span modAuthFooter>© Ministry of Defense 2026 — All rights reserved</span>
+      <span modAuthFooter>© Organization name 2026 — All rights reserved</span>
     </mod-auth-layout>
   \`,
 })
@@ -278,7 +277,7 @@ export class VerifyEmail {
   private interval: ReturnType<typeof setInterval> | undefined;
 
   // Mask the address on the server; never send the full address to this page.
-  protected readonly maskedEmail = 'm•••••••d@mod.gov.sa';
+  protected readonly maskedEmail = 'm•••••••d@example.org';
   protected readonly code = signal('');
   protected readonly busy = signal(false);
   protected readonly incorrect = signal(false);

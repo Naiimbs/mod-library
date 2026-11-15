@@ -75,8 +75,8 @@ export interface TdColorFamily {
 const FULL_SCALE = [25, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950] as const;
 
 export const TD_COLOR_FAMILIES: readonly TdColorFamily[] = [
-  { key: 'sa', label: 'Primary — MOD Green', shades: FULL_SCALE },
-  { key: 'sad', label: 'MOD Dark Green', shades: [100, 200, 300, 400, 500] },
+  { key: 'sa', label: 'Primary — Brand Green', shades: FULL_SCALE },
+  { key: 'sad', label: 'Dark Green', shades: [100, 200, 300, 400, 500] },
   { key: 'gray', label: 'Neutral', shades: FULL_SCALE },
   { key: 'gold', label: 'Gold', shades: FULL_SCALE },
   { key: 'lavender', label: 'Lavender', shades: FULL_SCALE },

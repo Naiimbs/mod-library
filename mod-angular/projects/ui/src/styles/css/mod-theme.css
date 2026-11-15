@@ -1,10 +1,10 @@
 /* ============================================
-   MOD INTERNAL THEME
-   Brand colours and typeface for the MOD Internal design system. Loaded
+   BRAND THEME
+   Brand colours and typeface for the Design System. Loaded
    after the base theme and tokens, so these values replace the base scales
    everywhere they are read through var().
 
-   Brand palette (from the MOD brand guidelines):
+   Brand palette (from the brand guidelines):
      Dark green   #29504D  (Pantone 2466C, R41 G80 B77)
      Light green  #00A05A  (Pantone 2250C, R0 G160 B90)
      Grey         #B2BEC4  (Pantone 7542C, R178 G190 B196)

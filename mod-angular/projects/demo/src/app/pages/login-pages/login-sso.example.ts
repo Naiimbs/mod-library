@@ -18,7 +18,7 @@ const MAX_ATTEMPTS = 5;
 
 const TEXT = {
   en: {
-    logoAlt: 'Ministry of Defense',
+    logoAlt: 'Organization name',
     title: 'Sign in',
     subtitle: 'Use your system account or the national single sign-on',
     lockTitle: 'Account protection',
@@ -40,11 +40,11 @@ const TEXT = {
     locked: 'The account is locked',
     lockedText: 'There were 5 failed sign-in attempts. Try again in 15 minutes or contact the system administrator.',
     success: 'Signed in. (This is a demo: nothing was sent.)',
-    copyright: '© Ministry of Defense 2026 — All rights reserved',
+    copyright: '© Organization name 2026 — All rights reserved',
     language: 'عربي',
   },
   ar: {
-    logoAlt: 'وزارة الدفاع',
+    logoAlt: 'اسم الجهة',
     title: 'تسجيل الدخول',
     subtitle: 'استخدم حسابك في النظام أو خدمة الدخول الموحد الوطنية',
     lockTitle: 'حماية الحساب',
@@ -66,7 +66,7 @@ const TEXT = {
     locked: 'تم قفل الحساب',
     lockedText: 'سُجّلت 5 محاولات دخول غير ناجحة. حاول مرة أخرى بعد 15 دقيقة أو تواصل مع مدير النظام.',
     success: 'تم تسجيل الدخول. (هذا عرض تجريبي: لم يُرسل أي شيء.)',
-    copyright: '© وزارة الدفاع 2026 — جميع الحقوق محفوظة',
+    copyright: '© اسم الجهة 2026 — جميع الحقوق محفوظة',
     language: 'English',
   },
 } as const;
@@ -101,8 +101,7 @@ type SsoState = 'idle' | 'invalid' | 'locked' | 'success' | 'sso';
     <mod-auth-layout variant="centered">
       <img
         modAuthLogo
-        src="examples/mod-logo-full.png"
-        srcset="examples/mod-logo-full.png 1x, examples/mod-logo-full@2x.png 2x"
+        src="examples/logo-placeholder.svg"
         width="132"
         height="136"
         [alt]="t().logoAlt"
@@ -296,7 +295,7 @@ import {
   ],
   template: \`
     <mod-auth-layout variant="centered">
-      <img modAuthLogo src="assets/img/mod-logo-full.png" width="132" height="136" alt="Ministry of Defense" />
+      <img modAuthLogo src="assets/img/logo.svg" width="132" height="136" alt="Organization name" />
       <button modAuthActions mod-button variant="secondary-outline" size="medium" type="button" (click)="toggleLanguage()">
         <mod-icon name="language-square" /> عربي
       </button>
@@ -366,7 +365,7 @@ import {
         </button>
       </form>
 
-      <span modAuthFooter>© Ministry of Defense 2026 — All rights reserved</span>
+      <span modAuthFooter>© Organization name 2026 — All rights reserved</span>
     </mod-auth-layout>
   \`,
   styles: \`

@@ -41,13 +41,13 @@ export class ModAuthPanel {}
  *     panelText="One path between hospitals."
  *     [panelIcons]="['medical-file', 'hospital-bed-01', 'patient']"
  *   >
- *     <img modAuthLogo src="assets/logo.png" alt="Ministry of Defense" />
+ *     <img modAuthLogo src="assets/logo.png" alt="Organization name" />
  *     <button modAuthActions mod-button variant="secondary-outline" size="medium">عربي</button>
  *
  *     <mod-auth-header heading="Sign in" description="Enter your user name and password" underline />
  *     …form…
  *
- *     <span modAuthFooter>© Ministry of Defense 2026</span>
+ *     <span modAuthFooter>© Organization name 2026</span>
  *   </mod-auth-layout>
  *
  * `variant="split"` (default) shows the form next to a brand panel: a photo
@@ -105,7 +105,7 @@ export class ModAuthLayout {
  * Heading block of an auth page: optional featured icon, title and one line
  * of supporting text.
  *
- *   <mod-auth-header icon="mail-01" heading="Check your email" description="We sent a code to name@mod.gov.sa" />
+ *   <mod-auth-header icon="mail-01" heading="Check your email" description="We sent a code to name@example.org" />
  */
 @Component({
   selector: 'mod-auth-header',

@@ -12,7 +12,7 @@ import { INFORMATIONAL_PAGES_02_CODE, InformationalPages02Example } from './info
       <p class="content-description">
         A profile page inside the application shell: header with avatar, status and actions, the details in a
         description list, a table of roles with their hospital scope, a permissions summary in an accordion, an
-        activity timeline, an empty state and a confirm dialog. Adapted from the user page of the MODHS Referral
+        activity timeline, an empty state and a confirm dialog. Adapted from the user page of the hospital referral
         Portal, and built only from library components. It works in English and Arabic, adapts from desktop to
         mobile, and can be copied from the Code tab.
       </p>

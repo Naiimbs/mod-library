@@ -409,7 +409,7 @@ interface BuildingBlock {
     <div class="content-header">
       <h1 class="content-title">Application UI examples</h1>
       <p class="content-description">
-        Full application screens adapted from the MODHS Referral Portal, the Medical Referrals and Patient Transfer
+        Full application screens adapted from a hospital referral portal, the Medical Referrals and Patient Transfer
         System, and built only from the library components: dashboards, settings pages and informational pages inside
         the application shell. Every example comes in English and Arabic, adapts from desktop to mobile, and can be
         copied into your application from its Code tab.

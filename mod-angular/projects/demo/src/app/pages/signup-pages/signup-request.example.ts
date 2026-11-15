@@ -28,7 +28,7 @@ const DEPARTMENTS = [
 
 const TEXT = {
   en: {
-    logoAlt: 'Ministry of Defense',
+    logoAlt: 'Organization name',
     system: 'Medical Referrals and Patient Transfer System',
     panelText: 'Accounts are opened by the system administrator after your identity and role are verified.',
     how: [
@@ -66,11 +66,11 @@ const TEXT = {
       'Reference number: REQ-2026-00418. You will be notified by email once the request is reviewed. (This is a demo: nothing was sent.)',
     haveAccount: 'Already have an account?',
     signIn: 'Sign in',
-    copyright: '© Ministry of Defense 2026 — All rights reserved',
+    copyright: '© Organization name 2026 — All rights reserved',
     language: 'عربي',
   },
   ar: {
-    logoAlt: 'وزارة الدفاع',
+    logoAlt: 'اسم الجهة',
     system: 'النظام الخاص بإدارة الإحالات الطبية وتحويل المرضى',
     panelText: 'يفتح مدير النظام الحسابات بعد التحقق من هويتك ودورك الوظيفي.',
     how: [
@@ -106,7 +106,7 @@ const TEXT = {
       'الرقم المرجعي: REQ-2026-00418. سيصلك إشعار بالبريد الإلكتروني بعد مراجعة الطلب. (هذا عرض تجريبي: لم يُرسل أي شيء.)',
     haveAccount: 'لديك حساب بالفعل؟',
     signIn: 'تسجيل الدخول',
-    copyright: '© وزارة الدفاع 2026 — جميع الحقوق محفوظة',
+    copyright: '© اسم الجهة 2026 — جميع الحقوق محفوظة',
     language: 'English',
   },
 } as const;
@@ -151,8 +151,7 @@ type RequestField = 'nationalId' | 'employeeNo' | 'email' | 'department' | 'reas
 
       <img
         modAuthLogo
-        src="examples/mod-logo-full.png"
-        srcset="examples/mod-logo-full.png 1x, examples/mod-logo-full@2x.png 2x"
+        src="examples/logo-placeholder.svg"
         width="132"
         height="136"
         [alt]="t().logoAlt"
@@ -392,7 +391,7 @@ import {
         <li>You receive an email with a link to set your password</li>
       </ol>
 
-      <img modAuthLogo src="assets/img/mod-logo-full.png" width="132" height="136" alt="Ministry of Defense" />
+      <img modAuthLogo src="assets/img/logo.svg" width="132" height="136" alt="Organization name" />
       <button modAuthActions mod-button variant="secondary-outline" size="medium" type="button" (click)="toggleLanguage()">
         <mod-icon name="language-square" /> عربي
       </button>
@@ -484,7 +483,7 @@ import {
         </p>
       </form>
 
-      <span modAuthFooter>© Ministry of Defense 2026 — All rights reserved</span>
+      <span modAuthFooter>© Organization name 2026 — All rights reserved</span>
     </mod-auth-layout>
   \`,
   styles: \`

@@ -87,8 +87,8 @@ export class ModAppShellActions {}
  * scrolling main content area.
  *
  *   <mod-app-shell [groups]="groups" [(activeId)]="page" [(collapsed)]="collapsed" (itemSelect)="go($event)">
- *     <img modAppShellLogo src="assets/logo.png" alt="Ministry of Defense" />
- *     <img modAppShellLogoMark src="assets/emblem.png" alt="Ministry of Defense" />
+ *     <img modAppShellLogo src="assets/logo.png" alt="Organization name" />
+ *     <img modAppShellLogoMark src="assets/emblem.png" alt="Organization name" />
  *     <span modAppShellFooter>Version 1.4</span>
  *
  *     <strong modAppShellTitle>Referral system</strong>

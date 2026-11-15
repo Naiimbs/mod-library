@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 136" role="img" aria-label="Logo placeholder">
+  <rect x="1" y="1" width="130" height="134" rx="12" fill="#f1f4f5" stroke="#b2bec4" stroke-width="2" stroke-dasharray="6 5"/>
+  <circle cx="66" cy="50" r="24" fill="#dde9e8" stroke="#29504d" stroke-width="2"/>
+  <path d="M54 58l9-12 7 8 5-6 9 10z" fill="#29504d"/>
+  <circle cx="58" cy="42" r="3.5" fill="#29504d"/>
+  <text x="66" y="102" text-anchor="middle" font-family="Segoe UI, Tahoma, Arial, sans-serif" font-size="17" font-weight="600" fill="#37454d">LOGO</text>
+  <text x="66" y="120" text-anchor="middle" font-family="Segoe UI, Tahoma, Arial, sans-serif" font-size="10" fill="#6a7880">Organization name</text>
+</svg>

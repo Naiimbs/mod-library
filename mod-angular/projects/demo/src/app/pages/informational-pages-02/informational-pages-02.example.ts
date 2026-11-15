@@ -38,7 +38,7 @@ import {
 } from '../../shared/app-example/app-example-data';
 import { AppExampleShell } from '../../shared/app-example/app-example-shell';
 
-/** Texts of the page. Wording follows the user page and the role profile of the MODHS Referral Portal (en.json / ar.json). */
+/** Texts of the page. Wording follows the user page and the role profile of a hospital referral portal (en.json / ar.json). */
 const TEXT = {
   en: {
     crumb: 'Breadcrumb',
@@ -162,8 +162,8 @@ const USER = {
   initials: { en: 'SQ', ar: 'س ق' } as Bi,
   userName: 's.alqarni',
   nationalId: '1•••••••63',
-  employeeNumber: 'KH-20417',
-  email: 's.alqarni@kafh.example',
+  employeeNumber: 'EMP-20417',
+  email: 's.alqarni@hospital.example',
   mobile: '+966 5• ••• ••82',
   lastSignIn: '2026-11-12T08:02:00',
 };
@@ -286,7 +286,7 @@ function formatDate(iso: string, lang: AppLang, withTime: boolean): string {
 }
 
 /**
- * Informational pages 02: the user page of the MODHS Referral Portal
+ * Informational pages 02: the user page of a hospital referral portal
  * (user-detail and user-scope, with the role profile for the permissions):
  * breadcrumb, header with the avatar, name, status and actions, the user
  * details, the roles with their hospital scope, what the roles may do
@@ -620,7 +620,7 @@ export class InformationalPages02Example {
   protected readonly events = signal<readonly AccountEvent[]>(INITIAL_EVENTS);
   protected readonly notice = signal<Notice | null>(null);
 
-  protected readonly hospital = computed(() => HOSPITALS.KAFH[this.lang()]);
+  protected readonly hospital = computed(() => HOSPITALS.KGH[this.lang()]);
   protected readonly lastSignIn = computed(() => formatDate(USER.lastSignIn, this.lang(), true));
 
   /** "username · role · hospital" under the name. */
@@ -764,8 +764,8 @@ interface AccountEvent {
   ],
   template: \`
     <mod-app-shell [groups]="menu" [(activeId)]="page" [(collapsed)]="collapsed">
-      <img modAppShellLogo src="assets/img/mod-emblem.png" width="40" height="41" alt="Ministry logo" />
-      <img modAppShellLogoMark src="assets/img/mod-emblem.png" width="36" height="37" alt="Ministry logo" />
+      <img modAppShellLogo src="assets/img/emblem-placeholder.svg" width="40" height="41" alt="Organization logo" />
+      <img modAppShellLogoMark src="assets/img/emblem-placeholder.svg" width="36" height="37" alt="Organization logo" />
       <span modAppShellTitle>Medical Referral and Patient Transfer Management System</span>
       <mod-avatar modAppShellActions size="32" initials="SM" label="Saad Al-Mutairi" />
 
@@ -773,7 +773,7 @@ interface AccountEvent {
 
       <div class="head">
         <mod-avatar size="68" initials="SQ" aria-hidden="true" />
-        <mod-page-header class="head__text" heading="Salem Al-Qarni" description="s.alqarni · Medical coordinator · Al Kharj Armed Forces Hospital">
+        <mod-page-header class="head__text" heading="Salem Al-Qarni" description="s.alqarni · Medical coordinator · Al Kharj General Hospital">
           <mod-status-tag modPageHeaderMeta [variant]="active() ? 'success' : 'neutral'" statusLabel="Status:">
             {{ active() ? 'Active' : 'Inactive' }}
           </mod-status-tag>
@@ -812,9 +812,9 @@ interface AccountEvent {
                 <mod-description-item label="Full name" value="Salem Al-Qarni" />
                 <!-- Mask identifiers unless the user holds the permission to read them. -->
                 <mod-description-item label="National ID" value="1•••••••63" />
-                <mod-description-item label="Employee number" value="KH-20417" />
-                <mod-description-item label="Hospital" value="Al Kharj Armed Forces Hospital" />
-                <mod-description-item label="Email" value="s.alqarni@kafh.example" />
+                <mod-description-item label="Employee number" value="EMP-20417" />
+                <mod-description-item label="Hospital" value="Al Kharj General Hospital" />
+                <mod-description-item label="Email" value="s.alqarni@hospital.example" />
                 <mod-description-item label="Mobile" value="+966 5• ••• ••82" />
                 <mod-description-item label="Last sign-in" value="12 Nov 2026, 08:02" />
                 <mod-description-item label="Must change password" [value]="mustChange() ? 'Yes' : 'No'" />
@@ -946,8 +946,8 @@ export class UserPage {
 
   /** Replace with the roles of the user. */
   protected readonly roles: RoleGrant[] = [
-    { role: 'Medical coordinator', hospital: 'Al Kharj Armed Forces Hospital', department: '—', assignedAt: '2 Mar 2026', assignedBy: 'Saad Al-Mutairi' },
-    { role: 'Head of medical department', hospital: 'Al Kharj Armed Forces Hospital', department: 'Cardiology', assignedAt: '14 Sep 2025', assignedBy: 'Saad Al-Mutairi' },
+    { role: 'Medical coordinator', hospital: 'Al Kharj General Hospital', department: '—', assignedAt: '2 Mar 2026', assignedBy: 'Saad Al-Mutairi' },
+    { role: 'Head of medical department', hospital: 'Al Kharj General Hospital', department: 'Cardiology', assignedAt: '14 Sep 2025', assignedBy: 'Saad Al-Mutairi' },
   ];
 
   /** Replace with the account log request (newest first). */

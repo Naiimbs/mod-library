@@ -1,6 +1,6 @@
 # @mod-internal/ui
 
-The MOD Internal design system for Angular: a complete component library in the MOD brand
+The Design System for Angular: a complete component library in the brand
 colours and the Saudi MOD typeface.
 
 - **60+ components** — buttons, form inputs, date pickers, tables, navigation, modals,
@@ -227,7 +227,7 @@ What the two files are:
 
 | File | Size | Contents |
 | --- | --- | --- |
-| `mod.css` | about 150 kB, plus 7 font files | Colour and spacing tokens, the MOD brand theme, the Saudi MOD typeface, a CSS reset, dark mode. **Required.** |
+| `mod.css` | about 150 kB, plus 7 font files | Colour and spacing tokens, the brand theme, the Saudi MOD typeface, a CSS reset, dark mode. **Required.** |
 | `icons.css` | about 9 MB (400 kB compressed), plus 61 font files | The icon fonts. Needed by `<mod-icon>` and by every component that shows an icon: dropdown, checkbox, modal close button, alerts and others. |
 
 The icon file is loaded as a separate bundle on purpose. If you put it in the `styles`
@@ -610,7 +610,7 @@ PascalCase: `mod-text-input` → `ModTextInput`.
 **Ready-made pages**
 
 The demo app has a **Shared page examples** section with complete pages built from these
-components, each in English and Arabic and with a Code tab to copy from: log in (the MOD
+components, each in English and Arabic and with a Code tab to copy from: log in (the
 default sign-in first), sign up, verification, forgot password, 404 / 403 / 500 sections,
 and HTML email templates.
 
@@ -705,7 +705,7 @@ Where things are:
 | Path | Contents |
 | --- | --- |
 | `projects/ui/src/lib/<component>/` | One folder per component: code, template, styles |
-| `projects/ui/src/styles/css/mod-theme.css` | The MOD brand: colours, scales, typeface |
+| `projects/ui/src/styles/css/mod-theme.css` | The brand: colours, scales, typeface |
 | `projects/ui/src/styles/assets/fonts-mod/` | The Saudi MOD font files |
 | `projects/ui/src/styles/utilities/DGATheme.css` | The vendored base theme the tokens build on |
 | `projects/demo/` | The demo and documentation app |

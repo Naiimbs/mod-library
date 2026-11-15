@@ -12,7 +12,7 @@ import { SETTINGS_PAGES_01_CODE, SettingsPages01Example } from './settings-pages
       <p class="content-description">
         Account settings of the signed-in user inside the application shell: tabs under the page header, each
         form in one readable column with section headings, and a sticky action bar. Adapted from the user
-        form, the password change and the notification settings of the MODHS Referral Portal, and built only
+        form, the password change and the notification settings of a hospital referral portal, and built only
         from library components. It works in English and Arabic, adapts from desktop to mobile, and can be
         copied from the Code tab.
       </p>

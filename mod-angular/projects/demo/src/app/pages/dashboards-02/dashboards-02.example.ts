@@ -266,7 +266,7 @@ const STAGE_COUNTS = [14, 9, 21, 96, 24];
 
 /**
  * Dashboards 02: the working home of a hospital's medical coordinator in the
- * MODHS Referral Portal (home + pending actions + attendance): greeting with
+ * hospital referral portal (home + pending actions + attendance): greeting with
  * the user's hospital, summary tiles, the pending-actions queue in the real
  * order (priority, then the longest wait), today's appointments, quick
  * actions, the referrals by stage and the recent activity.
@@ -637,7 +637,7 @@ export class Dashboards02Example {
 
   protected readonly summary = computed(() => {
     const t = this.t();
-    const parts = [HOSPITALS.PSMMC[this.lang()], t.running(38)];
+    const parts = [HOSPITALS.RCH[this.lang()], t.running(38)];
     if (this.pending().length) parts.push(t.waiting(this.pending().length));
     return parts.join(' · ');
   });
@@ -793,8 +793,8 @@ interface ActivityEntry {
   ],
   template: \`
     <mod-app-shell [groups]="menu()" [(activeId)]="page" (itemSelect)="open($event.id)">
-      <img modAppShellLogo src="assets/img/mod-emblem.png" width="40" height="41" alt="Ministry logo" />
-      <img modAppShellLogoMark src="assets/img/mod-emblem.png" width="36" height="37" alt="Ministry logo" />
+      <img modAppShellLogo src="assets/img/emblem-placeholder.svg" width="40" height="41" alt="Organization logo" />
+      <img modAppShellLogoMark src="assets/img/emblem-placeholder.svg" width="36" height="37" alt="Organization logo" />
       <span modAppShellTitle>Medical Referral and Patient Transfer Management System</span>
       <button modAppShellActions mod-button variant="subtle" size="medium" type="button" aria-label="Switch to Arabic">
         <mod-icon name="language-square" /> العربية
@@ -803,7 +803,7 @@ interface ActivityEntry {
 
       <mod-page-header
         heading="Good morning, Noura"
-        [description]="'Prince Sultan Military Medical City in Riyadh · 38 running referrals · ' + pending().length + ' waiting for your decision'"
+        [description]="'Riyadh Central Hospital · 38 running referrals · ' + pending().length + ' waiting for your decision'"
       >
         <button modPageHeaderActions mod-button size="medium" type="button" (click)="open('referrals-new')">
           <mod-icon name="add-01" /> New referral request

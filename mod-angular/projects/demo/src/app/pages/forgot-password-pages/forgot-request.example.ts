@@ -26,12 +26,12 @@ function accountValidator(control: AbstractControl<string>): ValidationErrors | 
 
 const TEXT = {
   en: {
-    logoAlt: 'Ministry of Defense',
+    logoAlt: 'Organization name',
     language: 'عربي',
     title: 'Forgot password?',
     subtitle: 'Enter the email address or user name of your account and we will send you instructions to reset the password.',
     account: 'Email or user name',
-    placeholder: 'name@mod.gov.sa',
+    placeholder: 'name@example.org',
     required: 'This field is required',
     format: 'Enter a valid email address or user name',
     submit: 'Send reset instructions',
@@ -39,15 +39,15 @@ const TEXT = {
     success: 'If an account matches, the reset instructions are on their way.',
     successNote: 'This is a demo: nothing was sent.',
     back: 'Back to log in',
-    copyright: '© Ministry of Defense 2026 — All rights reserved',
+    copyright: '© Organization name 2026 — All rights reserved',
   },
   ar: {
-    logoAlt: 'وزارة الدفاع',
+    logoAlt: 'اسم الجهة',
     language: 'English',
     title: 'نسيت كلمة المرور؟',
     subtitle: 'أدخل البريد الإلكتروني أو اسم المستخدم الخاص بحسابك، وسنرسل إليك تعليمات إعادة تعيين كلمة المرور.',
     account: 'البريد الإلكتروني أو اسم المستخدم',
-    placeholder: 'name@mod.gov.sa',
+    placeholder: 'name@example.org',
     required: 'هذا الحقل مطلوب',
     format: 'أدخل بريدًا إلكترونيًا أو اسم مستخدم صحيحًا',
     submit: 'إرسال تعليمات إعادة التعيين',
@@ -55,7 +55,7 @@ const TEXT = {
     success: 'إذا كان هناك حساب مطابق، فستصلك تعليمات إعادة التعيين قريبًا.',
     successNote: 'هذا عرض تجريبي: لم يُرسل أي شيء.',
     back: 'العودة إلى تسجيل الدخول',
-    copyright: '© وزارة الدفاع 2026 — جميع الحقوق محفوظة',
+    copyright: '© اسم الجهة 2026 — جميع الحقوق محفوظة',
   },
 } as const;
 
@@ -87,8 +87,7 @@ const TEXT = {
     <mod-auth-layout variant="centered">
       <img
         modAuthLogo
-        src="examples/mod-logo-full.png"
-        srcset="examples/mod-logo-full.png 1x, examples/mod-logo-full@2x.png 2x"
+        src="examples/logo-placeholder.svg"
         width="132"
         height="136"
         [alt]="t().logoAlt"
@@ -228,7 +227,7 @@ function accountValidator(control: AbstractControl<string>): ValidationErrors | 
   ],
   template: \`
     <mod-auth-layout variant="centered">
-      <img modAuthLogo src="assets/img/mod-logo-full.png" width="132" height="136" alt="Ministry of Defense" />
+      <img modAuthLogo src="assets/img/logo.svg" width="132" height="136" alt="Organization name" />
 
       <mod-auth-header
         icon="lock-key"
@@ -260,7 +259,7 @@ function accountValidator(control: AbstractControl<string>): ValidationErrors | 
         <a mod-link variant="secondary" href="/login">Back to log in</a>
       </p>
 
-      <span modAuthFooter>© Ministry of Defense 2026 — All rights reserved</span>
+      <span modAuthFooter>© Organization name 2026 — All rights reserved</span>
     </mod-auth-layout>
   \`,
 })

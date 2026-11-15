@@ -224,7 +224,7 @@ interface Profile {
 
 const PROFILE: Profile = {
   fullName: null,
-  email: 'noura.alqahtani@psmmc.example',
+  email: 'noura.alqahtani@hospital.example',
   mobile: '0555550142',
   language: 'ar',
   photo: '',
@@ -287,7 +287,7 @@ function hasError(errors: Record<string, string>): boolean {
 
 /**
  * Settings pages 01: the account settings of the signed-in user, adapted from
- * the MODHS Referral Portal: the profile fields of the user form, the password
+ * a hospital referral portal: the profile fields of the user form, the password
  * change (minimum length, confirmation) and the notification settings matrix
  * (in-app is always sent; email and SMS per notification type).
  *
@@ -1082,7 +1082,7 @@ interface NoticeType { code: string; label: string; inAppOnly?: boolean; }
   ],
   template: \`
     <mod-app-shell [groups]="menu" [(activeId)]="page">
-      <img modAppShellLogo src="assets/img/mod-emblem.png" width="40" height="41" alt="Ministry logo" />
+      <img modAppShellLogo src="assets/img/emblem-placeholder.svg" width="40" height="41" alt="Organization logo" />
       <span modAppShellTitle>Medical Referral and Patient Transfer Management System</span>
       <mod-avatar modAppShellActions size="32" initials="NQ" label="Noura Al-Qahtani" />
 
@@ -1250,7 +1250,7 @@ export class AccountSettings {
   ];
 
   // Profile: the stored values and the draft being edited.
-  private readonly stored = signal<Profile>({ fullName: 'Noura Al-Qahtani', email: 'noura.alqahtani@psmmc.example', mobile: '0555550142', language: 'ar' });
+  private readonly stored = signal<Profile>({ fullName: 'Noura Al-Qahtani', email: 'noura.alqahtani@hospital.example', mobile: '0555550142', language: 'ar' });
   protected readonly profile = signal<Profile>(this.stored());
   protected readonly languages: ModDropdownOption<string>[] = [
     { value: 'ar', label: 'Arabic' },

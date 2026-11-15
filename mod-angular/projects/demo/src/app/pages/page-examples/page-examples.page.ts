@@ -413,7 +413,7 @@ export class PageExamplesPage {
     {
       id: 'email-templates',
       name: 'Email templates',
-      description: 'Transactional HTML emails in the MOD identity.',
+      description: 'Transactional HTML emails in the brand identity.',
       count: 4,
     },
   ];
