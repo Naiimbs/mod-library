@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: leave-request-form
+expected_outcome: |
+  A standalone Angular component that uses the real @mod-internal/ui form components
+  (mod-text-input, mod-dropdown, mod-date-picker or mod-date-range-picker, mod-textarea,
+  mod-checkbox, button[mod-button]) with correct input names, reactive forms via
+  formControlName, validation shown through [error]/[helperText] (or the component's
+  equivalent), and every visible string, including component text inputs, through the t pipe.

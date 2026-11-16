@@ -1,0 +1,5 @@
+{
+  "name": "mod-ui",
+  "version": "0.1.0",
+  "description": "Teaches Claude to build Angular UI with @mod-internal/ui: setup, the real component API (generated from the library source), forms, Arabic/RTL, dark mode and design tokens."
+}

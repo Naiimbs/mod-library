@@ -1,0 +1,11 @@
+{
+  "name": "mod-library",
+  "owner": { "name": "Naiimbs" },
+  "plugins": [
+    {
+      "name": "mod-ui",
+      "source": "./mod-angular/claude-plugin",
+      "description": "Teaches Claude to build Angular UI with @mod-internal/ui: setup, the real component API, forms, Arabic/RTL, dark mode and design tokens."
+    }
+  ]
+}

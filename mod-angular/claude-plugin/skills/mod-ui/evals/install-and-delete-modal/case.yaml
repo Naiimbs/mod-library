@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: install-and-delete-modal
+expected_outcome: |
+  setup.md installs the tarball, puts mod-core.css first in styles with icons.css as a
+  separate non-injected bundle plus the <link> in index.html, and keeps the existing
+  styles after it. requests-page.ts uses mod-table, mod-modal with [(open)] and
+  mod-modal-actions, button[mod-button], and ModToastService with a single
+  mod-toast-container.

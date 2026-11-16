@@ -5,11 +5,13 @@
     "ng": "ng",
     "start": "ng serve demo",
     "build": "npm run build:ui && ng build demo",
-    "build:ui": "node tools/check-vendor.mjs && ng build ui",
+    "build:ui": "node tools/check-vendor.mjs && node tools/gen-core-theme.mjs && node tools/gen-skill-reference.mjs && ng build ui",
     "pack:ui": "cd dist/ui && npm pack",
     "gen:routes": "node tools/gen-routes.mjs",
     "test": "ng test",
     "gen:dark-text": "node tools/gen-dark-text.mjs",
+    "gen:core-theme": "node tools/gen-core-theme.mjs",
+    "gen:skill": "node tools/gen-skill-reference.mjs",
     "check:vendor": "node tools/check-vendor.mjs"
   },
   "prettier": {

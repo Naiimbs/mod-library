@@ -65,7 +65,9 @@ Open http://localhost:4200.
 | Command | What it does |
 | --- | --- |
 | `npm start` | Demo app against the library source, with hot reload |
-| `npm run build:ui` | Check the vendored theme, then build the library to `dist/ui` |
+| `npm run build:ui` | Check the vendored theme, regenerate the reduced theme for `mod-core.css`, then build the library to `dist/ui` |
+| `npm run gen:core-theme` | Regenerate `DGATheme.core.css`, the reduced base theme behind `mod-core.css` |
+| `npm run gen:skill` | Regenerate the Claude skill's component, token and icon references in `claude-plugin/` (see [claude-plugin/README.md](claude-plugin/README.md)) |
 | `npm run pack:ui` | Create the installable `.tgz` in `dist/ui` |
 | `npm run build` | Build the library and the demo app |
 | `npm run gen:dark-text` | Regenerate the dark-mode text rules after changing component styles |
