@@ -29,7 +29,7 @@ For a source component `<name>`:
   `CommonModule`.
 - Selector `mod-<name>` (element). Use an attribute selector on the native element only
   where that is clearly better for accessibility (as `button[mod-button]` does).
-  Class name `Dga<PascalName>`, file `lib/<name>/<name>.ts`. Split into several
+  Class name `Mod<PascalName>`, file `lib/<name>/<name>.ts`. Split into several
   components/directives in the same folder when the source has distinct parts
   (e.g. `ModTabs` + `ModTab`).
 - Element-selector hosts are unknown elements and default to `display: inline`. Give the

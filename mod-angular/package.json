@@ -12,6 +12,7 @@
     "gen:dark-text": "node tools/gen-dark-text.mjs",
     "gen:core-theme": "node tools/gen-core-theme.mjs",
     "gen:skill": "node tools/gen-skill-reference.mjs",
+    "gen:skill-html": "node tools/gen-html-skill-reference.mjs",
     "check:vendor": "node tools/check-vendor.mjs"
   },
   "prettier": {
