@@ -22,7 +22,7 @@ It is not on the public npm registry. Two ways:
   `vendor/` folder), commit it, and install it:
 
   ```bash
-  npm install ./vendor/mod-internal-ui-0.1.0.tgz
+  npm install ./vendor/mod-internal-ui-0.1.10.tgz
   ```
 
 - **Private registry**, if the organisation has one: `npm publish dist/ui --registry <url>`

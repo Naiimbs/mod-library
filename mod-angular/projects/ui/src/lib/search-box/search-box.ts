@@ -40,6 +40,9 @@ export type ModSearchBoxFeedback = 'error' | 'success' | 'warning';
         [value]="value()"
         [disabled]="isDisabled()"
         [readOnly]="readonly()"
+        [attr.id]="inputId() || null"
+        [attr.data-testid]="testId() || null"
+        [attr.dir]="dir() || null"
         [attr.name]="name() || null"
         [attr.placeholder]="placeholder() || null"
         [attr.aria-label]="ariaLabel()"
@@ -113,6 +116,12 @@ export class ModSearchBox implements ControlValueAccessor {
   readonly disabled = input(false, { transform: booleanAttribute });
   readonly readonly = input(false, { transform: booleanAttribute });
   readonly name = input<string>('');
+  /** Id of the native input (a page's own label, links and tests). */
+  readonly inputId = input<string>('');
+  /** `data-testid` of the native input (tests and automation type into the control itself). */
+  readonly testId = input<string>('');
+  /** Text direction of the input: `ltr` for a search on Latin codes or numbers; empty follows the page. */
+  readonly dir = input<'' | 'ltr' | 'rtl'>('');
 
   /** Emits the query on Enter or when the search button is pressed. */
   readonly search = output<string>();

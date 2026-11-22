@@ -388,3 +388,28 @@ mod-tabs {
     font-size: 24px;
     line-height: 1;
 }
+
+/* ============================================
+   Tab Badge (a count after the label)
+   ============================================ */
+
+.tab-item__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 var(--spacing-sm);
+    border-radius: var(--radius-full);
+    background-color: var(--gray-100);
+    color: var(--gray-700);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.tab-item.active .tab-item__badge {
+    background-color: var(--sa-50);
+    color: var(--sa-600);
+}

@@ -42,8 +42,18 @@ export class ModTab {
   /** Font icon name without the `dga-icon-` prefix. */
   readonly icon = input('');
   readonly disabled = input(false, { transform: booleanAttribute });
-  /** Optional identifier reported in `selectionChange` and usable with `selectByValue()`. */
+  /** Optional identifier reported in `selectionChange` and usable with `selectByValue()`. Also set as `data-value` on the tab. */
   readonly value = input<string | undefined>(undefined);
+  /** A count or short text after the label (for example the number of items in the tab). */
+  readonly badge = input<string | number | null | undefined>(undefined);
+  /** `data-testid` of the badge. */
+  readonly badgeTestId = input<string>('');
+  /** Id of the tab button (generated when empty), for a page that labels its own panel with it. */
+  readonly buttonId = input<string>('');
+  /** `data-testid` of the tab button. */
+  readonly testId = input<string>('');
+  /** With `externalPanels` on the tabs: the id of the page's panel this tab controls (`aria-controls`). */
+  readonly controls = input<string>('');
 
   /** @internal */
   readonly content = viewChild.required(TemplateRef);
@@ -82,6 +92,11 @@ export class ModTabs {
   /** Flush variant: tabs are pulled out by the tab padding so the first label aligns with the container edge. */
   readonly flush = input(false, { transform: booleanAttribute });
   readonly ariaLabel = input('', { alias: 'aria-label' });
+  /**
+   * The page draws the panel itself (one panel whose content follows the selected tab): no panel is rendered here, and each tab's
+   * `aria-controls` is its `controls` id.
+   */
+  readonly externalPanels = input(false, { transform: booleanAttribute });
 
   /** Emitted when the user selects another tab (click or keyboard). */
   readonly selectionChange = output<ModTabChangeEvent>();

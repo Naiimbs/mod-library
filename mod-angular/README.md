@@ -29,10 +29,10 @@ npm run build:ui
 npm run pack:ui
 ```
 
-This creates `dist/ui/mod-internal-ui-0.1.0.tgz`. In your application:
+This creates `dist/ui/mod-internal-ui-0.1.10.tgz`. In your application:
 
 ```bash
-npm install path/to/mod-internal-ui-0.1.0.tgz
+npm install path/to/mod-internal-ui-0.1.10.tgz
 ```
 
 Then add `node_modules/@mod-internal/ui/styles/mod.css` and the icon bundle to the
@@ -67,7 +67,8 @@ Open http://localhost:4200.
 | `npm start` | Demo app against the library source, with hot reload |
 | `npm run build:ui` | Check the vendored theme, regenerate the reduced theme for `mod-core.css`, then build the library to `dist/ui` |
 | `npm run gen:core-theme` | Regenerate `DGATheme.core.css`, the reduced base theme behind `mod-core.css` |
-| `npm run gen:skill` | Regenerate the Claude skill's component, token and icon references in `claude-plugin/` (see [claude-plugin/README.md](claude-plugin/README.md)) |
+| `npm run gen:skill` | Regenerate the `mod-ui` Claude skill references (components, tokens, icons, page templates) in `claude-plugin/` (see [claude-plugin/README.md](claude-plugin/README.md)) |
+| `npm run gen:skill-html` | Regenerate the `mod-ui-html` Claude skill references from `../design-system` |
 | `npm run pack:ui` | Create the installable `.tgz` in `dist/ui` |
 | `npm run build` | Build the library and the demo app |
 | `npm run gen:dark-text` | Regenerate the dark-mode text rules after changing component styles |

@@ -10,6 +10,7 @@ import {
   computed,
   contentChildren,
   effect,
+  forwardRef,
   inject,
   input,
   model,
@@ -153,7 +154,9 @@ export class ModMenu {
 
   private readonly anchor = inject(ModMenuAnchor, { optional: true });
   private readonly injector = inject(Injector);
-  private readonly items = contentChildren(ModMenuItem, { descendants: true });
+  // forwardRef: ModMenuItem is declared further down this file. A direct reference fails with
+  // "Cannot access 'ModMenuItem' before initialization" where the package is loaded unlinked (unit tests).
+  private readonly items = contentChildren(forwardRef(() => ModMenuItem), { descendants: true });
   private readonly active = signal<ModMenuItem | null>(null);
 
   private readonly enabledItems = computed(() => this.items().filter((item) => !item.disabled()));

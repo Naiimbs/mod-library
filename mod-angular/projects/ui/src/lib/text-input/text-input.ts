@@ -108,6 +108,8 @@ export class ModTextInput implements ControlValueAccessor {
   readonly ariaLabel = input<string>('');
   /** Id for the native input. Generated when omitted. */
   readonly inputId = input<string>('');
+  /** `data-testid` of the native input (tests and automation type into the control itself). */
+  readonly testId = input<string>('');
 
   readonly prefixClick = output<void>();
   readonly suffixClick = output<void>();

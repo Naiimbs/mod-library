@@ -26,6 +26,7 @@ export type ModModalPosition = 'start' | 'center' | 'end';
 export type ModModalIconColor = 'neutral' | 'brand' | 'gray' | 'success' | 'error' | 'warning' | 'info';
 export type ModModalIconVariant = 'light' | 'dark' | 'outlined';
 export type ModModalCloseReason = 'escape' | 'backdrop' | 'close-button' | 'action' | 'api';
+export type ModModalRole = 'dialog' | 'alertdialog';
 
 const FOCUSABLE =
   'a[href], area[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), ' +
@@ -101,7 +102,7 @@ export class ModModalActions {
       <div
         #dialog
         [class]="dialogClasses()"
-        role="dialog"
+        [attr.role]="dialogRole()"
         [attr.aria-modal]="inline() ? null : 'true'"
         [attr.tabindex]="inline() ? null : -1"
         [attr.aria-labelledby]="labelledBy()"
@@ -183,6 +184,11 @@ export class ModModal {
   readonly ariaLabel = input<string>('');
   /** Id of an external element that labels the dialog (overrides `heading`). */
   readonly ariaLabelledby = input<string>('');
+  /**
+   * ARIA role of the dialog. Use `alertdialog` for a confirmation that interrupts the user
+   * and asks for a decision ("Delete this file?").
+   */
+  readonly dialogRole = input<ModModalRole>('dialog');
 
   /** Emits after the modal opens. */
   readonly opened = output<void>();

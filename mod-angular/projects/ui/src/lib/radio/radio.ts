@@ -31,7 +31,9 @@ let nextId = 0;
             #input
             type="radio"
             class="radio__input"
-            [id]="inputId"
+            [id]="fieldId()"
+            [attr.data-testid]="testId() || null"
+            [attr.value]="nativeValue()"
             [checked]="isChecked()"
             [disabled]="isDisabled()"
             [required]="!!group?.required()"
@@ -83,12 +85,22 @@ export class ModRadio<T = unknown> {
   readonly name = input<string>('');
   /** Accessible name when there is no visible label. */
   readonly ariaLabel = input<string>('');
+  /** Id of the native input (so a label or a test can find it). Generated when omitted. */
+  readonly inputIdInput = input<string>('', { alias: 'inputId' });
+  /** Test / automation hook, set as `data-testid` on the native input. */
+  readonly testId = input<string>('');
 
   protected readonly group = inject<ModRadioGroup<T>>(ModRadioGroup, { optional: true });
   private readonly inputRef = viewChild<ElementRef<HTMLInputElement>>('input');
 
   private readonly uid = `mod-radio-${++nextId}`;
   protected readonly inputId = this.uid;
+  protected readonly fieldId = computed(() => this.inputIdInput() || this.inputId);
+  /** The value as the native radio's `value` attribute (forms and tests read it). */
+  protected readonly nativeValue = computed(() => {
+    const v = this.value();
+    return v === undefined || v === null ? null : String(v);
+  });
   protected readonly helperId = `${this.uid}-helper`;
   protected readonly alertId = `${this.uid}-alert`;
 
