@@ -1,11 +1,14 @@
 {
   "name": "mod-library",
   "owner": { "name": "Naiimbs" },
+  "metadata": {
+    "description": "Claude Code plugin for the MOD Internal design system: the Angular library @mod-internal/ui and the HTML/CSS design system."
+  },
   "plugins": [
     {
       "name": "mod-ui",
       "source": "./mod-angular/claude-plugin",
-      "description": "Teaches Claude to build Angular UI with @mod-internal/ui: setup, the real component API, forms, Arabic/RTL, dark mode and design tokens."
+      "description": "Build UI with the MOD design system: @mod-internal/ui for Angular (component API, page templates, emails), the HTML/CSS design system for other stacks, and the library maintenance workflow."
     }
   ]
 }

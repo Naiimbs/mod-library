@@ -1,5 +1,8 @@
 {
   "name": "mod-ui",
-  "version": "0.1.0",
-  "description": "Teaches Claude to build Angular UI with @mod-internal/ui: setup, the real component API (generated from the library source), forms, Arabic/RTL, dark mode and design tokens."
+  "version": "0.2.0",
+  "description": "Build UI with the MOD design system: @mod-internal/ui for Angular (real component API, 29 page templates and 4 emails), the HTML/CSS design system for everything else, and the workflow for maintaining the library itself.",
+  "author": { "name": "Naiimbs" },
+  "repository": "https://github.com/Naiimbs/mod-library",
+  "keywords": ["angular", "design-system", "dga", "rtl", "arabic", "ui"]
 }

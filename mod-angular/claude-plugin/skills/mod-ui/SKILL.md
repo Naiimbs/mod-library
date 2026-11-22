@@ -20,14 +20,20 @@ already have.
 1. **Check the setup first** when you touch a project for the first time: is
    `@mod-internal/ui` in `package.json`, and does `angular.json` load its styles? If not,
    or if something renders unstyled, follow `references/setup.md`.
-2. **Find the component** in `references/component-index.md` (one line per component).
-3. **Look up its exact API** in `references/components.md`: search for the class name
+2. **Building a whole screen?** Check `references/templates.md` first. It lists 29
+   complete screens (sign-in, sign-up, verification, password reset, 404 and status
+   pages, dashboards, settings, case and profile pages) and 4 HTML emails. When one is
+   close, open its file in `references/templates/` and adapt it: rename the selector and
+   class, swap in the project's data, text and translation mechanism, and keep the
+   structure. This beats composing the screen from scratch.
+3. **Find the component** in `references/component-index.md` (one line per component).
+4. **Look up its exact API** in `references/components.md`: search for the class name
    (for example `### ModDropdown`). It lists every input, two-way model, output, content
    slot, value types and an example, generated from the library source. Do not rely on
    memory for input names: check them here.
-4. **Import the class** into the `imports` array of the standalone component (or the
+5. **Import the class** into the `imports` array of the standalone component (or the
    NgModule) that uses it.
-5. **Style your own layout with tokens** from `references/tokens.md`, never with raw
+6. **Style your own layout with tokens** from `references/tokens.md`, never with raw
    colour values.
 
 ## The rules that matter most
@@ -131,6 +137,7 @@ library; the library ships none.
 | `references/components.md` | Writing a template: exact inputs, outputs, models, slots, types and an example per component. Search by class name; it is long |
 | `references/tokens.md` | Styling your own elements: every CSS variable with its light value |
 | `references/icons.md` | Choosing an icon name for `mod-icon` or an icon input; 4,029 names by category |
+| `references/templates.md` | Starting a new screen or an email: the list of complete templates, each in its own file under `references/templates/` |
 
-`component-index.md`, `components.md`, `tokens.md` and `icons.md` are generated from the
-library source by `tools/gen-skill-reference.mjs` in the library repository.
+Everything except `setup.md` is generated from the library source and demo by
+`tools/gen-skill-reference.mjs` in the library repository.
