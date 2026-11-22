@@ -111,7 +111,7 @@ in [Step by step](#step-by-step).
 2. Install it in your application:
 
    ```bash
-   npm install path/to/mod-internal-ui-0.1.0.tgz
+   npm install path/to/mod-internal-ui-0.1.10.tgz
    ```
 
 3. Add the styles to `angular.json` (`architect → build → options → styles`):
@@ -162,7 +162,7 @@ npm run build:ui
 npm run pack:ui
 ```
 
-This creates `dist/ui/mod-internal-ui-0.1.0.tgz`. That one file is the whole library;
+This creates `dist/ui/mod-internal-ui-0.1.10.tgz`. That one file is the whole library;
 share it with your team, or copy it into your project (for example into a `vendor/`
 folder) and commit it so everyone installs the same version.
 
@@ -189,7 +189,7 @@ Map the scope to that registry in your application's `.npmrc`:
 With the tarball:
 
 ```bash
-npm install ./vendor/mod-internal-ui-0.1.0.tgz
+npm install ./vendor/mod-internal-ui-0.1.10.tgz
 ```
 
 Or from your registry:

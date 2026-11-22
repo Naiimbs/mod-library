@@ -62,11 +62,16 @@ export class ModChip {
   readonly selected = model(false);
   /** Adds the trailing remove icon; clicking the chip emits `removed`. */
   readonly removable = input(false, { transform: booleanAttribute });
+  /**
+   * One of a group of toggle chips (a segmented filter): `aria-pressed` is always `true` or `false`, so screen readers announce
+   * every chip as a toggle. Selection is left to the page (bind `selected`).
+   */
+  readonly toggle = input(false, { transform: booleanAttribute });
 
   readonly removed = output<void>();
 
   protected readonly pressed = computed(() =>
-    this.selectable() || this.selected() ? String(this.selected()) : null,
+    this.selectable() || this.toggle() || this.selected() ? String(this.selected()) : null,
   );
 
   protected readonly classes = computed(() => {

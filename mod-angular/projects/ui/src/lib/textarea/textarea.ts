@@ -48,6 +48,7 @@ let nextId = 0;
         [attr.aria-label]="ariaLabel() || null"
         [attr.aria-invalid]="error() ? 'true' : null"
         [attr.aria-describedby]="helperText() ? helperId : null"
+        [attr.data-testid]="testId() || null"
         (input)="onInput(field.value)"
         (blur)="onBlur()"
       ></textarea>
@@ -99,6 +100,8 @@ export class ModTextarea implements ControlValueAccessor {
   readonly ariaLabel = input<string>('');
   /** Id for the native textarea. Generated when omitted. */
   readonly inputId = input<string>('');
+  /** `data-testid` of the native textarea (tests and automation type into the control itself). */
+  readonly testId = input<string>('');
 
   readonly blurred = output<void>();
 

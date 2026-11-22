@@ -116,6 +116,7 @@
     [attr.aria-label]="ariaLabel() || null"
     [attr.aria-invalid]="error() ? 'true' : null"
     [attr.aria-describedby]="helperText() ? helperId : null"
+    [attr.data-testid]="testId() || null"
     (input)="onInput(input.value)"
     (blur)="onBlur()"
   />

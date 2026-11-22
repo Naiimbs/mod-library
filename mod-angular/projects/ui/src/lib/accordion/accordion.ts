@@ -7,6 +7,7 @@ import {
   booleanAttribute,
   computed,
   contentChildren,
+  forwardRef,
   inject,
   input,
   model,
@@ -44,7 +45,9 @@ export class ModAccordion {
   /** Allow several items to be open at once (source behaviour). Set to false for single-expand. */
   readonly multiple = input(true, { transform: booleanAttribute });
 
-  private readonly items = contentChildren(ModAccordionItem);
+  // forwardRef: ModAccordionItem is declared further down this file. A direct reference fails with
+  // "Cannot access 'ModAccordionItem' before initialization" where the package is loaded unlinked (unit tests).
+  private readonly items = contentChildren(forwardRef(() => ModAccordionItem));
 
   /** @internal Called by an item when the user opens it. */
   itemOpened(opened: ModAccordionItem): void {

@@ -19,6 +19,32 @@
     line-height: 20px;
     font-weight: var(--font-weight-regular);
 }
+/* Required star and helper / validation text: the same design as mod-text-input (text-input.css). */
+.dropdown-field__label--required::before {
+    content: '* ';
+    color: var(--color-error-700);
+}
+
+.dropdown-field__helper {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    color: var(--color-gray-700);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xs) 0;
+}
+
+.dropdown-field__helper--error {
+    color: var(--color-error-700);
+}
+
+.dropdown-field__helper-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
 
 .dropdown {
     display: flex;

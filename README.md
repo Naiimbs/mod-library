@@ -66,12 +66,12 @@ npm run build:ui
 npm run pack:ui
 ```
 
-This creates `mod-angular/dist/ui/mod-internal-ui-0.1.0.tgz`.
+This creates `mod-angular/dist/ui/mod-internal-ui-0.1.10.tgz`.
 
 **2. Install it in your application:**
 
 ```bash
-npm install path/to/mod-internal-ui-0.1.0.tgz
+npm install path/to/mod-internal-ui-0.1.10.tgz
 ```
 
 **3. Add the styles** to your `angular.json` (`architect → build → options → styles`):

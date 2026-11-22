@@ -63,6 +63,7 @@ let nextId = 0;
   ],
   host: {
     '(focusout)': 'onFocusOut($event)',
+    '[attr.data-value]': 'selectedDataValue()',
   },
 })
 export class ModDropdown<T = unknown> implements ControlValueAccessor {
@@ -83,6 +84,12 @@ export class ModDropdown<T = unknown> implements ControlValueAccessor {
   readonly readonly = input(false, { transform: booleanAttribute });
   /** Accessible name when no visible label is rendered. */
   readonly ariaLabel = input<string>('');
+  /** Marks the label with the required star (as `mod-text-input`) and sets `aria-required`. */
+  readonly required = input(false, { transform: booleanAttribute });
+  /** Helper / validation message under the field (as `mod-text-input`); red with `error`. */
+  readonly helperText = input<string>('');
+  /** Shows the state icon before the helper text. */
+  readonly helperIcon = input(true, { transform: booleanAttribute });
   /** Separator between labels in multi select. */
   readonly separator = input<string>(', ');
   /** Equality used to match `value` against option values. */
@@ -95,6 +102,7 @@ export class ModDropdown<T = unknown> implements ControlValueAccessor {
   protected readonly labelId = `${this.uid}-label`;
   protected readonly triggerId = `${this.uid}-trigger`;
   protected readonly listId = `${this.uid}-list`;
+  protected readonly helperId = `${this.uid}-helper`;
 
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly injector = inject(Injector);
@@ -142,6 +150,25 @@ export class ModDropdown<T = unknown> implements ControlValueAccessor {
   private readonly selectedOptions = computed(() =>
     this.options().filter((option) => this.isSelected(option)),
   );
+
+  /**
+   * The selected value as text on the host (`data-value`), for tests and automation: the value itself
+   * when it is a string, number or boolean, the values joined with a comma when `multiple`, empty when
+   * nothing is selected. Each option carries its own `data-value` the same way.
+   */
+  protected readonly selectedDataValue = computed(() =>
+    this.selectedValues()
+      .map((value) => this.dataValue(value))
+      .filter((value): value is string => value !== null)
+      .join(','),
+  );
+
+  /** An option value as text for `data-value`; null for object values. */
+  protected dataValue(value: T): string | null {
+    return typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean'
+      ? String(value)
+      : null;
+  }
 
   protected readonly hasSelection = computed(() => this.selectedOptions().length > 0);
   protected readonly displayText = computed(() =>

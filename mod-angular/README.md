@@ -29,10 +29,10 @@ npm run build:ui
 npm run pack:ui
 ```
 
-This creates `dist/ui/mod-internal-ui-0.1.0.tgz`. In your application:
+This creates `dist/ui/mod-internal-ui-0.1.10.tgz`. In your application:
 
 ```bash
-npm install path/to/mod-internal-ui-0.1.0.tgz
+npm install path/to/mod-internal-ui-0.1.10.tgz
 ```
 
 Then add `node_modules/@mod-internal/ui/styles/mod.css` and the icon bundle to the
