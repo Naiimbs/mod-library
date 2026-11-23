@@ -603,6 +603,19 @@ Works with `ngModel`, `formControl` and `formControlName` (ControlValueAccessor)
 | `[todayLabel]` | input | `string` | `'Today'` |  |
 | `[calendarLabel]` | input | `string` | `'Choose date range'` | Accessible name of the popup. |
 
+Exported functions and constants (import them from `@mod-internal/ui` like the classes):
+
+| Function or constant | Notes |
+| --- | --- |
+| `const MOD_MONTH_NAMES: readonly string[] = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', ]` |  |
+| `const MOD_WEEKDAY_LABELS: readonly string[] = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']` | Sunday-first, matching the calendar grid. |
+| `modIsValidDate(value: unknown): value is Date` |  |
+| `modStartOfDay(date: Date \| null \| undefined): Date \| null` | Local midnight of the given date, or `null` for a missing / invalid date. |
+| `modSameDay(a: Date \| null, b: Date \| null): boolean` |  |
+| `modAddDays(date: Date, days: number): Date` |  |
+| `modFormatDate(date: Date, monthNames: readonly string[]): string` | The source format: "January 05, 2026". |
+| `const MOD_DEFAULT_DATE_PRESETS: readonly ModDatePreset[] = [ { id: 'today', label: 'Today', range: (today) => ({ start: today, end: today }) }, { id: 'this-week', label: 'This week', range: (today) => weekOf(today, 0...` | The quick options of the source design system, with English labels. |
+
 Exported types:
 
 ```ts
@@ -1293,6 +1306,13 @@ DGA pagination.
 | `[previousLabel]` | input | `string` | `'Previous'` |  |
 | `[nextLabel]` | input | `string` | `'Next'` |  |
 | `[pageLabel]` | input | `string` | `'Page'` | Prefix of each page button's accessible name, e.g. "Page 3". |
+
+Exported functions and constants (import them from `@mod-internal/ui` like the classes):
+
+| Function or constant | Notes |
+| --- | --- |
+| `const MOD_PAGINATION_DOTS = '…'` | Gap marker used in the token sequence returned by `modPaginationRange`. |
+| `modPaginationRange(total: number, current: number, siblings: number): ModPaginationToken[]` | Sequence of page tokens to render: page numbers and '…' gap markers. Always shows the first and last page, the current page and `siblings` neighbours either side; the rest collapses into ellipses. |
 
 Exported types:
 

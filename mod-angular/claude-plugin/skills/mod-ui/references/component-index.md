@@ -2,7 +2,7 @@
 
 # @mod-internal/ui component index
 
-One line per public component, directive and service. Import the class from `@mod-internal/ui`; the full API of each is in `components.md` (search for the class name).
+One line per public component, directive, service, function and constant. Import it from `@mod-internal/ui`; the full API of each is in `components.md` (search for the name).
 
 | Selector | Class | Folder | What it is |
 | --- | --- | --- | --- |
@@ -21,6 +21,14 @@ One line per public component, directive and service. Import the class from `@mo
 | `mod-date-field` | `ModDateField` | date-picker | DGA date field — the read-only input with a calendar icon that triggers a calendar. Presentational: the date p |
 | `mod-date-picker` | `ModDatePicker` | date-picker | DGA date picker — a date field that opens a calendar popup. Form control with `Date \| null` as its value (Gre |
 | `mod-date-range-picker` | `ModDateRangePicker` | date-picker | DGA date range picker — start and end date fields that share one calendar popup, with optional quick-option pr |
+| (constant) | `MOD_MONTH_NAMES` | date-picker |  |
+| (constant) | `MOD_WEEKDAY_LABELS` | date-picker | Sunday-first, matching the calendar grid. |
+| (function) | `modIsValidDate` | date-picker |  |
+| (function) | `modStartOfDay` | date-picker | Local midnight of the given date, or `null` for a missing / invalid date. |
+| (function) | `modSameDay` | date-picker |  |
+| (function) | `modAddDays` | date-picker |  |
+| (function) | `modFormatDate` | date-picker | The source format: "January 05, 2026". |
+| (constant) | `MOD_DEFAULT_DATE_PRESETS` | date-picker | The quick options of the source design system, with English labels. |
 | `mod-file-upload` | `ModFileUpload` | file-upload | DGA file upload — dashed drop area, browse button and a removable file list. Form control with `File[]` as its |
 | `mod-digital-stamp` | `ModDigitalStamp` | digital-stamp | DGA digital stamp — the bar at the top of a government site that explains how the visitor can verify the site  |
 | `mod-filters` | `ModFilters` | filters | DGA filters ("filteration") — a trigger button, the row of applied filters and a floating panel of filter bloc |
@@ -49,6 +57,8 @@ One line per public component, directive and service. Import the class from `@mo
 | `mod-tab` | `ModTab` | tabs | A single tab inside `<mod-tabs>`. The projected content is the panel. |
 | `mod-tabs` | `ModTabs` | tabs | DGA horizontal tabs. Keyboard (as in the source): ArrowLeft/ArrowRight move and activate the previous/next ena |
 | `mod-pagination` | `ModPagination` | pagination | DGA pagination. |
+| (constant) | `MOD_PAGINATION_DOTS` | pagination | Gap marker used in the token sequence returned by `modPaginationRange`. |
+| (function) | `modPaginationRange` | pagination | Sequence of page tokens to render: page numbers and '…' gap markers. Always shows the first and last page, the |
 | `a[mod-link]` | `ModLink` | links | DGA link. Applied to a native anchor so navigation, focus and keyboard behaviour stay native: For a leading/tr |
 | `mod-accordion` | `ModAccordion` | accordion | DGA accordion container. `size`, `iconPosition` and `flush` apply to every item unless the item overrides them |
 | `mod-accordion-item` | `ModAccordionItem` | accordion | One collapsible section. The projected content is the body; the header text comes from `heading`, or project r |

@@ -116,6 +116,19 @@ Modals: `<mod-modal [(open)]="isOpen" heading="...">` with buttons in
 `--mod-on-primary`, `--color-*` status colours, `--spacing-*`, `--radius-*`,
 `--font-family-primary`. Hard-coded hex values break dark mode and the brand.
 
+**Typeface.** The brand typeface is Saudi MOD, shipped and loaded by the library in every
+weight from 100 to 900. Never import another font or name the font files: use
+`font-family: var(--font-family-primary)` and a `--font-weight-*` token. For your own
+headings and copy, the typography classes (`.display-md-semibold`, `.text-sm-regular`,
+...) set size and weight in one go, but they exist only in `mod.css`; with `mod-core.css`
+use `font-size: var(--text-md)` and the weight token instead. The weights, the sizes and
+the classes are in `references/tokens.md`.
+
+**Helpers.** Besides components, the library exports date helpers (`modFormatDate`,
+`modAddDays`, `modSameDay`, `modStartOfDay`, `modIsValidDate`, `MOD_DEFAULT_DATE_PRESETS`,
+month and weekday names) and `modPaginationRange`. Use them instead of writing your own;
+their signatures are in `components.md`.
+
 ## Project rules come first
 
 The host project may have stricter rules than this skill: no external URLs, all strings
@@ -134,8 +147,8 @@ library; the library ships none.
 | --- | --- |
 | `references/setup.md` | Installing or upgrading the package, editing `angular.json` styles, `mod.css` vs `mod-core.css`, bundle budget errors, troubleshooting unstyled components, fonts or icons |
 | `references/component-index.md` | Choosing a component; one line each |
-| `references/components.md` | Writing a template: exact inputs, outputs, models, slots, types and an example per component. Search by class name; it is long |
-| `references/tokens.md` | Styling your own elements: every CSS variable with its light value |
+| `references/components.md` | Writing a template: exact inputs, outputs, models, slots, types and an example per component, plus the exported helper functions and constants. Search by name; it is long |
+| `references/tokens.md` | Styling your own elements: the typeface and its weights, the typography classes, and every CSS variable (brand, semantic, navigation and the base theme's colour scales, shadows and sizes) with its light value |
 | `references/icons.md` | Choosing an icon name for `mod-icon` or an icon input; 4,029 names by category |
 | `references/templates.md` | Starting a new screen or an email: the list of complete templates, each in its own file under `references/templates/` |
 
