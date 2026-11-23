@@ -148,11 +148,34 @@ for (const folder of folders) {
   const files = walk(dir).filter((f) => f.endsWith('.ts') && !f.endsWith('.spec.ts') && !f.endsWith('index.ts'));
   const classes = [];
   const types = [];
+  const helpers = [];
+  const indexPath = join(dir, 'index.ts');
+  const indexSrc = existsSync(indexPath) ? readFileSync(indexPath, 'utf8') : '';
+  // A function or constant is public when the folder's index re-exports its whole file
+  // or names it.
+  const isPublic = (file, name) => {
+    const base = relative(dir, file).replace(/\\/g, '/').replace(/\.ts$/, '');
+    return new RegExp(`export \\* from '\\./${base}'`).test(indexSrc) || new RegExp(`\\b${name}\\b`).test(indexSrc);
+  };
   for (const file of files) {
     const sf = ts.createSourceFile(file, readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true);
     for (const st of sf.statements) {
       const exported = ts.getCombinedModifierFlags(st) & ts.ModifierFlags.Export;
       if (!exported) continue;
+      if (ts.isFunctionDeclaration(st) && st.name && isPublic(file, st.name.text)) {
+        const params = st.parameters.map((p) => oneLine(p.getText())).join(', ');
+        const ret = st.type ? `: ${oneLine(st.type.getText())}` : '';
+        helpers.push({ sig: `${st.name.text}(${params})${ret}`, doc: jsDocOf(st, sf) });
+      }
+      if (ts.isVariableStatement(st)) {
+        for (const d of st.declarationList.declarations) {
+          if (!ts.isIdentifier(d.name) || !isPublic(file, d.name.text)) continue;
+          const type = d.type ? `: ${oneLine(d.type.getText())}` : '';
+          let value = d.initializer ? oneLine(d.initializer.getText()) : '';
+          if (value.length > 160) value = value.slice(0, 157) + '...';
+          helpers.push({ sig: `const ${d.name.text}${type}${value ? ` = ${value}` : ''}`, doc: jsDocOf(st, sf) });
+        }
+      }
       if (ts.isTypeAliasDeclaration(st)) types.push(`type ${st.name.text} = ${oneLine(st.type.getText())}`);
       if (ts.isInterfaceDeclaration(st)) {
         const fields = st.members.map((m) => oneLine(m.getText()).replace(/\/\*\*.*?\*\/\s*/g, '')).join(' ');
@@ -208,6 +231,21 @@ for (const folder of folders) {
     }
     index.push(`| ${c.selector ? `\`${c.selector}\`` : '(service)'} | \`${c.name}\` | ${folder} | ${cell(c.doc.prose).slice(0, 110)} |`);
   }
+  if (helpers.length) {
+    lines.push(
+      'Exported functions and constants (import them from `@mod-internal/ui` like the classes):',
+      '',
+      '| Function or constant | Notes |',
+      '| --- | --- |',
+      ...helpers.map((h) => `| \`${cell(h.sig)}\` | ${cell(h.doc)} |`),
+      '',
+    );
+    for (const h of helpers) {
+      const name = h.sig.replace(/^const /, '').match(/^[\w$]+/)[0];
+      const kind = h.sig.startsWith('const ') ? '(constant)' : '(function)';
+      index.push(`| ${kind} | \`${name}\` | ${folder} | ${cell(h.doc).slice(0, 110)} |`);
+    }
+  }
   if (types.length) lines.push('Exported types:', '', '```ts', ...types, '```', '');
   sections.push({ folder, text: lines.join('\n') });
 }
@@ -229,34 +267,99 @@ writeFileSync(
 writeFileSync(
   join(outDir, 'component-index.md'),
   header('@mod-internal/ui component index') +
-    'One line per public component, directive and service. Import the class from `@mod-internal/ui`; the full API of each is in `components.md` (search for the class name).\n\n' +
+    'One line per public component, directive, service, function and constant. Import it from `@mod-internal/ui`; the full API of each is in `components.md` (search for the name).\n\n' +
     '| Selector | Class | Folder | What it is |\n| --- | --- | --- | --- |\n' +
     index.join('\n') +
     '\n',
 );
-// Design tokens: light-mode values declared on :root in the token stylesheets.
-const tokenFiles = ['css/mod-theme.css', 'css/tokens.css', 'css/navigation-tokens.css'];
-const tokenRows = [];
-const seen = new Set();
-for (const rel of tokenFiles) {
-  const ast = postcss.parse(readFileSync(join(root, 'projects/ui/src/styles', rel), 'utf8'));
-  ast.walkRules((rule) => {
+// Design tokens: light-mode values declared on :root in the token stylesheets. The
+// library's own files load after the base theme (utilities/DGATheme.css) and win, so
+// they are read first and the base theme only adds the tokens they do not redefine.
+// The base theme declares its tokens inside `@layer dga-vendor`; those count, while
+// :root rules inside @media (responsive sizes) or other at-rules are skipped.
+const stylesDir = join(root, 'projects/ui/src/styles');
+const tokenFiles = [
+  { rel: 'css/mod-theme.css', group: 'Brand theme' },
+  { rel: 'css/tokens.css', group: 'Semantic tokens' },
+  { rel: 'css/navigation-tokens.css', group: 'Navigation tokens' },
+  { rel: 'utilities/DGATheme.css', group: 'Base theme scales' },
+];
+const tokenValues = new Map();
+const tokenGroups = [];
+for (const { rel, group } of tokenFiles) {
+  const rows = [];
+  postcss.parse(readFileSync(join(stylesDir, rel), 'utf8')).walkRules((rule) => {
     if (!rule.selectors.some((s) => s.trim() === ':root')) return;
-    if (rule.parent?.type === 'atrule') return; // skip media / dark-mode overrides
+    for (let p = rule.parent; p && p.type !== 'root'; p = p.parent) {
+      if (p.type === 'atrule' && p.name !== 'layer') return;
+    }
     rule.walkDecls(/^--/, (d) => {
-      if (seen.has(d.prop)) return;
-      seen.add(d.prop);
-      tokenRows.push(`| \`${d.prop}\` | \`${cell(d.value)}\` | ${rel} |`);
+      if (tokenValues.has(d.prop)) return;
+      tokenValues.set(d.prop, d.value);
+      rows.push(`| \`${d.prop}\` | \`${cell(d.value)}\` |`);
     });
   });
+  if (rows.length) tokenGroups.push({ rel, group, rows });
 }
+const resolveVar = (value, depth = 0) =>
+  depth > 5 ? value : value.replace(/var\((--[\w-]+)\)/g, (m, name) => (tokenValues.has(name) ? resolveVar(tokenValues.get(name), depth + 1) : m));
+
+// Typeface: the @font-face rules of the brand typeface, weight by weight.
+const faceRows = [];
+let familyName = '';
+postcss.parse(readFileSync(join(stylesDir, 'css/mod-theme.css'), 'utf8')).walkAtRules('font-face', (at) => {
+  const get = (prop) => at.nodes.find((n) => n.type === 'decl' && n.prop === prop)?.value ?? '';
+  familyName = get('font-family');
+  const file = get('src').match(/([\w-]+\.(?:otf|ttf|woff2?))/)?.[1] ?? '';
+  faceRows.push(`| ${get('font-weight')} | \`${file}\` | ${get('font-style') || 'normal'} |`);
+});
+
+// Typography utility classes of the base theme (.display-lg-bold, .text-md-semibold, ...).
+// mod-core.css drops them, so say which stylesheet has them.
+const coreTheme = existsSync(join(stylesDir, 'utilities/DGATheme.core.css'))
+  ? readFileSync(join(stylesDir, 'utilities/DGATheme.core.css'), 'utf8')
+  : '';
+const typeScale = new Map();
+postcss.parse(readFileSync(join(stylesDir, 'utilities/DGATheme.css'), 'utf8')).walkRules((rule) => {
+  for (let p = rule.parent; p && p.type !== 'root'; p = p.parent) if (p.type === 'atrule' && p.name !== 'layer') return;
+  const m = rule.selector.trim().match(/^\.((?:display|text)-[a-z0-9]+)-(thin|light|regular|medium|semibold|bold)$/);
+  if (!m) return;
+  const size = rule.nodes.find((n) => n.type === 'decl' && n.prop === 'font-size')?.value ?? '';
+  const lineHeight = rule.nodes.find((n) => n.type === 'decl' && n.prop === 'line-height')?.value ?? '';
+  const entry = typeScale.get(m[1]) ?? { size, lineHeight, weights: [] };
+  entry.weights.push(m[2]);
+  typeScale.set(m[1], entry);
+});
+const typeRows = [...typeScale].map(
+  ([prefix, e]) =>
+    `| \`.${prefix}-*\` | ${e.weights.map((w) => `\`${w}\``).join(', ')} | \`${e.size}\`${e.size.includes('var(') ? ` = ${resolveVar(e.size)}` : ''} |${e.lineHeight ? ` \`${resolveVar(e.lineHeight)}\`` : ''}`,
+);
+const allTypeClasses = [...typeScale].flatMap(([p, e]) => e.weights.map((w) => `${p}-${w}`));
+const typeInCore = allTypeClasses.filter((c) => new RegExp(`^\\s*\\.${c}\\s*\\{`, 'm').test(coreTheme));
+const typeCoreNote =
+  typeInCore.length === allTypeClasses.length
+    ? 'They are in both `mod.css` and `mod-core.css`.'
+    : `**They are in \`mod.css\` only.** \`mod-core.css\` keeps only ${typeInCore.length ? typeInCore.map((c) => `\`.${c}\``).join(' and ') : 'none of them'} (used by components); with \`mod-core.css\`, style your own text with the tokens instead, for example \`font-size: var(--text-md); font-weight: var(--font-weight-semibold);\`.`;
+
 writeFileSync(
   join(outDir, 'tokens.md'),
-  header('@mod-internal/ui design tokens') +
-    'CSS custom properties available once `mod.css` or `mod-core.css` is loaded, with their light-mode values. Dark mode (`data-theme="dark"` on `<html>`) overrides many of them, so reference the variable, never its value. Search for a prefix (`--mod-primary`, `--spacing`, `--radius`, `--color-error`) rather than reading everything.\n\n' +
-    '| Token | Light value | Defined in |\n| --- | --- | --- |\n' +
-    tokenRows.join('\n') +
-    '\n',
+  header('@mod-internal/ui design tokens and typography') +
+    'CSS custom properties available once `mod.css` or `mod-core.css` is loaded, with their light-mode values, plus the typeface and the typography classes. Dark mode (`data-theme="dark"` on `<html>`) overrides many tokens, so reference the variable, never its value. Search for a prefix (`--mod-primary`, `--spacing`, `--radius`, `--color-error`, `--error-`, `--text-`) rather than reading everything.\n\n' +
+    '## Contents\n\n- [Typeface](#typeface)\n- [Typography classes](#typography-classes)\n' +
+    tokenGroups.map((g) => `- [${g.group}](#${g.group.toLowerCase().replace(/\s+/g, '-')}) (\`${g.rel}\`)`).join('\n') +
+    '\n\n## Typeface\n\n' +
+    `Font family ${familyName}, shipped with the library (\`styles/assets/fonts-mod/\`) and loaded by both \`mod.css\` and \`mod-core.css\`. Use it through \`font-family: var(--font-family-primary)\` (body text and components) or \`var(--font-family-text)\`; never name the family or the files yourself. Pick a weight with the \`--font-weight-*\` tokens or a number from this table; every weight from 100 to 900 resolves to a real file, so there is no faux bold.\n\n` +
+    '| `font-weight` | File | Style |\n| --- | --- | --- |\n' +
+    faceRows.join('\n') +
+    '\n\nThe base theme\'s weight tokens are `--font-weight-light` (' + resolveVar('var(--font-weight-light)') + '), `--font-weight-regular` (' + resolveVar('var(--font-weight-regular)') + '), `--font-weight-medium` (' + resolveVar('var(--font-weight-medium)') + '), `--font-weight-semibold` (' + resolveVar('var(--font-weight-semibold)') + ') and `--font-weight-bold` (' + resolveVar('var(--font-weight-bold)') + ').\n\n' +
+    '## Typography classes\n\n' +
+    `Ready-made text styles: \`.<size>-<weight>\`, for example \`<h1 class="display-md-semibold">\` or \`<p class="text-sm-regular">\`. They set the font size and weight in the brand typeface (the base theme's per-weight font families point at the Saudi MOD files). ${typeCoreNote} Library components style their own text; use these classes for your own headings and copy.\n\n` +
+    '| Classes | Weights | Font size |' + (typeRows.some((r) => r.endsWith('`')) ? ' Line height |' : '') + '\n| --- | --- | --- |' + (typeRows.some((r) => r.endsWith('`')) ? ' --- |' : '') + '\n' +
+    typeRows.join('\n') +
+    '\n\n' +
+    tokenGroups
+      .map((g) => `## ${g.group}\n\nFrom \`${g.rel}\`.\n\n| Token | Light value |\n| --- | --- |\n${g.rows.join('\n')}\n`)
+      .join('\n'),
 );
 
 // Icon names, grouped by the category stylesheet they come from.
@@ -459,5 +562,5 @@ writeFileSync(
 );
 
 console.log(
-  `skill reference: ${index.length} entries in ${sections.length} folders, ${tokenRows.length} tokens, ${iconCount} icons, ${templateRows.length} page templates -> ${relative(root, outDir)}`,
+  `skill reference: ${index.length} entries in ${sections.length} folders, ${tokenValues.size} tokens, ${faceRows.length} font weights, ${typeScale.size} type sizes, ${iconCount} icons, ${templateRows.length} page templates -> ${relative(root, outDir)}`,
 );
